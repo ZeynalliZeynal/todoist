@@ -2,7 +2,7 @@ import Button from "@/components/ui/button";
 
 export default function NavRight() {
   return (
-    <div className="flex items-center gap-3">
+    <div className="hidden items-center gap-3 xl:flex">
       <Button primary size="sm" href="/auth/log-in">
         Log In
       </Button>

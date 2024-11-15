@@ -46,12 +46,12 @@ export default function NavLinks() {
                 </button>
               </DropdownMenu.Trigger>
               <DropdownMenu.Content className="rounded-xl p-0">
-                <DropdownMenu.Group className="p-2">
+                <DropdownMenu.Group className="p-1">
                   {children?.map(({ name, href, icon }) => (
                     <DropdownMenu.Item key={name} asChild>
                       <Link
                         href={href}
-                        className="flex focus-visible:ring-0 items-center gap-3 px-3 py-2 group focus:bg-gray-200 rounded-lg transition"
+                        className="flex focus-visible:ring-0 items-center gap-3 p-2 group focus:bg-gray-200 rounded-lg transition"
                       >
                         <div className="size-8 p-2 [&>svg]:size-full rounded-md border group-focus:bg-foreground group-focus:text-background-100 transition">
                           {icon}

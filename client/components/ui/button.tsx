@@ -4,8 +4,6 @@ import React, {
   forwardRef,
   MutableRefObject,
   ReactNode,
-  useImperativeHandle,
-  useRef,
   useState,
 } from "react";
 import { cn } from "@/utils/lib";
@@ -45,31 +43,26 @@ const Button = forwardRef<HTMLButtonElement | HTMLAnchorElement, ButtonProps>(
       className,
       ...etc
     },
-    forwardRef,
+    ref,
   ) => {
     const [hovering, setHovering] = useState(false);
-    const ref = useRef<HTMLButtonElement | HTMLAnchorElement | null>(null);
-    useImperativeHandle(
-      forwardRef,
-      () => ref.current as HTMLButtonElement | HTMLAnchorElement,
-    );
     const cl = cn(
       `flex items-center justify-center transition duration-200 font-medium border select-none rounded-${rounded}`,
       {
-        "text-gray-900 border bg-background-100 hover:text-foreground hover:bg-gray-alpha-200":
+        "text-foreground border bg-background-100 hover:text-foreground hover:bg-gray-200":
           primary,
-        "text-gray-500 border-gray-200 bg-gray-1000 hover:text-background-100 hover:bg-button-invert-hover":
+        "text-background-100 border-gray-200 bg-gray-1000 hover:text-background-100 hover:bg-button-invert-hover":
           !primary,
         "px-2.5 h-10 text-sm": size === "md",
         "px-3.5 h-12": size === "lg",
         "text-sm h-8 px-1.5": size === "sm",
         "w-full": full,
         "w-fit": !full,
-        "data-[highlighted]:text-foreground data-[highlighted]:bg-gray-alpha-200":
+        "data-[hover]:text-foreground data-[hover]:bg-gray-200":
           primary && hovering,
         "disabled:text-gray-700 disabled:bg-gray-100 disabled:border-gray-400":
           primary && disabled,
-        "data-[highlighted]:text-background-100 data-[highlighted]:bg-button-invert-hover":
+        "data-[hover]:text-background-100 data-[hover]:bg-button-invert-hover":
           !primary && hovering,
         "disabled:bg-button-invert-disabled disabled:text-gray-700 disabled:border-gray-400":
           !primary && disabled,
@@ -77,7 +70,7 @@ const Button = forwardRef<HTMLButtonElement | HTMLAnchorElement, ButtonProps>(
       className,
     );
     const commonAttributed = {
-      "data-highlighted": !disabled && hovering ? true : null,
+      "data-hover": !disabled && hovering ? true : null,
       className: cl,
       onMouseEnter: () => !disabled && setHovering(true),
       onMouseLeave: () => !disabled && setHovering(false),

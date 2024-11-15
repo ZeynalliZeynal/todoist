@@ -8,6 +8,9 @@ export default {
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
+    screens: {
+      xl: "1150px",
+    },
     extend: {
       fontFamily: {
         "geist-sans": ["var(--font-geist-sans)"],
