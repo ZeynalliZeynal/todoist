@@ -1,6 +1,13 @@
-import { AlignContentProps } from "@/types/ui/popper.ts";
-import { DEFAULT_SPACE } from "@/components/ui/parameters.ts";
+import { AlignContentProps } from "@/types/ui/popper";
 
+export const DEFAULT_SPACE = 4;
+
+/**
+ * Used to align any popper based on its trigger's position
+ * @param { AlignContentProps } align - Options for aligning the box
+ * @param { DOMRect } triggerPosition - Position of the trigger
+ * @param { HTMLElement } element - The element
+ */
 export const alignBox = ({
   align,
   triggerPosition,

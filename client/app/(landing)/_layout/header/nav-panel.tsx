@@ -5,6 +5,7 @@ import React, { CSSProperties, forwardRef } from "react";
 import { Direction } from "@/app/(landing)/_layout/header/nav-links";
 import { createPortal } from "react-dom";
 import Link from "next/link";
+import { Nub } from "@/components/ui/icons/geist";
 
 interface NavPanelsProps {
   triggerRect: DOMRect | null;
@@ -42,6 +43,7 @@ export default forwardRef<HTMLDivElement, NavPanelsProps>(
             onMouseLeave={handleMouseLeave}
             onMouseEnter={handleMouseEnter}
           >
+            <Nub className="fixed z-50 size-4 border bg-background-100 rotate-45 rounded -translate-x-1/2 transition-all duration-300" />
             <motion.div
               className="fixed z-50 size-4 border bg-background-100 rotate-45 rounded -translate-x-1/2 transition-all duration-300"
               exit={{

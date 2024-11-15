@@ -1,3 +1,5 @@
+"use client";
+
 import React, { Dispatch, SetStateAction, useCallback, useState } from "react";
 import { PopperContentProps, PopperItemProps } from "@/types/ui/popper";
 import { cn } from "@/utils/lib";

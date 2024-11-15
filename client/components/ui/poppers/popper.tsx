@@ -1,3 +1,5 @@
+"use client";
+
 import React, {
   cloneElement,
   createContext,
@@ -546,7 +548,6 @@ const PopperItem = forwardRef<HTMLElement, PopperItemProps>(
     useImperativeHandle(forwardRef, () => ref.current as HTMLElement);
 
     const handleClick = (event: React.MouseEvent<HTMLElement>) => {
-      event.preventDefault();
       if (disabled) return;
       if (href) router.push(href);
       else if (onClick) {
@@ -584,7 +585,7 @@ const PopperItem = forwardRef<HTMLElement, PopperItemProps>(
       onKeyDown?.(event as React.KeyboardEvent<HTMLElement>);
       const keyCode = (event as React.KeyboardEvent<HTMLElement>).code;
       if (keyCode === "Enter" || keyCode === "Space") {
-        event.preventDefault();
+        // event.preventDefault();
         if (href) {
           router.push(href);
         } else {
@@ -626,7 +627,7 @@ const PopperItem = forwardRef<HTMLElement, PopperItemProps>(
         {...(attributes as React.HTMLAttributes<HTMLDivElement>)}
         className={cn(
           "focus:ring-0",
-          "text-foreground flex items-center justify-start rounded-ui-item w-full cursor-default transition-colors",
+          "text-foreground flex items-center justify-start rounded-ui-item w-full cursor-default transition-colors focus-visible:!ring-0 focus-visible:!outline-0",
           {
             "cursor-pointer": href,
             "gap-2": prefix,
