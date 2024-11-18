@@ -2,6 +2,9 @@
 
 import Tabs from "@/components/ui/tabs";
 import { useState } from "react";
+import CardSheet from "@/components/ui/card-sheet";
+import Button from "@/components/ui/button";
+import { LuMoveRight } from "react-icons/lu";
 
 const values = [
   {
@@ -34,17 +37,33 @@ export default function Templates() {
   const [value, setValue] = useState(values[0].value);
 
   return (
-    <section className="mt-4 border-t">
-      <div className="w-full p-12 space-y-8">
-        <div className="text-center">
-          <h2>Kickstart your next project with Todoist Templates</h2>
-          <p className="mt-6">
-            No need to create projects or setups from scratch when we have 50+
-            templates made for you.
-          </p>
+    <section className="mt-4 border-t border-b">
+      <div className="flex">
+        <div className="border-r w-1/3 flex flex-col justify-center">
+          <div className="p-12 space-y-6">
+            <h2 className="text-4xl leading-[120%]">
+              Kickstart your next project with Todoist Templates
+            </h2>
+            <p>
+              No need to create projects or setups from scratch when we have 50+
+              templates made for you.
+            </p>
+            <Button
+              primary
+              suffix={<LuMoveRight />}
+              size="lg"
+              className="rounded-full mx-auto"
+            >
+              See all
+            </Button>
+          </div>
         </div>
-        <div className="flex flex-col gap-4">
-          <Tabs defaultValue={value} onChange={setValue}>
+        <div className="flex flex-col gap-4 flex-1">
+          <Tabs
+            defaultValue={value}
+            onChange={setValue}
+            className="space-y-8 p-12"
+          >
             <Tabs.List>
               {values.map((item, index) => (
                 <Tabs.Trigger
@@ -58,21 +77,38 @@ export default function Templates() {
             </Tabs.List>
             {values.map((item, index) => (
               <Tabs.Content
-                key={index + 1}
+                key={index}
                 value={item.value}
-                className="flex items-stretch"
+                className="flex items-stretch justify-center gap-8 flex-wrap"
               >
-                <div className="flex flex-col border w-40 relative h-32">
-                  <div
-                    className="absolute [--size:33px] -top-px w-[var(--size)] h-[var(--size)] border-r-background-100 border-b-background-200 -right-px border-gray-400"
-                    style={{
-                      borderBottomWidth: "var(--size)",
-                      borderRightWidth: "var(--size)",
-                    }}
-                  >
-                    <div className="absolute size-[var(--size)] border-b border-l before:absolute before:top-0 before:-right-px before:w-px before:h-[var(--size)] before:bg-gray-400 before:-rotate-45 before:scale-[1.4] before:origin-bottom overflow-hidden" />
-                  </div>
-                </div>
+                <CardSheet
+                  href="/"
+                  img="https://res.cloudinary.com/imagist/image/fetch/q_auto,f_auto,c_scale,w_360/https%3A%2F%2Fimages.ctfassets.net%2Fdm4oa8qtogq0%2F1la3hgXN3C6hvQI6IulAKV%2F14b9e9e3675dea1a0d8b3e0c82559a52%2Faccounting-tasks.png%3Fw%3D270"
+                  alt="Accounting Tasks"
+                >
+                  <div className="p-4 bg-background-100">Next.js Templates</div>
+                </CardSheet>
+                <CardSheet
+                  href="/"
+                  img="https://res.cloudinary.com/imagist/image/fetch/q_auto,f_auto,c_scale,w_360/https%3A%2F%2Fimages.ctfassets.net%2Fdm4oa8qtogq0%2F1la3hgXN3C6hvQI6IulAKV%2F14b9e9e3675dea1a0d8b3e0c82559a52%2Faccounting-tasks.png%3Fw%3D270"
+                  alt="Accounting Tasks"
+                >
+                  <div className="p-4 bg-background-100">Next.js Templates</div>
+                </CardSheet>
+                <CardSheet
+                  href="/"
+                  img="https://res.cloudinary.com/imagist/image/fetch/q_auto,f_auto,c_scale,w_360/https%3A%2F%2Fimages.ctfassets.net%2Fdm4oa8qtogq0%2F1la3hgXN3C6hvQI6IulAKV%2F14b9e9e3675dea1a0d8b3e0c82559a52%2Faccounting-tasks.png%3Fw%3D270"
+                  alt="Accounting Tasks"
+                >
+                  <div className="p-4 bg-background-100">Next.js Templates</div>
+                </CardSheet>
+                <CardSheet
+                  href="/"
+                  img="https://res.cloudinary.com/imagist/image/fetch/q_auto,f_auto,c_scale,w_360/https%3A%2F%2Fimages.ctfassets.net%2Fdm4oa8qtogq0%2F1la3hgXN3C6hvQI6IulAKV%2F14b9e9e3675dea1a0d8b3e0c82559a52%2Faccounting-tasks.png%3Fw%3D270"
+                  alt="Accounting Tasks"
+                >
+                  <div className="p-4 bg-background-100">Next.js Templates</div>
+                </CardSheet>
               </Tabs.Content>
             ))}
           </Tabs>

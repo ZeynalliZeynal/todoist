@@ -55,7 +55,7 @@ const Tabs = ({
 
   return (
     <TabsContext.Provider value={{ currentTab, activateTab }}>
-      <div data-orientation="horizontal" dir="ltr" className={cn(className)}>
+      <div data-orientation="horizontal" className={cn(className)}>
         {children}
       </div>
     </TabsContext.Provider>
@@ -85,7 +85,7 @@ const TabsTrigger = ({
       data-state={currentTab === value ? "active" : null}
       aria-selected={currentTab === value}
       className={cn(
-        "flex-grow relative z-[1] h-10 rounded-md transition-colors font-medium",
+        "flex-grow relative z-[1] h-10 rounded-full transition-colors font-medium",
         {
           "text-foreground": currentTab === value,
           "text-gray-600": currentTab !== value,

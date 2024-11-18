@@ -14,7 +14,6 @@ interface ButtonProps {
   href?: string;
   size?: "lg" | "md" | "sm";
   rounded?: string;
-  full?: boolean;
   prefix?: ReactNode;
   suffix?: ReactNode;
   primary?: true;
@@ -31,7 +30,6 @@ const Button = forwardRef<HTMLButtonElement | HTMLAnchorElement, ButtonProps>(
     {
       children,
       size = "md",
-      full = false,
       href,
       prefix = null,
       suffix = null,
@@ -56,8 +54,6 @@ const Button = forwardRef<HTMLButtonElement | HTMLAnchorElement, ButtonProps>(
         "px-2.5 h-10 text-sm": size === "md",
         "px-3.5 h-12 text-base": size === "lg",
         "text-sm h-8 px-1.5": size === "sm",
-        "w-full": full,
-        "w-fit": !full,
         "data-[hover]:text-foreground data-[hover]:bg-gray-200":
           primary && hovering,
         "disabled:text-gray-700 disabled:bg-gray-100 disabled:border-gray-400":

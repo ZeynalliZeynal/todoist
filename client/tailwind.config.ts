@@ -147,6 +147,8 @@ export default {
           900: "hsla(var(--ds-pink-900))",
           1000: "hsla(var(--ds-pink-1000))",
         },
+        dashed:
+          "linear-gradient(to right, hsla(var(--ds-gray-400)), hsla(var(--ds-gray-400)) 50%, transparent 0, transparent)",
       },
       borderColor: {
         DEFAULT: "hsla(var(--ds-gray-400))",
