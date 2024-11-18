@@ -54,7 +54,7 @@ const Button = forwardRef<HTMLButtonElement | HTMLAnchorElement, ButtonProps>(
         "text-background-100 border-gray-200 bg-gray-1000 hover:text-background-100 hover:bg-button-invert-hover":
           !primary,
         "px-2.5 h-10 text-sm": size === "md",
-        "px-3.5 h-12": size === "lg",
+        "px-3.5 h-12 text-base": size === "lg",
         "text-sm h-8 px-1.5": size === "sm",
         "w-full": full,
         "w-fit": !full,

@@ -6,7 +6,7 @@ export default function Layout({ children }: { children: ReactNode }) {
     <div className="flex flex-col h-screen">
       <Header />
       <main className="flex-1 max-w-full">
-        <div className="max-w-5xl">{children}</div>
+        <div className="max-w-5xl mx-auto pt-8 pb-24 border">{children}</div>
       </main>
     </div>
   );

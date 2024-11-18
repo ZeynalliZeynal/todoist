@@ -12,6 +12,9 @@ export default {
       xl: "1150px",
     },
     extend: {
+      maxWidth: {
+        "5xl": "67.5rem",
+      },
       fontFamily: {
         "geist-sans": ["var(--font-geist-sans)"],
         "geist-mono": ["var(--font-geist-mono)"],
@@ -146,7 +149,8 @@ export default {
         },
       },
       borderColor: {
-        DEFAULT: "hsla(var(--ds-gray-alpha-400))",
+        DEFAULT: "hsla(var(--ds-gray-400))",
+        grid: "hsla(var(--ds-gray-200))",
       },
       boxShadow: {
         "header-border": "hsla(var(--header-border))",

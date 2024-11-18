@@ -39,15 +39,18 @@ const Tabs = ({
   children,
   className,
   defaultValue,
+  onChange,
 }: {
   children: ReactNode;
   className?: string;
   defaultValue: string;
+  onChange: (value: string) => void;
 }) => {
   const [currentTab, setCurrentTab] = useState<string>(defaultValue);
 
   const activateTab = (value: string) => {
     setCurrentTab(value);
+    onChange(value);
   };
 
   return (
@@ -82,7 +85,7 @@ const TabsTrigger = ({
       data-state={currentTab === value ? "active" : null}
       aria-selected={currentTab === value}
       className={cn(
-        "flex-grow relative z-[1] px-3 py-1 rounded-md transition-colors font-medium",
+        "flex-grow relative z-[1] h-10 rounded-md transition-colors font-medium",
         {
           "text-foreground": currentTab === value,
           "text-gray-600": currentTab !== value,
@@ -153,13 +156,13 @@ const TabsList = ({ children, className }: TabsListProps) => {
       ref={ref}
       role="tablist"
       className={cn(
-        "flex relative w-full items-center rounded-lg p-1 bg-gray-400",
+        "flex relative w-full items-center rounded-full bg-background-100 border",
         className,
       )}
       onKeyDown={handleKeyDown}
     >
       <div
-        className="absolute z-0 bg-ui-background rounded-md transition-all duration-300"
+        className="absolute z-0 bg-background-200 rounded-full transition-all duration-300 border"
         style={{ ...style }}
       />
       {children}
