@@ -35,7 +35,7 @@ export const navItems = [
       },
       {
         name: "help center",
-        href: "/help-center",
+        href: "/help",
         icon: <IoHelpBuoyOutline />,
       },
       {
@@ -45,7 +45,7 @@ export const navItems = [
       },
       {
         name: "inspiration Hub",
-        href: "/inspiration-hub",
+        href: "/inspiration",
         icon: <HiOutlineLightBulb />,
       },
       {
@@ -58,5 +58,49 @@ export const navItems = [
   {
     name: "pricing",
     href: "/pricing",
+  },
+];
+
+export const footerLinks = [
+  {
+    title: "Features",
+    children: [
+      { name: "How It Works", href: "/features" },
+      { name: "For Teams", href: "/for-teams" },
+      { name: "Pricing", href: "/pricing" },
+      { name: "Templates", href: "/templates" },
+    ],
+  },
+  {
+    title: "Resources",
+    children: [
+      { name: "Download Apps", href: "/downloads" },
+      { name: "Help Center", href: "/help" },
+      { name: "Productivity Methods", href: "/productivity-methods" },
+      { name: "Integrations", href: "/integrations" },
+      { name: "Channel Partners", href: "/channel-partners" },
+    ],
+  },
+  {
+    title: "Company",
+    children: [
+      {
+        name: "About Us",
+        href: "https://doist.com/?utm_source=todoist&utm_medium=landing_page&utm_campaign=home",
+      },
+      {
+        name: "Careers",
+        href: "https://doist.com/jobs?utm_source=todoist&utm_medium=landing_page&utm_campaign=home",
+      },
+      { name: "Inspiration Hub", href: "/inspiration" },
+      {
+        name: "Press",
+        href: "https://doist.com/press/?utm_source=todoist&utm_medium=landing_page&utm_campaign=home",
+      },
+      {
+        name: "Twist",
+        href: "https://twist.com/?utm_source=todoist&utm_medium=landing_page&utm_campaign=home",
+      },
+    ],
   },
 ];

@@ -37,7 +37,7 @@ export default function Templates() {
   const [value, setValue] = useState(values[0].value);
 
   return (
-    <section className="mt-4 border-t border-b">
+    <section className="mt-4 border-t">
       <div className="flex">
         <div className="border-r w-1/3 flex flex-col justify-center">
           <div className="p-12 space-y-6">

@@ -151,7 +151,7 @@ export default {
           "linear-gradient(to right, hsla(var(--ds-gray-400)), hsla(var(--ds-gray-400)) 50%, transparent 0, transparent)",
       },
       borderColor: {
-        DEFAULT: "hsla(var(--ds-gray-400))",
+        DEFAULT: "hsla(var(--ds-gray-alpha-400))",
         grid: "hsla(var(--ds-gray-200))",
       },
       boxShadow: {
