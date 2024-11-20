@@ -14,6 +14,11 @@ class ApiFeatures {
                     $regex: this.queryString.content,
                     $options: "i",
                 } });
+        if (this.queryString.category)
+            queryObj = Object.assign(Object.assign({}, queryObj), { category: {
+                    $regex: this.queryString.category,
+                    $options: "i",
+                } });
         if (this.queryString.tags)
             queryObj = Object.assign(Object.assign({}, queryObj), { tags: {
                     $in: this.queryString.tags.split(","),

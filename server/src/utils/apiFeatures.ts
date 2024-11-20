@@ -9,6 +9,7 @@ type QueryString = {
   fields?: string;
   page?: string;
   limit?: string;
+  category?: string;
 };
 
 class ApiFeatures<T extends ITask | ITemplate> {
@@ -30,6 +31,15 @@ class ApiFeatures<T extends ITask | ITemplate> {
         ...queryObj,
         name: {
           $regex: this.queryString.content,
+          $options: "i",
+        },
+      };
+
+    if (this.queryString.category)
+      queryObj = {
+        ...queryObj,
+        category: {
+          $regex: this.queryString.category,
           $options: "i",
         },
       };

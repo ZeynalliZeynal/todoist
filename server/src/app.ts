@@ -5,9 +5,7 @@ import templateRouter from "./router/templateRouter";
 
 const app = express();
 
-if (process.env.NODE_ENV === "development") {
-  app.use(express.json());
-}
+app.use(express.json());
 
 app.use(morgan("dev"));
 

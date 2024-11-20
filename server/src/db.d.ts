@@ -15,8 +15,10 @@ interface ITask {
 interface ITemplate {
   createdAt: Date;
   updatedAt: Date;
+  category: string;
   name: string;
   description: string;
+  content: string;
   exampleUrl: string;
-  tags: string[];
+  imageUrl?: string;
 }

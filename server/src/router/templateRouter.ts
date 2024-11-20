@@ -1,14 +1,13 @@
 import express from "express";
-import { getTemplate, getTemplates } from "../controller/templateController";
+import {
+  createTemplate,
+  getTemplate,
+  getTemplates,
+} from "../controller/templateController";
 
 const router = express.Router();
 
-router.param("id", (req, res, next, value, name) => {
-  console.log(value);
-  next();
-});
-
-router.route("/").get(getTemplates);
+router.route("/").get(getTemplates).post(createTemplate);
 
 router.route("/:id").get(getTemplate);
 

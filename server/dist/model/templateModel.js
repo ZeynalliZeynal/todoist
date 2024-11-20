@@ -12,6 +12,11 @@ const schema = new mongoose_1.default.Schema({
     updatedAt: {
         type: Date,
     },
+    category: {
+        type: String,
+        required: [true, "Category is required"],
+        trim: true,
+    },
     name: {
         type: String,
         unique: true,
@@ -24,6 +29,11 @@ const schema = new mongoose_1.default.Schema({
         type: String,
         trim: true,
         required: [true, "Description cannot be empty."],
+    },
+    content: {
+        type: String,
+        trim: true,
+        required: [true, "Content cannot be empty."],
         minLength: [50, "Description must be at least 50 characters"],
     },
     exampleUrl: {
@@ -31,10 +41,9 @@ const schema = new mongoose_1.default.Schema({
         required: [true, "Example URL must be a valid URL"],
         trim: true,
     },
-    tags: {
-        type: [String],
+    imageUrl: {
+        type: String,
         trim: true,
-        required: [true, "Tag cannot be empty."],
     },
 });
 exports.default = mongoose_1.default.model("Template", schema);
