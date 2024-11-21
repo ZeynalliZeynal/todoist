@@ -22,3 +22,13 @@ interface ITemplate {
   exampleUrl: string;
   imageUrl?: string;
 }
+
+interface IUser {
+  createdAt: Date;
+  updatedAt: Date;
+  fullName: string;
+  email: string;
+  photo?: string;
+  password: string;
+  passwordConfirm: string;
+}
