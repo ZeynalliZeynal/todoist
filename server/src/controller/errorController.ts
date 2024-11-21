@@ -26,9 +26,9 @@ const db_handleDuplicateFieldError = (err: AppError & MongoServerError) => {
 const sendErrorDev = (err: AppError, res: Response) => {
   res.status(err.statusCode).json({
     status: err.status,
+    error: err,
     message: err.message,
     stack: err.stack,
-    error: err,
   });
 };
 const sendErrorProd = (err: AppError, res: Response) => {

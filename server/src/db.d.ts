@@ -30,5 +30,12 @@ interface IUser {
   email: string;
   photo?: string;
   password: string;
-  passwordConfirm: string;
+  passwordConfirm?: string;
+}
+
+interface IUserMethods {
+  isPasswordCorrect: (
+    candidatePassword: string,
+    userPassword: string,
+  ) => Promise<boolean>;
 }
