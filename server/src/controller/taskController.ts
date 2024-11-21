@@ -1,11 +1,13 @@
 import ApiFeatures from "../utils/apiFeatures";
 import Task from "../model/taskModel";
 import { NextFunction, Request, Response } from "express";
+import catchAsync from "../utils/catchAsync";
+import AppError from "../utils/appError";
 
 const convertFromKebab = (str: string) => str.split("-").join(" ");
 
-const getTasks = async (req: Request, res: Response, next: NextFunction) => {
-  try {
+const getTasks = catchAsync(
+  async (req: Request, res: Response, next: NextFunction) => {
     const features = new ApiFeatures(Task.find(), req.query)
       .filter()
       .sort()
@@ -20,51 +22,50 @@ const getTasks = async (req: Request, res: Response, next: NextFunction) => {
         tasks,
       },
     });
-  } catch (error) {
-    res.status(404).json({
-      status: "fail",
-      message: error,
-    });
-  }
-};
+  },
+);
 
-const getTask = async (req: Request, res: Response, next: NextFunction) => {
-  try {
+const getTask = catchAsync(
+  async (req: Request, res: Response, next: NextFunction) => {
     const task = await Task.findById(req.params.id);
+
+    if (!task) {
+      return next(
+        new AppError(`No task found with the id ${req.params.id}`, 404),
+      );
+    }
+
     res.status(302).json({
       status: "success",
       data: {
         task,
       },
     });
-  } catch (error) {
-    res.status(404).json({
-      status: "fail",
-      message: error,
-    });
-  }
-};
+  },
+);
 
-const createTask = async (req: Request, res: Response, next: NextFunction) => {
-  try {
-    const task = await Task.create(req.body);
+const createTask = catchAsync(
+  async (req: Request, res: Response, next: NextFunction) => {
+    const task = await Task.create({
+      name: req.body.name,
+      description: req.body.description,
+      completed: req.body.completed,
+      tags: req.body.tags,
+      dueDate: req.body.dueDate,
+      priority: req.body.priority,
+    });
     res.status(201).json({
       status: "success",
       data: {
         task,
       },
     });
-  } catch (error) {
-    res.status(400).json({
-      status: "fail",
-      message: error,
-    });
-  }
-};
+  },
+);
 
-const updateTask = async (req: Request, res: Response, next: NextFunction) => {
-  const { body } = req;
-  try {
+const updateTask = catchAsync(
+  async (req: Request, res: Response, next: NextFunction) => {
+    const { body } = req;
     const task = await Task.findByIdAndUpdate(
       req.params.id,
       {
@@ -76,48 +77,48 @@ const updateTask = async (req: Request, res: Response, next: NextFunction) => {
         runValidators: true,
       },
     );
+
+    if (!task) {
+      return next(
+        new AppError(`No task found with the id ${req.params.id}`, 404),
+      );
+    }
+
     res.status(200).json({
       status: "success",
       data: {
         task,
       },
     });
-  } catch (error) {
-    res.status(404).json({
-      status: "fail",
-      message: error,
-    });
-  }
-};
+  },
+);
 
-const deleteTask = async (req: Request, res: Response, next: NextFunction) => {
-  try {
+const deleteTask = catchAsync(
+  async (req: Request, res: Response, next: NextFunction) => {
     const task = await Task.findByIdAndDelete(req.params.id);
-    res.status(204).json({
-      status: "success",
-      data: null,
-    });
-  } catch (error) {
-    res.status(404).json({
-      status: "fail",
-      message: error,
-    });
-  }
-};
 
-const clearTasks = async (req: Request, res: Response, next: NextFunction) => {
-  try {
-    const task = await Task.deleteMany();
+    if (!task) {
+      return next(
+        new AppError(`No task found with the id ${req.params.id}`, 404),
+      );
+    }
+
     res.status(204).json({
       status: "success",
       data: null,
     });
-  } catch (error) {
-    res.status(400).json({
-      status: "fail",
-      message: error,
+  },
+);
+
+const clearTasks = catchAsync(
+  async (req: Request, res: Response, next: NextFunction) => {
+    await Task.deleteMany();
+
+    res.status(204).json({
+      status: "success",
+      data: null,
     });
-  }
-};
+  },
+);
 
 export { createTask, updateTask, clearTasks, getTasks, getTask, deleteTask };

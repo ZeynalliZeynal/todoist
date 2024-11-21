@@ -1,13 +1,11 @@
 import { NextFunction, Request, Response } from "express";
 import Template from "../model/templateModel";
 import ApiFeatures from "../utils/apiFeatures";
+import catchAsync from "../utils/catchAsync";
+import AppError from "../utils/appError";
 
-const getTemplates = async (
-  req: Request,
-  res: Response,
-  next: NextFunction,
-) => {
-  try {
+const getTemplates = catchAsync(
+  async (req: Request, res: Response, next: NextFunction) => {
     const features = new ApiFeatures(Template.find(), req.query)
       .filter()
       .sort()
@@ -22,37 +20,30 @@ const getTemplates = async (
         templates,
       },
     });
-  } catch (error) {
-    res.status(404).json({
-      status: "fail",
-      message: error,
-    });
-  }
-};
+  },
+);
 
-const getTemplate = async (req: Request, res: Response, next: NextFunction) => {
-  try {
+const getTemplate = catchAsync(
+  async (req: Request, res: Response, next: NextFunction) => {
     const template = await Template.findById(req.params.id);
+
+    if (!template) {
+      return next(
+        new AppError(`No task found with the id ${req.params.id}`, 404),
+      );
+    }
+
     res.status(302).json({
       status: "success",
       data: {
         template,
       },
     });
-  } catch (error) {
-    res.status(404).json({
-      status: "fail",
-      message: error,
-    });
-  }
-};
+  },
+);
 
-const createTemplate = async (
-  req: Request,
-  res: Response,
-  next: NextFunction,
-) => {
-  try {
+const createTemplate = catchAsync(
+  async (req: Request, res: Response, next: NextFunction) => {
     const template = await Template.create({
       name: req.body.name,
       description: req.body.description,
@@ -68,12 +59,7 @@ const createTemplate = async (
         template,
       },
     });
-  } catch (error) {
-    res.status(400).json({
-      status: "fail",
-      message: error,
-    });
-  }
-};
+  },
+);
 
 export { getTemplates, getTemplate, createTemplate };

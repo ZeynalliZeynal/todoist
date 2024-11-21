@@ -7,17 +7,14 @@
     <list default="true" id="6c96583f-d9f9-4d65-90ea-d52df6356be6" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dist/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/controller/templateController.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/controller/templateController.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/controller/taskController.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/controller/taskController.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dist/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/model/templateModel.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/model/templateModel.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/router/templateRouter.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/router/templateRouter.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pnpm-lock.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pnpm-lock.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/taskController.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/taskController.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/controller/templateController.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/templateController.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/db.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/db.d.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/templateModel.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/templateModel.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/router/templateRouter.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/router/templateRouter.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/apiFeatures.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/apiFeatures.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -58,27 +55,27 @@
     <option name="showLibraryContents" value="true" />
     <option name="sortKey" value="BY_TIME_DESCENDING" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;code.cleanup.on.save&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;ignore_missing_gitignore&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/asus/Desktop/education/projects/todoist/server/src&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;pnpm&quot;,
-    &quot;npm.dev.executor&quot;: &quot;Run&quot;,
-    &quot;prettierjs.PrettierConfiguration.Package&quot;: &quot;C:\\Users\\asus\\AppData\\Roaming\\npm\\node_modules\\prettier&quot;,
-    &quot;rearrange.code.on.save&quot;: &quot;true&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;C:\\Users\\asus\\Desktop\\education\\projects\\todoist\\server\\node_modules\\typescript\\lib&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "code.cleanup.on.save": "true",
+    "git-widget-placeholder": "main",
+    "ignore_missing_gitignore": "true",
+    "last_opened_file_path": "C:/Users/asus/Desktop/education/projects/todoist/server/src",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "pnpm",
+    "npm.dev.executor": "Run",
+    "prettierjs.PrettierConfiguration.Package": "C:\\Users\\asus\\AppData\\Roaming\\npm\\node_modules\\prettier",
+    "rearrange.code.on.save": "true",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "ts.external.directory.path": "C:\\Users\\asus\\Desktop\\education\\projects\\todoist\\server\\node_modules\\typescript\\lib",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\asus\Desktop\education\projects\todoist\server\src" />
@@ -137,7 +134,9 @@
       <workItem from="1729870663937" duration="1000" />
       <workItem from="1732008769026" duration="10159000" />
       <workItem from="1732033974746" duration="5536000" />
-      <workItem from="1732039569363" duration="5852000" />
+      <workItem from="1732039569363" duration="6505000" />
+      <workItem from="1732097909892" duration="2000" />
+      <workItem from="1732178285696" duration="17492000" />
     </task>
     <servers />
   </component>

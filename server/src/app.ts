@@ -1,15 +1,25 @@
-import express from "express";
+import express, { NextFunction, Request, Response } from "express";
 import morgan from "morgan";
 import taskRouter from "./router/taskRouter";
 import templateRouter from "./router/templateRouter";
+import AppError from "./utils/appError";
+import globalErrorHandler from "./controller/errorController";
 
 const app = express();
 
 app.use(express.json());
 
-app.use(morgan("dev"));
+if (process.env.NODE_ENV === "development") {
+  app.use(morgan("dev"));
+}
 
 app.use("/api/v1/tasks", taskRouter);
 app.use("/api/v1/templates", templateRouter);
+
+app.all("*", (req: Request, res: Response, next: NextFunction) =>
+  next(new AppError(`${req.originalUrl} not found`, 404)),
+);
+
+app.use(globalErrorHandler);
 
 export default app;

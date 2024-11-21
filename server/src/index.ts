@@ -1,5 +1,11 @@
+process.on("uncaughtException", (error: Error) => {
+  console.log("Uncaught Exception!");
+  console.log(error.name, error.message);
+  process.exit(1);
+});
+
 import dotenv from "dotenv";
-import mongoose from "mongoose";
+import mongoose, { Error } from "mongoose";
 import app from "./app";
 
 dotenv.config({ path: "./config.env" });
@@ -13,8 +19,26 @@ const DB = process.env.DATABASE!.replace(
 
 mongoose
   .connect(DB)
-  .then((con) => console.log("Connection to database successful"));
+  .then(() => console.log("Connection to database successful"));
 
-app.listen(PORT, () => {
+const server = app.listen(PORT, () => {
   console.log(`[${process.env.NODE_ENV}] Server is running on port ${PORT}`);
+});
+
+process.on("unhandledRejection", (error: Error) => {
+  console.log("Unhandled Rejection!");
+  console.log(error.name, error.message);
+  server.close(() => {
+    console.error("Server is shutdown.");
+    process.exit(1);
+  });
+});
+
+process.on("uncaughtException", (error: Error) => {
+  console.log("Uncaught Exception!");
+  console.log(error.name, error.message);
+  server.close(() => {
+    console.error("Server is shutdown.");
+    process.exit(1);
+  });
 });

@@ -15,117 +15,87 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.deleteTask = exports.getTask = exports.getTasks = exports.clearTasks = exports.updateTask = exports.createTask = void 0;
 const apiFeatures_1 = __importDefault(require("../utils/apiFeatures"));
 const taskModel_1 = __importDefault(require("../model/taskModel"));
+const catchAsync_1 = __importDefault(require("../utils/catchAsync"));
+const appError_1 = __importDefault(require("../utils/appError"));
 const convertFromKebab = (str) => str.split("-").join(" ");
-const getTasks = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
-    try {
-        const features = new apiFeatures_1.default(taskModel_1.default.find(), req.query)
-            .filter()
-            .sort()
-            .limitFields()
-            .paginate();
-        const tasks = yield features.query;
-        res.status(302).json({
-            status: "success",
-            data: {
-                tasks,
-            },
-        });
-    }
-    catch (error) {
-        res.status(404).json({
-            status: "fail",
-            message: error,
-        });
-    }
-});
+const getTasks = (0, catchAsync_1.default)((req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
+    const features = new apiFeatures_1.default(taskModel_1.default.find(), req.query)
+        .filter()
+        .sort()
+        .limitFields()
+        .paginate();
+    const tasks = yield features.query;
+    res.status(302).json({
+        status: "success",
+        data: {
+            tasks,
+        },
+    });
+}));
 exports.getTasks = getTasks;
-const getTask = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
-    try {
-        const task = yield taskModel_1.default.findById(req.params.id);
-        res.status(302).json({
-            status: "success",
-            data: {
-                task,
-            },
-        });
+const getTask = (0, catchAsync_1.default)((req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
+    const task = yield taskModel_1.default.findById(req.params.id);
+    if (!task) {
+        return next(new appError_1.default(`No task found with the id ${req.params.id}`, 404));
     }
-    catch (error) {
-        res.status(404).json({
-            status: "fail",
-            message: error,
-        });
-    }
-});
+    res.status(302).json({
+        status: "success",
+        data: {
+            task,
+        },
+    });
+}));
 exports.getTask = getTask;
-const createTask = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
-    try {
-        const task = yield taskModel_1.default.create(req.body);
-        res.status(201).json({
-            status: "success",
-            data: {
-                task,
-            },
-        });
-    }
-    catch (error) {
-        res.status(400).json({
-            status: "fail",
-            message: error,
-        });
-    }
-});
+const createTask = (0, catchAsync_1.default)((req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
+    const task = yield taskModel_1.default.create({
+        name: req.body.name,
+        description: req.body.description,
+        completed: req.body.completed,
+        tags: req.body.tags,
+        dueDate: req.body.dueDate,
+        priority: req.body.priority,
+    });
+    res.status(201).json({
+        status: "success",
+        data: {
+            task,
+        },
+    });
+}));
 exports.createTask = createTask;
-const updateTask = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
+const updateTask = (0, catchAsync_1.default)((req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     const { body } = req;
-    try {
-        const task = yield taskModel_1.default.findByIdAndUpdate(req.params.id, Object.assign(Object.assign({}, body), { updatedAt: Date.now() }), {
-            new: true,
-            runValidators: true,
-        });
-        res.status(200).json({
-            status: "success",
-            data: {
-                task,
-            },
-        });
+    const task = yield taskModel_1.default.findByIdAndUpdate(req.params.id, Object.assign(Object.assign({}, body), { updatedAt: Date.now() }), {
+        new: true,
+        runValidators: true,
+    });
+    if (!task) {
+        return next(new appError_1.default(`No task found with the id ${req.params.id}`, 404));
     }
-    catch (error) {
-        res.status(404).json({
-            status: "fail",
-            message: error,
-        });
-    }
-});
+    res.status(200).json({
+        status: "success",
+        data: {
+            task,
+        },
+    });
+}));
 exports.updateTask = updateTask;
-const deleteTask = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
-    try {
-        const task = yield taskModel_1.default.findByIdAndDelete(req.params.id);
-        res.status(204).json({
-            status: "success",
-            data: null,
-        });
+const deleteTask = (0, catchAsync_1.default)((req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
+    const task = yield taskModel_1.default.findByIdAndDelete(req.params.id);
+    if (!task) {
+        return next(new appError_1.default(`No task found with the id ${req.params.id}`, 404));
     }
-    catch (error) {
-        res.status(404).json({
-            status: "fail",
-            message: error,
-        });
-    }
-});
+    res.status(204).json({
+        status: "success",
+        data: null,
+    });
+}));
 exports.deleteTask = deleteTask;
-const clearTasks = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
-    try {
-        const task = yield taskModel_1.default.deleteMany();
-        res.status(204).json({
-            status: "success",
-            data: null,
-        });
-    }
-    catch (error) {
-        res.status(400).json({
-            status: "fail",
-            message: error,
-        });
-    }
-});
+const clearTasks = (0, catchAsync_1.default)((req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
+    yield taskModel_1.default.deleteMany();
+    res.status(204).json({
+        status: "success",
+        data: null,
+    });
+}));
 exports.clearTasks = clearTasks;
