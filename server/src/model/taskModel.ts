@@ -50,9 +50,15 @@ const schema = new mongoose.Schema<ITask>({
   },
   dueDate: {
     type: Date,
-    default: dueDateToday, // set date to today by default
+    default: dueDateToday,
+  },
+  user: {
+    type: mongoose.Types.ObjectId,
+    ref: "User",
   },
 });
+
+schema.index({ user: 1 });
 
 schema.pre("save", function (next) {
   this.slug = slugify(this.name, { lower: true });

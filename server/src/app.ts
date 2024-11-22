@@ -14,6 +14,11 @@ if (process.env.NODE_ENV === "development") {
   app.use(morgan("dev"));
 }
 
+app.use((req: Request, res: Response, next: NextFunction) => {
+  console.log(req.headers);
+  next();
+});
+
 app.use("/api/v1/tasks", taskRouter);
 app.use("/api/v1/templates", templateRouter);
 app.use("/api/v1/auth", authRouter);

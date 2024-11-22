@@ -9,14 +9,26 @@
       <change beforePath="$PROJECT_DIR$/config.env" beforeDir="false" afterPath="$PROJECT_DIR$/config.env" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dist/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/app.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dist/controller/authController.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/controller/authController.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/controller/errorController.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/controller/errorController.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/controller/taskController.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/controller/taskController.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/model/taskModel.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/model/taskModel.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dist/model/userModel.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/model/userModel.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/router/authRouter.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/router/authRouter.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/router/taskRouter.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/router/taskRouter.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/router/templateRouter.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/router/templateRouter.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pnpm-lock.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pnpm-lock.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/controller/authController.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/authController.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/controller/errorController.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/errorController.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/taskController.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/taskController.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/db.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/db.d.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib.d.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/taskModel.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/taskModel.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/model/userModel.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/userModel.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/router/authRouter.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/router/authRouter.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/router/taskRouter.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/router/taskRouter.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/router/templateRouter.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/router/templateRouter.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -142,7 +154,9 @@
       <workItem from="1732178285696" duration="21232000" />
       <workItem from="1732210897064" duration="574000" />
       <workItem from="1732215042177" duration="1656000" />
-      <workItem from="1732216721079" duration="4850000" />
+      <workItem from="1732216721079" duration="13435000" />
+      <workItem from="1732262152770" duration="6391000" />
+      <workItem from="1732295001759" duration="16585000" />
     </task>
     <servers />
   </component>

@@ -15,6 +15,10 @@ app.use(express_1.default.json());
 if (process.env.NODE_ENV === "development") {
     app.use((0, morgan_1.default)("dev"));
 }
+app.use((req, res, next) => {
+    console.log(req.headers);
+    next();
+});
 app.use("/api/v1/tasks", taskRouter_1.default);
 app.use("/api/v1/templates", templateRouter_1.default);
 app.use("/api/v1/auth", authRouter_1.default);

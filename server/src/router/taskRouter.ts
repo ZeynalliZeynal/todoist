@@ -7,6 +7,7 @@ import {
   getTasks,
   updateTask,
 } from "../controller/taskController";
+import { verifyAuth } from "../controller/authController";
 
 const router = express.Router();
 
@@ -15,8 +16,16 @@ router.param("id", (req, res, next, value, name) => {
   next();
 });
 
-router.route("/").get(getTasks).post(createTask).delete(clearTasks);
+router
+  .route("/")
+  .get(verifyAuth, getTasks)
+  .post(verifyAuth, createTask)
+  .delete(verifyAuth, clearTasks);
 
-router.route("/:id").get(getTask).patch(updateTask).delete(deleteTask);
+router
+  .route("/:id")
+  .get(verifyAuth, getTask)
+  .patch(verifyAuth, updateTask)
+  .delete(verifyAuth, deleteTask);
 
 export default router;

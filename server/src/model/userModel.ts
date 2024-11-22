@@ -1,8 +1,16 @@
 import mongoose from "mongoose";
 import validator from "validator";
 import bcrypt from "bcryptjs";
+import crypto from "crypto";
 
 const schema = new mongoose.Schema<IUser, {}, IUserMethods>({
+  createdAt: {
+    type: Date,
+    default: Date.now,
+  },
+  updatedAt: {
+    type: Date,
+  },
   fullName: {
     type: String,
     trim: true,
@@ -33,7 +41,15 @@ const schema = new mongoose.Schema<IUser, {}, IUserMethods>({
       message: "Passwords must match",
     },
   },
+  passwordChangedAt: Date,
+  role: {
+    type: String,
+    enum: ["admin", "user"],
+    default: "user",
+  },
   photo: String,
+  resetPasswordToken: String,
+  resetPasswordExpires: Date,
 });
 schema.pre("save", async function (next) {
   if (!this.isModified("password")) return next();
@@ -50,5 +66,30 @@ schema.method(
     return await bcrypt.compare(candidatePassword, userPassword);
   },
 );
+
+schema.method("isPasswordChangedAfter", function (JWTTimestamp) {
+  if (this.passwordChangedAt) {
+    const changedTimestamp = parseInt(
+      String(this.passwordChangedAt.getTime() / 1000),
+      10,
+    );
+
+    return JWTTimestamp < changedTimestamp;
+  }
+  return false;
+});
+
+schema.method("createResetPasswordToken", function () {
+  const resetToken = crypto.randomBytes(32).toString("hex");
+  this.resetPasswordToken = crypto
+    .createHash("sha256")
+    .update(resetToken)
+    .digest("hex");
+  this.resetPasswordExpires = Date.now() + 10 * 60 * 1000;
+
+  console.log(resetToken, this.resetPasswordToken);
+
+  return resetToken;
+});
 
 export default mongoose.model("User", schema);

@@ -2,6 +2,13 @@ import AppError from "../utils/appError";
 import { NextFunction, Request, Response } from "express";
 import { CastError } from "mongoose";
 import { MongoServerError } from "mongodb";
+import { JsonWebTokenError, TokenExpiredError } from "jsonwebtoken";
+
+const jwt_handleSignatureError = (error: AppError & JsonWebTokenError) =>
+  new AppError("Invalid token. Please log in again!", 401);
+
+const jwt_handleTokenExpiredError = (error: AppError & TokenExpiredError) =>
+  new AppError("Token is expired. Please log in again!", 401);
 
 const db_handleCastError = (err: AppError & CastError) => {
   const message = `Invalid ${err.path}: ${err.value}.`;
@@ -68,6 +75,12 @@ export default (
       );
     if ((error as AppError & MongoServerError).errors)
       error = db_handleValidationError(error as AppError & MongoServerError);
+    if ((error as AppError & JsonWebTokenError).name === "JsonWebTokenError")
+      error = jwt_handleSignatureError(error as AppError & JsonWebTokenError);
+    if ((error as AppError & TokenExpiredError).name === "TokenExpiredError")
+      error = jwt_handleTokenExpiredError(
+        error as AppError & TokenExpiredError,
+      );
 
     sendErrorProd(error, res);
   }

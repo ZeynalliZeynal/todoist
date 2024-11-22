@@ -1,41 +1,56 @@
-type Priorities = "priority 1" | "priority 2" | "priority 3" | "priority 4";
+import mongoose from "mongoose";
 
-interface ITask {
-  createdAt: Date;
-  updatedAt: Date;
-  name: string;
-  description?: String;
-  completed?: boolean;
-  tags?: string[];
-  slug: string;
-  priority: Priorities;
-  dueDate?: Date;
-}
+const ROLES = ["admin", "user"] as const;
+declare global {
+  type UserRole = (typeof ROLES)[number];
+  type Roles = ReadonlyArray<UserRole>;
 
-interface ITemplate {
-  createdAt: Date;
-  updatedAt: Date;
-  category: string;
-  name: string;
-  description: string;
-  content: string;
-  exampleUrl: string;
-  imageUrl?: string;
-}
+  type Priorities = "priority 1" | "priority 2" | "priority 3" | "priority 4";
 
-interface IUser {
-  createdAt: Date;
-  updatedAt: Date;
-  fullName: string;
-  email: string;
-  photo?: string;
-  password: string;
-  passwordConfirm?: string;
-}
+  interface ITask {
+    createdAt: Date;
+    updatedAt: Date;
+    name: string;
+    description?: String;
+    completed?: boolean;
+    tags?: string[];
+    slug: string;
+    priority: Priorities;
+    dueDate?: Date;
+    user: mongoose.Types.ObjectId | IUser;
+  }
 
-interface IUserMethods {
-  isPasswordCorrect: (
-    candidatePassword: string,
-    userPassword: string,
-  ) => Promise<boolean>;
+  interface ITemplate {
+    createdAt: Date;
+    updatedAt: Date;
+    category: string;
+    name: string;
+    description: string;
+    content: string;
+    exampleUrl: string;
+    imageUrl?: string;
+  }
+
+  interface IUser {
+    createdAt: Date;
+    updatedAt: Date;
+    fullName: string;
+    email: string;
+    role: UserRole;
+    photo?: string;
+    password: string;
+    passwordConfirm?: string;
+    passwordChangedAt?: Date;
+    resetPasswordToken?: string;
+    resetPasswordExpires?: number;
+  }
+
+  interface IUserMethods {
+    isPasswordCorrect: (
+      candidatePassword: string,
+      userPassword: string,
+    ) => Promise<boolean>;
+    isPasswordChangedAfter: (JWTTimestamp?: number) => boolean;
+    createResetPasswordToken: () => string;
+  }
 }

@@ -17,9 +17,12 @@ const apiFeatures_1 = __importDefault(require("../utils/apiFeatures"));
 const taskModel_1 = __importDefault(require("../model/taskModel"));
 const catchAsync_1 = __importDefault(require("../utils/catchAsync"));
 const appError_1 = __importDefault(require("../utils/appError"));
-const convertFromKebab = (str) => str.split("-").join(" ");
 const getTasks = (0, catchAsync_1.default)((req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
-    const features = new apiFeatures_1.default(taskModel_1.default.find(), req.query)
+    if (!req.user)
+        return next(new appError_1.default("You have to log in.", 401));
+    const features = new apiFeatures_1.default(taskModel_1.default.find({
+        user: req.user,
+    }), req.query)
         .filter()
         .sort()
         .limitFields()
@@ -54,6 +57,7 @@ const createTask = (0, catchAsync_1.default)((req, res, next) => __awaiter(void 
         tags: req.body.tags,
         dueDate: req.body.dueDate,
         priority: req.body.priority,
+        user: req.user,
     });
     res.status(201).json({
         status: "success",

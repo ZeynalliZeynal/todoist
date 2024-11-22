@@ -4,10 +4,14 @@ import {
   getTemplate,
   getTemplates,
 } from "../controller/templateController";
+import { authorizeTo } from "../controller/authController";
 
 const router = express.Router();
 
-router.route("/").get(getTemplates).post(createTemplate);
+router
+  .route("/")
+  .get(getTemplates)
+  .post(authorizeTo(["admin"]), createTemplate);
 
 router.route("/:id").get(getTemplate);
 

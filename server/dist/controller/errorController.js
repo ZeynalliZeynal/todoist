@@ -4,6 +4,8 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const appError_1 = __importDefault(require("../utils/appError"));
+const jwt_handleSignatureError = (error) => new appError_1.default("Invalid token. Please log in again!", 401);
+const jwt_handleTokenExpiredError = (error) => new appError_1.default("Token is expired. Please log in again!", 401);
 const db_handleCastError = (err) => {
     const message = `Invalid ${err.path}: ${err.value}.`;
     return new appError_1.default(message, 400);
@@ -57,6 +59,10 @@ exports.default = (err, req, res, next) => {
             error = db_handleDuplicateFieldError(error);
         if (error.errors)
             error = db_handleValidationError(error);
+        if (error.name === "JsonWebTokenError")
+            error = jwt_handleSignatureError(error);
+        if (error.name === "TokenExpiredError")
+            error = jwt_handleTokenExpiredError(error);
         sendErrorProd(error, res);
     }
 };

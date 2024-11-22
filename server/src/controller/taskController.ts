@@ -4,11 +4,16 @@ import { NextFunction, Request, Response } from "express";
 import catchAsync from "../utils/catchAsync";
 import AppError from "../utils/appError";
 
-const convertFromKebab = (str: string) => str.split("-").join(" ");
-
 const getTasks = catchAsync(
   async (req: Request, res: Response, next: NextFunction) => {
-    const features = new ApiFeatures(Task.find(), req.query)
+    if (!req.user) return next(new AppError("You have to log in.", 401));
+
+    const features = new ApiFeatures(
+      Task.find({
+        user: req.user,
+      }),
+      req.query,
+    )
       .filter()
       .sort()
       .limitFields()
@@ -53,6 +58,7 @@ const createTask = catchAsync(
       tags: req.body.tags,
       dueDate: req.body.dueDate,
       priority: req.body.priority,
+      user: req.user,
     });
     res.status(201).json({
       status: "success",

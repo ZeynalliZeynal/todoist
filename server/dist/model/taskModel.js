@@ -46,9 +46,14 @@ const schema = new mongoose_1.default.Schema({
     },
     dueDate: {
         type: Date,
-        default: dueDateToday, // set date to today by default
+        default: dueDateToday,
+    },
+    user: {
+        type: mongoose_1.default.Types.ObjectId,
+        ref: "User",
     },
 });
+schema.index({ user: 1 });
 schema.pre("save", function (next) {
     this.slug = (0, slugify_1.default)(this.name, { lower: true });
     next();
