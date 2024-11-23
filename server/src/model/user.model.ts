@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+import mongoose, { Document, Query } from "mongoose";
 import validator from "validator";
 import bcrypt from "bcryptjs";
 import crypto from "crypto";
@@ -50,6 +50,11 @@ const schema = new mongoose.Schema<IUser, {}, IUserMethods>({
   photo: String,
   resetPasswordToken: String,
   resetPasswordExpires: Date,
+  isActive: {
+    type: Boolean,
+    default: true,
+    select: false,
+  },
 });
 schema.pre("save", async function (next) {
   if (!this.isModified("password")) return next();
@@ -64,6 +69,11 @@ schema.pre("save", function (next) {
   if (!this.isModified("password") || this.isNew) return next();
 
   this.passwordChangedAt = Date.now() - 1000;
+  next();
+});
+
+schema.pre<Query<any, Document>>(/^find/, function (next) {
+  this.find({ active: { $ne: false } });
   next();
 });
 

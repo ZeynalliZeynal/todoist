@@ -45,6 +45,7 @@ declare global {
     passwordChangedAt?: number;
     resetPasswordToken?: string;
     resetPasswordExpires?: number;
+    isActive: boolean;
   }
 
   interface IUserMethods {

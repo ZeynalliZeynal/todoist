@@ -63,6 +63,11 @@ const schema = new mongoose_1.default.Schema({
     photo: String,
     resetPasswordToken: String,
     resetPasswordExpires: Date,
+    isActive: {
+        type: Boolean,
+        default: true,
+        select: false,
+    },
 });
 schema.pre("save", function (next) {
     return __awaiter(this, void 0, void 0, function* () {
@@ -77,6 +82,10 @@ schema.pre("save", function (next) {
     if (!this.isModified("password") || this.isNew)
         return next();
     this.passwordChangedAt = Date.now() - 1000;
+    next();
+});
+schema.pre(/^find/, function (next) {
+    this.find({ active: { $ne: false } });
     next();
 });
 schema.method("isPasswordCorrect", function (candidatePassword, userPassword) {

@@ -12,7 +12,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.client_updateUser = exports.getUser = exports.getAllUsers = void 0;
+exports.client_deleteAccount = exports.client_updateUser = exports.getUser = exports.getAllUsers = void 0;
 const catch_async_1 = __importDefault(require("../utils/catch-async"));
 const user_model_1 = __importDefault(require("../model/user.model"));
 const app_error_1 = __importDefault(require("../utils/app-error"));
@@ -61,9 +61,7 @@ exports.client_updateUser = (0, catch_async_1.default)((req, res, next) => __awa
     if (!updatedUser)
         return next(new app_error_1.default("User not found", 404));
     updatedUser.updatedAt = new Date(Date.now());
-    yield updatedUser.save({
-        validateBeforeSave: false,
-    });
+    yield updatedUser.save();
     res.status(200).json({
         status: "success",
         data: {
@@ -75,5 +73,14 @@ exports.client_updateUser = (0, catch_async_1.default)((req, res, next) => __awa
                 role: updatedUser.role === "admin" ? updatedUser.role : undefined,
             },
         },
+    });
+}));
+exports.client_deleteAccount = (0, catch_async_1.default)((req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
+    yield user_model_1.default.findByIdAndUpdate(req.user.id, {
+        isActive: false,
+    });
+    res.status(204).json({
+        status: "success",
+        data: null,
     });
 }));

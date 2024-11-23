@@ -67,9 +67,7 @@ export const client_updateUser = catchAsync(
     if (!updatedUser) return next(new AppError("User not found", 404));
 
     updatedUser.updatedAt = new Date(Date.now());
-    await updatedUser.save({
-      validateBeforeSave: false,
-    });
+    await updatedUser.save();
 
     res.status(200).json({
       status: "success",
@@ -82,6 +80,19 @@ export const client_updateUser = catchAsync(
           role: updatedUser.role === "admin" ? updatedUser.role : undefined,
         },
       },
+    });
+  },
+);
+
+export const client_deleteAccount = catchAsync(
+  async (req: Request, res: Response, next: NextFunction) => {
+    await User.findByIdAndUpdate(req.user!.id, {
+      isActive: false,
+    });
+
+    res.status(204).json({
+      status: "success",
+      data: null,
     });
   },
 );
