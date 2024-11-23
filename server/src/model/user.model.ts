@@ -11,10 +11,10 @@ const schema = new mongoose.Schema<IUser, {}, IUserMethods>({
   updatedAt: {
     type: Date,
   },
-  fullName: {
+  name: {
     type: String,
     trim: true,
-    required: [true, "Full name is required"],
+    required: [true, "Name is required"],
   },
   email: {
     type: String,

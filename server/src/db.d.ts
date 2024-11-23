@@ -33,10 +33,10 @@ declare global {
   }
 
   interface IUser {
-    _id: ObjectId;
+    id: ObjectId;
     createdAt: Date;
     updatedAt: Date;
-    fullName: string;
+    name: string;
     email: string;
     role: UserRole;
     photo?: string;

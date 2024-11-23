@@ -6,8 +6,8 @@ import {
   getTask,
   getTasks,
   updateTask,
-} from "../controller/taskController";
-import { verifyAuth } from "../controller/authController";
+} from "../controller/task.controller";
+import { verifyAuth } from "../controller/auth.controller";
 
 const router = express.Router();
 

@@ -1,4 +1,4 @@
-import AppError from "../utils/appError";
+import AppError from "../utils/app-error";
 import { NextFunction, Request, Response } from "express";
 import { CastError } from "mongoose";
 import { MongoServerError } from "mongodb";

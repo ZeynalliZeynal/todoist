@@ -13,17 +13,17 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.resetPassword = exports.forgotPassword = exports.updatePassword = exports.authorizeTo = exports.verifyAuth = exports.login = exports.signup = void 0;
-const userModel_1 = __importDefault(require("../model/userModel"));
-const catchAsync_1 = __importDefault(require("../utils/catchAsync"));
+const user_model_1 = __importDefault(require("../model/user.model"));
+const catch_async_1 = __importDefault(require("../utils/catch-async"));
 const jsonwebtoken_1 = __importDefault(require("jsonwebtoken"));
-const appError_1 = __importDefault(require("../utils/appError"));
+const app_error_1 = __importDefault(require("../utils/app-error"));
 const email_1 = __importDefault(require("../utils/email"));
 const crypto_1 = __importDefault(require("crypto"));
 const signToken = (id) => jsonwebtoken_1.default.sign({ id }, process.env.JWT_SECRET, {
     expiresIn: process.env.JWT_EXPIRES_IN,
 });
 const createSendToken = (user, statusCode, res) => {
-    const token = signToken(user._id);
+    const token = signToken(user.id);
     res.status(statusCode).json({
         status: "success",
         token,
@@ -39,9 +39,9 @@ const verifyToken = (token, secret) => {
         });
     });
 };
-exports.signup = (0, catchAsync_1.default)((req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
-    const user = yield userModel_1.default.create({
-        fullName: req.body.fullName,
+exports.signup = (0, catch_async_1.default)((req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
+    const user = yield user_model_1.default.create({
+        name: req.body.name,
         email: req.body.email,
         password: req.body.password,
         passwordConfirm: req.body.passwordConfirm,
@@ -49,61 +49,60 @@ exports.signup = (0, catchAsync_1.default)((req, res, next) => __awaiter(void 0,
     });
     createSendToken(user, 200, res);
 }));
-exports.login = (0, catchAsync_1.default)((req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
+exports.login = (0, catch_async_1.default)((req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     const { email, password } = req.body;
     if (!email || !password)
-        return next(new appError_1.default("Email and password are required", 400));
-    const user = yield userModel_1.default.findOne({
+        return next(new app_error_1.default("Email and password are required", 400));
+    const user = yield user_model_1.default.findOne({
         email,
     }).select("+password");
     if (!user || !(yield user.isPasswordCorrect(password, user.password)))
-        return next(new appError_1.default("Email or password is incorrect", 404));
-    const token = signToken(user._id);
+        return next(new app_error_1.default("Email or password is incorrect", 404));
+    const token = signToken(user.id);
     res.status(200).json({
         status: "success",
         token,
     });
 }));
-exports.verifyAuth = (0, catchAsync_1.default)((req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
+exports.verifyAuth = (0, catch_async_1.default)((req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     let token;
     if (req.headers.authorization &&
         req.headers.authorization.startsWith("Bearer "))
         token = req.headers.authorization.split(" ").at(1);
     if (!token)
-        return next(new appError_1.default("You must log in to perform this action", 401));
+        return next(new app_error_1.default("You must log in to perform this action", 401));
     const decoded = yield verifyToken(token, process.env.JWT_SECRET);
-    const currentUser = yield userModel_1.default.findById(decoded.id);
+    const currentUser = yield user_model_1.default.findById(decoded.id);
     if (!currentUser)
-        return next(new appError_1.default("Token is no longer belong to this user. Please log in again", 401));
+        return next(new app_error_1.default("Token is no longer belong to this user. Please log in again", 401));
     if (currentUser.isPasswordChangedAfter(decoded.iat))
-        return next(new appError_1.default("Password recently changed. Please log in again", 401));
+        return next(new app_error_1.default("Password recently changed. Please log in again", 401));
     req.user = currentUser;
     next();
 }));
-const authorizeTo = (roles) => (0, catchAsync_1.default)((req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
+const authorizeTo = (roles) => (0, catch_async_1.default)((req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     if (!req.user || !roles.includes(req.user.role)) {
-        return next(new appError_1.default("You do not have permission to perform this action.", 403));
+        return next(new app_error_1.default("You do not have permission to perform this action.", 403));
     }
     next();
 }));
 exports.authorizeTo = authorizeTo;
-exports.updatePassword = (0, catchAsync_1.default)((req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
-    var _a;
-    const user = yield userModel_1.default.findById((_a = req.user) === null || _a === void 0 ? void 0 : _a._id).select("+password");
+exports.updatePassword = (0, catch_async_1.default)((req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
+    const user = yield user_model_1.default.findById(req.user.id).select("+password");
     if (!user)
-        return next(new appError_1.default("You are not logged in.", 401));
+        return next(new app_error_1.default("You are not logged in.", 401));
     if (!(yield user.isPasswordCorrect(req.body.passwordCurrent, user.password)))
-        return next(new appError_1.default("Your password is wrong.", 401));
+        return next(new app_error_1.default("Your password is wrong.", 401));
     user.password = req.body.password;
     user.passwordConfirm = req.body.passwordConfirm;
     yield user.save();
     createSendToken(user, 200, res);
     next();
 }));
-exports.forgotPassword = (0, catchAsync_1.default)((req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
-    const user = yield userModel_1.default.findOne({ email: req.body.email });
+exports.forgotPassword = (0, catch_async_1.default)((req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
+    const user = yield user_model_1.default.findOne({ email: req.body.email });
     if (!user)
-        return next(new appError_1.default("No user with this email.", 404));
+        return next(new app_error_1.default("No user with this email.", 404));
     const resetToken = user.createResetPasswordToken();
     yield user.save({
         validateBeforeSave: false,
@@ -126,22 +125,22 @@ exports.forgotPassword = (0, catchAsync_1.default)((req, res, next) => __awaiter
         user.resetPasswordToken = undefined;
         user.resetPasswordExpires = undefined;
         yield user.save({ validateBeforeSave: false });
-        return next(new appError_1.default("Failed to send the token to your email.", 500));
+        return next(new app_error_1.default("Failed to send the token to your email.", 500));
     }
 }));
-exports.resetPassword = (0, catchAsync_1.default)((req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
+exports.resetPassword = (0, catch_async_1.default)((req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     const hashedToken = crypto_1.default
         .createHash("sha256")
         .update(req.params.token)
         .digest("hex");
-    const user = yield userModel_1.default.findOne({
+    const user = yield user_model_1.default.findOne({
         resetPasswordToken: hashedToken,
         resetPasswordExpires: {
             $gte: Date.now(),
         },
     });
     if (!user)
-        return next(new appError_1.default("Token is invalid or has expired. Try again.", 400));
+        return next(new app_error_1.default("Token is invalid or has expired. Try again.", 400));
     user.password = req.body.password;
     user.passwordConfirm = req.body.passwordConfirm;
     user.resetPasswordExpires = undefined;

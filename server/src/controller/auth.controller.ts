@@ -1,8 +1,8 @@
 import { NextFunction, Request, Response } from "express";
-import User from "../model/userModel";
-import catchAsync from "../utils/catchAsync";
+import User from "../model/user.model";
+import catchAsync from "../utils/catch-async";
 import jwt, { JwtPayload } from "jsonwebtoken";
-import AppError from "../utils/appError";
+import AppError from "../utils/app-error";
 import { ObjectId } from "mongodb";
 import sendMail from "../utils/email";
 import crypto from "crypto";
@@ -13,7 +13,7 @@ const signToken = (id: ObjectId) =>
   });
 
 const createSendToken = (user: IUser, statusCode: number, res: Response) => {
-  const token = signToken(user._id);
+  const token = signToken(user.id);
 
   res.status(statusCode).json({
     status: "success",
@@ -34,7 +34,7 @@ const verifyToken = (token: string, secret: string): Promise<JwtPayload> => {
 export const signup = catchAsync(
   async (req: Request, res: Response, next: NextFunction) => {
     const user = await User.create({
-      fullName: req.body.fullName,
+      name: req.body.name,
       email: req.body.email,
       password: req.body.password,
       passwordConfirm: req.body.passwordConfirm,
@@ -59,7 +59,7 @@ export const login = catchAsync(
     if (!user || !(await user.isPasswordCorrect(password, user.password)))
       return next(new AppError("Email or password is incorrect", 404));
 
-    const token = signToken(user._id);
+    const token = signToken(user.id);
 
     res.status(200).json({
       status: "success",
@@ -115,7 +115,7 @@ export const authorizeTo = (roles: Roles) =>
 
 export const updatePassword = catchAsync(
   async (req: Request, res: Response, next: NextFunction) => {
-    const user = await User.findById(req.user?._id).select("+password");
+    const user = await User.findById(req.user!.id).select("+password");
 
     if (!user) return next(new AppError("You are not logged in.", 401));
 

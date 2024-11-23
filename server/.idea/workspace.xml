@@ -6,14 +6,37 @@
   <component name="ChangeListManager">
     <list default="true" id="6c96583f-d9f9-4d65-90ea-d52df6356be6" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/controller/authController.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/controller/authController.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/model/userModel.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/model/userModel.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/router/authRouter.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/router/authRouter.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/authController.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/authController.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/app.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/controller/authController.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/controller/errorController.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/controller/taskController.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/controller/templateController.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/model/taskModel.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/model/templateModel.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/model/userModel.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/router/authRouter.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/router/taskRouter.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/router/templateRouter.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/utils/apiFeatures.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/utils/appError.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/utils/catchAsync.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/utils/email.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/authController.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/auth.controller.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/errorController.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/error.controller.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/taskController.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/task.controller.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/templateController.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/template.controller.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/db.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/db.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/userModel.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/userModel.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/router/authRouter.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/router/authRouter.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/email.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/email.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/taskModel.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/task.model.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/templateModel.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/template.model.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/userModel.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/user.model.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/router/authRouter.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/router/auth.router.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/router/taskRouter.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/router/task.router.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/router/templateRouter.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/router/template.router.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/apiFeatures.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/api-features.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/appError.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/app-error.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/catchAsync.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/catch-async.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -143,7 +166,7 @@
       <workItem from="1732262152770" duration="6391000" />
       <workItem from="1732295001759" duration="16727000" />
       <workItem from="1732382779791" duration="303000" />
-      <workItem from="1732383090684" duration="3553000" />
+      <workItem from="1732383090684" duration="7751000" />
     </task>
     <servers />
   </component>

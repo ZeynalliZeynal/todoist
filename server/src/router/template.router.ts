@@ -3,8 +3,8 @@ import {
   createTemplate,
   getTemplate,
   getTemplates,
-} from "../controller/templateController";
-import { authorizeTo } from "../controller/authController";
+} from "../controller/template.controller";
+import { authorizeTo } from "../controller/auth.controller";
 
 const router = express.Router();
 

@@ -1,8 +1,8 @@
-import ApiFeatures from "../utils/apiFeatures";
-import Task from "../model/taskModel";
+import ApiFeatures from "../utils/api-features";
+import Task from "../model/task.model";
 import { NextFunction, Request, Response } from "express";
-import catchAsync from "../utils/catchAsync";
-import AppError from "../utils/appError";
+import catchAsync from "../utils/catch-async";
+import AppError from "../utils/app-error";
 
 const getTasks = catchAsync(
   async (req: Request, res: Response, next: NextFunction) => {
@@ -10,7 +10,7 @@ const getTasks = catchAsync(
 
     const features = new ApiFeatures(
       Task.find({
-        user: req.user,
+        user: req.user.id,
       }),
       req.query,
     )

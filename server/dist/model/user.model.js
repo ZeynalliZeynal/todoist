@@ -24,10 +24,10 @@ const schema = new mongoose_1.default.Schema({
     updatedAt: {
         type: Date,
     },
-    fullName: {
+    name: {
         type: String,
         trim: true,
-        required: [true, "Full name is required"],
+        required: [true, "Name is required"],
     },
     email: {
         type: String,

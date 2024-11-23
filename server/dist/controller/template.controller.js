@@ -13,12 +13,12 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.createTemplate = exports.getTemplate = exports.getTemplates = void 0;
-const templateModel_1 = __importDefault(require("../model/templateModel"));
-const apiFeatures_1 = __importDefault(require("../utils/apiFeatures"));
-const catchAsync_1 = __importDefault(require("../utils/catchAsync"));
-const appError_1 = __importDefault(require("../utils/appError"));
-const getTemplates = (0, catchAsync_1.default)((req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
-    const features = new apiFeatures_1.default(templateModel_1.default.find(), req.query)
+const template_model_1 = __importDefault(require("../model/template.model"));
+const api_features_1 = __importDefault(require("../utils/api-features"));
+const catch_async_1 = __importDefault(require("../utils/catch-async"));
+const app_error_1 = __importDefault(require("../utils/app-error"));
+const getTemplates = (0, catch_async_1.default)((req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
+    const features = new api_features_1.default(template_model_1.default.find(), req.query)
         .filter()
         .sort()
         .limitFields()
@@ -32,10 +32,10 @@ const getTemplates = (0, catchAsync_1.default)((req, res, next) => __awaiter(voi
     });
 }));
 exports.getTemplates = getTemplates;
-const getTemplate = (0, catchAsync_1.default)((req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
-    const template = yield templateModel_1.default.findById(req.params.id);
+const getTemplate = (0, catch_async_1.default)((req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
+    const template = yield template_model_1.default.findById(req.params.id);
     if (!template) {
-        return next(new appError_1.default(`No task found with the id ${req.params.id}`, 404));
+        return next(new app_error_1.default(`No task found with the id ${req.params.id}`, 404));
     }
     res.status(302).json({
         status: "success",
@@ -45,8 +45,8 @@ const getTemplate = (0, catchAsync_1.default)((req, res, next) => __awaiter(void
     });
 }));
 exports.getTemplate = getTemplate;
-const createTemplate = (0, catchAsync_1.default)((req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
-    const template = yield templateModel_1.default.create({
+const createTemplate = (0, catch_async_1.default)((req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
+    const template = yield template_model_1.default.create({
         name: req.body.name,
         description: req.body.description,
         content: req.body.content,
