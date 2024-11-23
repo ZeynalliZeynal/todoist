@@ -15,9 +15,25 @@ const signToken = (id: ObjectId) =>
 const createSendToken = (user: IUser, statusCode: number, res: Response) => {
   const token = signToken(user.id);
 
+  res.cookie("jwt", token, {
+    expires: new Date(
+      Date.now() +
+        Number(process.env.JWT_COOKIE_EXPIRES_IN!) * 24 * 60 * 60 * 1000,
+    ),
+    secure: process.env.NODE_ENV === "production",
+    httpOnly: true,
+  });
+
   res.status(statusCode).json({
     status: "success",
     token,
+    user: {
+      name: user.name,
+      email: user.email,
+      photo: user.photo,
+      createdAt: user.createdAt,
+      updatedAt: user.updatedAt,
+    },
   });
 };
 const verifyToken = (token: string, secret: string): Promise<JwtPayload> => {
@@ -59,12 +75,7 @@ export const login = catchAsync(
     if (!user || !(await user.isPasswordCorrect(password, user.password)))
       return next(new AppError("Email or password is incorrect", 404));
 
-    const token = signToken(user.id);
-
-    res.status(200).json({
-      status: "success",
-      token,
-    });
+    createSendToken(user, 200, res);
   },
 );
 
