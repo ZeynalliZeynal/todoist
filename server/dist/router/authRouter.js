@@ -10,4 +10,5 @@ router.post("/sign-up", authController_1.signup);
 router.post("/log-in", authController_1.login);
 router.post("/forgot-password", authController_1.forgotPassword);
 router.patch("/reset-password/:token", authController_1.resetPassword);
+router.patch("/update-password", authController_1.verifyAuth, authController_1.updatePassword);
 exports.default = router;

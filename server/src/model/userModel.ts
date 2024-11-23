@@ -60,6 +60,13 @@ schema.pre("save", async function (next) {
   next();
 });
 
+schema.pre("save", function (next) {
+  if (!this.isModified("password") || this.isNew) return next();
+
+  this.passwordChangedAt = Date.now() - 1000;
+  next();
+});
+
 schema.method(
   "isPasswordCorrect",
   async function (candidatePassword: string, userPassword: string) {
@@ -70,7 +77,7 @@ schema.method(
 schema.method("isPasswordChangedAfter", function (JWTTimestamp) {
   if (this.passwordChangedAt) {
     const changedTimestamp = parseInt(
-      String(this.passwordChangedAt.getTime() / 1000),
+      String(new Date(this.passwordChangedAt).getTime() / 1000),
       10,
     );
 
@@ -86,8 +93,6 @@ schema.method("createResetPasswordToken", function () {
     .update(resetToken)
     .digest("hex");
   this.resetPasswordExpires = Date.now() + 10 * 60 * 1000;
-
-  console.log(resetToken, this.resetPasswordToken);
 
   return resetToken;
 });

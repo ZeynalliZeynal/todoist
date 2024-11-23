@@ -1,4 +1,5 @@
 import mongoose from "mongoose";
+import { ObjectId } from "mongodb";
 
 const ROLES = ["admin", "user"] as const;
 declare global {
@@ -32,6 +33,7 @@ declare global {
   }
 
   interface IUser {
+    _id: ObjectId;
     createdAt: Date;
     updatedAt: Date;
     fullName: string;
@@ -40,7 +42,7 @@ declare global {
     photo?: string;
     password: string;
     passwordConfirm?: string;
-    passwordChangedAt?: Date;
+    passwordChangedAt?: number;
     resetPasswordToken?: string;
     resetPasswordExpires?: number;
   }

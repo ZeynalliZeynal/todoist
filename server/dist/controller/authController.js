@@ -12,15 +12,23 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.resetPassword = exports.forgotPassword = exports.authorizeTo = exports.verifyAuth = exports.login = exports.signup = void 0;
+exports.resetPassword = exports.forgotPassword = exports.updatePassword = exports.authorizeTo = exports.verifyAuth = exports.login = exports.signup = void 0;
 const userModel_1 = __importDefault(require("../model/userModel"));
 const catchAsync_1 = __importDefault(require("../utils/catchAsync"));
 const jsonwebtoken_1 = __importDefault(require("jsonwebtoken"));
 const appError_1 = __importDefault(require("../utils/appError"));
 const email_1 = __importDefault(require("../utils/email"));
+const crypto_1 = __importDefault(require("crypto"));
 const signToken = (id) => jsonwebtoken_1.default.sign({ id }, process.env.JWT_SECRET, {
     expiresIn: process.env.JWT_EXPIRES_IN,
 });
+const createSendToken = (user, statusCode, res) => {
+    const token = signToken(user._id);
+    res.status(statusCode).json({
+        status: "success",
+        token,
+    });
+};
 const verifyToken = (token, secret) => {
     return new Promise((resolve, reject) => {
         jsonwebtoken_1.default.verify(token, secret, (err, decoded) => {
@@ -39,16 +47,7 @@ exports.signup = (0, catchAsync_1.default)((req, res, next) => __awaiter(void 0,
         passwordConfirm: req.body.passwordConfirm,
         role: req.body.email === process.env.ADMIN_EMAIL ? "admin" : "user",
     });
-    const token = signToken(user._id);
-    res.status(201).json({
-        status: "success",
-        token,
-        data: {
-            fullName: user.fullName,
-            email: user.email,
-            photo: user.photo,
-        },
-    });
+    createSendToken(user, 200, res);
 }));
 exports.login = (0, catchAsync_1.default)((req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     const { email, password } = req.body;
@@ -88,6 +87,19 @@ const authorizeTo = (roles) => (0, catchAsync_1.default)((req, res, next) => __a
     next();
 }));
 exports.authorizeTo = authorizeTo;
+exports.updatePassword = (0, catchAsync_1.default)((req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
+    var _a;
+    const user = yield userModel_1.default.findById((_a = req.user) === null || _a === void 0 ? void 0 : _a._id).select("+password");
+    if (!user)
+        return next(new appError_1.default("You are not logged in.", 401));
+    if (!(yield user.isPasswordCorrect(req.body.passwordCurrent, user.password)))
+        return next(new appError_1.default("Your password is wrong.", 401));
+    user.password = req.body.password;
+    user.passwordConfirm = req.body.passwordConfirm;
+    yield user.save();
+    createSendToken(user, 200, res);
+    next();
+}));
 exports.forgotPassword = (0, catchAsync_1.default)((req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     const user = yield userModel_1.default.findOne({ email: req.body.email });
     if (!user)
@@ -117,4 +129,23 @@ exports.forgotPassword = (0, catchAsync_1.default)((req, res, next) => __awaiter
         return next(new appError_1.default("Failed to send the token to your email.", 500));
     }
 }));
-exports.resetPassword = (0, catchAsync_1.default)((req, res, next) => __awaiter(void 0, void 0, void 0, function* () { }));
+exports.resetPassword = (0, catchAsync_1.default)((req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
+    const hashedToken = crypto_1.default
+        .createHash("sha256")
+        .update(req.params.token)
+        .digest("hex");
+    const user = yield userModel_1.default.findOne({
+        resetPasswordToken: hashedToken,
+        resetPasswordExpires: {
+            $gte: Date.now(),
+        },
+    });
+    if (!user)
+        return next(new appError_1.default("Token is invalid or has expired. Try again.", 400));
+    user.password = req.body.password;
+    user.passwordConfirm = req.body.passwordConfirm;
+    user.resetPasswordExpires = undefined;
+    user.resetPasswordToken = undefined;
+    yield user.save();
+    createSendToken(user, 200, res);
+}));

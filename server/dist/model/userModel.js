@@ -73,6 +73,12 @@ schema.pre("save", function (next) {
         next();
     });
 });
+schema.pre("save", function (next) {
+    if (!this.isModified("password") || this.isNew)
+        return next();
+    this.passwordChangedAt = Date.now() - 1000;
+    next();
+});
 schema.method("isPasswordCorrect", function (candidatePassword, userPassword) {
     return __awaiter(this, void 0, void 0, function* () {
         return yield bcryptjs_1.default.compare(candidatePassword, userPassword);
@@ -80,7 +86,7 @@ schema.method("isPasswordCorrect", function (candidatePassword, userPassword) {
 });
 schema.method("isPasswordChangedAfter", function (JWTTimestamp) {
     if (this.passwordChangedAt) {
-        const changedTimestamp = parseInt(String(this.passwordChangedAt.getTime() / 1000), 10);
+        const changedTimestamp = parseInt(String(new Date(this.passwordChangedAt).getTime() / 1000), 10);
         return JWTTimestamp < changedTimestamp;
     }
     return false;
@@ -92,7 +98,6 @@ schema.method("createResetPasswordToken", function () {
         .update(resetToken)
         .digest("hex");
     this.resetPasswordExpires = Date.now() + 10 * 60 * 1000;
-    console.log(resetToken, this.resetPasswordToken);
     return resetToken;
 });
 exports.default = mongoose_1.default.model("User", schema);

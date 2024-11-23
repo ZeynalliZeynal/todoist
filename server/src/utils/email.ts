@@ -4,7 +4,7 @@ export default async (options: {
   from: string;
   subject: string;
   email: string;
-  message: string;
+  message?: string;
   html?: string;
 }) => {
   const transporter = nodemailer.createTransport({
