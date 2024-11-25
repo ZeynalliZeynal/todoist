@@ -59,6 +59,7 @@ const schema = new mongoose_1.default.Schema({
         type: String,
         enum: ["admin", "user"],
         default: "user",
+        select: false,
     },
     photo: String,
     resetPasswordToken: String,

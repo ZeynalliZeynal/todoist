@@ -46,6 +46,7 @@ const schema = new mongoose.Schema<IUser, {}, IUserMethods>({
     type: String,
     enum: ["admin", "user"],
     default: "user",
+    select: false,
   },
   photo: String,
   resetPasswordToken: String,

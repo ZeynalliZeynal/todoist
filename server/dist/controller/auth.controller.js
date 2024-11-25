@@ -81,7 +81,7 @@ exports.verifyAuth = (0, catch_async_1.default)((req, res, next) => __awaiter(vo
     if (!token)
         return next(new app_error_1.default("You must log in to perform this action", 401));
     const decoded = yield verifyToken(token, process.env.JWT_SECRET);
-    const currentUser = yield user_model_1.default.findById(decoded.id);
+    const currentUser = yield user_model_1.default.findById(decoded.id).select("+role -__v");
     if (!currentUser)
         return next(new app_error_1.default("Token is no longer belong to this user. Please log in again", 401));
     if (currentUser.isPasswordChangedAfter(decoded.iat))

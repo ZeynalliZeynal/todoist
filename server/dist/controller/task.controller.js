@@ -18,8 +18,6 @@ const task_model_1 = __importDefault(require("../model/task.model"));
 const catch_async_1 = __importDefault(require("../utils/catch-async"));
 const app_error_1 = __importDefault(require("../utils/app-error"));
 const getTasks = (0, catch_async_1.default)((req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
-    if (!req.user)
-        return next(new app_error_1.default("You have to log in.", 401));
     const features = new api_features_1.default(task_model_1.default.find({
         user: req.user.id,
     }), req.query)
@@ -37,7 +35,7 @@ const getTasks = (0, catch_async_1.default)((req, res, next) => __awaiter(void 0
 }));
 exports.getTasks = getTasks;
 const getTask = (0, catch_async_1.default)((req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
-    const task = yield task_model_1.default.findById(req.params.id);
+    const task = yield task_model_1.default.findOne({ user: req.user, _id: req.params.id });
     if (!task) {
         return next(new app_error_1.default(`No task found with the id ${req.params.id}`, 404));
     }

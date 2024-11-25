@@ -93,7 +93,7 @@ export const verifyAuth = catchAsync(
 
     const decoded = await verifyToken(token, process.env.JWT_SECRET!);
 
-    const currentUser = await User.findById(decoded.id);
+    const currentUser = await User.findById(decoded.id).select("+role -__v");
 
     if (!currentUser)
       return next(

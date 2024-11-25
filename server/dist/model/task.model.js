@@ -51,11 +51,26 @@ const schema = new mongoose_1.default.Schema({
     user: {
         type: mongoose_1.default.Types.ObjectId,
         ref: "User",
+        required: [true, "A task must belong to a user."],
+    },
+}, {
+    toJSON: {
+        virtuals: true,
+    },
+    toObject: {
+        virtuals: true,
     },
 });
 schema.index({ user: 1 });
 schema.pre("save", function (next) {
     this.slug = (0, slugify_1.default)(this.name, { lower: true });
+    next();
+});
+schema.pre(/^find/, function (next) {
+    this.populate({
+        path: "user",
+        select: "-__v -passwordChangedAt",
+    });
     next();
 });
 const Task = mongoose_1.default.model("Task", schema);

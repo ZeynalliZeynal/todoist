@@ -6,11 +6,9 @@ import AppError from "../utils/app-error";
 
 const getTasks = catchAsync(
   async (req: Request, res: Response, next: NextFunction) => {
-    if (!req.user) return next(new AppError("You have to log in.", 401));
-
     const features = new ApiFeatures(
       Task.find({
-        user: req.user.id,
+        user: req.user!.id,
       }),
       req.query,
     )
@@ -32,7 +30,7 @@ const getTasks = catchAsync(
 
 const getTask = catchAsync(
   async (req: Request, res: Response, next: NextFunction) => {
-    const task = await Task.findById(req.params.id);
+    const task = await Task.findOne({ user: req.user, _id: req.params.id });
 
     if (!task) {
       return next(

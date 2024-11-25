@@ -19,6 +19,7 @@ declare global {
     priority: Priorities;
     dueDate?: Date;
     user: mongoose.Types.ObjectId | IUser;
+    location: any;
   }
 
   interface ITemplate {

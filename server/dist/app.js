@@ -31,10 +31,6 @@ app.use("/api", limiter);
 app.use(express_1.default.json({
     limit: "10mb",
 }));
-app.use((req, res, next) => {
-    console.log(req.headers);
-    next();
-});
 app.use("/api/v1/tasks", task_router_1.default);
 app.use("/api/v1/templates", template_router_1.default);
 app.use("/api/v1/auth", auth_router_1.default);
