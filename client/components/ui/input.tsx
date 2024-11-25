@@ -24,11 +24,11 @@ export default function Input({
   return (
     <div
       className={cn(
-        "flex items-center w-full bg-background-200 rounded-md focus-within:shadow-input transition text-foreground duration-200 overflow-hidden shadow-border",
+        "flex items-center w-full bg-background-200 rounded-md focus-within:shadow-input transition text-foreground duration-200 overflow-hidden shadow-border font-medium",
         {
           "[--size:2rem]": size === "small",
           "[--size:2.5rem]": size === "medium",
-          "[--size:3rem]": size === "large",
+          "[--size:3rem] rounded-lg": size === "large",
         },
       )}
     >
@@ -50,10 +50,10 @@ export default function Input({
       <input
         id={`input${id}`}
         className={cn(
-          "w-full placeholder-gray-800 outline-none h-[var(--size)]",
+          "w-full px-3 placeholder-gray-800 outline-none h-[var(--size)]",
           {
-            "border-l px-3": prefix && prefixStyling,
-            "border-r px-3": suffix && suffixStyling,
+            "border-l": prefix,
+            "border-r": suffix,
           },
         )}
         {...etc}

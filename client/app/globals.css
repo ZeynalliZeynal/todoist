@@ -256,6 +256,10 @@
         @apply disabled:cursor-not-allowed
     }
 
+    h1 {
+        @apply font-bold
+    }
+
     h2 {
         @apply text-2xl font-bold
     }

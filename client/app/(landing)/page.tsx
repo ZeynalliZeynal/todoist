@@ -10,7 +10,7 @@ export default function Home() {
       <section className="border-b">
         <div className="flex items-center flex-col justify-center gap-3 p-12">
           <div className="text-center space-y-6">
-            <h1 className="text-[clamp(24px,3.75vw,48px)] leading-[100%] font-semibold">
+            <h1 className="text-[clamp(24px,3.75vw,48px)] leading-[100%]">
               Organize your work and life, finally.
             </h1>
             <div className="font-medium space-y-3">

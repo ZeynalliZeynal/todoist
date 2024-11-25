@@ -13,7 +13,6 @@ interface ButtonProps {
   children: ReactNode;
   href?: string;
   size?: "lg" | "md" | "sm";
-  rounded?: string;
   prefix?: ReactNode;
   suffix?: ReactNode;
   primary?: true;
@@ -29,14 +28,13 @@ const Button = forwardRef<HTMLButtonElement | HTMLAnchorElement, ButtonProps>(
   (
     {
       children,
-      size = "md",
+      size = "sm",
       href,
       prefix = null,
       suffix = null,
       primary,
       onClick,
       disabled,
-      rounded = "md",
       type = "button",
       className,
       ...etc
@@ -45,7 +43,7 @@ const Button = forwardRef<HTMLButtonElement | HTMLAnchorElement, ButtonProps>(
   ) => {
     const [hovering, setHovering] = useState(false);
     const cl = cn(
-      `flex items-center justify-center transition duration-200 font-medium border select-none rounded-${rounded}`,
+      `flex items-center justify-center transition duration-200 font-medium border select-none rounded-lg`,
       {
         "text-foreground border bg-background-100 hover:text-foreground hover:bg-gray-200":
           primary,
