@@ -10,6 +10,7 @@ export default {
   theme: {
     screens: {
       xl: "1150px",
+      full: "1448px",
     },
     extend: {
       maxWidth: {
@@ -157,7 +158,7 @@ export default {
       boxShadow: {
         "header-border": "hsla(var(--header-border))",
         input:
-          "0 0 0 1px hsla(var(--ds-gray-alpha-600)), 0 0 0 4px hsla(0,0%,100%,.24)",
+          "0 0 0 1px hsla(var(--ds-gray-alpha-600)),0 0 0 4px hsla(0,0%,100%,.24)!important",
         border: "0 0 0 1px hsla(var(--ds-gray-alpha-400))",
         menu: "var(--ds-shadow-menu)",
       },

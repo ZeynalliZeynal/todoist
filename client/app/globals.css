@@ -244,7 +244,7 @@
         @apply select-none;
     }
 
-    span {
+    span, label {
         @apply inline-flex
     }
 
