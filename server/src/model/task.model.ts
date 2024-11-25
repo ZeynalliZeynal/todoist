@@ -77,10 +77,10 @@ schema.pre("save", function (next) {
 });
 
 schema.pre(/^find/, function (this: Query<any, any>, next) {
-  this.populate({
-    path: "user",
-    select: "-__v -passwordChangedAt",
-  });
+  // this.populate({
+  //   path: "user",
+  //   select: "-__v -passwordChangedAt",
+  // });
   next();
 });
 

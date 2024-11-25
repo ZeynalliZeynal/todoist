@@ -20,7 +20,7 @@ export const getAllUsers = catchAsync(
 
     res.status(200).json({
       status: "success",
-      count: users.length,
+      length: users.length,
       data: {
         users,
       },
@@ -30,7 +30,7 @@ export const getAllUsers = catchAsync(
 
 export const getUser = catchAsync(
   async (req: Request, res: Response, next: NextFunction) => {
-    const user = await User.findById(req.params.id);
+    const user = await User.findById(req.params.id).populate("tasks");
     if (!user) return next(new AppError("No user found by this id", 404));
 
     res.status(200).json({

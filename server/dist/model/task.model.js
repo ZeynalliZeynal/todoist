@@ -67,10 +67,10 @@ schema.pre("save", function (next) {
     next();
 });
 schema.pre(/^find/, function (next) {
-    this.populate({
-        path: "user",
-        select: "-__v -passwordChangedAt",
-    });
+    // this.populate({
+    //   path: "user",
+    //   select: "-__v -passwordChangedAt",
+    // });
     next();
 });
 const Task = mongoose_1.default.model("Task", schema);

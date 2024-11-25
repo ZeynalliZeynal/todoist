@@ -3,60 +3,77 @@ import validator from "validator";
 import bcrypt from "bcryptjs";
 import crypto from "crypto";
 
-const schema = new mongoose.Schema<IUser, {}, IUserMethods>({
-  createdAt: {
-    type: Date,
-    default: Date.now,
-  },
-  updatedAt: {
-    type: Date,
-  },
-  name: {
-    type: String,
-    trim: true,
-    required: [true, "Name is required"],
-  },
-  email: {
-    type: String,
-    unique: true,
-    trim: true,
-    required: [true, "Email is required"],
-    lowercase: true,
-    validate: [validator.isEmail, "Your email is not a valid"],
-  },
-  password: {
-    type: String,
-    required: [true, "Password is required"],
-    minlength: [8, "Password must be at least 8 characters"],
-    select: false,
-  },
-  passwordConfirm: {
-    type: String,
-    required: [true, "Please confirm your password"],
-    validate: {
-      // * works only on save
-      validator: function (value) {
-        return value === this.password;
+const schema = new mongoose.Schema<IUser, {}, IUserMethods>(
+  {
+    createdAt: {
+      type: Date,
+      default: Date.now,
+    },
+    updatedAt: {
+      type: Date,
+    },
+    name: {
+      type: String,
+      trim: true,
+      required: [true, "Name is required"],
+    },
+    email: {
+      type: String,
+      unique: true,
+      trim: true,
+      required: [true, "Email is required"],
+      lowercase: true,
+      validate: [validator.isEmail, "Your email is not a valid"],
+    },
+    password: {
+      type: String,
+      required: [true, "Password is required"],
+      minlength: [8, "Password must be at least 8 characters"],
+      select: false,
+    },
+    passwordConfirm: {
+      type: String,
+      required: [true, "Please confirm your password"],
+      validate: {
+        // * works only on save
+        validator: function (value) {
+          return value === this.password;
+        },
+        message: "Passwords must match",
       },
-      message: "Passwords must match",
+    },
+    passwordChangedAt: Date,
+    role: {
+      type: String,
+      enum: ["admin", "user"],
+      default: "user",
+      select: false,
+    },
+    photo: String,
+    resetPasswordToken: String,
+    resetPasswordExpires: Date,
+    isActive: {
+      type: Boolean,
+      default: true,
+      select: false,
     },
   },
-  passwordChangedAt: Date,
-  role: {
-    type: String,
-    enum: ["admin", "user"],
-    default: "user",
-    select: false,
+  {
+    toJSON: {
+      virtuals: true,
+    },
+    toObject: {
+      virtuals: true,
+    },
   },
-  photo: String,
-  resetPasswordToken: String,
-  resetPasswordExpires: Date,
-  isActive: {
-    type: Boolean,
-    default: true,
-    select: false,
-  },
+);
+
+schema.virtual("tasks", {
+  ref: "Task",
+  foreignField: "user", // foreign key
+  localField: "_id", // primary key
 });
+
 schema.pre("save", async function (next) {
   if (!this.isModified("password")) return next();
 

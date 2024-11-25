@@ -35,7 +35,10 @@ const getTasks = (0, catch_async_1.default)((req, res, next) => __awaiter(void 0
 }));
 exports.getTasks = getTasks;
 const getTask = (0, catch_async_1.default)((req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
-    const task = yield task_model_1.default.findOne({ user: req.user, _id: req.params.id });
+    const task = yield task_model_1.default.findOne({
+        user: req.user,
+        _id: req.params.id,
+    }).populate("user");
     if (!task) {
         return next(new app_error_1.default(`No task found with the id ${req.params.id}`, 404));
     }

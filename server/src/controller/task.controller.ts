@@ -30,7 +30,10 @@ const getTasks = catchAsync(
 
 const getTask = catchAsync(
   async (req: Request, res: Response, next: NextFunction) => {
-    const task = await Task.findOne({ user: req.user, _id: req.params.id });
+    const task = await Task.findOne({
+      user: req.user,
+      _id: req.params.id,
+    }).populate("user");
 
     if (!task) {
       return next(
@@ -58,6 +61,7 @@ const createTask = catchAsync(
       priority: req.body.priority,
       user: req.user,
     });
+
     res.status(201).json({
       status: "success",
       data: {

@@ -29,14 +29,14 @@ exports.getAllUsers = (0, catch_async_1.default)((req, res, next) => __awaiter(v
     const users = yield user_model_1.default.find();
     res.status(200).json({
         status: "success",
-        count: users.length,
+        length: users.length,
         data: {
             users,
         },
     });
 }));
 exports.getUser = (0, catch_async_1.default)((req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
-    const user = yield user_model_1.default.findById(req.params.id);
+    const user = yield user_model_1.default.findById(req.params.id).populate("tasks");
     if (!user)
         return next(new app_error_1.default("No user found by this id", 404));
     res.status(200).json({
