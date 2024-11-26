@@ -52,7 +52,7 @@ exports.default = (err, req, res, next) => {
         sendErrorDev(err, res);
     }
     else if (process.env.NODE_ENV === "production") {
-        let error = Object.assign({}, err);
+        let error = Object.assign(Object.assign({}, err), { message: err.message });
         if (error.name === "CastError")
             error = db_handleCastError(error);
         if (error.code === 11000)

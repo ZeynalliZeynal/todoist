@@ -10,8 +10,8 @@ import {
 
 const router = express.Router();
 
-router.post("/sign-up", signup);
-router.post("/log-in", login);
+router.post("/signup", signup);
+router.post("/login", login);
 router.post("/forgot-password", forgotPassword);
 router.patch("/reset-password/:token", resetPassword);
 router.patch("/update-password", verifyAuth, updatePassword);

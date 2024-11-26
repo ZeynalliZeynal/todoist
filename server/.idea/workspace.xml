@@ -5,15 +5,27 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6c96583f-d9f9-4d65-90ea-d52df6356be6" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/../client/app/(auth)/auth/login/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../client/app/(auth)/_layout/header/header-right-buttons.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../client/app/(auth)/_layout/header/header-right-buttons.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../client/app/(auth)/_layout/header/header.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../client/app/(auth)/_layout/header/header.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../client/app/(auth)/auth/log-in/page.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../client/app/(auth)/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../client/app/(auth)/layout.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../client/app/(landing)/_layout/header/nav-right.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../client/app/(landing)/_layout/header/nav-right.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../client/constants/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../client/constants/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../client/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../client/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../client/pnpm-lock.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/../client/pnpm-lock.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../client/tailwind.config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../client/tailwind.config.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/controller/task.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/controller/task.controller.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/controller/user.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/controller/user.controller.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/model/task.model.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/model/task.model.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/model/user.model.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/model/user.model.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/task.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/task.controller.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/user.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/user.controller.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/task.model.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/task.model.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/user.model.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/user.model.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config.env" beforeDir="false" afterPath="$PROJECT_DIR$/config.env" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/controller/error.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/controller/error.controller.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/router/auth.router.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/router/auth.router.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/error.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/error.controller.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/router/auth.router.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/router/auth.router.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -61,7 +73,7 @@
     &quot;code.cleanup.on.save&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
     &quot;ignore_missing_gitignore&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/asus/Desktop/education/projects/todoist/server&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/asus/Desktop/education/projects/todoist/client&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -147,7 +159,9 @@
       <workItem from="1732437865907" duration="1087000" />
       <workItem from="1732440813564" duration="16000" />
       <workItem from="1732457965996" duration="1612000" />
-      <workItem from="1732551060622" duration="5236000" />
+      <workItem from="1732551060622" duration="6541000" />
+      <workItem from="1732636806603" duration="259000" />
+      <workItem from="1732643509236" duration="4228000" />
     </task>
     <servers />
   </component>

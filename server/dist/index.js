@@ -12,7 +12,7 @@ const dotenv_1 = __importDefault(require("dotenv"));
 const mongoose_1 = __importDefault(require("mongoose"));
 const app_1 = __importDefault(require("./app"));
 dotenv_1.default.config({ path: "./config.env" });
-const PORT = process.env.PORT || 8000;
+const PORT = process.env.PORT || 8080;
 const DB = process.env.DATABASE.replace("<db_password>", process.env.DATABASE_PASSWORD);
 mongoose_1.default
     .connect(DB)

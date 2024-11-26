@@ -6,7 +6,7 @@
   "scripts": {
     "build": "tsc -w",
     "dev": "concurrently \"nodemon dist/index.js\" \"tsc -w\"",
-    "prod": "cross-env NODE_ENV=production nodemon dist/index.js"
+    "prod": "Set NODE_ENV=production&&nodemon dist/index.js"
   },
   "keywords": [],
   "author": "zeynal",

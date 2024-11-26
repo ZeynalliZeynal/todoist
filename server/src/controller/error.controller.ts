@@ -66,7 +66,7 @@ export default (
   if (process.env.NODE_ENV === "development") {
     sendErrorDev(err, res);
   } else if (process.env.NODE_ENV === "production") {
-    let error = { ...err };
+    let error = { ...err, message: err.message };
     if (error.name === "CastError")
       error = db_handleCastError(error as AppError & CastError);
     if ((error as AppError & MongoServerError).code === 11000)
