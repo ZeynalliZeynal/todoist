@@ -15,6 +15,7 @@ export default {
     extend: {
       maxWidth: {
         "5xl": "67.5rem",
+        "6xl": "75rem",
       },
       fontFamily: {
         "geist-sans": ["var(--font-geist-sans)"],

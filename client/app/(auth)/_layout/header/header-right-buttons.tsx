@@ -12,11 +12,11 @@ export default function HeaderRightButtons() {
         Contact
       </Button>
       <Button
-        href={`/auth/${pathname.includes("log-in") ? "sign-up" : "log-in"}`}
+        href={`/auth/${pathname.includes("login") ? "signup" : "login"}`}
         primary
         className="bg-background-200"
       >
-        {pathname.includes("log-in") ? "Sign up" : "Log in"}
+        {pathname.includes("login") ? "Sign up" : "Log in"}
       </Button>
     </div>
   );
