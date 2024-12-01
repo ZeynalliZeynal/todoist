@@ -1,6 +1,6 @@
 import { NextFunction, Request, Response } from "express";
 
-import catchAsync from "../utils/catch-async";
+import catchAsync from "../utils/catch-errors";
 import User from "../model/user.model";
 import AppError from "../utils/app-error";
 import { updatePasswordRoute } from "../utils/constants";

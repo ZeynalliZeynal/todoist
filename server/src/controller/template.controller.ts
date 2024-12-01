@@ -1,7 +1,7 @@
 import { NextFunction, Request, Response } from "express";
 import Template from "../model/template.model";
 import ApiFeatures from "../utils/api-features";
-import catchAsync from "../utils/catch-async";
+import catchAsync from "../utils/catch-errors";
 import AppError from "../utils/app-error";
 
 const getTemplates = catchAsync(

@@ -1,15 +1,38 @@
 import { NextFunction, Request, Response } from "express";
 import User from "../model/user.model";
-import catchAsync from "../utils/catch-async";
-import jwt, { JwtPayload } from "jsonwebtoken";
+import catchAsync from "../utils/catch-errors";
+import catchErrors from "../utils/catch-errors";
+import jwt from "jsonwebtoken";
 import AppError from "../utils/app-error";
 import { ObjectId } from "mongodb";
 import sendMail from "../utils/email";
 import crypto from "crypto";
+import {
+  jwt_cookie_expires_in,
+  jwt_expires_in,
+  jwt_secret,
+  node_env,
+} from "../constants/env";
+import { loginSchema, signupSchema } from "../validator/auth.schema";
+import {
+  createAccount,
+  loginUser,
+  refreshUserAccessToken,
+} from "../service/auth.service";
+import { StatusCodes } from "http-status-codes";
+import {
+  clearAuthCookies,
+  getAccessTokenCookieOptions,
+  getRefreshTokenCookieOptions,
+  setAuthCookies,
+} from "../utils/cookies";
+import { verifyToken } from "../utils/jwt";
+import Session from "../model/session.model";
+import appAssert from "../utils/app-assert";
 
 const signToken = (id: ObjectId) =>
-  jwt.sign({ id }, process.env.JWT_SECRET!, {
-    expiresIn: process.env.JWT_EXPIRES_IN!,
+  jwt.sign({ id }, jwt_secret, {
+    expiresIn: jwt_expires_in,
   });
 
 const createSendToken = (user: IUser, statusCode: number, res: Response) => {
@@ -17,11 +40,11 @@ const createSendToken = (user: IUser, statusCode: number, res: Response) => {
 
   res.cookie("jwt", token, {
     expires: new Date(
-      Date.now() +
-        Number(process.env.JWT_COOKIE_EXPIRES_IN!) * 24 * 60 * 60 * 1000,
+      Date.now() + Number(jwt_cookie_expires_in) * 24 * 60 * 60 * 1000,
     ),
-    secure: process.env.NODE_ENV === "production",
+    secure: node_env === "production",
     httpOnly: true,
+    sameSite: "lax",
   });
 
   res.status(statusCode).json({
@@ -36,80 +59,129 @@ const createSendToken = (user: IUser, statusCode: number, res: Response) => {
     },
   });
 };
-const verifyToken = (token: string, secret: string): Promise<JwtPayload> => {
-  return new Promise((resolve, reject) => {
-    jwt.verify(token, secret, (err, decoded) => {
-      if (err) {
-        return reject(err);
-      }
-      resolve(decoded as JwtPayload);
-    });
+// const verifyToken = (token: string, secret: string): Promise<JwtPayload> => {
+//   return new Promise((resolve, reject) => {
+//     jwt.verify(token, secret, (err, decoded) => {
+//       if (err) {
+//         return reject(err);
+//       }
+//       resolve(decoded as JwtPayload);
+//     });
+//   });
+// };
+
+export const signup = catchErrors(async (req, res, next) => {
+  const request = signupSchema.parse({
+    ...req.body,
+    userAgent: req.headers["user-agent"],
   });
-};
 
-export const signup = catchAsync(
+  const { refreshToken, accessToken, user } = await createAccount(request);
+
+  return setAuthCookies({ res, refreshToken, accessToken })
+    .status(StatusCodes.OK)
+    .json({
+      status: "success",
+      data: {
+        name: user.name,
+        email: user.email,
+        createdAt: user.createdAt,
+        photo: user.photo,
+      },
+    });
+});
+
+export const login = catchErrors(
   async (req: Request, res: Response, next: NextFunction) => {
-    const user = await User.create({
-      name: req.body.name,
-      email: req.body.email,
-      password: req.body.password,
-      passwordConfirm: req.body.passwordConfirm,
-      role: req.body.email === process.env.ADMIN_EMAIL ? "admin" : "user",
+    const request = loginSchema.parse({
+      ...req.body,
+      userAgent: req.headers["user-agent"],
     });
 
-    createSendToken(user, 200, res);
+    const { accessToken, refreshToken } = await loginUser(request);
+
+    return setAuthCookies({ res, refreshToken, accessToken })
+      .status(StatusCodes.OK)
+      .json({
+        status: "success",
+        message: "Login successful",
+      });
   },
 );
 
-export const login = catchAsync(
+export const logout = catchErrors(
   async (req: Request, res: Response, next: NextFunction) => {
-    const { email, password } = req.body;
+    const accessToken = req.cookies.accessToken;
+    const { payload } = verifyToken(accessToken);
 
-    if (!email || !password)
-      return next(new AppError("Email and password are required", 400));
+    if (payload) await Session.findByIdAndDelete(payload.sessionId);
 
-    const user = await User.findOne({
-      email,
-    }).select("+password");
-
-    if (!user || !(await user.isPasswordCorrect(password, user.password)))
-      return next(new AppError("Email or password is incorrect", 404));
-
-    createSendToken(user, 200, res);
+    return clearAuthCookies(res).status(StatusCodes.OK).json({
+      status: "success",
+      message: "Logout successful",
+    });
   },
 );
 
 export const verifyAuth = catchAsync(
   async (req: Request, res: Response, next: NextFunction) => {
-    let token;
-    if (
-      req.headers.authorization &&
-      req.headers.authorization.startsWith("Bearer ")
-    )
-      token = req.headers.authorization.split(" ").at(1);
+    const token = req.cookies.accessToken;
 
     if (!token)
       return next(new AppError("You must log in to perform this action", 401));
 
-    const decoded = await verifyToken(token, process.env.JWT_SECRET!);
+    const { payload } = verifyToken(token);
+    if (!payload)
+      return next(new AppError("Invalid token", StatusCodes.UNAUTHORIZED));
 
-    const currentUser = await User.findById(decoded.id).select("+role -__v");
+    const currentUser = await User.findById(payload.userId).select(
+      "+role -__v",
+    );
 
     if (!currentUser)
       return next(
         new AppError(
           "Token is no longer belong to this user. Please log in again",
-          401,
+          StatusCodes.UNAUTHORIZED,
         ),
       );
 
-    if (currentUser.isPasswordChangedAfter(decoded.iat))
+    if (currentUser.isPasswordChangedAfter(payload.iat))
       return next(
-        new AppError("Password recently changed. Please log in again", 401),
+        new AppError(
+          "Password recently changed. Please log in again",
+          StatusCodes.UNAUTHORIZED,
+        ),
       );
 
     req.user = currentUser;
     next();
+  },
+);
+
+export const refreshToken = catchErrors(
+  async (req: Request, res: Response, next: NextFunction) => {
+    const refreshToken = req.cookies.refreshToken;
+    appAssert(refreshToken, "Missing refresh token", StatusCodes.UNAUTHORIZED);
+
+    const { newRefreshToken, accessToken } =
+      await refreshUserAccessToken(refreshToken);
+
+    if (newRefreshToken) {
+      res.cookie(
+        "refreshToken",
+        newRefreshToken,
+        getRefreshTokenCookieOptions(),
+      );
+    }
+
+    return res
+      .status(StatusCodes.OK)
+      .cookie("accessToken", accessToken, getAccessTokenCookieOptions())
+      .json({
+        status: "success",
+        message: "Access token refreshed",
+      });
   },
 );
 
@@ -130,13 +202,11 @@ export const updatePassword = catchAsync(
 
     if (!user) return next(new AppError("You are not logged in.", 401));
 
-    if (
-      !(await user.isPasswordCorrect(req.body.passwordCurrent, user.password))
-    )
+    if (!(await user.comparePasswords(req.body.passwordCurrent, user.password)))
       return next(new AppError("Your password is wrong.", 401));
 
     user.password = req.body.password;
-    user.passwordConfirm = req.body.passwordConfirm;
+    user.confirmPassword = req.body.confirmPassword;
     await user.save();
 
     createSendToken(user, 200, res);
@@ -198,7 +268,7 @@ export const resetPassword = catchAsync(
       );
 
     user.password = req.body.password;
-    user.passwordConfirm = req.body.passwordConfirm;
+    user.confirmPassword = req.body.confirmPassword;
     user.resetPasswordExpires = undefined;
     user.resetPasswordToken = undefined;
 

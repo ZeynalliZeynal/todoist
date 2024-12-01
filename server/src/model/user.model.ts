@@ -2,16 +2,35 @@ import mongoose, { Document, Query } from "mongoose";
 import validator from "validator";
 import bcrypt from "bcryptjs";
 import crypto from "crypto";
+import { ObjectId } from "mongodb";
 
-const schema = new mongoose.Schema<IUser, {}, IUserMethods>(
+export interface UserDocument extends mongoose.Document {
+  id: ObjectId;
+  createdAt: Date;
+  updatedAt: Date;
+  name: string;
+  email: string;
+  role: UserRole;
+  photo?: string;
+  password: string;
+  confirmPassword?: string;
+  passwordChangedAt?: number;
+  resetPasswordToken?: string;
+  resetPasswordExpires?: number;
+  isActive: boolean;
+
+  comparePasswords(
+    candidatePassword: string,
+    userPassword: string,
+  ): Promise<boolean>;
+
+  isPasswordChangedAfter(JWTTimestamp?: number): boolean;
+
+  createResetPasswordToken(): string;
+}
+
+const schema = new mongoose.Schema<UserDocument>(
   {
-    createdAt: {
-      type: Date,
-      default: Date.now,
-    },
-    updatedAt: {
-      type: Date,
-    },
     name: {
       type: String,
       trim: true,
@@ -31,7 +50,7 @@ const schema = new mongoose.Schema<IUser, {}, IUserMethods>(
       minlength: [8, "Password must be at least 8 characters"],
       select: false,
     },
-    passwordConfirm: {
+    confirmPassword: {
       type: String,
       required: [true, "Please confirm your password"],
       validate: {
@@ -65,6 +84,7 @@ const schema = new mongoose.Schema<IUser, {}, IUserMethods>(
     toObject: {
       virtuals: true,
     },
+    timestamps: true,
   },
 );
 
@@ -78,7 +98,7 @@ schema.pre("save", async function (next) {
   if (!this.isModified("password")) return next();
 
   this.password = await bcrypt.hash(this.password as string, 12);
-  this.passwordConfirm = undefined;
+  this.confirmPassword = undefined;
 
   next();
 });
@@ -96,7 +116,7 @@ schema.pre<Query<any, Document>>(/^find/, function (next) {
 });
 
 schema.method(
-  "isPasswordCorrect",
+  "comparePasswords",
   async function (candidatePassword: string, userPassword: string) {
     return await bcrypt.compare(candidatePassword, userPassword);
   },
@@ -125,4 +145,4 @@ schema.method("createResetPasswordToken", function () {
   return resetToken;
 });
 
-export default mongoose.model("User", schema);
+export default mongoose.model<UserDocument>("User", schema);

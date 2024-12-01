@@ -1,4 +1,5 @@
 import nodemailer from "nodemailer";
+import { email_host, email_password, email_username } from "../constants/env";
 
 export default async (options: {
   from: string;
@@ -8,10 +9,10 @@ export default async (options: {
   html?: string;
 }) => {
   const transporter = nodemailer.createTransport({
-    host: process.env.EMAIL_HOST,
+    host: email_host,
     auth: {
-      user: process.env.EMAIL_USERNAME,
-      pass: process.env.EMAIL_PASSWORD,
+      user: email_username,
+      pass: email_password,
     },
   });
 

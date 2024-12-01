@@ -3,20 +3,22 @@ import morgan from "morgan";
 import taskRouter from "./router/task.router";
 import templateRouter from "./router/template.router";
 import AppError from "./utils/app-error";
-import globalErrorHandler from "./controller/error.controller";
+import { errorHandler } from "./middleware/error-handler";
 import authRouter from "./router/auth.router";
 import userRouter from "./router/user.router";
 import rateLimit from "express-rate-limit";
 import helmet from "helmet";
 import mongoSanitize from "express-mongo-sanitize";
 import hpp from "hpp";
+import cors from "cors";
+import { client_dev_origin } from "./constants/env";
+import cookieParser from "cookie-parser";
 
 const app = express();
 
 app.use(helmet());
 app.use(mongoSanitize());
 app.use(hpp());
-
 app.use(morgan("dev"));
 
 const limiter = rateLimit({
@@ -33,6 +35,17 @@ app.use(
   }),
 );
 
+app.use(express.urlencoded({ extended: true }));
+
+app.use(
+  cors({
+    origin: client_dev_origin,
+    credentials: true,
+  }),
+);
+
+app.use(cookieParser());
+
 app.use("/api/v1/tasks", taskRouter);
 app.use("/api/v1/templates", templateRouter);
 app.use("/api/v1/auth", authRouter);
@@ -42,6 +55,6 @@ app.all("*", (req: Request, res: Response, next: NextFunction) =>
   next(new AppError(`${req.originalUrl} not found`, 404)),
 );
 
-app.use(globalErrorHandler);
+app.use(errorHandler);
 
 export default app;

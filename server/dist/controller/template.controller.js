@@ -15,9 +15,9 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.createTemplate = exports.getTemplate = exports.getTemplates = void 0;
 const template_model_1 = __importDefault(require("../model/template.model"));
 const api_features_1 = __importDefault(require("../utils/api-features"));
-const catch_async_1 = __importDefault(require("../utils/catch-async"));
+const catch_errors_1 = __importDefault(require("../utils/catch-errors"));
 const app_error_1 = __importDefault(require("../utils/app-error"));
-const getTemplates = (0, catch_async_1.default)((req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
+const getTemplates = (0, catch_errors_1.default)((req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     const features = new api_features_1.default(template_model_1.default.find(), req.query)
         .filter()
         .sort()
@@ -32,7 +32,7 @@ const getTemplates = (0, catch_async_1.default)((req, res, next) => __awaiter(vo
     });
 }));
 exports.getTemplates = getTemplates;
-const getTemplate = (0, catch_async_1.default)((req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
+const getTemplate = (0, catch_errors_1.default)((req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     const template = yield template_model_1.default.findById(req.params.id);
     if (!template) {
         return next(new app_error_1.default(`No task found with the id ${req.params.id}`, 404));
@@ -45,7 +45,7 @@ const getTemplate = (0, catch_async_1.default)((req, res, next) => __awaiter(voi
     });
 }));
 exports.getTemplate = getTemplate;
-const createTemplate = (0, catch_async_1.default)((req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
+const createTemplate = (0, catch_errors_1.default)((req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     const template = yield template_model_1.default.create({
         name: req.body.name,
         description: req.body.description,

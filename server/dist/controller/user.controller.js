@@ -13,7 +13,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.client_deleteAccount = exports.client_updateUser = exports.getUser = exports.getAllUsers = void 0;
-const catch_async_1 = __importDefault(require("../utils/catch-async"));
+const catch_errors_1 = __importDefault(require("../utils/catch-errors"));
 const user_model_1 = __importDefault(require("../model/user.model"));
 const app_error_1 = __importDefault(require("../utils/app-error"));
 const constants_1 = require("../utils/constants");
@@ -25,7 +25,7 @@ const filterObj = (obj, keys) => {
     });
     return newObj;
 };
-exports.getAllUsers = (0, catch_async_1.default)((req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
+exports.getAllUsers = (0, catch_errors_1.default)((req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     const users = yield user_model_1.default.find();
     res.status(200).json({
         status: "success",
@@ -35,7 +35,7 @@ exports.getAllUsers = (0, catch_async_1.default)((req, res, next) => __awaiter(v
         },
     });
 }));
-exports.getUser = (0, catch_async_1.default)((req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
+exports.getUser = (0, catch_errors_1.default)((req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     const user = yield user_model_1.default.findById(req.params.id).populate("tasks");
     if (!user)
         return next(new app_error_1.default("No user found by this id", 404));
@@ -46,7 +46,7 @@ exports.getUser = (0, catch_async_1.default)((req, res, next) => __awaiter(void 
         },
     });
 }));
-exports.client_updateUser = (0, catch_async_1.default)((req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
+exports.client_updateUser = (0, catch_errors_1.default)((req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     if (req.body.password || req.body.passwordConfirm)
         return next(new app_error_1.default(`Password cannot be updated here. Use ${constants_1.updatePasswordRoute}`, 400));
     const id = req.user.id;
@@ -75,7 +75,7 @@ exports.client_updateUser = (0, catch_async_1.default)((req, res, next) => __awa
         },
     });
 }));
-exports.client_deleteAccount = (0, catch_async_1.default)((req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
+exports.client_deleteAccount = (0, catch_errors_1.default)((req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     yield user_model_1.default.findByIdAndUpdate(req.user.id, {
         isActive: false,
     });

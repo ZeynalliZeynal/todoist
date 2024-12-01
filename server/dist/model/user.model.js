@@ -17,13 +17,6 @@ const validator_1 = __importDefault(require("validator"));
 const bcryptjs_1 = __importDefault(require("bcryptjs"));
 const crypto_1 = __importDefault(require("crypto"));
 const schema = new mongoose_1.default.Schema({
-    createdAt: {
-        type: Date,
-        default: Date.now,
-    },
-    updatedAt: {
-        type: Date,
-    },
     name: {
         type: String,
         trim: true,
@@ -43,7 +36,7 @@ const schema = new mongoose_1.default.Schema({
         minlength: [8, "Password must be at least 8 characters"],
         select: false,
     },
-    passwordConfirm: {
+    confirmPassword: {
         type: String,
         required: [true, "Please confirm your password"],
         validate: {
@@ -76,6 +69,7 @@ const schema = new mongoose_1.default.Schema({
     toObject: {
         virtuals: true,
     },
+    timestamps: true,
 });
 schema.virtual("tasks", {
     ref: "Task",
@@ -87,7 +81,7 @@ schema.pre("save", function (next) {
         if (!this.isModified("password"))
             return next();
         this.password = yield bcryptjs_1.default.hash(this.password, 12);
-        this.passwordConfirm = undefined;
+        this.confirmPassword = undefined;
         next();
     });
 });
@@ -101,7 +95,7 @@ schema.pre(/^find/, function (next) {
     this.find({ active: { $ne: false } });
     next();
 });
-schema.method("isPasswordCorrect", function (candidatePassword, userPassword) {
+schema.method("comparePasswords", function (candidatePassword, userPassword) {
     return __awaiter(this, void 0, void 0, function* () {
         return yield bcryptjs_1.default.compare(candidatePassword, userPassword);
     });

@@ -1,7 +1,7 @@
 import ApiFeatures from "../utils/api-features";
 import Task from "../model/task.model";
 import { NextFunction, Request, Response } from "express";
-import catchAsync from "../utils/catch-async";
+import catchAsync from "../utils/catch-errors";
 import AppError from "../utils/app-error";
 
 const getTasks = catchAsync(

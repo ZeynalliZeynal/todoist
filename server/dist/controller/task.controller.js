@@ -15,9 +15,9 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.deleteTask = exports.getTask = exports.getTasks = exports.clearTasks = exports.updateTask = exports.createTask = void 0;
 const api_features_1 = __importDefault(require("../utils/api-features"));
 const task_model_1 = __importDefault(require("../model/task.model"));
-const catch_async_1 = __importDefault(require("../utils/catch-async"));
+const catch_errors_1 = __importDefault(require("../utils/catch-errors"));
 const app_error_1 = __importDefault(require("../utils/app-error"));
-const getTasks = (0, catch_async_1.default)((req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
+const getTasks = (0, catch_errors_1.default)((req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     const features = new api_features_1.default(task_model_1.default.find({
         user: req.user.id,
     }), req.query)
@@ -34,7 +34,7 @@ const getTasks = (0, catch_async_1.default)((req, res, next) => __awaiter(void 0
     });
 }));
 exports.getTasks = getTasks;
-const getTask = (0, catch_async_1.default)((req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
+const getTask = (0, catch_errors_1.default)((req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     const task = yield task_model_1.default.findOne({
         user: req.user,
         _id: req.params.id,
@@ -50,7 +50,7 @@ const getTask = (0, catch_async_1.default)((req, res, next) => __awaiter(void 0,
     });
 }));
 exports.getTask = getTask;
-const createTask = (0, catch_async_1.default)((req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
+const createTask = (0, catch_errors_1.default)((req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     const task = yield task_model_1.default.create({
         name: req.body.name,
         description: req.body.description,
@@ -68,7 +68,7 @@ const createTask = (0, catch_async_1.default)((req, res, next) => __awaiter(void
     });
 }));
 exports.createTask = createTask;
-const updateTask = (0, catch_async_1.default)((req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
+const updateTask = (0, catch_errors_1.default)((req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     const { body } = req;
     const task = yield task_model_1.default.findByIdAndUpdate(req.params.id, Object.assign(Object.assign({}, body), { updatedAt: Date.now() }), {
         new: true,
@@ -85,7 +85,7 @@ const updateTask = (0, catch_async_1.default)((req, res, next) => __awaiter(void
     });
 }));
 exports.updateTask = updateTask;
-const deleteTask = (0, catch_async_1.default)((req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
+const deleteTask = (0, catch_errors_1.default)((req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     const task = yield task_model_1.default.findByIdAndDelete(req.params.id);
     if (!task) {
         return next(new app_error_1.default(`No task found with the id ${req.params.id}`, 404));
@@ -96,7 +96,7 @@ const deleteTask = (0, catch_async_1.default)((req, res, next) => __awaiter(void
     });
 }));
 exports.deleteTask = deleteTask;
-const clearTasks = (0, catch_async_1.default)((req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
+const clearTasks = (0, catch_errors_1.default)((req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     yield task_model_1.default.deleteMany();
     res.status(204).json({
         status: "success",
