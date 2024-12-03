@@ -13,11 +13,16 @@ import {
   jwt_secret,
   node_env,
 } from "../constants/env";
-import { loginSchema, signupSchema } from "../validator/auth.schema";
+import {
+  loginSchema,
+  signupSchema,
+  verificationCodeSchema,
+} from "../validator/auth.schema";
 import {
   createAccount,
   loginUser,
   refreshUserAccessToken,
+  verifyEmail,
 } from "../service/auth.service";
 import { StatusCodes } from "http-status-codes";
 import {
@@ -59,16 +64,6 @@ const createSendToken = (user: IUser, statusCode: number, res: Response) => {
     },
   });
 };
-// const verifyToken = (token: string, secret: string): Promise<JwtPayload> => {
-//   return new Promise((resolve, reject) => {
-//     jwt.verify(token, secret, (err, decoded) => {
-//       if (err) {
-//         return reject(err);
-//       }
-//       resolve(decoded as JwtPayload);
-//     });
-//   });
-// };
 
 export const signup = catchErrors(async (req, res, next) => {
   const request = signupSchema.parse({
@@ -91,40 +86,46 @@ export const signup = catchErrors(async (req, res, next) => {
     });
 });
 
-export const login = catchErrors(
-  async (req: Request, res: Response, next: NextFunction) => {
-    const request = loginSchema.parse({
-      ...req.body,
-      userAgent: req.headers["user-agent"],
-    });
+export const login = catchErrors(async (req, res, next) => {
+  const request = loginSchema.parse({
+    ...req.body,
+    userAgent: req.headers["user-agent"],
+  });
 
-    const { accessToken, refreshToken } = await loginUser(request);
+  const { accessToken, refreshToken } = await loginUser(request);
 
-    return setAuthCookies({ res, refreshToken, accessToken })
-      .status(StatusCodes.OK)
-      .json({
-        status: "success",
-        message: "Login successful",
-      });
-  },
-);
-
-export const logout = catchErrors(
-  async (req: Request, res: Response, next: NextFunction) => {
-    const accessToken = req.cookies.accessToken;
-    const { payload } = verifyToken(accessToken);
-
-    if (payload) await Session.findByIdAndDelete(payload.sessionId);
-
-    return clearAuthCookies(res).status(StatusCodes.OK).json({
+  return setAuthCookies({ res, refreshToken, accessToken })
+    .status(StatusCodes.OK)
+    .json({
       status: "success",
-      message: "Logout successful",
+      message: "Login successful",
     });
-  },
-);
+});
+
+export const logout = catchErrors(async (req, res, next) => {
+  const accessToken = req.cookies.accessToken;
+  const { payload } = verifyToken(accessToken);
+
+  if (payload) await Session.findByIdAndDelete(payload.sessionId);
+
+  return clearAuthCookies(res).status(StatusCodes.OK).json({
+    status: "success",
+    message: "Logout successful",
+  });
+});
+
+export const verifyEmailController = catchErrors(async (req, res, next) => {
+  const verificationCode = verificationCodeSchema.parse(req.params.code);
+
+  await verifyEmail(verificationCode);
+
+  return res.status(StatusCodes.OK).json({
+    message: "Email was successfully verified",
+  });
+});
 
 export const verifyAuth = catchAsync(
-  async (req: Request, res: Response, next: NextFunction) => {
+  async (req: Request, res: Response, next) => {
     const token = req.cookies.accessToken;
 
     if (!token)
@@ -144,6 +145,11 @@ export const verifyAuth = catchAsync(
           "Token is no longer belong to this user. Please log in again",
           StatusCodes.UNAUTHORIZED,
         ),
+      );
+
+    if (!currentUser.isVerified())
+      return next(
+        new AppError("Please verify your email", StatusCodes.UNAUTHORIZED),
       );
 
     if (currentUser.isPasswordChangedAfter(payload.iat))

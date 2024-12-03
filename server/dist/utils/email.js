@@ -12,6 +12,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.sendMail = void 0;
 const nodemailer_1 = __importDefault(require("nodemailer"));
 const env_1 = require("../constants/env");
 exports.default = (options) => __awaiter(void 0, void 0, void 0, function* () {
@@ -31,3 +32,22 @@ exports.default = (options) => __awaiter(void 0, void 0, void 0, function* () {
     };
     yield transporter.sendMail(mailOptions);
 });
+const sendMail = (_a) => __awaiter(void 0, [_a], void 0, function* ({ subject, text, to, html }) {
+    const transporter = nodemailer_1.default.createTransport({
+        host: "smtp-relay.brevo.com",
+        port: 587,
+        secure: false,
+        auth: {
+            user: "7a9d8a001@smtp-brevo.com",
+            pass: env_1.brevo_api_key,
+        },
+    });
+    yield transporter.sendMail({
+        from: env_1.email_sender,
+        to: [...to],
+        subject,
+        text,
+        html,
+    });
+});
+exports.sendMail = sendMail;

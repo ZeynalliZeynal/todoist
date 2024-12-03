@@ -12,7 +12,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.resetPassword = exports.forgotPassword = exports.updatePassword = exports.authorizeTo = exports.refreshToken = exports.verifyAuth = exports.logout = exports.login = exports.signup = void 0;
+exports.resetPassword = exports.forgotPassword = exports.updatePassword = exports.authorizeTo = exports.refreshToken = exports.verifyAuth = exports.verifyEmailController = exports.logout = exports.login = exports.signup = void 0;
 const user_model_1 = __importDefault(require("../model/user.model"));
 const catch_errors_1 = __importDefault(require("../utils/catch-errors"));
 const catch_errors_2 = __importDefault(require("../utils/catch-errors"));
@@ -51,16 +51,6 @@ const createSendToken = (user, statusCode, res) => {
         },
     });
 };
-// const verifyToken = (token: string, secret: string): Promise<JwtPayload> => {
-//   return new Promise((resolve, reject) => {
-//     jwt.verify(token, secret, (err, decoded) => {
-//       if (err) {
-//         return reject(err);
-//       }
-//       resolve(decoded as JwtPayload);
-//     });
-//   });
-// };
 exports.signup = (0, catch_errors_2.default)((req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     const request = auth_schema_1.signupSchema.parse(Object.assign(Object.assign({}, req.body), { userAgent: req.headers["user-agent"] }));
     const { refreshToken, accessToken, user } = yield (0, auth_service_1.createAccount)(request);
@@ -96,6 +86,13 @@ exports.logout = (0, catch_errors_2.default)((req, res, next) => __awaiter(void 
         message: "Logout successful",
     });
 }));
+exports.verifyEmailController = (0, catch_errors_2.default)((req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
+    const verificationCode = auth_schema_1.verificationCodeSchema.parse(req.params.code);
+    yield (0, auth_service_1.verifyEmail)(verificationCode);
+    return res.status(http_status_codes_1.StatusCodes.OK).json({
+        message: "Email was successfully verified",
+    });
+}));
 exports.verifyAuth = (0, catch_errors_1.default)((req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     const token = req.cookies.accessToken;
     if (!token)
@@ -106,6 +103,8 @@ exports.verifyAuth = (0, catch_errors_1.default)((req, res, next) => __awaiter(v
     const currentUser = yield user_model_1.default.findById(payload.userId).select("+role -__v");
     if (!currentUser)
         return next(new app_error_1.default("Token is no longer belong to this user. Please log in again", http_status_codes_1.StatusCodes.UNAUTHORIZED));
+    if (!currentUser.isVerified())
+        return next(new app_error_1.default("Please verify your email", http_status_codes_1.StatusCodes.UNAUTHORIZED));
     if (currentUser.isPasswordChangedAfter(payload.iat))
         return next(new app_error_1.default("Password recently changed. Please log in again", http_status_codes_1.StatusCodes.UNAUTHORIZED));
     req.user = currentUser;

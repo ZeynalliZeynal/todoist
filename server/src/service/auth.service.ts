@@ -1,5 +1,9 @@
 import User from "../model/user.model";
-import { admin_email, jwt_refresh_secret } from "../constants/env";
+import {
+  admin_email,
+  client_dev_origin,
+  jwt_refresh_secret,
+} from "../constants/env";
 import VerificationCode from "../model/verification.model";
 import VerificationCodeType from "../constants/verificationCodeType";
 import { one_day_ms, oneYearFromNow, thirtyDaysFromNow } from "../utils/date";
@@ -13,6 +17,8 @@ import {
   verifyToken,
 } from "../utils/jwt";
 import AppError from "../utils/app-error";
+import { sendMail } from "../utils/email";
+import { verifyEmailTemplate } from "../utils/email-templates";
 
 export interface CreateAccountParams {
   name: string;
@@ -52,6 +58,20 @@ export const createAccount = async (data: CreateAccountParams) => {
     expiresAt: oneYearFromNow(),
   });
 
+  // send verification email
+  const url = `${client_dev_origin}/auth/email/verify/${verificationCode._id}`;
+  try {
+    await sendMail({
+      to: [user.email],
+      ...verifyEmailTemplate(url),
+    });
+  } catch (err) {
+    throw new AppError(
+      "Error occurred sending an email",
+      StatusCodes.INTERNAL_SERVER_ERROR,
+    );
+  }
+
   // create session
   const session = await Session.create({
     userId: user.id,
@@ -83,7 +103,7 @@ export const loginUser = async ({
 }: LoginParams) => {
   // get user by email
   const user = await User.findOne({ email }).select("+password");
-  appAssert(user, "Invalid email or password", StatusCodes.UNAUTHORIZED);
+  appAssert(user, "Email or password is incorrect", StatusCodes.UNAUTHORIZED);
 
   // validate password
   const isPasswordValid = await user!.comparePasswords(
@@ -159,5 +179,36 @@ export const refreshUserAccessToken = async (token: string) => {
   return {
     accessToken,
     newRefreshToken,
+  };
+};
+
+export const verifyEmail = async (code: string) => {
+  const validCode = await VerificationCode.findOne({
+    _id: code,
+    type: VerificationCodeType.EmailVerification,
+    expiresAt: { $gte: new Date() },
+  });
+
+  if (!validCode)
+    throw new AppError(
+      "Invalid or expired verification code",
+      StatusCodes.NOT_FOUND,
+    );
+
+  const updatedUser = await User.findByIdAndUpdate(
+    validCode.userId,
+    {
+      verified: true,
+    },
+    { new: true },
+  );
+
+  if (!updatedUser)
+    throw new AppError("User not found", StatusCodes.UNAUTHORIZED);
+
+  await validCode.deleteOne();
+
+  return {
+    user: updatedUser,
   };
 };

@@ -47,6 +47,8 @@ const schema = new mongoose_1.default.Schema({
             message: "Passwords must match",
         },
     },
+    verifiedAt: Date,
+    verified: Boolean,
     passwordChangedAt: Date,
     role: {
         type: String,
@@ -115,5 +117,8 @@ schema.method("createResetPasswordToken", function () {
         .digest("hex");
     this.resetPasswordExpires = Date.now() + 10 * 60 * 1000;
     return resetToken;
+});
+schema.method("isVerified", function () {
+    return this.verified;
 });
 exports.default = mongoose_1.default.model("User", schema);

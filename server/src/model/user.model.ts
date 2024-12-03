@@ -18,6 +18,8 @@ export interface UserDocument extends mongoose.Document {
   resetPasswordToken?: string;
   resetPasswordExpires?: number;
   isActive: boolean;
+  verifiedAt?: Date;
+  verified?: boolean;
 
   comparePasswords(
     candidatePassword: string,
@@ -27,6 +29,8 @@ export interface UserDocument extends mongoose.Document {
   isPasswordChangedAfter(JWTTimestamp?: number): boolean;
 
   createResetPasswordToken(): string;
+
+  isVerified(): boolean;
 }
 
 const schema = new mongoose.Schema<UserDocument>(
@@ -61,6 +65,8 @@ const schema = new mongoose.Schema<UserDocument>(
         message: "Passwords must match",
       },
     },
+    verifiedAt: Date,
+    verified: Boolean,
     passwordChangedAt: Date,
     role: {
       type: String,
@@ -143,6 +149,10 @@ schema.method("createResetPasswordToken", function () {
   this.resetPasswordExpires = Date.now() + 10 * 60 * 1000;
 
   return resetToken;
+});
+
+schema.method("isVerified", function () {
+  return this.verified;
 });
 
 export default mongoose.model<UserDocument>("User", schema);

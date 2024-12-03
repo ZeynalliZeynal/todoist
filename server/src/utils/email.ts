@@ -1,5 +1,11 @@
 import nodemailer from "nodemailer";
-import { email_host, email_password, email_username } from "../constants/env";
+import {
+  brevo_api_key,
+  email_host,
+  email_password,
+  email_sender,
+  email_username,
+} from "../constants/env";
 
 export default async (options: {
   from: string;
@@ -25,4 +31,31 @@ export default async (options: {
   };
 
   await transporter.sendMail(mailOptions);
+};
+
+interface SendMailParams {
+  to: [string];
+  subject: string;
+  text: string;
+  html: string;
+}
+
+export const sendMail = async ({ subject, text, to, html }: SendMailParams) => {
+  const transporter = nodemailer.createTransport({
+    host: "smtp-relay.brevo.com",
+    port: 587,
+    secure: false,
+    auth: {
+      user: "7a9d8a001@smtp-brevo.com",
+      pass: brevo_api_key,
+    },
+  });
+
+  await transporter.sendMail({
+    from: email_sender,
+    to: [...to],
+    subject,
+    text,
+    html,
+  });
 };

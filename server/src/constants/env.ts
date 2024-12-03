@@ -14,6 +14,8 @@ export const port = getEnv("PORT", 8080);
 export const email_host = getEnv("EMAIL_HOST");
 export const email_username = getEnv("EMAIL_USERNAME");
 export const email_password = getEnv("EMAIL_PASSWORD");
+export const email_sender = getEnv("EMAIL_SENDER");
+export const brevo_api_key = getEnv("BREVO_API_KEY");
 
 export const database_uri = getEnv("DATABASE_URI");
 export const database_password = getEnv("DATABASE_PASSWORD");
