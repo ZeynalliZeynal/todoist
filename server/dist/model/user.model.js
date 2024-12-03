@@ -16,6 +16,7 @@ const mongoose_1 = __importDefault(require("mongoose"));
 const validator_1 = __importDefault(require("validator"));
 const bcryptjs_1 = __importDefault(require("bcryptjs"));
 const crypto_1 = __importDefault(require("crypto"));
+const date_fns_1 = require("date-fns");
 const schema = new mongoose_1.default.Schema({
     name: {
         type: String,
@@ -47,8 +48,6 @@ const schema = new mongoose_1.default.Schema({
             message: "Passwords must match",
         },
     },
-    verifiedAt: Date,
-    verified: Boolean,
     passwordChangedAt: Date,
     role: {
         type: String,
@@ -59,6 +58,9 @@ const schema = new mongoose_1.default.Schema({
     photo: String,
     resetPasswordToken: String,
     resetPasswordExpires: Date,
+    verifiedAt: Date,
+    verified: Boolean,
+    verificationToken: String,
     isActive: {
         type: Boolean,
         default: true,
@@ -115,8 +117,16 @@ schema.method("createResetPasswordToken", function () {
         .createHash("sha256")
         .update(resetToken)
         .digest("hex");
-    this.resetPasswordExpires = Date.now() + 10 * 60 * 1000;
+    this.resetPasswordExpires = (0, date_fns_1.addMinutes)(Date.now(), 5).getTime();
     return resetToken;
+});
+schema.method("createVerificationToken", function () {
+    const verificationToken = crypto_1.default.randomBytes(32).toString("hex");
+    this.resetPasswordToken = crypto_1.default
+        .createHash("sha256")
+        .update(verificationToken)
+        .digest("hex");
+    return verificationToken;
 });
 schema.method("isVerified", function () {
     return this.verified;

@@ -15,8 +15,6 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.verifyEmail = exports.refreshUserAccessToken = exports.loginUser = exports.createAccount = void 0;
 const user_model_1 = __importDefault(require("../model/user.model"));
 const env_1 = require("../constants/env");
-const verification_model_1 = __importDefault(require("../model/verification.model"));
-const date_1 = require("../utils/date");
 const session_model_1 = __importDefault(require("../model/session.model"));
 const app_assert_1 = __importDefault(require("../utils/app-assert"));
 const http_status_codes_1 = require("http-status-codes");
@@ -24,6 +22,8 @@ const jwt_1 = require("../utils/jwt");
 const app_error_1 = __importDefault(require("../utils/app-error"));
 const email_1 = require("../utils/email");
 const email_templates_1 = require("../utils/email-templates");
+const date_fns_1 = require("date-fns");
+const jsonwebtoken_1 = __importDefault(require("jsonwebtoken"));
 const createAccount = (data) => __awaiter(void 0, void 0, void 0, function* () {
     //   verify that user doesn't exist
     const existingUser = yield user_model_1.default.exists({
@@ -39,13 +39,11 @@ const createAccount = (data) => __awaiter(void 0, void 0, void 0, function* () {
         role: env_1.admin_email === data.email ? "admin" : "user",
     });
     // create verification code
-    const verificationCode = yield verification_model_1.default.create({
-        userId: user.id,
-        type: "email_verification" /* VerificationCodeType.EmailVerification */,
-        expiresAt: (0, date_1.oneYearFromNow)(),
+    const verificationToken = jsonwebtoken_1.default.sign({ userId: user._id }, env_1.jwt_verify_secret, {
+        expiresIn: env_1.jwt_verify_expires_in,
     });
     // send verification email
-    const url = `${env_1.client_dev_origin}/auth/email/verify/${verificationCode._id}`;
+    const url = `${env_1.client_dev_origin}/auth/email/verify/${verificationToken}`;
     try {
         yield (0, email_1.sendMail)(Object.assign({ to: [user.email] }, (0, email_templates_1.verifyEmailTemplate)(url)));
     }
@@ -105,9 +103,9 @@ const refreshUserAccessToken = (token) => __awaiter(void 0, void 0, void 0, func
     const session = yield session_model_1.default.findById(payload.sessionId);
     if (!session && session.expiresAt.getTime() > Date.now())
         throw new app_error_1.default("Session expired", http_status_codes_1.StatusCodes.UNAUTHORIZED);
-    const sessionNeedsRefresh = session.expiresAt.getTime() - Date.now() <= date_1.one_day_ms;
+    const sessionNeedsRefresh = session.expiresAt.getTime() - Date.now() <= 24 * 60 * 60 * 1000;
     if (sessionNeedsRefresh) {
-        session.expiresAt = (0, date_1.thirtyDaysFromNow)();
+        session.expiresAt = (0, date_fns_1.addDays)(new Date(), 30);
         yield session.save();
     }
     const newRefreshToken = sessionNeedsRefresh
@@ -125,20 +123,16 @@ const refreshUserAccessToken = (token) => __awaiter(void 0, void 0, void 0, func
     };
 });
 exports.refreshUserAccessToken = refreshUserAccessToken;
-const verifyEmail = (code) => __awaiter(void 0, void 0, void 0, function* () {
-    const validCode = yield verification_model_1.default.findOne({
-        _id: code,
-        type: "email_verification" /* VerificationCodeType.EmailVerification */,
-        expiresAt: { $gte: new Date() },
-    });
-    if (!validCode)
-        throw new app_error_1.default("Invalid or expired verification code", http_status_codes_1.StatusCodes.NOT_FOUND);
-    const updatedUser = yield user_model_1.default.findByIdAndUpdate(validCode.userId, {
+const verifyEmail = (token) => __awaiter(void 0, void 0, void 0, function* () {
+    const decoded = jsonwebtoken_1.default.verify(token, env_1.jwt_verify_secret);
+    const userId = decoded.userId;
+    const updatedUser = yield user_model_1.default.findByIdAndUpdate(userId, {
         verified: true,
     }, { new: true });
     if (!updatedUser)
         throw new app_error_1.default("User not found", http_status_codes_1.StatusCodes.UNAUTHORIZED);
-    yield validCode.deleteOne();
+    if (updatedUser.verified)
+        throw new app_error_1.default("You are already verified", http_status_codes_1.StatusCodes.BAD_REQUEST);
     return {
         user: updatedUser,
     };

@@ -2,7 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.clearAuthCookies = exports.setAuthCookies = exports.getRefreshTokenCookieOptions = exports.getAccessTokenCookieOptions = exports.refresh_path = void 0;
 const env_1 = require("../constants/env");
-const date_1 = require("./date");
+const date_fns_1 = require("date-fns");
 exports.refresh_path = "/api/v1/auth/refresh";
 const secure = env_1.node_env !== "development";
 const defaults = {
@@ -10,9 +10,9 @@ const defaults = {
     httpOnly: true,
     secure,
 };
-const getAccessTokenCookieOptions = () => (Object.assign(Object.assign({}, defaults), { expires: (0, date_1.fifteenMinutesFromNow)() }));
+const getAccessTokenCookieOptions = () => (Object.assign(Object.assign({}, defaults), { expires: (0, date_fns_1.addMinutes)(new Date(), 15) }));
 exports.getAccessTokenCookieOptions = getAccessTokenCookieOptions;
-const getRefreshTokenCookieOptions = () => (Object.assign(Object.assign({}, defaults), { expires: (0, date_1.thirtyDaysFromNow)(), path: exports.refresh_path }));
+const getRefreshTokenCookieOptions = () => (Object.assign(Object.assign({}, defaults), { expires: (0, date_fns_1.addDays)(new Date(), 30), path: exports.refresh_path }));
 exports.getRefreshTokenCookieOptions = getRefreshTokenCookieOptions;
 const setAuthCookies = ({ res, accessToken, refreshToken }) => res
     .cookie("accessToken", accessToken, (0, exports.getAccessTokenCookieOptions)())

@@ -17,7 +17,7 @@ router.post("/signup", signup);
 router.post("/login", login);
 router.post("/logout", logout);
 router.post("/refresh", refreshToken);
-router.post("/email/verify/:code", verifyEmailController);
+router.post("/email/verify/:token", verifyEmailController);
 router.post("/password/forgot", verifyAuth, forgotPassword);
 router.patch("/password/reset/:token", resetPassword);
 router.patch("/password/update", verifyAuth, updatePassword);

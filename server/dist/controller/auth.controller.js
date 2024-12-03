@@ -18,7 +18,6 @@ const catch_errors_1 = __importDefault(require("../utils/catch-errors"));
 const catch_errors_2 = __importDefault(require("../utils/catch-errors"));
 const jsonwebtoken_1 = __importDefault(require("jsonwebtoken"));
 const app_error_1 = __importDefault(require("../utils/app-error"));
-const email_1 = __importDefault(require("../utils/email"));
 const crypto_1 = __importDefault(require("crypto"));
 const env_1 = require("../constants/env");
 const auth_schema_1 = require("../validator/auth.schema");
@@ -28,6 +27,8 @@ const cookies_1 = require("../utils/cookies");
 const jwt_1 = require("../utils/jwt");
 const session_model_1 = __importDefault(require("../model/session.model"));
 const app_assert_1 = __importDefault(require("../utils/app-assert"));
+const email_templates_1 = require("../utils/email-templates");
+const email_1 = require("../utils/email");
 const signToken = (id) => jsonwebtoken_1.default.sign({ id }, env_1.jwt_secret, {
     expiresIn: env_1.jwt_expires_in,
 });
@@ -87,8 +88,7 @@ exports.logout = (0, catch_errors_2.default)((req, res, next) => __awaiter(void 
     });
 }));
 exports.verifyEmailController = (0, catch_errors_2.default)((req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
-    const verificationCode = auth_schema_1.verificationCodeSchema.parse(req.params.code);
-    yield (0, auth_service_1.verifyEmail)(verificationCode);
+    yield (0, auth_service_1.verifyEmail)(req.params.token);
     return res.status(http_status_codes_1.StatusCodes.OK).json({
         message: "Email was successfully verified",
     });
@@ -152,16 +152,10 @@ exports.forgotPassword = (0, catch_errors_1.default)((req, res, next) => __await
     yield user.save({
         validateBeforeSave: false,
     });
-    const resetURL = `${req.protocol}://${req.get("host")}/api/v1/auth/reset-password/${resetToken}`;
-    const message = `Reset your password by sending a PATCH request with your new password to ${resetURL}.`;
+    const url = `${req.protocol}://${req.get("host")}/api/v1/auth/password/reset/${resetToken}`;
     try {
-        yield (0, email_1.default)({
-            email: user.email,
-            subject: "Your password reset token valid for 10 mins",
-            from: "TodoistNEXT <todoist@next.app>",
-            message,
-        });
-        res.status(200).json({
+        yield (0, email_1.sendMail)(Object.assign({ to: [user.email] }, (0, email_templates_1.verifyEmailTemplate)(url)));
+        res.status(http_status_codes_1.StatusCodes.OK).json({
             status: "success",
             message: "Check your email.",
         });

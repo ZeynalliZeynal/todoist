@@ -3,10 +3,9 @@ import {
   admin_email,
   client_dev_origin,
   jwt_refresh_secret,
+  jwt_verify_expires_in,
+  jwt_verify_secret,
 } from "../constants/env";
-import VerificationCode from "../model/verification.model";
-import VerificationCodeType from "../constants/verificationCodeType";
-import { one_day_ms, oneYearFromNow, thirtyDaysFromNow } from "../utils/date";
 import Session from "../model/session.model";
 import appAssert from "../utils/app-assert";
 import { StatusCodes } from "http-status-codes";
@@ -19,6 +18,9 @@ import {
 import AppError from "../utils/app-error";
 import { sendMail } from "../utils/email";
 import { verifyEmailTemplate } from "../utils/email-templates";
+import { addDays } from "date-fns";
+import jwt, { JwtPayload } from "jsonwebtoken";
+import mongoose from "mongoose";
 
 export interface CreateAccountParams {
   name: string;
@@ -52,14 +54,12 @@ export const createAccount = async (data: CreateAccountParams) => {
   });
 
   // create verification code
-  const verificationCode = await VerificationCode.create({
-    userId: user.id,
-    type: VerificationCodeType.EmailVerification,
-    expiresAt: oneYearFromNow(),
+  const verificationToken = jwt.sign({ userId: user._id }, jwt_verify_secret, {
+    expiresIn: jwt_verify_expires_in,
   });
 
   // send verification email
-  const url = `${client_dev_origin}/auth/email/verify/${verificationCode._id}`;
+  const url = `${client_dev_origin}/auth/email/verify/${verificationToken}`;
   try {
     await sendMail({
       to: [user.email],
@@ -155,10 +155,10 @@ export const refreshUserAccessToken = async (token: string) => {
     throw new AppError("Session expired", StatusCodes.UNAUTHORIZED);
 
   const sessionNeedsRefresh =
-    session!.expiresAt.getTime() - Date.now() <= one_day_ms;
+    session!.expiresAt.getTime() - Date.now() <= 24 * 60 * 60 * 1000;
 
   if (sessionNeedsRefresh) {
-    session!.expiresAt = thirtyDaysFromNow();
+    session!.expiresAt = addDays(new Date(), 30);
     await session!.save();
   }
 
@@ -182,21 +182,17 @@ export const refreshUserAccessToken = async (token: string) => {
   };
 };
 
-export const verifyEmail = async (code: string) => {
-  const validCode = await VerificationCode.findOne({
-    _id: code,
-    type: VerificationCodeType.EmailVerification,
-    expiresAt: { $gte: new Date() },
-  });
+export const verifyEmail = async (token: string) => {
+  const decoded = jwt.verify(token, jwt_verify_secret);
 
-  if (!validCode)
-    throw new AppError(
-      "Invalid or expired verification code",
-      StatusCodes.NOT_FOUND,
-    );
+  const userId = (
+    decoded as JwtPayload & {
+      userId: mongoose.Types.ObjectId;
+    }
+  ).userId;
 
   const updatedUser = await User.findByIdAndUpdate(
-    validCode.userId,
+    userId,
     {
       verified: true,
     },
@@ -206,7 +202,8 @@ export const verifyEmail = async (code: string) => {
   if (!updatedUser)
     throw new AppError("User not found", StatusCodes.UNAUTHORIZED);
 
-  await validCode.deleteOne();
+  if (updatedUser.verified)
+    throw new AppError("You are already verified", StatusCodes.BAD_REQUEST);
 
   return {
     user: updatedUser,

@@ -5,7 +5,6 @@ import catchErrors from "../utils/catch-errors";
 import jwt from "jsonwebtoken";
 import AppError from "../utils/app-error";
 import { ObjectId } from "mongodb";
-import sendMail from "../utils/email";
 import crypto from "crypto";
 import {
   jwt_cookie_expires_in,
@@ -13,11 +12,7 @@ import {
   jwt_secret,
   node_env,
 } from "../constants/env";
-import {
-  loginSchema,
-  signupSchema,
-  verificationCodeSchema,
-} from "../validator/auth.schema";
+import { loginSchema, signupSchema } from "../validator/auth.schema";
 import {
   createAccount,
   loginUser,
@@ -34,6 +29,8 @@ import {
 import { verifyToken } from "../utils/jwt";
 import Session from "../model/session.model";
 import appAssert from "../utils/app-assert";
+import { verifyEmailTemplate } from "../utils/email-templates";
+import { sendMail } from "../utils/email";
 
 const signToken = (id: ObjectId) =>
   jwt.sign({ id }, jwt_secret, {
@@ -115,9 +112,7 @@ export const logout = catchErrors(async (req, res, next) => {
 });
 
 export const verifyEmailController = catchErrors(async (req, res, next) => {
-  const verificationCode = verificationCodeSchema.parse(req.params.code);
-
-  await verifyEmail(verificationCode);
+  await verifyEmail(req.params.token);
 
   return res.status(StatusCodes.OK).json({
     message: "Email was successfully verified",
@@ -231,17 +226,14 @@ export const forgotPassword = catchAsync(
     await user.save({
       validateBeforeSave: false,
     });
-    const resetURL = `${req.protocol}://${req.get("host")}/api/v1/auth/reset-password/${resetToken}`;
-    const message = `Reset your password by sending a PATCH request with your new password to ${resetURL}.`;
+    const url = `${req.protocol}://${req.get("host")}/api/v1/auth/password/reset/${resetToken}`;
 
     try {
       await sendMail({
-        email: user.email,
-        subject: "Your password reset token valid for 10 mins",
-        from: "TodoistNEXT <todoist@next.app>",
-        message,
+        to: [user.email],
+        ...verifyEmailTemplate(url),
       });
-      res.status(200).json({
+      res.status(StatusCodes.OK).json({
         status: "success",
         message: "Check your email.",
       });

@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-import { thirtyDaysFromNow } from "../utils/date";
+import { addDays } from "date-fns";
 
 export interface SessionDocument extends mongoose.Document {
   userId: mongoose.Types.ObjectId;
@@ -20,7 +20,7 @@ const schema = new mongoose.Schema<SessionDocument>(
     },
     expiresAt: {
       type: Date,
-      default: thirtyDaysFromNow,
+      default: addDays(new Date(), 30),
     },
   },
   {

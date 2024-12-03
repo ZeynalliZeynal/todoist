@@ -43,6 +43,7 @@ type ErrorRequestHandler = (
   next: NextFunction,
 ) => void;
 export const errorHandler: ErrorRequestHandler = (err, req, res, next) => {
+  console.log(err);
   if (req.path === refresh_path) clearAuthCookies(res);
 
   if (err instanceof z.ZodError) {

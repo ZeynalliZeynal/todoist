@@ -4,7 +4,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const mongoose_1 = __importDefault(require("mongoose"));
-const date_1 = require("../utils/date");
+const date_fns_1 = require("date-fns");
 const schema = new mongoose_1.default.Schema({
     userId: {
         type: mongoose_1.default.Schema.Types.ObjectId,
@@ -17,7 +17,7 @@ const schema = new mongoose_1.default.Schema({
     },
     expiresAt: {
         type: Date,
-        default: date_1.thirtyDaysFromNow,
+        default: (0, date_fns_1.addDays)(new Date(), 30),
     },
 }, {
     timestamps: true,

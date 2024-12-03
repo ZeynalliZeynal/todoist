@@ -33,6 +33,7 @@ const handleDuplicateValueError = (res, error) => {
     });
 };
 const errorHandler = (err, req, res, next) => {
+    console.log(err);
     if (req.path === cookies_1.refresh_path)
         (0, cookies_1.clearAuthCookies)(res);
     if (err instanceof zod_1.z.ZodError) {

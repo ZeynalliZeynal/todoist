@@ -48,6 +48,7 @@ export const verifyToken = <TPayload extends object = AccessTokenPayload>(
   options?: VerifyOptions & { secret: string },
 ) => {
   const { secret = jwt_secret, ...verifyOptions } = options || {};
+  console.log(token, secret);
 
   try {
     const payload = jwt.verify(token, secret, {

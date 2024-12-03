@@ -3,6 +3,7 @@ import validator from "validator";
 import bcrypt from "bcryptjs";
 import crypto from "crypto";
 import { ObjectId } from "mongodb";
+import { addMinutes } from "date-fns";
 
 export interface UserDocument extends mongoose.Document {
   id: ObjectId;
@@ -20,6 +21,7 @@ export interface UserDocument extends mongoose.Document {
   isActive: boolean;
   verifiedAt?: Date;
   verified?: boolean;
+  verificationToken?: string;
 
   comparePasswords(
     candidatePassword: string,
@@ -29,6 +31,8 @@ export interface UserDocument extends mongoose.Document {
   isPasswordChangedAfter(JWTTimestamp?: number): boolean;
 
   createResetPasswordToken(): string;
+
+  createVerificationToken(): string;
 
   isVerified(): boolean;
 }
@@ -65,8 +69,6 @@ const schema = new mongoose.Schema<UserDocument>(
         message: "Passwords must match",
       },
     },
-    verifiedAt: Date,
-    verified: Boolean,
     passwordChangedAt: Date,
     role: {
       type: String,
@@ -77,6 +79,9 @@ const schema = new mongoose.Schema<UserDocument>(
     photo: String,
     resetPasswordToken: String,
     resetPasswordExpires: Date,
+    verifiedAt: Date,
+    verified: Boolean,
+    verificationToken: String,
     isActive: {
       type: Boolean,
       default: true,
@@ -146,9 +151,19 @@ schema.method("createResetPasswordToken", function () {
     .createHash("sha256")
     .update(resetToken)
     .digest("hex");
-  this.resetPasswordExpires = Date.now() + 10 * 60 * 1000;
+  this.resetPasswordExpires = addMinutes(Date.now(), 5).getTime();
 
   return resetToken;
+});
+
+schema.method("createVerificationToken", function () {
+  const verificationToken = crypto.randomBytes(32).toString("hex");
+  this.resetPasswordToken = crypto
+    .createHash("sha256")
+    .update(verificationToken)
+    .digest("hex");
+
+  return verificationToken;
 });
 
 schema.method("isVerified", function () {

@@ -10,7 +10,7 @@ router.post("/signup", auth_controller_1.signup);
 router.post("/login", auth_controller_1.login);
 router.post("/logout", auth_controller_1.logout);
 router.post("/refresh", auth_controller_1.refreshToken);
-router.post("/email/verify/:code", auth_controller_1.verifyEmailController);
+router.post("/email/verify/:token", auth_controller_1.verifyEmailController);
 router.post("/password/forgot", auth_controller_1.verifyAuth, auth_controller_1.forgotPassword);
 router.patch("/password/reset/:token", auth_controller_1.resetPassword);
 router.patch("/password/update", auth_controller_1.verifyAuth, auth_controller_1.updatePassword);

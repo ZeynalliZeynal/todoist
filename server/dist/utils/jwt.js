@@ -35,6 +35,7 @@ const signToken = (payload, options) => {
 exports.signToken = signToken;
 const verifyToken = (token, options) => {
     const _a = options || {}, { secret = env_1.jwt_secret } = _a, verifyOptions = __rest(_a, ["secret"]);
+    console.log(token, secret);
     try {
         const payload = jsonwebtoken_1.default.verify(token, secret, Object.assign(Object.assign({}, defaults), verifyOptions));
         return {
