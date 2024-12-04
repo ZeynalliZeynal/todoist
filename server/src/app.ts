@@ -13,6 +13,9 @@ import hpp from "hpp";
 import cors from "cors";
 import { client_dev_origin } from "./constants/env";
 import cookieParser from "cookie-parser";
+import { StatusCodes } from "http-status-codes";
+import profileRouter from "./router/profile.router";
+import sessionRouter from "./router/session.router";
 
 const app = express();
 
@@ -50,9 +53,11 @@ app.use("/api/v1/tasks", taskRouter);
 app.use("/api/v1/templates", templateRouter);
 app.use("/api/v1/auth", authRouter);
 app.use("/api/v1/users", userRouter);
+app.use("/api/v1/profile", profileRouter);
+app.use("/api/v1/profile/sessions", sessionRouter);
 
 app.all("*", (req: Request, res: Response, next: NextFunction) =>
-  next(new AppError(`${req.originalUrl} not found`, 404)),
+  next(new AppError(`${req.originalUrl} not found`, StatusCodes.NOT_FOUND)),
 );
 
 app.use(errorHandler);

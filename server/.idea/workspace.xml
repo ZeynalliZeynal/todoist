@@ -5,32 +5,65 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6c96583f-d9f9-4d65-90ea-d52df6356be6" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/constants/env.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/constants/env.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/controller/auth.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/controller/auth.controller.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/middleware/error-handler.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/middleware/error-handler.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/model/session.model.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/model/session.model.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/model/user.model.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/model/user.model.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/router/auth.router.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/router/auth.router.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/service/auth.service.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/service/auth.service.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/utils/cookies.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/utils/cookies.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/utils/date.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/utils/date.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/utils/email-templates.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/utils/email-templates.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/utils/jwt.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/utils/jwt.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pnpm-lock.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pnpm-lock.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/app.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/constants/env.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/constants/error-codes.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/constants/verificationCodeType.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/constants/verificationCodeTypes.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/controller/auth.controller.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/controller/auth.schema.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/controller/error.controller.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/controller/task.controller.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/controller/template.controller.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/controller/user.controller.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/definitions/auth.definition.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/lib/config.mongoose.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/lib/jwt.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/lib/mongo.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/lib/resend.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/middleware/error-handler.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/middleware/error.controller.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/middleware/errorHandler.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/model/session.model.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/model/task.model.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/model/template.model.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/model/user.model.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/model/verification.model.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/router/auth.router.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/router/task.router.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/router/template.router.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/router/user.router.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/service/auth.service.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/utils/api-features.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/utils/app-assert.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/utils/app-error.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/utils/catch-async.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/utils/catch-errors.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/utils/constants.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/utils/cookies.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/utils/date.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/utils/email-templates.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/utils/email.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/utils/jwt.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/utils/xss-clean.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/validator/auth.definition.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/validator/auth.schema.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/constants/env.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/constants/env.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/controller/auth.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/auth.controller.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/task.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/task.controller.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/user.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/user.controller.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/express.d.ts" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/middleware/error-handler.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/middleware/error-handler.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/session.model.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/session.model.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/user.model.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/user.model.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/router/auth.router.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/router/auth.router.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/router/task.router.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/router/task.router.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/router/user.router.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/router/user.router.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/service/auth.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/service/auth.service.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/utils/cookies.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/cookies.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/date.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/email-templates.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/email-templates.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/utils/jwt.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/jwt.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/tsconfig.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -100,11 +133,11 @@
       <recent name="C:\Users\asus\Desktop\education\projects\todoist\server" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\asus\Desktop\education\projects\todoist\server" />
+      <recent name="C:\Users\asus\Desktop\education\projects\todoist\server\src" />
       <recent name="C:\Users\asus\Desktop\education\projects\todoist\server\src\utils" />
       <recent name="C:\Users\asus\Desktop\education\projects\todoist\server\src\validator" />
       <recent name="C:\Users\asus\Desktop\education\projects\todoist\server\src\middleware" />
-      <recent name="C:\Users\asus\Desktop\education\projects\todoist\server" />
-      <recent name="C:\Users\asus\Desktop\education\projects\todoist\server\src" />
     </key>
   </component>
   <component name="RunAnythingCache">
@@ -172,11 +205,41 @@
       <workItem from="1732643509236" duration="5708000" />
       <workItem from="1733065211673" duration="21628000" />
       <workItem from="1733179947831" duration="12978000" />
-      <workItem from="1733245353779" duration="6730000" />
+      <workItem from="1733245353779" duration="8869000" />
+      <workItem from="1733336849234" duration="12177000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+    <option name="exactExcludedFiles">
+      <list>
+        <option value="$PROJECT_DIR$/src/utils/app-assert.js" />
+        <option value="$PROJECT_DIR$/src/utils/app-error.js" />
+        <option value="$PROJECT_DIR$/src/utils/email-templates.js" />
+        <option value="$PROJECT_DIR$/src/utils/cookies.js" />
+        <option value="$PROJECT_DIR$/src/model/session.model.js" />
+        <option value="$PROJECT_DIR$/src/model/task.model.js" />
+        <option value="$PROJECT_DIR$/src/utils/email.js" />
+        <option value="$PROJECT_DIR$/src/utils/catch-errors.js" />
+        <option value="$PROJECT_DIR$/src/router/template.router.js" />
+        <option value="$PROJECT_DIR$/src/router/auth.router.js" />
+        <option value="$PROJECT_DIR$/src/service/auth.service.js" />
+        <option value="$PROJECT_DIR$/src/router/user.router.js" />
+        <option value="$PROJECT_DIR$/src/utils/jwt.js" />
+        <option value="$PROJECT_DIR$/src/utils/constants.js" />
+        <option value="$PROJECT_DIR$/src/router/task.router.js" />
+        <option value="$PROJECT_DIR$/src/utils/api-features.js" />
+        <option value="$PROJECT_DIR$/src/constants/error-codes.js" />
+        <option value="$PROJECT_DIR$/src/constants/env.js" />
+        <option value="$PROJECT_DIR$/src/validator/auth.schema.js" />
+        <option value="$PROJECT_DIR$/src/constants/verificationCodeType.js" />
+        <option value="$PROJECT_DIR$/src/lib/resend.js" />
+        <option value="$PROJECT_DIR$/src/lib/mongo.js" />
+        <option value="$PROJECT_DIR$/src/model/template.model.js" />
+        <option value="$PROJECT_DIR$/src/model/user.model.js" />
+        <option value="$PROJECT_DIR$/src/app.js" />
+      </list>
+    </option>
   </component>
 </project>

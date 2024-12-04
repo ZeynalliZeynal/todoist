@@ -10,7 +10,7 @@ const defaults = {
     httpOnly: true,
     secure,
 };
-const getAccessTokenCookieOptions = () => (Object.assign(Object.assign({}, defaults), { expires: (0, date_fns_1.addMinutes)(new Date(), 15) }));
+const getAccessTokenCookieOptions = () => (Object.assign(Object.assign({}, defaults), { expires: (0, date_fns_1.addDays)(new Date(), 30) }));
 exports.getAccessTokenCookieOptions = getAccessTokenCookieOptions;
 const getRefreshTokenCookieOptions = () => (Object.assign(Object.assign({}, defaults), { expires: (0, date_fns_1.addDays)(new Date(), 30), path: exports.refresh_path }));
 exports.getRefreshTokenCookieOptions = getRefreshTokenCookieOptions;

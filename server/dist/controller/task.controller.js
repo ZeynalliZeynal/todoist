@@ -19,7 +19,7 @@ const catch_errors_1 = __importDefault(require("../utils/catch-errors"));
 const app_error_1 = __importDefault(require("../utils/app-error"));
 const getTasks = (0, catch_errors_1.default)((req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     const features = new api_features_1.default(task_model_1.default.find({
-        user: req.user.id,
+        user: req.userId,
     }), req.query)
         .filter()
         .sort()
@@ -36,7 +36,7 @@ const getTasks = (0, catch_errors_1.default)((req, res, next) => __awaiter(void 
 exports.getTasks = getTasks;
 const getTask = (0, catch_errors_1.default)((req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     const task = yield task_model_1.default.findOne({
-        user: req.user,
+        user: req.userId,
         _id: req.params.id,
     }).populate("user");
     if (!task) {
@@ -58,7 +58,7 @@ const createTask = (0, catch_errors_1.default)((req, res, next) => __awaiter(voi
         tags: req.body.tags,
         dueDate: req.body.dueDate,
         priority: req.body.priority,
-        user: req.user,
+        user: req.userId,
     });
     res.status(201).json({
         status: "success",

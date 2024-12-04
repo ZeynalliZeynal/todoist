@@ -1,6 +1,6 @@
 import { CookieOptions, Response } from "express";
 import { node_env } from "../constants/env";
-import { addDays, addMinutes } from "date-fns";
+import { addDays } from "date-fns";
 
 export const refresh_path = "/api/v1/auth/refresh";
 const secure = node_env !== "development";
@@ -13,7 +13,7 @@ const defaults: CookieOptions = {
 
 export const getAccessTokenCookieOptions = (): CookieOptions => ({
   ...defaults,
-  expires: addMinutes(new Date(), 15),
+  expires: addDays(new Date(), 30),
 });
 
 export const getRefreshTokenCookieOptions = (): CookieOptions => ({

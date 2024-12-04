@@ -2,16 +2,8 @@ import { NextFunction, Request, Response } from "express";
 import User from "../model/user.model";
 import catchAsync from "../utils/catch-errors";
 import catchErrors from "../utils/catch-errors";
-import jwt from "jsonwebtoken";
 import AppError from "../utils/app-error";
-import { ObjectId } from "mongodb";
 import crypto from "crypto";
-import {
-  jwt_cookie_expires_in,
-  jwt_expires_in,
-  jwt_secret,
-  node_env,
-} from "../constants/env";
 import { loginSchema, signupSchema } from "../validator/auth.schema";
 import {
   createAccount,
@@ -26,41 +18,12 @@ import {
   getRefreshTokenCookieOptions,
   setAuthCookies,
 } from "../utils/cookies";
-import { verifyToken } from "../utils/jwt";
+import { refreshTokenSignOptions, signToken, verifyToken } from "../utils/jwt";
 import Session from "../model/session.model";
 import appAssert from "../utils/app-assert";
 import { verifyEmailTemplate } from "../utils/email-templates";
 import { sendMail } from "../utils/email";
-
-const signToken = (id: ObjectId) =>
-  jwt.sign({ id }, jwt_secret, {
-    expiresIn: jwt_expires_in,
-  });
-
-const createSendToken = (user: IUser, statusCode: number, res: Response) => {
-  const token = signToken(user.id);
-
-  res.cookie("jwt", token, {
-    expires: new Date(
-      Date.now() + Number(jwt_cookie_expires_in) * 24 * 60 * 60 * 1000,
-    ),
-    secure: node_env === "production",
-    httpOnly: true,
-    sameSite: "lax",
-  });
-
-  res.status(statusCode).json({
-    status: "success",
-    token,
-    user: {
-      name: user.name,
-      email: user.email,
-      photo: user.photo,
-      createdAt: user.createdAt,
-      updatedAt: user.updatedAt,
-    },
-  });
-};
+import { client_dev_origin } from "../constants/env";
 
 export const signup = catchErrors(async (req, res, next) => {
   const request = signupSchema.parse({
@@ -74,12 +37,7 @@ export const signup = catchErrors(async (req, res, next) => {
     .status(StatusCodes.OK)
     .json({
       status: "success",
-      data: {
-        name: user.name,
-        email: user.email,
-        createdAt: user.createdAt,
-        photo: user.photo,
-      },
+      message: "Verification email sent. Please verify your email to continue.",
     });
 });
 
@@ -119,47 +77,6 @@ export const verifyEmailController = catchErrors(async (req, res, next) => {
   });
 });
 
-export const verifyAuth = catchAsync(
-  async (req: Request, res: Response, next) => {
-    const token = req.cookies.accessToken;
-
-    if (!token)
-      return next(new AppError("You must log in to perform this action", 401));
-
-    const { payload } = verifyToken(token);
-    if (!payload)
-      return next(new AppError("Invalid token", StatusCodes.UNAUTHORIZED));
-
-    const currentUser = await User.findById(payload.userId).select(
-      "+role -__v",
-    );
-
-    if (!currentUser)
-      return next(
-        new AppError(
-          "Token is no longer belong to this user. Please log in again",
-          StatusCodes.UNAUTHORIZED,
-        ),
-      );
-
-    if (!currentUser.isVerified())
-      return next(
-        new AppError("Please verify your email", StatusCodes.UNAUTHORIZED),
-      );
-
-    if (currentUser.isPasswordChangedAfter(payload.iat))
-      return next(
-        new AppError(
-          "Password recently changed. Please log in again",
-          StatusCodes.UNAUTHORIZED,
-        ),
-      );
-
-    req.user = currentUser;
-    next();
-  },
-);
-
 export const refreshToken = catchErrors(
   async (req: Request, res: Response, next: NextFunction) => {
     const refreshToken = req.cookies.refreshToken;
@@ -188,45 +105,82 @@ export const refreshToken = catchErrors(
 
 export const authorizeTo = (roles: Roles) =>
   catchAsync(async (req: Request, res: Response, next: NextFunction) => {
-    if (!req.user || !roles.includes(req.user.role)) {
+    const user = await User.findById(req.userId).select("+role");
+    if (!user || !roles.includes(user.role)) {
       return next(
-        new AppError("You do not have permission to perform this action.", 403),
+        new AppError(
+          "You do not have permission to perform this action.",
+          StatusCodes.FORBIDDEN,
+        ),
       );
     }
 
     next();
   });
 
-export const updatePassword = catchAsync(
+export const updatePassword = catchErrors(
   async (req: Request, res: Response, next: NextFunction) => {
-    const user = await User.findById(req.user!.id).select("+password");
+    const user = await User.findById(req.userId).select("+password");
 
-    if (!user) return next(new AppError("You are not logged in.", 401));
+    if (!user)
+      return next(
+        new AppError("You are not logged in.", StatusCodes.UNAUTHORIZED),
+      );
 
     if (!(await user.comparePasswords(req.body.passwordCurrent, user.password)))
-      return next(new AppError("Your password is wrong.", 401));
+      return next(
+        new AppError("Password is incorrect.", StatusCodes.UNAUTHORIZED),
+      );
+
+    const session = await Session.findById(req.sessionId);
+
+    if (!session)
+      return next(new AppError("No session found.", StatusCodes.NOT_FOUND));
+
+    await Session.deleteMany({
+      userId: req.userId,
+      _id: { $ne: req.sessionId },
+    });
+
+    const accessToken = signToken({
+      sessionId: session._id,
+      userId: user._id,
+    });
+
+    const refreshToken = signToken(
+      { sessionId: session._id },
+      refreshTokenSignOptions,
+    );
 
     user.password = req.body.password;
     user.confirmPassword = req.body.confirmPassword;
     await user.save();
 
-    createSendToken(user, 200, res);
-
-    next();
+    return setAuthCookies({ res, accessToken, refreshToken })
+      .status(StatusCodes.OK)
+      .json({
+        status: "success",
+        message: "Password changed successfully.",
+      });
   },
 );
 
-export const forgotPassword = catchAsync(
+export const forgotPassword = catchErrors(
   async (req: Request, res: Response, next: NextFunction) => {
     const user = await User.findOne({ email: req.body.email });
 
-    if (!user) return next(new AppError("No user with this email.", 404));
+    if (!user)
+      return next(
+        new AppError("No user with this email.", StatusCodes.NOT_FOUND),
+      );
 
     const resetToken = user.createResetPasswordToken();
+
     await user.save({
       validateBeforeSave: false,
     });
-    const url = `${req.protocol}://${req.get("host")}/api/v1/auth/password/reset/${resetToken}`;
+
+    const url = `${client_dev_origin}/auth/password/reset/${resetToken}`;
 
     try {
       await sendMail({
@@ -241,12 +195,17 @@ export const forgotPassword = catchAsync(
       user.resetPasswordToken = undefined;
       user.resetPasswordExpires = undefined;
       await user.save({ validateBeforeSave: false });
-      return next(new AppError("Failed to send the token to your email.", 500));
+      return next(
+        new AppError(
+          "Failed to send the token to your email.",
+          StatusCodes.INTERNAL_SERVER_ERROR,
+        ),
+      );
     }
   },
 );
 
-export const resetPassword = catchAsync(
+export const resetPassword = catchErrors(
   async (req: Request, res: Response, next: NextFunction) => {
     const hashedToken = crypto
       .createHash("sha256")
@@ -271,7 +230,14 @@ export const resetPassword = catchAsync(
     user.resetPasswordToken = undefined;
 
     await user.save();
+    await Session.deleteMany({
+      userId: user._id,
+    });
 
-    createSendToken(user, 200, res);
+    return clearAuthCookies(res).status(StatusCodes.OK).json({
+      status: "success",
+      message:
+        "Password reset successfully. You need to log in with your new password.",
+    });
   },
 );

@@ -52,7 +52,7 @@ const createAccount = (data) => __awaiter(void 0, void 0, void 0, function* () {
     }
     // create session
     const session = yield session_model_1.default.create({
-        userId: user.id,
+        userId: user._id,
         userAgent: data.userAgent,
     });
     const sessionInfo = {
@@ -80,12 +80,12 @@ const loginUser = (_a) => __awaiter(void 0, [_a], void 0, function* ({ email, pa
         userId,
         userAgent,
     });
-    const sessionInfo = {
-        sessionId: session._id,
-    };
     // sign access token & refresh token
-    const refreshToken = (0, jwt_1.signToken)(sessionInfo, jwt_1.refreshTokenSignOptions);
-    const accessToken = (0, jwt_1.signToken)(Object.assign(Object.assign({}, sessionInfo), { userId: userId }));
+    const refreshToken = (0, jwt_1.signToken)({ sessionId: session._id }, jwt_1.refreshTokenSignOptions);
+    const accessToken = (0, jwt_1.signToken)({
+        sessionId: session._id,
+        userId: userId,
+    });
     // return user & tokens
     return {
         user,
@@ -125,14 +125,15 @@ const refreshUserAccessToken = (token) => __awaiter(void 0, void 0, void 0, func
 exports.refreshUserAccessToken = refreshUserAccessToken;
 const verifyEmail = (token) => __awaiter(void 0, void 0, void 0, function* () {
     const decoded = jsonwebtoken_1.default.verify(token, env_1.jwt_verify_secret);
+    if (!decoded)
+        throw new app_error_1.default("Invalid or expired token", http_status_codes_1.StatusCodes.UNAUTHORIZED);
     const userId = decoded.userId;
     const updatedUser = yield user_model_1.default.findByIdAndUpdate(userId, {
         verified: true,
+        verifiedAt: Date.now(),
     }, { new: true });
     if (!updatedUser)
         throw new app_error_1.default("User not found", http_status_codes_1.StatusCodes.UNAUTHORIZED);
-    if (updatedUser.verified)
-        throw new app_error_1.default("You are already verified", http_status_codes_1.StatusCodes.BAD_REQUEST);
     return {
         user: updatedUser,
     };

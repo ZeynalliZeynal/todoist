@@ -74,7 +74,7 @@ export const createAccount = async (data: CreateAccountParams) => {
 
   // create session
   const session = await Session.create({
-    userId: user.id,
+    userId: user._id,
     userAgent: data.userAgent,
   });
 
@@ -123,16 +123,14 @@ export const loginUser = async ({
     userId,
     userAgent,
   });
-
-  const sessionInfo = {
-    sessionId: session._id,
-  };
-
   // sign access token & refresh token
-  const refreshToken = signToken(sessionInfo, refreshTokenSignOptions);
+  const refreshToken = signToken(
+    { sessionId: session._id },
+    refreshTokenSignOptions,
+  );
 
   const accessToken = signToken({
-    ...sessionInfo,
+    sessionId: session._id,
     userId: userId,
   });
 
@@ -185,6 +183,9 @@ export const refreshUserAccessToken = async (token: string) => {
 export const verifyEmail = async (token: string) => {
   const decoded = jwt.verify(token, jwt_verify_secret);
 
+  if (!decoded)
+    throw new AppError("Invalid or expired token", StatusCodes.UNAUTHORIZED);
+
   const userId = (
     decoded as JwtPayload & {
       userId: mongoose.Types.ObjectId;
@@ -195,15 +196,13 @@ export const verifyEmail = async (token: string) => {
     userId,
     {
       verified: true,
+      verifiedAt: Date.now(),
     },
     { new: true },
   );
 
   if (!updatedUser)
     throw new AppError("User not found", StatusCodes.UNAUTHORIZED);
-
-  if (updatedUser.verified)
-    throw new AppError("You are already verified", StatusCodes.BAD_REQUEST);
 
   return {
     user: updatedUser,

@@ -6,20 +6,16 @@ import {
   jwt_secret,
 } from "../constants/env";
 import { SessionDocument } from "../model/session.model";
-import { UserDocument } from "../model/user.model";
+import mongoose from "mongoose";
 
 export interface RefreshTokenPayload extends JwtPayload {
   sessionId: SessionDocument["_id"];
 }
 
 export interface AccessTokenPayload extends JwtPayload {
-  userId: UserDocument["_id"];
-  sessionId: SessionDocument["_id"];
+  userId: mongoose.Types.ObjectId;
+  sessionId: mongoose.Types.ObjectId;
 }
-
-type SignOptionsAndSecret = SignOptions & {
-  secret: string;
-};
 
 const defaults = {
   audience: ["user"],
@@ -48,7 +44,6 @@ export const verifyToken = <TPayload extends object = AccessTokenPayload>(
   options?: VerifyOptions & { secret: string },
 ) => {
   const { secret = jwt_secret, ...verifyOptions } = options || {};
-  console.log(token, secret);
 
   try {
     const payload = jwt.verify(token, secret, {

@@ -1,0 +1,11 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+var express_1 = require("express");
+var user_controller_1 = require("../controller/user.controller");
+var auth_controller_1 = require("../controller/auth.controller");
+var router = express_1.default.Router();
+router.get("/", auth_controller_1.verifyAuth, (0, auth_controller_1.authorizeTo)(["admin"]), user_controller_1.getAllUsers);
+router.get("/:id", auth_controller_1.verifyAuth, (0, auth_controller_1.authorizeTo)(["admin"]), user_controller_1.getUser);
+router.patch("/update-data", auth_controller_1.verifyAuth, user_controller_1.client_updateUser);
+router.delete("/delete-account", auth_controller_1.verifyAuth, user_controller_1.client_deleteAccount);
+exports.default = router;

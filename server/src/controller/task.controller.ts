@@ -8,7 +8,7 @@ const getTasks = catchAsync(
   async (req: Request, res: Response, next: NextFunction) => {
     const features = new ApiFeatures(
       Task.find({
-        user: req.user!.id,
+        user: req.userId,
       }),
       req.query,
     )
@@ -31,7 +31,7 @@ const getTasks = catchAsync(
 const getTask = catchAsync(
   async (req: Request, res: Response, next: NextFunction) => {
     const task = await Task.findOne({
-      user: req.user,
+      user: req.userId,
       _id: req.params.id,
     }).populate("user");
 
@@ -59,7 +59,7 @@ const createTask = catchAsync(
       tags: req.body.tags,
       dueDate: req.body.dueDate,
       priority: req.body.priority,
-      user: req.user,
+      user: req.userId,
     });
 
     res.status(201).json({

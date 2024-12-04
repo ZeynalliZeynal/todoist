@@ -1,18 +1,12 @@
 import express from "express";
-import {
-  client_deleteAccount,
-  client_updateUser,
-  getAllUsers,
-  getUser,
-} from "../controller/user.controller";
-import { authorizeTo, verifyAuth } from "../controller/auth.controller";
+import { getAllUsers, getUser } from "../controller/user.controller";
+import { authorizeTo } from "../controller/auth.controller";
+import { authenticate } from "../middleware/auth.middleware";
 
 const router = express.Router();
 
-router.get("/", verifyAuth, authorizeTo(["admin"]), getAllUsers);
+router.get("/", authenticate, authorizeTo(["admin"]), getAllUsers);
 
-router.get("/:id", verifyAuth, authorizeTo(["admin"]), getUser);
+router.get("/:id", authenticate, authorizeTo(["admin"]), getUser);
 
-router.patch("/update-data", verifyAuth, client_updateUser);
-router.delete("/delete-account", verifyAuth, client_deleteAccount);
 export default router;

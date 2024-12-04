@@ -7,7 +7,7 @@ import {
   getTasks,
   updateTask,
 } from "../controller/task.controller";
-import { verifyAuth } from "../controller/auth.controller";
+import { authenticate } from "../middleware/auth.middleware";
 
 const router = express.Router();
 
@@ -18,14 +18,14 @@ router.param("id", (req, res, next, value, name) => {
 
 router
   .route("/")
-  .get(verifyAuth, getTasks)
-  .post(verifyAuth, createTask)
-  .delete(verifyAuth, clearTasks);
+  .get(authenticate, getTasks)
+  .post(authenticate, createTask)
+  .delete(authenticate, clearTasks);
 
 router
   .route("/:id")
-  .get(verifyAuth, getTask)
-  .patch(verifyAuth, updateTask)
-  .delete(verifyAuth, deleteTask);
+  .get(authenticate, getTask)
+  .patch(authenticate, updateTask)
+  .delete(authenticate, deleteTask);
 
 export default router;
