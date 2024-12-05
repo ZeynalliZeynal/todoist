@@ -27,7 +27,7 @@ const server = app_1.default.listen(env_1.port, () => __awaiter(void 0, void 0, 
 }));
 process.on("unhandledRejection", (error) => {
     console.log("Unhandled Rejection!");
-    console.log(error.name, error.message);
+    console.log(error.name, error.message, error);
     server.close(() => {
         console.error("Server is shutdown.");
         process.exit(1);
