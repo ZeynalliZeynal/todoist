@@ -1,6 +1,25 @@
 import mongoose, { Query } from "mongoose";
 import slugify from "slugify";
 
+export type Priorities =
+  | "priority 1"
+  | "priority 2"
+  | "priority 3"
+  | "priority 4";
+
+export interface TaskDocument extends mongoose.Document {
+  createdAt: Date;
+  updatedAt: Date;
+  name: string;
+  description?: String;
+  completed?: boolean;
+  tags?: string[];
+  slug: string;
+  priority: Priorities;
+  dueDate?: Date;
+  userId: mongoose.Types.ObjectId;
+}
+
 const dueDateToday = new Date(
   new Date(new Date().setDate(new Date(new Date()).getDate() + 1)).setHours(
     0,
@@ -10,7 +29,7 @@ const dueDateToday = new Date(
   ),
 );
 
-const schema = new mongoose.Schema<ITask>(
+const schema = new mongoose.Schema<TaskDocument>(
   {
     createdAt: {
       type: Date,
@@ -53,10 +72,11 @@ const schema = new mongoose.Schema<ITask>(
       type: Date,
       default: dueDateToday,
     },
-    user: {
-      type: mongoose.Types.ObjectId,
+    userId: {
+      type: mongoose.Schema.Types.ObjectId,
       ref: "User",
-      required: [true, "A task must belong to a user."],
+      required: true,
+      index: true,
     },
   },
   {
@@ -66,6 +86,7 @@ const schema = new mongoose.Schema<ITask>(
     toObject: {
       virtuals: true,
     },
+    timestamps: true,
   },
 );
 
@@ -84,6 +105,6 @@ schema.pre(/^find/, function (this: Query<any, any>, next) {
   next();
 });
 
-const Task = mongoose.model<ITask>("Task", schema);
+const Task = mongoose.model<TaskDocument>("Task", schema);
 
 export default Task;

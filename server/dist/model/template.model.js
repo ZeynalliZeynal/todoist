@@ -5,13 +5,6 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const mongoose_1 = __importDefault(require("mongoose"));
 const schema = new mongoose_1.default.Schema({
-    createdAt: {
-        type: Date,
-        default: Date.now,
-    },
-    updatedAt: {
-        type: Date,
-    },
     category: {
         type: String,
         required: [true, "Category is required"],
@@ -45,5 +38,13 @@ const schema = new mongoose_1.default.Schema({
         type: String,
         trim: true,
     },
+}, {
+    toJSON: {
+        virtuals: true,
+    },
+    toObject: {
+        virtuals: true,
+    },
+    timestamps: true,
 });
 exports.default = mongoose_1.default.model("Template", schema);

@@ -1,5 +1,5 @@
 import { NextFunction, Request, Response } from "express";
-import User from "../model/user.model";
+import User, { Roles } from "../model/user.model";
 import catchAsync from "../utils/catch-errors";
 import catchErrors from "../utils/catch-errors";
 import AppError from "../utils/app-error";

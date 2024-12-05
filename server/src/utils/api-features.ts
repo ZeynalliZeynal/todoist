@@ -1,4 +1,6 @@
 import { Query } from "mongoose";
+import { TemplateDocument } from "../model/template.model";
+import { TaskDocument } from "../model/task.model";
 
 type QueryString = {
   content?: string;
@@ -12,7 +14,7 @@ type QueryString = {
   category?: string;
 };
 
-class ApiFeatures<T extends ITask | ITemplate> {
+class ApiFeatures<T extends TaskDocument | TemplateDocument> {
   public query: Query<T[], T>;
   private queryString: QueryString;
 

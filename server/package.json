@@ -4,9 +4,10 @@
   "description": "",
   "main": "dist/index.js",
   "scripts": {
-    "build": "tsc -w",
+    "build": "tsc",
     "dev": "concurrently \"nodemon dist/index.js\" \"tsc -w\"",
-    "prod": "Set NODE_ENV=production&&nodemon dist/index.js"
+    "prod": "cross-env NODE_ENV=production node dist/index.js",
+    "start": "NODE_ENV=production node dist/index.js"
   },
   "keywords": [],
   "author": "zeynal",

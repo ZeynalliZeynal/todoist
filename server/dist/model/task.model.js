@@ -48,10 +48,11 @@ const schema = new mongoose_1.default.Schema({
         type: Date,
         default: dueDateToday,
     },
-    user: {
-        type: mongoose_1.default.Types.ObjectId,
+    userId: {
+        type: mongoose_1.default.Schema.Types.ObjectId,
         ref: "User",
-        required: [true, "A task must belong to a user."],
+        required: true,
+        index: true,
     },
 }, {
     toJSON: {
@@ -60,6 +61,7 @@ const schema = new mongoose_1.default.Schema({
     toObject: {
         virtuals: true,
     },
+    timestamps: true,
 });
 schema.index({ user: 1 });
 schema.pre("save", function (next) {

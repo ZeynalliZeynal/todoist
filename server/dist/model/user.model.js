@@ -17,6 +17,7 @@ const validator_1 = __importDefault(require("validator"));
 const bcryptjs_1 = __importDefault(require("bcryptjs"));
 const crypto_1 = __importDefault(require("crypto"));
 const date_fns_1 = require("date-fns");
+const ROLES = ["admin", "user"];
 const schema = new mongoose_1.default.Schema({
     name: {
         type: String,

@@ -2,13 +2,14 @@ import mongoose, { Document, Query } from "mongoose";
 import validator from "validator";
 import bcrypt from "bcryptjs";
 import crypto from "crypto";
-import { ObjectId } from "mongodb";
 import { addMinutes } from "date-fns";
 
+const ROLES = ["admin", "user"] as const;
+type UserRole = (typeof ROLES)[number];
+
+export type Roles = ReadonlyArray<UserRole>;
+
 export interface UserDocument extends mongoose.Document {
-  id: ObjectId;
-  createdAt: Date;
-  updatedAt: Date;
   name: string;
   email: string;
   role: UserRole;
