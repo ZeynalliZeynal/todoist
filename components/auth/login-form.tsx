@@ -18,8 +18,8 @@ const schema = z.object({
 export default function LoginForm() {
   const { handleSubmit, register } = useForm<z.infer<typeof schema>>({
     defaultValues: {
-      email: "",
-      password: "",
+      email: "zzeynalli446@gmail.com",
+      password: "zzeynalli",
     },
     resolver: zodResolver(schema),
   });
@@ -37,6 +37,7 @@ export default function LoginForm() {
         size="large"
         placeholder="Email"
         required
+        autoFocus
         type="email"
         {...register("email")}
       />

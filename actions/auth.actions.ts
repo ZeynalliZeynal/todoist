@@ -2,6 +2,7 @@
 
 import { FieldValues } from "react-hook-form";
 import apiClient from "@/lib/api-client";
+import { cookies } from "next/headers";
 
 export async function login(formData: FieldValues) {
   const { email, password } = formData;
@@ -10,7 +11,9 @@ export async function login(formData: FieldValues) {
       email,
       password,
     });
-    console.log(response.data.token);
+    const token = await cookies();
+    console.log(token.set("token", "token"));
+    console.log(response);
   } catch (err) {
     console.log(err);
   }

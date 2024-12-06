@@ -1,11 +1,16 @@
 import axios from "axios";
+import { client_url } from "@/utils/env";
 
 const apiClient = axios.create({
-  baseURL: process.env.NEXT_PUBLIC_API_URL,
+  baseURL: client_url,
   withCredentials: true,
-  headers: {
-    "Content-Type": "application/json",
-  },
 });
+
+apiClient.interceptors.response.use(
+  (response) => response.data,
+  (error) => {
+    return Promise.reject(error.response);
+  },
+);
 
 export default apiClient;
