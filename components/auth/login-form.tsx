@@ -5,10 +5,11 @@ import Button from "@/components/ui/button";
 import { LuMail } from "react-icons/lu";
 import { FieldValues, useForm } from "react-hook-form";
 import { useTransition } from "react";
-import { login } from "@/actions/auth.actions";
 import Spinner from "@/components/ui/spinner";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { login } from "@/actions/auth.actions";
+import { useRouter } from "next/navigation";
 
 const schema = z.object({
   email: z.string().email("Please enter a valid email address."),
@@ -24,10 +25,12 @@ export default function LoginForm() {
     resolver: zodResolver(schema),
   });
   const [isPending, startTransition] = useTransition();
+  const router = useRouter();
 
   function onSubmit(formValues: FieldValues) {
     startTransition(async () => {
       await login(formValues);
+      router.push("/account/today");
     });
   }
 

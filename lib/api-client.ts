@@ -1,9 +1,12 @@
 import axios from "axios";
-import { client_url } from "@/utils/env";
+import { api_url } from "@/utils/env";
 
 const apiClient = axios.create({
-  baseURL: client_url,
+  baseURL: api_url,
   withCredentials: true,
+  headers: {
+    "Content-Type": "application/json",
+  },
 });
 
 apiClient.interceptors.response.use(

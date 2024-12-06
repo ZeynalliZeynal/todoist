@@ -5,7 +5,7 @@ import { PopperContentProps, PopperItemProps } from "@/types/ui/popper";
 import { cn } from "@/utils/lib";
 import { LuChevronRight } from "react-icons/lu";
 import { useOutsideClick } from "@/hooks/useOutsideClick";
-import { navigateItems } from "@/utils/navigateItems";
+import { navigateItems } from "@/utils/navigate-items";
 import { createPortal } from "react-dom";
 import {
   ANIMATION_DURATION,

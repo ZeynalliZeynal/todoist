@@ -48,9 +48,9 @@ import { GoDotFill } from "react-icons/go";
 import { useDebounce } from "@/hooks/useDebounce";
 import { PiCaretUpDownBold } from "react-icons/pi";
 import Button from "@/components/ui/button";
-import { alignBox } from "@/utils/alignBox";
+import { alignBox } from "@/utils/align-box";
 import { COMMAND_INPUT_SELECTOR, COMMAND_ROOT_SELECTOR } from "../parameters";
-import { navigateItems } from "@/utils/navigateItems";
+import { navigateItems } from "@/utils/navigate-items";
 import { useRouter } from "next/navigation";
 
 const POPPER_TRIGGER_SELECTOR = "[popper-trigger]";
