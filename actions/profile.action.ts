@@ -1,19 +1,20 @@
 "use server";
 
 import { getAuthCookies } from "@/utils/cookies";
-import apiClient from "@/lib/api-client";
+import { api_url } from "@/utils/env";
 
 export async function getProfile() {
   try {
     const { accessToken } = await getAuthCookies();
-    const res = await apiClient.get("/profile", {
+    const res = await fetch(`${api_url}/profile`, {
       headers: {
         Authorization: `Bearer ${accessToken}`,
       },
     });
-    return res.data.user;
+    const data = await res.json();
+    return data.data.user;
   } catch (err) {
-    console.log(err);
-    return { error: "You are not logged in" };
+    const error = err as Error;
+    return { error: error.message };
   }
 }

@@ -23,6 +23,7 @@ import {
   PopperTrigger,
 } from "@/components/ui/poppers/popper";
 import { cn } from "@/utils/lib";
+import React from "react";
 
 function DropdownMenu(props: CommonParentProps) {
   return (
@@ -44,14 +45,7 @@ function DropdownMenuTrigger({
     <PopperTrigger
       suffix={suffix}
       prefix={prefix}
-      className={cn(
-        "h-7 px-3 rounded-md border text-foreground flex items-center justify-between gap-1.5 transition",
-        {
-          "data-[disabled]:text-ui-disabled-foreground data-[disabled]:pointer-events-none":
-            disabled,
-        },
-        className,
-      )}
+      className={cn(className)}
       asChild={asChild}
       disabled={disabled}
     >
@@ -70,10 +64,7 @@ function DropdownMenuContent({
     <PopperContent
       fitToTrigger={fitToTrigger}
       align={align}
-      className={cn(
-        "bg-ui-background rounded-ui-content p-ui-content border w-64",
-        className,
-      )}
+      className={cn(className)}
     >
       {children}
     </PopperContent>
@@ -90,6 +81,7 @@ function DropdownMenuItem({
   onClick,
   inset,
   href,
+  shortcut,
 }: PopperItemProps) {
   return (
     <PopperItem
@@ -97,18 +89,11 @@ function DropdownMenuItem({
       prefix={prefix}
       suffix={suffix}
       asChild={asChild}
-      className={cn(
-        "text-foreground rounded-ui-item w-full transition-colors h-10",
-        {
-          "p-ui-item-inset": inset && !prefix,
-          "p-ui-item": !inset || prefix,
-        },
-        "data-[highlighted]:bg-ui-item-background-hover data-[highlighted]:text-ui-item-foreground-hover data-[disabled]:text-ui-disabled-foreground data-[disabled]:pointer-events-none data-[disabled]:select-none",
-        className,
-      )}
+      className={className}
       onClick={onClick}
       inset={inset}
       href={href}
+      shortcut={shortcut}
     >
       {children}
     </PopperItem>
@@ -116,12 +101,7 @@ function DropdownMenuItem({
 }
 
 function DropdownMenuSeparator({ className, style }: PopperSeparatorProps) {
-  return (
-    <PopperSeparator
-      style={style}
-      className={cn("h-px -mx-ui-content my-ui-content bg-border", className)}
-    />
-  );
+  return <PopperSeparator style={style} className={cn(className)} />;
 }
 
 function DropdownMenuGroup(props: PopperGroupProps) {

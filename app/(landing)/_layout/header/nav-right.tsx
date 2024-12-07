@@ -11,9 +11,9 @@ import {
 } from "@/components/ui/dropdown-menu/dropdown-menu";
 import Image from "next/image";
 import ThemeSwitch from "@/components/ui/theme";
-import { LuLogOut } from "react-icons/lu";
 import Link from "next/link";
 import { dashboardRoute } from "@/routes";
+import DropdownLogout from "@/app/(landing)/_layout/header/dropdown-logout";
 
 export default async function NavRight() {
   const profile = await getProfile();
@@ -49,16 +49,16 @@ export default async function NavRight() {
                 <DropdownMenuItem asChild>
                   <Link href={dashboardRoute}>Dashboard</Link>
                 </DropdownMenuItem>
-                <DropdownMenuItem>Account Settings</DropdownMenuItem>
+                <DropdownMenuItem asChild>
+                  <Link href="/account/settings">Account Settings</Link>
+                </DropdownMenuItem>
                 <DropdownMenuSeparator />
                 <DropdownMenuLabel className="h-10 flex items-center justify-between">
                   <span className="text-gray-900">Theme:</span>
                   <ThemeSwitch />
                 </DropdownMenuLabel>
                 <DropdownMenuSeparator />
-                <DropdownMenuItem suffix={<LuLogOut />}>
-                  Log out
-                </DropdownMenuItem>
+                <DropdownLogout />
               </DropdownMenuGroup>
             </DropdownMenuContent>
           </DropdownMenu>

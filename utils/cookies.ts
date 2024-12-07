@@ -10,7 +10,7 @@ export type CookieOptions = {
   secure?: boolean;
 };
 
-export async function setAuthCookies({
+async function setAuthCookies({
   accessToken,
   refreshToken,
 }: {
@@ -37,7 +37,7 @@ export async function setAuthCookies({
   });
 }
 
-export async function getAuthCookies() {
+async function getAuthCookies() {
   const cookieStore = await cookies();
   const accessToken = cookieStore.get("accessToken")?.value;
   const refreshToken = cookieStore.get("refreshToken")?.value;
@@ -48,3 +48,10 @@ export async function getAuthCookies() {
     refreshToken,
   };
 }
+
+async function clearAuthCookies() {
+  const cookieStore = await cookies();
+  cookieStore.delete("accessToken").delete("refreshToken");
+}
+
+export { setAuthCookies, clearAuthCookies, getAuthCookies };

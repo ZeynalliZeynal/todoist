@@ -303,7 +303,14 @@ const PopperTrigger = forwardRef<HTMLElement, PopperTriggerProps>(
     ) : menuType === "select" ? (
       <button
         {...(commonAttributes as HTMLAttributes<HTMLButtonElement>)}
-        className={className}
+        className={cn(
+          className,
+          "h-7 px-3 rounded-md border text-foreground flex items-center justify-between gap-1.5 transition",
+          {
+            "data-[disabled]:text-ui-disabled-foreground data-[disabled]:pointer-events-none":
+              disabled,
+          },
+        )}
         onMouseEnter={() => {
           setIsHovering(true);
         }}
@@ -447,6 +454,7 @@ const PopperContent = ({
         aria-expanded={open}
         data-state={!animate ? "open" : "closed"}
         className={cn(
+          "bg-ui-background rounded-ui-content p-ui-content border",
           "fixed z-50 focus:ring-0",
           "data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=open]:fade-in-0 data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95",
           className,
@@ -600,11 +608,14 @@ const PopperItem = forwardRef<HTMLElement, PopperItemProps>(
       "data-highlighted":
         ref.current && !disabled && isHighlighted(ref.current) ? "" : undefined,
       className: cn(
-        "focus:ring-0 flex items-center justify-start focus-visible:!ring-0 focus-visible:!outline-0",
+        "cursor-pointer",
+        "flex items-center justify-start gap-2 text-foreground rounded-ui-item w-full transition-colors h-10",
         {
-          "cursor-pointer": href,
-          "gap-2": prefix,
+          "p-ui-item-inset": inset && !prefix,
+          "p-ui-item": !inset || prefix,
         },
+        "data-[highlighted]:bg-ui-item-background-hover data-[highlighted]:text-ui-item-foreground-hover data-[disabled]:text-ui-disabled-foreground data-[disabled]:cursor-not-allowed data-[disabled]:select-none",
+        "focus:ring-0 focus-visible:!ring-0 focus-visible:!outline-0",
         className,
       ),
       onMouseEnter: handleMouseEnter,
@@ -618,18 +629,7 @@ const PopperItem = forwardRef<HTMLElement, PopperItemProps>(
     return asChild && React.isValidElement(children) ? (
       React.cloneElement(children, attributes)
     ) : (
-      <div
-        {...(attributes as React.HTMLAttributes<HTMLDivElement>)}
-        className={cn(
-          "cursor-default",
-          "focus:ring-0 flex items-center justify-start focus-visible:!ring-0 focus-visible:!outline-0",
-          {
-            "cursor-pointer": href,
-            "gap-2": prefix,
-          },
-          className,
-        )}
-      >
+      <div {...(attributes as React.HTMLAttributes<HTMLDivElement>)}>
         {prefix}
         {children}
         {(shortcut || suffix) && (
@@ -723,7 +723,7 @@ const PopperSeparator = forwardRef<HTMLDivElement, PopperSeparatorProps>(
       <div
         ref={forwardRef}
         role="separator"
-        className={cn(className)}
+        className={cn("h-px -mx-ui-content my-ui-content bg-border", className)}
         style={style}
         {...etc}
       />
