@@ -50,7 +50,7 @@ type PopperRadioGroupProps = {
   value: string;
 } & CommonGroupProps;
 
-type AlignContentProps =
+type Alignments =
   | "horizontal-center-top"
   | "horizontal-center-bottom"
   | "horizontal-left-top"
@@ -67,7 +67,7 @@ type AlignContentProps =
 type PopperContentProps = {
   children: React.ReactNode;
   className?: string;
-  align?: AlignContentProps;
+  align?: Alignments;
   fitToTrigger?: boolean;
   style?: CSSProperties;
 };
@@ -153,7 +153,7 @@ export type {
   PopperRadioGroupContextProps,
   PopperRadioItemProps,
   PopperContextTriggerProps,
-  AlignContentProps,
+  Alignments,
   PopperProps,
   PopperLabelProps,
   PopperSeparatorProps,

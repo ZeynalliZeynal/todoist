@@ -1,21 +1,21 @@
-import {AlignContentProps} from "@/types/ui/popper";
+import {Alignments} from "@/types/ui/popper";
 import {DEFAULT_SPACE} from "@/components/ui/parameters";
 
 /**
  * Used to align any popper based on its trigger's position
- * @param { AlignContentProps } align - Options for aligning the box
+ * @param { Alignments } align - Options for aligning the box
  * @param { DOMRect } triggerPosition - Position of the trigger
  * @param { HTMLElement } element - The element
  */
-export const alignBox = ({
+export function alignBox({
   align,
   triggerPosition,
   element,
 }: {
-  align: AlignContentProps;
+  align: Alignments;
   triggerPosition: DOMRect;
   element: HTMLElement;
-}) => {
+}) {
   const spaceLeftBottom = window.innerHeight - triggerPosition.bottom;
 
   const canFitBottom = spaceLeftBottom > element.offsetHeight;
@@ -75,4 +75,19 @@ export const alignBox = ({
     top,
     bottom,
   };
-};
+}
+
+// export function setBridge(align: Alignments) {
+//   let left = undefined;
+//   let top = undefined;
+//   let bottom = undefined;
+//   let right = undefined;
+//   if (align.startsWith("horizontal")) {
+//     if (align.includes("top")) bottom = `-${DEFAULT_SPACE + 1}px`;
+//     if (align.includes("bottom")) top = `-${DEFAULT_SPACE + 1}px`;
+//   } else {
+//     if (align.includes("right")) left = `-${DEFAULT_SPACE + 1}px`;
+//     if (align.includes("left"))
+//       right = window.innerWidth - triggerPosition.left + DEFAULT_SPACE;
+//   }
+// }

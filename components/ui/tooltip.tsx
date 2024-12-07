@@ -168,7 +168,7 @@ const TooltipContent = ({
   children,
   className,
   align = "horizontal-center-bottom",
-}: PopperContentProps) => {
+}: Omit<PopperContentProps, "style" | "fitToTrigger">) => {
   const {
     animate,
     open,
@@ -202,6 +202,7 @@ const TooltipContent = ({
     closeTooltip();
   }, [closeTooltip]);
 
+  console.log(align);
   if (open || isClosing)
     return createPortal(
       <div
@@ -224,13 +225,20 @@ const TooltipContent = ({
         onMouseLeave={handleMouseLeave}
       >
         <div
-          className="absolute z-50 inset-x-0 -top-1 h-1"
+          className={cn("absolute z-[1]")}
           style={{
-            top: `-${DEFAULT_SPACE + 1}px`,
-            height: `${DEFAULT_SPACE}px`,
+            inset: `${
+              align?.includes("horizontal") ? `-${DEFAULT_SPACE + 1}px` : 0
+            } ${align?.includes("vertical") ? `-${DEFAULT_SPACE + 1}px` : 0}`,
+            width: `${
+              align?.includes("vertical") ? `${DEFAULT_SPACE}px` : "100%"
+            }`,
+            height: `${
+              align?.includes("horizontal") ? `${DEFAULT_SPACE}px` : "100%"
+            }`,
           }}
         />
-        {children}
+        <span className="relative z-[2]">{children}</span>
       </div>,
       document.body,
     );
