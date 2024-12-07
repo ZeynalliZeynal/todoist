@@ -1,6 +1,5 @@
-import { AlignContentProps } from "@/types/ui/popper";
-
-export const DEFAULT_SPACE = 4;
+import {AlignContentProps} from "@/types/ui/popper";
+import {DEFAULT_SPACE} from "@/components/ui/parameters";
 
 /**
  * Used to align any popper based on its trigger's position

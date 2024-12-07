@@ -36,6 +36,8 @@ import {
 import {
   ANIMATION_DURATION,
   ANIMATION_TIMEOUT,
+  POPPER_CONTENT_SELECTOR,
+  POPPER_ITEM_SELECTOR,
   POPPER_SUB_CONTENT_SELECTOR,
   POPPER_SUB_ITEM_SELECTOR,
 } from "@/components/ui/parameters";
@@ -52,11 +54,6 @@ import { alignBox } from "@/utils/align-box";
 import { COMMAND_INPUT_SELECTOR, COMMAND_ROOT_SELECTOR } from "../parameters";
 import { navigateItems } from "@/utils/navigate-items";
 import { useRouter } from "next/navigation";
-
-const POPPER_TRIGGER_SELECTOR = "[popper-trigger]";
-
-export const POPPER_CONTENT_SELECTOR = "[popper-content-menu]";
-const POPPER_ITEM_SELECTOR = "[popper-content-item]:not([data-disabled])";
 
 export const PopperContext = createContext<PopperContextProps | null>(null);
 const PopperRadioGroupContext =
@@ -146,11 +143,7 @@ export default function Popper({
       setHighlightedItem(undefined);
       setPosition(undefined);
 
-      const triggers = Array.from(
-        document.querySelectorAll(POPPER_TRIGGER_SELECTOR),
-      ) as HTMLElement[];
-      const triggered = triggers.indexOf(activeTrigger as HTMLElement);
-      triggers[triggered]?.focus();
+      activeTrigger?.focus();
 
       setActiveTrigger(undefined);
     }, ANIMATION_TIMEOUT);
@@ -227,7 +220,7 @@ const PopperContextTrigger = forwardRef<HTMLElement, PopperContextTriggerProps>(
     const attributes = {
       tabIndex: 0,
       ref,
-      "popper-trigger": "",
+      "data-popper-trigger": "",
       "aria-expanded": open,
       "data-state": open ? "open" : "closed",
       className: cn(className),
@@ -293,7 +286,7 @@ const PopperTrigger = forwardRef<HTMLElement, PopperTriggerProps>(
 
     const commonAttributes = {
       ref,
-      "popper-trigger": "",
+      "data-popper-trigger": "",
       role: "combobox",
       type: "button",
       "aria-expanded": open,
@@ -456,7 +449,7 @@ const PopperContent = ({
         ref={ref}
         data-portal=""
         role="menu"
-        popper-content-menu=""
+        data-popper-content-menu=""
         aria-expanded={open}
         data-state={!animate ? "open" : "closed"}
         className={cn(
@@ -603,8 +596,8 @@ const PopperItem = forwardRef<HTMLElement, PopperItemProps>(
       ref,
       tabIndex: -1,
       role: role ? role : "menuitem",
-      "popper-content-item": "",
-      "popper-content-sub-item":
+      "data-popper-content-item": "",
+      "data-popper-content-sub-item":
         ref.current && ref.current.closest(POPPER_SUB_CONTENT_SELECTOR)
           ? ""
           : undefined,
