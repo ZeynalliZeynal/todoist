@@ -4,7 +4,9 @@ export const authRoutes = ["/auth/login", "/auth/register"];
 
 export const apiAuthPrefix = "/api/auth";
 
-export const DEFAULT_LOGIN_REDIRECT = "/account/today";
+export const dashboardRoute = "/account/today";
+
+export const DEFAULT_LOGIN_REDIRECT = dashboardRoute;
 
 export const adminPrefix = "/admin";
 

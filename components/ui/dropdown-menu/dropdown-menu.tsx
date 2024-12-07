@@ -1,14 +1,30 @@
 import {
   CommonParentProps,
+  PopperCheckboxItemProps,
   PopperContentProps,
+  PopperGroupProps,
   PopperItemProps,
+  PopperLabelProps,
+  PopperRadioGroupProps,
+  PopperRadioItemProps,
   PopperSeparatorProps,
   PopperTriggerProps,
 } from "@/types/ui/popper";
-import Popper from "@/components/ui/poppers/popper";
+import {
+  Popper,
+  PopperCheckboxItem,
+  PopperContent,
+  PopperGroup,
+  PopperItem,
+  PopperLabel,
+  PopperRadioGroup,
+  PopperRadioItem,
+  PopperSeparator,
+  PopperTrigger,
+} from "@/components/ui/poppers/popper";
 import { cn } from "@/utils/lib";
 
-export default function DropdownMenu(props: CommonParentProps) {
+function DropdownMenu(props: CommonParentProps) {
   return (
     <Popper menuType="dropdown" {...props}>
       {props.children}
@@ -25,15 +41,22 @@ function DropdownMenuTrigger({
   asChild,
 }: PopperTriggerProps) {
   return (
-    <Popper.Trigger
+    <PopperTrigger
       suffix={suffix}
       prefix={prefix}
-      className={cn(className)}
+      className={cn(
+        "h-7 px-3 rounded-md border text-foreground flex items-center justify-between gap-1.5 transition",
+        {
+          "data-[disabled]:text-ui-disabled-foreground data-[disabled]:pointer-events-none":
+            disabled,
+        },
+        className,
+      )}
       asChild={asChild}
       disabled={disabled}
     >
       {children}
-    </Popper.Trigger>
+    </PopperTrigger>
   );
 }
 
@@ -44,16 +67,16 @@ function DropdownMenuContent({
   fitToTrigger,
 }: PopperContentProps) {
   return (
-    <Popper.Content
+    <PopperContent
       fitToTrigger={fitToTrigger}
       align={align}
       className={cn(
-        "bg-ui-background rounded-ui-content p-ui-content border",
+        "bg-ui-background rounded-ui-content p-ui-content border w-64",
         className,
       )}
     >
       {children}
-    </Popper.Content>
+    </PopperContent>
   );
 }
 
@@ -69,36 +92,77 @@ function DropdownMenuItem({
   href,
 }: PopperItemProps) {
   return (
-    <Popper.Item
+    <PopperItem
       disabled={disabled}
       prefix={prefix}
       suffix={suffix}
       asChild={asChild}
-      className={className}
+      className={cn(
+        "text-foreground rounded-ui-item w-full transition-colors h-10",
+        {
+          "p-ui-item-inset": inset && !prefix,
+          "p-ui-item": !inset || prefix,
+        },
+        "data-[highlighted]:bg-ui-item-background-hover data-[highlighted]:text-ui-item-foreground-hover data-[disabled]:text-ui-disabled-foreground data-[disabled]:pointer-events-none data-[disabled]:select-none",
+        className,
+      )}
       onClick={onClick}
       inset={inset}
       href={href}
     >
       {children}
-    </Popper.Item>
+    </PopperItem>
   );
 }
 
-const DropdownMenuSeparator = ({ className, style }: PopperSeparatorProps) => {
+function DropdownMenuSeparator({ className, style }: PopperSeparatorProps) {
   return (
-    <Popper.Separator
+    <PopperSeparator
       style={style}
       className={cn("h-px -mx-ui-content my-ui-content bg-border", className)}
     />
   );
-};
+}
 
-DropdownMenu.Group = Popper.Group;
-DropdownMenu.RadioGroup = Popper.RadioGroup;
-DropdownMenu.RadioItem = Popper.RadioItem;
-DropdownMenu.CheckboxItem = Popper.CheckboxItem;
-DropdownMenu.Label = Popper.Label;
+function DropdownMenuGroup(props: PopperGroupProps) {
+  return <PopperGroup {...props} />;
+}
+
+function DropdownMenuRadioGroup(props: PopperRadioGroupProps) {
+  return <PopperRadioGroup {...props} />;
+}
+
+function DropdownMenuRadioItem(props: PopperRadioItemProps) {
+  return <PopperRadioItem {...props} />;
+}
+
+function DropdownMenuCheckboxItem(props: PopperCheckboxItemProps) {
+  return <PopperCheckboxItem {...props} />;
+}
+
+function DropdownMenuLabel(props: PopperLabelProps) {
+  return <PopperLabel {...props} />;
+}
+
+DropdownMenu.Group = DropdownMenuGroup;
+DropdownMenu.RadioGroup = DropdownMenuRadioGroup;
+DropdownMenu.RadioItem = DropdownMenuRadioItem;
+DropdownMenu.CheckboxItem = DropdownMenuCheckboxItem;
+DropdownMenu.Label = DropdownMenuLabel;
 DropdownMenu.Separator = DropdownMenuSeparator;
 DropdownMenu.Trigger = DropdownMenuTrigger;
 DropdownMenu.Item = DropdownMenuItem;
 DropdownMenu.Content = DropdownMenuContent;
+
+export {
+  DropdownMenu,
+  DropdownMenuGroup,
+  DropdownMenuRadioGroup,
+  DropdownMenuRadioItem,
+  DropdownMenuCheckboxItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+};

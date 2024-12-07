@@ -10,6 +10,7 @@ import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { login } from "@/actions/auth.actions";
 import { useRouter } from "next/navigation";
+import { dashboardRoute } from "@/routes";
 
 const schema = z.object({
   email: z.string().email("Please enter a valid email address."),
@@ -30,7 +31,7 @@ export default function LoginForm() {
   function onSubmit(formValues: FieldValues) {
     startTransition(async () => {
       await login(formValues);
-      router.push("/account/today");
+      router.push(dashboardRoute);
     });
   }
 

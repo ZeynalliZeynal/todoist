@@ -6,15 +6,14 @@ import apiClient from "@/lib/api-client";
 export async function getProfile() {
   try {
     const { accessToken } = await getAuthCookies();
-    console.log(accessToken);
     const res = await apiClient.get("/profile", {
       headers: {
         Authorization: `Bearer ${accessToken}`,
       },
     });
-    return res.data;
+    return res.data.user;
   } catch (err) {
     console.log(err);
-    return { message: "Something went wrong" };
+    return { error: "You are not logged in" };
   }
 }

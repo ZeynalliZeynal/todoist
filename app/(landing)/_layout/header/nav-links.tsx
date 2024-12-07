@@ -6,7 +6,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { cn } from "@/utils/lib";
 import React from "react";
-import DropdownMenu from "@/components/ui/dropdown-menu/dropdown-menu";
+import { DropdownMenu } from "@/components/ui/dropdown-menu/dropdown-menu";
 
 export type Direction = "ltr" | "rtl" | null;
 
@@ -45,7 +45,7 @@ export default function NavLinks() {
                   )}
                 </button>
               </DropdownMenu.Trigger>
-              <DropdownMenu.Content className="rounded-xl p-0">
+              <DropdownMenu.Content className="rounded-xl !p-0">
                 <DropdownMenu.Group className="p-1">
                   {children?.map(({ name, href, icon }) => (
                     <DropdownMenu.Item key={name} asChild>

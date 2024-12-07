@@ -72,7 +72,7 @@ const usePopperRadioGroup = () => {
   return context;
 };
 
-export default function Popper({
+function Popper({
   children,
   menuType,
   valueRemovable,
@@ -273,6 +273,7 @@ const PopperTrigger = forwardRef<HTMLElement, PopperTriggerProps>(
 
     const handleClick: MouseEventHandler<HTMLButtonElement> = (event) => {
       event.preventDefault();
+      if (disabled) return;
       openPopper(event);
     };
 
@@ -293,6 +294,7 @@ const PopperTrigger = forwardRef<HTMLElement, PopperTriggerProps>(
       "aria-disabled": disabled,
       "data-disabled": disabled ? "" : undefined,
       "data-state": open ? "open" : "close",
+      "data-hover": isHovering ? "" : null,
       onClick: handleClick,
     };
 
@@ -301,15 +303,7 @@ const PopperTrigger = forwardRef<HTMLElement, PopperTriggerProps>(
     ) : menuType === "select" ? (
       <button
         {...(commonAttributes as HTMLAttributes<HTMLButtonElement>)}
-        className={cn(
-          "h-7 px-3 rounded-md border text-foreground flex items-center justify-between gap-1.5 transition",
-          {
-            "bg-ui-item-background-hover": isHovering,
-            "data-[disabled]:text-ui-disabled-foreground data-[disabled]:pointer-events-none":
-              disabled,
-          },
-          className,
-        )}
+        className={className}
         onMouseEnter={() => {
           setIsHovering(true);
         }}
@@ -605,6 +599,14 @@ const PopperItem = forwardRef<HTMLElement, PopperItemProps>(
       "data-disabled": disabled ? "" : undefined,
       "data-highlighted":
         ref.current && !disabled && isHighlighted(ref.current) ? "" : undefined,
+      className: cn(
+        "focus:ring-0 flex items-center justify-start focus-visible:!ring-0 focus-visible:!outline-0",
+        {
+          "cursor-pointer": href,
+          "gap-2": prefix,
+        },
+        className,
+      ),
       onMouseEnter: handleMouseEnter,
       onMouseLeave: handleMouseLeave,
       onKeyDown: handleKeyDown,
@@ -619,15 +621,12 @@ const PopperItem = forwardRef<HTMLElement, PopperItemProps>(
       <div
         {...(attributes as React.HTMLAttributes<HTMLDivElement>)}
         className={cn(
-          "focus:ring-0",
-          "text-foreground flex items-center justify-start rounded-ui-item w-full cursor-default transition-colors focus-visible:!ring-0 focus-visible:!outline-0",
+          "cursor-default",
+          "focus:ring-0 flex items-center justify-start focus-visible:!ring-0 focus-visible:!outline-0",
           {
             "cursor-pointer": href,
             "gap-2": prefix,
-            "p-ui-item-inset": inset && !prefix,
-            "p-ui-item": !inset || prefix,
           },
-          "data-[highlighted]:bg-ui-item-background-hover data-[disabled]:text-ui-disabled-foreground data-[disabled]:pointer-events-none data-[disabled]:select-none",
           className,
         )}
       >
@@ -769,13 +768,16 @@ const PopperLabel = forwardRef<HTMLLabelElement, PopperLabelProps>(
 );
 PopperLabel.displayName = "PopperLabel";
 
-Popper.Label = PopperLabel;
-Popper.Group = PopperGroup;
-Popper.Separator = PopperSeparator;
-Popper.ContextTrigger = PopperContextTrigger;
-Popper.Trigger = PopperTrigger;
-Popper.Item = PopperItem;
-Popper.Content = PopperContent;
-Popper.CheckboxItem = PopperCheckboxItem;
-Popper.RadioGroup = PopperRadioGroup;
-Popper.RadioItem = PopperRadioItem;
+export {
+  Popper,
+  PopperSeparator,
+  PopperRadioGroup,
+  PopperLabel,
+  PopperGroup,
+  PopperRadioItem,
+  PopperCheckboxItem,
+  PopperTrigger,
+  PopperItem,
+  PopperContent,
+  PopperContextTrigger,
+};

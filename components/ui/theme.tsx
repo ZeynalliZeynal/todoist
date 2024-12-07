@@ -103,15 +103,12 @@ export default function ThemeSwitch({ size = 24 }: { size?: number }) {
       ref={ref}
       role="radiogroup"
       theme-container=""
-      className="relative flex items-center rounded-full border text-gray-900 bg-background-100 w-fit"
-      style={{
-        height: size,
-      }}
+      className="relative flex items-center rounded-full border p-1 text-gray-900 w-fit"
       aria-label="Theme Switcher"
       onKeyDown={handleKeyDown}
     >
       <div
-        className="absolute border rounded-full transition bg-background-100 z-0"
+        className="absolute border rounded-full transition z-0"
         style={{
           width: size,
           height: size,

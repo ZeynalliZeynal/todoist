@@ -28,10 +28,10 @@ export default {
       },
       colors: {
         border: "hsla(var(--ds-gray-alpha-400))",
-        "ui-background": "hsla(var(--ds-background-100))",
+        "ui-background": "hsla(var(--ds-background-200))",
         "ui-disabled-foreground": "hsla(var(--ds-gray-800))",
         "ui-item-foreground-hover": "hsla(var(--ds-gray-1000))",
-        "ui-item-background-hover": "hsla(var(--ds-gray-200))",
+        "ui-item-background-hover": "hsla(var(--ds-gray-100))",
         "button-invert-hover": "hsla(var(--button-invert-hover-dark))",
         "button-invert-disabled": "hsla(var(--button-invert-disabled-dark))",
         foreground: {
@@ -164,13 +164,13 @@ export default {
         menu: "var(--ds-shadow-menu)",
       },
       borderRadius: {
-        "ui-content": ".5rem",
-        "ui-item": ".25rem",
+        "ui-content": ".75rem",
+        "ui-item": "6px",
       },
       padding: {
-        "ui-content": ".25rem",
-        "ui-item-inset": ".375rem .5rem .375rem 2rem",
-        "ui-item": ".375rem .5rem",
+        "ui-content": ".5rem",
+        "ui-item-inset": "0 .5rem 0 2rem",
+        "ui-item": "0 .5rem",
       },
       margin: ({ theme }) => theme("padding"),
       animation: {
