@@ -50,7 +50,7 @@ const useTooltip = () => {
 const Tooltip = ({
   children,
   openDelay = 0,
-  closeDelay = 10, // to prevent from closing immediately
+  closeDelay = 0,
 }: {
   children: ReactNode;
   openDelay?: number;
@@ -226,7 +226,7 @@ const TooltipContent = ({
         <div
           className="absolute z-50 inset-x-0 -top-1 h-1"
           style={{
-            top: `-${DEFAULT_SPACE}px`,
+            top: `-${DEFAULT_SPACE + 1}px`,
             height: `${DEFAULT_SPACE}px`,
           }}
         />
