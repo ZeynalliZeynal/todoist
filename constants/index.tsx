@@ -5,7 +5,6 @@ import { HiOutlineLightBulb } from "react-icons/hi2";
 import { HiOutlineDownload } from "react-icons/hi";
 import { TbCards } from "react-icons/tb";
 import { RxLightningBolt } from "react-icons/rx";
-import extractLinks from "@/utils/extract-links";
 
 export const navItems = [
   {
@@ -72,10 +71,6 @@ export const authFooterLinks = [
     href: "/pricing",
   },
   {
-    name: "integrations",
-    href: "/integrations",
-  },
-  {
     name: "templates",
     href: "/templates",
   },
@@ -88,16 +83,10 @@ export const authFooterLinks = [
     href: "/help",
   },
   {
-    name: "inspiration Hub",
-    href: "/inspiration",
-  },
-  {
     name: "downloads",
     href: "/downloads",
   },
 ];
-
-export const links = extractLinks(navItems);
 
 export const footerLinks = [
   {

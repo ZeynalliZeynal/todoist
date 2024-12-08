@@ -8,13 +8,13 @@ export default function HeaderRightButtons() {
 
   return (
     <div className="flex items-center gap-3">
-      <Button href="/contact" primary className="bg-background-200">
+      <Button href="/contact" primary className="bg-transparent">
         Contact
       </Button>
       <Button
         href={`/auth/${pathname.includes("login") ? "signup" : "login"}`}
         primary
-        className="bg-background-200"
+        className="bg-transparent"
       >
         {pathname.includes("login") ? "Sign up" : "Log in"}
       </Button>
