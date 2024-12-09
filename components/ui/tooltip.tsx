@@ -26,6 +26,7 @@ import { useResize } from "@/hooks/useResize";
 import { createPortal } from "react-dom";
 import { cn } from "@/utils/lib";
 import { alignBox } from "@/utils/align-box";
+import { Variants } from "@/types/ui/variants";
 
 type TooltipContextProps = {
   openTooltip: (event: React.MouseEvent<HTMLElement>) => void;
@@ -168,7 +169,10 @@ const TooltipContent = ({
   children,
   className,
   align = "horizontal-center-bottom",
-}: Omit<PopperContentProps, "style" | "fitToTrigger">) => {
+  variant,
+}: Omit<PopperContentProps, "style" | "fitToTrigger"> & {
+  variant: Variants;
+}) => {
   const {
     animate,
     open,
@@ -202,7 +206,6 @@ const TooltipContent = ({
     closeTooltip();
   }, [closeTooltip]);
 
-  console.log(align);
   if (open || isClosing)
     return createPortal(
       <div
@@ -213,7 +216,25 @@ const TooltipContent = ({
         data-state={!animate ? "open" : "closed"}
         aria-expanded={open}
         className={cn(
-          "fixed z-50 bg-gray-1000 px-3 rounded-lg py-1.5 text-gray-100 text-xs border w-fit",
+          "fixed z-50 px-3 rounded-lg py-1.5 text-xs w-fit",
+          {
+            "bg-gray-700 text-gray-50": variant === "gray",
+            "bg-gray-200 text-foreground": variant === "gray-subtle",
+            "bg-blue-700 text-blue-50": variant === "blue",
+            "bg-blue-200 text-blue-900": variant === "blue-subtle",
+            "bg-purple-700 text-purple-50": variant === "purple",
+            "bg-purple-200 text-purple-900": variant === "purple-subtle",
+            "bg-amber-700 text-background-100": variant === "amber",
+            "bg-amber-200 text-amber-900": variant === "amber-subtle",
+            "bg-red-700 text-red-50": variant === "red",
+            "bg-red-200 text-red-900": variant === "red-subtle",
+            "bg-pink-700 text-pink-50": variant === "pink",
+            "bg-pink-200 text-pink-900": variant === "pink-subtle",
+            "bg-green-700 text-green-50": variant === "green",
+            "bg-green-200 text-green-900": variant === "green-subtle",
+            "bg-teal-700 text-teal-50": variant === "teal",
+            "bg-teal-200 text-teal-900": variant === "teal-subtle",
+          },
           "animate-in fade-in-0 zoom-in-95 data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2",
           className,
         )}
@@ -246,6 +267,4 @@ const TooltipContent = ({
   return null;
 };
 
-Tooltip.Content = TooltipContent;
-Tooltip.Trigger = TooltipTrigger;
-export default Tooltip;
+export { Tooltip, TooltipContent, TooltipTrigger };

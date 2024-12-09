@@ -55,11 +55,10 @@ const Button = forwardRef<HTMLButtonElement | HTMLAnchorElement, ButtonProps>(
         "data-[hover]:text-foreground data-[hover]:bg-gray-200":
           variant === "primary" && hovering,
         "disabled:text-gray-700 disabled:bg-gray-100 disabled:border-gray-400":
-          variant === "primary" && disabled,
+          variant === "primary" || (variant === "secondary" && disabled),
         "data-[hover]:text-background-100 data-[hover]:bg-button-invert-hover":
           variant === "secondary" && hovering,
-        "disabled:bg-button-invert-disabled disabled:text-gray-700 disabled:border-gray-400":
-          variant === "secondary" && disabled,
+        // disabled:bg-button-invert-disabled disabled:text-gray-700 disabled:border-gray-400
         "text-gray-900 data-[hover]:text-foreground border-none":
           variant === "outline",
       },

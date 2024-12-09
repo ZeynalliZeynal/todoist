@@ -22,6 +22,9 @@ export default {
         "geist-mono": ["var(--font-geist-mono)"],
         poppins: ["var(--font-poppins)"],
       },
+      fontSize: {
+        paragraph: "0.8125rem",
+      },
       container: {
         center: true,
         padding: "1.5rem",
@@ -177,8 +180,17 @@ export default {
         spinner: "spinner 1.1s linear infinite",
         "accordion-up": "accordion-up 0.25s ease-out both",
         "accordion-down": "accordion-down 0.25s ease-in both",
+        "fade-in": "fade-in 0.5s ease-in forwards",
       },
       keyframes: {
+        "fade-in": {
+          "0%": {
+            opacity: "0",
+          },
+          "100%": {
+            opacity: "1",
+          },
+        },
         "accordion-down": {
           "0%": { height: "0" },
           "100%": { height: "var(--accordion-content-height)" },

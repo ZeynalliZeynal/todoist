@@ -1,23 +1,6 @@
 import { cloneElement, ReactElement, ReactNode } from "react";
 import { cn } from "@/utils/lib";
-
-type Variants =
-  | "gray"
-  | "gray-subtle"
-  | "blue"
-  | "blue-subtle"
-  | "purple"
-  | "purple-subtle"
-  | "amber"
-  | "amber-subtle"
-  | "red"
-  | "red-subtle"
-  | "pink"
-  | "pink-subtle"
-  | "green"
-  | "green-subtle"
-  | "teal"
-  | "teal-subtle";
+import { Variants } from "@/types/ui/variants";
 
 export default function Badge({
   size = "sm",
