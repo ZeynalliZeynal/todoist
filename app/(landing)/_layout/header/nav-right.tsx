@@ -17,32 +17,37 @@ import DropdownLogout from "@/app/(landing)/_layout/header/dropdown-logout";
 
 export default async function NavRight() {
   const profile = await getProfile();
+  const user = profile.user;
+
   return (
     <div className="flex items-center gap-3">
-      {!profile.error ? (
+      {user ? (
         <>
-          <Button primary size="sm" href="/contact">
+          <Button size="sm" href="/contact">
             Contact
           </Button>
-          <Button primary size="sm" href={dashboardRoute}>
+          <Button size="sm" href={dashboardRoute}>
             Dashboard
           </Button>
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
               <button className="rounded-full overflow-hidden">
                 <Image
-                  src={`https://avatar.vercel.sh/${profile.name}`}
-                  alt={profile.name}
+                  src={`https://avatar.vercel.sh/${user.name}`}
+                  alt={user.name}
                   width={30}
                   height={30}
                 />
               </button>
             </DropdownMenuTrigger>
-            <DropdownMenuContent align="horizontal-right-bottom">
+            <DropdownMenuContent
+              align="horizontal-right-bottom"
+              className="w-64"
+            >
               <DropdownMenuGroup className="pb-2 pt-3 space-y-1">
-                <DropdownMenuLabel>{profile.name}</DropdownMenuLabel>
+                <DropdownMenuLabel>{user.name}</DropdownMenuLabel>
                 <DropdownMenuLabel className="text-gray-800">
-                  {profile.email}
+                  {user.email}
                 </DropdownMenuLabel>
               </DropdownMenuGroup>
               <DropdownMenuGroup>
@@ -65,13 +70,13 @@ export default async function NavRight() {
         </>
       ) : (
         <>
-          <Button primary size="sm" href="/auth/login">
+          <Button size="sm" href="/auth/login">
             Log In
           </Button>
-          <Button primary size="sm" href="/contact">
+          <Button size="sm" href="/contact">
             Contact
           </Button>
-          <Button primary size="sm" href="/auth/signup">
+          <Button size="sm" href="/auth/signup">
             Sign up
           </Button>
         </>

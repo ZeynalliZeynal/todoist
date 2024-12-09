@@ -53,6 +53,7 @@ export default function LoginForm() {
         {...register("password")}
       />
       <Button
+        variant="secondary"
         type="submit"
         prefix={!isPending && <LuMail />}
         size="lg"

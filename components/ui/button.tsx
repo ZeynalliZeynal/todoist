@@ -15,7 +15,7 @@ interface ButtonProps {
   size?: "lg" | "md" | "sm";
   prefix?: ReactNode;
   suffix?: ReactNode;
-  primary?: true;
+  variant?: "primary" | "secondary" | "outline";
   onClick?: (
     event: React.MouseEvent<HTMLButtonElement>,
   ) => void | Promise<void>;
@@ -32,7 +32,7 @@ const Button = forwardRef<HTMLButtonElement | HTMLAnchorElement, ButtonProps>(
       href,
       prefix = null,
       suffix = null,
-      primary,
+      variant = "primary",
       onClick,
       disabled,
       type = "button",
@@ -46,20 +46,22 @@ const Button = forwardRef<HTMLButtonElement | HTMLAnchorElement, ButtonProps>(
       `flex items-center justify-center transition duration-200 font-medium border select-none rounded-lg`,
       {
         "text-foreground border bg-background-100 hover:text-foreground hover:bg-gray-200":
-          primary,
+          variant === "primary",
         "text-background-100 border-gray-200 bg-gray-1000 hover:text-background-100 hover:bg-button-invert-hover":
-          !primary,
+          variant === "secondary",
         "px-2.5 h-10 text-sm": size === "md",
         "px-3.5 h-12 text-base": size === "lg",
         "text-sm h-8 px-1.5": size === "sm",
         "data-[hover]:text-foreground data-[hover]:bg-gray-200":
-          primary && hovering,
+          variant === "primary" && hovering,
         "disabled:text-gray-700 disabled:bg-gray-100 disabled:border-gray-400":
-          primary && disabled,
+          variant === "primary" && disabled,
         "data-[hover]:text-background-100 data-[hover]:bg-button-invert-hover":
-          !primary && hovering,
+          variant === "secondary" && hovering,
         "disabled:bg-button-invert-disabled disabled:text-gray-700 disabled:border-gray-400":
-          !primary && disabled,
+          variant === "secondary" && disabled,
+        "text-gray-900 data-[hover]:text-foreground border-none":
+          variant === "outline",
       },
       className,
     );

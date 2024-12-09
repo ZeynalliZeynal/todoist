@@ -49,7 +49,6 @@ export default function Templates() {
               templates made for you.
             </p>
             <Button
-              primary
               suffix={<LuMoveRight />}
               size="lg"
               className="rounded-full mx-auto"

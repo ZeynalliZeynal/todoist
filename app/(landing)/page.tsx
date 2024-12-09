@@ -28,6 +28,7 @@ export default function Home() {
             </div>
             <div className="flex items-center gap-3 w-full justify-center">
               <Button
+                variant="secondary"
                 size="lg"
                 className="rounded-full"
                 prefix={<LogoInvert className="size-4" />}

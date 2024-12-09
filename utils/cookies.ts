@@ -1,6 +1,7 @@
 import { cookies } from "next/headers";
 import { node_env } from "@/utils/env";
 import { addDays } from "date-fns";
+import { AxiosResponse } from "axios";
 
 export type CookieOptions = {
   path?: string;
@@ -9,6 +10,20 @@ export type CookieOptions = {
   sameSite?: "strict" | "lax" | "none";
   secure?: boolean;
 };
+
+function getTokenFromCookieHeader(res: AxiosResponse, name: string) {
+  const setCookieHeader = res.headers["set-cookie"];
+  if (!setCookieHeader) throw new Error("Cookie not found");
+
+  const cookie = setCookieHeader.find((value) => value.includes(name));
+
+  const fullToken = cookie?.split(";").find((value) => value.includes(name));
+  const token = fullToken?.slice(fullToken.indexOf("=") + 1);
+
+  if (!token) throw new Error("Token not found");
+
+  return token;
+}
 
 async function setAuthCookies({
   accessToken,
@@ -54,4 +69,9 @@ async function clearAuthCookies() {
   cookieStore.delete("accessToken").delete("refreshToken");
 }
 
-export { setAuthCookies, clearAuthCookies, getAuthCookies };
+export {
+  setAuthCookies,
+  clearAuthCookies,
+  getAuthCookies,
+  getTokenFromCookieHeader,
+};

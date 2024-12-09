@@ -1,13 +1,13 @@
 import Link from "next/link";
 import LoginForm from "@/components/auth/login-form";
-import Header from "@/app/(auth)/_layout/header/header";
+import { HeaderLogin } from "@/app/(auth)/_layout/header/header";
 import Footer from "@/app/(auth)/_layout/footer/footer";
 
 export default function Page() {
   return (
     <div className="bg-background-200">
       <div className="flex min-h-screen flex-col">
-        <Header />
+        <HeaderLogin />
         <main className="flex-1 max-w-full flex">
           <div className="pt-8 flex items-center flex-col flex-grow">
             <section className="w-80 mx-auto h-full flex flex-col justify-center">

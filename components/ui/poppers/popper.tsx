@@ -331,7 +331,6 @@ const PopperTrigger = forwardRef<HTMLElement, PopperTriggerProps>(
     ) : (
       <Button
         {...(commonAttributes as HTMLAttributes<HTMLButtonElement>)}
-        primary
         prefix={prefix}
         suffix={suffix}
         size="sm"

@@ -1,20 +1,20 @@
 "use server";
 
 import { getAuthCookies } from "@/utils/cookies";
-import { api_url } from "@/utils/env";
+import apiClient from "@/lib/api-client";
 
 export async function getProfile() {
   try {
     const { accessToken } = await getAuthCookies();
-    const res = await fetch(`${api_url}/profile`, {
+    const res = await apiClient.get(`/profile`, {
       headers: {
+        "Content-Type": "application/json",
         Authorization: `Bearer ${accessToken}`,
       },
     });
-    const data = await res.json();
-    return data.data.user;
+
+    return res.data.data;
   } catch (err) {
-    const error = err as Error;
-    return { error: error.message };
+    return err;
   }
 }
