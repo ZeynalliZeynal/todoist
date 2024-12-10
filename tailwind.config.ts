@@ -181,8 +181,19 @@ export default {
         "accordion-up": "accordion-up 0.25s ease-out both",
         "accordion-down": "accordion-down 0.25s ease-in both",
         "fade-in": "fade-in 0.5s ease-in forwards",
+        caret: "caret 0.5s ease both alternate infinite",
       },
       keyframes: {
+        caret: {
+          "0%": {
+            opacity: "0",
+            transform: "scale(0.8)",
+          },
+          "100%": {
+            opacity: "1",
+            transform: "scale(1)",
+          },
+        },
         "fade-in": {
           "0%": {
             opacity: "0",

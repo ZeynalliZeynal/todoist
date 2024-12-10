@@ -66,7 +66,6 @@ export async function logout() {
         },
       },
     );
-    console.log(res);
 
     await clearAuthCookies();
     revalidatePath("/");

@@ -53,6 +53,10 @@ export default function Input({
         )}
         <input
           id={`input${id}`}
+          spellCheck={false}
+          autoCapitalize="off"
+          autoComplete="off"
+          autoCorrect="off"
           className={cn(
             "w-full px-3 placeholder-gray-800 outline-none h-[var(--size)]",
             {
