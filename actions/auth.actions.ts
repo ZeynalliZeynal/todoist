@@ -87,6 +87,9 @@ export async function sendLoginEmail({ email }: { email: string }) {
       email,
     });
 
+    const token = getTokenFromCookieHeader(res, "verifyToken");
+    await setVerifyCookies(token);
+
     return res.data;
   } catch (err) {
     return err;
