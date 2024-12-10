@@ -1,6 +1,15 @@
 "use client";
 
-import { ComponentProps, ReactNode, useId } from "react";
+import {
+  ComponentProps,
+  Dispatch,
+  ReactNode,
+  SetStateAction,
+  useEffect,
+  useId,
+  useRef,
+  useState,
+} from "react";
 import { cn } from "@/utils/lib";
 
 type InputProps = {
@@ -12,7 +21,7 @@ type InputProps = {
   label?: string;
 } & Omit<ComponentProps<"input">, "size" | "prefix" | "suffix">;
 
-export default function Input({
+export function Input({
   prefix,
   suffix,
   prefixStyling = true,
@@ -83,5 +92,67 @@ export default function Input({
         )}
       </div>
     </label>
+  );
+}
+
+export function OtpInput({
+  disabled,
+  value,
+  onValueChange,
+}: {
+  disabled?: boolean;
+  value: string;
+  onValueChange: Dispatch<SetStateAction<string>>;
+}) {
+  const ref = useRef<HTMLInputElement | null>(null);
+  const [isFocused, setIsFocused] = useState(false);
+
+  useEffect(() => {
+    if (!ref.current) return;
+    setIsFocused(document.activeElement === ref.current);
+  }, []);
+
+  return (
+    <div className="relative w-fit grid grid-cols-6 border mx-auto rounded-md text-foreground">
+      {Array.from({ length: 6 }, (_, index) => (
+        <div
+          key={index}
+          className={cn(
+            "relative size-16 border-r first:rounded-l-md [&:nth-child(6)]:rounded-r-md [&:nth-child(6)]:border-r-0 flex items-center justify-center text-xl transition",
+            isFocused &&
+              index === value.split("").length &&
+              "ring-blue-700 ring-2",
+          )}
+        >
+          {isFocused && index === value.split("").length ? (
+            <span className="absolute w-px h-1/3 bg-foreground rounded-md animate-caret" />
+          ) : (
+            value.split("").at(index)?.slice(-1)
+          )}
+        </div>
+      ))}
+      <div className="absolute inset-0">
+        <input
+          ref={ref}
+          inputMode="numeric"
+          name="digits"
+          pattern="^\d+$"
+          maxLength={6}
+          required
+          autoComplete="off"
+          autoCorrect="off"
+          className="size-full focus-visible:outline-0 -tracking-[0.5em] text-transparent bg-transparent caret-transparent selection:text-transparent selection:bg-transparent"
+          value={value}
+          disabled={disabled}
+          onFocus={() => setIsFocused(true)}
+          onBlur={() => setIsFocused(false)}
+          onChange={({ target }) => {
+            if (!isNaN(Number(target.value))) {
+              onValueChange(target.value);
+            }
+          }}
+        />
+      </div>
+    </div>
   );
 }

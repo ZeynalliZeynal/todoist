@@ -1,6 +1,6 @@
 "use client";
 
-import Input from "@/components/ui/input";
+import { Input } from "@/components/ui/input";
 import Button from "@/components/ui/button";
 import { LuMail } from "react-icons/lu";
 import { FieldValues, useForm } from "react-hook-form";

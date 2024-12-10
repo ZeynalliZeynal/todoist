@@ -1,7 +1,8 @@
-import Button from "@/components/ui/button";
-import { Dispatch, SetStateAction, useState } from "react";
+import { Dispatch, SetStateAction } from "react";
 import { Pages } from "@/components/auth/signup-form";
 import { cn } from "@/utils/lib";
+import Link from "next/link";
+import { OtpInput } from "@/components/ui/input";
 
 export default function SignupOtp({
   email,
@@ -14,7 +15,6 @@ export default function SignupOtp({
   onOtpChange: Dispatch<SetStateAction<string>>;
   onPageChange: Dispatch<SetStateAction<Pages>>;
 }) {
-  const [currentIndex, setCurrentIndex] = useState(-1);
   return (
     <form
       className="px-20 pt-16 pb-12"
@@ -32,48 +32,17 @@ export default function SignupOtp({
         </p>
         <div className="text-gray-900 flex flex-col gap-2">
           <div className="flex flex-col gap-4">
-            <div className="relative w-fit grid grid-cols-6 border mx-auto rounded-md text-foreground">
-              {Array.from({ length: 6 }, (_, index) => (
-                <div
-                  key={index}
-                  className={cn(
-                    "relative size-16 border-r first:rounded-l-md [&:nth-child(6)]:rounded-r-md [&:nth-child(6)]:border-r-0 flex items-center justify-center text-xl",
-                    index === otp.split("").length && "ring-blue-700 ring-2",
-                  )}
-                >
-                  {index === otp.split("").length ? (
-                    <span className="absolute w-px h-1/3 bg-foreground rounded-md animate-caret" />
-                  ) : (
-                    otp.split("").at(index)?.slice(-1)
-                  )}
-                </div>
-              ))}
-              <div className="absolute inset-0">
-                <input
-                  inputMode="numeric"
-                  name="digits"
-                  pattern="^\d+$"
-                  maxLength={6}
-                  required
-                  className="size-full focus-visible:outline-0 -tracking-[0.5em] text-transparent bg-transparent caret-transparent selection:text-transparent selection:bg-transparent"
-                  value={otp}
-                  onChange={({ target }) => {
-                    if (!isNaN(Number(target.value))) {
-                      onOtpChange(target.value);
-                    }
-                  }}
-                />
-              </div>
-            </div>
-            <Button
-              type="submit"
-              size="md"
-              disabled={!otp}
-              variant="secondary"
-              className="w-full"
+            <OtpInput value={otp} onValueChange={onOtpChange} />
+            <Link
+              href="/auth/signup"
+              className={cn(
+                "text-base text-blue-900 font-medium mx-auto relative w-fit mt-4",
+                "after:absolute after:w-full after:h-px after:bg-blue-900 after:-bottom-px after:left-0 after:opacity-0 hover:after:opacity-100 after:transition",
+              )}
+              onClick={() => onPageChange("form")}
             >
-              Continue
-            </Button>
+              ← Back
+            </Link>
           </div>
         </div>
       </section>
