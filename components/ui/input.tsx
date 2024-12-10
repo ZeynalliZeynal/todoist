@@ -102,10 +102,12 @@ export function OtpInput({
   value,
   onValueChange,
   onComplete,
+  variant = "bar",
 }: {
   disabled?: boolean;
   value: string;
   onValueChange: Dispatch<SetStateAction<string>>;
+  variant?: "cubes" | "bar";
   onComplete(): Promise<void> | void;
 }) {
   const ref = useRef<HTMLInputElement | null>(null);
@@ -122,13 +124,23 @@ export function OtpInput({
   }, [value]);
 
   return (
-    <div className="relative w-fit grid grid-cols-6 border mx-auto rounded-md text-foreground">
+    <div
+      className={cn("relative w-fit mx-auto text-foreground grid grid-cols-6", {
+        "border rounded-md": variant === "bar",
+        "gap-2": variant === "cubes",
+      })}
+    >
       {Array.from({ length: MAX_LENGTH }, (_, index) => (
         <div
           key={index}
           className={cn(
-            "relative size-16 border-r first:rounded-l-md [&:nth-child(6)]:rounded-r-md [&:nth-child(6)]:border-r-0 flex items-center justify-center text-xl transition",
-            isFocused && index === valueArr.length && "ring-blue-700 ring-2",
+            "relative flex items-center justify-center text-xl transition",
+            isFocused && index === valueArr.length && "ring-2",
+            {
+              "border-r size-12 md:size-16 first:rounded-l-md [&:nth-child(6)]:rounded-r-md [&:nth-child(6)]:border-r-0 ring-blue-700":
+                variant === "bar",
+              "border rounded-md size-10 ring-foreground": variant === "cubes",
+            },
           )}
         >
           {isFocused && index === valueArr.length ? (

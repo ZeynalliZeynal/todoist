@@ -12,7 +12,6 @@ export default function Page() {
           <div className="pt-8 flex items-center flex-col flex-grow">
             <section className="w-80 mx-auto h-full flex flex-col justify-center">
               <div className="space-y-4 text-center">
-                <h1 className="text-3xl">Log in to Todoist</h1>
                 <LoginForm />
               </div>
             </section>

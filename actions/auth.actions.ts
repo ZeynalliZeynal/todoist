@@ -1,6 +1,5 @@
 "use server";
 
-import { FieldValues } from "react-hook-form";
 import {
   clearAuthCookies,
   getAuthCookies,
@@ -12,9 +11,9 @@ import {
 import { revalidatePath } from "next/cache";
 import apiClient from "@/lib/api-client";
 
-export async function login(formData: FieldValues) {
-  const { otp, token } = formData;
+export async function login({ otp }: { otp: string }) {
   try {
+    const token = await getVerifyCookie();
     const res = await apiClient.post(`/auth/login?token=${token}`, {
       otp,
     });
