@@ -1,6 +1,6 @@
 import { cookies } from "next/headers";
 import { node_env } from "@/utils/env";
-import { addDays } from "date-fns";
+import { addDays, addMinutes } from "date-fns";
 import { AxiosResponse } from "axios";
 
 export type CookieOptions = {
@@ -9,6 +9,14 @@ export type CookieOptions = {
   httpOnly?: boolean;
   sameSite?: "strict" | "lax" | "none";
   secure?: boolean;
+};
+
+const secure = node_env !== "development";
+
+const defaultOptions: CookieOptions = {
+  sameSite: node_env === "production" ? "strict" : "lax",
+  httpOnly: true,
+  secure,
 };
 
 function getTokenFromCookieHeader(res: AxiosResponse, name: string) {
@@ -34,21 +42,23 @@ async function setAuthCookies({
 }) {
   const cookieStore = await cookies();
 
-  const secure = node_env !== "development";
+  cookieStore
+    .set("accessToken", accessToken, {
+      ...defaultOptions,
+      expires: addDays(Date.now(), 30),
+    })
+    .set("refreshToken", refreshToken, {
+      ...defaultOptions,
+      expires: addDays(Date.now(), 30),
+    });
+}
 
-  const defaultOptions: CookieOptions = {
-    sameSite: node_env === "production" ? "strict" : "lax",
-    httpOnly: true,
-    secure,
-    expires: addDays(Date.now(), 30),
-  };
+async function setVerifyCookies(token: string) {
+  const cookieStore = await cookies();
 
-  cookieStore.set("accessToken", accessToken, {
+  cookieStore.set("verifyToken", token, {
     ...defaultOptions,
-  });
-
-  cookieStore.set("refreshToken", refreshToken, {
-    ...defaultOptions,
+    expires: addMinutes(Date.now(), 5),
   });
 }
 
@@ -74,4 +84,5 @@ export {
   clearAuthCookies,
   getAuthCookies,
   getTokenFromCookieHeader,
+  setVerifyCookies,
 };

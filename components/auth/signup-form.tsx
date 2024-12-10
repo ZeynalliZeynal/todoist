@@ -8,7 +8,7 @@ import SignupOtp from "@/components/auth/signup-otp";
 export type Pages = "plans" | "form" | "otp";
 
 export default function SignupForm({ plans }: { plans: Plan[] }) {
-  const [selected, setSelected] = useState("");
+  const [selectedPlan, setSelectedPlan] = useState("");
   const [name, setName] = useState("zeynal");
   const [email, setEmail] = useState("zzeynalli446@gmail.com");
   const [page, setPage] = useState<Pages>("otp");
@@ -19,14 +19,15 @@ export default function SignupForm({ plans }: { plans: Plan[] }) {
       {page === "plans" ? (
         <SignupSelectPlans
           plans={plans}
-          selected={selected}
-          onPlanSelect={setSelected}
+          selected={selectedPlan}
+          onPlanSelect={setSelectedPlan}
           name={name}
           onNameChange={setName}
           onPageChange={setPage}
         />
       ) : page === "form" ? (
         <SignupSendEmail
+          name={name}
           email={email}
           onEmailChange={setEmail}
           onPageChange={setPage}

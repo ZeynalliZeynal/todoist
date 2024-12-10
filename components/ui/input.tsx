@@ -139,6 +139,7 @@ export function OtpInput({
           pattern="^\d+$"
           maxLength={6}
           required
+          autoFocus
           autoComplete="off"
           autoCorrect="off"
           className="size-full focus-visible:outline-0 -tracking-[0.5em] text-transparent bg-transparent caret-transparent selection:text-transparent selection:bg-transparent"
