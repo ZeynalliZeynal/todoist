@@ -95,39 +95,46 @@ export function Input({
   );
 }
 
+const MAX_LENGTH = 6;
+
 export function OtpInput({
   disabled,
   value,
   onValueChange,
+  onComplete,
 }: {
   disabled?: boolean;
   value: string;
   onValueChange: Dispatch<SetStateAction<string>>;
+  onComplete(): Promise<void> | void;
 }) {
   const ref = useRef<HTMLInputElement | null>(null);
   const [isFocused, setIsFocused] = useState(false);
 
+  const valueArr = value.split("");
   useEffect(() => {
     if (!ref.current) return;
     setIsFocused(document.activeElement === ref.current);
   }, []);
 
+  useEffect(() => {
+    if (valueArr.length === MAX_LENGTH) onComplete();
+  }, [value]);
+
   return (
     <div className="relative w-fit grid grid-cols-6 border mx-auto rounded-md text-foreground">
-      {Array.from({ length: 6 }, (_, index) => (
+      {Array.from({ length: MAX_LENGTH }, (_, index) => (
         <div
           key={index}
           className={cn(
             "relative size-16 border-r first:rounded-l-md [&:nth-child(6)]:rounded-r-md [&:nth-child(6)]:border-r-0 flex items-center justify-center text-xl transition",
-            isFocused &&
-              index === value.split("").length &&
-              "ring-blue-700 ring-2",
+            isFocused && index === valueArr.length && "ring-blue-700 ring-2",
           )}
         >
-          {isFocused && index === value.split("").length ? (
+          {isFocused && index === valueArr.length ? (
             <span className="absolute w-px h-1/3 bg-foreground rounded-md animate-caret" />
           ) : (
-            value.split("").at(index)?.slice(-1)
+            valueArr.at(index)?.slice(-1)
           )}
         </div>
       ))}
@@ -137,7 +144,7 @@ export function OtpInput({
           inputMode="numeric"
           name="digits"
           pattern="^\d+$"
-          maxLength={6}
+          maxLength={MAX_LENGTH}
           required
           autoFocus
           autoComplete="off"

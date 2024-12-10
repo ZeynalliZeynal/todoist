@@ -74,9 +74,20 @@ async function getAuthCookies() {
   };
 }
 
+async function getVerifyCookie() {
+  const cookieStore = await cookies();
+  const token = cookieStore.get("verifyToken")?.value;
+  // if (!accessToken) throw new Error("You are not logged in.");
+
+  return token;
+}
+
 async function clearAuthCookies() {
   const cookieStore = await cookies();
-  cookieStore.delete("accessToken").delete("refreshToken");
+  cookieStore
+    .delete("accessToken")
+    .delete("refreshToken")
+    .delete("verifyToken");
 }
 
 export {
@@ -85,4 +96,5 @@ export {
   getAuthCookies,
   getTokenFromCookieHeader,
   setVerifyCookies,
+  getVerifyCookie,
 };

@@ -24,7 +24,7 @@ export function HeaderLogin() {
 
 export function HeaderSignup() {
   return (
-    <header className="max-w-screen-full w-full mx-auto">
+    <header className="max-w-screen-full w-full mx-auto sticky top-0">
       <div className="h-16 mx-auto px-6 flex items-center justify-between">
         <Link href="/">
           <LogoFull />

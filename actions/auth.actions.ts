@@ -5,6 +5,7 @@ import {
   clearAuthCookies,
   getAuthCookies,
   getTokenFromCookieHeader,
+  getVerifyCookie,
   setAuthCookies,
   setVerifyCookies,
 } from "@/utils/cookies";
@@ -34,11 +35,11 @@ export async function login(formData: FieldValues) {
   }
 }
 
-export async function signup(formData: FieldValues) {
-  const { planId, otp, token } = formData;
+export async function signup({ plan, otp }: { plan: string; otp: string }) {
   try {
+    const token = await getVerifyCookie();
     const res = await apiClient.post(`/auth/signup?token=${token}`, {
-      planId,
+      plan,
       otp,
     });
 
@@ -111,6 +112,6 @@ export async function sendSignupEmail({
 
     return res.data;
   } catch (err) {
-    return err as ServerErrorResponse;
+    return err as ServerResponse;
   }
 }

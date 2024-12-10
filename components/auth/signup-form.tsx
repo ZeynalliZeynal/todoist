@@ -9,9 +9,9 @@ export type Pages = "plans" | "form" | "otp";
 
 export default function SignupForm({ plans }: { plans: Plan[] }) {
   const [selectedPlan, setSelectedPlan] = useState("");
-  const [name, setName] = useState("zeynal");
-  const [email, setEmail] = useState("zzeynalli446@gmail.com");
-  const [page, setPage] = useState<Pages>("otp");
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [page, setPage] = useState<Pages>("plans");
   const [otp, setOtp] = useState("");
 
   return (
@@ -34,6 +34,7 @@ export default function SignupForm({ plans }: { plans: Plan[] }) {
         />
       ) : (
         <SignupOtp
+          plan={selectedPlan}
           otp={otp}
           onOtpChange={setOtp}
           onPageChange={setPage}

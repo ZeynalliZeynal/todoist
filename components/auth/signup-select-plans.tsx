@@ -33,6 +33,7 @@ export default function SignupSelectPlans({
         className="px-20 pt-16 pb-12"
         onSubmit={(event) => {
           event.preventDefault();
+          if (!name || !selected) return;
           onPageChange("form");
         }}
       >
@@ -121,7 +122,7 @@ export default function SignupSelectPlans({
               <Button
                 type="submit"
                 size="md"
-                disabled={!name}
+                disabled={!name || !selected}
                 variant="secondary"
                 className="w-full"
               >

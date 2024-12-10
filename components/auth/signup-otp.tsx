@@ -1,20 +1,30 @@
-import { Dispatch, SetStateAction } from "react";
+import { Dispatch, SetStateAction, useState, useTransition } from "react";
 import { Pages } from "@/components/auth/signup-form";
 import { cn } from "@/utils/lib";
 import Link from "next/link";
 import { OtpInput } from "@/components/ui/input";
+import { signup } from "@/actions/auth.actions";
+import { MdOutlineReportGmailerrorred } from "react-icons/md";
+import Spinner from "@/components/ui/spinner";
+import { useRouter } from "next/navigation";
 
 export default function SignupOtp({
+  plan,
   email,
   otp,
   onOtpChange,
   onPageChange,
 }: {
+  plan: string;
   email: string;
   otp: string;
   onOtpChange: Dispatch<SetStateAction<string>>;
   onPageChange: Dispatch<SetStateAction<Pages>>;
 }) {
+  const [isPending, startTransition] = useTransition();
+  const [error, setError] = useState("");
+  const router = useRouter();
+
   return (
     <form
       className="px-20 pt-16 pb-12"
@@ -32,7 +42,32 @@ export default function SignupOtp({
         </p>
         <div className="text-gray-900 flex flex-col gap-2">
           <div className="flex flex-col gap-4">
-            <OtpInput value={otp} onValueChange={onOtpChange} />
+            <OtpInput
+              value={otp}
+              onValueChange={onOtpChange}
+              disabled={isPending}
+              onComplete={() =>
+                startTransition(async () => {
+                  const res = await signup({ plan, otp });
+                  if (res.status === "fail")
+                    setError(
+                      "The entered code is incorrect. Please try again and check for typos.",
+                    );
+                  else if (res.status === "success") router.push("/");
+                })
+              }
+            />
+            {error && (
+              <div className="flex text-red-900 items-start gap-2">
+                <MdOutlineReportGmailerrorred size={24} />
+                {error}
+              </div>
+            )}
+            {isPending && (
+              <p className="text-gray-700 font-medium text-base flex justify-center items-center gap-3 mt-2">
+                <Spinner /> Verifying
+              </p>
+            )}
             <Link
               href="/auth/signup"
               className={cn(

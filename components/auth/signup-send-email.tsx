@@ -29,9 +29,9 @@ export default function SignupSendEmail({
         event.preventDefault();
         startTransition(async () => {
           const res = await sendSignupEmail({ name, email });
-          if (res.status === "success") onPageChange("otp");
-          else if (res.errorCode === ErrorCodes.EMAIL_VERIFICATION_CONFLICT)
+          if (res.errorCode === ErrorCodes.EMAIL_VERIFICATION_CONFLICT)
             setError(res.message);
+          else onPageChange("otp");
         });
       }}
     >
