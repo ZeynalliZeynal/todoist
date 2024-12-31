@@ -16,17 +16,17 @@ import React, {
   useState,
 } from 'react';
 import { useDebounce } from '@/hooks/useDebounce';
-import {
-  ANIMATION_DURATION,
-  ANIMATION_TIMEOUT,
-  DEFAULT_SPACE,
-} from '@/components/ui/parameters';
 import { PopperContentProps, PopperTriggerProps } from '@/types/ui/popper';
 import { useResize } from '@/hooks/useResize';
 import { createPortal } from 'react-dom';
 import { cn } from '@/utils/lib';
 import { alignBox } from '@/utils/ui/align-box';
 import { Variants } from '@/types/ui/variants';
+import {
+  ANIMATION_DURATION,
+  ANIMATION_TIMEOUT,
+  DEFAULT_SPACE,
+} from '@/utils/ui/parameters';
 
 type TooltipContextProps = {
   openTooltip: (event: React.MouseEvent<HTMLElement>) => void;
