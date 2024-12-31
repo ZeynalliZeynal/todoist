@@ -1,4 +1,5 @@
 import React, {
+  ComponentProps,
   CSSProperties,
   Dispatch,
   ReactElement,
@@ -10,7 +11,14 @@ type CommonParentProps = {
   children: ReactNode;
   open?: boolean;
   onOpenChange?: Dispatch<SetStateAction<boolean>>;
-};
+} & ComponentProps<"div">;
+
+type CommonProps = {
+  children: ReactNode | ReactElement;
+  asChild?: boolean;
+  disabled?: boolean;
+  className?: string;
+} & ComponentProps<"div">;
 
 type ClientPosition =
   | {
@@ -34,18 +42,19 @@ type PopperContextProps = {
   currentItemIndex: number | undefined;
   setCurrentItemIndex: Dispatch<SetStateAction<number | undefined>>;
   menuType?: MenuTypes;
-  selectValue?: (value: string, onSelect: (value: string) => void) => void;
-  selectedValue?: string;
 };
 
 type PopperRadioGroupContextProps = {
   radioValue: string;
-  selectValue: (value: string) => void;
+  selectValue(value: string): void;
 };
+
 type PopperRadioItemProps = {
   value: string;
   onChange: (value: string) => void;
-} & CommonItemProps;
+  onKeyDown?: React.KeyboardEventHandler<HTMLElement>;
+} & CommonProps;
+
 type PopperRadioGroupProps = {
   value: string;
 } & CommonGroupProps;
@@ -78,64 +87,46 @@ type PopperLabelProps = {
   inset?: boolean;
   asChild?: boolean;
   style?: CSSProperties;
-};
+} & ComponentProps<"label">;
 
 type PopperSeparatorProps = {
   className?: string;
   style?: CSSProperties;
 };
 
-type PopperContextTriggerProps = {
-  children: ReactNode;
-  className?: string;
-  asChild?: boolean;
-  style?: CSSProperties;
-};
-
-type PopperTriggerProps = PopperContextTriggerProps & {
-  prefix?: ReactNode;
-  suffix?: ReactNode;
+type PopperTriggerProps = CommonProps & {
   disabled?: boolean;
 };
 
 type PopperProps = {
   children: ReactNode;
   menuType?: MenuTypes;
-  valueRemovable?: boolean;
 };
 
-type CommonItemProps = {
-  children: ReactNode | ReactElement;
-  asChild?: boolean;
-  disabled?: boolean;
-  className?: string;
-  prefix?: ReactNode;
-  suffix?: ReactNode;
-  inset?: boolean;
-  shortcut?: ReactNode;
-  onKeyDown?: React.KeyboardEventHandler<HTMLElement>;
-};
+type SelectItemProps = {
+  value: string;
+} & CommonProps;
 
 type PopperItemProps = {
   onClick?: (
     event: React.MouseEvent<HTMLElement>,
   ) => string | number | void | Promise<string | number | void>;
-  href?: string;
   role?: React.AriaRole;
   onSelect?: (value: string) => void;
-  value?: string;
   removable?: boolean;
-} & CommonItemProps;
+  onKeyDown?: React.KeyboardEventHandler<HTMLElement>;
+} & CommonProps;
 
 type PopperCheckboxItemProps = {
   onCheck: () => void;
   checked?: boolean;
-} & CommonItemProps;
+  onKeyDown?: React.KeyboardEventHandler<HTMLElement>;
+} & CommonProps;
 
 type CommonGroupProps = {
   children: ReactNode;
   className?: string;
-};
+} & ComponentProps<"div">;
 
 type PopperGroupProps = {
   role?: React.AriaRole;
@@ -152,10 +143,11 @@ export type {
   PopperGroupProps,
   PopperRadioGroupContextProps,
   PopperRadioItemProps,
-  PopperContextTriggerProps,
   Alignments,
   PopperProps,
   PopperLabelProps,
   PopperSeparatorProps,
   CommonParentProps,
+  SelectItemProps,
+  CommonProps,
 };

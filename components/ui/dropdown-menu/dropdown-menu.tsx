@@ -9,7 +9,7 @@ import {
   PopperRadioItemProps,
   PopperSeparatorProps,
   PopperTriggerProps,
-} from "@/types/ui/popper";
+} from '@/types/ui/popper';
 import {
   Popper,
   PopperCheckboxItem,
@@ -21,9 +21,9 @@ import {
   PopperRadioItem,
   PopperSeparator,
   PopperTrigger,
-} from "@/components/ui/poppers/popper";
-import { cn } from "@/utils/lib";
-import React from "react";
+} from '@/components/ui/poppers/popper';
+import { cn } from '@/utils/lib';
+import React from 'react';
 
 function DropdownMenu(props: CommonParentProps) {
   return (
@@ -35,16 +35,12 @@ function DropdownMenu(props: CommonParentProps) {
 
 function DropdownMenuTrigger({
   children,
-  prefix,
-  suffix,
   className,
   disabled,
   asChild,
 }: PopperTriggerProps) {
   return (
     <PopperTrigger
-      suffix={suffix}
-      prefix={prefix}
       className={cn(className)}
       asChild={asChild}
       disabled={disabled}
@@ -76,24 +72,16 @@ function DropdownMenuItem({
   disabled = false,
   className,
   asChild = false,
-  suffix,
   prefix,
   onClick,
-  inset,
-  href,
-  shortcut,
 }: PopperItemProps) {
   return (
     <PopperItem
       disabled={disabled}
       prefix={prefix}
-      suffix={suffix}
       asChild={asChild}
       className={className}
       onClick={onClick}
-      inset={inset}
-      href={href}
-      shortcut={shortcut}
     >
       {children}
     </PopperItem>

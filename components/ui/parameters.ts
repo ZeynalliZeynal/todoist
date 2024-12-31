@@ -9,6 +9,8 @@ export const POPPER_TRIGGER_SELECTOR = "[data-popper-trigger]";
 export const POPPER_CONTENT_SELECTOR = "[data-popper-content-menu]";
 export const POPPER_ITEM_SELECTOR =
   "[data-popper-content-item]:not([data-disabled])";
+export const POPPER_SELECTED_ITEM_SELECTOR =
+  "[data-popper-content-item][data-selected]:not([data-disabled])";
 
 export const POPPER_SUB_TRIGGER_SELECTOR = "[data-popper-sub-trigger]";
 export const POPPER_SUB_CONTENT_SELECTOR = "[data-popper-content-sub-menu]";

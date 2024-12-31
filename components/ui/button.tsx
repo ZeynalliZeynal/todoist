@@ -13,8 +13,6 @@ interface ButtonProps {
   children: ReactNode;
   href?: string;
   size?: "lg" | "md" | "sm";
-  prefix?: ReactNode;
-  suffix?: ReactNode;
   variant?: "primary" | "secondary" | "outline";
   onClick?: (
     event: React.MouseEvent<HTMLButtonElement>,
@@ -30,8 +28,6 @@ const Button = forwardRef<HTMLButtonElement | HTMLAnchorElement, ButtonProps>(
       children,
       size = "sm",
       href,
-      prefix = null,
-      suffix = null,
       variant = "primary",
       onClick,
       disabled,
@@ -79,7 +75,7 @@ const Button = forwardRef<HTMLButtonElement | HTMLAnchorElement, ButtonProps>(
           {...commonAttributed}
           {...etc}
         >
-          {prefix} <span className="px-1.5">{children}</span> {suffix}
+          <span className="px-1.5">{children}</span>
         </Link>
       );
     else
@@ -92,7 +88,7 @@ const Button = forwardRef<HTMLButtonElement | HTMLAnchorElement, ButtonProps>(
           {...commonAttributed}
           {...etc}
         >
-          {prefix} <span className="px-1.5">{children}</span> {suffix}
+          <span className="px-1.5">{children}</span>
         </button>
       );
   },
