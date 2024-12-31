@@ -3,19 +3,18 @@
 import React, { Dispatch, SetStateAction, useCallback, useState } from 'react';
 import { PopperContentProps, PopperItemProps } from '@/types/ui/popper';
 import { cn } from '@/utils/lib';
-import { LuChevronRight } from 'react-icons/lu';
 import { useOutsideClick } from '@/hooks/useOutsideClick';
 import { navigateItems } from '@/utils/ui/navigate-items';
 import { createPortal } from 'react-dom';
+import { useResize } from '@/hooks/useResize';
+import { usePopper } from '@/components/ui/poppers/popper';
+import { useDebounce } from '@/hooks/useDebounce';
 import {
   ANIMATION_DURATION,
   ANIMATION_TIMEOUT,
   POPPER_SUB_CONTENT_SELECTOR,
   POPPER_SUB_ITEM_SELECTOR,
-} from '@/components/ui/parameters';
-import { useResize } from '@/hooks/useResize';
-import { usePopper } from '@/components/ui/poppers/popper';
-import { useDebounce } from '@/hooks/useDebounce';
+} from '@/utils/ui/parameters';
 
 type PopperContextSubProps = {
   openSubPopper: (event: React.MouseEvent<HTMLElement>) => void;
@@ -103,10 +102,8 @@ const PopperSub = ({ children }: { children: React.ReactNode }) => {
 const PopperSubTrigger = ({
   children,
   className,
-  inset,
   disabled,
   prefix,
-  suffix = <LuChevronRight />,
 }: PopperItemProps) => {
   const { isHighlighted, highlightItem } = usePopper();
   const { openSubPopper, closeSubPopper, openSub, setCurrentItemIndex } =
@@ -178,17 +175,11 @@ const PopperSubTrigger = ({
         'data-[highlighted]:bg-ui-item-background-hover data-[disabled]:text-ui-disabled-foreground data-[disabled]:pointer-events-none data-[disabled]:select-none data-[state=open]:bg-ui-item-background-hover',
         {
           'gap-2': prefix,
-          'p-ui-item-inset': inset,
-          'p-ui-item': !inset,
         },
         className,
       )}
     >
-      {prefix}
       {children}
-      <div className="ml-auto flex items-center gap-1">
-        {suffix || <LuChevronRight />}
-      </div>
     </div>
   );
 };
