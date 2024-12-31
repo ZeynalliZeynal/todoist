@@ -1,5 +1,5 @@
-import {Alignments} from "@/types/ui/popper";
-import {DEFAULT_SPACE} from "@/components/ui/parameters";
+import { Alignments } from '@/types/ui/popper';
+import { DEFAULT_SPACE } from '@/utils/ui/parameters';
 
 /**
  * Used to align any popper based on its trigger's position
@@ -29,14 +29,14 @@ export function alignBox({
   let bottom = undefined;
   let right = undefined;
 
-  if (align.startsWith("horizontal")) {
-    if (align.includes("center"))
+  if (align.startsWith('horizontal')) {
+    if (align.includes('center'))
       left = Math.max(0, centerX - element.clientWidth / 2);
-    if (align.includes("right"))
+    if (align.includes('right'))
       left = triggerPosition.right - element.clientWidth;
-    if (align.includes("left"))
+    if (align.includes('left'))
       right = window.innerWidth - triggerPosition.left - element.clientWidth;
-    if (align.includes("top")) {
+    if (align.includes('top')) {
       bottom = canFitTop
         ? spaceLeftBottom + triggerPosition.height + DEFAULT_SPACE
         : undefined;
@@ -44,7 +44,7 @@ export function alignBox({
         ? triggerPosition.top + triggerPosition.height + DEFAULT_SPACE
         : undefined;
     }
-    if (align.includes("bottom")) {
+    if (align.includes('bottom')) {
       bottom = !canFitBottom
         ? spaceLeftBottom + triggerPosition.height + DEFAULT_SPACE
         : undefined;
@@ -53,17 +53,17 @@ export function alignBox({
         : undefined;
     }
   } else {
-    if (align.includes("center"))
+    if (align.includes('center'))
       top = Math.max(0, centerY - element.clientHeight / 2);
-    if (align.includes("right"))
+    if (align.includes('right'))
       left = triggerPosition.left + triggerPosition.width + DEFAULT_SPACE;
-    if (align.includes("left"))
+    if (align.includes('left'))
       right = window.innerWidth - triggerPosition.left + DEFAULT_SPACE;
-    if (align.includes("top")) {
+    if (align.includes('top')) {
       top = canFitBottom ? triggerPosition.top : undefined;
       bottom = !canFitBottom ? DEFAULT_SPACE : undefined;
     }
-    if (align.includes("bottom")) {
+    if (align.includes('bottom')) {
       bottom = canFitTop ? spaceLeftBottom : undefined;
       top = !canFitTop ? DEFAULT_SPACE : undefined;
     }

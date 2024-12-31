@@ -36,6 +36,9 @@ import { useResize } from '@/hooks/useResize';
 import { useOutsideClick } from '@/hooks/useOutsideClick';
 import { createPortal } from 'react-dom';
 import { useDebounce } from '@/hooks/useDebounce';
+import { cn } from '@/utils/lib';
+import { navigateItems } from '@/utils/ui/navigate-items';
+import { alignBox } from '@/utils/ui/align-box';
 import {
   ANIMATION_DURATION,
   ANIMATION_TIMEOUT,
@@ -46,10 +49,7 @@ import {
   POPPER_SELECTED_ITEM_SELECTOR,
   POPPER_SUB_CONTENT_SELECTOR,
   POPPER_SUB_ITEM_SELECTOR,
-} from '@/components/ui/parameters';
-import { cn } from '@/utils/lib';
-import { navigateItems } from '@/utils/navigate-items';
-import { alignBox } from '@/utils/align-box';
+} from '@/utils/ui/parameters';
 
 export const PopperContext = createContext<PopperContextProps | null>(null);
 const PopperRadioGroupContext =
@@ -534,8 +534,8 @@ const PopperItem = forwardRef<HTMLElement, PopperItemProps>(
         'p-ui-item h-10 rounded-md',
         'flex items-center justify-start gap-2 w-full transition-colors',
         'data-[disabled]:cursor-not-allowed data-[disabled]:select-none',
-        'focus:ring-0 focus-visible:!ring-0 focus-visible:!outline-0',
         'data-[selected]:bg-gray-alpha-100',
+        'focus-visible:!ring-0 focus-visible:!ring-offset-0 outline-0',
         className,
       ),
       onMouseEnter: handleMouseEnter,

@@ -1,21 +1,21 @@
-"use client";
+'use client';
 
-import React, { Dispatch, SetStateAction, useCallback, useState } from "react";
-import { PopperContentProps, PopperItemProps } from "@/types/ui/popper";
-import { cn } from "@/utils/lib";
-import { LuChevronRight } from "react-icons/lu";
-import { useOutsideClick } from "@/hooks/useOutsideClick";
-import { navigateItems } from "@/utils/navigate-items";
-import { createPortal } from "react-dom";
+import React, { Dispatch, SetStateAction, useCallback, useState } from 'react';
+import { PopperContentProps, PopperItemProps } from '@/types/ui/popper';
+import { cn } from '@/utils/lib';
+import { LuChevronRight } from 'react-icons/lu';
+import { useOutsideClick } from '@/hooks/useOutsideClick';
+import { navigateItems } from '@/utils/ui/navigate-items';
+import { createPortal } from 'react-dom';
 import {
   ANIMATION_DURATION,
   ANIMATION_TIMEOUT,
   POPPER_SUB_CONTENT_SELECTOR,
   POPPER_SUB_ITEM_SELECTOR,
-} from "@/components/ui/parameters";
-import { useResize } from "@/hooks/useResize";
-import { usePopper } from "@/components/ui/poppers/popper";
-import { useDebounce } from "@/hooks/useDebounce";
+} from '@/components/ui/parameters';
+import { useResize } from '@/hooks/useResize';
+import { usePopper } from '@/components/ui/poppers/popper';
+import { useDebounce } from '@/hooks/useDebounce';
 
 type PopperContextSubProps = {
   openSubPopper: (event: React.MouseEvent<HTMLElement>) => void;
@@ -37,7 +37,7 @@ const PopperSubContext = React.createContext<PopperContextSubProps | undefined>(
 const usePopperSub = () => {
   const context = React.useContext(PopperSubContext);
   if (!context) {
-    throw new Error("Sub context must be used within a PopperContext.Provider");
+    throw new Error('Sub context must be used within a PopperContext.Provider');
   }
   return context;
 };
@@ -120,12 +120,12 @@ const PopperSubTrigger = ({
     if (!ref.current) return;
     if (!isHighlighted(event.currentTarget)) return;
     const keyCode = (event as React.KeyboardEvent).code;
-    if (keyCode === "ArrowRight" || keyCode === "ArrowLeft") {
+    if (keyCode === 'ArrowRight' || keyCode === 'ArrowLeft') {
       event.preventDefault();
-      const action: "open" | "close" =
-        keyCode === "ArrowLeft" ? "close" : "open";
+      const action: 'open' | 'close' =
+        keyCode === 'ArrowLeft' ? 'close' : 'open';
 
-      if (action === "open") {
+      if (action === 'open') {
         openSubPopper(event as React.MouseEvent<HTMLElement>);
         setOpenedWithKey(true);
       } else {
@@ -164,22 +164,22 @@ const PopperSubTrigger = ({
       tabIndex={-1}
       role="menuitem"
       data-popper-content-item=""
-      data-state={openSub ? "open" : "closed"}
+      data-state={openSub ? 'open' : 'closed'}
       aria-disabled={disabled}
       data-disabled={disabled}
       data-highlighted={
-        ref.current && isHighlighted(ref.current) ? "" : undefined
+        ref.current && isHighlighted(ref.current) ? '' : undefined
       }
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
       onKeyDown={handleKeyDown}
       className={cn(
-        "text-foreground flex items-center justify-start rounded-ui-item w-full focus:ring-0 cursor-default transition-colors",
-        "data-[highlighted]:bg-ui-item-background-hover data-[disabled]:text-ui-disabled-foreground data-[disabled]:pointer-events-none data-[disabled]:select-none data-[state=open]:bg-ui-item-background-hover",
+        'text-foreground flex items-center justify-start rounded-ui-item w-full focus:ring-0 cursor-default transition-colors',
+        'data-[highlighted]:bg-ui-item-background-hover data-[disabled]:text-ui-disabled-foreground data-[disabled]:pointer-events-none data-[disabled]:select-none data-[state=open]:bg-ui-item-background-hover',
         {
-          "gap-2": prefix,
-          "p-ui-item-inset": inset,
-          "p-ui-item": !inset,
+          'gap-2': prefix,
+          'p-ui-item-inset': inset,
+          'p-ui-item': !inset,
         },
         className,
       )}
@@ -223,16 +223,16 @@ const PopperSubContent = ({ children, className }: PopperContentProps) => {
   };
 
   const handleKeyDown = (event: React.KeyboardEvent<HTMLElement>) => {
-    if (event.code === "ArrowLeft" && activeTrigger) {
+    if (event.code === 'ArrowLeft' && activeTrigger) {
       event.preventDefault();
       closeSubPopper();
       highlightItem(activeTrigger);
     }
-    if (event.code === "Escape") {
+    if (event.code === 'Escape') {
       event.preventDefault();
       closePopper();
     }
-    if (event.code === "Tab") {
+    if (event.code === 'Tab') {
       event.preventDefault();
     }
 
@@ -275,13 +275,13 @@ const PopperSubContent = ({ children, className }: PopperContentProps) => {
         role="menu"
         popper-content-sub-menu=""
         aria-expanded={openSub}
-        data-state={!animateMain || animate ? "open" : "closed"}
+        data-state={!animateMain || animate ? 'open' : 'closed'}
         className={cn(
-          "bg-ui-background rounded-ui-content p-ui-content border fixed z-50 pointer-events-auto focus:ring-0",
-          "data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2",
+          'bg-ui-background rounded-ui-content p-ui-content border fixed z-50 pointer-events-auto focus:ring-0',
+          'data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2',
           className,
         )}
-        style={{ ...style, animationDuration: ANIMATION_DURATION + "ms" }}
+        style={{ ...style, animationDuration: ANIMATION_DURATION + 'ms' }}
         onKeyDown={handleKeyDown}
         onMouseLeave={handleMouseLeave}
       >

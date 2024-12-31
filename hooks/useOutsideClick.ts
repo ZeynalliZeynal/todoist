@@ -1,5 +1,5 @@
-import { useEffect, useRef } from "react";
-import { POPPER_SUB_CONTENT_SELECTOR } from "@/components/ui/parameters";
+import { useEffect, useRef } from 'react';
+import { POPPER_SUB_CONTENT_SELECTOR } from '@/utils/ui/parameters';
 
 export const useOutsideClick = ({
   onTrigger,
@@ -21,10 +21,10 @@ export const useOutsideClick = ({
       }
     };
 
-    document.addEventListener("mousedown", handleClickOutside, capturePhase);
+    document.addEventListener('mousedown', handleClickOutside, capturePhase);
     return () => {
       document.removeEventListener(
-        "mousedown",
+        'mousedown',
         handleClickOutside,
         capturePhase,
       );

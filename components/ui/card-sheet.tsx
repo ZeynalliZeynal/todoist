@@ -1,7 +1,7 @@
-import { ReactNode } from "react";
-import Link from "next/link";
-import { DashedCircle } from "@/components/ui/icons/geist";
-import Image from "next/image";
+import { ReactNode } from 'react';
+import Link from 'next/link';
+import { DashedCircle } from '@/components/ui/icons/geist';
+import Image from 'next/image';
 
 export default function CardSheet({
   children,
@@ -15,13 +15,13 @@ export default function CardSheet({
   alt: string;
 }) {
   return (
-    <Link href={href} className="flex flex-col border w-40 group">
+    <Link href={href} className="flex flex-col border w-40 group w-full">
       <div className="relative h-32 bg-background-200 group-hover:bg-gray-alpha-100 transition duration-300">
         <div
           className="absolute [--size:33px] -top-px w-[var(--size)] h-[var(--size)] border-r-background-100 border-b-background-200 -right-px border-gray-400"
           style={{
-            borderBottomWidth: "var(--size)",
-            borderRightWidth: "var(--size)",
+            borderBottomWidth: 'var(--size)',
+            borderRightWidth: 'var(--size)',
           }}
         >
           <div className="absolute size-[var(--size)] border-b border-l before:absolute before:top-0 before:-right-px before:w-px before:h-[var(--size)] before:bg-gray-400 before:-rotate-45 before:scale-[1.4] before:origin-bottom overflow-hidden" />
@@ -35,16 +35,16 @@ export default function CardSheet({
             className="absolute h-full w-px left-1/3"
             style={{
               background:
-                "linear-gradient(180deg,hsla(var(--ds-gray-400)),hsla(var(--ds-gray-400)) 50%,transparent 0,transparent)",
-              backgroundSize: "1px 5px",
+                'linear-gradient(180deg,hsla(var(--ds-gray-400)),hsla(var(--ds-gray-400)) 50%,transparent 0,transparent)',
+              backgroundSize: '1px 5px',
             }}
           />
           <hr
             className="absolute h-full w-px left-2/3"
             style={{
               background:
-                "linear-gradient(180deg,hsla(var(--ds-gray-400)),hsla(var(--ds-gray-400)) 50%,transparent 0,transparent)",
-              backgroundSize: "1px 5px",
+                'linear-gradient(180deg,hsla(var(--ds-gray-400)),hsla(var(--ds-gray-400)) 50%,transparent 0,transparent)',
+              backgroundSize: '1px 5px',
             }}
           />
         </div>
