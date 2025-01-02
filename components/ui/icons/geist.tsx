@@ -1,4 +1,4 @@
-import { ComponentProps } from "react";
+import { ComponentProps } from 'react';
 
 export const DeviceAlternate = ({ size = 16 }: { size?: number }) => {
   return (
@@ -7,8 +7,8 @@ export const DeviceAlternate = ({ size = 16 }: { size?: number }) => {
       strokeLinejoin="round"
       viewBox="0 0 16 16"
       style={{
-        width: size + "px",
-        height: size + "px",
+        width: size + 'px',
+        height: size + 'px',
       }}
     >
       <path
@@ -28,8 +28,8 @@ export const Sun = ({ size = 16 }: { size?: number }) => {
       strokeLinejoin="round"
       viewBox="0 0 16 16"
       style={{
-        width: size + "px",
-        height: size + "px",
+        width: size + 'px',
+        height: size + 'px',
       }}
     >
       <path
@@ -49,8 +49,8 @@ export const Moon = ({ size = 16 }: { size?: number }) => {
       strokeLinejoin="round"
       viewBox="0 0 16 16"
       style={{
-        width: size + "px",
-        height: size + "px",
+        width: size + 'px',
+        height: size + 'px',
       }}
     >
       <path
@@ -63,7 +63,7 @@ export const Moon = ({ size = 16 }: { size?: number }) => {
   );
 };
 
-export function Nub(props: ComponentProps<"svg">) {
+export function Nub(props: ComponentProps<'svg'>) {
   return (
     <svg
       aria-hidden="true"
@@ -85,7 +85,7 @@ export function Nub(props: ComponentProps<"svg">) {
   );
 }
 
-export function DashedCircle(props: ComponentProps<"svg">) {
+export function DashedCircle(props: ComponentProps<'svg'>) {
   return (
     <svg aria-hidden="true" fill="none" viewBox="0 0 66 65" {...props}>
       <circle
@@ -95,6 +95,203 @@ export function DashedCircle(props: ComponentProps<"svg">) {
         stroke="hsla(var(--ds-gray-400))"
         strokeDasharray="2 2"
       />
+    </svg>
+  );
+}
+
+export function Geist({
+  size = 16,
+  ...etc
+}: { size?: number } & ComponentProps<'svg'>) {
+  return (
+    <svg
+      data-testid="header/navbar/logo"
+      strokeLinejoin="round"
+      viewBox="0 0 16 16"
+      height={size}
+      width={size}
+      {...etc}
+    >
+      <path
+        fillRule="evenodd"
+        clipRule="evenodd"
+        d="M8 4C8.82843 4 9.5 3.32843 9.5 2.5C9.5 1.67157 8.82843 1 8 1C7.17157 1 6.5 1.67157 6.5 2.5C6.5 3.32843 7.17157 4 8 4ZM8.97125 4.75725L9.57125 5.75725L10.4287 5.24275L9.82875 4.24275L8.97125 4.75725ZM6.42875 5.75725L7.02875 4.75725L6.17125 4.24275L5.57125 5.24275L6.42875 5.75725ZM10.1713 6.75725L10.7713 7.75725L11.6287 7.24275L11.0287 6.24275L10.1713 6.75725ZM5.22875 7.75725L5.82875 6.75725L4.97125 6.24275L4.37125 7.24275L5.22875 7.75725ZM11.3713 8.75725L11.9713 9.75725L12.8287 9.24275L12.2287 8.24275L11.3713 8.75725ZM4.02875 9.75725L4.62875 8.75725L3.77125 8.24275L3.17125 9.24275L4.02875 9.75725ZM12.5713 10.7572L13.1713 11.7572L14.0287 11.2428L13.4287 10.2428L12.5713 10.7572ZM2.82875 11.7572L3.42875 10.7572L2.57125 10.2428L1.97125 11.2428L2.82875 11.7572ZM3 13.5C3 13.8133 2.90396 14.1041 2.73971 14.3447V14.5H2.61805C2.34339 14.8069 1.94425 15 1.5 15C0.671573 15 0 14.3284 0 13.5C0 12.6716 0.671573 12 1.5 12C2.32843 12 3 12.6716 3 13.5ZM3.925 14.5H5.1103V13.5H3.925V14.5ZM6.29559 14.5H7.48089V13.5H6.29559V14.5ZM8.66618 14.5H9.85147V13.5H8.66618V14.5ZM11.0368 14.5H12.2221V13.5H11.0368V14.5ZM14.5 15C15.3284 15 16 14.3284 16 13.5C16 12.6716 15.3284 12 14.5 12C13.6716 12 13 12.6716 13 13.5C13 14.3284 13.6716 15 14.5 15Z"
+        fill="currentColor"
+      />
+    </svg>
+  );
+}
+
+export function V0({
+  size = 16,
+  ...etc
+}: { size?: number } & ComponentProps<'svg'>) {
+  return (
+    <svg
+      data-testid="header/navbar/logo"
+      strokeLinejoin="round"
+      viewBox="0 0 16 16"
+      height={size}
+      width={size}
+      {...etc}
+    >
+      <g clipPath="url(#clip0_174_19301)">
+        <path
+          clipRule="evenodd"
+          d="M12.2649 5H16.6299C16.7421 5 16.8516 5.01137 16.9574 5.03301L12.2722 9.76708C12.2674 9.7161 12.2649 9.66443 12.2649 9.61219V5ZM12.2614 5L12.2614 3.25H16.6299C18.4938 3.25 20.0049 4.76104 20.0049 6.625V11.2422H18.2599V12.9872H13.8899C12.0259 12.9872 10.5149 11.4762 10.5149 9.61219V5L12.2614 5ZM18.2549 11.2372V6.625C18.2549 6.497 18.2401 6.37246 18.2121 6.253L13.3651 11.1506C13.5297 11.2067 13.7063 11.2372 13.8899 11.2372L18.2549 11.2372ZM0.164062 5.00359L6.88762 12.696C7.62006 13.534 8.9999 13.016 8.9999 11.903V5.00359H7.2499V10.4513L2.48831 5.00359H0.164062Z"
+          fill="hsl(var(--ds-gray-1000))"
+          fillRule="evenodd"
+        />
+      </g>
+      <defs>
+        <clipPath id="clip0_174_19301">
+          <rect fill="white" height="16" width="20" />
+        </clipPath>
+      </defs>
+    </svg>
+  );
+}
+
+export function Turbo({
+  size = 16,
+  ...etc
+}: { size?: number } & ComponentProps<'svg'>) {
+  return (
+    <svg
+      data-testid="header/navbar/logo"
+      strokeLinejoin="round"
+      viewBox="0 0 16 16"
+      height={size}
+      width={size}
+      {...etc}
+    >
+      <g clipPath="url(#clip0_872_3188)">
+        <path
+          fillRule="evenodd"
+          clipRule="evenodd"
+          d="M8 0V2C11.3137 2 14 4.68629 14 8C14 11.1453 11.5798 13.7254 8.5 13.9795V15.9846C12.6854 15.7265 16 12.2504 16 8C16 3.58172 12.4183 0 8 0ZM7.5 15.9846V13.9795C6.2188 13.8738 5.05174 13.3655 4.12558 12.5815L2.70769 13.9994C4.00133 15.1415 5.66717 15.8716 7.5 15.9846ZM2.00058 13.2923C0.755509 11.882 0 10.0292 0 8H2C2 9.47685 2.53358 10.8291 3.41847 11.8744L2.00058 13.2923Z"
+          fill="url(#paint0_linear_872_3188)"
+        />
+        <rect
+          x="4.5"
+          y="4.5"
+          width="7"
+          height="7"
+          rx="3.5"
+          stroke="hsl(var(--ds-gray-1000))"
+          fill="transparent"
+          strokeWidth="2"
+        />
+      </g>
+      <defs>
+        <linearGradient
+          id="paint0_linear_872_3188"
+          x1="8.68832"
+          y1="1.98437"
+          x2="1.79792"
+          y2="8.82805"
+          gradientUnits="userSpaceOnUse"
+        >
+          <stop stopColor="#0096FF" />
+          <stop offset="1" stopColor="#FF1E56" />
+        </linearGradient>
+        <clipPath id="clip0_872_3188">
+          <rect width="16" height="16" fill="white" />
+        </clipPath>
+      </defs>
+    </svg>
+  );
+}
+
+export function Nextjs({
+  size = 16,
+  ...etc
+}: { size?: number } & ComponentProps<'svg'>) {
+  return (
+    <svg
+      data-testid="header/navbar/logo"
+      strokeLinejoin="round"
+      viewBox="0 0 16 16"
+      height={size}
+      width={size}
+      {...etc}
+    >
+      <g clipPath="url(#clip0_53_108)">
+        <circle
+          cx="8"
+          cy="8"
+          r="7.375"
+          fill="black"
+          stroke="hsl(var(--ds-gray-1000))"
+          strokeWidth="1.25"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+        <path
+          d="M10.63 11V5"
+          stroke="url(#paint0_linear_53_108Rallnbd3b)"
+          strokeWidth="1.25"
+          strokeMiterlimit="1.41421"
+        />
+        <path
+          fillRule="evenodd"
+          clipRule="evenodd"
+          d="M5.995 5.00087V5H4.745V11H5.995V6.96798L12.3615 14.7076C12.712 14.4793 13.0434 14.2242 13.353 13.9453L5.99527 5.00065L5.995 5.00087Z"
+          fill="url(#paint1_linear_53_108Rallnbd3b)"
+        />
+      </g>
+      <defs>
+        <linearGradient
+          id="paint0_linear_53_108Rallnbd3b"
+          x1="11.13"
+          y1="5"
+          x2="11.13"
+          y2="11"
+          gradientUnits="userSpaceOnUse"
+        >
+          <stop stopColor="white"></stop>
+          <stop offset="0.609375" stopColor="white" stopOpacity="0.57"></stop>
+          <stop offset="0.796875" stopColor="white" stopOpacity="0"></stop>
+          <stop offset="1" stopColor="white" stopOpacity="0"></stop>
+        </linearGradient>
+        <linearGradient
+          id="paint1_linear_53_108Rallnbd3b"
+          x1="9.9375"
+          y1="9.0625"
+          x2="13.5574"
+          y2="13.3992"
+          gradientUnits="userSpaceOnUse"
+        >
+          <stop stopColor="white"></stop>
+          <stop offset="1" stopColor="white" stopOpacity="0"></stop>
+        </linearGradient>
+        <clipPath id="clip0_53_108">
+          <rect width="16" height="16" fill="red"></rect>
+        </clipPath>
+      </defs>
+    </svg>
+  );
+}
+
+export function Vercel({
+  size = 16,
+  ...etc
+}: { size?: number } & ComponentProps<'svg'>) {
+  return (
+    <svg
+      data-testid="header/navbar/logo"
+      strokeLinejoin="round"
+      viewBox="0 0 16 16"
+      height={size}
+      width={size}
+      {...etc}
+    >
+      <path
+        fillRule="evenodd"
+        clipRule="evenodd"
+        d="M8 1L16 15H0L8 1Z"
+        fill="hsl(var(--ds-gray-1000))"
+      ></path>
     </svg>
   );
 }

@@ -184,6 +184,17 @@ const TooltipContent = ({
   } = useTooltip();
   const [style, setStyle] = useState<CSSProperties>({});
 
+  const inset =
+    align?.includes('horizontal') && align?.includes('top')
+      ? `0 0 -${DEFAULT_SPACE + 1}px 0`
+      : align?.includes('horizontal') && align?.includes('bottom')
+        ? `-${DEFAULT_SPACE + 1}px 0 0 0`
+        : align?.includes('vertical') && align?.includes('left')
+          ? `0 -${DEFAULT_SPACE + 1}px 0 0`
+          : align?.includes('vertical') && align?.includes('right')
+            ? `0 0 0 -${DEFAULT_SPACE + 1}px`
+            : undefined;
+
   const ref = useRef<HTMLDivElement | null>(null);
 
   const updatePosition = useCallback(() => {
@@ -245,20 +256,7 @@ const TooltipContent = ({
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
       >
-        <div
-          className={cn('absolute z-[1]')}
-          style={{
-            inset: `${
-              align?.includes('horizontal') ? `-${DEFAULT_SPACE + 1}px` : 0
-            } ${align?.includes('vertical') ? `-${DEFAULT_SPACE + 1}px` : 0}`,
-            width: `${
-              align?.includes('vertical') ? `${DEFAULT_SPACE}px` : '100%'
-            }`,
-            height: `${
-              align?.includes('horizontal') ? `${DEFAULT_SPACE}px` : '100%'
-            }`,
-          }}
-        />
+        <div className={cn('absolute z-[1]')} style={{ inset }} />
         <span className="relative z-[2]">{children}</span>
       </div>,
       document.body,

@@ -13,7 +13,7 @@ interface ButtonProps {
   children: ReactNode;
   href?: string;
   size?: 'lg' | 'md' | 'sm';
-  variant?: 'primary' | 'secondary' | 'outline';
+  variant?: 'primary' | 'secondary' | 'outline' | 'gradient';
   onClick?: (
     event: React.MouseEvent<HTMLButtonElement>,
   ) => void | Promise<void>;
@@ -60,6 +60,8 @@ const Button = forwardRef<HTMLButtonElement | HTMLAnchorElement, ButtonProps>(
         // disabled:bg-button-invert-disabled disabled:text-gray-700 disabled:border-gray-400
         'text-gray-900 data-[hover]:text-foreground border-none':
           variant === 'outline',
+        'border-none bg-background-100 shadow-border data-[hover]:bg-gray-200':
+          variant === 'gradient',
       },
       className,
     );

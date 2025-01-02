@@ -1,5 +1,5 @@
-import Button from "@/components/ui/button";
-import { getProfile } from "@/actions/profile.action";
+import Button from '@/components/ui/button';
+import { getProfile } from '@/actions/profile.action';
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -8,12 +8,14 @@ import {
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu/dropdown-menu";
-import Image from "next/image";
-import ThemeSwitch from "@/components/ui/theme";
-import Link from "next/link";
-import { dashboardRoute } from "@/routes";
-import DropdownLogout from "@/app/(landing)/_layout/header/dropdown-logout";
+} from '@/components/ui/dropdown-menu/dropdown-menu';
+import Image from 'next/image';
+import ThemeSwitch from '@/components/ui/theme';
+import Link from 'next/link';
+import { dashboardRoute } from '@/routes';
+import DropdownLogout from '@/app/(landing)/_layout/header/dropdown-logout';
+import SpecialButton from '@/components/ui/special-button';
+import { Geist } from '@/components/ui/icons/geist';
 
 export default async function NavRight() {
   const profile = await getProfile();
@@ -23,6 +25,13 @@ export default async function NavRight() {
     <div className="flex items-center gap-3">
       {user ? (
         <>
+          <SpecialButton
+            href="/geist/introduction"
+            className="h-8 rounded-md w-32 [&_span]:rounded-md font-geist-mono"
+          >
+            <Geist className="mr-2 group-hover:rotate-180 origin-center transition duration-300" />
+            Geist UI
+          </SpecialButton>
           <Button size="sm" href="/contact">
             Contact
           </Button>
@@ -70,6 +79,13 @@ export default async function NavRight() {
         </>
       ) : (
         <>
+          <SpecialButton
+            href="/geist/introduction"
+            className="h-8 rounded-md w-32 [&_span]:rounded-md font-geist-mono"
+          >
+            <Geist className="mr-2 group-hover:rotate-180 origin-center transition duration-300" />
+            Geist UI
+          </SpecialButton>
           <Button size="sm" href="/auth/login">
             Log In
           </Button>

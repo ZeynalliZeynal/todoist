@@ -1,5 +1,5 @@
-"use client";
-import { cn } from "@/utils/lib";
+'use client';
+import { cn } from '@/utils/lib';
 import {
   createContext,
   KeyboardEventHandler,
@@ -9,10 +9,10 @@ import {
   useMemo,
   useRef,
   useState,
-} from "react";
-import { DeviceAlternate, Moon, Sun } from "@/components/ui/icons/geist";
+} from 'react';
+import { DeviceAlternate, Moon, Sun } from '@/components/ui/icons/geist';
 
-type Themes = "device" | "dark" | "light";
+type Themes = 'device' | 'dark' | 'light';
 
 interface ThemeSwitcherContext {
   theme: Themes;
@@ -23,33 +23,43 @@ const ThemeSwitcherContext = createContext<ThemeSwitcherContext | null>(null);
 
 const useThemeSwitcher = () => {
   const context = useContext(ThemeSwitcherContext);
-  if (!context) throw new Error("Context is outside of the provider");
+  if (!context) throw new Error('Context is outside of the provider');
   return context;
 };
 
 export const ThemeSwitchProvider = ({ children }: { children: ReactNode }) => {
-  const [theme, setTheme] = useState<Themes>("device");
+  const [theme, setTheme] = useState<Themes>('device');
 
   const changeTheme = (theme: Themes) => {
     setTheme(theme);
-    localStorage.setItem("theme", JSON.stringify(theme));
+    localStorage.setItem('theme', JSON.stringify(theme));
   };
   useEffect(() => {
-    if (localStorage.getItem("theme")) {
-      setTheme(JSON.parse(localStorage.getItem("theme") as string));
+    if (localStorage.getItem('theme')) {
+      setTheme(JSON.parse(localStorage.getItem('theme') as string));
     }
   }, [theme]);
 
   useEffect(() => {
-    if (theme === "device") {
-      if (window.matchMedia("(prefers-color-scheme:dark)").matches) {
-        if (!document.documentElement.className.includes("dark"))
-          document.documentElement.classList.add("dark");
-      } else document.documentElement.classList.remove("dark");
-    } else if (theme === "dark") {
-      if (!document.documentElement.className.includes("dark"))
-        document.documentElement.classList.add("dark");
-    } else document.documentElement.classList.remove("dark");
+    if (theme === 'device') {
+      if (window.matchMedia('(prefers-color-scheme:dark)').matches) {
+        if (!document.documentElement.className.includes('dark')) {
+          document.documentElement.classList.add('dark');
+          document.documentElement.style.colorScheme = 'dark';
+        }
+      } else {
+        document.documentElement.classList.remove('dark');
+        document.documentElement.style.colorScheme = '';
+      }
+    } else if (theme === 'dark') {
+      if (!document.documentElement.className.includes('dark')) {
+        document.documentElement.classList.add('dark');
+        document.documentElement.style.colorScheme = 'dark';
+      }
+    } else {
+      document.documentElement.classList.remove('dark');
+      document.documentElement.style.colorScheme = '';
+    }
   }, [theme]);
 
   return (
@@ -64,22 +74,22 @@ export const ThemeSwitchProvider = ({ children }: { children: ReactNode }) => {
   );
 };
 
-type Theme = "device" | "light" | "dark";
+type Theme = 'device' | 'light' | 'dark';
 
 export default function ThemeSwitch({ size = 24 }: { size?: number }) {
   const { theme, changeTheme } = useThemeSwitcher();
-  const themes: Theme[] = useMemo(() => ["device", "light", "dark"], []);
+  const themes: Theme[] = useMemo(() => ['device', 'light', 'dark'], []);
   const [index, setIndex] = useState(themes.indexOf(theme));
   const ref = useRef<HTMLDivElement | null>(null);
 
   const handleKeyDown: KeyboardEventHandler<HTMLDivElement> = (event) => {
     const themeItems = Array.from(
-      event.currentTarget.querySelectorAll("[theme-item]"),
+      event.currentTarget.querySelectorAll('[theme-item]'),
     ) as HTMLButtonElement[];
 
-    if (event.code === "ArrowLeft" || event.code === "ArrowRight") {
+    if (event.code === 'ArrowLeft' || event.code === 'ArrowRight') {
       event.preventDefault();
-      const direction = event.code === "ArrowRight" ? 1 : -1;
+      const direction = event.code === 'ArrowRight' ? 1 : -1;
       const newIndex =
         (index + direction + themeItems.length) % themeItems.length;
       setIndex(newIndex);
@@ -103,7 +113,7 @@ export default function ThemeSwitch({ size = 24 }: { size?: number }) {
       ref={ref}
       role="radiogroup"
       theme-container=""
-      className="relative flex items-center rounded-full border p-1 text-gray-900 w-fit"
+      className="relative flex items-center rounded-full border text-gray-900 size-fit"
       aria-label="Theme Switcher"
       onKeyDown={handleKeyDown}
     >
@@ -123,9 +133,9 @@ export default function ThemeSwitch({ size = 24 }: { size?: number }) {
           role="radio"
           aria-checked={theme === themeOption}
           className={cn(
-            "inline-flex items-center justify-center hover:text-foreground transition relative z-[1] rounded-full",
+            'inline-flex items-center justify-center hover:text-foreground transition relative z-[1] rounded-full',
             {
-              "text-foreground": theme === themeOption,
+              'text-foreground': theme === themeOption,
             },
           )}
           style={{
@@ -134,9 +144,9 @@ export default function ThemeSwitch({ size = 24 }: { size?: number }) {
           }}
           onClick={() => handleItemClick(themeOption, idx)}
         >
-          {themeOption === "device" && <DeviceAlternate size={size / 2} />}
-          {themeOption === "light" && <Sun size={size / 2} />}
-          {themeOption === "dark" && <Moon size={size / 2} />}
+          {themeOption === 'device' && <DeviceAlternate size={size / 2} />}
+          {themeOption === 'light' && <Sun size={size / 2} />}
+          {themeOption === 'dark' && <Moon size={size / 2} />}
         </button>
       ))}
     </div>

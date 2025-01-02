@@ -10,6 +10,7 @@ export default {
   theme: {
     screens: {
       xl: '1150px',
+      geist: '1220px',
       full: '1448px',
     },
     extend: {
@@ -159,6 +160,10 @@ export default {
         DEFAULT: 'hsl(var(--ds-gray-alpha-400))',
         grid: 'hsl(var(--ds-gray-200))',
       },
+      backgroundImage: {
+        'gradient-button':
+          'linear-gradient(-90deg,#007cf0,#00dfd8,#ff0080,#007cf0)',
+      },
       boxShadow: {
         'header-border': 'hsl(var(--header-border))',
         input:
@@ -182,8 +187,15 @@ export default {
         'accordion-down': 'accordion-down 0.25s ease-in both',
         'fade-in': 'fade-in 0.5s ease-in forwards',
         caret: 'caret 0.5s ease both alternate infinite',
+        'special-button': 'special-button 8s ease-in-out infinite',
       },
       keyframes: {
+        'special-button': {
+          '50%': {
+            backgroundPosition: '140% 50%',
+            transform: 'skew(-2deg)',
+          },
+        },
         caret: {
           '0%': {
             opacity: '0',
