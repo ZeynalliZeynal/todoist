@@ -14,7 +14,7 @@ export default function GeistHeader() {
           </p>
         </Link>
       </div>
-      <div className="border-l flex items-center justify-between px-4">
+      <div className="border-l flex items-center justify-between pl-4">
         <button className="h-8 rounded-md shadow-border flex items-center px-2 text-gray-900 w-56 justify-between transition hover:bg-background-100">
           Search Geist
           <Kbd>Ctrl K</Kbd>
