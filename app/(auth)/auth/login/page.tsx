@@ -1,11 +1,11 @@
-import Link from "next/link";
-import LoginForm from "@/components/auth/login-form";
-import { HeaderLogin } from "@/app/(auth)/_layout/header/header";
-import Footer from "@/app/(auth)/_layout/footer/footer";
+import Link from 'next/link';
+import LoginForm from '@/components/auth/login-form';
+import { HeaderLogin } from '@/app/(auth)/_layout/header/header';
+import Footer from '@/app/(auth)/_layout/footer/footer';
 
 export default function Page() {
   return (
-    <div className="bg-background-200">
+    <div className="bg-background-100">
       <div className="flex min-h-screen flex-col">
         <HeaderLogin />
         <main className="flex-1 max-w-full flex">
@@ -15,7 +15,7 @@ export default function Page() {
                 <LoginForm />
               </div>
             </section>
-            <section className="w-full border-b border-t bg-background-100">
+            <section className="w-full border-b border-t bg-background-200">
               <div className="flex items-center p-7 min-h-24 justify-center w-full">
                 <Link
                   href="/auth/signup"

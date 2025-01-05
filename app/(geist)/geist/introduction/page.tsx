@@ -1,3 +1,5 @@
+import GeistCards from './_sections/geist-cards';
+
 export default function IntroductionPage() {
   return (
     <div>
@@ -9,6 +11,7 @@ export default function IntroductionPage() {
           Vercel design system for building consistent web experiences.
         </p>
       </section>
+      <GeistCards />
     </div>
   );
 }

@@ -81,7 +81,7 @@ const Tooltip = ({
         }, openDelay);
       }
     },
-    [clearDebounce, debounce, isClosing, openDelay],
+    [clearDebounce, debounce, isClosing, openDelay]
   );
 
   const closeTooltip = useCallback(() => {
@@ -149,7 +149,7 @@ const TooltipTrigger = ({
       if (ref.current) {
         setTriggerPosition(ref.current.getBoundingClientRect());
       }
-    }, [setTriggerPosition]),
+    }, [setTriggerPosition])
   );
 
   const attributes = {
@@ -188,12 +188,12 @@ const TooltipContent = ({
     align?.includes('horizontal') && align?.includes('top')
       ? `0 0 -${DEFAULT_SPACE + 1}px 0`
       : align?.includes('horizontal') && align?.includes('bottom')
-        ? `-${DEFAULT_SPACE + 1}px 0 0 0`
-        : align?.includes('vertical') && align?.includes('left')
-          ? `0 -${DEFAULT_SPACE + 1}px 0 0`
-          : align?.includes('vertical') && align?.includes('right')
-            ? `0 0 0 -${DEFAULT_SPACE + 1}px`
-            : undefined;
+      ? `-${DEFAULT_SPACE + 1}px 0 0 0`
+      : align?.includes('vertical') && align?.includes('left')
+      ? `0 -${DEFAULT_SPACE + 1}px 0 0`
+      : align?.includes('vertical') && align?.includes('right')
+      ? `0 0 0 -${DEFAULT_SPACE + 1}px`
+      : undefined;
 
   const ref = useRef<HTMLDivElement | null>(null);
 
@@ -235,7 +235,7 @@ const TooltipContent = ({
             'bg-blue-200 text-blue-900': variant === 'blue-subtle',
             'bg-purple-700 text-purple-50': variant === 'purple',
             'bg-purple-200 text-purple-900': variant === 'purple-subtle',
-            'bg-amber-700 text-background-100': variant === 'amber',
+            'bg-amber-700 text-background-200': variant === 'amber',
             'bg-amber-200 text-amber-900': variant === 'amber-subtle',
             'bg-red-700 text-red-50': variant === 'red',
             'bg-red-200 text-red-900': variant === 'red-subtle',
@@ -247,7 +247,7 @@ const TooltipContent = ({
             'bg-teal-200 text-teal-900': variant === 'teal-subtle',
           },
           'animate-in fade-in-0 zoom-in-95 data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2',
-          className,
+          className
         )}
         style={{
           ...style,
@@ -259,7 +259,7 @@ const TooltipContent = ({
         <div className={cn('absolute z-[1]')} style={{ inset }} />
         <span className="relative z-[2]">{children}</span>
       </div>,
-      document.body,
+      document.body
     );
 
   return null;

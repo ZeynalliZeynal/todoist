@@ -32,7 +32,7 @@ export default {
       },
       colors: {
         border: 'hsl(var(--ds-gray-alpha-400))',
-        'ui-background': 'hsl(var(--ds-background-200))',
+        'ui-background': 'hsl(var(--ds-background-100))',
         'ui-disabled-foreground': 'hsl(var(--ds-gray-800))',
         'ui-item-foreground-hover': 'hsl(var(--ds-gray-1000))',
         'ui-item-background-hover': 'hsl(var(--ds-gray-100))',
@@ -170,6 +170,7 @@ export default {
           '0 0 0 1px hsl(var(--ds-gray-alpha-600)),0 0 0 4px hsl(0,0%,100%,.24)!important',
         border: '0 0 0 1px hsl(var(--ds-gray-alpha-400))',
         menu: 'var(--ds-shadow-menu)',
+        brands: '0 0 8px 8px var(--shadow-color) inset',
       },
       borderRadius: {
         'ui-content': '.75rem',

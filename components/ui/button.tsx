@@ -10,12 +10,12 @@ import { cn } from '@/utils/lib';
 import Link from 'next/link';
 
 interface ButtonProps {
-  children: ReactNode;
+  children?: ReactNode;
   href?: string;
   size?: 'lg' | 'md' | 'sm';
-  variant?: 'primary' | 'secondary' | 'outline' | 'gradient';
+  variant?: 'primary' | 'secondary' | 'outline';
   onClick?: (
-    event: React.MouseEvent<HTMLButtonElement>,
+    event: React.MouseEvent<HTMLButtonElement>
   ) => void | Promise<void>;
   disabled?: boolean;
   type?: 'button' | 'submit' | 'reset';
@@ -39,31 +39,32 @@ const Button = forwardRef<HTMLButtonElement | HTMLAnchorElement, ButtonProps>(
       prefix,
       ...etc
     },
-    ref,
+    ref
   ) => {
     const [hovering, setHovering] = useState(false);
     const cl = cn(
       `flex items-center justify-center transition duration-200 font-medium border select-none rounded-lg`,
       {
-        'text-foreground border bg-background-100': variant === 'primary',
-        'text-background-100 border-gray-200 bg-gray-1000':
+        'text-foreground border bg-background-200': variant === 'primary',
+        'text-background-200 border-gray-200 bg-gray-1000':
           variant === 'secondary',
         'px-2.5 h-10 text-sm': size === 'md',
         'px-3.5 h-12 text-base': size === 'lg',
         'text-sm h-8 px-1.5': size === 'sm',
+        'size-10 text-sm': size === 'md' && !children,
+        'size-12 text-base': size === 'lg' && !children,
+        'text-sm size-8': size === 'sm' && !children,
         'data-[hover]:text-foreground data-[hover]:bg-gray-200 data-[hover]:border-gray-alpha-200':
           variant === 'primary' && hovering,
         'disabled:text-gray-700 disabled:bg-gray-100 disabled:border-gray-400':
           variant === 'primary' || (variant === 'secondary' && disabled),
-        'data-[hover]:text-background-100 data-[hover]:bg-button-invert-hover':
+        'data-[hover]:text-background-200 data-[hover]:bg-button-invert-hover':
           variant === 'secondary' && hovering,
         // disabled:bg-button-invert-disabled disabled:text-gray-700 disabled:border-gray-400
         'text-gray-900 data-[hover]:text-foreground border-none':
           variant === 'outline',
-        'border-none bg-background-100 shadow-border data-[hover]:bg-gray-200':
-          variant === 'gradient',
       },
-      className,
+      className
     );
     const commonAttributed = {
       'data-hover': !disabled && hovering ? true : null,
@@ -81,7 +82,7 @@ const Button = forwardRef<HTMLButtonElement | HTMLAnchorElement, ButtonProps>(
           {...etc}
         >
           {prefix}
-          <span className="px-1.5">{children}</span>
+          {children && <span className="px-1.5">{children}</span>}
           {suffix}
         </Link>
       );
@@ -96,11 +97,11 @@ const Button = forwardRef<HTMLButtonElement | HTMLAnchorElement, ButtonProps>(
           {...etc}
         >
           {prefix}
-          <span className="px-1.5">{children}</span>
+          {children && <span className="px-1.5">{children}</span>}
           {suffix}
         </button>
       );
-  },
+  }
 );
 
 Button.displayName = 'Button';

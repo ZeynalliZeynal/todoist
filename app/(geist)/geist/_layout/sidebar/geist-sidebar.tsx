@@ -11,7 +11,7 @@ export default function GeistSidebar() {
   return (
     <aside className="w-[260px] border-r shrink-0 h-[calc(100vh-var(--header-height))] sticky top-[var(--header-height)]">
       <div className="relative h-full">
-        <div className="absolute top-0 w-full h-4 bg-gradient-to-b from-background-100 left-0" />
+        <div className="absolute top-0 w-full h-4 bg-gradient-to-b from-background-200 left-0" />
         <div className="h-full space-y-4 px-3 pt-4 pb-3.5 overflow-y-auto">
           {geistLinks.map((link, index) => (
             <div key={index}>
@@ -25,7 +25,7 @@ export default function GeistSidebar() {
                       href={link.href}
                       className={cn(
                         'h-10 px-3 rounded-md hover:bg-gray-100 transition flex items-center gap-2 text-gray-900 capitalize',
-                        link.href === pathname && '!bg-gray-alpha-100',
+                        link.href === pathname && '!bg-gray-alpha-100'
                       )}
                     >
                       {link.icon}

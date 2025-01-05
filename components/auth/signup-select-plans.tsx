@@ -2,15 +2,15 @@ import {
   Tooltip,
   TooltipContent,
   TooltipTrigger,
-} from "@/components/ui/tooltip";
-import { GoCheckCircleFill, GoCircle } from "react-icons/go";
-import Badge from "@/components/ui/badge";
-import { Input } from "@/components/ui/input";
-import Button from "@/components/ui/button";
-import Link from "next/link";
-import { FiArrowRightCircle } from "react-icons/fi";
-import { Dispatch, SetStateAction } from "react";
-import { Pages } from "@/components/auth/signup-form";
+} from '@/components/ui/tooltip';
+import { GoCheckCircleFill, GoCircle } from 'react-icons/go';
+import Badge from '@/components/ui/badge';
+import { Input } from '@/components/ui/input';
+import Button from '@/components/ui/button';
+import Link from 'next/link';
+import { FiArrowRightCircle } from 'react-icons/fi';
+import { Dispatch, SetStateAction } from 'react';
+import { Pages } from '@/components/auth/signup-form';
 
 export default function SignupSelectPlans({
   plans,
@@ -34,7 +34,7 @@ export default function SignupSelectPlans({
         onSubmit={(event) => {
           event.preventDefault();
           if (!name || !selected) return;
-          onPageChange("form");
+          onPageChange('form');
         }}
       >
         <section className="h-full flex flex-col justify-center gap-8 w-full opacity-0 animate-fade-in delay-100">
@@ -48,19 +48,18 @@ export default function SignupSelectPlans({
             <ul className="flex-col border rounded-md overflow-hidden divide-y">
               {plans.map((plan) => (
                 <Tooltip key={plan._id}>
-                  <TooltipTrigger disabled={plan.status === "active"}>
+                  <TooltipTrigger disabled={plan.status === 'active'}>
                     <li>
                       <button
                         type="button"
                         aria-label={plan.name}
-                        aria-selected={selected === plan.name}
-                        aria-disabled={plan.status !== "active"}
-                        disabled={plan.status !== "active"}
-                        data-selected={plan.name === selected ? "" : null}
-                        className="p-2 w-full flex items-center gap-1.5 hover:bg-background-100 transition-colors data-[selected]:text-foreground disabled:cursor-not-allowed disabled:text-gray-400 disabled:bg-transparent"
+                        aria-disabled={plan.status !== 'active'}
+                        disabled={plan.status !== 'active'}
+                        data-selected={plan.name === selected ? '' : null}
+                        className="p-2 w-full flex items-center gap-1.5 hover:bg-background-200 transition-colors data-[selected]:text-foreground disabled:cursor-not-allowed disabled:text-gray-400 disabled:bg-transparent"
                         onClick={() =>
-                          selected === plan.name && plan.status === "active"
-                            ? onPlanSelect("")
+                          selected === plan.name && plan.status === 'active'
+                            ? onPlanSelect('')
                             : onPlanSelect(plan.name)
                         }
                       >
@@ -72,19 +71,19 @@ export default function SignupSelectPlans({
                         ) : (
                           <GoCircle size={16} />
                         )}
-                        {plan.name === "Beginner"
-                          ? "I need to organize my life"
-                          : plan.name === "Pro"
-                            ? "I need to organize my work and life"
-                            : "I need to manage my teamwork as well"}
+                        {plan.name === 'Beginner'
+                          ? 'I need to organize my life'
+                          : plan.name === 'Pro'
+                          ? 'I need to organize my work and life'
+                          : 'I need to manage my teamwork as well'}
 
                         <Badge
                           variant={
-                            plan.name === "Beginner"
-                              ? "gray"
-                              : plan.name === "Pro"
-                                ? "blue"
-                                : "amber"
+                            plan.name === 'Beginner'
+                              ? 'gray'
+                              : plan.name === 'Pro'
+                              ? 'blue'
+                              : 'amber'
                           }
                           className="ml-auto"
                         >
@@ -96,9 +95,9 @@ export default function SignupSelectPlans({
                   <TooltipContent
                     align="vertical-right-center"
                     variant={
-                      plan.status === "disabled"
-                        ? "gray-subtle"
-                        : "amber-subtle"
+                      plan.status === 'disabled'
+                        ? 'gray-subtle'
+                        : 'amber-subtle'
                     }
                   >
                     {plan.status}

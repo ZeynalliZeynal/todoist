@@ -21,7 +21,7 @@ export default function TemplateTabs({
         className="flex items-center border rounded-full justify-between"
       >
         <motion.div
-          className="absolute border rounded-full z-[1] bg-background-200 pointer-events-none"
+          className="absolute border rounded-full z-[1] bg-background-100 pointer-events-none"
           animate={{
             width: pillStyles.width,
             x: pillStyles.left,
@@ -40,7 +40,7 @@ export default function TemplateTabs({
             onClick={() => handleClick(category.name)}
             className={cn(
               'font-semibold h-10 px-4 rounded-full text-gray-900 transition text-balance',
-              category.name === activeValue && 'text-foreground',
+              category.name === activeValue && 'text-foreground'
             )}
           >
             <span className="relative z-[2]">{category.name}</span>
@@ -58,11 +58,11 @@ export default function TemplateTabs({
                   img={template.imageUrl}
                   alt={template.name}
                 >
-                  <div className="p-4 bg-background-100">{template.name}</div>
+                  <div className="p-4 bg-background-200">{template.name}</div>
                 </CardSheet>
               ))}
             </div>
-          ),
+          )
       )}
     </div>
   );

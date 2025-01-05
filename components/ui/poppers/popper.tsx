@@ -76,15 +76,15 @@ function Popper({
 }: PopperProps & CommonParentProps) {
   const [internalOpen, setInternalOpen] = useState(false);
   const [triggerPosition, setTriggerPosition] = useState<DOMRect | undefined>(
-    undefined,
+    undefined
   );
   const [animate, setAnimate] = useState<boolean>(false);
   const [position, setPosition] = useState<ClientPosition>(undefined);
   const [activeTrigger, setActiveTrigger] = useState<HTMLElement | undefined>(
-    undefined,
+    undefined
   );
   const [currentItemIndex, setCurrentItemIndex] = useState<number | undefined>(
-    0,
+    0
   );
   const [highlightedItem, setHighlightedItem] = useState<
     HTMLElement | undefined
@@ -97,7 +97,7 @@ function Popper({
       if (!controlledOpen) setInternalOpen(state);
       onOpenChange?.(state);
     },
-    [controlledOpen, onOpenChange],
+    [controlledOpen, onOpenChange]
   );
 
   const { debounce, clearDebounce } = useDebounce();
@@ -119,7 +119,7 @@ function Popper({
       setOpen(true);
       setActiveTrigger(event.currentTarget);
     },
-    [clearDebounce, menuType, setOpen],
+    [clearDebounce, menuType, setOpen]
   );
 
   const closePopper = useCallback(() => {
@@ -145,7 +145,7 @@ function Popper({
     if (!root) return;
     const menuItems = Array.from(
       root.querySelectorAll(POPPER_ITEM_SELECTOR) ||
-        root.querySelectorAll(POPPER_SUB_ITEM_SELECTOR),
+        root.querySelectorAll(POPPER_SUB_ITEM_SELECTOR)
     );
     setCurrentItemIndex(menuItems.indexOf(value));
     value?.focus();
@@ -199,7 +199,7 @@ const PopperContextTrigger = forwardRef<HTMLElement, PopperTriggerProps>(
           event.preventDefault();
           openPopper(event);
         },
-        [openPopper],
+        [openPopper]
       );
 
     const attributes = {
@@ -223,7 +223,7 @@ const PopperContextTrigger = forwardRef<HTMLElement, PopperTriggerProps>(
         {...(attributes as React.HTMLAttributes<HTMLDivElement>)}
         className={cn(
           'select-none min-w-72 min-h-32 flex items-center justify-center text-gray-800 rounded-ui-content border border-dashed',
-          className,
+          className
         )}
         style={{
           ...style,
@@ -233,14 +233,14 @@ const PopperContextTrigger = forwardRef<HTMLElement, PopperTriggerProps>(
         {children}
       </div>
     );
-  },
+  }
 );
 PopperContextTrigger.displayName = 'PopperContextTrigger';
 
 const PopperTrigger = forwardRef<HTMLElement, PopperTriggerProps>(
   (
     { children, className = undefined, asChild, disabled, ...etc },
-    forwardRef,
+    forwardRef
   ) => {
     const { open, openPopper, setTriggerPosition } = usePopper();
     const [isHovering, setIsHovering] = useState(false);
@@ -268,7 +268,7 @@ const PopperTrigger = forwardRef<HTMLElement, PopperTriggerProps>(
       useCallback(() => {
         if (!ref.current) return;
         setTriggerPosition(ref.current.getBoundingClientRect());
-      }, [setTriggerPosition]),
+      }, [setTriggerPosition])
     );
 
     const commonAttributes = {
@@ -303,7 +303,7 @@ const PopperTrigger = forwardRef<HTMLElement, PopperTriggerProps>(
         {children}
       </button>
     );
-  },
+  }
 );
 PopperTrigger.displayName = 'PopperTrigger';
 
@@ -399,7 +399,7 @@ const PopperContent = ({
       ] as HTMLElement[];
 
       const commandInput = ref.current.querySelector(
-        COMMAND_INPUT_SELECTOR,
+        COMMAND_INPUT_SELECTOR
       ) as HTMLElement;
 
       // if command menu exists, focus on its input, otherwise highlight the item.
@@ -418,10 +418,10 @@ const PopperContent = ({
         data-popper-content-menu=""
         data-state={!animate ? 'open' : 'closed'}
         className={cn(
-          'rounded-xl p-ui-content bg-background-200 border',
+          'rounded-xl p-ui-content bg-background-100 border',
           '!fixed !z-50 focus:ring-0',
           'data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=open]:fade-in-0 data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95',
-          className,
+          className
         )}
         style={{
           ...menuStyle,
@@ -435,7 +435,7 @@ const PopperContent = ({
       >
         {children}
       </div>,
-      document.body,
+      document.body
     );
 };
 
@@ -475,7 +475,7 @@ const PopperItem = forwardRef<HTMLElement, PopperItemProps>(
       role,
       ...etc
     },
-    forwardRef,
+    forwardRef
   ) => {
     const { highlightItem, isHighlighted, closePopper } = usePopper();
 
@@ -508,7 +508,7 @@ const PopperItem = forwardRef<HTMLElement, PopperItemProps>(
     };
 
     const handleKeyDown = async (
-      event: React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>,
+      event: React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>
     ) => {
       onKeyDown?.(event as React.KeyboardEvent<HTMLElement>);
       const keyCode = (event as React.KeyboardEvent<HTMLElement>).code;
@@ -536,7 +536,7 @@ const PopperItem = forwardRef<HTMLElement, PopperItemProps>(
         'data-[disabled]:cursor-not-allowed data-[disabled]:select-none',
         'data-[selected]:bg-gray-alpha-100',
         'focus-visible:!ring-0 focus-visible:!ring-offset-0 outline-0',
-        className,
+        className
       ),
       onMouseEnter: handleMouseEnter,
       onMouseLeave: handleMouseLeave,
@@ -552,7 +552,7 @@ const PopperItem = forwardRef<HTMLElement, PopperItemProps>(
         {children}
       </div>
     );
-  },
+  }
 );
 PopperItem.displayName = 'PopperItem';
 
@@ -628,14 +628,14 @@ const PopperSeparator = forwardRef<HTMLDivElement, PopperSeparatorProps>(
         {...etc}
       />
     );
-  },
+  }
 );
 PopperSeparator.displayName = 'PopperSeparator';
 
 const PopperLabel = forwardRef<HTMLLabelElement, PopperLabelProps>(
   (
     { children, className, inset = false, style, asChild, ...etc },
-    forwardRef,
+    forwardRef
   ) => {
     const attributes = {
       tabIndex: -1,
@@ -656,7 +656,7 @@ const PopperLabel = forwardRef<HTMLLabelElement, PopperLabelProps>(
             'p-ui-item-inset': inset,
             'p-ui-item': !inset,
           },
-          className,
+          className
         )}
         style={style}
         {...etc}
@@ -664,7 +664,7 @@ const PopperLabel = forwardRef<HTMLLabelElement, PopperLabelProps>(
         {children}
       </label>
     );
-  },
+  }
 );
 PopperLabel.displayName = 'PopperLabel';
 

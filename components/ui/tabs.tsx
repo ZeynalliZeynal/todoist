@@ -8,8 +8,8 @@ import {
   useEffect,
   useRef,
   useState,
-} from "react";
-import { cn } from "@/utils/lib";
+} from 'react';
+import { cn } from '@/utils/lib';
 
 type TabsContextProps = {
   currentTab: string;
@@ -31,7 +31,7 @@ type TabsListProps = CommonTabsProps;
 const TabsContext = createContext<TabsContextProps>(null);
 const useTabs = () => {
   const context = useContext(TabsContext);
-  if (!context) throw new Error("Tabs component is outside of the provider");
+  if (!context) throw new Error('Tabs component is outside of the provider');
   return context;
 };
 
@@ -80,17 +80,17 @@ const TabsTrigger = ({
       tabIndex={currentTab === value ? 0 : -1}
       role="tab"
       type="button"
-      data-disabled={disabled ? "" : null}
+      data-disabled={disabled ? '' : null}
       aria-disabled={disabled}
-      data-state={currentTab === value ? "active" : null}
+      data-state={currentTab === value ? 'active' : null}
       aria-selected={currentTab === value}
       className={cn(
-        "flex-grow relative z-[1] h-10 rounded-full transition-colors font-medium",
+        'flex-grow relative z-[1] h-10 rounded-full transition-colors font-medium',
         {
-          "text-foreground": currentTab === value,
-          "text-gray-600": currentTab !== value,
+          'text-foreground': currentTab === value,
+          'text-gray-600': currentTab !== value,
         },
-        className,
+        className
       )}
       onClick={handleClick}
     >
@@ -107,17 +107,17 @@ const TabsList = ({ children, className }: TabsListProps) => {
   const ref = useRef<HTMLDivElement | null>(null);
 
   const handleKeyDown: KeyboardEventHandler<HTMLElement> = (event) => {
-    if (event.code === "ArrowRight" || event.code === "ArrowLeft") {
+    if (event.code === 'ArrowRight' || event.code === 'ArrowLeft') {
       event.preventDefault();
-      const direction: "next" | "previous" =
-        event.code === "ArrowLeft" ? "previous" : "next";
+      const direction: 'next' | 'previous' =
+        event.code === 'ArrowLeft' ? 'previous' : 'next';
 
       const triggers = Array.from(
-        event.currentTarget.querySelectorAll("[role=tab]:not([data-disabled])"),
+        event.currentTarget.querySelectorAll('[role=tab]:not([data-disabled])')
       ) as HTMLElement[];
 
       let nextIndex: number;
-      if (direction === "next") {
+      if (direction === 'next') {
         nextIndex =
           currentIndex === undefined || currentIndex === triggers.length - 1
             ? triggers.indexOf(triggers[triggers.length - 1])
@@ -137,10 +137,10 @@ const TabsList = ({ children, className }: TabsListProps) => {
   useEffect(() => {
     if (!ref.current) return;
     const allTriggers = Array.from(
-      ref.current.querySelectorAll("[role=tab]:not([data-disabled])"),
+      ref.current.querySelectorAll('[role=tab]:not([data-disabled])')
     ) as HTMLElement[];
     const activeTrigger = ref.current.querySelector(
-      "[role=tab][data-state=active]",
+      '[role=tab][data-state=active]'
     ) as HTMLElement;
 
     setStyle({
@@ -156,13 +156,13 @@ const TabsList = ({ children, className }: TabsListProps) => {
       ref={ref}
       role="tablist"
       className={cn(
-        "flex relative w-full items-center rounded-full bg-background-100 border",
-        className,
+        'flex relative w-full items-center rounded-full bg-background-200 border',
+        className
       )}
       onKeyDown={handleKeyDown}
     >
       <div
-        className="absolute z-0 bg-background-200 rounded-full transition-all duration-300 border"
+        className="absolute z-0 bg-background-100 rounded-full transition-all duration-300 border"
         style={{ ...style }}
       />
       {children}
@@ -177,9 +177,8 @@ const TabsContent = ({ children, value, className }: TabsTriggerProps) => {
     return (
       <div
         role="tabpanel"
-        data-state={currentTab === value ? "active" : null}
-        aria-selected={currentTab === value}
-        className={cn("mt-2", className)}
+        data-state={currentTab === value ? 'active' : null}
+        className={cn('mt-2', className)}
       >
         {children}
       </div>

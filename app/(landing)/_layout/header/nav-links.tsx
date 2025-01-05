@@ -1,14 +1,14 @@
-"use client";
+'use client';
 
-import { navItems } from "@/constants";
-import { LuChevronDown } from "react-icons/lu";
-import Link from "next/link";
-import { usePathname } from "next/navigation";
-import { cn } from "@/utils/lib";
-import React from "react";
-import { DropdownMenu } from "@/components/ui/dropdown-menu/dropdown-menu";
+import { navItems } from '@/constants';
+import { LuChevronDown } from 'react-icons/lu';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
+import { cn } from '@/utils/lib';
+import React from 'react';
+import { DropdownMenu } from '@/components/ui/dropdown-menu/dropdown-menu';
 
-export type Direction = "ltr" | "rtl" | null;
+export type Direction = 'ltr' | 'rtl' | null;
 
 export default function NavLinks() {
   const pathname = usePathname();
@@ -22,8 +22,8 @@ export default function NavLinks() {
               href={href}
               data-value={name}
               className={cn(
-                "relative z-[1] capitalize leading-[1] gap-1 px-3 py-2 text-gray-900 hover:text-foreground transition flex items-center hover:bg-gray-200 rounded-full",
-                pathname === href && "text-foreground",
+                'relative z-[1] capitalize leading-[1] gap-1 px-3 py-2 text-gray-900 hover:text-foreground transition flex items-center hover:bg-gray-200 rounded-full',
+                pathname === href && 'text-foreground'
               )}
             >
               {name}
@@ -53,7 +53,7 @@ export default function NavLinks() {
                         href={href}
                         className="flex focus-visible:ring-0 items-center gap-3 p-2 group focus:bg-gray-200 rounded-lg transition"
                       >
-                        <div className="size-8 p-2 [&>svg]:size-full rounded-md border group-focus:bg-foreground group-focus:text-background-100 transition">
+                        <div className="size-8 p-2 [&>svg]:size-full rounded-md border group-focus:bg-foreground group-focus:text-background-200 transition">
                           {icon}
                         </div>
                         <div className="capitalize text-gray-900 group-focus:text-foreground transition">

@@ -14,7 +14,7 @@ export default function SpecialButton({
       href={href}
       className={cn(
         'relative flex items-center shadow-border group',
-        className,
+        className
       )}
       {...(etc as HTMLAttributes<HTMLAnchorElement>)}
     >
@@ -22,7 +22,7 @@ export default function SpecialButton({
         data-gradient=""
         className="absolute inset-0 [background-size:400%_100%] bg-gradient-button after:absolute after:[animation:inherit] after:[background-size:inherit] after:[background-image:inherit] after:inset-0 after:filter after:blur-sm animate-special-button group-hover:after:blur-md after:transition-all after:duration-300"
       />
-      <span className="absolute flex inset-0 items-center justify-center z-[1] bg-background-100 group-hover:bg-gray-100 transition">
+      <span className="absolute flex inset-0 items-center justify-center z-[1] bg-background-200 group-hover:bg-gray-100 transition">
         {children}
       </span>
     </Link>
@@ -31,7 +31,7 @@ export default function SpecialButton({
       data-button=""
       className={cn(
         'relative flex items-center shadow-border group',
-        className,
+        className
       )}
       {...(etc as HTMLAttributes<HTMLButtonElement>)}
     >
@@ -39,7 +39,7 @@ export default function SpecialButton({
         data-gradient=""
         className="absolute inset-0 [background-size:400%_100%] bg-gradient-button after:absolute after:[animation:inherit] after:[background-size:inherit] after:[background-image:inherit] after:inset-0 after:filter after:blur-sm animate-special-button group-hover:after:blur-md after:transition-all after:duration-300"
       />
-      <span className="absolute flex inset-0 items-center justify-center z-[1] bg-background-100 group-hover:bg-gray-100 transition">
+      <span className="absolute flex inset-0 items-center justify-center z-[1] bg-background-200 group-hover:bg-gray-100 transition">
         {children}
       </span>
     </button>

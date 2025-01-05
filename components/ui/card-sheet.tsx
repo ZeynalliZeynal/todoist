@@ -15,10 +15,10 @@ export default function CardSheet({
   alt: string;
 }) {
   return (
-    <Link href={href} className="flex flex-col border w-40 group w-full">
-      <div className="relative h-32 bg-background-200 group-hover:bg-gray-alpha-100 transition duration-300">
+    <Link href={href} className="flex flex-col border group w-full">
+      <div className="relative h-32 bg-background-100 group-hover:bg-gray-alpha-100 transition duration-300">
         <div
-          className="absolute [--size:33px] -top-px w-[var(--size)] h-[var(--size)] border-r-background-100 border-b-background-200 -right-px border-gray-400"
+          className="absolute [--size:33px] -top-px w-[var(--size)] h-[var(--size)] border-r-background-200 border-b-background-100 -right-px border-gray-400"
           style={{
             borderBottomWidth: 'var(--size)',
             borderRightWidth: 'var(--size)',

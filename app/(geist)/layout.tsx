@@ -11,7 +11,7 @@ export default function GeistLayout({
       <GeistHeader />
       <div className="flex flex-1">
         <GeistSidebar />
-        <main className="overflow-auto">{children}</main>
+        <main className="overflow-auto flex-1">{children}</main>
       </div>
     </div>
   );
