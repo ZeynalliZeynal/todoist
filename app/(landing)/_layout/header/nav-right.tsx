@@ -1,4 +1,4 @@
-import Button from '@/components/ui/button';
+import { DefaultLink } from '@/components/ui/button';
 import { getProfile } from '@/actions/profile.action';
 import {
   DropdownMenu,
@@ -32,12 +32,12 @@ export default async function NavRight() {
             <Geist className="mr-2 group-hover:rotate-180 origin-center transition duration-300" />
             Geist UI
           </SpecialButton>
-          <Button size="sm" href="/contact">
+          <DefaultLink size="sm" href="/contact">
             Contact
-          </Button>
-          <Button size="sm" href={dashboardRoute}>
+          </DefaultLink>
+          <DefaultLink size="sm" href={dashboardRoute}>
             Dashboard
-          </Button>
+          </DefaultLink>
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
               <button className="rounded-full overflow-hidden">
@@ -86,15 +86,15 @@ export default async function NavRight() {
             <Geist className="mr-2 group-hover:rotate-180 origin-center transition duration-300" />
             Geist UI
           </SpecialButton>
-          <Button size="sm" href="/auth/login">
+          <DefaultLink size="sm" href="/auth/login">
             Log In
-          </Button>
-          <Button size="sm" href="/contact">
+          </DefaultLink>
+          <DefaultLink size="sm" href="/contact">
             Contact
-          </Button>
-          <Button size="sm" href="/auth/signup">
+          </DefaultLink>
+          <DefaultLink size="sm" href="/auth/signup">
             Sign up
-          </Button>
+          </DefaultLink>
         </>
       )}
     </div>

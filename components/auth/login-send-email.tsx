@@ -1,11 +1,11 @@
-import { sendLoginEmail } from "@/actions/auth.actions";
-import { Input } from "@/components/ui/input";
-import Button from "@/components/ui/button";
-import { LuMail } from "react-icons/lu";
-import Spinner from "@/components/ui/spinner";
-import { Dispatch, SetStateAction, useState, useTransition } from "react";
-import { Pages } from "@/components/auth/login-form";
-import ErrorCodes from "@/utils/error-codes";
+import { sendLoginEmail } from '@/actions/auth.actions';
+import { Input } from '@/components/ui/input';
+import { Button } from '@/components/ui/button';
+import { LuMail } from 'react-icons/lu';
+import Spinner from '@/components/ui/spinner';
+import { Dispatch, SetStateAction, useState, useTransition } from 'react';
+import { Pages } from '@/components/auth/login-form';
+import ErrorCodes from '@/utils/error-codes';
 
 export default function LoginSendEmail({
   email,
@@ -17,7 +17,7 @@ export default function LoginSendEmail({
   onEmailChange: Dispatch<SetStateAction<string>>;
 }) {
   const [isPending, startTransition] = useTransition();
-  const [error, setError] = useState("");
+  const [error, setError] = useState('');
 
   return (
     <form
@@ -28,7 +28,7 @@ export default function LoginSendEmail({
           const res = await sendLoginEmail({ email });
           if (res.errorCode === ErrorCodes.EMAIL_VERIFICATION_CONFLICT)
             setError(res.message);
-          else onPageChange("otp");
+          else onPageChange('otp');
         });
       }}
     >
@@ -56,7 +56,7 @@ export default function LoginSendEmail({
         size="lg"
         className="w-full rounded-lg"
       >
-        {isPending ? <Spinner size={24} /> : "Continue with Email"}
+        {isPending ? <Spinner size={24} /> : 'Continue with Email'}
       </Button>
     </form>
   );

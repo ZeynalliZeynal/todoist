@@ -6,7 +6,7 @@ import {
 import { GoCheckCircleFill, GoCircle } from 'react-icons/go';
 import Badge from '@/components/ui/badge';
 import { Input } from '@/components/ui/input';
-import Button from '@/components/ui/button';
+import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import { FiArrowRightCircle } from 'react-icons/fi';
 import { Dispatch, SetStateAction } from 'react';

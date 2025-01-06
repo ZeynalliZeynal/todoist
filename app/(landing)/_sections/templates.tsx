@@ -1,4 +1,4 @@
-import Button from '@/components/ui/button';
+import { Button } from '@/components/ui/button';
 import { LuMoveRight } from 'react-icons/lu';
 import { Suspense } from 'react';
 import TemplateData from '@/app/(landing)/_sections/template-data';

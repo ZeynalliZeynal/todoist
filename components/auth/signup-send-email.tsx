@@ -1,12 +1,12 @@
-import { Input } from "@/components/ui/input";
-import Button from "@/components/ui/button";
-import { Dispatch, SetStateAction, useState, useTransition } from "react";
-import { Pages } from "@/components/auth/signup-form";
-import Link from "next/link";
-import { cn } from "@/utils/lib";
-import { sendSignupEmail } from "@/actions/auth.actions";
-import Spinner from "@/components/ui/spinner";
-import ErrorCodes from "@/utils/error-codes";
+import { Input } from '@/components/ui/input';
+import { Button } from '@/components/ui/button';
+import { Dispatch, SetStateAction, useState, useTransition } from 'react';
+import { Pages } from '@/components/auth/signup-form';
+import Link from 'next/link';
+import { cn } from '@/utils/lib';
+import { sendSignupEmail } from '@/actions/auth.actions';
+import Spinner from '@/components/ui/spinner';
+import ErrorCodes from '@/utils/error-codes';
 
 export default function SignupSendEmail({
   name,
@@ -20,7 +20,7 @@ export default function SignupSendEmail({
   onPageChange: Dispatch<SetStateAction<Pages>>;
 }) {
   const [isPending, startTransition] = useTransition();
-  const [error, setError] = useState("");
+  const [error, setError] = useState('');
 
   return (
     <form
@@ -31,7 +31,7 @@ export default function SignupSendEmail({
           const res = await sendSignupEmail({ name, email });
           if (res.errorCode === ErrorCodes.EMAIL_VERIFICATION_CONFLICT)
             setError(res.message);
-          else onPageChange("otp");
+          else onPageChange('otp');
         });
       }}
     >
@@ -69,10 +69,10 @@ export default function SignupSendEmail({
             <Link
               href="/auth/signup"
               className={cn(
-                "text-base text-blue-900 font-medium mx-auto relative w-fit",
-                "after:absolute after:w-full after:h-0.5 after:bg-blue-900 after:-bottom-0.5 after:left-0 after:opacity-0 hover:after:opacity-100 after:transition",
+                'text-base text-blue-900 font-medium mx-auto relative w-fit',
+                'after:absolute after:w-full after:h-0.5 after:bg-blue-900 after:-bottom-0.5 after:left-0 after:opacity-0 hover:after:opacity-100 after:transition',
               )}
-              onClick={() => onPageChange("plans")}
+              onClick={() => onPageChange('plans')}
             >
               ← Back to plans
             </Link>

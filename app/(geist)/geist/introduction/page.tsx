@@ -8,7 +8,7 @@ export default function IntroductionPage() {
           Geist Design System
         </h1>
         <p className="text-gray-900 font-semibold">
-          Vercel design system for building consistent web experiences.
+          Todoist design system for building consistent web experiences.
         </p>
       </section>
       <GeistCards />

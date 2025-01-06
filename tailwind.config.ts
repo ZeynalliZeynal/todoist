@@ -24,6 +24,7 @@ export default {
         poppins: ['var(--font-poppins)'],
       },
       fontSize: {
+        h1: ['2.5rem', '3rem'],
         paragraph: '0.8125rem',
       },
       container: {

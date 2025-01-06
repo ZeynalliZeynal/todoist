@@ -1,5 +1,5 @@
-import Button from '@/components/ui/button';
-import { BrandsAssets } from '@/components/ui/icons/geist';
+import { Button } from '@/components/ui/button';
+import { BrandAsset } from '@/components/ui/icons/geist';
 import { Input } from '@/components/ui/input';
 import Spinner from '@/components/ui/spinner';
 import Link from 'next/link';
@@ -15,7 +15,7 @@ export default function GeistCards() {
         className="flex flex-col gap-6 p-8 [--shadow-color:hsl(var(--ds-background-200))] hover:[--shadow-color:hsl(var(--ds-background-100))] hover:bg-background-100 transition border-r"
       >
         <div className="mx-auto relative">
-          <BrandsAssets />
+          <BrandAsset />
           <div className="absolute inset-0 shadow-brands transition" />
         </div>
         <div className="mt-auto text-base">
