@@ -1,5 +1,6 @@
 import type { BundledLanguage } from 'shiki';
 import { codeToHtml } from 'shiki';
+import CopyBlock from '../copy-block';
 
 interface Props {
   children: string;
@@ -14,9 +15,11 @@ export default async function CodeBlock(props: Props) {
   });
 
   return (
-    <div
-      className="[&>pre]:!bg-background-100 [&>pre]:p-5"
-      dangerouslySetInnerHTML={{ __html: out }}
-    />
+    <CopyBlock text={props.children}>
+      <div
+        className="[&>pre]:!bg-background-100 [&>pre]:p-5"
+        dangerouslySetInnerHTML={{ __html: out }}
+      />
+    </CopyBlock>
   );
 }
