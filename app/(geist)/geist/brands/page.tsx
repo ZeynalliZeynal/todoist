@@ -1,6 +1,12 @@
 import Link from 'next/link';
 import { DefaultLink } from '@/components/ui/button';
 import { LuDownload } from 'react-icons/lu';
+import TodoistBrand from './_sections/todoist-brand';
+import CodeBlock from '@/components/ui/code-block';
+
+const logo_usage = `import { VercelWordmark } from 'geist/logos';
+
+<VercelWordmark height={32} />;`;
 
 export default function BrandsPage() {
   return (
@@ -43,6 +49,8 @@ export default function BrandsPage() {
           </DefaultLink>
         </div>
       </section>
+      <TodoistBrand />
+      <CodeBlock lang="tsx">{logo_usage}</CodeBlock>
     </>
   );
 }

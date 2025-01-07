@@ -1,24 +1,20 @@
 'use client';
 
-import React, {
+import { cn } from '@/utils/lib';
+import Link from 'next/link';
+import {
   ComponentProps,
   forwardRef,
-  HTMLAttributes,
   MutableRefObject,
   ReactNode,
   useState,
 } from 'react';
-import { cn } from '@/utils/lib';
-import Link from 'next/link';
 
-interface ButtonProps extends Omit<ComponentProps<'button' | 'a'>, 'prefix'> {
+interface ButtonProps extends Omit<ComponentProps<'button'>, 'prefix'> {
   children?: ReactNode;
   href?: string;
   size?: 'lg' | 'md' | 'sm';
   variant?: 'primary' | 'secondary' | 'outline';
-  onClick?: (
-    event: React.MouseEvent<HTMLButtonElement>,
-  ) => void | Promise<void>;
   disabled?: boolean;
   type?: 'button' | 'submit' | 'reset';
   className?: string;
@@ -41,7 +37,6 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       children,
       size = 'sm',
       variant = 'primary',
-      onClick,
       disabled,
       type = 'button',
       className,
@@ -49,7 +44,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       prefix,
       ...etc
     },
-    ref,
+    ref
   ) => {
     const [hovering, setHovering] = useState(false);
 
@@ -57,7 +52,6 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       <button
         ref={ref as MutableRefObject<HTMLButtonElement>}
         type={type}
-        onClick={onClick}
         disabled={disabled}
         data-hover={hovering ? '' : null}
         className={cn(
@@ -82,9 +76,9 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
             'text-gray-900 data-[hover]:text-foreground border-none':
               variant === 'outline',
           },
-          className,
+          className
         )}
-        {...(etc as HTMLAttributes<HTMLButtonElement>)}
+        {...etc}
         onMouseEnter={() => !disabled && setHovering(true)}
         onMouseLeave={() => !disabled && setHovering(false)}
       >
@@ -93,7 +87,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         {suffix}
       </button>
     );
-  },
+  }
 );
 
 export const DefaultLink = forwardRef<HTMLAnchorElement, DefaultLinkProps>(
@@ -107,7 +101,7 @@ export const DefaultLink = forwardRef<HTMLAnchorElement, DefaultLinkProps>(
       prefix,
       ...etc
     },
-    ref,
+    ref
   ) => {
     const [hovering, setHovering] = useState(false);
 
@@ -136,7 +130,7 @@ export const DefaultLink = forwardRef<HTMLAnchorElement, DefaultLinkProps>(
             'text-gray-900 data-[hover]:text-foreground border-none':
               variant === 'outline',
           },
-          className,
+          className
         )}
         {...etc}
         onMouseEnter={() => setHovering(true)}
@@ -147,7 +141,7 @@ export const DefaultLink = forwardRef<HTMLAnchorElement, DefaultLinkProps>(
         {suffix}
       </Link>
     );
-  },
+  }
 );
 
 Button.displayName = 'Button';
