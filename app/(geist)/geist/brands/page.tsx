@@ -3,10 +3,15 @@ import { DefaultLink } from '@/components/ui/button';
 import { LuDownload } from 'react-icons/lu';
 import TodoistBrand from './_sections/todoist-brand';
 import CodeBlock from '@/components/ui/code-block';
+import NextBrand from './_sections/next-brand';
 
-const logo_usage = `import { VercelWordmark } from 'geist/logos';
+const logo_usage = `import { TodoistLogoFull } from 'geist/logos';
 
-<VercelWordmark height={32} />;`;
+<TodoistLogoFull height={32} />;`;
+
+const nextjs_usage = `import { NextWordmark } from 'geist/logos';
+
+<NextWordmark height={50} />`;
 
 export default function BrandsPage() {
   return (
@@ -22,7 +27,15 @@ export default function BrandsPage() {
         </p>
       </section>
       <section className="p-12 border-t">
-        <h2 className="mb-4">Todoist</h2>
+        <Link
+          id="todoist"
+          href="#todoist"
+          style={{
+            scrollMarginTop: '98px',
+          }}
+        >
+          <h2 className="mb-4">Todoist</h2>
+        </Link>
         <p className="text-base">
           The Todoist trademark includes the Todoist name & logo, and any word,
           phrase, image, or other designation that identifies any Todoist
@@ -51,6 +64,74 @@ export default function BrandsPage() {
       </section>
       <TodoistBrand />
       <CodeBlock lang="tsx">{logo_usage}</CodeBlock>
+      <section className="p-12 border-t">
+        <Link
+          id="nextjs"
+          href="#nextjs"
+          style={{
+            scrollMarginTop: '98px',
+          }}
+        >
+          <h2 className="mb-4">Next.js</h2>
+        </Link>
+        <p className="text-base">
+          The Next.js trademark includes the Next.js name & logo, and any word,
+          phrase, image, or other designation that identifies any Vercel
+          products. Please don’t modify the marks or use them in a confusing
+          way, including suggesting sponsorship or endorsement by Vercel, or in
+          a way that confuses Vercel with another brand.
+        </p>
+        <div className="mt-4">
+          <DefaultLink
+            href="/assets/logo_assets/nextjs-assets.zip"
+            size="md"
+            prefix={<LuDownload />}
+            className="rounded-full"
+            download
+          >
+            Download Next.js Assets
+          </DefaultLink>
+        </div>
+      </section>
+      <NextBrand />
+      <CodeBlock lang="tsx">{nextjs_usage}</CodeBlock>
+      <section className="p-12 border-b">
+        <h2 className="mb-3">General Information</h2>
+        <p className="text-base">
+          By using the Todoist trademarks you agree to the guidelines as well as
+          our Terms of Service and all our rules and policies. Todoist reserves
+          the right to cancel, modify, or change the permission in these
+          guidelines at any time at its sole discretion.
+        </p>
+      </section>
+      <section className="p-12 border-b">
+        <h2 className="mb-3">Usage</h2>
+        <p className="text-base">
+          You may use the Todoist marks to truthfully describe the products,
+          services, and technologies that we offer. You may also use Todoist
+          marks to truthfully state that you are a customer and are using a
+          Todoist product. For example, &quot;Our website is hosted on the
+          Todoist platform.&quot;
+          <br />
+          <br />
+          All other uses of Todoist marks, including in connection with our
+          vendors and products, software, or applications that utilize our open
+          source code, require prior written permission from us. Note that a
+          copyright license for software, even an open source software license,
+          does not provide a license to use a trademark related to the project.
+          For inquiries, please contact brand@Todoist.com.
+          <br />
+          <br />
+          Any advertisements, documentation, websites, or other references that
+          include permitted uses of the Todoist marks must also include the
+          following attribution statement which can be displayed at the end of
+          the material, in the footer of the document, or some other clear and
+          conspicuous location that can be quickly identified: Todoist, the
+          Todoist design, Next.js and related marks, designs and logos are
+          trademarks or registered trademarks of Todoist, Inc. or its affiliates
+          in the US and other countries.
+        </p>
+      </section>
     </>
   );
 }

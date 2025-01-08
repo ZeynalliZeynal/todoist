@@ -10,12 +10,14 @@ import { FaCheck } from 'react-icons/fa6';
 interface CopyBlockProps extends ComponentProps<'div'> {
   children: ReactNode;
   className?: string;
+  size?: 'sm' | 'md' | 'lg';
   text: string;
 }
 
 export default function CopyBlock({
   children,
   className,
+  size = 'sm',
   text,
 }: CopyBlockProps) {
   const [copying, copy] = useCopy({ text });
@@ -23,7 +25,7 @@ export default function CopyBlock({
   return (
     <div className={cn('relative w-full group', className)}>
       <Button
-        size="sm"
+        size={size}
         className="absolute top-4 right-4 group-hover:opacity-100 opacity-0"
         onClick={copy}
         prefix={

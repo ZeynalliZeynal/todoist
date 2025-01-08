@@ -1,11 +1,11 @@
-import { IoExtensionPuzzleOutline, IoHelpBuoyOutline } from 'react-icons/io5';
-import React from 'react';
+import { Nextjs } from '@/components/ui/icons/geist';
+import { Logo } from '@/components/ui/icons/logo';
 import { FaQuestion } from 'react-icons/fa6';
-import { HiOutlineLightBulb } from 'react-icons/hi2';
 import { HiOutlineDownload } from 'react-icons/hi';
-import { TbCards } from 'react-icons/tb';
+import { HiOutlineLightBulb } from 'react-icons/hi2';
+import { IoExtensionPuzzleOutline, IoHelpBuoyOutline } from 'react-icons/io5';
 import { RxLightningBolt } from 'react-icons/rx';
-import { Nextjs, Turbo, Vercel } from '@/components/ui/icons/geist';
+import { TbCards } from 'react-icons/tb';
 
 export const navItems = [
   {
@@ -147,35 +147,20 @@ export const geistLinks = [
         href: '/geist/colors',
         icon: null,
       },
-      {
-        label: 'Icons',
-        href: '/geist/icons',
-        icon: null,
-      },
-      {
-        label: 'Materials',
-        href: '/geist/materials',
-        icon: null,
-      },
     ],
   },
   {
     title: 'Brands',
     links: [
       {
-        label: 'Vercel',
-        href: '/geist/brands#vercel',
-        icon: <Vercel />,
+        label: 'Todoist',
+        href: '/geist/brands#todoist',
+        icon: <Logo width={16} height={16} />,
       },
       {
         label: 'Next.js',
         href: '/geist/brands#nextjs',
         icon: <Nextjs />,
-      },
-      {
-        label: 'Turbo',
-        href: '/geist/brands#turbo',
-        icon: <Turbo />,
       },
     ],
   },

@@ -17,7 +17,7 @@ export default async function CodeBlock(props: Props) {
   return (
     <CopyBlock text={props.children}>
       <div
-        className="[&>pre]:!bg-background-100 [&>pre]:p-5"
+        className="[&>pre]:!bg-background-100 [&>pre]:p-5 border-y"
         dangerouslySetInnerHTML={{ __html: out }}
       />
     </CopyBlock>
