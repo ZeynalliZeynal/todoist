@@ -1,24 +1,27 @@
-import { cloneElement, ReactElement, ReactNode } from 'react';
+import { cloneElement, ComponentProps, ReactElement, ReactNode } from 'react';
 import { cn } from '@/utils/lib';
-import { Variants } from '@/types/ui/variants';
+import { BadgeVariants } from '@/types/ui/variants';
 
-export default function Badge({
-  size = 'sm',
-  icon,
-  variant = 'gray-subtle',
-  children,
-  className,
-}: {
+interface BadgeProps extends ComponentProps<'span'> {
   size?: 'sm' | 'md' | 'lg';
   icon?: ReactElement;
-  variant?: Variants;
+  variant?: BadgeVariants;
   children: ReactNode;
   className?: string;
-}) {
+}
+
+export default function Badge({
+  children,
+  size = 'md',
+  icon,
+  variant = 'gray',
+  className,
+  ...etc
+}: BadgeProps) {
   return (
     <span
       className={cn(
-        'rounded-full inline-flex items-center w-max justify-center gap-1.5 select-none font-medium',
+        'rounded-full inline-flex items-center w-max justify-center gap-1.5 font-medium',
         {
           'h-5 px-1.5 text-[10px]': size === 'sm',
           'h-6 px-2.5 text-xs': size === 'md',
@@ -39,9 +42,12 @@ export default function Badge({
           'bg-green-200 text-green-900': variant === 'green-subtle',
           'bg-teal-700 text-teal-50': variant === 'teal',
           'bg-teal-200 text-teal-900': variant === 'teal-subtle',
+          'bg-trial text-foreground': variant === 'trial',
+          'text-gray-100 bg-foreground': variant === 'invert',
         },
-        className
+        className,
       )}
+      {...etc}
     >
       {icon &&
         cloneElement(icon, {

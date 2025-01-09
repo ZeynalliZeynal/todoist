@@ -174,6 +174,7 @@ export default {
       backgroundImage: {
         'gradient-button':
           'linear-gradient(-90deg,#007cf0,#00dfd8,#ff0080,#007cf0)',
+        trial: 'linear-gradient(135deg,#0070f3,#f81ce5)',
         skeleton:
           'linear-gradient(270deg,hsl(var(--ds-accent-100)),hsl(var(--ds-accent-200)),hsl(var(--ds-accent-200)),hsl(var(--ds-accent-100)))',
       },
