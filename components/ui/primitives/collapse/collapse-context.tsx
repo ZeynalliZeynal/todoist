@@ -1,23 +1,23 @@
 'use client';
 
 import React from 'react';
-
-interface CollapseContextProps {
-  collapsed: boolean;
-  collapse(): void;
-}
+import { CollapseContextProps } from '@/components/ui/primitives/collapse/types';
 
 const CollapseContext = React.createContext<CollapseContextProps | null>(null);
 
 export function CollapseContextProvider(props: { children: React.ReactNode }) {
   const [collapsed, setCollapsed] = React.useState(false);
+  const id = React.useId();
+  const state = collapsed ? 'open' : 'closed';
 
   function collapse() {
     setCollapsed((prevState) => !prevState);
   }
 
   return (
-    <CollapseContext.Provider value={{ collapsed, collapse }}>
+    <CollapseContext.Provider
+      value={{ collapsed, state, collapse, collapseId: `collapse${id}` }}
+    >
       {props.children}
     </CollapseContext.Provider>
   );
