@@ -46,6 +46,16 @@ export default {
           100: 'hsl(var(--ds-background-100))',
           200: 'hsl(var(--ds-background-200))',
         },
+        accent: {
+          100: 'hsl(var(--ds-accent-100))',
+          200: 'hsl(var(--ds-accent-200))',
+          300: 'hsl(var(--ds-accent-300))',
+          400: 'hsl(var(--ds-accent-400))',
+          500: 'hsl(var(--ds-accent-500))',
+          600: 'hsl(var(--ds-accent-600))',
+          700: 'hsl(var(--ds-accent-700))',
+          800: 'hsl(var(--ds-accent-800))',
+        },
         gray: {
           100: 'hsl(var(--ds-gray-100))',
           200: 'hsl(var(--ds-gray-200))',
@@ -164,6 +174,8 @@ export default {
       backgroundImage: {
         'gradient-button':
           'linear-gradient(-90deg,#007cf0,#00dfd8,#ff0080,#007cf0)',
+        skeleton:
+          'linear-gradient(270deg,hsl(var(--ds-accent-100)),hsl(var(--ds-accent-200)),hsl(var(--ds-accent-200)),hsl(var(--ds-accent-100)))',
       },
       boxShadow: {
         'header-border': 'hsl(var(--header-border))',
@@ -190,8 +202,17 @@ export default {
         'fade-in': 'fade-in 0.5s ease-in forwards',
         caret: 'caret 0.5s ease both alternate infinite',
         'special-button': 'special-button 8s ease-in-out infinite',
+        skeleton: 'skeleton 8s ease-in-out infinite',
       },
       keyframes: {
+        skeleton: {
+          '0%': {
+            backgroundPosition: '200% 0%',
+          },
+          '100%': {
+            backgroundPosition: '-200% 0%',
+          },
+        },
         'special-button': {
           '50%': {
             backgroundPosition: '140% 50%',

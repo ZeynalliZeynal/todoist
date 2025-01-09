@@ -13,6 +13,15 @@
       --ds-background-100: 0, 0%, 98%;
       --ds-background-200: 0, 0%, 100%;
 
+      --ds-accent-800: 0 0% 7%;
+      --ds-accent-700: 0 0% 20%;
+      --ds-accent-600: 0 0% 27%;
+      --ds-accent-500: 0 0% 40%;
+      --ds-accent-400: 0 0% 53%;
+      --ds-accent-300: 0 0% 60%;
+      --ds-accent-200: 0 0% 92%;
+      --ds-accent-100: 0 0% 98%;
+
       --ds-gray-100: 0, 0%, 95%;
       --ds-gray-200: 0, 0%, 92%;
       --ds-gray-300: 0, 0%, 90%;
@@ -125,6 +134,15 @@
     &.dark {
       --ds-background-200: 0 0% 0%;
       --ds-background-100: 0 0% 4%;
+
+      --ds-accent-100: 0 0% 7%;
+      --ds-accent-200: 0 0% 20%;
+      --ds-accent-300: 0 0% 27%;
+      --ds-accent-400: 0 0% 40%;
+      --ds-accent-500: 0 0% 53%;
+      --ds-accent-600: 0 0% 60%;
+      --ds-accent-700: 0 0% 92%;
+      --ds-accent-800: 0 0% 98%;
 
       --ds-gray-100: 0 0% 10%;
       --ds-gray-200: 0 0% 12%;

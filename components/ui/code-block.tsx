@@ -17,7 +17,7 @@ export default function CodeBlock(props: Props) {
         code={props.children}
       >
         {({ tokens, getLineProps, getTokenProps }) => (
-          <pre className="py-5 bg-background-100 [counter-reset:line]">
+          <pre className="py-5 bg-background-100 [counter-reset:line] overflow-auto">
             {tokens.map((line, i) => (
               <div
                 key={i}
