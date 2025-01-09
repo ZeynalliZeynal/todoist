@@ -6,6 +6,7 @@ import Link from 'next/link';
 import { IoIosList } from 'react-icons/io';
 import { IoGridOutline, IoPersonAddOutline } from 'react-icons/io5';
 import { TbShieldBolt } from 'react-icons/tb';
+import { geistLinks } from '@/constants';
 
 export default function GeistCards() {
   return (
@@ -26,7 +27,11 @@ export default function GeistCards() {
         </div>
       </Link>
       <Link
-        href="/geist/components"
+        href={
+          geistLinks.find((value) =>
+            value.title.toLowerCase().includes('components'),
+          )?.links[0].href || '/geist/avatar'
+        }
         className="flex flex-col gap-6 p-8 hover:bg-background-100 transition"
       >
         <div className="pointer-events-none mx-auto flex flex-wrap gap-4 items-center">

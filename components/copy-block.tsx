@@ -26,7 +26,7 @@ export default function CopyBlock({
     <div className={cn('relative w-full group', className)}>
       <Button
         size={size}
-        className="absolute top-4 right-4 group-hover:opacity-100 opacity-0"
+        className="absolute top-4 right-4 group-hover:opacity-100 focus-visible:opacity-100 opacity-0"
         onClick={copy}
         prefix={
           <>

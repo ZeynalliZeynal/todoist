@@ -248,7 +248,6 @@
     @apply select-none;
   }
 
-  span,
   label {
     @apply inline-flex;
   }
