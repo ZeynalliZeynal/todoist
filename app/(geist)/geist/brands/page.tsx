@@ -4,6 +4,7 @@ import { LuDownload } from 'react-icons/lu';
 import TodoistBrand from './_sections/todoist-brand';
 import CodeBlock from '@/components/ui/code-block';
 import NextBrand from './_sections/next-brand';
+import ScrollToLink from '@/app/(geist)/geist/_components/scroll-to-link';
 
 const logo_usage = `import { TodoistLogoFull } from 'geist/logos';
 
@@ -27,15 +28,9 @@ export default function BrandsPage() {
         </p>
       </section>
       <section className="p-12 border-t">
-        <Link
-          id="todoist"
-          href="#todoist"
-          style={{
-            scrollMarginTop: '98px',
-          }}
-        >
+        <ScrollToLink id="todoist" href="#todoist">
           <h2 className="mb-4">Todoist</h2>
-        </Link>
+        </ScrollToLink>
         <p className="text-base">
           The Todoist trademark includes the Todoist name & logo, and any word,
           phrase, image, or other designation that identifies any Todoist
@@ -65,15 +60,9 @@ export default function BrandsPage() {
       <TodoistBrand />
       <CodeBlock lang="tsx">{logo_usage}</CodeBlock>
       <section className="p-12 border-t">
-        <Link
-          id="nextjs"
-          href="#nextjs"
-          style={{
-            scrollMarginTop: '98px',
-          }}
-        >
+        <ScrollToLink id="nextjs" href="#nextjs">
           <h2 className="mb-4">Next.js</h2>
-        </Link>
+        </ScrollToLink>
         <p className="text-base">
           The Next.js trademark includes the Next.js name & logo, and any word,
           phrase, image, or other designation that identifies any Vercel

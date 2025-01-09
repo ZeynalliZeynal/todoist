@@ -43,7 +43,7 @@ export function PrimitiveCollapseTrigger(props: CollapseTriggerProps) {
       className={cn('w-full flex items-center', className)}
       {...etc}
     >
-      {children}
+      {typeof children === 'function' ? children({ state }) : children}
     </button>
   );
 }

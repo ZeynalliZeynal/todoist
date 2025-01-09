@@ -5,6 +5,7 @@ import {
 } from '@/components/ui/collapse';
 import CopyBlock from '@/components/copy-block';
 import CodeBlock from '@/components/ui/code-block';
+import ScrollToLink from '@/app/(geist)/geist/_components/scroll-to-link';
 
 const AVATAR_GROUP_CODE = `import { AvatarGroup, Stack } from 'geist/components';
 import type { JSX } from 'react';
@@ -46,9 +47,12 @@ export default function AvatarPage() {
         </p>
       </section>
       <section className="border-y p-12">
-        <Collapse>
+        <ScrollToLink id="simple" href="#simple">
+          <h2>Single</h2>
+        </ScrollToLink>
+        <Collapse className="mt-7">
           <div className="p-6 bg-background-100">test</div>
-          <CollapseTrigger>Show code</CollapseTrigger>
+          <CollapseTrigger>code</CollapseTrigger>
           <CollapseContent>
             <CopyBlock text={AVATAR_GROUP_CODE}>
               <CodeBlock>{AVATAR_GROUP_CODE}</CodeBlock>

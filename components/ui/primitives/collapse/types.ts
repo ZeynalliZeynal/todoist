@@ -1,9 +1,11 @@
 import React, { ComponentProps } from 'react';
 
+type CollapseState = 'open' | 'closed';
+
 export interface CollapseContextProps {
   collapsed: boolean;
   collapseId: string;
-  state: 'open' | 'closed';
+  state: CollapseState;
   collapse(): void;
 }
 
@@ -12,8 +14,11 @@ export interface CollapseProps extends ComponentProps<'div'> {
   className?: string;
 }
 
-export interface CollapseTriggerProps extends ComponentProps<'button'> {
-  children: React.ReactNode;
+export interface CollapseTriggerProps
+  extends Omit<ComponentProps<'button'>, 'children'> {
+  children:
+    | (({ state }: { state: CollapseState }) => React.ReactNode)
+    | React.ReactNode;
   className?: string;
 }
 

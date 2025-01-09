@@ -1,3 +1,5 @@
+'use client';
+
 import {
   PrimitiveCollapse,
   PrimitiveCollapseContent,
@@ -29,8 +31,13 @@ export function CollapseTrigger(props: CollapseTriggerProps) {
         props.className,
       )}
     >
-      <FaChevronRight className="size-3 group-data-[state=open]:rotate-90 transition duration-300" />
-      {props.children}
+      {({ state }) => (
+        <>
+          <FaChevronRight className="size-3 group-data-[state=open]:rotate-90 transition duration-300" />
+          {state === 'open' ? 'Hide ' : 'Show '}
+          {props.children}
+        </>
+      )}
     </PrimitiveCollapseTrigger>
   );
 }
