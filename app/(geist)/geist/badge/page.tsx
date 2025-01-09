@@ -8,6 +8,7 @@ import CodeBlock from '@/components/ui/code-block';
 import ScrollToLink from '@/app/(geist)/geist/_components/scroll-to-link';
 import { Stack } from '@/components/ui/stack';
 import Badge from '@/components/ui/badge';
+import { LuShield } from 'react-icons/lu';
 
 const VARIANTS_CODE = `<Stack gap={2}>
   <Stack direction="row" gap={1}>
@@ -56,6 +57,186 @@ const BADGE_SIZES_CODE = `<Stack gap={2} padding={6}>
   <Badge size="lg">Large</Badge>
 </Stack>`;
 
+const BADGE_ICONS_CODE = `<Stack align="center" direction="row" gap={1}>
+  <Badge icon={<LuShield />} size="lg" variant="gray">
+    gray
+  </Badge>
+  <Badge icon={<LuShield />} size="md" variant="gray">
+    gray
+  </Badge>
+  <Badge icon={<LuShield />} size="sm" variant="gray">
+    gray
+  </Badge>
+  <Badge icon={<LuShield />} size="sm" variant="gray-subtle">
+    gray
+  </Badge>
+  <Badge icon={<LuShield />} size="md" variant="gray-subtle">
+    gray
+  </Badge>
+  <Badge icon={<LuShield />} size="lg" variant="gray-subtle">
+    gray
+  </Badge>
+</Stack>
+
+<Stack align="center" direction="row" gap={1}>
+  <Badge icon={<LuShield />} size="lg" variant="blue">
+    blue
+  </Badge>
+  <Badge icon={<LuShield />} size="md" variant="blue">
+    blue
+  </Badge>
+  <Badge icon={<LuShield />} size="sm" variant="blue">
+    blue
+  </Badge>
+  <Badge icon={<LuShield />} size="sm" variant="blue-subtle">
+    blue
+  </Badge>
+  <Badge icon={<LuShield />} size="md" variant="blue-subtle">
+    blue
+  </Badge>
+  <Badge icon={<LuShield />} size="lg" variant="blue-subtle">
+    blue
+  </Badge>
+</Stack>
+
+<Stack align="center" direction="row" gap={1}>
+  <Badge icon={<LuShield />} size="lg" variant="purple">
+    purple
+  </Badge>
+  <Badge icon={<LuShield />} size="md" variant="purple">
+    purple
+  </Badge>
+  <Badge icon={<LuShield />} size="sm" variant="purple">
+    purple
+  </Badge>
+  <Badge icon={<LuShield />} size="sm" variant="purple-subtle">
+    purple
+  </Badge>
+  <Badge icon={<LuShield />} size="md" variant="purple-subtle">
+    purple
+  </Badge>
+  <Badge icon={<LuShield />} size="lg" variant="purple-subtle">
+    purple
+  </Badge>
+</Stack>
+
+<Stack align="center" direction="row" gap={1}>
+  <Badge icon={<LuShield />} size="lg" variant="amber">
+    amber
+  </Badge>
+  <Badge icon={<LuShield />} size="md" variant="amber">
+    amber
+  </Badge>
+  <Badge icon={<LuShield />} size="sm" variant="amber">
+    amber
+  </Badge>
+  <Badge icon={<LuShield />} size="sm" variant="amber-subtle">
+    amber
+  </Badge>
+  <Badge icon={<LuShield />} size="md" variant="amber-subtle">
+    amber
+  </Badge>
+  <Badge icon={<LuShield />} size="lg" variant="amber-subtle">
+    amber
+  </Badge>
+</Stack>
+
+<Stack align="center" direction="row" gap={1}>
+  <Badge icon={<LuShield />} size="lg" variant="red">
+    red
+  </Badge>
+  <Badge icon={<LuShield />} size="md" variant="red">
+    red
+  </Badge>
+  <Badge icon={<LuShield />} size="sm" variant="red">
+    red
+  </Badge>
+  <Badge icon={<LuShield />} size="sm" variant="red-subtle">
+    red
+  </Badge>
+  <Badge icon={<LuShield />} size="md" variant="red-subtle">
+    red
+  </Badge>
+  <Badge icon={<LuShield />} size="lg" variant="red-subtle">
+    red
+  </Badge>
+</Stack>
+
+<Stack align="center" direction="row" gap={1}>
+  <Badge icon={<LuShield />} size="lg" variant="pink">
+    pink
+  </Badge>
+  <Badge icon={<LuShield />} size="md" variant="pink">
+    pink
+  </Badge>
+  <Badge icon={<LuShield />} size="sm" variant="pink">
+    pink
+  </Badge>
+  <Badge icon={<LuShield />} size="sm" variant="pink-subtle">
+    pink
+  </Badge>
+  <Badge icon={<LuShield />} size="md" variant="pink-subtle">
+    pink
+  </Badge>
+  <Badge icon={<LuShield />} size="lg" variant="pink-subtle">
+    pink
+  </Badge>
+</Stack>
+
+<Stack align="center" direction="row" gap={1}>
+  <Badge icon={<LuShield />} size="lg" variant="green">
+    green
+  </Badge>
+  <Badge icon={<LuShield />} size="md" variant="green">
+    green
+  </Badge>
+  <Badge icon={<LuShield />} size="sm" variant="green">
+    green
+  </Badge>
+  <Badge icon={<LuShield />} size="sm" variant="green-subtle">
+    green
+  </Badge>
+  <Badge icon={<LuShield />} size="md" variant="green-subtle">
+    green
+  </Badge>
+  <Badge icon={<LuShield />} size="lg" variant="green-subtle">
+    green
+  </Badge>
+</Stack>
+
+<Stack align="center" direction="row" gap={1}>
+  <Badge icon={<LuShield />} size="lg" variant="teal">
+    teal
+  </Badge>
+  <Badge icon={<LuShield />} size="md" variant="teal">
+    teal
+  </Badge>
+  <Badge icon={<LuShield />} size="sm" variant="teal">
+    teal
+  </Badge>
+  <Badge icon={<LuShield />} size="sm" variant="teal-subtle">
+    teal
+  </Badge>
+  <Badge icon={<LuShield />} size="md" variant="teal-subtle">
+    teal
+  </Badge>
+  <Badge icon={<LuShield />} size="lg" variant="teal-subtle">
+    teal
+  </Badge>
+</Stack>
+
+<Stack align="center" direction="row" gap={1}>
+  <Badge icon={<LuShield />} size="lg" variant="inverted">
+    inverted
+  </Badge>
+  <Badge icon={<LuShield />} size="md" variant="inverted">
+    inverted
+  </Badge>
+  <Badge icon={<LuShield />} size="sm" variant="inverted">
+    inverted
+  </Badge>
+</Stack>`;
+
 export default function BadgePage() {
   return (
     <div className="divide-y">
@@ -67,7 +248,7 @@ export default function BadgePage() {
         </p>
       </section>
       <section className="p-12">
-        <ScrollToLink id="usage" href="#usage">
+        <ScrollToLink id="variants" href="#variants">
           <h2>Variants</h2>
         </ScrollToLink>
         <Collapse className="mt-7">
@@ -105,7 +286,7 @@ export default function BadgePage() {
               <Badge variant="teal-subtle">Teal-Subtle</Badge>
             </Stack>
             <Stack direction="row" gap={1}>
-              <Badge variant="invert">Invert</Badge>
+              <Badge variant="inverted">Inverted</Badge>
             </Stack>
             <Stack direction="row" gap={1}>
               <Badge variant="trial">Trial</Badge>
@@ -120,7 +301,7 @@ export default function BadgePage() {
         </Collapse>
       </section>
       <section className="p-12">
-        <ScrollToLink id="group" href="#group">
+        <ScrollToLink id="sizes" href="#sizes">
           <h2>Sizes</h2>
         </ScrollToLink>
         <Collapse className="mt-7">
@@ -133,6 +314,200 @@ export default function BadgePage() {
           <CollapseContent>
             <CopyBlock text={BADGE_SIZES_CODE}>
               <CodeBlock showLineNumbers>{BADGE_SIZES_CODE}</CodeBlock>
+            </CopyBlock>
+          </CollapseContent>
+        </Collapse>
+      </section>
+      <section className="p-12">
+        <ScrollToLink id="with-icons" href="#with-icons">
+          <h2>With Icons</h2>
+        </ScrollToLink>
+        <Collapse className="mt-7">
+          <Stack gap={2} padding={6} className="bg-background-100">
+            <Stack align="center" direction="row" gap={1}>
+              <Badge icon={<LuShield />} size="lg" variant="gray">
+                gray
+              </Badge>
+              <Badge icon={<LuShield />} size="md" variant="gray">
+                gray
+              </Badge>
+              <Badge icon={<LuShield />} size="sm" variant="gray">
+                gray
+              </Badge>
+              <Badge icon={<LuShield />} size="sm" variant="gray-subtle">
+                gray
+              </Badge>
+              <Badge icon={<LuShield />} size="md" variant="gray-subtle">
+                gray
+              </Badge>
+              <Badge icon={<LuShield />} size="lg" variant="gray-subtle">
+                gray
+              </Badge>
+            </Stack>
+
+            <Stack align="center" direction="row" gap={1}>
+              <Badge icon={<LuShield />} size="lg" variant="blue">
+                blue
+              </Badge>
+              <Badge icon={<LuShield />} size="md" variant="blue">
+                blue
+              </Badge>
+              <Badge icon={<LuShield />} size="sm" variant="blue">
+                blue
+              </Badge>
+              <Badge icon={<LuShield />} size="sm" variant="blue-subtle">
+                blue
+              </Badge>
+              <Badge icon={<LuShield />} size="md" variant="blue-subtle">
+                blue
+              </Badge>
+              <Badge icon={<LuShield />} size="lg" variant="blue-subtle">
+                blue
+              </Badge>
+            </Stack>
+
+            <Stack align="center" direction="row" gap={1}>
+              <Badge icon={<LuShield />} size="lg" variant="purple">
+                purple
+              </Badge>
+              <Badge icon={<LuShield />} size="md" variant="purple">
+                purple
+              </Badge>
+              <Badge icon={<LuShield />} size="sm" variant="purple">
+                purple
+              </Badge>
+              <Badge icon={<LuShield />} size="sm" variant="purple-subtle">
+                purple
+              </Badge>
+              <Badge icon={<LuShield />} size="md" variant="purple-subtle">
+                purple
+              </Badge>
+              <Badge icon={<LuShield />} size="lg" variant="purple-subtle">
+                purple
+              </Badge>
+            </Stack>
+
+            <Stack align="center" direction="row" gap={1}>
+              <Badge icon={<LuShield />} size="lg" variant="amber">
+                amber
+              </Badge>
+              <Badge icon={<LuShield />} size="md" variant="amber">
+                amber
+              </Badge>
+              <Badge icon={<LuShield />} size="sm" variant="amber">
+                amber
+              </Badge>
+              <Badge icon={<LuShield />} size="sm" variant="amber-subtle">
+                amber
+              </Badge>
+              <Badge icon={<LuShield />} size="md" variant="amber-subtle">
+                amber
+              </Badge>
+              <Badge icon={<LuShield />} size="lg" variant="amber-subtle">
+                amber
+              </Badge>
+            </Stack>
+
+            <Stack align="center" direction="row" gap={1}>
+              <Badge icon={<LuShield />} size="lg" variant="red">
+                red
+              </Badge>
+              <Badge icon={<LuShield />} size="md" variant="red">
+                red
+              </Badge>
+              <Badge icon={<LuShield />} size="sm" variant="red">
+                red
+              </Badge>
+              <Badge icon={<LuShield />} size="sm" variant="red-subtle">
+                red
+              </Badge>
+              <Badge icon={<LuShield />} size="md" variant="red-subtle">
+                red
+              </Badge>
+              <Badge icon={<LuShield />} size="lg" variant="red-subtle">
+                red
+              </Badge>
+            </Stack>
+
+            <Stack align="center" direction="row" gap={1}>
+              <Badge icon={<LuShield />} size="lg" variant="pink">
+                pink
+              </Badge>
+              <Badge icon={<LuShield />} size="md" variant="pink">
+                pink
+              </Badge>
+              <Badge icon={<LuShield />} size="sm" variant="pink">
+                pink
+              </Badge>
+              <Badge icon={<LuShield />} size="sm" variant="pink-subtle">
+                pink
+              </Badge>
+              <Badge icon={<LuShield />} size="md" variant="pink-subtle">
+                pink
+              </Badge>
+              <Badge icon={<LuShield />} size="lg" variant="pink-subtle">
+                pink
+              </Badge>
+            </Stack>
+
+            <Stack align="center" direction="row" gap={1}>
+              <Badge icon={<LuShield />} size="lg" variant="green">
+                green
+              </Badge>
+              <Badge icon={<LuShield />} size="md" variant="green">
+                green
+              </Badge>
+              <Badge icon={<LuShield />} size="sm" variant="green">
+                green
+              </Badge>
+              <Badge icon={<LuShield />} size="sm" variant="green-subtle">
+                green
+              </Badge>
+              <Badge icon={<LuShield />} size="md" variant="green-subtle">
+                green
+              </Badge>
+              <Badge icon={<LuShield />} size="lg" variant="green-subtle">
+                green
+              </Badge>
+            </Stack>
+
+            <Stack align="center" direction="row" gap={1}>
+              <Badge icon={<LuShield />} size="lg" variant="teal">
+                teal
+              </Badge>
+              <Badge icon={<LuShield />} size="md" variant="teal">
+                teal
+              </Badge>
+              <Badge icon={<LuShield />} size="sm" variant="teal">
+                teal
+              </Badge>
+              <Badge icon={<LuShield />} size="sm" variant="teal-subtle">
+                teal
+              </Badge>
+              <Badge icon={<LuShield />} size="md" variant="teal-subtle">
+                teal
+              </Badge>
+              <Badge icon={<LuShield />} size="lg" variant="teal-subtle">
+                teal
+              </Badge>
+            </Stack>
+
+            <Stack align="center" direction="row" gap={1}>
+              <Badge icon={<LuShield />} size="lg" variant="inverted">
+                inverted
+              </Badge>
+              <Badge icon={<LuShield />} size="md" variant="inverted">
+                inverted
+              </Badge>
+              <Badge icon={<LuShield />} size="sm" variant="inverted">
+                inverted
+              </Badge>
+            </Stack>
+          </Stack>
+          <CollapseTrigger>code</CollapseTrigger>
+          <CollapseContent>
+            <CopyBlock text={BADGE_ICONS_CODE}>
+              <CodeBlock showLineNumbers>{BADGE_ICONS_CODE}</CodeBlock>
             </CopyBlock>
           </CollapseContent>
         </Collapse>

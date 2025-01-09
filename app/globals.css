@@ -299,6 +299,10 @@
   .sr-only {
     @apply absolute size-[1px] p-0 -m-[1px] overflow-hidden [clip:rect(0,0,0,0)] whitespace-nowrap border-0;
   }
+
+  .book-bg {
+    background: linear-gradient(180deg,hsla(0,0%,100%,.1),hsla(0,0%,100%,0) 50%,hsla(0,0%,100%,0)),#1f1f1f;
+  }
 }
 
 /*::-webkit-scrollbar-track {*/

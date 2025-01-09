@@ -43,7 +43,7 @@ export default function Badge({
           'bg-teal-700 text-teal-50': variant === 'teal',
           'bg-teal-200 text-teal-900': variant === 'teal-subtle',
           'bg-trial text-foreground': variant === 'trial',
-          'text-gray-100 bg-foreground': variant === 'invert',
+          'text-gray-100 bg-foreground': variant === 'inverted',
         },
         className,
       )}

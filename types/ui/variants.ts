@@ -16,4 +16,4 @@ export type Variants =
   | 'teal'
   | 'teal-subtle';
 
-export type BadgeVariants = 'invert' | 'trial' | Variants;
+export type BadgeVariants = 'inverted' | 'trial' | Variants;
