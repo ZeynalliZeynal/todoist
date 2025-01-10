@@ -4,14 +4,24 @@ import React from 'react';
 
 interface BookProps {
   children: React.ReactNode;
-  backgroundColor?: string;
-  stripe?: string;
+  color?: string;
+  textColor?: string;
   texture?: boolean;
   depth?: number;
+  variant?: 'default' | 'simple';
+  illustration?: React.ReactNode;
 }
 
 export default function Book(props: BookProps) {
-  const { children, backgroundColor, depth, texture, stripe } = props;
+  const {
+    children,
+    color = '#E79D13',
+    depth,
+    texture,
+    variant = 'default',
+    textColor,
+    illustration,
+  } = props;
   return (
     <div
       className={cn(
@@ -20,7 +30,8 @@ export default function Book(props: BookProps) {
       )}
       style={
         {
-          '--background-color': backgroundColor,
+          '--book-color': color,
+          '--text-color': textColor,
           '--book-depth': depth ? depth + 'cqw' : '5cqw',
         } as React.CSSProperties
       }
@@ -28,14 +39,24 @@ export default function Book(props: BookProps) {
       <div className="contain-inline-size aspect-[49/60] w-fit rotate-0 relative [transform-style:preserve-3d] min-w-[calc(var(--book-width))] transition-transform duration-500 ease-out group-hover:[transform:rotateY(-20deg)_scale(1.066)translateX(-8px)]">
         <Stack
           align="stretch"
-          className="rounded-l-md rounded-r shadow-book bg-[var(--background-color)] book-bg size-full absolute overflow-hidden"
+          className="rounded-l-md rounded-r shadow-book book-bg bg-[var(--book-color)] size-full absolute overflow-hidden"
         >
-          {stripe && (
-            <Stack className={cn('min-w-[calc(var(--book-width))]', stripe)}>
-              <div className="mix-blend-overlay opacity-100 min-w-[8.2%] bg-book-bind-bg h-full" />
+          {variant !== 'simple' && (
+            <Stack
+              shrink
+              grow
+              direction="row"
+              className={cn(
+                'min-w-[calc(var(--book-width))] bg-[var(--book-color)] relative overflow-hidden',
+              )}
+            >
+              <div className="absolute inset-y-0 mix-blend-overlay opacity-100 min-w-[8.2%] bg-book-bind-bg" />
+              {illustration && (
+                <div className="object-cover">{illustration}</div>
+              )}
             </Stack>
           )}
-          <Stack grow direction="row" align="stretch" className="w-full">
+          <Stack direction="row" className="h-fit">
             <div className="mix-blend-overlay opacity-100 min-w-[8.2%] bg-book-bind-bg h-full" />
             <div className="contain-inline-size w-full">{children}</div>
           </Stack>
@@ -56,7 +77,7 @@ export default function Book(props: BookProps) {
         />
         <div
           aria-hidden={true}
-          className="rounded-l-md rounded-r bg-[var(--background-color)] book-bg absolute left-0 w-full h-full"
+          className="rounded-l-md rounded-r bg-[var(--book-color)] book-bg absolute left-0 w-full h-full"
           style={{
             transform: 'translateZ(calc(-1 * var(--book-depth)))',
           }}
