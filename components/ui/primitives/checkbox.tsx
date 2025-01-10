@@ -5,15 +5,14 @@ import { AnimatePresence, motion } from 'framer-motion';
 import { cn } from '@/utils/lib';
 import { FaCheck } from 'react-icons/fa6';
 
-interface CheckboxProps {
+interface CheckboxProps extends React.ComponentProps<'input'> {
   children?: React.ReactNode;
   checked: boolean;
-  onChange: (checked: boolean) => void;
+  onChange: React.ChangeEventHandler;
 }
 
 export function Checkbox(props: CheckboxProps) {
-  const { children, checked, onChange } = props;
-  const inputRef = React.useRef<HTMLInputElement | null>(null);
+  const { children, checked, onChange, ...etc } = props;
 
   const id = React.useId();
 
@@ -22,23 +21,30 @@ export function Checkbox(props: CheckboxProps) {
   return (
     <label
       htmlFor={checkboxId}
-      className="inline-flex gap-2 items-center cursor-pointer"
+      className={cn(
+        'inline-flex gap-2 items-center cursor-pointer',
+        props.disabled && 'text-gray-500 cursor-not-allowed',
+      )}
     >
       <span
         className={cn(
           'inline-flex items-center justify-center shrink-0 size-4 rounded border border-foreground transition focus-within:ring-2 focus-within:ring-offset-2 ring-blue-900 ring-offset-background-100',
-          checked ? 'bg-foreground' : 'bg-background-100',
+          {
+            'bg-foreground text-background-200': checked,
+            'bg-background-100': !checked,
+            'bg-gray-600': checked && props.disabled,
+            'bg-gray-100': !checked && props.disabled,
+            'border-gray-600': props.disabled,
+          },
         )}
       >
         <input
-          ref={inputRef}
           type="checkbox"
           id={checkboxId}
           className="sr-only"
           checked={checked}
-          onChange={() => {
-            onChange(checked);
-          }}
+          onChange={onChange}
+          {...etc}
         />
         <AnimatePresence>
           {checked && (
@@ -56,7 +62,7 @@ export function Checkbox(props: CheckboxProps) {
                 scale: 0,
                 opacity: 0,
               }}
-              className="inline-flex items-center justify-center size-3 rounded text-background-200"
+              className="inline-flex items-center justify-center text-xs rounded"
             >
               <FaCheck />
             </motion.span>
