@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.5](https://github.com/ZeynalliZeynal/todoist/compare/v0.1.4...v0.1.5) (2025-01-10)
+
+
+### Features
+
+* **ui:** add iconOnly prop to ButtonLink ([b7ade09](https://github.com/ZeynalliZeynal/todoist/commit/b7ade09d6a9a783edbfc87db1a96bad29931fd7e))
+
 ### [0.1.4](https://github.com/ZeynalliZeynal/todoist/compare/v0.1.3...v0.1.4) (2025-01-10)
 
 
