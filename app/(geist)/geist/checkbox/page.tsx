@@ -1,4 +1,5 @@
-import CheckboxDefault from '@/app/(geist)/geist/checkbox/checkbox-default';
+import CheckboxDefault from '@/app/(geist)/geist/checkbox/_sections/checkbox-default';
+import CheckboxDisabled from '@/app/(geist)/geist/checkbox/_sections/checkbox-disabled';
 
 export default function CheckboxPage() {
   return (
@@ -10,6 +11,7 @@ export default function CheckboxPage() {
         </p>
       </section>
       <CheckboxDefault />
+      <CheckboxDisabled />
     </div>
   );
 }

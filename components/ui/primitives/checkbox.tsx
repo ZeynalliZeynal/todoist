@@ -8,7 +8,7 @@ import { FaCheck } from 'react-icons/fa6';
 interface CheckboxProps extends React.ComponentProps<'input'> {
   children?: React.ReactNode;
   checked: boolean;
-  onChange: React.ChangeEventHandler;
+  onChange?: React.ChangeEventHandler;
 }
 
 export function Checkbox(props: CheckboxProps) {
