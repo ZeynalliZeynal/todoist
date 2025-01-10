@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.7](https://github.com/ZeynalliZeynal/todoist/compare/v0.1.6...v0.1.7) (2025-01-10)
+
+
+### Features
+
+* **ui:** add styles for disabled checkbox ([e19faa8](https://github.com/ZeynalliZeynal/todoist/commit/e19faa8c6a050fb692f2af9bac498ced29b0e178))
+
 ### [0.1.6](https://github.com/ZeynalliZeynal/todoist/compare/v0.1.5...v0.1.6) (2025-01-10)
 
 
