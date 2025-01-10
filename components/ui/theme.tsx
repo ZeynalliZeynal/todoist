@@ -1,84 +1,98 @@
 'use client';
 import { cn } from '@/utils/lib';
-import {
+import React, {
   createContext,
   KeyboardEventHandler,
-  ReactNode,
   useContext,
   useEffect,
-  useMemo,
   useRef,
   useState,
 } from 'react';
 import { DeviceAlternate, Moon, Sun } from '@/components/ui/icons/geist';
 
-type Themes = 'device' | 'dark' | 'light';
+const themes = ['device', 'dark', 'light'] as const;
 
-interface ThemeSwitcherContext {
-  theme: Themes;
-  changeTheme: (theme: Themes) => void;
+type Theme = (typeof themes)[number];
+
+interface ThemeContextProps {
+  theme: Theme;
+  changeTheme: (theme: Theme) => void;
 }
 
-const ThemeSwitcherContext = createContext<ThemeSwitcherContext | null>(null);
+const ThemeContext = createContext<ThemeContextProps | null>(null);
 
-const useThemeSwitcher = () => {
-  const context = useContext(ThemeSwitcherContext);
-  if (!context) throw new Error('Context is outside of the provider');
+const useTheme = () => {
+  const context = useContext(ThemeContext);
+  if (!context) throw new Error('useTheme hook is outside of the provider');
   return context;
 };
 
-export const ThemeSwitchProvider = ({ children }: { children: ReactNode }) => {
-  const [theme, setTheme] = useState<Themes>('device');
+export const ThemeProvider = ({
+  children,
+  defaultTheme,
+}: {
+  children: React.ReactNode;
+  defaultTheme: Theme;
+}) => {
+  const [theme, setTheme] = useState<Theme>(defaultTheme);
 
-  const changeTheme = (theme: Themes) => {
-    setTheme(theme);
-    localStorage.setItem('theme', JSON.stringify(theme));
-  };
-  useEffect(() => {
-    if (localStorage.getItem('theme')) {
-      setTheme(JSON.parse(localStorage.getItem('theme') as string));
-    }
-  }, [theme]);
-
-  useEffect(() => {
-    if (theme === 'device') {
-      if (window.matchMedia('(prefers-color-scheme:dark)').matches) {
-        if (!document.documentElement.className.includes('dark')) {
-          document.documentElement.classList.add('dark');
-          document.documentElement.style.colorScheme = 'dark';
-        }
-      } else {
-        document.documentElement.classList.remove('dark');
-        document.documentElement.style.colorScheme = '';
-      }
-    } else if (theme === 'dark') {
-      if (!document.documentElement.className.includes('dark')) {
-        document.documentElement.classList.add('dark');
-        document.documentElement.style.colorScheme = 'dark';
-      }
+  // Helper function to apply the theme.
+  const applyTheme = (currentTheme: Theme) => {
+    if (currentTheme === 'device') {
+      const devicePrefersDark = window.matchMedia(
+        '(prefers-color-scheme: dark)',
+      ).matches;
+      document.documentElement.setAttribute(
+        'data-theme',
+        devicePrefersDark ? 'dark' : 'light',
+      );
+      document.documentElement.style.colorScheme = devicePrefersDark
+        ? 'dark'
+        : 'light';
     } else {
-      document.documentElement.classList.remove('dark');
-      document.documentElement.style.colorScheme = '';
+      document.documentElement.setAttribute('data-theme', currentTheme);
+      document.documentElement.style.colorScheme = currentTheme;
     }
+  };
+
+  useEffect(() => {
+    // Load theme from localStorage or default to 'device'
+    const savedTheme = (localStorage.getItem('theme') as Theme) || 'device';
+    setTheme(savedTheme);
+    applyTheme(savedTheme);
+
+    // Add event listener for device theme changes if 'device' is selected
+    const handleDeviceThemeChange = (e: MediaQueryListEvent) => {
+      if (theme === 'device') {
+        document.documentElement.setAttribute(
+          'data-theme',
+          e.matches ? 'dark' : 'light',
+        );
+      }
+    };
+
+    const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+    mediaQuery.addEventListener('change', handleDeviceThemeChange);
+
+    return () =>
+      mediaQuery.removeEventListener('change', handleDeviceThemeChange);
   }, [theme]);
+
+  const changeTheme = (newTheme: Theme) => {
+    setTheme(newTheme);
+    localStorage.setItem('theme', newTheme);
+    applyTheme(newTheme);
+  };
 
   return (
-    <ThemeSwitcherContext.Provider
-      value={{
-        theme,
-        changeTheme,
-      }}
-    >
+    <ThemeContext.Provider value={{ theme, changeTheme }}>
       {children}
-    </ThemeSwitcherContext.Provider>
+    </ThemeContext.Provider>
   );
 };
 
-type Theme = 'device' | 'light' | 'dark';
-
 export default function ThemeSwitch({ size = 24 }: { size?: number }) {
-  const { theme, changeTheme } = useThemeSwitcher();
-  const themes: Theme[] = useMemo(() => ['device', 'light', 'dark'], []);
+  const { theme, changeTheme } = useTheme();
   const [index, setIndex] = useState(themes.indexOf(theme));
   const ref = useRef<HTMLDivElement | null>(null);
 

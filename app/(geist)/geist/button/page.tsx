@@ -1,12 +1,9 @@
-import {
-  Collapse,
-  CollapseContent,
-  CollapseTrigger,
-} from '@/components/ui/collapse';
-import CopyBlock from '@/components/copy-block';
-import CodeBlock from '@/components/ui/code-block';
-import ScrollToLink from '@/app/(geist)/geist/_components/scroll-to-link';
-import { Stack } from '@/components/ui/stack';
+import ButtonSizes from '@/app/(geist)/geist/button/_sections/button-sizes';
+import ButtonVariants from '@/app/(geist)/geist/button/_sections/button-variants';
+import ButtonIconOnly from '@/app/(geist)/geist/button/_sections/button-icon-only';
+import ButtonSuffixPrefix from '@/app/(geist)/geist/button/_sections/button-suffix-prefix';
+import ButtonDisabled from '@/app/(geist)/geist/button/_sections/button-disabled';
+import ButtonLinkSection from '@/app/(geist)/geist/button/_sections/button-link-section';
 
 export default function ButtonPage() {
   return (
@@ -14,24 +11,16 @@ export default function ButtonPage() {
       <section className="p-12">
         <h1 className="mb-3">Button</h1>
         <p className="text-gray-900">
-          A label that emphasizes an element that requires attention, or helps
-          categorize with other similar elements.
+          Trigger an action or event, such as submitting a form or displaying a
+          dialog.
         </p>
       </section>
-      <section className="p-12">
-        <ScrollToLink id="variants" href="#variants">
-          <h2>Variants</h2>
-        </ScrollToLink>
-        <Collapse className="mt-7">
-          <Stack gap={2} padding={6} className="bg-background-100"></Stack>
-          <CollapseTrigger>code</CollapseTrigger>
-          <CollapseContent>
-            <CopyBlock>
-              <CodeBlock showLineNumbers></CodeBlock>
-            </CopyBlock>
-          </CollapseContent>
-        </Collapse>
-      </section>
+      <ButtonSizes />
+      <ButtonVariants />
+      <ButtonIconOnly />
+      <ButtonSuffixPrefix />
+      <ButtonDisabled />
+      <ButtonLinkSection />
     </div>
   );
 }

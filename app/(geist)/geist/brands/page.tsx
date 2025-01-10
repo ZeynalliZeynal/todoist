@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { DefaultLink } from '@/components/ui/button';
+import { ButtonLink } from '@/components/ui/button';
 import { LuDownload } from 'react-icons/lu';
 import TodoistBrand from './_sections/todoist-brand';
 import CodeBlock from '@/components/ui/code-block';
@@ -46,7 +46,7 @@ export default function BrandsPage() {
           </Link>
         </p>
         <div className="mt-4">
-          <DefaultLink
+          <ButtonLink
             href="/assets/logo_assets/logo_assets.zip"
             size="md"
             prefix={<LuDownload />}
@@ -54,7 +54,7 @@ export default function BrandsPage() {
             download
           >
             Download Todoist Assets
-          </DefaultLink>
+          </ButtonLink>
         </div>
       </section>
       <TodoistBrand />
@@ -71,7 +71,7 @@ export default function BrandsPage() {
           a way that confuses Vercel with another brand.
         </p>
         <div className="mt-4">
-          <DefaultLink
+          <ButtonLink
             href="/assets/logo_assets/nextjs-assets.zip"
             size="md"
             prefix={<LuDownload />}
@@ -79,7 +79,7 @@ export default function BrandsPage() {
             download
           >
             Download Next.js Assets
-          </DefaultLink>
+          </ButtonLink>
         </div>
       </section>
       <NextBrand />

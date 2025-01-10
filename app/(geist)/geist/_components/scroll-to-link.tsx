@@ -9,7 +9,7 @@ export default function ScrollToLink(props: LinkProps & ComponentProps<'a'>) {
       {...props}
       className={cn('relative group', props.className)}
       style={{
-        scrollMarginTop: '98px',
+        scrollMarginTop: '112px',
         ...props.style,
       }}
     >

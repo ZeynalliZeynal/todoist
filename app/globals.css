@@ -8,8 +8,7 @@
   }
 
   :root {
-    &,
-    &.light {
+    &[data-theme=light] {
       --ds-background-100: 0, 0%, 98%;
       --ds-background-200: 0, 0%, 100%;
 
@@ -33,16 +32,16 @@
       --ds-gray-900: 0, 0%, 40%;
       --ds-gray-1000: 0, 0%, 9%;
 
-      --ds-gray-alpha-100: 0, 0%, 93%;
-      --ds-gray-alpha-200: 0, 0%, 90%;
-      --ds-gray-alpha-300: 0, 0%, 88%;
-      --ds-gray-alpha-400: 0, 0%, 90%;
-      --ds-gray-alpha-500: 0, 0%, 77%;
-      --ds-gray-alpha-600: 0, 0%, 65%;
-      --ds-gray-alpha-700: 0, 0%, 55%;
-      --ds-gray-alpha-800: 0, 0%, 48%;
-      --ds-gray-alpha-900: 0, 0%, 38%;
-      --ds-gray-alpha-1000: 0, 0%, 9%;
+      --ds-gray-alpha-100: 0, 0%, 0%, 0.05;
+      --ds-gray-alpha-200: 0, 0%, 0%, 0.08;
+      --ds-gray-alpha-300: 0, 0%, 0%, 0.1;
+      --ds-gray-alpha-400: 0, 0%, 0%, 0.08;
+      --ds-gray-alpha-500: 0, 0%, 0%, 0.21;
+      --ds-gray-alpha-600: 0, 0%, 0%, 0.34;
+      --ds-gray-alpha-700: 0, 0%, 0%, 0.44;
+      --ds-gray-alpha-800: 0, 0%, 0%, 0.51;
+      --ds-gray-alpha-900: 0, 0%, 0%, 0.61;
+      --ds-gray-alpha-1000: 0, 0%, 0%, 0.91;
 
       --ds-blue-100: 212, 100%, 97%;
       --ds-blue-200: 210, 100%, 96%;
@@ -131,7 +130,7 @@
         0px 16px 24px -8px rgba(0, 0, 0, 0.06);
     }
 
-    &.dark {
+    &, &[data-theme=dark] {
       --ds-background-200: 0 0% 0%;
       --ds-background-100: 0 0% 4%;
 
@@ -292,6 +291,10 @@
 
   p {
     @apply text-xl;
+  }
+
+  p > code {
+    @apply font-geist-mono rounded-md bg-gray-100 border border-gray-300 py-0.5 px-1
   }
 }
 

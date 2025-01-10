@@ -1,6 +1,6 @@
 import { Logo, LogoFull } from '@/components/ui/icons/logo';
 import Link from 'next/link';
-import { DefaultLink } from '@/components/ui/button';
+import { ButtonLink } from '@/components/ui/button';
 
 export function HeaderLogin() {
   return (
@@ -10,12 +10,12 @@ export function HeaderLogin() {
           <Logo />
         </Link>
         <div className="flex items-center gap-3">
-          <DefaultLink href="/contact" variant="outline">
+          <ButtonLink href="/contact" variant="ghost">
             Contact
-          </DefaultLink>
-          <DefaultLink href="/auth/signup" className="bg-transparent">
+          </ButtonLink>
+          <ButtonLink href="/auth/signup" className="bg-transparent">
             Sign up
-          </DefaultLink>
+          </ButtonLink>
         </div>
       </div>
     </header>
@@ -30,12 +30,12 @@ export function HeaderSignup() {
           <LogoFull />
         </Link>
         <div className="flex items-center gap-3">
-          <DefaultLink href="/contact" variant="secondary">
+          <ButtonLink href="/contact" variant="secondary">
             Contact
-          </DefaultLink>
-          <DefaultLink href="/auth/login" className="bg-transparent">
+          </ButtonLink>
+          <ButtonLink href="/auth/login" className="bg-transparent">
             Log in
-          </DefaultLink>
+          </ButtonLink>
         </div>
       </div>
     </header>
