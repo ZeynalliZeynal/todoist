@@ -6,7 +6,7 @@ import {
 } from '@/components/ui/collapse';
 import { Button } from '@/components/ui/button';
 import CopyBlock from '@/components/copy-block';
-import CodeBlock from '@/components/ui/code-block';
+import CodeSnippet from '@/components/ui/code-snippet';
 import { BUTTON_VARIANTS_CODE } from '@/app/(geist)/geist/button/_snippets/snippets';
 
 export default function ButtonVariants() {
@@ -28,7 +28,7 @@ export default function ButtonVariants() {
         <CollapseTrigger>code</CollapseTrigger>
         <CollapseContent>
           <CopyBlock text={BUTTON_VARIANTS_CODE}>
-            <CodeBlock showLineNumbers>{BUTTON_VARIANTS_CODE}</CodeBlock>
+            <CodeSnippet showLineNumbers>{BUTTON_VARIANTS_CODE}</CodeSnippet>
           </CopyBlock>
         </CollapseContent>
       </Collapse>

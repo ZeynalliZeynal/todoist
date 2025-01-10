@@ -28,33 +28,31 @@ export default function CopyBlock({
         size={size}
         className="absolute top-4 right-4 group-hover:opacity-100 focus-visible:opacity-100 opacity-0"
         onClick={copy}
-        prefix={
-          <>
-            <span
-              aria-hidden={true}
-              className="absolute top-1/2 size-6 translate-y-[-50%] flex items-center justify-center"
-            >
-              <FiCopy
-                className={cn('transition-all absolute', {
-                  'scale-100': !copying,
-                  'scale-0': copying,
-                })}
-              />
-            </span>
-            <span
-              aria-hidden={true}
-              className="absolute top-1/2 size-6 translate-y-[-50%] flex items-center justify-center"
-            >
-              <FaCheck
-                className={cn('transition-all absolute', {
-                  'scale-100': copying,
-                  'scale-0': !copying,
-                })}
-              />
-            </span>
-          </>
-        }
-      />
+        iconOnly
+      >
+        <span
+          aria-hidden={true}
+          className="absolute top-1/2 size-6 translate-y-[-50%] flex items-center justify-center"
+        >
+          <FiCopy
+            className={cn('transition-all absolute', {
+              'scale-100': !copying,
+              'scale-0': copying,
+            })}
+          />
+        </span>
+        <span
+          aria-hidden={true}
+          className="absolute top-1/2 size-6 translate-y-[-50%] flex items-center justify-center"
+        >
+          <FaCheck
+            className={cn('transition-all absolute', {
+              'scale-100': copying,
+              'scale-0': !copying,
+            })}
+          />
+        </span>
+      </Button>
       {children}
     </div>
   );

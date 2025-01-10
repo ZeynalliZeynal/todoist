@@ -90,7 +90,13 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       >
         {prefix}
         {children && (
-          <span className={cn(!iconOnly && 'px-1.5')}>{children}</span>
+          <span
+            className={cn(
+              iconOnly ? 'inline-flex items-center justify-center' : 'px-1.5',
+            )}
+          >
+            {children}
+          </span>
         )}
         {suffix}
       </button>
@@ -107,6 +113,7 @@ export const ButtonLink = forwardRef<HTMLAnchorElement, ButtonLinkProps>(
       className,
       suffix,
       prefix,
+      iconOnly,
       ...etc
     },
     ref,
@@ -125,12 +132,13 @@ export const ButtonLink = forwardRef<HTMLAnchorElement, ButtonLinkProps>(
               variant === 'secondary',
             'text-foreground border-transparent data-[hover]:bg-gray-alpha-200':
               variant === 'tertiary',
-            'px-2.5 h-10 text-sm': size === 'md',
-            'px-3.5 h-12 text-base': size === 'lg',
-            'text-sm h-8 px-1.5': size === 'sm',
-            'size-10 text-sm': size === 'md' && !children,
-            'size-12 text-base': size === 'lg' && !children,
-            'text-sm size-8': size === 'sm' && !children,
+            'px-2.5 h-10 text-sm': size === 'md' && !iconOnly,
+            'px-3.5 h-12 text-base': size === 'lg' && !iconOnly,
+            'text-sm h-8 px-1.5': size === 'sm' && !iconOnly,
+            'size-12 text-lg': size === 'lg' && iconOnly,
+            'size-10 text-sm': size === 'md' && iconOnly,
+            'size-8 text-sm': size === 'sm' && iconOnly,
+            'size-6 text-xs': size === 'xs' && iconOnly,
             'data-[hover]:text-foreground data-[hover]:bg-gray-200 data-[hover]:border-gray-alpha-200':
               variant === 'primary' && hovering,
             'disabled:text-gray-700 disabled:bg-gray-100 disabled:border-gray-400':
@@ -147,7 +155,15 @@ export const ButtonLink = forwardRef<HTMLAnchorElement, ButtonLinkProps>(
         onMouseLeave={() => setHovering(false)}
       >
         {prefix}
-        {children && <span className="px-1.5">{children}</span>}
+        {children && (
+          <span
+            className={cn(
+              iconOnly ? 'inline-flex items-center justify-center' : 'px-1.5',
+            )}
+          >
+            {children}
+          </span>
+        )}
         {suffix}
       </Link>
     );

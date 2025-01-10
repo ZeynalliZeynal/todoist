@@ -8,7 +8,7 @@ interface Props {
   showLineNumbers?: boolean;
 }
 
-export default function CodeBlock(props: Props) {
+export default function CodeSnippet(props: Props) {
   return (
     <CopyBlock text={props.children}>
       <Highlight

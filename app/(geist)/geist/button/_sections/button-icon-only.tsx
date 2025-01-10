@@ -6,7 +6,7 @@ import {
 } from '@/components/ui/collapse';
 import { Button } from '@/components/ui/button';
 import CopyBlock from '@/components/copy-block';
-import CodeBlock from '@/components/ui/code-block';
+import CodeSnippet from '@/components/ui/code-snippet';
 import { IoArrowUp } from 'react-icons/io5';
 import { BUTTON_ICON_CODE } from '@/app/(geist)/geist/button/_snippets/snippets';
 
@@ -70,7 +70,7 @@ export default function ButtonIconOnly() {
         <CollapseTrigger>code</CollapseTrigger>
         <CollapseContent>
           <CopyBlock text={BUTTON_ICON_CODE}>
-            <CodeBlock showLineNumbers>{BUTTON_ICON_CODE}</CodeBlock>
+            <CodeSnippet showLineNumbers>{BUTTON_ICON_CODE}</CodeSnippet>
           </CopyBlock>
         </CollapseContent>
       </Collapse>
