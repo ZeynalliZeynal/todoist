@@ -1,3 +1,5 @@
+import CheckboxDefault from '@/app/(geist)/geist/checkbox/checkbox-default';
+
 export default function CheckboxPage() {
   return (
     <div className="divide-y">
@@ -7,6 +9,7 @@ export default function CheckboxPage() {
           A control that toggles between two options, checked or unchecked.
         </p>
       </section>
+      <CheckboxDefault />
     </div>
   );
 }
