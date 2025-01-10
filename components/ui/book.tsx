@@ -10,6 +10,7 @@ interface BookProps {
   depth?: number;
   variant?: 'default' | 'simple';
   illustration?: React.ReactNode;
+  width?: number;
 }
 
 export default function Book(props: BookProps) {
@@ -21,18 +22,17 @@ export default function Book(props: BookProps) {
     variant = 'default',
     textColor,
     illustration,
+    width,
   } = props;
   return (
     <div
-      className={cn(
-        'w-fit [perspective:900px] inline-block group',
-        '[--book-width:196px]',
-      )}
+      className={cn('w-fit [perspective:900px] inline-block group')}
       style={
         {
           '--book-color': color,
           '--text-color': textColor,
           '--book-depth': depth ? depth + 'cqw' : '5cqw',
+          '--book-width': (width || 196) + 'px',
         } as React.CSSProperties
       }
     >

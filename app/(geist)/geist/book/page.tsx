@@ -8,7 +8,6 @@ import CodeBlock from '@/components/ui/code-block';
 import ScrollToLink from '@/app/(geist)/geist/_components/scroll-to-link';
 import Book from '@/components/ui/book';
 import { Stack } from '@/components/ui/stack';
-import { Vercel } from '@/components/ui/icons/geist';
 
 const VARIANTS_CODE = `<Stack gap={2}>
   <Stack direction="row" gap={1}>
@@ -75,6 +74,7 @@ export default function BookPage() {
           <Stack padding={6} className="bg-background-100">
             <Book
               depth={4}
+              width={154}
               // variant="simple"
               illustration={
                 <svg
@@ -136,10 +136,9 @@ export default function BookPage() {
                 justify="center"
                 padding={3}
                 gap={8}
-                className="h-full text-base font-semibold"
+                className="h-full font-semibold"
               >
                 The user experience of the Frontend Cloud
-                <Vercel />
               </Stack>
             </Book>
           </Stack>
