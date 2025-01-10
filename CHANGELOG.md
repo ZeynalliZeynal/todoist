@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.6](https://github.com/ZeynalliZeynal/todoist/compare/v0.1.5...v0.1.6) (2025-01-10)
+
+
+### Features
+
+* **ui:** add checkbox component ([7fbd2a6](https://github.com/ZeynalliZeynal/todoist/commit/7fbd2a6fd9e875335e48c7b7562e86c4313283ba))
+
 ### [0.1.5](https://github.com/ZeynalliZeynal/todoist/compare/v0.1.4...v0.1.5) (2025-01-10)
 
 
