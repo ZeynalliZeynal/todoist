@@ -8,53 +8,66 @@ import CodeBlock from '@/components/ui/code-block';
 import ScrollToLink from '@/app/(geist)/geist/_components/scroll-to-link';
 import Book from '@/components/ui/book';
 import { Stack } from '@/components/ui/stack';
+import { Logo } from '@/components/ui/icons/logo';
 
-const VARIANTS_CODE = `<Stack gap={2}>
-  <Stack direction="row" gap={1}>
-    <Badge variant="gray">Gray</Badge>
-    <Badge variant="gray-subtle">Gray-Subtle</Badge>
+const DEFAULT_BOOK_CODE = `<Book>
+  <Stack
+    justify="center"
+    padding={3}
+    gap={4}
+    className="h-full text-base font-semibold"
+  >
+    The user experience of the Frontend Cloud
+    <Logo height={16} />
   </Stack>
-  <Stack direction="row" gap={1}>
-    <Badge variant="blue">Blue</Badge>
-    <Badge variant="blue-subtle">Blue</Badge>
-  </Stack>
-  <Stack direction="row" gap={1}>
-    <Badge variant="purple">Purple</Badge>
-    <Badge variant="purple-subtle">Purple-Subtle</Badge>
-  </Stack>
-  <Stack direction="row" gap={1}>
-    <Badge variant="amber">Amber</Badge>
-    <Badge variant="amber-subtle">Amber-Subtle</Badge>
-  </Stack>
-  <Stack direction="row" gap={1}>
-    <Badge variant="red">Red</Badge>
-    <Badge variant="red-subtle">Red-Subtle</Badge>
-  </Stack>
-  <Stack direction="row" gap={1}>
-    <Badge variant="pink">Pink</Badge>
-    <Badge variant="pink-subtle">Pink-Subtle</Badge>
-  </Stack>
-  <Stack direction="row" gap={1}>
-    <Badge variant="green">Green</Badge>
-    <Badge variant="green-subtle">Green-Subtle</Badge>
-  </Stack>
-  <Stack direction="row" gap={1}>
-    <Badge variant="teal">Teal</Badge>
-    <Badge variant="teal-subtle">Teal-Subtle</Badge>
-  </Stack>
-  <Stack direction="row" gap={1}>
-    <Badge variant="invert">Invert</Badge>
-  </Stack>
-  <Stack direction="row" gap={1}>
-    <Badge variant="trial">Trial</Badge>
-  </Stack>
-</Stack>`;
+</Book>`;
 
-const BADGE_SIZES_CODE = `<Stack gap={2} padding={6}>
-  <Badge size="sm">Small</Badge>
-  <Badge size="md">Medium</Badge>
-  <Badge size="lg">Large</Badge>
-</Stack>`;
+const VARIANTS_CODE = `<Book
+  variant="simple"
+  illustration={
+    <svg
+      fill="none"
+      height="56"
+      viewBox="0 0 36 56"
+      width="36"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        clip-rule="evenodd"
+        d="M3.03113 28.0005C6.26017 23.1765 11.7592 20.0005 18 20.0005C24.2409 20.0005 29.7399 23.1765 32.9689 28.0005C29.7399 32.8244 24.2409 36.0005 18 36.0005C11.7592 36.0005 6.26017 32.8244 3.03113 28.0005Z"
+        fill="#0070F3"
+        fill-rule="evenodd"
+      ></path>
+      <path
+        clip-rule="evenodd"
+        d="M32.9691 28.0012C34.8835 25.1411 36 21.7017 36 18.0015C36 8.06034 27.9411 0.00146484 18 0.00146484C8.05887 0.00146484 0 8.06034 0 18.0015C0 21.7017 1.11648 25.1411 3.03094 28.0012C6.25996 23.1771 11.7591 20.001 18 20.001C24.2409 20.001 29.74 23.1771 32.9691 28.0012Z"
+        fill="#45DEC4"
+        fill-rule="evenodd"
+      ></path>
+      <path
+        clip-rule="evenodd"
+        d="M32.9692 28.0005C29.7402 32.8247 24.241 36.001 18 36.001C11.759 36.001 6.25977 32.8247 3.03077 28.0005C1.11642 30.8606 0 34.2999 0 38C0 47.9411 8.05887 56 18 56C27.9411 56 36 47.9411 36 38C36 34.2999 34.8836 30.8606 32.9692 28.0005Z"
+        fill="#E5484D"
+        fill-rule="evenodd"
+      ></path>
+    </svg>
+  }
+>
+  <Stack justify="center" padding={3} className="font-semibold">
+    The user experience of the Frontend Cloud
+  </Stack>
+</Book>
+<Book>
+  <Stack
+    justify="center"
+    padding={3}
+    gap={4}
+    className="h-full text-base font-semibold"
+  >
+    The user experience of the Frontend Cloud
+    <Logo height={16} />
+  </Stack>
+</Book>`;
 
 export default function BookPage() {
   return (
@@ -67,78 +80,141 @@ export default function BookPage() {
         </p>
       </section>
       <section className="p-12">
+        <ScrollToLink id="default" href="#default">
+          <h2>Default</h2>
+        </ScrollToLink>
+        <Collapse className="mt-7">
+          <Stack padding={6} className="bg-background-100">
+            <Book>
+              <Stack
+                justify="center"
+                padding={3}
+                gap={4}
+                className="h-full text-base font-semibold"
+              >
+                The user experience of the Frontend Cloud
+                <Logo height={16} />
+              </Stack>
+            </Book>
+          </Stack>
+          <CollapseTrigger>code</CollapseTrigger>
+          <CollapseContent>
+            <CopyBlock text={DEFAULT_BOOK_CODE}>
+              <CodeBlock showLineNumbers>{DEFAULT_BOOK_CODE}</CodeBlock>
+            </CopyBlock>
+          </CollapseContent>
+        </Collapse>
+      </section>
+      <section className="p-12">
         <ScrollToLink id="variants" href="#variants">
           <h2>Variants</h2>
         </ScrollToLink>
         <Collapse className="mt-7">
-          <Stack padding={6} className="bg-background-100">
-            <Book
-              depth={4}
-              width={154}
-              // variant="simple"
-              illustration={
-                <svg
-                  fill="none"
-                  height="149"
-                  viewBox="0 0 197 149"
-                  width="197"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <rect fill="#FED954" height="149" width="197"></rect>
-                  <path
-                    d="M147 48.4995H172C185.531 48.4995 196.5 59.4685 196.5 72.9995V148.427"
-                    stroke="#ECAF14"
-                  ></path>
-                  <path
-                    d="M0 48.5H24.5C38.031 48.5 49 37.531 49 24V0"
-                    stroke="#ECAF14"
-                  ></path>
-                  <path
-                    d="M147.5 48.5H172C185.531 48.5 196.5 37.531 196.5 24V0"
-                    stroke="#ECAF14"
-                  ></path>
-                  <path
-                    d="M0 48.5H24.5C38.031 48.5 49 59.469 49 73V98"
-                    stroke="#ECAF14"
-                  ></path>
-                  <path
-                    d="M146 48.5H73.5C59.969 48.5 49 37.531 49 24V0"
-                    stroke="#ECAF14"
-                  ></path>
-                  <path
-                    d="M196 48.5H122.5C108.969 48.5 98 37.531 98 24V0"
-                    stroke="#ECAF14"
-                  ></path>
-                  <path
-                    d="M97 48.5H73.5C59.969 48.5 49 59.469 49 73V99.5"
-                    stroke="#ECAF14"
-                  ></path>
-                  <path
-                    d="M98 132.5H122.5C136.031 132.5 147 121.531 147 108V98.9512"
-                    stroke="#ECAF14"
-                  ></path>
-                  <path
-                    d="M196 132.5H171.5C157.969 132.5 147 121.531 147 108V48.5"
-                    stroke="#ECAF14"
-                  ></path>
-                  <path
-                    d="M147 48.5H122.5C108.969 48.5 98 59.469 98 73V132"
-                    stroke="#ECAF14"
-                  ></path>
-                  <path
-                    d="M98 132.5H73.5C59.969 132.5 49 121.531 49 108V98.9512"
-                    stroke="#ECAF14"
-                  ></path>
-                </svg>
-              }
-            >
+          <Stack
+            padding={6}
+            direction="row"
+            gap={8}
+            className="bg-background-100"
+          >
+            <Book variant="simple">
               <Stack
                 justify="center"
                 padding={3}
-                gap={8}
-                className="h-full font-semibold"
+                gap={4}
+                className="text-base font-semibold"
               >
                 The user experience of the Frontend Cloud
+                <svg
+                  fill="none"
+                  height="56"
+                  viewBox="0 0 36 56"
+                  width="36"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    clip-rule="evenodd"
+                    d="M3.03113 28.0005C6.26017 23.1765 11.7592 20.0005 18 20.0005C24.2409 20.0005 29.7399 23.1765 32.9689 28.0005C29.7399 32.8244 24.2409 36.0005 18 36.0005C11.7592 36.0005 6.26017 32.8244 3.03113 28.0005Z"
+                    fill="#0070F3"
+                    fill-rule="evenodd"
+                  ></path>
+                  <path
+                    clip-rule="evenodd"
+                    d="M32.9691 28.0012C34.8835 25.1411 36 21.7017 36 18.0015C36 8.06034 27.9411 0.00146484 18 0.00146484C8.05887 0.00146484 0 8.06034 0 18.0015C0 21.7017 1.11648 25.1411 3.03094 28.0012C6.25996 23.1771 11.7591 20.001 18 20.001C24.2409 20.001 29.74 23.1771 32.9691 28.0012Z"
+                    fill="#45DEC4"
+                    fill-rule="evenodd"
+                  ></path>
+                  <path
+                    clip-rule="evenodd"
+                    d="M32.9692 28.0005C29.7402 32.8247 24.241 36.001 18 36.001C11.759 36.001 6.25977 32.8247 3.03077 28.0005C1.11642 30.8606 0 34.2999 0 38C0 47.9411 8.05887 56 18 56C27.9411 56 36 47.9411 36 38C36 34.2999 34.8836 30.8606 32.9692 28.0005Z"
+                    fill="#E5484D"
+                    fill-rule="evenodd"
+                  ></path>
+                </svg>
+              </Stack>
+            </Book>
+            <Book>
+              <Stack
+                justify="center"
+                padding={3}
+                gap={4}
+                className="h-full text-base font-semibold"
+              >
+                The user experience of the Frontend Cloud
+                <Logo height={16} />
+              </Stack>
+            </Book>
+          </Stack>
+          <CollapseTrigger>code</CollapseTrigger>
+          <CollapseContent>
+            <CopyBlock text={VARIANTS_CODE}>
+              <CodeBlock showLineNumbers>{VARIANTS_CODE}</CodeBlock>
+            </CopyBlock>
+          </CollapseContent>
+        </Collapse>
+      </section>
+      <section className="p-12">
+        <ScrollToLink id="width" href="#width">
+          <h2>Width</h2>
+        </ScrollToLink>
+        <Collapse className="mt-7">
+          <Stack
+            padding={6}
+            direction="row"
+            align="end"
+            gap={8}
+            className="bg-background-100 overflow-auto"
+          >
+            <Book width={300} depth={7}>
+              <Stack
+                justify="center"
+                padding={3}
+                gap={5}
+                className="text-2xl font-bold"
+              >
+                The user experience of the Frontend Cloud
+                <Logo height={16} />
+              </Stack>
+            </Book>
+            <Book width={200}>
+              <Stack
+                justify="center"
+                padding={3}
+                gap={4}
+                className="text-base font-bold"
+              >
+                The user experience of the Frontend Cloud
+                <Logo height={16} />
+              </Stack>
+            </Book>
+            <Book width={150}>
+              <Stack
+                justify="center"
+                padding={3}
+                gap={3}
+                className="text-xs font-semibold"
+              >
+                The user experience of the Frontend Cloud
+                <Logo height={16} />
               </Stack>
             </Book>
           </Stack>

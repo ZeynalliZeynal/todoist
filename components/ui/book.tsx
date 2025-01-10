@@ -31,7 +31,7 @@ export default function Book(props: BookProps) {
         {
           '--book-color': color,
           '--text-color': textColor,
-          '--book-depth': depth ? depth + 'cqw' : '5cqw',
+          '--book-depth': (depth || 4) + 'cqw',
           '--book-width': (width || 196) + 'px',
         } as React.CSSProperties
       }
@@ -56,7 +56,7 @@ export default function Book(props: BookProps) {
               )}
             </Stack>
           )}
-          <Stack direction="row" className="h-fit">
+          <Stack grow={variant === 'simple'} direction="row" className="h-fit">
             <div className="mix-blend-overlay opacity-100 min-w-[8.2%] bg-book-bind-bg h-full" />
             <div className="contain-inline-size w-full">{children}</div>
           </Stack>
