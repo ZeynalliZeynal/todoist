@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.10](https://github.com/ZeynalliZeynal/todoist/compare/v0.1.9...v0.1.10) (2025-01-12)
+
+
+### Features
+
+* **ui:** add animate presence in tabs.tsx for handling hover events ([575a5c8](https://github.com/ZeynalliZeynal/todoist/commit/575a5c83b891b1cf221e67aaf4468e13ba7ff078))
+
 ### 0.1.9 (2025-01-12)
 
 
