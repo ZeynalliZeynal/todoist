@@ -192,6 +192,11 @@ export const geistLinks = [
         href: '/geist/checkbox',
         icon: null,
       },
+      {
+        label: 'tabs',
+        href: '/geist/tabs',
+        icon: null,
+      },
     ],
   },
 ];
