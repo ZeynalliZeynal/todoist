@@ -2,6 +2,24 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### 0.1.9 (2025-01-12)
+
+
+### Features
+
+* **geist:** add checkbox disabled section ([8854b55](https://github.com/ZeynalliZeynal/todoist/commit/8854b556cc2713f5348ae94a3f12d47d031bc50b))
+* **geist:** setup checkbox page ([4ce300f](https://github.com/ZeynalliZeynal/todoist/commit/4ce300f5802ca5b3598202b7e897487b657a2f25))
+* **lib:** add standard-version ([314df0c](https://github.com/ZeynalliZeynal/todoist/commit/314df0cbe3992e1a9486b4cce9811ecb2dc60e69))
+* **ui:** add checkbox component ([7fbd2a6](https://github.com/ZeynalliZeynal/todoist/commit/7fbd2a6fd9e875335e48c7b7562e86c4313283ba))
+* **ui:** add iconOnly prop to ButtonLink ([b7ade09](https://github.com/ZeynalliZeynal/todoist/commit/b7ade09d6a9a783edbfc87db1a96bad29931fd7e))
+* **ui:** add styles for disabled checkbox ([e19faa8](https://github.com/ZeynalliZeynal/todoist/commit/e19faa8c6a050fb692f2af9bac498ced29b0e178))
+* **ui:** add tabs component ([8ba3673](https://github.com/ZeynalliZeynal/todoist/commit/8ba3673835f8435e2bc1dbb9b1122f9cb0b350bb))
+
+
+### Bug Fixes
+
+* **ui:** change button of primary variant background on hover from bg-gray-200 to bg-gray-alpha-200 ([818337f](https://github.com/ZeynalliZeynal/todoist/commit/818337f5627fb6a1dd5d4405b4f48001366a6133))
+
 ### [0.1.8](https://github.com/ZeynalliZeynal/todoist/compare/v0.1.7...v0.1.8) (2025-01-10)
 
 
