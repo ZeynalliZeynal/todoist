@@ -4,18 +4,20 @@ import React from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { cn } from '@/utils/lib';
 
-interface TabTriggerProps extends React.ComponentProps<'button'> {
-  children: React.ReactNode;
+export interface TabProps extends React.ComponentProps<'button'> {
+  children?: React.ReactNode;
   isActive?: boolean;
 }
 
-export function TabTrigger(props: TabTriggerProps) {
+export function PrimitiveTab(props: TabProps) {
   const { children, isActive, className, ...etc } = props;
 
   return (
     <button
+      role="tab"
+      data-active={isActive ? '' : null}
       className={cn(
-        'relative h-8 rounded-md px-3 flex items-center justify-center text-gray-900 hover:text-foreground transition',
+        'relative flex items-center justify-center transition',
         className
       )}
       {...etc}
@@ -33,7 +35,8 @@ export function TabTrigger(props: TabTriggerProps) {
               opacity: 0,
             }}
             layoutId="active-pill"
-            className="absolute inset-0 bg-gray-200 rounded-md"
+            data-active-pill=""
+            className="absolute inset-0"
             transition={{
               type: 'spring',
               bounce: 0.2,
