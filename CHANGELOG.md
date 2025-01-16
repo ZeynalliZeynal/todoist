@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.2.0](https://github.com/ZeynalliZeynal/todoist/compare/v0.1.11...v0.2.0) (2025-01-16)
+
+
+### ⚠ BREAKING CHANGES
+
+* **ui:** it fixes the issue related with framer-motions layoutId for the animation which should be unique for each group of tabs
+
+### Features
+
+* **ui:** add Tabs component to generate unique ids for each group of tabs. ([59bff79](https://github.com/ZeynalliZeynal/todoist/commit/59bff79d521cbca81a2ae3be075bbdb82f33c9a0))
+
 ### [0.1.11](https://github.com/ZeynalliZeynal/todoist/compare/v0.1.10...v0.1.11) (2025-01-12)
 
 
