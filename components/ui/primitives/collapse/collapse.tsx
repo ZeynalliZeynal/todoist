@@ -13,7 +13,7 @@ import {
   CollapseTriggerProps,
 } from '@/components/ui/primitives/collapse/types';
 
-export function PrimitiveCollapse(props: CollapseProps) {
+export function Collapse(props: CollapseProps) {
   const { children, className, ...etc } = props;
   return (
     <CollapseContextProvider>
@@ -24,7 +24,7 @@ export function PrimitiveCollapse(props: CollapseProps) {
   );
 }
 
-export function PrimitiveCollapseTrigger(props: CollapseTriggerProps) {
+export function CollapseTrigger(props: CollapseTriggerProps) {
   const { children, className, onClick, ...etc } = props;
   const { collapse, collapseId, collapsed, state } = useCollapseContext();
 
@@ -48,7 +48,7 @@ export function PrimitiveCollapseTrigger(props: CollapseTriggerProps) {
   );
 }
 
-export function PrimitiveCollapseContent(props: CollapseContentProps) {
+export function CollapseContent(props: CollapseContentProps) {
   const { children, className, ...etc } = props;
   const { collapsed, collapseId } = useCollapseContext();
 

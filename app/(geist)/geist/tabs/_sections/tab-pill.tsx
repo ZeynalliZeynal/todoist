@@ -7,10 +7,10 @@ import {
   CollapseContent,
   CollapseTrigger,
 } from '@/components/ui/collapse';
-import ScrollToLink from '../../_components/scroll-to-link';
-import { tab_onclick_code } from '../_snippets/snippets';
 import { Tab, Tabs } from '@/components/ui/tabs';
 import React from 'react';
+import ScrollToLink from '../../_components/scroll-to-link';
+import { tab_pill_code } from '../_snippets/snippets';
 
 const tabs = [
   {
@@ -43,20 +43,24 @@ const tabs = [
   },
 ];
 
-export default function TabClick() {
+export default function TabPill() {
   const [activeTab, setActiveTab] = React.useState(tabs[0].id);
 
   return (
     <section className="p-12">
-      <ScrollToLink id="disabled" href="#disabled">
-        <h2>Click event</h2>
+      <ScrollToLink id="active-pill" href="#active-pill">
+        <h2>Active Pill</h2>
       </ScrollToLink>
+      <p className="text-base text-gray-900 mt-4">
+        Two main props available: <code>isPillActive</code> and{' '}
+        <code>isIndicatorActive</code>. You can style each of them as you want.
+      </p>
       <Collapse className="mt-7">
         <div className="flex flex-col items-center justify-between p-6 bg-background-100">
           <Tabs className="p-1 rounded-lg justify-center">
             {tabs.map((tab) => (
               <Tab
-                isActive={activeTab === tab.id}
+                isPillActive={activeTab === tab.id}
                 key={tab.id}
                 onClick={() => setActiveTab(tab.id)}
                 className="capitalize data-[active]:text-foreground"
@@ -68,8 +72,8 @@ export default function TabClick() {
         </div>
         <CollapseTrigger>code</CollapseTrigger>
         <CollapseContent>
-          <CopyBlock text={tab_onclick_code}>
-            <CodeSnippet showLineNumbers>{tab_onclick_code}</CodeSnippet>
+          <CopyBlock text={tab_pill_code}>
+            <CodeSnippet showLineNumbers>{tab_pill_code}</CodeSnippet>
           </CopyBlock>
         </CollapseContent>
       </Collapse>

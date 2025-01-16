@@ -13,7 +13,7 @@ export interface AvatarProps extends ComponentProps<'span'> {
   size?: number;
 }
 
-export function PrimitiveAvatar(props: AvatarProps) {
+export function Avatar(props: AvatarProps) {
   const { src, alt, className, fallback, size = 32 } = props;
   const [isLoading, setIsLoading] = React.useState(true);
   const [error, setError] = React.useState(false);
@@ -46,7 +46,7 @@ export function PrimitiveAvatar(props: AvatarProps) {
           onError={handleImageError}
           className={cn(
             'transition-opacity duration-300 rounded-full',
-            isLoading ? 'opacity-0' : 'opacity-100',
+            isLoading ? 'opacity-0' : 'opacity-100'
           )}
           quality={100}
         />

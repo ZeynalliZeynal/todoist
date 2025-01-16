@@ -6,11 +6,13 @@ import { cn } from '@/utils/lib';
 
 export interface TabProps extends React.ComponentProps<'button'> {
   children?: React.ReactNode;
-  isActive?: boolean;
+  isPillActive?: boolean;
+  isIndicatorActive?: boolean;
 }
 
 interface TabsContextProps {
-  id: string;
+  activeIndicatorId: string;
+  activePillId: string;
 }
 
 export interface TabsProviderProps extends ComponentProps<'div'> {
@@ -27,17 +29,15 @@ export function useTabsContext() {
   return context;
 }
 
-export function PrimitiveTabs({
-  children,
-  className,
-  ...etc
-}: TabsProviderProps) {
+export function Tabs({ children, className, ...etc }: TabsProviderProps) {
   const id = useId();
-  const tabId = `active-tab${id}`;
+  const activeIndicatorId = `indicated-tab${id}`;
+  const activePillId = `active-tab${id}`;
 
   return (
-    <TabsContext.Provider value={{ id: tabId }}>
+    <TabsContext.Provider value={{ activeIndicatorId, activePillId }}>
       <div
+        role="tablist"
         data-orientation={etc['aria-orientation']}
         className={cn(
           'flex',
@@ -52,14 +52,17 @@ export function PrimitiveTabs({
   );
 }
 
-export function PrimitiveTab(props: TabProps) {
-  const { id } = useTabsContext();
-  const { children, isActive, className, ...etc } = props;
+export function Tab(props: TabProps) {
+  const { activePillId, activeIndicatorId } = useTabsContext();
+  const { children, isPillActive, className, isIndicatorActive, ...etc } =
+    props;
+
+  const active = isPillActive ? 'pill' : isIndicatorActive ? 'indicator' : null;
 
   return (
     <button
       role="tab"
-      data-active={isActive ? '' : null}
+      data-active={active}
       className={cn(
         'relative flex items-center justify-center transition',
         className
@@ -67,7 +70,7 @@ export function PrimitiveTab(props: TabProps) {
       {...etc}
     >
       <AnimatePresence>
-        {isActive && (
+        {isPillActive && (
           <motion.div
             initial={{
               opacity: 0,
@@ -78,7 +81,7 @@ export function PrimitiveTab(props: TabProps) {
             exit={{
               opacity: 0,
             }}
-            layoutId={id}
+            layoutId={activePillId}
             data-active-pill=""
             className="absolute inset-0"
             transition={{
@@ -90,6 +93,29 @@ export function PrimitiveTab(props: TabProps) {
         )}
       </AnimatePresence>
       <span className="relative z-[1]">{children}</span>
+      <AnimatePresence>
+        {isIndicatorActive && (
+          <motion.div
+            initial={{
+              opacity: 0,
+            }}
+            animate={{
+              opacity: 1,
+            }}
+            exit={{
+              opacity: 0,
+            }}
+            layoutId={activeIndicatorId}
+            data-active-indicator=""
+            className="absolute"
+            transition={{
+              type: 'spring',
+              bounce: 0.2,
+              duration: 0.5,
+            }}
+          />
+        )}
+      </AnimatePresence>
     </button>
   );
 }

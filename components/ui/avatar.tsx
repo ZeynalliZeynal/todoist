@@ -1,6 +1,6 @@
 import {
   AvatarProps,
-  PrimitiveAvatar,
+  Avatar as PrimitiveAvatar,
 } from '@/components/ui/primitives/avatar/avatar';
 import { cn } from '@/utils/lib';
 import Image from 'next/image';
@@ -42,12 +42,12 @@ export function AvatarGroup(props: AvatarGroupProps) {
                 height={size}
               />
             </span>
-          ),
+          )
       )}
       {limit && limit < avatars.length && (
         <span
           className={cn(
-            'rounded-full border bg-gray-100 -ml-2.5 inline-flex items-center justify-center text-xs',
+            'rounded-full border bg-gray-100 -ml-2.5 inline-flex items-center justify-center text-xs'
           )}
           style={{
             width: size,

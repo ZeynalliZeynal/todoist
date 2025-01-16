@@ -1,9 +1,9 @@
 'use client';
 
 import {
-  PrimitiveCollapse,
-  PrimitiveCollapseContent,
-  PrimitiveCollapseTrigger,
+  Collapse as PrimitiveCollapse,
+  CollapseContent as PrimitiveCollapseContent,
+  CollapseTrigger as PrimitiveCollapseTrigger,
 } from '@/components/ui/primitives/collapse/collapse';
 import {
   CollapseContentProps,
@@ -28,7 +28,7 @@ export function CollapseTrigger(props: CollapseTriggerProps) {
       {...props}
       className={cn(
         'group h-12 px-4 gap-3 text-gray-900 border-t hover:bg-background-100 transition',
-        props.className,
+        props.className
       )}
     >
       {({ state }) => (
