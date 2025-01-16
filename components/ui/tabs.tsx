@@ -1,5 +1,5 @@
 import { cn } from '@/utils/lib';
-import { PrimitiveTab, TabProps } from './primitives/tabs/tabs';
+import { PrimitiveTab, PrimitiveTabs, TabProps } from './primitives/tabs/tabs';
 
 export function Tab(props: TabProps) {
   return (
@@ -12,3 +12,5 @@ export function Tab(props: TabProps) {
     />
   );
 }
+
+export const Tabs = PrimitiveTabs;

@@ -9,7 +9,7 @@ import {
 } from '@/components/ui/collapse';
 import ScrollToLink from '../../_components/scroll-to-link';
 import { tab_onclick_code } from '../_snippets/snippets';
-import { Tab } from '@/components/ui/tabs';
+import { Tab, Tabs } from '@/components/ui/tabs';
 import React from 'react';
 
 const tabs = [
@@ -53,7 +53,7 @@ export default function TabClick() {
       </ScrollToLink>
       <Collapse className="mt-7">
         <div className="flex flex-col items-center justify-between p-6 bg-background-100">
-          <div className="p-1 rounded-lg flex items-center justify-center">
+          <Tabs className="p-1 rounded-lg justify-center">
             {tabs.map((tab) => (
               <Tab
                 isActive={activeTab === tab.id}
@@ -64,7 +64,7 @@ export default function TabClick() {
                 {tab.label}
               </Tab>
             ))}
-          </div>
+          </Tabs>
         </div>
         <CollapseTrigger>code</CollapseTrigger>
         <CollapseContent>
