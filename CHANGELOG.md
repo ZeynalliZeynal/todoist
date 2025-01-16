@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.2.2](https://github.com/ZeynalliZeynal/todoist/compare/v0.2.1...v0.2.2) (2025-01-16)
+
+
+### Features
+
+* add a script to run git push ([71d9b34](https://github.com/ZeynalliZeynal/todoist/commit/71d9b34ac5b06653c50f854f06a000a331c7dfce))
+
 ### [0.2.1](https://github.com/ZeynalliZeynal/todoist/compare/v0.2.0...v0.2.1) (2025-01-16)
 
 
