@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.2.1](https://github.com/ZeynalliZeynal/todoist/compare/v0.2.0...v0.2.1) (2025-01-16)
+
+
+### Features
+
+* **geist:** add customizable tabs page ([f1397ce](https://github.com/ZeynalliZeynal/todoist/commit/f1397ce3abbb859ace4b9603d220c8ac10e41994))
+
 ## [0.2.0](https://github.com/ZeynalliZeynal/todoist/compare/v0.1.11...v0.2.0) (2025-01-16)
 
 
