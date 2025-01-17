@@ -133,19 +133,23 @@ export const footerLinks = [
   },
 ];
 
-export const geistLinks = [
+type LinkProps = {
+  label: string;
+  href: string;
+  icon?: JSX.Element;
+};
+
+export const geistLinks: { title: string; links: LinkProps[] }[] = [
   {
     title: 'Foundation',
     links: [
       {
         label: 'Introduction',
         href: '/geist/introduction',
-        icon: null,
       },
       {
         label: 'Colors',
         href: '/geist/colors',
-        icon: null,
       },
     ],
   },
@@ -170,37 +174,30 @@ export const geistLinks = [
       {
         label: 'Avatar',
         href: '/geist/avatar',
-        icon: null,
       },
       {
         label: 'Badge',
         href: '/geist/badge',
-        icon: null,
       },
       {
         label: 'book',
         href: '/geist/book',
-        icon: null,
       },
       {
         label: 'button',
         href: '/geist/button',
-        icon: null,
       },
       {
         label: 'checkbox',
         href: '/geist/checkbox',
-        icon: null,
       },
       {
         label: 'code block',
         href: '/geist/code-block',
-        icon: null,
       },
       {
         label: 'tabs',
         href: '/geist/tabs',
-        icon: null,
       },
     ],
   },
