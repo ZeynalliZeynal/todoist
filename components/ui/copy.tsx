@@ -19,7 +19,7 @@ export default function Copy(props: CopyProps) {
   return (
     <Button
       size={size}
-      className={cn('relative', copying && 'cursor-default', className)}
+      className={cn('relative z-10', copying && 'cursor-default', className)}
       onClick={copy}
       iconOnly
       {...etc}

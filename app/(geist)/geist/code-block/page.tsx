@@ -1,4 +1,7 @@
 import CodeBlockDefault from '@/app/(geist)/geist/code-block/_sections/code-block-default';
+import CodeBlockNoFilename from '@/app/(geist)/geist/code-block/_sections/code-block-no-filename';
+import CodeBlockLineNumbers from '@/app/(geist)/geist/code-block/_sections/code-block-line-numbers';
+import CodeBlockHighlighted from '@/app/(geist)/geist/code-block/_sections/code-block-highlighted';
 
 export default function BadgePage() {
   return (
@@ -10,6 +13,9 @@ export default function BadgePage() {
         </p>
       </section>
       <CodeBlockDefault />
+      <CodeBlockNoFilename />
+      <CodeBlockLineNumbers />
+      <CodeBlockHighlighted />
     </div>
   );
 }

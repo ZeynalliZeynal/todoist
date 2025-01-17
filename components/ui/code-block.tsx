@@ -9,11 +9,19 @@ interface Props extends ComponentProps<'pre'> {
   lang?: string;
   showLineNumbers?: boolean;
   filename?: string;
+  highlightedLineNumbers?: number[];
 }
 
 export default function CodeBlock(props: Props) {
-  const { children, lang, showLineNumbers, filename, className, ...etc } =
-    props;
+  const {
+    children,
+    lang,
+    showLineNumbers,
+    highlightedLineNumbers,
+    filename,
+    className,
+    ...etc
+  } = props;
 
   return (
     <div
@@ -53,10 +61,14 @@ export default function CodeBlock(props: Props) {
             >
               {tokens.map((line, i) => (
                 <div
+                  data-highlighted={
+                    highlightedLineNumbers?.includes(i + 1) ? '' : null
+                  }
                   key={i}
                   {...getLineProps({ line })}
                   className={cn(
-                    'px-5',
+                    'px-5 relative',
+                    'data-[highlighted]:bg-blue-300 data-[highlighted]:after:absolute data-[highlighted]:after:inset-0 data-[highlighted]:after:right-auto data-[highlighted]:after:w-0.5 data-[highlighted]:after:bg-blue-900 data-[highlighted]:after:z-[0]',
                     showLineNumbers &&
                       'before:w-4 before:[counter-increment:line] before:inline-block before:text-gray-600 before:content-[counter(line)] before:mr-5 before:font-geist-mono before:text-right before:text-xs',
                   )}
