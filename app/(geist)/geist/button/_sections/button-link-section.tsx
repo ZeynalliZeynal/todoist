@@ -5,7 +5,7 @@ import {
   CollapseTrigger,
 } from '@/components/ui/collapse';
 import CopyBlock from '@/components/copy-block';
-import CodeSnippet from '@/components/ui/code-snippet';
+import CodeBlock from '@/components/ui/code-block';
 import { button_disabled_code } from '@/app/(geist)/geist/button/_snippets/snippets';
 import { ButtonLink } from '@/components/ui/button';
 
@@ -37,7 +37,7 @@ export default function ButtonLinkSection() {
         <CollapseTrigger>code</CollapseTrigger>
         <CollapseContent>
           <CopyBlock text={button_disabled_code}>
-            <CodeSnippet showLineNumbers>{button_disabled_code}</CodeSnippet>
+            <CodeBlock showLineNumbers>{button_disabled_code}</CodeBlock>
           </CopyBlock>
         </CollapseContent>
       </Collapse>

@@ -2,7 +2,7 @@ import Link from 'next/link';
 import { ButtonLink } from '@/components/ui/button';
 import { LuDownload } from 'react-icons/lu';
 import TodoistBrand from './_sections/todoist-brand';
-import CodeSnippet from '@/components/ui/code-snippet';
+import CodeBlock from '@/components/ui/code-block';
 import NextBrand from './_sections/next-brand';
 import ScrollToLink from '@/app/(geist)/geist/_components/scroll-to-link';
 
@@ -58,7 +58,7 @@ export default function BrandsPage() {
         </div>
       </section>
       <TodoistBrand />
-      <CodeSnippet lang="tsx">{logo_usage}</CodeSnippet>
+      <CodeBlock lang="tsx">{logo_usage}</CodeBlock>
       <section className="p-12 border-t">
         <ScrollToLink id="nextjs" href="#nextjs">
           <h2 className="mb-4">Next.js</h2>
@@ -83,7 +83,7 @@ export default function BrandsPage() {
         </div>
       </section>
       <NextBrand />
-      <CodeSnippet lang="tsx">{nextjs_usage}</CodeSnippet>
+      <CodeBlock lang="tsx">{nextjs_usage}</CodeBlock>
       <section className="p-12 border-b">
         <h2 className="mb-3">General Information</h2>
         <p className="text-base">

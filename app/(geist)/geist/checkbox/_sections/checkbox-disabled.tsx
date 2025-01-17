@@ -6,7 +6,7 @@ import {
 } from '@/components/ui/collapse';
 import { Checkbox } from '@/components/ui/primitives/checkbox';
 import CopyBlock from '@/components/copy-block';
-import CodeSnippet from '@/components/ui/code-snippet';
+import CodeBlock from '@/components/ui/code-block';
 import React from 'react';
 import { checkbox_disabled } from '@/app/(geist)/geist/checkbox/_snippets/snippets';
 
@@ -28,7 +28,7 @@ export default function CheckboxDisabled() {
         <CollapseTrigger>code</CollapseTrigger>
         <CollapseContent>
           <CopyBlock text={checkbox_disabled}>
-            <CodeSnippet showLineNumbers>{checkbox_disabled}</CodeSnippet>
+            <CodeBlock showLineNumbers>{checkbox_disabled}</CodeBlock>
           </CopyBlock>
         </CollapseContent>
       </Collapse>

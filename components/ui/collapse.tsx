@@ -9,7 +9,7 @@ import {
   CollapseContentProps,
   CollapseProps,
   CollapseTriggerProps,
-} from '@/components/ui/primitives/collapse/types';
+} from '@/components/ui/primitives/collapse/collapse.types';
 import { cn } from '@/utils/lib';
 import { FaChevronRight } from 'react-icons/fa6';
 

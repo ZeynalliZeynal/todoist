@@ -193,6 +193,11 @@ export const geistLinks = [
         icon: null,
       },
       {
+        label: 'code block',
+        href: '/geist/code-block',
+        icon: null,
+      },
+      {
         label: 'tabs',
         href: '/geist/tabs',
         icon: null,

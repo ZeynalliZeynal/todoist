@@ -11,7 +11,7 @@ import {
   CollapseContentProps,
   CollapseProps,
   CollapseTriggerProps,
-} from '@/components/ui/primitives/collapse/types';
+} from '@/components/ui/primitives/collapse/collapse.types';
 
 export function Collapse(props: CollapseProps) {
   const { children, className, ...etc } = props;

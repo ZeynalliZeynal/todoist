@@ -6,7 +6,7 @@ import {
 } from '@/components/ui/collapse';
 import { Button } from '@/components/ui/button';
 import CopyBlock from '@/components/copy-block';
-import CodeSnippet from '@/components/ui/code-snippet';
+import CodeBlock from '@/components/ui/code-block';
 import { BUTTON_SIZES_CODE } from '@/app/(geist)/geist/button/_snippets/snippets';
 
 export default function ButtonSizes() {
@@ -27,7 +27,7 @@ export default function ButtonSizes() {
         <CollapseTrigger>code</CollapseTrigger>
         <CollapseContent>
           <CopyBlock text={BUTTON_SIZES_CODE}>
-            <CodeSnippet showLineNumbers>{BUTTON_SIZES_CODE}</CodeSnippet>
+            <CodeBlock showLineNumbers>{BUTTON_SIZES_CODE}</CodeBlock>
           </CopyBlock>
         </CollapseContent>
       </Collapse>

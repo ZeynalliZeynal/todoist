@@ -13,7 +13,7 @@ import { Dispatch, SetStateAction } from 'react';
 import { Pages } from '@/components/auth/signup-form';
 
 export default function SignupSelectPlans({
-  plans,
+  plans = [],
   selected,
   onPlanSelect,
   name,

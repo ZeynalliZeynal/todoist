@@ -1,5 +1,5 @@
 import CopyBlock from '../copy-block';
-import { Highlight, themes } from 'prism-react-renderer';
+import { Highlight } from 'prism-react-renderer';
 import { cn } from '@/utils/lib';
 
 interface Props {
@@ -8,14 +8,10 @@ interface Props {
   showLineNumbers?: boolean;
 }
 
-export default function CodeSnippet(props: Props) {
+export default function CodeBlock(props: Props) {
   return (
     <CopyBlock text={props.children}>
-      <Highlight
-        theme={themes.shadesOfPurple}
-        language={props.lang || 'tsx'}
-        code={props.children}
-      >
+      <Highlight language={props.lang || 'tsx'} code={props.children}>
         {({ tokens, getLineProps, getTokenProps }) => (
           <pre className="py-5 bg-background-100 [counter-reset:line] overflow-auto">
             {tokens.map((line, i) => (

@@ -4,7 +4,7 @@ import {
   CollapseTrigger,
 } from '@/components/ui/collapse';
 import CopyBlock from '@/components/copy-block';
-import CodeSnippet from '@/components/ui/code-snippet';
+import CodeBlock from '@/components/ui/code-block';
 import ScrollToLink from '@/app/(geist)/geist/_components/scroll-to-link';
 import { Stack } from '@/components/ui/stack';
 import Badge from '@/components/ui/badge';
@@ -295,7 +295,7 @@ export default function BadgePage() {
           <CollapseTrigger>code</CollapseTrigger>
           <CollapseContent>
             <CopyBlock text={VARIANTS_CODE}>
-              <CodeSnippet showLineNumbers>{VARIANTS_CODE}</CodeSnippet>
+              <CodeBlock showLineNumbers>{VARIANTS_CODE}</CodeBlock>
             </CopyBlock>
           </CollapseContent>
         </Collapse>
@@ -313,7 +313,7 @@ export default function BadgePage() {
           <CollapseTrigger>code</CollapseTrigger>
           <CollapseContent>
             <CopyBlock text={BADGE_SIZES_CODE}>
-              <CodeSnippet showLineNumbers>{BADGE_SIZES_CODE}</CodeSnippet>
+              <CodeBlock showLineNumbers>{BADGE_SIZES_CODE}</CodeBlock>
             </CopyBlock>
           </CollapseContent>
         </Collapse>
@@ -507,7 +507,7 @@ export default function BadgePage() {
           <CollapseTrigger>code</CollapseTrigger>
           <CollapseContent>
             <CopyBlock text={BADGE_ICONS_CODE}>
-              <CodeSnippet showLineNumbers>{BADGE_ICONS_CODE}</CodeSnippet>
+              <CodeBlock showLineNumbers>{BADGE_ICONS_CODE}</CodeBlock>
             </CopyBlock>
           </CollapseContent>
         </Collapse>

@@ -4,7 +4,7 @@ import {
   CollapseTrigger,
 } from '@/components/ui/collapse';
 import CopyBlock from '@/components/copy-block';
-import CodeSnippet from '@/components/ui/code-snippet';
+import CodeBlock from '@/components/ui/code-block';
 import ScrollToLink from '@/app/(geist)/geist/_components/scroll-to-link';
 import Book from '@/components/ui/book';
 import { Stack } from '@/components/ui/stack';
@@ -100,7 +100,7 @@ export default function BookPage() {
           <CollapseTrigger>code</CollapseTrigger>
           <CollapseContent>
             <CopyBlock text={DEFAULT_BOOK_CODE}>
-              <CodeSnippet showLineNumbers>{DEFAULT_BOOK_CODE}</CodeSnippet>
+              <CodeBlock showLineNumbers>{DEFAULT_BOOK_CODE}</CodeBlock>
             </CopyBlock>
           </CollapseContent>
         </Collapse>
@@ -167,7 +167,7 @@ export default function BookPage() {
           <CollapseTrigger>code</CollapseTrigger>
           <CollapseContent>
             <CopyBlock text={VARIANTS_CODE}>
-              <CodeSnippet showLineNumbers>{VARIANTS_CODE}</CodeSnippet>
+              <CodeBlock showLineNumbers>{VARIANTS_CODE}</CodeBlock>
             </CopyBlock>
           </CollapseContent>
         </Collapse>
@@ -221,7 +221,7 @@ export default function BookPage() {
           <CollapseTrigger>code</CollapseTrigger>
           <CollapseContent>
             <CopyBlock text={VARIANTS_CODE}>
-              <CodeSnippet showLineNumbers>{VARIANTS_CODE}</CodeSnippet>
+              <CodeBlock showLineNumbers>{VARIANTS_CODE}</CodeBlock>
             </CopyBlock>
           </CollapseContent>
         </Collapse>

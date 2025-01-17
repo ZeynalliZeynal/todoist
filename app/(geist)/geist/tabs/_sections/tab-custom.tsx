@@ -1,7 +1,7 @@
 'use client';
 
 import CopyBlock from '@/components/copy-block';
-import CodeSnippet from '@/components/ui/code-snippet';
+import CodeBlock from '@/components/ui/code-block';
 import {
   Collapse,
   CollapseContent,
@@ -61,7 +61,7 @@ export default function TabCustom() {
                 onMouseEnter={() => setHovered(tab.id)}
                 onMouseLeave={() => setHovered('')}
                 className={cn(
-                  'capitalize h-7 rounded-md px-3 text-gray-900 hover:text-foreground [&_[data-active-pill]]:bg-gray-200 [&_[data-active-pill]]:rounded-full'
+                  'capitalize h-7 rounded-md px-3 text-gray-900 hover:text-foreground [&_[data-active-pill]]:bg-gray-200 [&_[data-active-pill]]:rounded-full',
                 )}
               >
                 {tab.label}
@@ -72,7 +72,7 @@ export default function TabCustom() {
         <CollapseTrigger>code</CollapseTrigger>
         <CollapseContent>
           <CopyBlock text={tab_custom_code}>
-            <CodeSnippet showLineNumbers>{tab_custom_code}</CodeSnippet>
+            <CodeBlock showLineNumbers>{tab_custom_code}</CodeBlock>
           </CopyBlock>
         </CollapseContent>
       </Collapse>

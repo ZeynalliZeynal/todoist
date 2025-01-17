@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { CollapseContextProps } from '@/components/ui/primitives/collapse/types';
+import { CollapseContextProps } from './collapse.types';
 
 const CollapseContext = React.createContext<CollapseContextProps | null>(null);
 
@@ -27,7 +27,7 @@ export function useCollapseContext() {
   const context = React.useContext(CollapseContext);
   if (!context)
     throw new Error(
-      'useCollapseContext must be used within the CollapseProvider component.',
+      'useCollapseContext must be used within the CollapseProvider component.'
     );
   return context;
 }
