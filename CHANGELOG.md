@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.2.8](https://github.com/ZeynalliZeynal/todoist/compare/v0.2.7...v0.2.8) (2025-01-17)
+
+
+### Features
+
+* **layout:** add bottom nav in geist layout ([a16b430](https://github.com/ZeynalliZeynal/todoist/commit/a16b430657e9b4ede68a87f69e4f8fe59c9eb1dd))
+
 ### [0.2.7](https://github.com/ZeynalliZeynal/todoist/compare/v0.2.6...v0.2.7) (2025-01-17)
 
 
