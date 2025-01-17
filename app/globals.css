@@ -243,6 +243,9 @@
       --header-border: 0 1px 0 0 #ffffff1a;
     }
 
+    --ds-background-200: hsl(var(--ds-background-200-value));
+    --ds-background-100: hsl(var(--ds-background-100-value));
+
     --ds-accent-800: hsl(var(--ds-accent-800-value));
     --ds-accent-700: hsl(var(--ds-accent-700-value));
     --ds-accent-600: hsl(var(--ds-accent-600-value));

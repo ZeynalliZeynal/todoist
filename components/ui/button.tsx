@@ -57,6 +57,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         type={type}
         disabled={disabled}
         data-hover={hovering ? '' : null}
+        data-variant={variant}
         className={cn(
           `flex items-center justify-center transition duration-200 font-medium border select-none rounded-lg`,
           {

@@ -1,0 +1,51 @@
+'use client';
+
+import { FiCopy } from 'react-icons/fi';
+import { cn } from '@/utils/lib';
+import { FaCheck } from 'react-icons/fa6';
+import { Button } from '@/components/ui/button';
+import { useCopy } from '@/hooks/useCopy';
+import { ComponentProps } from 'react';
+
+interface CopyProps extends ComponentProps<typeof Button> {
+  size?: 'sm' | 'md' | 'lg';
+  text: string;
+}
+
+export default function Copy(props: CopyProps) {
+  const { text, size, className, ...etc } = props;
+  const [copying, copy] = useCopy({ text });
+
+  return (
+    <Button
+      size={size}
+      className={cn('relative', copying && 'cursor-default', className)}
+      onClick={copy}
+      iconOnly
+      {...etc}
+    >
+      <span
+        aria-hidden={true}
+        className="absolute top-1/2 size-6 translate-y-[-50%] flex items-center justify-center"
+      >
+        <FiCopy
+          className={cn('transition-all absolute', {
+            'scale-100': !copying,
+            'scale-0': copying,
+          })}
+        />
+      </span>
+      <span
+        aria-hidden={true}
+        className="absolute top-1/2 size-6 translate-y-[-50%] flex items-center justify-center"
+      >
+        <FaCheck
+          className={cn('transition-all absolute', {
+            'scale-100': copying,
+            'scale-0': !copying,
+          })}
+        />
+      </span>
+    </Button>
+  );
+}
