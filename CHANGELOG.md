@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.2.7](https://github.com/ZeynalliZeynal/todoist/compare/v0.2.6...v0.2.7) (2025-01-17)
+
+
+### Features
+
+* **ui:** add highlight line numbers feature to CodeBlock ([9890544](https://github.com/ZeynalliZeynal/todoist/commit/989054487b5ad1a75f6324cc35687cd919012cb0))
+
 ### [0.2.6](https://github.com/ZeynalliZeynal/todoist/compare/v0.2.5...v0.2.6) (2025-01-17)
 
 ### [0.2.5](https://github.com/ZeynalliZeynal/todoist/compare/v0.2.4...v0.2.5) (2025-01-17)
