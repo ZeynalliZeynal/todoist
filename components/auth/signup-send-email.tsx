@@ -5,7 +5,7 @@ import { Pages } from '@/components/auth/signup-form';
 import Link from 'next/link';
 import { cn } from '@/utils/lib';
 import { sendSignupEmail } from '@/actions/auth.actions';
-import Spinner from '@/components/ui/spinner';
+import { Spinner } from '@everest-ui/react';
 import ErrorCodes from '@/utils/error-codes';
 
 export default function SignupSendEmail({
@@ -25,13 +25,15 @@ export default function SignupSendEmail({
   return (
     <form
       className="px-20 pt-16 pb-12"
-      onSubmit={(event) => {
+      onSubmit={async (event) => {
         event.preventDefault();
-        startTransition(async () => {
-          const res = await sendSignupEmail({ name, email });
-          if (res.errorCode === ErrorCodes.EMAIL_VERIFICATION_CONFLICT)
+        const res = await sendSignupEmail({ name, email });
+        startTransition(() => {
+          if (res.errorCode === ErrorCodes.EMAIL_VERIFICATION_CONFLICT) {
             setError(res.message);
-          else onPageChange('otp');
+          } else {
+            onPageChange('otp');
+          }
         });
       }}
     >
@@ -70,7 +72,7 @@ export default function SignupSendEmail({
               href="/auth/signup"
               className={cn(
                 'text-base text-blue-900 font-medium mx-auto relative w-fit',
-                'after:absolute after:w-full after:h-0.5 after:bg-blue-900 after:-bottom-0.5 after:left-0 after:opacity-0 hover:after:opacity-100 after:transition',
+                'after:absolute after:w-full after:h-0.5 after:bg-blue-900 after:-bottom-0.5 after:left-0 after:opacity-0 hover:after:opacity-100 after:transition'
               )}
               onClick={() => onPageChange('plans')}
             >

@@ -1,9 +1,10 @@
 import { cn } from '@/utils/lib';
+
 import {
-  Tab as PrimitiveTab,
   Tabs as PrimitiveTabs,
+  Tab as PrimitiveTab,
   TabProps,
-} from './primitives/tabs/tabs';
+} from '@everest-ui/react';
 
 export function Tab(props: TabProps) {
   return (

@@ -2,10 +2,10 @@ import { sendLoginEmail } from '@/actions/auth.actions';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { LuMail } from 'react-icons/lu';
-import Spinner from '@/components/ui/spinner';
 import { Dispatch, SetStateAction, useState, useTransition } from 'react';
 import { Pages } from '@/components/auth/login-form';
 import ErrorCodes from '@/utils/error-codes';
+import { Spinner } from '@everest-ui/react';
 
 export default function LoginSendEmail({
   email,
@@ -22,10 +22,10 @@ export default function LoginSendEmail({
   return (
     <form
       className="space-y-3"
-      onSubmit={(event) => {
+      onSubmit={async (event) => {
         event.preventDefault();
-        startTransition(async () => {
-          const res = await sendLoginEmail({ email });
+        const res = await sendLoginEmail({ email });
+        startTransition(() => {
           if (res.errorCode === ErrorCodes.EMAIL_VERIFICATION_CONFLICT)
             setError(res.message);
           else onPageChange('otp');

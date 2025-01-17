@@ -1,12 +1,13 @@
 import { Button } from '@/components/ui/button';
 import { BrandAsset } from '@/components/ui/icons/geist';
 import { Input } from '@/components/ui/input';
-import Spinner from '@/components/ui/spinner';
+
 import Link from 'next/link';
 import { IoIosList } from 'react-icons/io';
 import { IoGridOutline, IoPersonAddOutline } from 'react-icons/io5';
 import { TbShieldBolt } from 'react-icons/tb';
 import { geistLinks } from '@/constants';
+import { Spinner } from '@everest-ui/react';
 
 export default function GeistCards() {
   return (
@@ -29,7 +30,7 @@ export default function GeistCards() {
       <Link
         href={
           geistLinks.find((value) =>
-            value.title.toLowerCase().includes('components'),
+            value.title.toLowerCase().includes('components')
           )?.links[0].href || '/geist/avatar'
         }
         className="flex flex-col gap-6 p-8 hover:bg-background-100 transition"

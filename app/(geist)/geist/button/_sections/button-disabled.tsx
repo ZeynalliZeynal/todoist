@@ -8,7 +8,7 @@ import { Button } from '@/components/ui/button';
 import CopyBlock from '@/components/copy-block';
 import CodeSnippet from '@/components/ui/code-snippet';
 import { button_link_code } from '@/app/(geist)/geist/button/_snippets/snippets';
-import Spinner from '@/components/ui/spinner';
+import { Spinner } from '@everest-ui/react';
 
 export default function ButtonDisabled() {
   return (

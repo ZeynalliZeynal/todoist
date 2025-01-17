@@ -1,8 +1,8 @@
 'use client';
 
 import { ReactNode, useEffect } from 'react';
-import Spinner from '@/components/ui/spinner';
 import { AnimatePresence, motion } from 'framer-motion';
+import { Spinner } from '@everest-ui/react';
 
 export default function LoadingScreen({
   children,

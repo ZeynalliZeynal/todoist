@@ -7,7 +7,7 @@ import {
   CollapseContent,
   CollapseTrigger,
 } from '@/components/ui/collapse';
-import { Tab, Tabs } from '@/components/ui/primitives/tabs/tabs';
+import { Tab, Tabs } from '@everest-ui/react';
 import { cn } from '@/utils/lib';
 import React from 'react';
 import ScrollToLink from '../../_components/scroll-to-link';

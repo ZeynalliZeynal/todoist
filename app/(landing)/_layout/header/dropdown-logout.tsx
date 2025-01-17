@@ -3,7 +3,7 @@
 import { DropdownMenuItem } from '@/components/ui/dropdown-menu/dropdown-menu';
 import { LuLogOut } from 'react-icons/lu';
 import { useTransition } from 'react';
-import Spinner from '@/components/ui/spinner';
+import { Spinner } from '@everest-ui/react';
 import { logout } from '@/actions/auth.actions';
 
 export default function DropdownLogout() {
@@ -13,8 +13,8 @@ export default function DropdownLogout() {
     <DropdownMenuItem
       disabled={isPending}
       onClick={() =>
-        startTransition(async () => {
-          await logout();
+        startTransition(() => {
+          logout();
         })
       }
     >

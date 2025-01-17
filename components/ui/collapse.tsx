@@ -1,15 +1,14 @@
 'use client';
 
 import {
-  Collapse as PrimitiveCollapse,
-  CollapseContent as PrimitiveCollapseContent,
-  CollapseTrigger as PrimitiveCollapseTrigger,
-} from '@/components/ui/primitives/collapse/collapse';
-import {
   CollapseContentProps,
   CollapseProps,
   CollapseTriggerProps,
-} from '@/components/ui/primitives/collapse/types';
+  Collapse as PrimitiveCollapse,
+  CollapseContent as PrimitiveCollapseContent,
+  CollapseTrigger as PrimitiveCollapseTrigger,
+} from '@everest-ui/react';
+
 import { cn } from '@/utils/lib';
 import { FaChevronRight } from 'react-icons/fa6';
 
