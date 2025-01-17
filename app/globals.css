@@ -5,243 +5,351 @@
 @layer base {
   :root {
     &[data-theme=light] {
-      --ds-background-100: 0, 0%, 98%;
-      --ds-background-200: 0, 0%, 100%;
+      --ds-background-100-value: 0, 0%, 98%;
+      --ds-background-200-value: 0, 0%, 100%;
 
-      --ds-accent-800: 0 0% 7%;
-      --ds-accent-700: 0 0% 20%;
-      --ds-accent-600: 0 0% 27%;
-      --ds-accent-500: 0 0% 40%;
-      --ds-accent-400: 0 0% 53%;
-      --ds-accent-300: 0 0% 60%;
-      --ds-accent-200: 0 0% 92%;
-      --ds-accent-100: 0 0% 98%;
+      --ds-accent-800-value: 0 0% 7%;
+      --ds-accent-700-value: 0 0% 20%;
+      --ds-accent-600-value: 0 0% 27%;
+      --ds-accent-500-value: 0 0% 40%;
+      --ds-accent-400-value: 0 0% 53%;
+      --ds-accent-300-value: 0 0% 60%;
+      --ds-accent-200-value: 0 0% 92%;
+      --ds-accent-100-value: 0 0% 98%;
 
-      --ds-gray-100: 0, 0%, 95%;
-      --ds-gray-200: 0, 0%, 92%;
-      --ds-gray-300: 0, 0%, 90%;
-      --ds-gray-400: 0, 0%, 92%;
-      --ds-gray-500: 0, 0%, 79%;
-      --ds-gray-600: 0, 0%, 66%;
-      --ds-gray-700: 0, 0%, 56%;
-      --ds-gray-800: 0, 0%, 49%;
-      --ds-gray-900: 0, 0%, 40%;
-      --ds-gray-1000: 0, 0%, 9%;
+      --ds-gray-100-value: 0, 0%, 95%;
+      --ds-gray-200-value: 0, 0%, 92%;
+      --ds-gray-300-value: 0, 0%, 90%;
+      --ds-gray-400-value: 0, 0%, 92%;
+      --ds-gray-500-value: 0, 0%, 79%;
+      --ds-gray-600-value: 0, 0%, 66%;
+      --ds-gray-700-value: 0, 0%, 56%;
+      --ds-gray-800-value: 0, 0%, 49%;
+      --ds-gray-900-value: 0, 0%, 40%;
+      --ds-gray-1000-value: 0, 0%, 9%;
 
-      --ds-gray-alpha-100: 0, 0%, 0%, 0.05;
-      --ds-gray-alpha-200: 0, 0%, 0%, 0.08;
-      --ds-gray-alpha-300: 0, 0%, 0%, 0.1;
-      --ds-gray-alpha-400: 0, 0%, 0%, 0.08;
-      --ds-gray-alpha-500: 0, 0%, 0%, 0.21;
-      --ds-gray-alpha-600: 0, 0%, 0%, 0.34;
-      --ds-gray-alpha-700: 0, 0%, 0%, 0.44;
-      --ds-gray-alpha-800: 0, 0%, 0%, 0.51;
-      --ds-gray-alpha-900: 0, 0%, 0%, 0.61;
-      --ds-gray-alpha-1000: 0, 0%, 0%, 0.91;
+      --ds-gray-alpha-100-value: 0, 0%, 0%, 0.05;
+      --ds-gray-alpha-200-value: 0, 0%, 0%, 0.08;
+      --ds-gray-alpha-300-value: 0, 0%, 0%, 0.1;
+      --ds-gray-alpha-400-value: 0, 0%, 0%, 0.08;
+      --ds-gray-alpha-500-value: 0, 0%, 0%, 0.21;
+      --ds-gray-alpha-600-value: 0, 0%, 0%, 0.34;
+      --ds-gray-alpha-700-value: 0, 0%, 0%, 0.44;
+      --ds-gray-alpha-800-value: 0, 0%, 0%, 0.51;
+      --ds-gray-alpha-900-value: 0, 0%, 0%, 0.61;
+      --ds-gray-alpha-1000-value: 0, 0%, 0%, 0.91;
 
-      --ds-blue-100: 212, 100%, 97%;
-      --ds-blue-200: 210, 100%, 96%;
-      --ds-blue-300: 209, 100%, 94%;
-      --ds-blue-400: 209, 100%, 90%;
-      --ds-blue-500: 209, 100%, 80%;
-      --ds-blue-600: 208, 100%, 66%;
-      --ds-blue-700: 212, 100%, 48%;
-      --ds-blue-800: 212, 100%, 41%;
-      --ds-blue-900: 211, 100%, 42%;
-      --ds-blue-1000: 211, 100%, 15%;
+      --ds-blue-100-value: 212, 100%, 97%;
+      --ds-blue-200-value: 210, 100%, 96%;
+      --ds-blue-300-value: 209, 100%, 94%;
+      --ds-blue-400-value: 209, 100%, 90%;
+      --ds-blue-500-value: 209, 100%, 80%;
+      --ds-blue-600-value: 208, 100%, 66%;
+      --ds-blue-700-value: 212, 100%, 48%;
+      --ds-blue-800-value: 212, 100%, 41%;
+      --ds-blue-900-value: 211, 100%, 42%;
+      --ds-blue-1000-value: 211, 100%, 15%;
 
-      --ds-red-100: 0, 100%, 97%;
-      --ds-red-200: 0, 100%, 96%;
-      --ds-red-300: 0, 100%, 95%;
-      --ds-red-400: 0, 90%, 92%;
-      --ds-red-500: 0, 82%, 85%;
-      --ds-red-600: 359, 91%, 71%;
-      --ds-red-700: 358, 75%, 59%;
-      --ds-red-800: 358, 70%, 52%;
-      --ds-red-900: 358, 66%, 48%;
-      --ds-red-1000: 355, 48%, 15%;
+      --ds-red-100-value: 0, 100%, 97%;
+      --ds-red-200-value: 0, 100%, 96%;
+      --ds-red-300-value: 0, 100%, 95%;
+      --ds-red-400-value: 0, 90%, 92%;
+      --ds-red-500-value: 0, 82%, 85%;
+      --ds-red-600-value: 359, 91%, 71%;
+      --ds-red-700-value: 358, 75%, 59%;
+      --ds-red-800-value: 358, 70%, 52%;
+      --ds-red-900-value: 358, 66%, 48%;
+      --ds-red-1000-value: 355, 48%, 15%;
 
-      --ds-amber-100: 38, 100%, 95%;
-      --ds-amber-200: 44, 100%, 92%;
-      --ds-amber-300: 43, 96%, 90%;
-      --ds-amber-400: 42, 100%, 78%;
-      --ds-amber-500: 38, 100%, 71%;
-      --ds-amber-600: 36, 90%, 62%;
-      --ds-amber-700: 39, 100%, 57%;
-      --ds-amber-800: 35, 100%, 52%;
-      --ds-amber-900: 30, 100%, 32%;
-      --ds-amber-1000: 20, 79%, 17%;
+      --ds-amber-100-value: 38, 100%, 95%;
+      --ds-amber-200-value: 44, 100%, 92%;
+      --ds-amber-300-value: 43, 96%, 90%;
+      --ds-amber-400-value: 42, 100%, 78%;
+      --ds-amber-500-value: 38, 100%, 71%;
+      --ds-amber-600-value: 36, 90%, 62%;
+      --ds-amber-700-value: 39, 100%, 57%;
+      --ds-amber-800-value: 35, 100%, 52%;
+      --ds-amber-900-value: 30, 100%, 32%;
+      --ds-amber-1000-value: 20, 79%, 17%;
 
-      --ds-green-100: 120, 60%, 96%;
-      --ds-green-200: 120, 60%, 95%;
-      --ds-green-300: 120, 61%, 91%;
-      --ds-green-400: 121, 61%, 86%;
-      --ds-green-500: 124, 61%, 75%;
-      --ds-green-600: 125, 60%, 64%;
-      --ds-green-700: 131, 41%, 46%;
-      --ds-green-800: 132, 43%, 39%;
-      --ds-green-900: 133, 50%, 32%;
-      --ds-green-1000: 128, 29%, 15%;
+      --ds-green-100-value: 120, 60%, 96%;
+      --ds-green-200-value: 120, 60%, 95%;
+      --ds-green-300-value: 120, 61%, 91%;
+      --ds-green-400-value: 121, 61%, 86%;
+      --ds-green-500-value: 124, 61%, 75%;
+      --ds-green-600-value: 125, 60%, 64%;
+      --ds-green-700-value: 131, 41%, 46%;
+      --ds-green-800-value: 132, 43%, 39%;
+      --ds-green-900-value: 133, 50%, 32%;
+      --ds-green-1000-value: 128, 29%, 15%;
 
-      --ds-teal-100: 167, 70%, 96%;
-      --ds-teal-200: 169, 68%, 94%;
-      --ds-teal-300: 168, 69%, 90%;
-      --ds-teal-400: 170, 71%, 85%;
-      --ds-teal-500: 170, 70%, 72%;
-      --ds-teal-600: 170, 70%, 57%;
-      --ds-teal-700: 173, 80%, 36%;
-      --ds-teal-800: 173, 83%, 30%;
-      --ds-teal-900: 174, 91%, 25%;
-      --ds-teal-1000: 171, 79%, 13%;
+      --ds-teal-100-value: 167, 70%, 96%;
+      --ds-teal-200-value: 169, 68%, 94%;
+      --ds-teal-300-value: 168, 69%, 90%;
+      --ds-teal-400-value: 170, 71%, 85%;
+      --ds-teal-500-value: 170, 70%, 72%;
+      --ds-teal-600-value: 170, 70%, 57%;
+      --ds-teal-700-value: 173, 80%, 36%;
+      --ds-teal-800-value: 173, 83%, 30%;
+      --ds-teal-900-value: 174, 91%, 25%;
+      --ds-teal-1000-value: 171, 79%, 13%;
 
-      --ds-purple-100: 276, 100%, 97%;
-      --ds-purple-200: 277, 87%, 97%;
-      --ds-purple-300: 276, 77%, 95%;
-      --ds-purple-400: 275, 71%, 92%;
-      --ds-purple-500: 274, 70%, 82%;
-      --ds-purple-600: 273, 72%, 73%;
-      --ds-purple-700: 272, 51%, 54%;
-      --ds-purple-800: 272, 47%, 45%;
-      --ds-purple-900: 274, 71%, 43%;
-      --ds-purple-1000: 276, 100%, 15%;
+      --ds-purple-100-value: 276, 100%, 97%;
+      --ds-purple-200-value: 277, 87%, 97%;
+      --ds-purple-300-value: 276, 77%, 95%;
+      --ds-purple-400-value: 275, 71%, 92%;
+      --ds-purple-500-value: 274, 70%, 82%;
+      --ds-purple-600-value: 273, 72%, 73%;
+      --ds-purple-700-value: 272, 51%, 54%;
+      --ds-purple-800-value: 272, 47%, 45%;
+      --ds-purple-900-value: 274, 71%, 43%;
+      --ds-purple-1000-value: 276, 100%, 15%;
 
-      --ds-pink-100: 330, 100%, 96%;
-      --ds-pink-200: 340, 90%, 96%;
-      --ds-pink-300: 338, 81%, 94%;
-      --ds-pink-400: 341, 74%, 91%;
-      --ds-pink-500: 340, 75%, 84%;
-      --ds-pink-600: 341, 75%, 73%;
-      --ds-pink-700: 336, 80%, 58%;
-      --ds-pink-800: 336, 74%, 51%;
-      --ds-pink-900: 336, 65%, 45%;
-      --ds-pink-1000: 334, 74%, 15%;
+      --ds-pink-100-value: 330, 100%, 96%;
+      --ds-pink-200-value: 340, 90%, 96%;
+      --ds-pink-300-value: 338, 81%, 94%;
+      --ds-pink-400-value: 341, 74%, 91%;
+      --ds-pink-500-value: 340, 75%, 84%;
+      --ds-pink-600-value: 341, 75%, 73%;
+      --ds-pink-700-value: 336, 80%, 58%;
+      --ds-pink-800-value: 336, 74%, 51%;
+      --ds-pink-900-value: 336, 65%, 45%;
+      --ds-pink-1000-value: 334, 74%, 15%;
 
       --button-invert-hover-dark: 0, 0%, 22%;
       --button-invert-disabled-dark: 0, 0%, 10%;
 
       --header-border: 0 1px 0 0 0, 0%, 0, 0.102;
-      --ds-shadow-border: 0 0 0 1px rgba(0, 0, 0, 0.08);
-      --ds-shadow-menu: var(--ds-shadow-border), 0px 1px 1px rgba(0, 0, 0, 0.02),
+      --ds-shadow-border-value: 0 0 0 1px rgba(0, 0, 0, 0.08);
+      --ds-shadow-menu-value: var(--ds-shadow-border-value), 0px 1px 1px rgba(0, 0, 0, 0.02),
         0px 4px 8px -4px rgba(0, 0, 0, 0.04),
         0px 16px 24px -8px rgba(0, 0, 0, 0.06);
     }
 
     &, &[data-theme=dark] {
-      --ds-background-200: 0 0% 0%;
-      --ds-background-100: 0 0% 4%;
+      --ds-background-200-value: 0 0% 0%;
+      --ds-background-100-value: 0 0% 4%;
 
-      --ds-accent-100: 0 0% 7%;
-      --ds-accent-200: 0 0% 20%;
-      --ds-accent-300: 0 0% 27%;
-      --ds-accent-400: 0 0% 40%;
-      --ds-accent-500: 0 0% 53%;
-      --ds-accent-600: 0 0% 60%;
-      --ds-accent-700: 0 0% 92%;
-      --ds-accent-800: 0 0% 98%;
+      --ds-accent-100-value: 0 0% 7%;
+      --ds-accent-200-value: 0 0% 20%;
+      --ds-accent-300-value: 0 0% 27%;
+      --ds-accent-400-value: 0 0% 40%;
+      --ds-accent-500-value: 0 0% 53%;
+      --ds-accent-600-value: 0 0% 60%;
+      --ds-accent-700-value: 0 0% 92%;
+      --ds-accent-800-value: 0 0% 98%;
 
-      --ds-gray-100: 0 0% 10%;
-      --ds-gray-200: 0 0% 12%;
-      --ds-gray-300: 0 0% 16%;
-      --ds-gray-400: 0 0% 18%;
-      --ds-gray-500: 0 0% 27%;
-      --ds-gray-600: 0 0% 53%;
-      --ds-gray-700: 0 0% 56%;
-      --ds-gray-800: 0 0% 49%;
-      --ds-gray-900: 0 0% 63%;
-      --ds-gray-1000: 0 0% 93%;
+      --ds-gray-100-value: 0 0% 10%;
+      --ds-gray-200-value: 0 0% 12%;
+      --ds-gray-300-value: 0 0% 16%;
+      --ds-gray-400-value: 0 0% 18%;
+      --ds-gray-500-value: 0 0% 27%;
+      --ds-gray-600-value: 0 0% 53%;
+      --ds-gray-700-value: 0 0% 56%;
+      --ds-gray-800-value: 0 0% 49%;
+      --ds-gray-900-value: 0 0% 63%;
+      --ds-gray-1000-value: 0 0% 93%;
 
-      --ds-gray-alpha-100: 0, 0%, 100%, 0.06;
-      --ds-gray-alpha-200: 0, 0%, 100%, 0.09;
-      --ds-gray-alpha-300: 0, 0%, 100%, 0.013;
-      --ds-gray-alpha-400: 0, 0%, 100%, 0.14;
-      --ds-gray-alpha-500: 0, 0%, 100%, 0.24;
-      --ds-gray-alpha-600: 0, 0%, 100%, 0.51;
-      --ds-gray-alpha-700: 0, 0%, 100%, 0.54;
-      --ds-gray-alpha-800: 0, 0%, 100%, 0.47;
-      --ds-gray-alpha-900: 0, 0%, 100%, 0.61;
-      --ds-gray-alpha-1000: 0, 0%, 100%, 0.92;
+      --ds-gray-alpha-100-value: 0, 0%, 100%, 0.06;
+      --ds-gray-alpha-200-value: 0, 0%, 100%, 0.09;
+      --ds-gray-alpha-300-value: 0, 0%, 100%, 0.013;
+      --ds-gray-alpha-400-value: 0, 0%, 100%, 0.14;
+      --ds-gray-alpha-500-value: 0, 0%, 100%, 0.24;
+      --ds-gray-alpha-600-value: 0, 0%, 100%, 0.51;
+      --ds-gray-alpha-700-value: 0, 0%, 100%, 0.54;
+      --ds-gray-alpha-800-value: 0, 0%, 100%, 0.47;
+      --ds-gray-alpha-900-value: 0, 0%, 100%, 0.61;
+      --ds-gray-alpha-1000-value: 0, 0%, 100%, 0.92;
 
-      --ds-blue-100: 215 51% 12%;
-      --ds-blue-200: 214 59% 15%;
-      --ds-blue-300: 213 71% 20%;
-      --ds-blue-400: 212 78% 23%;
-      --ds-blue-500: 211 86% 27%;
-      --ds-blue-600: 206 100% 50%;
-      --ds-blue-700: 212 100% 48%;
-      --ds-blue-800: 212 100% 41%;
-      --ds-blue-900: 210 100% 66%;
-      --ds-blue-1000: 207 100% 96%;
+      --ds-blue-100-value: 215 51% 12%;
+      --ds-blue-200-value: 214 59% 15%;
+      --ds-blue-300-value: 213 71% 20%;
+      --ds-blue-400-value: 212 78% 23%;
+      --ds-blue-500-value: 211 86% 27%;
+      --ds-blue-600-value: 206 100% 50%;
+      --ds-blue-700-value: 212 100% 48%;
+      --ds-blue-800-value: 212 100% 41%;
+      --ds-blue-900-value: 210 100% 66%;
+      --ds-blue-1000-value: 207 100% 96%;
 
-      --ds-red-100: 357 38% 12%;
-      --ds-red-200: 357 46% 16%;
-      --ds-red-300: 356 54% 22%;
-      --ds-red-400: 358 55% 26%;
-      --ds-red-500: 357 60% 32%;
-      --ds-red-600: 358 75% 59%;
-      --ds-red-700: 358 75% 59%;
-      --ds-red-800: 358 69% 52%;
-      --ds-red-900: 358 100% 69%;
-      --ds-red-1000: 353 90% 96%;
+      --ds-red-100-value: 357 38% 12%;
+      --ds-red-200-value: 357 46% 16%;
+      --ds-red-300-value: 356 54% 22%;
+      --ds-red-400-value: 358 55% 26%;
+      --ds-red-500-value: 357 60% 32%;
+      --ds-red-600-value: 358 75% 59%;
+      --ds-red-700-value: 358 75% 59%;
+      --ds-red-800-value: 358 69% 52%;
+      --ds-red-900-value: 358 100% 69%;
+      --ds-red-1000-value: 353 90% 96%;
 
-      --ds-amber-100: 35 100% 8%;
-      --ds-amber-200: 32 100% 10%;
-      --ds-amber-300: 33 100% 15%;
-      --ds-amber-400: 35 100% 17%;
-      --ds-amber-500: 35 91% 22%;
-      --ds-amber-600: 39 85% 49%;
-      --ds-amber-700: 39 100% 57%;
-      --ds-amber-800: 35 100% 52%;
-      --ds-amber-900: 39 90% 50%;
-      --ds-amber-1000: 41 94% 93%;
+      --ds-amber-100-value: 35 100% 8%;
+      --ds-amber-200-value: 32 100% 10%;
+      --ds-amber-300-value: 33 100% 15%;
+      --ds-amber-400-value: 35 100% 17%;
+      --ds-amber-500-value: 35 91% 22%;
+      --ds-amber-600-value: 39 85% 49%;
+      --ds-amber-700-value: 39 100% 57%;
+      --ds-amber-800-value: 35 100% 52%;
+      --ds-amber-900-value: 39 90% 50%;
+      --ds-amber-1000-value: 41 94% 93%;
 
-      --ds-green-100: 138 51% 9%;
-      --ds-green-200: 137 51% 12%;
-      --ds-green-300: 135 50% 14%;
-      --ds-green-400: 136 70% 16%;
-      --ds-green-500: 135 69% 23%;
-      --ds-green-600: 135 70% 34%;
-      --ds-green-700: 131 41% 46%;
-      --ds-green-800: 132 43% 39%;
-      --ds-green-900: 131 43% 57%;
-      --ds-green-1000: 134 73% 94%;
+      --ds-green-100-value: 138 51% 9%;
+      --ds-green-200-value: 137 51% 12%;
+      --ds-green-300-value: 135 50% 14%;
+      --ds-green-400-value: 136 70% 16%;
+      --ds-green-500-value: 135 69% 23%;
+      --ds-green-600-value: 135 70% 34%;
+      --ds-green-700-value: 131 41% 46%;
+      --ds-green-800-value: 132 43% 39%;
+      --ds-green-900-value: 131 43% 57%;
+      --ds-green-1000-value: 134 73% 94%;
 
-      --ds-teal-100: 169 78% 7%;
-      --ds-teal-200: 169 74% 9%;
-      --ds-teal-300: 172 76% 13%;
-      --ds-teal-400: 171 85% 13%;
-      --ds-teal-500: 172 84% 20%;
-      --ds-teal-600: 172 85% 32%;
-      --ds-teal-700: 173 80% 36%;
-      --ds-teal-800: 173 83% 30%;
-      --ds-teal-900: 174 90% 41%;
-      --ds-teal-1000: 166 72% 93%;
+      --ds-teal-100-value: 169 78% 7%;
+      --ds-teal-200-value: 169 74% 9%;
+      --ds-teal-300-value: 172 76% 13%;
+      --ds-teal-400-value: 171 85% 13%;
+      --ds-teal-500-value: 172 84% 20%;
+      --ds-teal-600-value: 172 85% 32%;
+      --ds-teal-700-value: 173 80% 36%;
+      --ds-teal-800-value: 173 83% 30%;
+      --ds-teal-900-value: 174 90% 41%;
+      --ds-teal-1000-value: 166 72% 93%;
 
-      --ds-purple-100: 284 31% 12%;
-      --ds-purple-200: 281 38% 16%;
-      --ds-purple-300: 279 44% 23%;
-      --ds-purple-400: 277 45% 28%;
-      --ds-purple-500: 274 49% 35%;
-      --ds-purple-600: 272 51% 54%;
-      --ds-purple-700: 272 51% 54%;
-      --ds-purple-800: 272 47% 45%;
-      --ds-purple-900: 275 80% 71%;
-      --ds-purple-1000: 284 71% 96%;
+      --ds-purple-100-value: 284 31% 12%;
+      --ds-purple-200-value: 281 38% 16%;
+      --ds-purple-300-value: 279 44% 23%;
+      --ds-purple-400-value: 277 45% 28%;
+      --ds-purple-500-value: 274 49% 35%;
+      --ds-purple-600-value: 272 51% 54%;
+      --ds-purple-700-value: 272 51% 54%;
+      --ds-purple-800-value: 272 47% 45%;
+      --ds-purple-900-value: 275 80% 71%;
+      --ds-purple-1000-value: 284 71% 96%;
 
-      --ds-pink-100: 335 31% 12%;
-      --ds-pink-200: 334 43% 16%;
-      --ds-pink-300: 335 48% 21%;
-      --ds-pink-400: 335 52% 22%;
-      --ds-pink-500: 335 57% 27%;
-      --ds-pink-600: 336 75% 40%;
-      --ds-pink-700: 336 80% 58%;
-      --ds-pink-800: 336 74% 51%;
-      --ds-pink-900: 341 90% 67%;
-      --ds-pink-1000: 333 90% 96%;
+      --ds-pink-100-value: 335 31% 12%;
+      --ds-pink-200-value: 334 43% 16%;
+      --ds-pink-300-value: 335 48% 21%;
+      --ds-pink-400-value: 335 52% 22%;
+      --ds-pink-500-value: 335 57% 27%;
+      --ds-pink-600-value: 336 75% 40%;
+      --ds-pink-700-value: 336 80% 58%;
+      --ds-pink-800-value: 336 74% 51%;
+      --ds-pink-900-value: 341 90% 67%;
+      --ds-pink-1000-value: 333 90% 96%;
 
       --button-invert-hover-dark: 0 0% 80%;
       --button-invert-disabled-dark: 0 0% 95%;
       --header-border: 0 1px 0 0 #ffffff1a;
     }
+
+    --ds-accent-800: hsl(var(--ds-accent-800-value));
+    --ds-accent-700: hsl(var(--ds-accent-700-value));
+    --ds-accent-600: hsl(var(--ds-accent-600-value));
+    --ds-accent-500: hsl(var(--ds-accent-500-value));
+    --ds-accent-400: hsl(var(--ds-accent-400-value));
+    --ds-accent-300: hsl(var(--ds-accent-300-value));
+    --ds-accent-200: hsl(var(--ds-accent-200-value));
+    --ds-accent-100: hsl(var(--ds-accent-100-value));
+
+    --ds-gray-100: hsl(var(--ds-gray-100-value));
+    --ds-gray-200: hsl(var(--ds-gray-200-value));
+    --ds-gray-300: hsl(var(--ds-gray-300-value));
+    --ds-gray-400: hsl(var(--ds-gray-400-value));
+    --ds-gray-500: hsl(var(--ds-gray-500-value));
+    --ds-gray-600: hsl(var(--ds-gray-600-value));
+    --ds-gray-700: hsl(var(--ds-gray-700-value));
+    --ds-gray-800: hsl(var(--ds-gray-800-value));
+    --ds-gray-900: hsl(var(--ds-gray-900-value));
+    --ds-gray-1000: hsl(var(--ds-gray-1000-value));
+
+    --ds-gray-alpha-100: hsl(var(--ds-gray-alpha-100-value));
+    --ds-gray-alpha-200: hsl(var(--ds-gray-alpha-200-value));
+    --ds-gray-alpha-300: hsl(var(--ds-gray-alpha-300-value));
+    --ds-gray-alpha-400: hsl(var(--ds-gray-alpha-400-value));
+    --ds-gray-alpha-500: hsl(var(--ds-gray-alpha-500-value));
+    --ds-gray-alpha-600: hsl(var(--ds-gray-alpha-600-value));
+    --ds-gray-alpha-700: hsl(var(--ds-gray-alpha-700-value));
+    --ds-gray-alpha-800: hsl(var(--ds-gray-alpha-800-value));
+    --ds-gray-alpha-900: hsl(var(--ds-gray-alpha-900-value));
+    --ds-gray-alpha-1000: hsl(var(--ds-gray-alpha-1000-value));
+
+    --ds-blue-100: hsl(var(--ds-blue-100-value));
+    --ds-blue-200: hsl(var(--ds-blue-200-value));
+    --ds-blue-300: hsl(var(--ds-blue-300-value));
+    --ds-blue-400: hsl(var(--ds-blue-400-value));
+    --ds-blue-500: hsl(var(--ds-blue-500-value));
+    --ds-blue-600: hsl(var(--ds-blue-600-value));
+    --ds-blue-700: hsl(var(--ds-blue-700-value));
+    --ds-blue-800: hsl(var(--ds-blue-800-value));
+    --ds-blue-900: hsl(var(--ds-blue-900-value));
+    --ds-blue-1000: hsl(var(--ds-blue-1000-value));
+
+    --ds-red-100: hsl(var(--ds-red-100-value));
+    --ds-red-200: hsl(var(--ds-red-200-value));
+    --ds-red-300: hsl(var(--ds-red-300-value));
+    --ds-red-400: hsl(var(--ds-red-400-value));
+    --ds-red-500: hsl(var(--ds-red-500-value));
+    --ds-red-600: hsl(var(--ds-red-600-value));
+    --ds-red-700: hsl(var(--ds-red-700-value));
+    --ds-red-800: hsl(var(--ds-red-800-value));
+    --ds-red-900: hsl(var(--ds-red-900-value));
+    --ds-red-1000: hsl(var(--ds-red-1000-value));
+
+    --ds-amber-100: hsl(var(--ds-amber-100-value));
+    --ds-amber-200: hsl(var(--ds-amber-200-value));
+    --ds-amber-300: hsl(var(--ds-amber-300-value));
+    --ds-amber-400: hsl(var(--ds-amber-400-value));
+    --ds-amber-500: hsl(var(--ds-amber-500-value));
+    --ds-amber-600: hsl(var(--ds-amber-600-value));
+    --ds-amber-700: hsl(var(--ds-amber-700-value));
+    --ds-amber-800: hsl(var(--ds-amber-800-value));
+    --ds-amber-900: hsl(var(--ds-amber-900-value));
+    --ds-amber-1000: hsl(var(--ds-amber-1000-value));
+
+    --ds-green-100: hsl(var(--ds-green-100-value));
+    --ds-green-200: hsl(var(--ds-green-200-value));
+    --ds-green-300: hsl(var(--ds-green-300-value));
+    --ds-green-400: hsl(var(--ds-green-400-value));
+    --ds-green-500: hsl(var(--ds-green-500-value));
+    --ds-green-600: hsl(var(--ds-green-600-value));
+    --ds-green-700: hsl(var(--ds-green-700-value));
+    --ds-green-800: hsl(var(--ds-green-800-value));
+    --ds-green-900: hsl(var(--ds-green-900-value));
+    --ds-green-1000: hsl(var(--ds-green-1000-value));
+
+    --ds-teal-100: hsl(var(--ds-teal-100-value));
+    --ds-teal-200: hsl(var(--ds-teal-200-value));
+    --ds-teal-300: hsl(var(--ds-teal-300-value));
+    --ds-teal-400: hsl(var(--ds-teal-400-value));
+    --ds-teal-500: hsl(var(--ds-teal-500-value));
+    --ds-teal-600: hsl(var(--ds-teal-600-value));
+    --ds-teal-700: hsl(var(--ds-teal-700-value));
+    --ds-teal-800: hsl(var(--ds-teal-800-value));
+    --ds-teal-900: hsl(var(--ds-teal-900-value));
+    --ds-teal-1000: hsl(var(--ds-teal-1000-value));
+
+    --ds-purple-100: hsl(var(--ds-purple-100-value));
+    --ds-purple-200: hsl(var(--ds-purple-200-value));
+    --ds-purple-300: hsl(var(--ds-purple-300-value));
+    --ds-purple-400: hsl(var(--ds-purple-400-value));
+    --ds-purple-500: hsl(var(--ds-purple-500-value));
+    --ds-purple-600: hsl(var(--ds-purple-600-value));
+    --ds-purple-700: hsl(var(--ds-purple-700-value));
+    --ds-purple-800: hsl(var(--ds-purple-800-value));
+    --ds-purple-900: hsl(var(--ds-purple-900-value));
+    --ds-purple-1000: hsl(var(--ds-purple-1000-value));
+
+    --ds-pink-100: hsl(var(--ds-pink-100-value));
+    --ds-pink-200: hsl(var(--ds-pink-200-value));
+    --ds-pink-300: hsl(var(--ds-pink-300-value));
+    --ds-pink-400: hsl(var(--ds-pink-400-value));
+    --ds-pink-500: hsl(var(--ds-pink-500-value));
+    --ds-pink-600: hsl(var(--ds-pink-600-value));
+    --ds-pink-700: hsl(var(--ds-pink-700-value));
+    --ds-pink-800: hsl(var(--ds-pink-800-value));
+    --ds-pink-900: hsl(var(--ds-pink-900-value));
+    --ds-pink-1000: hsl(var(--ds-pink-1000-value));
   }
 
   button {
@@ -306,18 +414,18 @@
 
 /*::-webkit-scrollbar-track {*/
 /*    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);*/
-/*    background-color: hsla(var(--ds-gray-400));*/
+/*    background-color: hsla(var(--ds-gray-400-value));*/
 /*    border-radius: 8px;*/
 /*}*/
 
 /*::-webkit-scrollbar {*/
 /*    width: 6px;*/
 /*    height: 6px;*/
-/*    background-color: hsla(var(--ds-gray-500));*/
+/*    background-color: hsla(var(--ds-gray-500-value));*/
 /*    border-radius: 8px;*/
 /*}*/
 
 /*::-webkit-scrollbar-thumb {*/
-/*    background-color: hsla(var(--ds-gray-900));*/
+/*    background-color: hsla(var(--ds-gray-900-value));*/
 /*    border-radius: 8px;*/
 /*}*/
