@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.2.5](https://github.com/ZeynalliZeynal/todoist/compare/v0.2.4...v0.2.5) (2025-01-17)
+
+
+### Features
+
+* **ui:** add filename prop to the CodeBlock component ([7c2b4d9](https://github.com/ZeynalliZeynal/todoist/commit/7c2b4d9aa650eeb822d862e9b3d049ec2d44ccf8))
+
 ### [0.2.4](https://github.com/ZeynalliZeynal/todoist/compare/v0.2.2...v0.2.4) (2025-01-17)
 
 ### [0.2.3](https://github.com/ZeynalliZeynal/todoist/compare/v0.2.2...v0.2.3) (2025-01-17)
