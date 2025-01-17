@@ -14,7 +14,18 @@ const code_example = `function MyComponent(props) {
     </div>
   );
 }`;
-const code = ``;
+const code = `const code_example = \`function MyComponent(props) {
+  return (
+    <div>
+      <h1>Hello, {props.name}!</h1>
+      <p>This is an example React component.</p>
+    </div>
+  );
+}\`;
+
+<CodeBlock filename="title.tsx" showLineNumbers>
+  {code_example}
+</CodeBlock>`;
 
 export default function CodeBlockDefault() {
   return (
@@ -30,7 +41,9 @@ export default function CodeBlockDefault() {
         </div>
         <CollapseTrigger>code</CollapseTrigger>
         <CollapseContent>
-          <CodeBlock showLineNumbers>{code}</CodeBlock>
+          <CodeBlock aria-label="Code block example" showLineNumbers>
+            {code}
+          </CodeBlock>
         </CollapseContent>
       </Collapse>
     </section>

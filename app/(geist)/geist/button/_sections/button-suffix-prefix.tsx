@@ -5,7 +5,6 @@ import {
   CollapseTrigger,
 } from '@/components/ui/collapse';
 import { Button } from '@/components/ui/button';
-import CopyBlock from '@/components/copy-block';
 import CodeBlock from '@/components/ui/code-block';
 import { IoArrowUp } from 'react-icons/io5';
 import { BUTTON_SUFFIX_PREFIX_CODE } from '@/app/(geist)/geist/button/_snippets/snippets';
@@ -35,9 +34,7 @@ export default function ButtonSuffixPrefix() {
         </div>
         <CollapseTrigger>code</CollapseTrigger>
         <CollapseContent>
-          <CopyBlock text={BUTTON_SUFFIX_PREFIX_CODE}>
-            <CodeBlock showLineNumbers>{BUTTON_SUFFIX_PREFIX_CODE}</CodeBlock>
-          </CopyBlock>
+          <CodeBlock showLineNumbers>{BUTTON_SUFFIX_PREFIX_CODE}</CodeBlock>
         </CollapseContent>
       </Collapse>
     </section>

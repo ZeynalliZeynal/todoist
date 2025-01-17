@@ -3,7 +3,6 @@ import {
   CollapseContent,
   CollapseTrigger,
 } from '@/components/ui/collapse';
-import CopyBlock from '@/components/copy-block';
 import CodeBlock from '@/components/ui/code-block';
 import ScrollToLink from '@/app/(geist)/geist/_components/scroll-to-link';
 import Avatar, { AvatarGroup } from '@/components/ui/avatar';
@@ -71,9 +70,7 @@ export default function AvatarPage() {
           </div>
           <CollapseTrigger>code</CollapseTrigger>
           <CollapseContent>
-            <CopyBlock text={AVATAR_CODE}>
-              <CodeBlock showLineNumbers>{AVATAR_CODE}</CodeBlock>
-            </CopyBlock>
+            <CodeBlock showLineNumbers>{AVATAR_CODE}</CodeBlock>
           </CollapseContent>
         </Collapse>
       </section>
@@ -131,9 +128,7 @@ export default function AvatarPage() {
           </div>
           <CollapseTrigger>code</CollapseTrigger>
           <CollapseContent>
-            <CopyBlock text={AVATAR_GROUP_CODE}>
-              <CodeBlock showLineNumbers>{AVATAR_GROUP_CODE}</CodeBlock>
-            </CopyBlock>
+            <CodeBlock showLineNumbers>{AVATAR_GROUP_CODE}</CodeBlock>
           </CollapseContent>
         </Collapse>
       </section>

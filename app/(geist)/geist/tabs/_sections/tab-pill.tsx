@@ -1,6 +1,5 @@
 'use client';
 
-import CopyBlock from '@/components/copy-block';
 import CodeBlock from '@/components/ui/code-block';
 import {
   Collapse,
@@ -72,9 +71,7 @@ export default function TabPill() {
         </div>
         <CollapseTrigger>code</CollapseTrigger>
         <CollapseContent>
-          <CopyBlock text={tab_pill_code}>
-            <CodeBlock showLineNumbers>{tab_pill_code}</CodeBlock>
-          </CopyBlock>
+          <CodeBlock showLineNumbers>{tab_pill_code}</CodeBlock>
         </CollapseContent>
       </Collapse>
     </section>

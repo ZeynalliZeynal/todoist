@@ -17,6 +17,7 @@ export default function CodeBlock(props: Props) {
 
   return (
     <div
+      data-code-block-wrapper=""
       className={cn(
         'w-full rounded-md',
         filename ? 'border' : 'relative group',

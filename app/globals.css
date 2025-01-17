@@ -415,6 +415,26 @@
   }
 }
 
+@layer prism {
+  [data-code-block-wrapper] {
+    & span.token.keyword {
+      @apply !text-pink-900
+    }
+    & span.token.punctuation, & span.token.tag.punctuation, & span.token.plain-text, & span.token.plain, & span.token.property-access {
+      @apply !text-foreground
+    }
+    & span.token.function, & span.token.tag.attr-name {
+      @apply !text-purple-900
+    }
+    & span.token.tag.attr-value {
+      @apply !text-blue-900
+    }
+    & span.token.tag.class-name, & span.token.tag, & span.token.template-string.template-punctuation.string, & span.token.string {
+      @apply !text-green-900
+    }
+  }
+}
+
 /*::-webkit-scrollbar-track {*/
 /*    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);*/
 /*    background-color: hsla(var(--ds-gray-400-value));*/

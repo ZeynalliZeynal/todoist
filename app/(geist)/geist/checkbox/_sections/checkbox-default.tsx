@@ -7,7 +7,6 @@ import {
   CollapseTrigger,
 } from '@/components/ui/collapse';
 import { Checkbox } from '@/components/ui/primitives/checkbox';
-import CopyBlock from '@/components/copy-block';
 import CodeBlock from '@/components/ui/code-block';
 import React from 'react';
 import { checkbox_default } from '@/app/(geist)/geist/checkbox/_snippets/snippets';
@@ -31,9 +30,7 @@ export default function CheckboxDefault() {
         </div>
         <CollapseTrigger>code</CollapseTrigger>
         <CollapseContent>
-          <CopyBlock text={checkbox_default}>
-            <CodeBlock showLineNumbers>{checkbox_default}</CodeBlock>
-          </CopyBlock>
+          <CodeBlock showLineNumbers>{checkbox_default}</CodeBlock>
         </CollapseContent>
       </Collapse>
     </section>
