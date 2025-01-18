@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.2.15](https://github.com/ZeynalliZeynal/todoist/compare/v0.2.14...v0.2.15) (2025-01-18)
+
+
+### Bug Fixes
+
+* **util:** update chain util function to handle async functions as well ([b04b024](https://github.com/ZeynalliZeynal/todoist/commit/b04b0248d3c65fec16c9da4dc6185a0fe9a59f18))
+
 ### [0.2.14](https://github.com/ZeynalliZeynal/todoist/compare/v0.2.13...v0.2.14) (2025-01-18)
 
 
