@@ -1,4 +1,4 @@
-import { CSSProperties } from 'react';
+import { ComponentProps, CSSProperties } from 'react';
 
 export interface PopperContextProps {
   isOpen: boolean;
@@ -15,6 +15,10 @@ export interface PopperTriggerProps {
   children: React.ReactNode;
 }
 
-export interface PopperContentProps {
+export interface PopperContentProps extends ComponentProps<'div'> {
+  children: React.ReactNode;
+}
+
+export interface PopperItemProps extends ComponentProps<'div'> {
   children: React.ReactNode;
 }

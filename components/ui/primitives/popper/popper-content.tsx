@@ -16,6 +16,7 @@ export function PopperContent(props: PopperContentProps) {
     <AnimatePresence>
       {isOpen && popperStyle && (
         <motion.div
+          data-popper-content=""
           ref={ref}
           animate={{
             opacity: 1,
@@ -29,7 +30,7 @@ export function PopperContent(props: PopperContentProps) {
             opacity: 0,
             scale: 0.8,
           }}
-          className="fixed bg-background-100 top-0"
+          className="fixed bg-background-100 top-0 p-2 rounded-xl border w-48 mt-2"
           style={{
             ...popperStyle,
             pointerEvents: 'auto',
