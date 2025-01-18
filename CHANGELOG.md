@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.2.9](https://github.com/ZeynalliZeynal/todoist/compare/v0.2.8...v0.2.9) (2025-01-18)
+
+
+### Features
+
+* **ui:** add useOutsideClick and useRestrict hooks ([1f7bdc6](https://github.com/ZeynalliZeynal/todoist/commit/1f7bdc61b61d487be91d45e83661b56c09eca42a))
+
 ### [0.2.8](https://github.com/ZeynalliZeynal/todoist/compare/v0.2.7...v0.2.8) (2025-01-17)
 
 
