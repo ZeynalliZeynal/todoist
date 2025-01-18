@@ -1,9 +1,11 @@
 'use client';
 
-import { Popper } from '@/components/ui/primitives/popper';
-import { PopperTrigger } from '@/components/ui/primitives/popper/popper-trigger';
-import { PopperContent } from '@/components/ui/primitives/popper/popper-content';
-import { PopperItem } from '@/components/ui/primitives/popper/popper-item';
+import {
+  Popper,
+  PopperContent,
+  PopperItem,
+  PopperTrigger,
+} from '@/components/ui/primitives/popper';
 
 export default function DropdownMenuDefault() {
   return (
