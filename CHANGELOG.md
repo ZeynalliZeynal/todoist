@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.2.14](https://github.com/ZeynalliZeynal/todoist/compare/v0.2.13...v0.2.14) (2025-01-18)
+
+
+### Bug Fixes
+
+* **ui:** fix keyboard navigation through popper items ([cae536f](https://github.com/ZeynalliZeynal/todoist/commit/cae536f3106d8e6bfb4502cb70f3ce9195c63872))
+
 ### [0.2.13](https://github.com/ZeynalliZeynal/todoist/compare/v0.2.12...v0.2.13) (2025-01-18)
 
 
