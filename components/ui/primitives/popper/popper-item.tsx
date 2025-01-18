@@ -31,7 +31,7 @@ export const PopperItem = React.forwardRef<HTMLDivElement, PopperItemProps>(
         data-popper-item=""
         data-highlighted={highlightedItem === ref.current ? '' : null}
         className={cn(
-          'flex items-center rounded-lg px-3 h-9 align-middle transition cursor-default focus:bg-gray-alpha-100',
+          'flex items-center rounded-lg px-3 h-9 align-middle transition cursor-default focus:bg-gray-alpha-100 outline-none',
           className,
         )}
         onClick={chain(closePopper, onClick)}

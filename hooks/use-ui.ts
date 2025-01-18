@@ -7,23 +7,40 @@ interface OutsideClick {
 }
 
 interface Restrict {
+  tab?: 'loop' | 'disable';
+  disableScroll?: boolean;
   condition?: boolean;
 }
 
 export function useRestrict(options: Restrict) {
-  const { condition } = options;
+  const { condition, disableScroll = true, tab } = options;
 
   useLayoutEffect(() => {
     if (condition) {
-      const scrollbarWidth =
-        window.innerWidth - document.documentElement.clientWidth;
-      document.body.style.pointerEvents = 'none';
-      document.body.style.overflow = 'hidden';
-      document.body.style.paddingRight = `${scrollbarWidth}px`; // Compensate for scrollbar width
+      if (disableScroll) {
+        const scrollbarWidth =
+          window.innerWidth - document.documentElement.clientWidth;
+        document.body.style.pointerEvents = 'none';
+        document.body.style.overflow = 'hidden';
+        document.body.style.paddingRight = `${scrollbarWidth}px`; // Compensate for scrollbar width
+      }
+      if (tab === 'disable') {
+        function handleKeyDown(event: KeyboardEvent) {
+          if (event.key === 'Tab') {
+            event.preventDefault();
+          }
+        }
+        document.addEventListener('keydown', handleKeyDown);
+        return () => {
+          document.removeEventListener('keydown', handleKeyDown);
+        };
+      }
     } else {
-      document.body.style.pointerEvents = '';
-      document.body.style.overflow = '';
-      document.body.style.paddingRight = '';
+      if (disableScroll) {
+        document.body.style.pointerEvents = '';
+        document.body.style.overflow = '';
+        document.body.style.paddingRight = '';
+      }
     }
 
     return () => {

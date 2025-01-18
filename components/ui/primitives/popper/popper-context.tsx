@@ -4,8 +4,6 @@ import React, { CSSProperties, useState } from 'react';
 import { PopperContextProps } from './popper.types';
 import { useRestrict } from '@/hooks/use-ui';
 import { POPPER_CONTENT_SELECTOR } from '@/components/ui/primitives/selectors';
-import { createPortal } from 'react-dom';
-import { span } from 'framer-motion/m';
 
 const PopperContext = React.createContext<PopperContextProps | null>(null);
 
@@ -71,20 +69,6 @@ export function PopperProvider({ children }: { children: React.ReactNode }) {
         highlight,
       }}
     >
-      {isOpen &&
-        createPortal(
-          <span
-            tabIndex={0}
-            data-focus-guard=""
-            style={{
-              outline: 'none',
-              opacity: '0',
-              position: 'fixed',
-              pointerEvents: 'none',
-            }}
-          />,
-          document.body,
-        )}
       {children}
     </PopperContext.Provider>
   );
