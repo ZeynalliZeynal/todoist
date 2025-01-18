@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.2.12](https://github.com/ZeynalliZeynal/todoist/compare/v0.2.11...v0.2.12) (2025-01-18)
+
+
+### Features
+
+* **ui:** add ReactFocusGuard from react-focus-lock ([ebf2953](https://github.com/ZeynalliZeynal/todoist/commit/ebf2953a36a8a9c9574abd58455e3e187c79428f))
+
 ### [0.2.11](https://github.com/ZeynalliZeynal/todoist/compare/v0.2.10...v0.2.11) (2025-01-18)
 
 
