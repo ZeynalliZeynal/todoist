@@ -196,6 +196,10 @@ export const geistLinks: { title: string; links: LinkProps[] }[] = [
         href: '/geist/code-block',
       },
       {
+        label: 'dropdown menu',
+        href: '/geist/dropdown-menu',
+      },
+      {
         label: 'tabs',
         href: '/geist/tabs',
       },

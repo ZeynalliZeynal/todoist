@@ -23,11 +23,11 @@ export function CollapseContextProvider(props: { children: React.ReactNode }) {
   );
 }
 
-export function useCollapseContext() {
+export function useCollapse() {
   const context = React.useContext(CollapseContext);
   if (!context)
     throw new Error(
-      'useCollapseContext must be used within the CollapseProvider component.'
+      'useCollapse must be used within the CollapseProvider component.',
     );
   return context;
 }

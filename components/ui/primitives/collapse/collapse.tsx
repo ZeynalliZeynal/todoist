@@ -2,7 +2,7 @@
 
 import {
   CollapseContextProvider,
-  useCollapseContext,
+  useCollapse,
 } from '@/components/ui/primitives/collapse/collapse-context';
 import React from 'react';
 import { cn } from '@/utils/lib';
@@ -26,7 +26,7 @@ export function Collapse(props: CollapseProps) {
 
 export function CollapseTrigger(props: CollapseTriggerProps) {
   const { children, className, onClick, ...etc } = props;
-  const { collapse, collapseId, collapsed, state } = useCollapseContext();
+  const { collapse, collapseId, collapsed, state } = useCollapse();
 
   function handleClick(event: React.MouseEvent<HTMLButtonElement>) {
     collapse();
@@ -50,7 +50,7 @@ export function CollapseTrigger(props: CollapseTriggerProps) {
 
 export function CollapseContent(props: CollapseContentProps) {
   const { children, className, ...etc } = props;
-  const { collapsed, collapseId } = useCollapseContext();
+  const { collapsed, collapseId } = useCollapse();
 
   return (
     <AnimatePresence>
