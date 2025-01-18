@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.2.10](https://github.com/ZeynalliZeynal/todoist/compare/v0.2.9...v0.2.10) (2025-01-18)
+
+
+### Features
+
+* **util:** add chain function - takes functions as arguments, and executes them ([1703c53](https://github.com/ZeynalliZeynal/todoist/commit/1703c53bf6bbb252d6106cf68f1fe78cf96490e9))
+
 ### [0.2.9](https://github.com/ZeynalliZeynal/todoist/compare/v0.2.8...v0.2.9) (2025-01-18)
 
 
