@@ -6,14 +6,14 @@ import { Button } from '@/components/ui/button';
 
 export function PopperTrigger(props: PopperTriggerProps) {
   const { children } = props;
-  const { openPopper } = usePopper();
+  const { openPopper, id } = usePopper();
 
   function handleMouseDown(event: React.MouseEvent<HTMLButtonElement>) {
     openPopper(event);
   }
 
   return (
-    <Button size="sm" onMouseDown={handleMouseDown}>
+    <Button aria-controls={id} size="sm" onMouseDown={handleMouseDown}>
       {children}
     </Button>
   );

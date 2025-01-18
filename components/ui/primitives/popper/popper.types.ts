@@ -3,6 +3,9 @@ import { ComponentProps, CSSProperties } from 'react';
 export interface PopperContextProps {
   isOpen: boolean;
   popperStyle: CSSProperties;
+  id: string;
+  highlightedItem: HTMLElement | null;
+  highlight(element: HTMLElement | null): void;
   openPopper(event: React.MouseEvent<HTMLElement>): void;
   closePopper(): void;
 }

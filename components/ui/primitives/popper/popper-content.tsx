@@ -5,10 +5,11 @@ import { usePopper } from '@/components/ui/primitives/popper/popper-context';
 import { createPortal } from 'react-dom';
 import { AnimatePresence, motion } from 'framer-motion';
 import { useOutsideClick } from '@/hooks/use-ui';
+import { cn } from '@/utils/lib';
 
 export function PopperContent(props: PopperContentProps) {
-  const { children } = props;
-  const { isOpen, popperStyle, closePopper } = usePopper();
+  const { children, className, ...etc } = props;
+  const { isOpen, popperStyle, closePopper, id } = usePopper();
 
   const ref = useOutsideClick({ action: closePopper });
 
@@ -16,8 +17,6 @@ export function PopperContent(props: PopperContentProps) {
     <AnimatePresence>
       {isOpen && popperStyle && (
         <motion.div
-          data-popper-content=""
-          ref={ref}
           animate={{
             opacity: 1,
             scale: 1,
@@ -30,13 +29,27 @@ export function PopperContent(props: PopperContentProps) {
             opacity: 0,
             scale: 0.8,
           }}
-          className="fixed bg-background-100 top-0 p-2 rounded-xl border w-48 mt-2"
           style={{
-            ...popperStyle,
+            position: 'fixed',
             pointerEvents: 'auto',
+            ...popperStyle,
           }}
         >
-          {children}
+          <div
+            tabIndex={-1}
+            data-state={isOpen ? 'open' : 'closed'}
+            data-popper-content=""
+            aria-orientation="vertical"
+            ref={ref}
+            id={id}
+            className={cn(
+              'bg-background-100 p-2 rounded-xl border w-48 mt-2',
+              className,
+            )}
+            {...etc}
+          >
+            {children}
+          </div>
         </motion.div>
       )}
     </AnimatePresence>,
