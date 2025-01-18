@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.2.13](https://github.com/ZeynalliZeynal/todoist/compare/v0.2.12...v0.2.13) (2025-01-18)
+
+
+### Features
+
+* **ui:** add navigate through items feature with keyboard ([d09ebc2](https://github.com/ZeynalliZeynal/todoist/commit/d09ebc27371f564175d8c97fa67ecd4bd476f422))
+
 ### [0.2.12](https://github.com/ZeynalliZeynal/todoist/compare/v0.2.11...v0.2.12) (2025-01-18)
 
 
