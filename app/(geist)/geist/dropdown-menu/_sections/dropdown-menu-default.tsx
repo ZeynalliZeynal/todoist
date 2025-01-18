@@ -12,7 +12,14 @@ export default function DropdownMenuDefault() {
         <Popper>
           <PopperTrigger>Open</PopperTrigger>
           <PopperContent>
-            <PopperItem>One</PopperItem>
+            <PopperItem
+              onClick={async () => {
+                await new Promise((resolve) => setTimeout(resolve, 2000));
+                console.log(true);
+              }}
+            >
+              One
+            </PopperItem>
             <PopperItem>Two</PopperItem>
             <PopperItem>One</PopperItem>
             <PopperItem>Two</PopperItem>

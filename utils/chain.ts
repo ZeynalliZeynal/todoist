@@ -1,11 +1,11 @@
-export function chain<T>(
-  ...funcs: Array<((arg: T) => void) | null | undefined>
-): (arg: T) => void {
-  return (arg: T) => {
-    funcs.forEach((func) => {
+export function chain<T extends (...args: any[]) => void | Promise<void>>(
+  ...funcs: Array<T | null | undefined>
+): (...args: Parameters<T>) => void {
+  return async (...args: Parameters<T>) => {
+    for (const func of funcs) {
       if (typeof func === 'function') {
-        func(arg);
+        await func(...args); // Await async functions, and run sync functions normally
       }
-    });
+    }
   };
 }
