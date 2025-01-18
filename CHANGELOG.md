@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.2.11](https://github.com/ZeynalliZeynal/todoist/compare/v0.2.10...v0.2.11) (2025-01-18)
+
+
+### Features
+
+* **ui:** add highlighting feature to the popper ([2a40018](https://github.com/ZeynalliZeynal/todoist/commit/2a40018dd57faa0bccb621f9393d5ea7eaba79d5))
+
 ### [0.2.10](https://github.com/ZeynalliZeynal/todoist/compare/v0.2.9...v0.2.10) (2025-01-18)
 
 
