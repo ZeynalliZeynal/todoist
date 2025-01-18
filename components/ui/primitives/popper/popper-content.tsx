@@ -43,19 +43,21 @@ export function PopperContent(props: PopperContentProps) {
       switch (direction) {
         case 'next':
           nextIndex =
-            highlightedIndex === undefined ||
-            highlightedIndex === menuItems.length - 1
-              ? menuItems.indexOf(menuItems[menuItems.length - 1])
-              : highlightedIndex + 1;
+            highlightedIndex === undefined
+              ? 0
+              : highlightedIndex === menuItems.length - 1
+                ? menuItems.length - 1
+                : highlightedIndex + 1;
           break;
         default:
           nextIndex =
-            highlightedIndex === undefined || highlightedIndex === 0
-              ? 0
-              : highlightedIndex - 1;
+            highlightedIndex === undefined
+              ? menuItems.length - 1
+              : highlightedIndex === 0
+                ? 0
+                : highlightedIndex - 1;
           break;
       }
-      console.log(highlightedIndex);
       setHighlightedIndex(nextIndex);
       highlight(menuItems[nextIndex] as HTMLElement);
     }
