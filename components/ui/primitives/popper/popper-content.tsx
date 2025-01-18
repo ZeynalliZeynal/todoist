@@ -8,17 +8,66 @@ import { useOutsideClick } from '@/hooks/use-ui';
 import { cn } from '@/utils/lib';
 import React from 'react';
 import ReactFocusLock from 'react-focus-lock';
+import { POPPER_ITEM_SELECTOR } from '../selectors';
 
 export function PopperContent(props: PopperContentProps) {
   const { children, className, ...etc } = props;
-  const { isOpen, popperStyle, closePopper, id } = usePopper();
+  const {
+    isOpen,
+    popperStyle,
+    closePopper,
+    activeTrigger,
+    highlightedIndex,
+    setHighlightedIndex,
+    highlight,
+    id,
+  } = usePopper();
 
   const ref = useOutsideClick({ action: closePopper });
 
+  function handleKeyDown(event: React.KeyboardEvent) {
+    if (!ref.current) return;
+    if (event.key === 'Escape') {
+      closePopper();
+    }
+    if (event.key === 'ArrowUp' || event.key === 'ArrowDown') {
+      event.preventDefault();
+      const direction: 'next' | 'previous' =
+        event.code === 'ArrowUp' ? 'previous' : 'next';
+
+      const menuItems = Array.from(
+        ref.current.querySelectorAll(POPPER_ITEM_SELECTOR),
+      );
+
+      let nextIndex;
+      switch (direction) {
+        case 'next':
+          nextIndex =
+            highlightedIndex === undefined ||
+            highlightedIndex === menuItems.length - 1
+              ? menuItems.indexOf(menuItems[menuItems.length - 1])
+              : highlightedIndex + 1;
+          break;
+        default:
+          nextIndex =
+            highlightedIndex === undefined || highlightedIndex === 0
+              ? 0
+              : highlightedIndex - 1;
+          break;
+      }
+      console.log(highlightedIndex);
+      setHighlightedIndex(nextIndex);
+      highlight(menuItems[nextIndex] as HTMLElement);
+    }
+  }
+
   return createPortal(
-    <AnimatePresence>
+    <AnimatePresence onExitComplete={() => activeTrigger?.focus()}>
       {isOpen && popperStyle && (
-        <ReactFocusLock>
+        <ReactFocusLock
+          disabled={!isOpen}
+          onDeactivation={() => activeTrigger?.focus()}
+        >
           <motion.div
             animate={{
               opacity: 1,
@@ -49,6 +98,7 @@ export function PopperContent(props: PopperContentProps) {
                 'bg-background-100 p-2 rounded-xl border w-48 mt-2 focus:outline-0',
                 className,
               )}
+              onKeyDown={handleKeyDown}
               {...etc}
             >
               {children}

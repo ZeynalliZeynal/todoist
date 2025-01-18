@@ -12,7 +12,11 @@ export default function DropdownMenuDefault() {
         <Popper>
           <PopperTrigger>Open</PopperTrigger>
           <PopperContent>
-            <PopperItem onClick={() => console.log(false)}>One</PopperItem>
+            <PopperItem>One</PopperItem>
+            <PopperItem>Two</PopperItem>
+            <PopperItem>One</PopperItem>
+            <PopperItem>Two</PopperItem>
+            <PopperItem>One</PopperItem>
             <PopperItem>Two</PopperItem>
           </PopperContent>
         </Popper>

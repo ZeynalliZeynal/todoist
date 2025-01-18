@@ -3,7 +3,10 @@
 import React, { CSSProperties, useState } from 'react';
 import { PopperContextProps } from './popper.types';
 import { useRestrict } from '@/hooks/use-ui';
-import { POPPER_CONTENT_SELECTOR } from '@/components/ui/primitives/selectors';
+import {
+  POPPER_CONTENT_SELECTOR,
+  POPPER_ITEM_SELECTOR,
+} from '@/components/ui/primitives/selectors';
 
 const PopperContext = React.createContext<PopperContextProps | null>(null);
 
@@ -17,7 +20,9 @@ export function usePopper() {
 export function PopperProvider({ children }: { children: React.ReactNode }) {
   const [isOpen, setIsOpen] = React.useState<boolean>(false);
   const [popperStyle, setPopperStyle] = useState<CSSProperties>({});
-  const [highlightedIndex, setHighlightedIndex] = React.useState(-1);
+  const [highlightedIndex, setHighlightedIndex] = React.useState<
+    number | undefined
+  >(undefined);
   const [highlightedItem, setHighlightedItem] =
     React.useState<HTMLElement | null>(null);
 
@@ -29,8 +34,15 @@ export function PopperProvider({ children }: { children: React.ReactNode }) {
 
   function highlight(element: HTMLElement | null) {
     if (element) {
+      const rootElement = element.closest(
+        POPPER_CONTENT_SELECTOR,
+      ) as HTMLElement;
+      const items = Array.from(
+        rootElement.querySelectorAll(POPPER_ITEM_SELECTOR),
+      );
       setHighlightedItem(element);
       element?.focus();
+      setHighlightedIndex(items.indexOf(element));
     } else {
       setHighlightedItem(null);
       (document.querySelector(POPPER_CONTENT_SELECTOR) as HTMLElement).focus();
@@ -46,17 +58,17 @@ export function PopperProvider({ children }: { children: React.ReactNode }) {
     setIsOpen((prevState) => !prevState);
 
     activeTrigger.current = event.currentTarget;
-
     (document.querySelector(POPPER_CONTENT_SELECTOR) as HTMLElement)?.focus();
   }
 
   function closePopper() {
-    setIsOpen(false);
     activeTrigger.current?.focus();
+    setIsOpen(false);
+    setHighlightedItem(null);
+    setHighlightedIndex(undefined);
   }
 
   useRestrict({ condition: isOpen });
-
   return (
     <PopperContext.Provider
       value={{
@@ -66,7 +78,10 @@ export function PopperProvider({ children }: { children: React.ReactNode }) {
         popperStyle,
         id,
         highlightedItem,
+        highlightedIndex,
         highlight,
+        setHighlightedIndex,
+        activeTrigger: activeTrigger.current,
       }}
     >
       {children}

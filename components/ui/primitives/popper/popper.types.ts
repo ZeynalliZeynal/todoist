@@ -5,6 +5,9 @@ export interface PopperContextProps {
   popperStyle: CSSProperties;
   id: string;
   highlightedItem: HTMLElement | null;
+  activeTrigger: HTMLElement | null;
+  highlightedIndex?: number;
+  setHighlightedIndex(value?: number): void;
   highlight(element: HTMLElement | null): void;
   openPopper(event: React.MouseEvent<HTMLElement>): void;
   closePopper(): void;
@@ -14,7 +17,7 @@ export interface PopperProps {
   children: React.ReactNode;
 }
 
-export interface PopperTriggerProps {
+export interface PopperTriggerProps extends ComponentProps<'button'> {
   children: React.ReactNode;
 }
 
