@@ -6,15 +6,16 @@ import { createPortal } from 'react-dom';
 import { AnimatePresence, motion } from 'framer-motion';
 import { useOutsideClick } from '@/hooks/use-ui';
 import { cn } from '@/utils/lib';
-import React from 'react';
+import React, { useCallback } from 'react';
 import ReactFocusLock from 'react-focus-lock';
 import { POPPER_ITEM_SELECTOR } from '../selectors';
+import { useResize } from '@/hooks/useResize';
 
 export function PopperContent(props: PopperContentProps) {
   const { children, className, ...etc } = props;
   const {
     isOpen,
-    popperStyle,
+    triggerPosition,
     closePopper,
     activeTrigger,
     highlightedIndex,
@@ -22,6 +23,7 @@ export function PopperContent(props: PopperContentProps) {
     highlight,
     id,
   } = usePopper();
+  const [style, setStyle] = React.useState<React.CSSProperties>({});
 
   const ref = useOutsideClick({ action: closePopper });
 
@@ -63,9 +65,39 @@ export function PopperContent(props: PopperContentProps) {
     }
   }
 
+  const handleResize = useCallback(() => {
+    if (!ref.current || !triggerPosition) return;
+
+    const viewportHeight = window.innerHeight;
+    const spaceBelow =
+      viewportHeight - triggerPosition.top - triggerPosition.height;
+    const spaceAbove = triggerPosition.top;
+    const canFitBelow = spaceBelow >= ref.current.offsetHeight;
+    const canFitAbove = spaceAbove >= ref.current.offsetHeight;
+
+    if (canFitBelow) {
+      setStyle({
+        top: triggerPosition.top + triggerPosition.height,
+        bottom: 'auto',
+      });
+    } else if (canFitAbove) {
+      setStyle({
+        bottom: viewportHeight - triggerPosition.top,
+        top: 'auto',
+      });
+    } else {
+      setStyle({
+        bottom: 0,
+        top: 'auto',
+      });
+    }
+  }, [ref, triggerPosition]);
+
+  useResize(isOpen, handleResize);
+
   return createPortal(
     <AnimatePresence onExitComplete={() => activeTrigger?.focus()}>
-      {isOpen && popperStyle && (
+      {isOpen && triggerPosition && (
         <ReactFocusLock
           disabled={!isOpen}
           onDeactivation={() => activeTrigger?.focus()}
@@ -86,7 +118,8 @@ export function PopperContent(props: PopperContentProps) {
             style={{
               position: 'fixed',
               pointerEvents: 'auto',
-              ...popperStyle,
+              left: triggerPosition.left,
+              ...style,
             }}
           >
             <div
@@ -97,7 +130,7 @@ export function PopperContent(props: PopperContentProps) {
               ref={ref}
               id={id}
               className={cn(
-                'bg-background-100 p-2 rounded-xl border w-48 mt-2 focus:outline-0',
+                'bg-background-100 p-2 rounded-xl border w-48 my-2 focus:outline-0',
                 className,
               )}
               onKeyDown={handleKeyDown}

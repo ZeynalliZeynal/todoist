@@ -1,12 +1,14 @@
-import { ComponentProps, CSSProperties } from 'react';
+import React, { ComponentProps } from 'react';
 
 export interface PopperContextProps {
   isOpen: boolean;
-  popperStyle: CSSProperties;
+  triggerPosition: DOMRect | null;
   id: string;
   highlightedItem: HTMLElement | null;
   activeTrigger: HTMLElement | null;
   highlightedIndex?: number;
+
+  setTriggerPosition(style: DOMRect | null): void;
   setHighlightedIndex(value?: number): void;
   highlight(element: HTMLElement | null): void;
   openPopper(event: React.MouseEvent<HTMLElement>): void;

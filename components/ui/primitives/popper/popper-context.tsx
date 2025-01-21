@@ -1,6 +1,6 @@
 'use client';
 
-import React, { CSSProperties, useState } from 'react';
+import React, { useState } from 'react';
 import { PopperContextProps } from './popper.types';
 import { useRestrict } from '@/hooks/use-ui';
 import {
@@ -19,7 +19,7 @@ export function usePopper() {
 
 export function PopperProvider({ children }: { children: React.ReactNode }) {
   const [isOpen, setIsOpen] = React.useState<boolean>(false);
-  const [popperStyle, setPopperStyle] = useState<CSSProperties>({});
+  const [triggerPosition, setTriggerPosition] = useState<DOMRect | null>(null);
   const [highlightedIndex, setHighlightedIndex] = React.useState<
     number | undefined
   >(undefined);
@@ -51,9 +51,7 @@ export function PopperProvider({ children }: { children: React.ReactNode }) {
 
   function openPopper(event: React.MouseEvent<HTMLElement>) {
     const rect = event.currentTarget.getBoundingClientRect();
-    const top = rect.top + rect.height;
-    const left = rect.left;
-    setPopperStyle({ top, left });
+    setTriggerPosition(rect);
 
     setIsOpen((prevState) => !prevState);
 
@@ -75,13 +73,14 @@ export function PopperProvider({ children }: { children: React.ReactNode }) {
         isOpen,
         openPopper,
         closePopper,
-        popperStyle,
+        triggerPosition,
         id,
         highlightedItem,
         highlightedIndex,
         highlight,
         setHighlightedIndex,
         activeTrigger: activeTrigger.current,
+        setTriggerPosition,
       }}
     >
       {children}

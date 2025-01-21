@@ -32,14 +32,9 @@ export const PopperItem = React.forwardRef<HTMLDivElement, PopperItemProps>(
       highlight(null);
     }
 
-    function handleKeyDown<
-      T extends
-        | React.KeyboardEvent<HTMLElement>
-        | React.MouseEvent<HTMLElement>,
-    >(event: T) {
-      const key = (event as React.KeyboardEvent<HTMLElement>).key;
-      if (key === 'Enter' || key === 'Space') {
-        onClick?.(event as React.MouseEvent<HTMLElement>);
+    function handleKeyDown(event: React.KeyboardEvent) {
+      if (event.key === 'Enter' || event.key === ' ') {
+        ref.current?.click();
       }
     }
 
