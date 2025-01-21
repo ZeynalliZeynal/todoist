@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.3.2](https://github.com/ZeynalliZeynal/todoist/compare/v0.3.1...v0.3.2) (2025-01-21)
+
+
+### Bug Fixes
+
+* **unused-variables:** remove unused variables ([b1ce808](https://github.com/ZeynalliZeynal/todoist/commit/b1ce80813405a5f14b19ad86054dd7dc584fc1e3))
+
 ### [0.3.1](https://github.com/ZeynalliZeynal/todoist/compare/v0.3.0...v0.3.1) (2025-01-21)
 
 ## [0.3.0](https://github.com/ZeynalliZeynal/todoist/compare/v0.2.19...v0.3.0) (2025-01-21)
