@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.2.19](https://github.com/ZeynalliZeynal/todoist/compare/v0.2.18...v0.2.19) (2025-01-21)
+
+
+### Features
+
+* **ui:** add disabled prop to the popper item. disable all interaction with disabled item ([c5aef98](https://github.com/ZeynalliZeynal/todoist/commit/c5aef981577315522dce41f25d9bcbd15ccff49c))
+
 ### [0.2.18](https://github.com/ZeynalliZeynal/todoist/compare/v0.2.17...v0.2.18) (2025-01-21)
 
 
