@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.3.0](https://github.com/ZeynalliZeynal/todoist/compare/v0.2.19...v0.3.0) (2025-01-21)
+
+
+### ⚠ BREAKING CHANGES
+
+* **ui[popper-item]:** add asChild feature to popper components.
+
+### Features
+
+* **ui[popper-item]:** add asChild feature to popper components. ([0c102c8](https://github.com/ZeynalliZeynal/todoist/commit/0c102c820784279a8d070ee930e81cd97e9e63a6))
+
 ### [0.2.19](https://github.com/ZeynalliZeynal/todoist/compare/v0.2.18...v0.2.19) (2025-01-21)
 
 
