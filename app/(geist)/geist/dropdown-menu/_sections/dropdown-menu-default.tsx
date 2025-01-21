@@ -22,7 +22,7 @@ export default function DropdownMenuDefault() {
             >
               One
             </PopperItem>
-            <PopperItem>Two</PopperItem>
+            <PopperItem disabled>Two</PopperItem>
             <PopperItem>One</PopperItem>
             <PopperItem>Two</PopperItem>
             <PopperItem>One</PopperItem>

@@ -29,5 +29,5 @@ export interface PopperContentProps extends ComponentProps<'div'> {
 }
 
 export interface PopperItemProps extends ComponentProps<'div'> {
-  children: React.ReactNode;
+  disabled?: boolean;
 }

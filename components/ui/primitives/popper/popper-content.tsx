@@ -165,6 +165,8 @@ export function PopperContent(props: PopperContentProps) {
             }}
           >
             <div
+              data-align={align}
+              data-side={side}
               tabIndex={-1}
               data-state={isOpen ? 'open' : 'closed'}
               data-popper-content=""

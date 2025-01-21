@@ -1,11 +1,11 @@
 'use client';
 
-import { PopperItemProps } from '@/types/ui/popper';
 import { usePopper } from '@/components/ui/primitives/popper/popper-context';
 import { chain } from '@/utils/chain';
 import { cn } from '@/utils/lib';
 import React from 'react';
 import { mergeRefs } from '@/utils/ui/merge-refs';
+import { PopperItemProps } from '@/components/ui/primitives/popper/popper.types';
 
 export const PopperItem = React.forwardRef<HTMLDivElement, PopperItemProps>(
   (props, forwardRef) => {
@@ -17,11 +17,13 @@ export const PopperItem = React.forwardRef<HTMLDivElement, PopperItemProps>(
       onMouseEnter,
       onMouseLeave,
       onKeyDown,
+      disabled,
       ...etc
     } = props;
     const { closePopper, highlightedItem, highlight } = usePopper();
 
     function handleMouseEnter(event: React.MouseEvent<HTMLDivElement>) {
+      if (disabled) return;
       event.stopPropagation();
       event.currentTarget.tabIndex = 0;
       highlight(event.currentTarget);
@@ -44,15 +46,20 @@ export const PopperItem = React.forwardRef<HTMLDivElement, PopperItemProps>(
         tabIndex={-1}
         data-popper-item=""
         role="menuitem"
+        data-disabled={disabled ? '' : null}
         data-highlighted={highlightedItem === ref.current ? '' : null}
         className={cn(
-          'flex items-center rounded-lg px-3 h-9 align-middle transition cursor-default focus:bg-gray-alpha-100 outline-none',
+          'flex items-center rounded-lg px-3 h-9 align-middle transition cursor-default focus:bg-gray-alpha-100 outline-none data-[disabled]:text-gray-500 data-[disabled]:pointer-events-none data-[disabled]:focus:bg-transparent',
           className,
         )}
-        onClick={chain(onClick, closePopper)}
-        onMouseEnter={chain(handleMouseEnter, onMouseEnter)}
-        onMouseLeave={chain(handleMouseLeave, onMouseLeave)}
-        onKeyDown={chain(handleKeyDown, onKeyDown)}
+        onClick={!disabled ? chain(onClick, closePopper) : undefined}
+        onMouseEnter={
+          !disabled ? chain(handleMouseEnter, onMouseEnter) : undefined
+        }
+        onMouseLeave={
+          !disabled ? chain(handleMouseLeave, onMouseLeave) : undefined
+        }
+        onKeyDown={!disabled ? chain(handleKeyDown, onKeyDown) : undefined}
         {...etc}
       >
         {children}
