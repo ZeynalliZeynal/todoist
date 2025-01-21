@@ -36,6 +36,3 @@ export interface PopperItemProps extends ComponentProps<'div'> {
   disabled?: boolean;
   asChild?: boolean;
 }
-
-export interface PopperSeparatorProps extends ComponentProps<'div'> {}
-export interface PopperGroupProps extends ComponentProps<'div'> {}
