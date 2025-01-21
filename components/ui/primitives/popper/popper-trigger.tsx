@@ -4,11 +4,12 @@ import { PopperTriggerProps } from '@/components/ui/primitives/popper/popper.typ
 import { usePopper } from '@/components/ui/primitives/popper/popper-context';
 import { Button } from '@/components/ui/button';
 import { chain } from '@/utils/chain';
-import React, { useCallback } from 'react';
+import React, { HTMLAttributes, useCallback } from 'react';
 import { useResize } from '@/hooks/useResize';
+import { cn } from '@/utils/lib';
 
 export function PopperTrigger(props: PopperTriggerProps) {
-  const { children, onMouseDown, onClick, ...etc } = props;
+  const { children, asChild, onMouseDown, className, onClick, ...etc } = props;
   const { openPopper, id, setTriggerPosition, isOpen } = usePopper();
 
   const ref = React.useRef<HTMLButtonElement | null>(null);
@@ -25,15 +26,25 @@ export function PopperTrigger(props: PopperTriggerProps) {
 
   useResize(isOpen, handleResize);
 
-  return (
-    <Button
-      ref={ref}
-      aria-controls={id}
-      size="sm"
-      onMouseDown={chain(handleMouseDown, onMouseDown)}
-      onClick={chain(handleMouseDown, onClick)}
-      {...etc}
-    >
+  const attrs = {
+    ref,
+    role: 'button',
+    'aria-controls': id,
+    'aria-expanded': isOpen,
+    'data-state': isOpen ? 'open' : 'closed',
+    onMouseDown: chain(handleMouseDown, onMouseDown),
+    onClick: chain(handleMouseDown, onClick),
+    className,
+    ...etc,
+  };
+
+  return asChild && React.isValidElement(children) ? (
+    React.cloneElement(children, {
+      ...attrs,
+      className: cn(className, children.props.className),
+    } as HTMLAttributes<HTMLElement>)
+  ) : (
+    <Button size="md" {...attrs}>
       {children}
     </Button>
   );

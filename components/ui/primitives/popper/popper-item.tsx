@@ -3,7 +3,7 @@
 import { usePopper } from '@/components/ui/primitives/popper/popper-context';
 import { chain } from '@/utils/chain';
 import { cn } from '@/utils/lib';
-import React from 'react';
+import React, { HTMLAttributes } from 'react';
 import { mergeRefs } from '@/utils/ui/merge-refs';
 import { PopperItemProps } from '@/components/ui/primitives/popper/popper.types';
 
@@ -17,6 +17,7 @@ export const PopperItem = React.forwardRef<HTMLDivElement, PopperItemProps>(
       onMouseEnter,
       onMouseLeave,
       onKeyDown,
+      asChild,
       disabled,
       ...etc
     } = props;
@@ -40,27 +41,37 @@ export const PopperItem = React.forwardRef<HTMLDivElement, PopperItemProps>(
       }
     }
 
-    return (
+    const attrs = {
+      ref: mergeRefs(ref, forwardRef),
+      tabIndex: -1,
+      'data-popper-item': '',
+      role: 'menuitem',
+      'data-disabled': disabled ? '' : null,
+      'data-highlighted': highlightedItem === ref.current ? '' : null,
+      className,
+      onClick: !disabled ? chain(onClick, closePopper) : undefined,
+      onMouseEnter: !disabled
+        ? chain(handleMouseEnter, onMouseEnter)
+        : undefined,
+      onMouseLeave: !disabled
+        ? chain(handleMouseLeave, onMouseLeave)
+        : undefined,
+      onKeyDown: !disabled ? chain(handleKeyDown, onKeyDown) : undefined,
+      ...etc,
+    } as HTMLAttributes<HTMLElement>;
+
+    return asChild && React.isValidElement(children) ? (
+      React.cloneElement(children, {
+        ...attrs,
+        className: cn(className, children.props.className),
+      } as HTMLAttributes<HTMLElement>)
+    ) : (
       <div
-        ref={mergeRefs(ref, forwardRef)}
-        tabIndex={-1}
-        data-popper-item=""
-        role="menuitem"
-        data-disabled={disabled ? '' : null}
-        data-highlighted={highlightedItem === ref.current ? '' : null}
+        {...attrs}
         className={cn(
-          'flex items-center rounded-lg px-3 h-9 align-middle transition cursor-default focus:bg-gray-alpha-100 outline-none data-[disabled]:text-gray-500 data-[disabled]:pointer-events-none data-[disabled]:focus:bg-transparent',
-          className,
+          'flex items-center rounded-md px-2 cursor-pointer h-10 align-middle transition focus:bg-gray-alpha-100 outline-none data-[disabled]:text-gray-500 data-[disabled]:pointer-events-none data-[disabled]:focus:bg-transparent',
+          attrs.className,
         )}
-        onClick={!disabled ? chain(onClick, closePopper) : undefined}
-        onMouseEnter={
-          !disabled ? chain(handleMouseEnter, onMouseEnter) : undefined
-        }
-        onMouseLeave={
-          !disabled ? chain(handleMouseLeave, onMouseLeave) : undefined
-        }
-        onKeyDown={!disabled ? chain(handleKeyDown, onKeyDown) : undefined}
-        {...etc}
       >
         {children}
       </div>

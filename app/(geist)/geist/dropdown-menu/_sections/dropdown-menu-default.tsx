@@ -6,6 +6,8 @@ import {
   PopperItem,
   PopperTrigger,
 } from '@/components/ui/primitives/popper';
+import { PopperSeparator } from '@/components/ui/primitives/popper/popper-separator';
+import { PopperGroup } from '@/components/ui/primitives/popper/popper-group';
 
 export default function DropdownMenuDefault() {
   return (
@@ -26,7 +28,10 @@ export default function DropdownMenuDefault() {
             <PopperItem>One</PopperItem>
             <PopperItem>Two</PopperItem>
             <PopperItem>One</PopperItem>
-            <PopperItem>Two</PopperItem>
+            <PopperSeparator />
+            <PopperGroup>
+              <PopperItem>Two</PopperItem>
+            </PopperGroup>
           </PopperContent>
         </Popper>
       </div>

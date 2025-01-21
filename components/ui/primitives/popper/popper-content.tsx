@@ -1,22 +1,29 @@
 'use client';
 
-import { PopperContentProps } from '@/components/ui/primitives/popper/popper.types';
 import { usePopper } from '@/components/ui/primitives/popper/popper-context';
 import { createPortal } from 'react-dom';
 import { AnimatePresence, motion } from 'framer-motion';
 import { useOutsideClick } from '@/hooks/use-ui';
 import { cn } from '@/utils/lib';
-import React, { useCallback } from 'react';
+import React, { HTMLAttributes, useCallback } from 'react';
 import ReactFocusLock from 'react-focus-lock';
 import { POPPER_ITEM_SELECTOR } from '../selectors';
 import { useResize } from '@/hooks/useResize';
+import { chain } from '@/utils/chain';
+import { PopperContentProps } from '@/components/ui/primitives/popper/popper.types';
+import { mergeRefs } from '@/utils/ui/merge-refs';
 
-export function PopperContent(props: PopperContentProps) {
+export const PopperContent = React.forwardRef<
+  HTMLDivElement,
+  PopperContentProps
+>((props, forwardRef) => {
   const {
     children,
     className,
     align = 'center',
     side = 'bottom',
+    asChild,
+    onKeyDown,
     ...etc
   } = props;
   const {
@@ -76,7 +83,6 @@ export function PopperContent(props: PopperContentProps) {
 
     const viewportHeight = window.innerHeight;
     const viewportWidth = window.innerWidth;
-    const popperRect = ref.current.getBoundingClientRect();
 
     let top: number | 'auto' = 'auto';
     let left: number | 'auto' = 'auto';
@@ -137,6 +143,20 @@ export function PopperContent(props: PopperContentProps) {
 
   useResize(isOpen, handleResize);
 
+  const attrs = {
+    'data-align': align,
+    'data-side': side,
+    tabIndex: -1,
+    'data-state': isOpen ? 'open' : 'closed',
+    'data-popper-content': '',
+    'aria-orientation': 'vertical',
+    ref: mergeRefs(ref, forwardRef),
+    id,
+    className,
+    onKeyDown: chain(handleKeyDown, onKeyDown),
+    ...etc,
+  } as HTMLAttributes<HTMLDivElement>;
+
   return createPortal(
     <AnimatePresence onExitComplete={() => activeTrigger?.focus()}>
       {isOpen && triggerPosition && (
@@ -164,28 +184,27 @@ export function PopperContent(props: PopperContentProps) {
               ...style,
             }}
           >
-            <div
-              data-align={align}
-              data-side={side}
-              tabIndex={-1}
-              data-state={isOpen ? 'open' : 'closed'}
-              data-popper-content=""
-              aria-orientation="vertical"
-              ref={ref}
-              id={id}
-              className={cn(
-                'bg-background-100 p-2 rounded-xl border w-48 focus:outline-0',
-                className,
-              )}
-              onKeyDown={handleKeyDown}
-              {...etc}
-            >
-              {children}
-            </div>
+            {asChild && React.isValidElement(children) ? (
+              React.cloneElement(children, {
+                ...attrs,
+                className: cn(className, children.props.className),
+              } as HTMLAttributes<HTMLElement>)
+            ) : (
+              <div
+                {...attrs}
+                className={cn(
+                  'bg-background-100 p-2 rounded-xl border w-48 focus:outline-0',
+                  attrs.className,
+                )}
+              >
+                {children}
+              </div>
+            )}
           </motion.div>
         </ReactFocusLock>
       )}
     </AnimatePresence>,
     document.body,
   );
-}
+});
+PopperContent.displayName = 'PopperContent';
