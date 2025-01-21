@@ -25,14 +25,15 @@ export const PopperItem = React.forwardRef<HTMLDivElement, PopperItemProps>(
 
     function handleMouseEnter(event: React.MouseEvent<HTMLDivElement>) {
       if (disabled) return;
-      event.stopPropagation();
       event.currentTarget.tabIndex = 0;
       highlight(event.currentTarget);
+      onMouseEnter?.(event);
     }
 
     function handleMouseLeave(event: React.MouseEvent<HTMLDivElement>) {
       event.currentTarget.tabIndex = -1;
       highlight(null);
+      onMouseLeave?.(event);
     }
 
     function handleKeyDown(event: React.KeyboardEvent) {
@@ -50,12 +51,8 @@ export const PopperItem = React.forwardRef<HTMLDivElement, PopperItemProps>(
       'data-highlighted': highlightedItem === ref.current ? '' : null,
       className,
       onClick: !disabled ? chain(onClick, closePopper) : undefined,
-      onMouseEnter: !disabled
-        ? chain(handleMouseEnter, onMouseEnter)
-        : undefined,
-      onMouseLeave: !disabled
-        ? chain(handleMouseLeave, onMouseLeave)
-        : undefined,
+      onMouseEnter: !disabled ? handleMouseEnter : undefined,
+      onMouseLeave: !disabled ? handleMouseLeave : undefined,
       onKeyDown: !disabled ? chain(handleKeyDown, onKeyDown) : undefined,
       ...etc,
     } as HTMLAttributes<HTMLElement>;
@@ -70,13 +67,13 @@ export const PopperItem = React.forwardRef<HTMLDivElement, PopperItemProps>(
         {...attrs}
         className={cn(
           'flex items-center rounded-md px-2 cursor-pointer h-10 align-middle transition focus:bg-gray-alpha-100 outline-none data-[disabled]:text-gray-500 data-[disabled]:pointer-events-none data-[disabled]:focus:bg-transparent',
-          attrs.className,
+          attrs.className
         )}
       >
         {children}
       </div>
     );
-  },
+  }
 );
 
 PopperItem.displayName = 'PopperItem';

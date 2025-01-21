@@ -1,18 +1,21 @@
 import React, { ComponentProps } from 'react';
 
-export interface PopperContextProps {
+export interface PopperProviderProps {
   isOpen: boolean;
   triggerPosition: DOMRect | null;
   id: string;
-  highlightedItem: HTMLElement | null;
   activeTrigger: HTMLElement | null;
   highlightedIndex?: number;
 
   setTriggerPosition(style: DOMRect | null): void;
   setHighlightedIndex(value?: number): void;
-  highlight(element: HTMLElement | null): void;
   openPopper(event: React.MouseEvent<HTMLElement>): void;
   closePopper(): void;
+}
+
+export interface PopperContextProps extends PopperProviderProps {
+  highlightedItem: HTMLElement | null;
+  highlight(element: HTMLElement | null): void;
 }
 
 export interface PopperProps {
@@ -29,6 +32,10 @@ export type PopperContentAlignProps = 'start' | 'center' | 'end';
 export interface PopperContentProps extends ComponentProps<'div'> {
   align?: PopperContentAlignProps;
   side?: PopperContentSideProps;
+  asChild?: boolean;
+}
+
+export interface PopperSubContentProps extends ComponentProps<'div'> {
   asChild?: boolean;
 }
 

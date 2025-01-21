@@ -6,6 +6,7 @@ import { useRestrict } from '@/hooks/use-ui';
 import {
   POPPER_CONTENT_SELECTOR,
   POPPER_ITEM_SELECTOR,
+  POPPER_SUB_CONTENT_SELECTOR,
 } from '@/components/ui/primitives/selectors';
 
 const PopperContext = React.createContext<PopperContextProps | null>(null);
@@ -34,11 +35,11 @@ export function PopperProvider({ children }: { children: React.ReactNode }) {
 
   function highlight(element: HTMLElement | null) {
     if (element) {
-      const rootElement = element.closest(
-        POPPER_CONTENT_SELECTOR,
-      ) as HTMLElement;
+      const rootElement =
+        element.closest(POPPER_CONTENT_SELECTOR) ||
+        (element.closest(POPPER_SUB_CONTENT_SELECTOR) as HTMLElement);
       const items = Array.from(
-        rootElement.querySelectorAll(POPPER_ITEM_SELECTOR),
+        rootElement.querySelectorAll(POPPER_ITEM_SELECTOR)
       );
       setHighlightedItem(element);
       element?.focus();

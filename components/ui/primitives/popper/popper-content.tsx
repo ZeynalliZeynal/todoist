@@ -7,7 +7,10 @@ import { useOutsideClick } from '@/hooks/use-ui';
 import { cn } from '@/utils/lib';
 import React, { HTMLAttributes, useCallback } from 'react';
 import ReactFocusLock from 'react-focus-lock';
-import { POPPER_ITEM_SELECTOR } from '../selectors';
+import {
+  POPPER_ITEM_SELECTOR,
+  POPPER_SUB_CONTENT_SELECTOR,
+} from '../selectors';
 import { useResize } from '@/hooks/useResize';
 import { chain } from '@/utils/chain';
 import { PopperContentProps } from '@/components/ui/primitives/popper/popper.types';
@@ -40,7 +43,10 @@ export const PopperContent = React.forwardRef<
   } = usePopper();
   const [style, setStyle] = React.useState<React.CSSProperties>({});
 
-  const ref = useOutsideClick({ action: closePopper });
+  const ref = useOutsideClick({
+    action: closePopper,
+    selectors: [POPPER_SUB_CONTENT_SELECTOR],
+  });
 
   function handleKeyDown(event: React.KeyboardEvent) {
     if (!ref.current) return;
@@ -122,7 +128,7 @@ export const PopperContent = React.forwardRef<
                 {...attrs}
                 className={cn(
                   'bg-background-100 p-2 rounded-xl border w-48 focus:outline-0',
-                  attrs.className,
+                  attrs.className
                 )}
               >
                 {children}
@@ -132,7 +138,7 @@ export const PopperContent = React.forwardRef<
         </ReactFocusLock>
       )}
     </AnimatePresence>,
-    document.body,
+    document.body
   );
 });
 PopperContent.displayName = 'PopperContent';

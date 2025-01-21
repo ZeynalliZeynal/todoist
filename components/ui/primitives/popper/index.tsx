@@ -4,7 +4,12 @@ import dynamic from 'next/dynamic';
 
 export const PopperContent = dynamic(
   () => import('./popper-content').then((mod) => mod.PopperContent),
-  { ssr: false },
+  { ssr: false }
+);
+
+export const PopperSubContent = dynamic(
+  () => import('./popper-sub-content').then((mod) => mod.PopperSubContent),
+  { ssr: false }
 );
 
 export function Popper(props: PopperProps) {
@@ -12,5 +17,9 @@ export function Popper(props: PopperProps) {
   return <PopperProvider>{children}</PopperProvider>;
 }
 
+export * from './popper-sub-context';
 export * from './popper-item';
 export * from './popper-trigger';
+export * from './popper-sub-trigger';
+export * from './popper-separator';
+export * from './popper-group';

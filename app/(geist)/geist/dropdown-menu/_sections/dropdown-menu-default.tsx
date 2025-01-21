@@ -3,11 +3,14 @@
 import {
   Popper,
   PopperContent,
+  PopperGroup,
   PopperItem,
+  PopperSeparator,
+  PopperSub,
+  PopperSubContent,
+  PopperSubTrigger,
   PopperTrigger,
 } from '@/components/ui/primitives/popper';
-import { PopperSeparator } from '@/components/ui/primitives/popper/popper-separator';
-import { PopperGroup } from '@/components/ui/primitives/popper/popper-group';
 import { useState } from 'react';
 import Spinner from '@/components/ui/spinner';
 import { PiShootingStar } from 'react-icons/pi';
@@ -55,12 +58,17 @@ export default function DropdownMenuDefault() {
                 New Organization
               </span>
             </PopperItem>
-            <PopperItem>
-              <span className="flex items-center gap-2">
-                <IoStatsChartOutline />
-                Stats
-              </span>
-            </PopperItem>
+            <PopperSub>
+              <PopperSubTrigger>
+                <span className="flex items-center gap-2">
+                  <IoStatsChartOutline />
+                  Stats
+                </span>
+              </PopperSubTrigger>
+              <PopperSubContent>
+                <PopperItem>test</PopperItem>
+              </PopperSubContent>
+            </PopperSub>
             <PopperItem>
               <span className="flex items-center gap-2">
                 <LuLayoutDashboard />
