@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.2.18](https://github.com/ZeynalliZeynal/todoist/compare/v0.2.17...v0.2.18) (2025-01-21)
+
+
+### Features
+
+* **ui:** add aligning feature. Align and side props provide fully customizable positioning of the popper. The popper is able to stay on the screen while resizing the window as well ([9677381](https://github.com/ZeynalliZeynal/todoist/commit/96773819029c787196a0a6343af7fa7f0c55fc18))
+
 ### [0.2.17](https://github.com/ZeynalliZeynal/todoist/compare/v0.2.16...v0.2.17) (2025-01-21)
 
 
