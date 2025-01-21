@@ -14,7 +14,7 @@ export function keyboardArrowNavigation({
       event.code === 'ArrowUp' ? 'previous' : 'next';
 
     const menuItems = Array.from(
-      (event.currentTarget as HTMLElement).querySelectorAll(itemSelector),
+      (event.currentTarget as HTMLElement).querySelectorAll(itemSelector)
     );
 
     let nextIndex;
@@ -24,16 +24,16 @@ export function keyboardArrowNavigation({
           highlightedIndex === undefined
             ? 0
             : highlightedIndex === menuItems.length - 1
-              ? menuItems.length - 1
-              : highlightedIndex + 1;
+            ? menuItems.length - 1
+            : highlightedIndex + 1;
         break;
       default:
         nextIndex =
           highlightedIndex === undefined
             ? menuItems.length - 1
             : highlightedIndex === 0
-              ? 0
-              : highlightedIndex - 1;
+            ? 0
+            : highlightedIndex - 1;
         break;
     }
     return { nextIndex, menuItems };

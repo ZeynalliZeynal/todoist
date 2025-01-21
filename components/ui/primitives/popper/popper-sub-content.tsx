@@ -24,6 +24,7 @@ export const PopperSubContent = React.forwardRef<
     isOpen,
     triggerPosition,
     closePopper,
+    activeTrigger,
     highlightedIndex,
     setHighlightedIndex,
     id,
@@ -34,9 +35,6 @@ export const PopperSubContent = React.forwardRef<
 
   function handleKeyDown(event: React.KeyboardEvent) {
     if (!ref.current) return;
-    if (event.key === 'Escape') {
-      closePopper();
-    }
     const obj = keyboardArrowNavigation({
       event,
       highlightedIndex,
@@ -44,6 +42,16 @@ export const PopperSubContent = React.forwardRef<
     });
     setHighlightedIndex(obj?.nextIndex);
     highlight(obj?.menuItems[obj?.nextIndex] as HTMLElement);
+  }
+
+  function handleMouseLeave(event: React.MouseEvent) {
+    const relatedTarget = document.elementFromPoint(
+      event.clientX,
+      event.clientY
+    );
+    if (relatedTarget && relatedTarget !== activeTrigger) {
+      closePopper();
+    }
   }
 
   const handleResize = useCallback(() => {
@@ -66,6 +74,7 @@ export const PopperSubContent = React.forwardRef<
     id,
     className,
     onKeyDown: chain(handleKeyDown, onKeyDown),
+    onMouseLeave: handleMouseLeave,
     ...etc,
   } as HTMLAttributes<HTMLDivElement>;
 
@@ -84,7 +93,7 @@ export const PopperSubContent = React.forwardRef<
           }}
           exit={{
             opacity: 0,
-            x: 16,
+            scale: 0.8,
           }}
           style={{
             position: 'fixed',

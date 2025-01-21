@@ -1,6 +1,9 @@
 'use client';
 
-import { POPPER_CONTENT_SELECTOR } from '@/components/ui/primitives/selectors';
+import {
+  POPPER_ITEM_SELECTOR,
+  POPPER_SUB_CONTENT_SELECTOR,
+} from '@/components/ui/primitives/selectors';
 import React, { useState } from 'react';
 import { PopperProviderProps } from './popper.types';
 
@@ -29,19 +32,31 @@ export function PopperSub({ children }: { children: React.ReactNode }) {
   const id = `geist-${uiId}`;
 
   function openPopper(event: React.MouseEvent<HTMLElement>) {
-    const rect = event.currentTarget.getBoundingClientRect();
+    const rect = (event.currentTarget || event.target).getBoundingClientRect();
 
     setTriggerPosition(rect);
 
     setIsOpen((prevState) => !prevState);
 
     activeTrigger.current = event.currentTarget;
-    (document.querySelector(POPPER_CONTENT_SELECTOR) as HTMLElement)?.focus();
   }
 
   function closePopper() {
     setIsOpen(false);
   }
+
+  React.useEffect(() => {
+    if (isOpen) {
+      (
+        document
+          .querySelector(
+            `${POPPER_SUB_CONTENT_SELECTOR}[aria-labelledby='${id}']`
+          )
+          ?.querySelector(POPPER_ITEM_SELECTOR) as HTMLElement
+      )?.focus();
+      setHighlightedIndex(0);
+    }
+  }, [id, isOpen]);
 
   return (
     <PopperSubContext.Provider

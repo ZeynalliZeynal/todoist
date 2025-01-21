@@ -49,10 +49,11 @@ export const PopperContent = React.forwardRef<
   });
 
   function handleKeyDown(event: React.KeyboardEvent) {
-    if (!ref.current) return;
     if (event.key === 'Escape') {
       closePopper();
     }
+    if (document.querySelector(POPPER_SUB_CONTENT_SELECTOR)) return;
+    if (!ref.current) return;
     const obj = keyboardArrowNavigation({
       event,
       highlightedIndex,

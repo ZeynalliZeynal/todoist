@@ -46,7 +46,10 @@ export function PopperProvider({ children }: { children: React.ReactNode }) {
       setHighlightedIndex(items.indexOf(element));
     } else {
       setHighlightedItem(null);
-      (document.querySelector(POPPER_CONTENT_SELECTOR) as HTMLElement).focus();
+      (
+        (document.querySelector(POPPER_SUB_CONTENT_SELECTOR) ||
+          document.querySelector(POPPER_CONTENT_SELECTOR)) as HTMLElement
+      ).focus();
     }
   }
 

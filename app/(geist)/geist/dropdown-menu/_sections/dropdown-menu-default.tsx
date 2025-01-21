@@ -67,6 +67,21 @@ export default function DropdownMenuDefault() {
               </PopperSubTrigger>
               <PopperSubContent>
                 <PopperItem>test</PopperItem>
+                <PopperItem>test</PopperItem>
+                <PopperItem>test</PopperItem>
+              </PopperSubContent>
+            </PopperSub>
+            <PopperSub>
+              <PopperSubTrigger>
+                <span className="flex items-center gap-2">
+                  <IoStatsChartOutline />
+                  Stats
+                </span>
+              </PopperSubTrigger>
+              <PopperSubContent>
+                <PopperItem>test</PopperItem>
+                <PopperItem>test</PopperItem>
+                <PopperItem>test</PopperItem>
               </PopperSubContent>
             </PopperSub>
             <PopperItem>

@@ -5,9 +5,9 @@ import { PopperItemProps } from '@/types/ui/popper';
 import { cn } from '@/utils/lib';
 import React, { useCallback } from 'react';
 import { FaAngleRight } from 'react-icons/fa6';
+import { usePopper } from './popper-context';
 import { PopperItem } from './popper-item';
 import { usePopperSub } from './popper-sub-context';
-import { usePopper } from './popper-context';
 
 export function PopperSubTrigger(props: PopperItemProps) {
   const { children, className, ...etc } = props;
@@ -33,6 +33,14 @@ export function PopperSubTrigger(props: PopperItemProps) {
     }
   }
 
+  function handleKeyDown(
+    event: React.KeyboardEvent<HTMLElement> | React.MouseEvent<HTMLElement>
+  ) {
+    if ((event as React.KeyboardEvent).key === 'ArrowRight') {
+      openPopper(event as React.MouseEvent<HTMLElement>);
+    }
+  }
+
   const handleResize = useCallback(() => {
     const rect = ref.current?.getBoundingClientRect();
     if (!rect) return;
@@ -54,6 +62,7 @@ export function PopperSubTrigger(props: PopperItemProps) {
       )}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
+      onKeyDown={handleKeyDown}
     >
       {children}
       <FaAngleRight />
