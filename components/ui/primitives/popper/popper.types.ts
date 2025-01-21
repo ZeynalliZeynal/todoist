@@ -23,9 +23,12 @@ export interface PopperTriggerProps extends ComponentProps<'button'> {
   asChild?: boolean;
 }
 
+export type PopperContentSideProps = 'top' | 'right' | 'bottom' | 'left';
+export type PopperContentAlignProps = 'start' | 'center' | 'end';
+
 export interface PopperContentProps extends ComponentProps<'div'> {
-  align?: 'start' | 'center' | 'end';
-  side?: 'top' | 'right' | 'bottom' | 'left';
+  align?: PopperContentAlignProps;
+  side?: PopperContentSideProps;
   asChild?: boolean;
 }
 
