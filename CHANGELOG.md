@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.2.17](https://github.com/ZeynalliZeynal/todoist/compare/v0.2.16...v0.2.17) (2025-01-21)
+
+
+### Bug Fixes
+
+* **ui:** fix initially spaceBelow variable. Because framer motion is animating the scale of the container, it was calculating the height of the container wrong. The issue is resolved by using offsetHeight, instead of rect.height ([639cb09](https://github.com/ZeynalliZeynal/todoist/commit/639cb09ae8c37330681e692e3fe6d112aacf2bb2))
+
 ### [0.2.16](https://github.com/ZeynalliZeynal/todoist/compare/v0.2.15...v0.2.16) (2025-01-18)
 
 ### [0.2.15](https://github.com/ZeynalliZeynal/todoist/compare/v0.2.14...v0.2.15) (2025-01-18)
