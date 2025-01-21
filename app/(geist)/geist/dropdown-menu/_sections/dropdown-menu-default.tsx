@@ -13,7 +13,7 @@ export default function DropdownMenuDefault() {
       <div className="flex items-center justify-between p-6 bg-background-100">
         <Popper>
           <PopperTrigger>Open</PopperTrigger>
-          <PopperContent>
+          <PopperContent className="mt-3">
             <PopperItem
               onClick={async () => {
                 await new Promise((resolve) => setTimeout(resolve, 2000));

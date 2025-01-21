@@ -24,7 +24,8 @@ export interface PopperTriggerProps extends ComponentProps<'button'> {
 }
 
 export interface PopperContentProps extends ComponentProps<'div'> {
-  children: React.ReactNode;
+  align?: 'start' | 'center' | 'end';
+  side?: 'top' | 'right' | 'bottom' | 'left';
 }
 
 export interface PopperItemProps extends ComponentProps<'div'> {

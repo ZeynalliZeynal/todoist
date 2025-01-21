@@ -12,7 +12,13 @@ import { POPPER_ITEM_SELECTOR } from '../selectors';
 import { useResize } from '@/hooks/useResize';
 
 export function PopperContent(props: PopperContentProps) {
-  const { children, className, ...etc } = props;
+  const {
+    children,
+    className,
+    align = 'center',
+    side = 'bottom',
+    ...etc
+  } = props;
   const {
     isOpen,
     triggerPosition,
@@ -69,29 +75,65 @@ export function PopperContent(props: PopperContentProps) {
     if (!ref.current || !triggerPosition) return;
 
     const viewportHeight = window.innerHeight;
-    const spaceBelow =
-      viewportHeight - triggerPosition.top - triggerPosition.height;
-    const spaceAbove = triggerPosition.top;
-    const canFitBelow = spaceBelow >= ref.current.offsetHeight;
-    const canFitAbove = spaceAbove >= ref.current.offsetHeight;
+    const viewportWidth = window.innerWidth;
+    const popperRect = ref.current.getBoundingClientRect();
 
-    if (canFitBelow) {
-      setStyle({
-        top: triggerPosition.top + triggerPosition.height,
-        bottom: 'auto',
-      });
-    } else if (canFitAbove) {
-      setStyle({
-        bottom: viewportHeight - triggerPosition.top,
-        top: 'auto',
-      });
+    let top: number | 'auto' = 'auto';
+    let left: number | 'auto' = 'auto';
+    let bottom: number | 'auto' = 'auto';
+    let right: number | 'auto' = 'auto';
+
+    if (side === 'bottom' || side === 'top') {
+      if (side === 'bottom') {
+        top = triggerPosition.top + triggerPosition.height;
+        if (top + ref.current.offsetHeight > viewportHeight) {
+          top = 'auto';
+          bottom = viewportHeight - triggerPosition.top;
+        }
+      } else {
+        bottom = viewportHeight - triggerPosition.top;
+        if (triggerPosition.top - ref.current.offsetHeight < 0) {
+          top = triggerPosition.top + triggerPosition.height;
+          bottom = 'auto';
+        }
+      }
+      if (align === 'start') {
+        left = triggerPosition.left;
+      } else if (align === 'end') {
+        right = viewportWidth - (triggerPosition.left + triggerPosition.width);
+      } else {
+        left =
+          triggerPosition.left +
+          (triggerPosition.width - ref.current.offsetWidth) / 2;
+      }
     } else {
-      setStyle({
-        bottom: 0,
-        top: 'auto',
-      });
+      if (side === 'right') {
+        left = triggerPosition.left + triggerPosition.width;
+        if (left + ref.current.offsetWidth > viewportWidth) {
+          left = 'auto';
+          right = viewportWidth - triggerPosition.left;
+        }
+      } else {
+        right = viewportWidth - triggerPosition.left;
+        if (triggerPosition.left - ref.current.offsetWidth < 0) {
+          left = triggerPosition.left + triggerPosition.width;
+          right = 'auto';
+        }
+      }
+      if (align === 'start') {
+        top = triggerPosition.top;
+      } else if (align === 'end') {
+        bottom =
+          viewportHeight - (triggerPosition.top + triggerPosition.height);
+      } else {
+        top =
+          triggerPosition.top +
+          (triggerPosition.height - ref.current.offsetHeight) / 2;
+      }
     }
-  }, [ref, triggerPosition]);
+
+    setStyle({ top, left, bottom, right });
+  }, [align, ref, side, triggerPosition]);
 
   useResize(isOpen, handleResize);
 
@@ -130,7 +172,7 @@ export function PopperContent(props: PopperContentProps) {
               ref={ref}
               id={id}
               className={cn(
-                'bg-background-100 p-2 rounded-xl border w-48 my-2 focus:outline-0',
+                'bg-background-100 p-2 rounded-xl border w-48 focus:outline-0',
                 className,
               )}
               onKeyDown={handleKeyDown}
