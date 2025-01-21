@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.3.3](https://github.com/ZeynalliZeynal/todoist/compare/v0.3.2...v0.3.3) (2025-01-21)
+
+
+### Features
+
+* **ui[popper-sub]:** add key navigation feature to the popper sub ([3298cb5](https://github.com/ZeynalliZeynal/todoist/commit/3298cb54e77543c205d6d3a7752450f9bbf90420))
+* **ui[popper-sub]:** setup popper sub components, render popper sub ([db0d867](https://github.com/ZeynalliZeynal/todoist/commit/db0d867b91dd38d2a97c1ba0fcc19405c3bc04d5))
+
 ### [0.3.2](https://github.com/ZeynalliZeynal/todoist/compare/v0.3.1...v0.3.2) (2025-01-21)
 
 
