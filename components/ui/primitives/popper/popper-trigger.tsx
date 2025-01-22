@@ -9,7 +9,17 @@ import { useResize } from '@/hooks/useResize';
 import { cn } from '@/utils/lib';
 
 export function PopperTrigger(props: PopperTriggerProps) {
-  const { children, asChild, onMouseDown, className, onClick, ...etc } = props;
+  const {
+    children,
+    asChild,
+    suffix,
+    prefix,
+    disabled,
+    onMouseDown,
+    className,
+    onClick,
+    ...etc
+  } = props;
   const { openPopper, id, setTriggerPosition, isOpen } = usePopper();
 
   const ref = React.useRef<HTMLButtonElement | null>(null);
@@ -31,6 +41,7 @@ export function PopperTrigger(props: PopperTriggerProps) {
     role: 'button',
     'aria-controls': id,
     'aria-expanded': isOpen,
+    'data-disabled': disabled,
     'data-state': isOpen ? 'open' : 'closed',
     onMouseDown: chain(handleMouseDown, onMouseDown),
     onClick: chain(handleMouseDown, onClick),
@@ -44,7 +55,7 @@ export function PopperTrigger(props: PopperTriggerProps) {
       className: cn(className, children.props.className),
     } as HTMLAttributes<HTMLElement>)
   ) : (
-    <Button size="md" {...attrs}>
+    <Button size="md" suffix={suffix} prefix={prefix} {...attrs}>
       {children}
     </Button>
   );

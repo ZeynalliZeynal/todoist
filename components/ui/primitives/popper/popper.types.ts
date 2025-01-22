@@ -22,8 +22,12 @@ export interface PopperProps {
   children: React.ReactNode;
 }
 
-export interface PopperTriggerProps extends ComponentProps<'button'> {
+export interface PopperTriggerProps
+  extends Omit<ComponentProps<'button'>, 'prefix'> {
   asChild?: boolean;
+  disabled?: boolean;
+  prefix?: React.ReactNode;
+  suffix?: React.ReactNode;
 }
 
 export type PopperContentSideProps = 'top' | 'right' | 'bottom' | 'left';
@@ -39,7 +43,10 @@ export interface PopperSubContentProps extends ComponentProps<'div'> {
   asChild?: boolean;
 }
 
-export interface PopperItemProps extends ComponentProps<'div'> {
+export interface PopperItemProps extends Omit<ComponentProps<'div'>, 'prefix'> {
   disabled?: boolean;
   asChild?: boolean;
+  prefix?: React.ReactNode;
+  suffix?: React.ReactNode;
+  inset?: boolean;
 }

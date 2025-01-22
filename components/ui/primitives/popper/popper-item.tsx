@@ -19,6 +19,9 @@ export const PopperItem = React.forwardRef<HTMLDivElement, PopperItemProps>(
       onKeyDown,
       asChild,
       disabled,
+      suffix,
+      prefix,
+      inset,
       ...etc
     } = props;
     const { closePopper, highlightedItem, highlight } = usePopper();
@@ -72,11 +75,17 @@ export const PopperItem = React.forwardRef<HTMLDivElement, PopperItemProps>(
       <div
         {...attrs}
         className={cn(
-          'flex items-center rounded-md px-2 cursor-pointer h-10 align-middle transition focus:bg-gray-alpha-100 outline-none data-[disabled]:text-gray-500 data-[disabled]:pointer-events-none data-[disabled]:focus:bg-transparent',
+          'flex items-center justify-between px-2 rounded-md cursor-pointer h-10 align-middle transition focus:bg-gray-alpha-100 outline-none data-[disabled]:text-gray-500 data-[disabled]:pointer-events-none data-[disabled]:focus:bg-transparent',
           attrs.className,
         )}
       >
-        {children}
+        <span
+          className={cn('flex items-center gap-2', inset && !prefix && 'pl-3')}
+        >
+          {prefix}
+          {children}
+        </span>
+        {suffix}
       </div>
     );
   },

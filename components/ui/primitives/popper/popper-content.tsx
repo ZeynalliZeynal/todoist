@@ -54,13 +54,16 @@ export const PopperContent = React.forwardRef<
     }
     if (document.querySelector(POPPER_SUB_CONTENT_SELECTOR)) return;
     if (!ref.current) return;
-    const obj = keyboardArrowNavigation({
-      event,
-      highlightedIndex,
-      itemSelector: POPPER_ITEM_SELECTOR,
-    });
-    setHighlightedIndex(obj?.nextIndex);
-    highlight(obj?.menuItems[obj?.nextIndex] as HTMLElement);
+    if (event.key === 'ArrowUp' || event.key === 'ArrowDown') {
+      event.preventDefault();
+      const obj = keyboardArrowNavigation({
+        event,
+        highlightedIndex,
+        itemSelector: POPPER_ITEM_SELECTOR,
+      });
+      setHighlightedIndex(obj?.nextIndex);
+      highlight(obj?.menuItems[obj?.nextIndex] as HTMLElement);
+    }
   }
 
   const handleResize = useCallback(() => {
@@ -112,6 +115,7 @@ export const PopperContent = React.forwardRef<
               opacity: 0,
               scale: 0.8,
             }}
+            data-popper-wrapper=""
             style={{
               position: 'fixed',
               pointerEvents: 'auto',
@@ -129,7 +133,7 @@ export const PopperContent = React.forwardRef<
                 {...attrs}
                 className={cn(
                   'bg-background-100 p-2 rounded-xl border w-48 focus:outline-0',
-                  attrs.className
+                  attrs.className,
                 )}
               >
                 {children}
@@ -139,7 +143,7 @@ export const PopperContent = React.forwardRef<
         </ReactFocusLock>
       )}
     </AnimatePresence>,
-    document.body
+    document.body,
   );
 });
 PopperContent.displayName = 'PopperContent';

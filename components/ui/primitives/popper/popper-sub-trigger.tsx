@@ -1,13 +1,13 @@
 'use client';
 
 import { useResize } from '@/hooks/useResize';
-import { PopperItemProps } from '@/types/ui/popper';
 import { cn } from '@/utils/lib';
 import React, { useCallback } from 'react';
 import { FaAngleRight } from 'react-icons/fa6';
 import { usePopper } from './popper-context';
 import { PopperItem } from './popper-item';
 import { usePopperSub } from './popper-sub-context';
+import { PopperItemProps } from '@/components/ui/primitives/popper/popper.types';
 
 export function PopperSubTrigger(props: PopperItemProps) {
   const { children, className, ...etc } = props;
@@ -69,9 +69,9 @@ export function PopperSubTrigger(props: PopperItemProps) {
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
       onKeyDown={handleKeyDown}
+      suffix={<FaAngleRight />}
     >
       {children}
-      <FaAngleRight />
     </PopperItem>
   );
 }

@@ -14,13 +14,13 @@ import {
 import { useState } from 'react';
 import Spinner from '@/components/ui/spinner';
 import { PiShootingStar } from 'react-icons/pi';
-import { TbMailCog } from 'react-icons/tb';
 import {
   IoGridOutline,
   IoPeopleOutline,
   IoStatsChartOutline,
 } from 'react-icons/io5';
 import { LuLayoutDashboard } from 'react-icons/lu';
+import { TbMailCog } from 'react-icons/tb';
 
 export default function DropdownMenuDefault() {
   const [isPending, setIsPending] = useState(false);
@@ -38,32 +38,21 @@ export default function DropdownMenuDefault() {
                 await new Promise((resolve) => setTimeout(resolve, 2000));
                 setIsPending(false);
               }}
+              prefix={<TbMailCog />}
+              suffix={isPending && <Spinner />}
               className="justify-between"
             >
-              <span className="flex items-center gap-2">
-                <TbMailCog />
-                Update Email
-              </span>
-              {isPending && <Spinner />}
+              Update Email
             </PopperItem>
-            <PopperItem disabled>
-              <span className="flex items-center gap-2">
-                <IoGridOutline />
-                Grid View
-              </span>
+            <PopperItem disabled prefix={<IoGridOutline />}>
+              Grid View
             </PopperItem>
-            <PopperItem>
-              <span className="flex items-center gap-2">
-                <IoPeopleOutline />
-                New Organization
-              </span>
+            <PopperItem prefix={<IoPeopleOutline />}>
+              New Organization
             </PopperItem>
             <PopperSub>
-              <PopperSubTrigger>
-                <span className="flex items-center gap-2">
-                  <IoStatsChartOutline />
-                  Stats
-                </span>
+              <PopperSubTrigger prefix={<IoStatsChartOutline />}>
+                Stats
               </PopperSubTrigger>
               <PopperSubContent>
                 <PopperItem>test</PopperItem>
@@ -71,32 +60,14 @@ export default function DropdownMenuDefault() {
                 <PopperItem>test</PopperItem>
               </PopperSubContent>
             </PopperSub>
-            <PopperSub>
-              <PopperSubTrigger>
-                <span className="flex items-center gap-2">
-                  <IoStatsChartOutline />
-                  Stats
-                </span>
-              </PopperSubTrigger>
-              <PopperSubContent>
-                <PopperItem>test</PopperItem>
-                <PopperItem>test</PopperItem>
-                <PopperItem>test</PopperItem>
-              </PopperSubContent>
-            </PopperSub>
-            <PopperItem>
-              <span className="flex items-center gap-2">
-                <LuLayoutDashboard />
-                Dashboard
-              </span>
-            </PopperItem>
+            <PopperItem prefix={<LuLayoutDashboard />}>Dashboard</PopperItem>
             <PopperSeparator />
             <PopperGroup>
-              <PopperItem className="focus:bg-amber-100/75 focus:ring-1 ring-amber-500">
-                <span className="flex items-center gap-2">
-                  <PiShootingStar className="text-amber-900" />
-                  Upgrade
-                </span>
+              <PopperItem
+                className="focus:bg-amber-100/75 focus:ring-1 ring-amber-500"
+                prefix={<PiShootingStar className="text-amber-900" />}
+              >
+                Upgrade
               </PopperItem>
             </PopperGroup>
           </PopperContent>

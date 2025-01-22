@@ -35,13 +35,15 @@ export const PopperSubContent = React.forwardRef<
 
   function handleKeyDown(event: React.KeyboardEvent) {
     if (!ref.current) return;
-    const obj = keyboardArrowNavigation({
-      event,
-      highlightedIndex,
-      itemSelector: POPPER_ITEM_SELECTOR,
-    });
-    setHighlightedIndex(obj?.nextIndex);
-    highlight(obj?.menuItems[obj?.nextIndex] as HTMLElement);
+    if (event.key === 'ArrowUp' || event.key === 'ArrowDown') {
+      const obj = keyboardArrowNavigation({
+        event,
+        highlightedIndex,
+        itemSelector: POPPER_ITEM_SELECTOR,
+      });
+      setHighlightedIndex(obj?.nextIndex);
+      highlight(obj?.menuItems[obj?.nextIndex] as HTMLElement);
+    }
   }
 
   function handleMouseLeave(event: React.MouseEvent) {
@@ -135,7 +137,8 @@ export const PopperSubContent = React.forwardRef<
         </motion.div>
       )}
     </AnimatePresence>,
-    document.body,
+    document.body.querySelector('[data-popper-wrapper]')?.parentElement ||
+      document.body,
   );
 });
 PopperSubContent.displayName = 'PopperSubContent';
