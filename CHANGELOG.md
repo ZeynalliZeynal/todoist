@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.3.7](https://github.com/ZeynalliZeynal/todoist/compare/v0.3.6...v0.3.7) (2025-01-22)
+
+
+### Features
+
+* **ui[popper-sub-content]:** set position of the sub popper while resizing ([6133ca9](https://github.com/ZeynalliZeynal/todoist/commit/6133ca96ee4ae7017bedc0932d4ee8c946bd6e71))
+
 ### [0.3.6](https://github.com/ZeynalliZeynal/todoist/compare/v0.3.5...v0.3.6) (2025-01-22)
 
 
