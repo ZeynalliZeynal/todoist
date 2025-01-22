@@ -10,6 +10,7 @@ export default async function TemplateData() {
     } = await apiClient(
       'template-categories?templates=enable&fields=name&size=5',
     );
+    console.log(categories);
 
     return <TemplateTabs categories={categories} />;
   } catch {

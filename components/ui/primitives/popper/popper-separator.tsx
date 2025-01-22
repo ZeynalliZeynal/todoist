@@ -1,11 +1,11 @@
 'use client';
 
-import React, { ComponentProps } from 'react';
+import React from 'react';
 import { cn } from '@/utils/lib';
 
 export const PopperSeparator = React.forwardRef<
   HTMLDivElement,
-  ComponentProps<'div'>
+  React.ComponentProps<'div'>
 >((props, ref) => {
   return (
     <div

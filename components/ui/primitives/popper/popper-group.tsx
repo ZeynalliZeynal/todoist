@@ -5,7 +5,7 @@ import { cn } from '@/utils/lib';
 
 export const PopperGroup = React.forwardRef<
   HTMLDivElement,
-  ComponentProps<'div'>
+  React.ComponentProps<'div'>
 >((props, ref) => {
   return (
     <div

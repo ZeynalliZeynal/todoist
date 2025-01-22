@@ -35,7 +35,7 @@ export default function CardSheet({
             className="absolute h-full w-px left-1/3"
             style={{
               background:
-                'linear-gradient(180deg,hsla(var(--ds-gray-400)),hsla(var(--ds-gray-400)) 50%,transparent 0,transparent)',
+                'linear-gradient(180deg,var(--ds-gray-400),var(--ds-gray-400) 50%,transparent 0,transparent)',
               backgroundSize: '1px 5px',
             }}
           />
@@ -43,7 +43,7 @@ export default function CardSheet({
             className="absolute h-full w-px left-2/3"
             style={{
               background:
-                'linear-gradient(180deg,hsla(var(--ds-gray-400)),hsla(var(--ds-gray-400)) 50%,transparent 0,transparent)',
+                'linear-gradient(180deg,var(--ds-gray-400),var(--ds-gray-400) 50%,transparent 0,transparent)',
               backgroundSize: '1px 5px',
             }}
           />
