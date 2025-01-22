@@ -1,4 +1,4 @@
-This is a [Next.js](https://nextjs.org/) project inspired by [Todoist](https://todoist.com) and [Vercel](https://vercel.com).
+This is a [Next.js](https://nextjs.org/) (v15 based) project inspired by [Todoist](https://todoist.com) and [Vercel](https://vercel.com).
 
 # Todoist NEXT
 
