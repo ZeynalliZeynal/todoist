@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.3.8](https://github.com/ZeynalliZeynal/todoist/compare/v0.3.7...v0.3.8) (2025-01-22)
+
+
+### Features
+
+* add dropdown-menu component ([203af1b](https://github.com/ZeynalliZeynal/todoist/commit/203af1bac45b55d2333514bc9ff6247547ff52df))
+
 ### [0.3.7](https://github.com/ZeynalliZeynal/todoist/compare/v0.3.6...v0.3.7) (2025-01-22)
 
 
