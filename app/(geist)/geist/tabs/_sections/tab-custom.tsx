@@ -11,6 +11,7 @@ import { cn } from '@/utils/lib';
 import React from 'react';
 import ScrollToLink from '../../_components/scroll-to-link';
 import { tab_custom_code } from '../_snippets/snippets';
+import GeistContentWrapper from '@/app/(geist)/geist/_components/geist-content-wrapper';
 
 const tabs = [
   {
@@ -51,7 +52,7 @@ export default function TabCustom() {
         Fully customizable with <code>data</code> attributes.
       </p>
       <Collapse className="mt-7">
-        <div className="flex flex-col items-center justify-between p-6 bg-background-100">
+        <GeistContentWrapper>
           <Tabs className="p-1 rounded-lg justify-center">
             {tabs.map((tab) => (
               <Tab
@@ -67,7 +68,7 @@ export default function TabCustom() {
               </Tab>
             ))}
           </Tabs>
-        </div>
+        </GeistContentWrapper>
         <CollapseTrigger>code</CollapseTrigger>
         <CollapseContent>
           <CodeBlock showLineNumbers>{tab_custom_code}</CodeBlock>

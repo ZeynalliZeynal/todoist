@@ -8,6 +8,7 @@ import { Checkbox } from '@/components/ui/primitives/checkbox';
 import CodeBlock from '@/components/ui/code-block';
 import React from 'react';
 import { checkbox_disabled } from '@/app/(geist)/geist/checkbox/_snippets/snippets';
+import GeistContentWrapper from '@/app/(geist)/geist/_components/geist-content-wrapper';
 
 export default function CheckboxDisabled() {
   return (
@@ -16,14 +17,14 @@ export default function CheckboxDisabled() {
         <h2>Default</h2>
       </ScrollToLink>
       <Collapse className="mt-7">
-        <div className="flex flex-col gap-2 justify-between p-6 bg-background-100">
+        <GeistContentWrapper>
           <Checkbox disabled checked={false}>
             Disabled
           </Checkbox>
           <Checkbox disabled checked={true}>
             Disabled & checked
           </Checkbox>
-        </div>
+        </GeistContentWrapper>
         <CollapseTrigger>code</CollapseTrigger>
         <CollapseContent>
           <CodeBlock showLineNumbers>{checkbox_disabled}</CodeBlock>

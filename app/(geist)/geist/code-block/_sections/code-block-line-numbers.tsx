@@ -5,6 +5,7 @@ import {
   CollapseTrigger,
 } from '@/components/ui/collapse';
 import CodeBlock from '@/components/ui/code-block';
+import GeistContentWrapper from '@/app/(geist)/geist/_components/geist-content-wrapper';
 
 const code_example = `function MyComponent(props) {
   return (
@@ -35,9 +36,9 @@ export default function CodeBlockLineNumbers() {
         <h2>No line numbers</h2>
       </ScrollToLink>
       <Collapse className="mt-7">
-        <div className="flex items-center justify-between p-6 bg-background-100">
+        <GeistContentWrapper>
           <CodeBlock className="border rounded-md">{code_example}</CodeBlock>
-        </div>
+        </GeistContentWrapper>
         <CollapseTrigger>code</CollapseTrigger>
         <CollapseContent>
           <CodeBlock aria-label="Code block example" showLineNumbers>

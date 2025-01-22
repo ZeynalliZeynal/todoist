@@ -132,7 +132,7 @@ export const PopperContent = React.forwardRef<
               <div
                 {...attrs}
                 className={cn(
-                  'bg-background-100 p-2 rounded-xl border w-48 focus:outline-0',
+                  'bg-background-100 p-2 rounded-xl border w-48 m-2 focus:outline-0',
                   attrs.className,
                 )}
               >

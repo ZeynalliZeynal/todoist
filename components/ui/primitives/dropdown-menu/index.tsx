@@ -3,8 +3,10 @@ import {
   PopperContent,
   PopperGroup,
   PopperItem,
+  PopperLabel,
   PopperSeparator,
   PopperSub,
+  PopperSubContent,
   PopperSubTrigger,
   PopperTrigger,
 } from '@/components/ui/primitives/popper';
@@ -15,7 +17,6 @@ import {
   PopperTriggerProps,
 } from '@/components/ui/primitives/popper/popper.types';
 import { ComponentProps } from 'react';
-import { PopperSubContent } from '@/components/ui/primitives/popper/popper-sub-content';
 
 export function DropdownMenu(props: {
   children: React.ReactNode;
@@ -49,6 +50,12 @@ export function DropdownMenuGroup(
   props: ComponentProps<'div'>,
 ): React.ReactElement {
   return <PopperGroup {...props} />;
+}
+
+export function DropdownMenuLabel(
+  props: ComponentProps<'div'>,
+): React.ReactElement {
+  return <PopperLabel {...props} />;
 }
 
 export function DropdownMenuSub(props: {

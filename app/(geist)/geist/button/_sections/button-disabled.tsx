@@ -8,6 +8,7 @@ import { Button } from '@/components/ui/button';
 import CodeBlock from '@/components/ui/code-block';
 import { button_link_code } from '@/app/(geist)/geist/button/_snippets/snippets';
 import Spinner from '@/components/ui/spinner';
+import GeistContentWrapper from '@/app/(geist)/geist/_components/geist-content-wrapper';
 
 export default function ButtonDisabled() {
   return (
@@ -16,7 +17,7 @@ export default function ButtonDisabled() {
         <h2>Disabled</h2>
       </ScrollToLink>
       <Collapse className="mt-7">
-        <div className="flex items-center justify-between p-6 bg-background-100">
+        <GeistContentWrapper>
           <Button disabled prefix={<Spinner />} size="sm">
             Uploading
           </Button>
@@ -26,7 +27,7 @@ export default function ButtonDisabled() {
           <Button disabled prefix={<Spinner />} size="lg">
             Uploading
           </Button>
-        </div>
+        </GeistContentWrapper>
         <CollapseTrigger>code</CollapseTrigger>
         <CollapseContent>
           <CodeBlock showLineNumbers>{button_link_code}</CodeBlock>

@@ -1,15 +1,17 @@
+'use client';
+
 import { PopperProps } from './popper.types';
 import { PopperProvider } from './popper-context';
 import dynamic from 'next/dynamic';
 
 export const PopperContent = dynamic(
   () => import('./popper-content').then((mod) => mod.PopperContent),
-  { ssr: false }
+  { ssr: false },
 );
 
 export const PopperSubContent = dynamic(
   () => import('./popper-sub-content').then((mod) => mod.PopperSubContent),
-  { ssr: false }
+  { ssr: false },
 );
 
 export function Popper(props: PopperProps) {
@@ -23,3 +25,4 @@ export * from './popper-trigger';
 export * from './popper-sub-trigger';
 export * from './popper-separator';
 export * from './popper-group';
+export * from './popper-label';

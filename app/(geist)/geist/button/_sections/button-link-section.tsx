@@ -7,6 +7,7 @@ import {
 import CodeBlock from '@/components/ui/code-block';
 import { button_disabled_code } from '@/app/(geist)/geist/button/_snippets/snippets';
 import { ButtonLink } from '@/components/ui/button';
+import GeistContentWrapper from '@/app/(geist)/geist/_components/geist-content-wrapper';
 
 export default function ButtonLinkSection() {
   return (
@@ -19,7 +20,7 @@ export default function ButtonLinkSection() {
         <code>Button</code>.
       </p>
       <Collapse className="mt-7">
-        <div className="flex items-center justify-between p-6 bg-background-100">
+        <GeistContentWrapper>
           <ButtonLink href="#link" variant="primary">
             Dashboard
           </ButtonLink>
@@ -32,7 +33,7 @@ export default function ButtonLinkSection() {
           <ButtonLink href="#link" variant="ghost">
             Dashboard
           </ButtonLink>
-        </div>
+        </GeistContentWrapper>
         <CollapseTrigger>code</CollapseTrigger>
         <CollapseContent>
           <CodeBlock showLineNumbers>{button_disabled_code}</CodeBlock>
