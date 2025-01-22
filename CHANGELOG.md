@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.3.9](https://github.com/ZeynalliZeynal/todoist/compare/v0.3.8...v0.3.9) (2025-01-22)
+
+
+### Features
+
+* add GeistContentWrapper to wrap collapse contents on /geist ([cb0800e](https://github.com/ZeynalliZeynal/todoist/commit/cb0800eb659c564432948b173b7d7b4ca02aabd9))
+
 ### [0.3.8](https://github.com/ZeynalliZeynal/todoist/compare/v0.3.7...v0.3.8) (2025-01-22)
 
 
