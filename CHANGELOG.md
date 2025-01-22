@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.3.6](https://github.com/ZeynalliZeynal/todoist/compare/v0.3.5...v0.3.6) (2025-01-22)
+
+
+### Features
+
+* **ui:** add inset, suffix, and prefix props to the PopperItem ([25f1190](https://github.com/ZeynalliZeynal/todoist/commit/25f1190a11202f2e4fe2db38a8f2b9284276ab1d))
+
 ### [0.3.5](https://github.com/ZeynalliZeynal/todoist/compare/v0.3.4...v0.3.5) (2025-01-22)
 
 
