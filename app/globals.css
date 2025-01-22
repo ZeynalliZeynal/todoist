@@ -353,6 +353,7 @@
     --ds-pink-800: hsl(var(--ds-pink-800-value));
     --ds-pink-900: hsl(var(--ds-pink-900-value));
     --ds-pink-1000: hsl(var(--ds-pink-1000-value));
+    --radius: 0.5rem;
   }
 
   button {
