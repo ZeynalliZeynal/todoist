@@ -1,3 +1,11 @@
+import GeistContentWrapper from '@/app/(geist)/geist/_components/geist-content-wrapper';
+import ScrollToLink from '@/app/(geist)/geist/_components/scroll-to-link';
+import CodeBlock from '@/components/ui/code-block';
+import {
+  Collapse,
+  CollapseContent,
+  CollapseTrigger,
+} from '@/components/ui/collapse';
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -6,15 +14,6 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from '@/components/ui/primitives/dropdown-menu';
-import ScrollToLink from '@/app/(geist)/geist/_components/scroll-to-link';
-import {
-  Collapse,
-  CollapseContent,
-  CollapseTrigger,
-} from '@/components/ui/collapse';
-import CodeBlock from '@/components/ui/code-block';
-import React from 'react';
-import GeistContentWrapper from '@/app/(geist)/geist/_components/geist-content-wrapper';
 
 const code = `<DropdownMenu>
   <DropdownMenuTrigger>Open</DropdownMenuTrigger>

@@ -1,15 +1,13 @@
 'use client';
 
 import {
-  Collapse as PrimitiveCollapse,
-  CollapseContent as PrimitiveCollapseContent,
-  CollapseTrigger as PrimitiveCollapseTrigger,
-} from '@/components/ui/primitives/collapse/collapse';
-import {
   CollapseContentProps,
   CollapseProps,
   CollapseTriggerProps,
-} from '@/components/ui/primitives/collapse/collapse.types';
+  Collapse as PrimitiveCollapse,
+  CollapseContent as PrimitiveCollapseContent,
+  CollapseTrigger as PrimitiveCollapseTrigger,
+} from '@everest-ui/react-collapse';
 import { cn } from '@/utils/lib';
 import { FaChevronRight } from 'react-icons/fa6';
 
@@ -28,7 +26,7 @@ export function CollapseTrigger(props: CollapseTriggerProps) {
       {...props}
       className={cn(
         'group h-12 px-4 gap-3 text-gray-900 border-t rounded-b-xl hover:bg-background-100 transition',
-        props.className,
+        props.className
       )}
     >
       {({ state }) => (
