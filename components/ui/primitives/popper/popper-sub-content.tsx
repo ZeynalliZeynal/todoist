@@ -58,9 +58,18 @@ export const PopperSubContent = React.forwardRef<
 
   const handleResize = useCallback(() => {
     if (!ref.current || !triggerPosition) return;
+
+    const canFitRight =
+      window.innerWidth - triggerPosition.left - triggerPosition.width >
+      ref.current.offsetWidth;
+
+    const newLeft = canFitRight
+      ? triggerPosition.left + triggerPosition.width
+      : triggerPosition.left - ref.current.offsetWidth;
+
     setStyle({
       top: triggerPosition.top,
-      left: triggerPosition.left + triggerPosition.width,
+      left: newLeft,
     });
   }, [ref, triggerPosition]);
 

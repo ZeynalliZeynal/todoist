@@ -6,6 +6,7 @@ import { cn } from '@/utils/lib';
 import React, { HTMLAttributes } from 'react';
 import { mergeRefs } from '@/utils/ui/merge-refs';
 import { PopperItemProps } from '@/components/ui/primitives/popper/popper.types';
+import { POPPER_ITEM_SELECTOR } from '@/components/ui/primitives/selectors';
 
 export const PopperItem = React.forwardRef<HTMLDivElement, PopperItemProps>(
   (props, forwardRef) => {
@@ -47,7 +48,8 @@ export const PopperItem = React.forwardRef<HTMLDivElement, PopperItemProps>(
 
     function handleClick(event: React.MouseEvent<HTMLElement>) {
       const target = event.target as HTMLElement;
-      if (target.hasAttribute('aria-controls')) return;
+      if (target.closest(POPPER_ITEM_SELECTOR)?.hasAttribute('aria-controls'))
+        return;
       closePopper();
     }
 
