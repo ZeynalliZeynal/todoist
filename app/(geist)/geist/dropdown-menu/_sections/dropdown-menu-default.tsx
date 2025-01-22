@@ -1,16 +1,5 @@
 'use client';
 
-import {
-  Popper,
-  PopperContent,
-  PopperGroup,
-  PopperItem,
-  PopperSeparator,
-  PopperSub,
-  PopperSubContent,
-  PopperSubTrigger,
-  PopperTrigger,
-} from '@/components/ui/primitives/popper';
 import { useState } from 'react';
 import Spinner from '@/components/ui/spinner';
 import { PiShootingStar } from 'react-icons/pi';
@@ -21,6 +10,17 @@ import {
 } from 'react-icons/io5';
 import { LuLayoutDashboard } from 'react-icons/lu';
 import { TbMailCog } from 'react-icons/tb';
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuGroup,
+  DropdownMenuItem,
+  DropdownMenuSeparator,
+  DropdownMenuSub,
+  DropdownMenuSubContent,
+  DropdownMenuSubTrigger,
+  DropdownMenuTrigger,
+} from '@/components/ui/primitives/dropdown-menu';
 
 export default function DropdownMenuDefault() {
   const [isPending, setIsPending] = useState(false);
@@ -28,10 +28,10 @@ export default function DropdownMenuDefault() {
   return (
     <section className="p-12">
       <div className="flex items-center justify-between p-6 bg-background-100">
-        <Popper>
-          <PopperTrigger>Open</PopperTrigger>
-          <PopperContent className="mt-3" align="start">
-            <PopperItem
+        <DropdownMenu>
+          <DropdownMenuTrigger>Open</DropdownMenuTrigger>
+          <DropdownMenuContent className="mt-3" align="start">
+            <DropdownMenuItem
               disabled={isPending}
               onClick={async () => {
                 setIsPending(true);
@@ -43,35 +43,37 @@ export default function DropdownMenuDefault() {
               className="justify-between"
             >
               Update Email
-            </PopperItem>
-            <PopperItem disabled prefix={<IoGridOutline />}>
+            </DropdownMenuItem>
+            <DropdownMenuItem disabled prefix={<IoGridOutline />}>
               Grid View
-            </PopperItem>
-            <PopperItem prefix={<IoPeopleOutline />}>
+            </DropdownMenuItem>
+            <DropdownMenuItem prefix={<IoPeopleOutline />}>
               New Organization
-            </PopperItem>
-            <PopperSub>
-              <PopperSubTrigger prefix={<IoStatsChartOutline />}>
+            </DropdownMenuItem>
+            <DropdownMenuSub>
+              <DropdownMenuSubTrigger prefix={<IoStatsChartOutline />}>
                 Stats
-              </PopperSubTrigger>
-              <PopperSubContent>
-                <PopperItem>test</PopperItem>
-                <PopperItem>test</PopperItem>
-                <PopperItem>test</PopperItem>
-              </PopperSubContent>
-            </PopperSub>
-            <PopperItem prefix={<LuLayoutDashboard />}>Dashboard</PopperItem>
-            <PopperSeparator />
-            <PopperGroup>
-              <PopperItem
+              </DropdownMenuSubTrigger>
+              <DropdownMenuSubContent>
+                <DropdownMenuItem>test</DropdownMenuItem>
+                <DropdownMenuItem>test</DropdownMenuItem>
+                <DropdownMenuItem>test</DropdownMenuItem>
+              </DropdownMenuSubContent>
+            </DropdownMenuSub>
+            <DropdownMenuItem prefix={<LuLayoutDashboard />}>
+              Dashboard
+            </DropdownMenuItem>
+            <DropdownMenuSeparator />
+            <DropdownMenuGroup>
+              <DropdownMenuItem
                 className="focus:bg-amber-100/75 focus:ring-1 ring-amber-500"
                 prefix={<PiShootingStar className="text-amber-900" />}
               >
                 Upgrade
-              </PopperItem>
-            </PopperGroup>
-          </PopperContent>
-        </Popper>
+              </DropdownMenuItem>
+            </DropdownMenuGroup>
+          </DropdownMenuContent>
+        </DropdownMenu>
       </div>
     </section>
   );
