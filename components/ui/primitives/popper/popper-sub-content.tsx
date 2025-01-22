@@ -47,7 +47,7 @@ export const PopperSubContent = React.forwardRef<
   function handleMouseLeave(event: React.MouseEvent) {
     const relatedTarget = document.elementFromPoint(
       event.clientX,
-      event.clientY
+      event.clientY,
     );
     if (relatedTarget && relatedTarget !== activeTrigger) {
       closePopper();
@@ -63,6 +63,20 @@ export const PopperSubContent = React.forwardRef<
   }, [ref, triggerPosition]);
 
   useResize(isOpen, handleResize);
+
+  React.useEffect(() => {
+    if (!ref.current) return;
+    function handleCloseOnKeyDown(event: KeyboardEvent) {
+      if (event.key === 'ArrowLeft') {
+        event.preventDefault();
+        highlight(activeTrigger);
+        closePopper();
+      }
+    }
+    document.addEventListener('keydown', handleCloseOnKeyDown);
+
+    return () => document.removeEventListener('keydown', handleCloseOnKeyDown);
+  }, [activeTrigger, closePopper, highlight, ref]);
 
   const attrs = {
     tabIndex: -1,
@@ -112,7 +126,7 @@ export const PopperSubContent = React.forwardRef<
               {...attrs}
               className={cn(
                 'bg-background-100 p-2 rounded-xl border w-48 focus:outline-0',
-                attrs.className
+                attrs.className,
               )}
             >
               {children}
@@ -121,7 +135,7 @@ export const PopperSubContent = React.forwardRef<
         </motion.div>
       )}
     </AnimatePresence>,
-    document.body
+    document.body,
   );
 });
 PopperSubContent.displayName = 'PopperSubContent';

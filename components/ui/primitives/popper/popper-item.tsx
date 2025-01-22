@@ -42,6 +42,12 @@ export const PopperItem = React.forwardRef<HTMLDivElement, PopperItemProps>(
       }
     }
 
+    function handleClick(event: React.MouseEvent<HTMLElement>) {
+      const target = event.target as HTMLElement;
+      if (target.hasAttribute('aria-controls')) return;
+      closePopper();
+    }
+
     const attrs = {
       ref: mergeRefs(ref, forwardRef),
       tabIndex: -1,
@@ -50,7 +56,7 @@ export const PopperItem = React.forwardRef<HTMLDivElement, PopperItemProps>(
       'data-disabled': disabled ? '' : null,
       'data-highlighted': highlightedItem === ref.current ? '' : null,
       className,
-      onClick: !disabled ? chain(onClick, closePopper) : undefined,
+      onClick: !disabled ? chain(onClick, handleClick) : undefined,
       onMouseEnter: !disabled ? handleMouseEnter : undefined,
       onMouseLeave: !disabled ? handleMouseLeave : undefined,
       onKeyDown: !disabled ? chain(handleKeyDown, onKeyDown) : undefined,
@@ -67,13 +73,13 @@ export const PopperItem = React.forwardRef<HTMLDivElement, PopperItemProps>(
         {...attrs}
         className={cn(
           'flex items-center rounded-md px-2 cursor-pointer h-10 align-middle transition focus:bg-gray-alpha-100 outline-none data-[disabled]:text-gray-500 data-[disabled]:pointer-events-none data-[disabled]:focus:bg-transparent',
-          attrs.className
+          attrs.className,
         )}
       >
         {children}
       </div>
     );
-  }
+  },
 );
 
 PopperItem.displayName = 'PopperItem';

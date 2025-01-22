@@ -8,7 +8,7 @@ import React, { useState } from 'react';
 import { PopperProviderProps } from './popper.types';
 
 export const PopperSubContext = React.createContext<PopperProviderProps | null>(
-  null
+  null,
 );
 
 export function usePopperSub() {
@@ -31,15 +31,20 @@ export function PopperSub({ children }: { children: React.ReactNode }) {
 
   const id = `geist-${uiId}`;
 
-  function openPopper(event: React.MouseEvent<HTMLElement>) {
-    const rect = (event.currentTarget || event.target).getBoundingClientRect();
+  const openPopper = React.useCallback(
+    (event: React.MouseEvent<HTMLElement>) => {
+      const rect = (
+        event.currentTarget || event.target
+      ).getBoundingClientRect();
 
-    setTriggerPosition(rect);
+      setTriggerPosition(rect);
 
-    setIsOpen((prevState) => !prevState);
+      setIsOpen((prevState) => !prevState);
 
-    activeTrigger.current = event.currentTarget;
-  }
+      activeTrigger.current = event.currentTarget || event.target;
+    },
+    [],
+  );
 
   function closePopper() {
     setIsOpen(false);
@@ -50,7 +55,7 @@ export function PopperSub({ children }: { children: React.ReactNode }) {
       (
         document
           .querySelector(
-            `${POPPER_SUB_CONTENT_SELECTOR}[aria-labelledby='${id}']`
+            `${POPPER_SUB_CONTENT_SELECTOR}[aria-labelledby='${id}']`,
           )
           ?.querySelector(POPPER_ITEM_SELECTOR) as HTMLElement
       )?.focus();
