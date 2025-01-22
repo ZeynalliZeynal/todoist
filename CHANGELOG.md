@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.3.5](https://github.com/ZeynalliZeynal/todoist/compare/v0.3.4...v0.3.5) (2025-01-22)
+
+
+### Features
+
+* add alert-dialog from shadcn ([38f902e](https://github.com/ZeynalliZeynal/todoist/commit/38f902e8a1e0359571650cce7126f91dfc866d07))
+
+
+### Bug Fixes
+
+* **ui[popper-sub]:** disable click event on popper-item, if it is a trigger; close popper sub content on left arrow keydown, focus on the trigger item on close ([766cde5](https://github.com/ZeynalliZeynal/todoist/commit/766cde55c09086962980edc41790569b8dddd1c4))
+
 ### [0.3.4](https://github.com/ZeynalliZeynal/todoist/compare/v0.3.3...v0.3.4) (2025-01-22)
 
 ### [0.3.3](https://github.com/ZeynalliZeynal/todoist/compare/v0.3.2...v0.3.3) (2025-01-21)
