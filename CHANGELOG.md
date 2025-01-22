@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.3.12](https://github.com/ZeynalliZeynal/todoist/compare/v0.3.11...v0.3.12) (2025-01-22)
+
+
+### Features
+
+* **lib:** include the custom library ([5c36c08](https://github.com/ZeynalliZeynal/todoist/commit/5c36c0852d7168cd67239481fca07d56823045c8))
+
 ### [0.3.11](https://github.com/ZeynalliZeynal/todoist/compare/v0.3.10...v0.3.11) (2025-01-22)
 
 ### [0.3.10](https://github.com/ZeynalliZeynal/todoist/compare/v0.3.9...v0.3.10) (2025-01-22)
