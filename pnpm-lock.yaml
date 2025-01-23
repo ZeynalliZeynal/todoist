@@ -8,6 +8,9 @@ importers:
 
   .:
     dependencies:
+      '@everest-ui/react-button':
+        specifier: ^1.2.0
+        version: 1.2.0(react-dom@19.0.0-rc-66855b96-20241106(react@19.0.0-rc-66855b96-20241106))(react@19.0.0-rc-66855b96-20241106)
       '@everest-ui/react-collapse':
         specifier: ^0.0.7
         version: 0.0.7(framer-motion@11.11.17(react-dom@19.0.0-rc-66855b96-20241106(react@19.0.0-rc-66855b96-20241106))(react@19.0.0-rc-66855b96-20241106))(react-dom@19.0.0-rc-66855b96-20241106(react@19.0.0-rc-66855b96-20241106))(react@19.0.0-rc-66855b96-20241106)
@@ -145,12 +148,21 @@ packages:
     resolution: {integrity: sha512-d9zaMRSTIKDLhctzH12MtXvJKSSUhaHcjV+2Z+GK+EEY7XKpP5yR4x+N3TAcHTcu963nIr+TMcCb4DBCYX1z6Q==}
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
 
+  '@everest-ui/react-button@1.2.0':
+    resolution: {integrity: sha512-6qkdjTHr7njOeMjLSlIyNSMPobbJZk1MX2TSfoKDOS8w/6Nkg2vKeSEccQCxksi3+B4G2mpPTUPQjJcYr/KrhQ==}
+    peerDependencies:
+      react: '>=18.0.0 || ^19.0.0'
+      react-dom: '>=18.0.0 || ^19.0.0'
+
   '@everest-ui/react-collapse@0.0.7':
     resolution: {integrity: sha512-Wd5KUQFJtLYUMts9fE8dvlR9AEzZxcpew4F+sl5wNHLxwUk8SkpXk49yOGITnM9vzzsl3U2oryjYYhfICng4pQ==}
     peerDependencies:
       framer-motion: '>=11.0.0'
       react: ^16.8 || ^17.0 || ^18.0 || ^19.0
       react-dom: ^16.8 || ^17.0 || ^18.0 || ^19.0
+
+  '@everest-ui/utils@1.0.0':
+    resolution: {integrity: sha512-N9FA/8p4eu/GQ1dlLxXdQfnfgnAMxiDjW0NxQJ5++AwZ5vsifNpcKdd30wTXeYxrtfxJKdSJaWRmDjO3ehva9A==}
 
   '@hookform/resolvers@3.9.1':
     resolution: {integrity: sha512-ud2HqmGBM0P0IABqoskKWI6PEf6ZDDBZkFqe2Vnl+mTHCEHzr3ISjjZyCwTjC/qpL25JC9aIDkloQejvMeq0ug==}
@@ -2692,11 +2704,19 @@ snapshots:
 
   '@eslint/js@8.57.1': {}
 
+  '@everest-ui/react-button@1.2.0(react-dom@19.0.0-rc-66855b96-20241106(react@19.0.0-rc-66855b96-20241106))(react@19.0.0-rc-66855b96-20241106)':
+    dependencies:
+      '@everest-ui/utils': 1.0.0
+      react: 19.0.0-rc-66855b96-20241106
+      react-dom: 19.0.0-rc-66855b96-20241106(react@19.0.0-rc-66855b96-20241106)
+
   '@everest-ui/react-collapse@0.0.7(framer-motion@11.11.17(react-dom@19.0.0-rc-66855b96-20241106(react@19.0.0-rc-66855b96-20241106))(react@19.0.0-rc-66855b96-20241106))(react-dom@19.0.0-rc-66855b96-20241106(react@19.0.0-rc-66855b96-20241106))(react@19.0.0-rc-66855b96-20241106)':
     dependencies:
       framer-motion: 11.11.17(react-dom@19.0.0-rc-66855b96-20241106(react@19.0.0-rc-66855b96-20241106))(react@19.0.0-rc-66855b96-20241106)
       react: 19.0.0-rc-66855b96-20241106
       react-dom: 19.0.0-rc-66855b96-20241106(react@19.0.0-rc-66855b96-20241106)
+
+  '@everest-ui/utils@1.0.0': {}
 
   '@hookform/resolvers@3.9.1(react-hook-form@7.53.2(react@19.0.0-rc-66855b96-20241106))':
     dependencies:
