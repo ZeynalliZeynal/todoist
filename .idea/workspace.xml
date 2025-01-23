@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="f03893d1-9795-491e-a4ee-0e50bf35b7b9" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/utils/chain.ts" beforeDir="false" afterPath="$PROJECT_DIR$/utils/chain.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/ui/keyboard-navigation.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/utils/ui/keyboard-navigation.ts" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="OptimizeOnSaveOptions">
+    <option name="myRunOnSave" value="true" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;customColor&quot;: &quot;292929fd&quot;,
+  &quot;associatedIndex&quot;: 7
+}</component>
+  <component name="ProjectId" id="2onfuxMpbdW0GSUJ2pFoZCekFiG" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Notification.DisplayName-DoNotAsk-WindowsDefender": "Microsoft Defender may affect IDE",
+    "Notification.DoNotAsk-WindowsDefender": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "code.cleanup.on.save": "true",
+    "git-widget-placeholder": "main",
+    "last_opened_file_path": "C:/Users/asus/Desktop/education/libraries/everest-ui",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.standard": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.standard": "",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "pnpm",
+    "npm.dev.executor": "Run",
+    "prettierjs.PrettierConfiguration.Package": "C:\\Users\\asus\\AppData\\Roaming\\npm\\node_modules\\prettier",
+    "rearrange.code.on.save": "true",
+    "settings.editor.selected.configurable": "actions.on.save",
+    "ts.external.directory.path": "C:\\Users\\asus\\Desktop\\education\\projects\\todoist\\client\\node_modules\\typescript\\lib",
+    "vue.rearranger.settings.migration": "true"
+  },
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "mongo"
+    ]
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\asus\Desktop\education\projects\todoist\client\components\ui\primitives\popper" />
+      <recent name="C:\Users\asus\Desktop\education\projects\todoist\client\app\(geist)\geist" />
+      <recent name="C:\Users\asus\Desktop\education\projects\todoist\client\app\(geist)\geist\code-block\_sections" />
+      <recent name="C:\Users\asus\Desktop\education\projects\todoist\client\app\(geist)\geist\checkbox" />
+      <recent name="C:\Users\asus\Desktop\education\projects\todoist\client\app\(geist)\geist\button\_sections" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\asus\Desktop\education\projects\todoist\client\app\(geist)\geist\checkbox\_sections" />
+      <recent name="C:\Users\asus\Desktop\education\projects\todoist\client\components\ui" />
+      <recent name="C:\Users\asus\Desktop\education\projects\todoist\client\components\ui\stack" />
+      <recent name="C:\Users\asus\Desktop\education\projects\todoist\client\components\ui\primitives\avatar" />
+      <recent name="C:\Users\asus\Desktop\education\projects\todoist\client\components\ui\primitives\collapse" />
+    </key>
+  </component>
+  <component name="RunAnythingCache">
+    <option name="myCommands">
+      <command value="npm run dev" />
+    </option>
+  </component>
+  <component name="RunManager">
+    <configuration name="dev" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="dev" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="npm.dev" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-js-predefined-d6986cc7102b-e768b9ed790e-JavaScript-WS-243.21565.180" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="f03893d1-9795-491e-a4ee-0e50bf35b7b9" name="Changes" comment="" />
+      <created>1731510487000</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1731510487000</updated>
+      <workItem from="1731510488098" duration="12780000" />
+      <workItem from="1731575433915" duration="35395000" />
+      <workItem from="1731650439394" duration="8800000" />
+      <workItem from="1731687434005" duration="5470000" />
+      <workItem from="1731749155919" duration="7693000" />
+      <workItem from="1731918934670" duration="689000" />
+      <workItem from="1731919635430" duration="2574000" />
+      <workItem from="1731922424639" duration="10777000" />
+      <workItem from="1731955097062" duration="10029000" />
+      <workItem from="1732008557964" duration="4000" />
+      <workItem from="1732008709109" duration="2707000" />
+      <workItem from="1732559895595" duration="7450000" />
+      <workItem from="1732637068678" duration="14257000" />
+      <workItem from="1733439368211" duration="2550000" />
+      <workItem from="1733502095073" duration="21000" />
+      <workItem from="1733505445395" duration="18842000" />
+      <workItem from="1733561558406" duration="13216000" />
+      <workItem from="1733601875609" duration="11985000" />
+      <workItem from="1733653016828" duration="10230000" />
+      <workItem from="1733761286214" duration="19065000" />
+      <workItem from="1733830244428" duration="27402000" />
+      <workItem from="1733930539635" duration="2852000" />
+      <workItem from="1734036409355" duration="1806000" />
+      <workItem from="1734091555912" duration="594000" />
+      <workItem from="1734116304679" duration="1755000" />
+      <workItem from="1734178015421" duration="1535000" />
+      <workItem from="1734207853392" duration="696000" />
+      <workItem from="1734369786536" duration="12000" />
+      <workItem from="1735648155512" duration="3523000" />
+      <workItem from="1735673318571" duration="806000" />
+      <workItem from="1735674148942" duration="10675000" />
+      <workItem from="1735813946236" duration="604000" />
+      <workItem from="1735839331553" duration="4000" />
+      <workItem from="1735840774112" duration="14632000" />
+      <workItem from="1736166590410" duration="1436000" />
+      <workItem from="1736201530913" duration="4363000" />
+      <workItem from="1736255538539" duration="712000" />
+      <workItem from="1736376977461" duration="18479000" />
+      <workItem from="1736426058746" duration="12494000" />
+      <workItem from="1736511909048" duration="16086000" />
+      <workItem from="1736536627587" duration="6697000" />
+      <workItem from="1737146991837" duration="13492000" />
+      <workItem from="1737160620301" duration="4089000" />
+      <workItem from="1737164827697" duration="2204000" />
+      <workItem from="1737215817285" duration="978000" />
+      <workItem from="1737217183148" duration="12704000" />
+      <workItem from="1737306348783" duration="435000" />
+      <workItem from="1737306796640" duration="19000" />
+      <workItem from="1737306822563" duration="955000" />
+      <workItem from="1737377547191" duration="721000" />
+      <workItem from="1737444756613" duration="4171000" />
+      <workItem from="1737457717661" duration="12166000" />
+      <workItem from="1737544240025" duration="1938000" />
+      <workItem from="1737546435300" duration="14442000" />
+      <workItem from="1737635587778" duration="422000" />
+      <workItem from="1737636023190" duration="8455000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>
