@@ -1,22 +1,21 @@
+import { ComponentProps } from 'react';
+
 import {
   Popper,
   PopperContent,
+  PopperContentProps,
   PopperGroup,
   PopperItem,
+  PopperItemProps,
   PopperLabel,
   PopperSeparator,
   PopperSub,
   PopperSubContent,
+  PopperSubContentProps,
   PopperSubTrigger,
   PopperTrigger,
-} from '@/components/ui/primitives/popper';
-import {
-  PopperContentProps,
-  PopperItemProps,
-  PopperSubContentProps,
-  PopperTriggerProps,
-} from '@/components/ui/primitives/popper/popper.types';
-import { ComponentProps } from 'react';
+  PopperTriggerProps
+} from '@everest-ui/react-popper';
 
 export function DropdownMenu(props: {
   children: React.ReactNode;

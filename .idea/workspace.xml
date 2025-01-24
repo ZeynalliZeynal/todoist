@@ -5,8 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f03893d1-9795-491e-a4ee-0e50bf35b7b9" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/utils/chain.ts" beforeDir="false" afterPath="$PROJECT_DIR$/utils/chain.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/utils/ui/keyboard-navigation.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/utils/ui/keyboard-navigation.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/ui/primitives/collapse/collapse-context.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/ui/primitives/collapse/collapse.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/ui/primitives/collapse/collapse.types.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/ui/primitives/dropdown-menu/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/primitives/dropdown-menu/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pnpm-lock.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pnpm-lock.yaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,7 +44,7 @@
     "RunOnceActivity.git.unshallow": "true",
     "code.cleanup.on.save": "true",
     "git-widget-placeholder": "main",
-    "last_opened_file_path": "C:/Users/asus/Desktop/education/libraries/everest-ui",
+    "last_opened_file_path": "C:/Users/asus/Desktop/education/projects/todoist/client",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.standard": "true",
     "node.js.detected.package.tslint": "true",
@@ -169,6 +174,8 @@
       <workItem from="1737546435300" duration="14442000" />
       <workItem from="1737635587778" duration="422000" />
       <workItem from="1737636023190" duration="8455000" />
+      <workItem from="1737648524209" duration="23000" />
+      <workItem from="1737706248290" duration="9398000" />
     </task>
     <servers />
   </component>
