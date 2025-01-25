@@ -14,7 +14,7 @@ import {
   PopperSubContentProps,
   PopperSubTrigger,
   PopperTrigger,
-  PopperTriggerProps
+  PopperTriggerProps,
 } from '@everest-ui/react-popper';
 
 export function DropdownMenu(props: {
@@ -24,7 +24,7 @@ export function DropdownMenu(props: {
 }
 
 export function DropdownMenuTrigger(
-  props: PopperTriggerProps,
+  props: PopperTriggerProps
 ): React.ReactElement {
   return <PopperTrigger {...props} />;
 }
@@ -34,25 +34,25 @@ export function DropdownMenuItem(props: PopperItemProps): React.ReactElement {
 }
 
 export function DropdownMenuContent(
-  props: PopperContentProps,
+  props: PopperContentProps
 ): React.ReactElement {
   return <PopperContent {...props} />;
 }
 
 export function DropdownMenuSeparator(
-  props: ComponentProps<'div'>,
+  props: ComponentProps<'div'>
 ): React.ReactElement {
   return <PopperSeparator {...props} />;
 }
 
 export function DropdownMenuGroup(
-  props: ComponentProps<'div'>,
+  props: ComponentProps<'div'>
 ): React.ReactElement {
   return <PopperGroup {...props} />;
 }
 
 export function DropdownMenuLabel(
-  props: ComponentProps<'div'>,
+  props: ComponentProps<'div'>
 ): React.ReactElement {
   return <PopperLabel {...props} />;
 }
@@ -64,13 +64,13 @@ export function DropdownMenuSub(props: {
 }
 
 export function DropdownMenuSubTrigger(
-  props: PopperItemProps,
+  props: PopperItemProps
 ): React.ReactElement {
   return <PopperSubTrigger {...props} />;
 }
 
 export function DropdownMenuSubContent(
-  props: PopperSubContentProps,
+  props: PopperSubContentProps
 ): React.ReactElement {
   return <PopperSubContent {...props} />;
 }

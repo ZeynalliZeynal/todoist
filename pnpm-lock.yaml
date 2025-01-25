@@ -14,9 +14,12 @@ importers:
       '@everest-ui/react-collapse':
         specifier: ^0.0.8
         version: 0.0.8(@types/react-dom@18.3.5(@types/react@18.3.18))(@types/react@18.3.18)(framer-motion@11.18.2(react-dom@19.0.0-rc-66855b96-20241106(react@19.0.0-rc-66855b96-20241106))(react@19.0.0-rc-66855b96-20241106))(react-dom@19.0.0-rc-66855b96-20241106(react@19.0.0-rc-66855b96-20241106))(react@19.0.0-rc-66855b96-20241106)
-      '@everest-ui/react-popper':
-        specifier: ^1.2.6
-        version: 1.2.6(@types/react-dom@18.3.5(@types/react@18.3.18))(@types/react@18.3.18)(framer-motion@11.18.2(react-dom@19.0.0-rc-66855b96-20241106(react@19.0.0-rc-66855b96-20241106))(react@19.0.0-rc-66855b96-20241106))(react-dom@19.0.0-rc-66855b96-20241106(react@19.0.0-rc-66855b96-20241106))(react@19.0.0-rc-66855b96-20241106)
+      '@everest-ui/react-copy':
+        specifier: ^1.0.3
+        version: 1.0.3(@types/react-dom@18.3.5(@types/react@18.3.18))(@types/react@18.3.18)(react-dom@19.0.0-rc-66855b96-20241106(react@19.0.0-rc-66855b96-20241106))(react@19.0.0-rc-66855b96-20241106)
+      '@everest-ui/react-dropdown-menu':
+        specifier: ^1.0.6
+        version: 1.0.6(@types/react-dom@18.3.5(@types/react@18.3.18))(@types/react@18.3.18)(framer-motion@11.18.2(react-dom@19.0.0-rc-66855b96-20241106(react@19.0.0-rc-66855b96-20241106))(react@19.0.0-rc-66855b96-20241106))(react-dom@19.0.0-rc-66855b96-20241106(react@19.0.0-rc-66855b96-20241106))(react@19.0.0-rc-66855b96-20241106)
       '@hookform/resolvers':
         specifier: ^3.10.0
         version: 3.10.0(react-hook-form@7.54.2(react@19.0.0-rc-66855b96-20241106))
@@ -160,6 +163,9 @@ packages:
   '@everest-ui/chain@1.0.1':
     resolution: {integrity: sha512-iiFfxGtArNjyk1DnPLeIF89Hg7GRZgU+WhUj8P3RnKp1J3C90wDsMPTvB2AXtqGAi9nqgiV2Ea3x62TRvdufSA==}
 
+  '@everest-ui/chain@1.0.2':
+    resolution: {integrity: sha512-8cBuARjTMFll+RBMan0Y+R2Z3Mcni2ZFQioWp0N1zOV4TC7cVjyKYRpBtpRYam5+t7kvImOWtkg5l6o0hrjb8Q==}
+
   '@everest-ui/react-button@1.2.1':
     resolution: {integrity: sha512-9/+FmGZA/YtsPdqn/JsLhhvIYf2471oIBhkvbjVkMj4zO5PoitlBErebannGqdkFq++9SFELwwCr1c55GIDgLw==}
     peerDependencies:
@@ -187,8 +193,47 @@ packages:
       '@types/react-dom':
         optional: true
 
+  '@everest-ui/react-copy@1.0.3':
+    resolution: {integrity: sha512-YG5hg4CLvg4kEpyqbAL7qfmAoTqU30MC6qTr7E8eiHW5vLzIwo2BhQ6dWrPXZE0SkWZH94kpPsDxSDWPmEa1xA==}
+    peerDependencies:
+      '@types/react': '*'
+      '@types/react-dom': '*'
+      react: ^16.8 || ^17.0 || ^18.0 || ^19.0 || ^19.0.0-rc
+      react-dom: ^16.8 || ^17.0 || ^18.0 || ^19.0 || ^19.0.0-rc
+    peerDependenciesMeta:
+      '@types/react':
+        optional: true
+      '@types/react-dom':
+        optional: true
+
+  '@everest-ui/react-dropdown-menu@1.0.6':
+    resolution: {integrity: sha512-hN1eRHKSUGknRs+Q5Zk76VVH2OBvWGofUMqyx1R/vngn9Erf9D7hqTECDm9yzfw3TMV4ZGHpamRb1Mbznldi5g==}
+    peerDependencies:
+      '@types/react': '*'
+      '@types/react-dom': '*'
+      react: ^16.8 || ^17.0 || ^18.0 || ^19.0 || ^19.0.0-rc
+      react-dom: ^16.8 || ^17.0 || ^18.0 || ^19.0 || ^19.0.0-rc
+    peerDependenciesMeta:
+      '@types/react':
+        optional: true
+      '@types/react-dom':
+        optional: true
+
   '@everest-ui/react-hooks@1.0.5':
     resolution: {integrity: sha512-SLgTLCDq1Tes3LJ1sQ8RDraV9UgzH+el9NNjkFW47de2EZHGxf3FRUxRjLK+iLYzCKtUPOgfPUMpOYMwKa/G3A==}
+    peerDependencies:
+      '@types/react': '*'
+      '@types/react-dom': '*'
+      react: ^16.8 || ^17.0 || ^18.0 || ^19.0 || ^19.0.0-rc
+      react-dom: ^16.8 || ^17.0 || ^18.0 || ^19.0 || ^19.0.0-rc
+    peerDependenciesMeta:
+      '@types/react':
+        optional: true
+      '@types/react-dom':
+        optional: true
+
+  '@everest-ui/react-hooks@1.0.6':
+    resolution: {integrity: sha512-nxeOv9X6LLIr/ckBEsaX4VI0AcgQz5sbVVWzAJ5s8ADoPDaaKBsWeaNxtaNor6oRRzaS/J1fWvedE+2yialYhg==}
     peerDependencies:
       '@types/react': '*'
       '@types/react-dom': '*'
@@ -227,6 +272,19 @@ packages:
       '@types/react-dom':
         optional: true
 
+  '@everest-ui/react-utils@1.0.6':
+    resolution: {integrity: sha512-8vYbgl1ctBHCXl1JsvQWxUM7t3za7NTuI2dAGTzpqrKFGYct2yaEIxCu6zJFhzBwbBAiIvbRUktYvthMyEXd+Q==}
+    peerDependencies:
+      '@types/react': '*'
+      '@types/react-dom': '*'
+      react: ^16.8 || ^17.0 || ^18.0 || ^19.0 || ^19.0.0-rc
+      react-dom: ^16.8 || ^17.0 || ^18.0 || ^19.0 || ^19.0.0-rc
+    peerDependenciesMeta:
+      '@types/react':
+        optional: true
+      '@types/react-dom':
+        optional: true
+
   '@everest-ui/selectors@1.0.1':
     resolution: {integrity: sha512-FQu0jEtXuD88hF5lmri8eajFImjPbmeLDhih2RKD1VYEHd1xJEN2H0t9wx1Tb0qRG+hiRznIh+DcRlKW4Ce/qg==}
 
@@ -235,6 +293,9 @@ packages:
 
   '@everest-ui/utils@1.0.1':
     resolution: {integrity: sha512-azMvogjGvAC/TSYxQ5RJnrCTu1aw25bjxX3rVuV66j/rbJnqEoYfnKbRWHFrx5h3ZKF6jO09lhdGEaoUJ2M/YQ==}
+
+  '@everest-ui/utils@1.0.2':
+    resolution: {integrity: sha512-32KzY6trGd6mXaXtAwHm9X3qIKAkW+0oq8tsIcoXbpQ7IrLTLD3rVoZhYoqHYQjC8s22Ckk86RmdpLMYYLWaeA==}
 
   '@hookform/resolvers@3.10.0':
     resolution: {integrity: sha512-79Dv+3mDF7i+2ajj7SkypSKHhl1cbln1OGavqrsF7p6mbUv11xpqpacPsGDCTRvCSjEEIez2ef1NveSVL3b0Ag==}
@@ -3217,6 +3278,8 @@ snapshots:
 
   '@everest-ui/chain@1.0.1': {}
 
+  '@everest-ui/chain@1.0.2': {}
+
   '@everest-ui/react-button@1.2.1(@types/react-dom@18.3.5(@types/react@18.3.18))(@types/react@18.3.18)(react-dom@19.0.0-rc-66855b96-20241106(react@19.0.0-rc-66855b96-20241106))(react@19.0.0-rc-66855b96-20241106)':
     dependencies:
       '@everest-ui/utils': 1.0.0
@@ -3235,7 +3298,38 @@ snapshots:
       '@types/react': 18.3.18
       '@types/react-dom': 18.3.5(@types/react@18.3.18)
 
+  '@everest-ui/react-copy@1.0.3(@types/react-dom@18.3.5(@types/react@18.3.18))(@types/react@18.3.18)(react-dom@19.0.0-rc-66855b96-20241106(react@19.0.0-rc-66855b96-20241106))(react@19.0.0-rc-66855b96-20241106)':
+    dependencies:
+      '@everest-ui/chain': 1.0.2
+      '@everest-ui/react-hooks': 1.0.6(@types/react-dom@18.3.5(@types/react@18.3.18))(@types/react@18.3.18)(react-dom@19.0.0-rc-66855b96-20241106(react@19.0.0-rc-66855b96-20241106))(react@19.0.0-rc-66855b96-20241106)
+      '@everest-ui/react-utils': 1.0.6(@types/react-dom@18.3.5(@types/react@18.3.18))(@types/react@18.3.18)(react-dom@19.0.0-rc-66855b96-20241106(react@19.0.0-rc-66855b96-20241106))(react@19.0.0-rc-66855b96-20241106)
+      '@everest-ui/utils': 1.0.2
+      react: 19.0.0-rc-66855b96-20241106
+      react-dom: 19.0.0-rc-66855b96-20241106(react@19.0.0-rc-66855b96-20241106)
+    optionalDependencies:
+      '@types/react': 18.3.18
+      '@types/react-dom': 18.3.5(@types/react@18.3.18)
+
+  '@everest-ui/react-dropdown-menu@1.0.6(@types/react-dom@18.3.5(@types/react@18.3.18))(@types/react@18.3.18)(framer-motion@11.18.2(react-dom@19.0.0-rc-66855b96-20241106(react@19.0.0-rc-66855b96-20241106))(react@19.0.0-rc-66855b96-20241106))(react-dom@19.0.0-rc-66855b96-20241106(react@19.0.0-rc-66855b96-20241106))(react@19.0.0-rc-66855b96-20241106)':
+    dependencies:
+      '@everest-ui/react-popper': 1.2.6(@types/react-dom@18.3.5(@types/react@18.3.18))(@types/react@18.3.18)(framer-motion@11.18.2(react-dom@19.0.0-rc-66855b96-20241106(react@19.0.0-rc-66855b96-20241106))(react@19.0.0-rc-66855b96-20241106))(react-dom@19.0.0-rc-66855b96-20241106(react@19.0.0-rc-66855b96-20241106))(react@19.0.0-rc-66855b96-20241106)
+      react: 19.0.0-rc-66855b96-20241106
+      react-dom: 19.0.0-rc-66855b96-20241106(react@19.0.0-rc-66855b96-20241106)
+    optionalDependencies:
+      '@types/react': 18.3.18
+      '@types/react-dom': 18.3.5(@types/react@18.3.18)
+    transitivePeerDependencies:
+      - framer-motion
+
   '@everest-ui/react-hooks@1.0.5(@types/react-dom@18.3.5(@types/react@18.3.18))(@types/react@18.3.18)(react-dom@19.0.0-rc-66855b96-20241106(react@19.0.0-rc-66855b96-20241106))(react@19.0.0-rc-66855b96-20241106)':
+    dependencies:
+      react: 19.0.0-rc-66855b96-20241106
+      react-dom: 19.0.0-rc-66855b96-20241106(react@19.0.0-rc-66855b96-20241106)
+    optionalDependencies:
+      '@types/react': 18.3.18
+      '@types/react-dom': 18.3.5(@types/react@18.3.18)
+
+  '@everest-ui/react-hooks@1.0.6(@types/react-dom@18.3.5(@types/react@18.3.18))(@types/react@18.3.18)(react-dom@19.0.0-rc-66855b96-20241106(react@19.0.0-rc-66855b96-20241106))(react@19.0.0-rc-66855b96-20241106)':
     dependencies:
       react: 19.0.0-rc-66855b96-20241106
       react-dom: 19.0.0-rc-66855b96-20241106(react@19.0.0-rc-66855b96-20241106)
@@ -3266,11 +3360,21 @@ snapshots:
       '@types/react': 18.3.18
       '@types/react-dom': 18.3.5(@types/react@18.3.18)
 
+  '@everest-ui/react-utils@1.0.6(@types/react-dom@18.3.5(@types/react@18.3.18))(@types/react@18.3.18)(react-dom@19.0.0-rc-66855b96-20241106(react@19.0.0-rc-66855b96-20241106))(react@19.0.0-rc-66855b96-20241106)':
+    dependencies:
+      react: 19.0.0-rc-66855b96-20241106
+      react-dom: 19.0.0-rc-66855b96-20241106(react@19.0.0-rc-66855b96-20241106)
+    optionalDependencies:
+      '@types/react': 18.3.18
+      '@types/react-dom': 18.3.5(@types/react@18.3.18)
+
   '@everest-ui/selectors@1.0.1': {}
 
   '@everest-ui/utils@1.0.0': {}
 
   '@everest-ui/utils@1.0.1': {}
+
+  '@everest-ui/utils@1.0.2': {}
 
   '@hookform/resolvers@3.10.0(react-hook-form@7.54.2(react@19.0.0-rc-66855b96-20241106))':
     dependencies:

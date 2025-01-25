@@ -1,10 +1,8 @@
 'use client';
 
-import { FiCopy } from 'react-icons/fi';
-import { cn } from '@/utils/lib';
-import { FaCheck } from 'react-icons/fa6';
 import { Button } from '@/components/ui/button';
-import { useCopy } from '@/hooks/useCopy';
+import { cn } from '@/utils/lib';
+import { Copy, CopyIndicator } from '@everest-ui/react-copy';
 import { ComponentProps } from 'react';
 
 interface CopyProps extends ComponentProps<typeof Button> {
@@ -12,40 +10,19 @@ interface CopyProps extends ComponentProps<typeof Button> {
   text: string;
 }
 
-export default function Copy(props: CopyProps) {
+export default function CopyCustom(props: CopyProps) {
   const { text, size, className, ...etc } = props;
-  const [copying, copy] = useCopy({ text });
 
   return (
-    <Button
-      size={size}
-      className={cn('relative z-10', copying && 'cursor-default', className)}
-      onClick={copy}
-      iconOnly
-      {...etc}
-    >
-      <span
-        aria-hidden={true}
-        className="absolute top-1/2 size-6 translate-y-[-50%] flex items-center justify-center"
+    <Copy text={text}>
+      <Button
+        size={size}
+        className={cn('relative z-10', className)}
+        iconOnly
+        {...etc}
       >
-        <FiCopy
-          className={cn('transition-all absolute', {
-            'scale-100': !copying,
-            'scale-0': copying,
-          })}
-        />
-      </span>
-      <span
-        aria-hidden={true}
-        className="absolute top-1/2 size-6 translate-y-[-50%] flex items-center justify-center"
-      >
-        <FaCheck
-          className={cn('transition-all absolute', {
-            'scale-100': copying,
-            'scale-0': !copying,
-          })}
-        />
-      </span>
-    </Button>
+        <CopyIndicator className="size-6" />
+      </Button>
+    </Copy>
   );
 }

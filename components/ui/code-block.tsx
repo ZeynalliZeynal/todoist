@@ -25,10 +25,10 @@ export default function CodeBlock(props: Props) {
 
   return (
     <div
-      data-code-block-wrapper=""
+      data-code-block-wrapper
       className={cn(
         'w-full rounded-md',
-        filename ? 'border' : 'relative group',
+        filename ? 'border' : 'relative group'
       )}
     >
       {!filename && (
@@ -42,7 +42,10 @@ export default function CodeBlock(props: Props) {
         {({ tokens, getLineProps, getTokenProps }) => (
           <div className="flex flex-col">
             {filename && (
-              <div className="h-12 pl-3 pr-4 flex items-center justify-between border-b text-gray-900 bg-background-200 rounded-t-md">
+              <div
+                data-code-block-title
+                className="h-12 pl-3 pr-4 flex items-center justify-between border-b text-gray-900 bg-background-200 rounded-t-md"
+              >
                 <div className="flex gap-2 items-center">
                   {(filename.includes('tsx') || filename.includes('jsx')) && (
                     <IoLogoReact size={16} />
@@ -53,9 +56,10 @@ export default function CodeBlock(props: Props) {
               </div>
             )}
             <pre
+              data-code-block
               className={cn(
                 'py-5 bg-background-100 [counter-reset:line] overflow-auto',
-                className,
+                className
               )}
               {...etc}
             >
@@ -70,7 +74,7 @@ export default function CodeBlock(props: Props) {
                     'px-5 relative',
                     'data-[highlighted]:bg-blue-300 data-[highlighted]:after:absolute data-[highlighted]:after:inset-0 data-[highlighted]:after:right-auto data-[highlighted]:after:w-0.5 data-[highlighted]:after:bg-blue-900 data-[highlighted]:after:z-[0]',
                     showLineNumbers &&
-                      'before:w-4 before:[counter-increment:line] before:inline-block before:text-gray-600 before:content-[counter(line)] before:mr-5 before:font-geist-mono before:text-right before:text-xs',
+                      'before:w-4 before:[counter-increment:line] before:inline-block before:text-gray-600 before:content-[counter(line)] before:mr-5 before:font-geist-mono before:text-right before:text-xs'
                   )}
                 >
                   {line.map((token, key) => (
