@@ -1,5 +1,3 @@
-import DropdownDefault from '@/app/(geist)/geist/dropdown-menu/_sections/dropdown-menu-default';
-
 export default function BadgePage() {
   return (
     <div className="divide-y">
@@ -10,7 +8,7 @@ export default function BadgePage() {
           triggered by a button.
         </p>
       </section>
-      <DropdownDefault />
+      {/* <DropdownDefault /> */}
     </div>
   );
 }

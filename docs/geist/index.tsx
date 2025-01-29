@@ -1,3 +1,4 @@
+import { Button } from '@everest-ui/react-button';
 import { ComponentData } from './geist-component.types';
 
 const componentData: Record<string, ComponentData> = {
@@ -10,18 +11,16 @@ const componentData: Record<string, ComponentData> = {
         content: 'The default size is small (sm).',
         examples: [
           {
-            code: '<Button size="sm">Small Button</Button>',
             preview: <Button size="sm">Small Button</Button>,
           },
           {
-            code: '<Button size="md">Medium Button</Button>',
             preview: <Button size="md">Medium Button</Button>,
           },
           {
-            code: '<Button size="lg">Large Button</Button>',
             preview: <Button size="lg">Large Button</Button>,
           },
         ],
+        code: '<Button size="sm">Small Button</Button>',
       },
       // Add more sections as needed
     ],

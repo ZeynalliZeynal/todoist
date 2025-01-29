@@ -13,7 +13,7 @@ import {
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from '@everest-ui/react-dropdown-menu';
+} from '@/components/ui/primitives/dropdown-menu';
 
 const code = `<DropdownMenu>
   <DropdownMenuTrigger>Open</DropdownMenuTrigger>
