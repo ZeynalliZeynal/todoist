@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.3.14](https://github.com/ZeynalliZeynal/todoist/compare/v0.3.13...v0.3.14) (2025-01-29)
+
+
+### Bug Fixes
+
+* fiz build related bugs ([d069d78](https://github.com/ZeynalliZeynal/todoist/commit/d069d78cf033d9976f4ad9e3352d4eab544300a9))
+
 ### [0.3.13](https://github.com/ZeynalliZeynal/todoist/compare/v0.3.12...v0.3.13) (2025-01-23)
 
 ### [0.3.12](https://github.com/ZeynalliZeynal/todoist/compare/v0.3.11...v0.3.12) (2025-01-22)
