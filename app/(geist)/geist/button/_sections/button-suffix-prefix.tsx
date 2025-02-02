@@ -4,7 +4,7 @@ import {
   CollapseContent,
   CollapseTrigger,
 } from '@/components/ui/collapse';
-import { Button } from '@/components/ui/button';
+import { Button } from '@everest-ui/geist-button';
 import CodeBlock from '@/components/ui/code-block';
 import { IoArrowUp } from 'react-icons/io5';
 import { BUTTON_SUFFIX_PREFIX_CODE } from '@/app/(geist)/geist/button/_snippets/snippets';

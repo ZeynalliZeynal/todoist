@@ -13,7 +13,7 @@ import {
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from '@/components/ui/primitives/dropdown-menu';
+} from '@everest-ui/geist-dropdown-menu';
 
 const code = `<DropdownMenu>
   <DropdownMenuTrigger>Open</DropdownMenuTrigger>

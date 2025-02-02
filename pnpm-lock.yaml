@@ -8,6 +8,12 @@ importers:
 
   .:
     dependencies:
+      '@everest-ui/geist-button':
+        specifier: ^1.0.0
+        version: 1.0.0(@everest-ui/geist-colors@1.1.0)(@types/react-dom@18.3.5(@types/react@18.3.18))(@types/react@18.3.18)(react-dom@19.0.0-rc-66855b96-20241106(react@19.0.0-rc-66855b96-20241106))(react@19.0.0-rc-66855b96-20241106)
+      '@everest-ui/geist-dropdown-menu':
+        specifier: ^1.1.1
+        version: 1.1.1(@everest-ui/geist-colors@1.1.0)(@types/react-dom@18.3.5(@types/react@18.3.18))(@types/react@18.3.18)(react-dom@19.0.0-rc-66855b96-20241106(react@19.0.0-rc-66855b96-20241106))(react@19.0.0-rc-66855b96-20241106)
       '@everest-ui/react-button':
         specifier: ^1.2.1
         version: 1.2.1(@types/react-dom@18.3.5(@types/react@18.3.18))(@types/react@18.3.18)(react-dom@19.0.0-rc-66855b96-20241106(react@19.0.0-rc-66855b96-20241106))(react@19.0.0-rc-66855b96-20241106)
@@ -168,6 +174,37 @@ packages:
 
   '@everest-ui/chain@1.0.2':
     resolution: {integrity: sha512-8cBuARjTMFll+RBMan0Y+R2Z3Mcni2ZFQioWp0N1zOV4TC7cVjyKYRpBtpRYam5+t7kvImOWtkg5l6o0hrjb8Q==}
+
+  '@everest-ui/geist-button@1.0.0':
+    resolution: {integrity: sha512-+c4gm8mvHKwyh23QdLVLfAtTnpUbe/wen/nJSYeAKON91hpVW97Imh0Ayi2azbx60RiXwCX4W9l9/ga0/l2bmQ==}
+    peerDependencies:
+      '@everest-ui/geist-colors': 1.1.0
+      '@types/react': '*'
+      '@types/react-dom': '*'
+      react: ^18.0 || ^19.0 || ^19.0.0-rc
+      react-dom: ^18.0 || ^19.0 || ^19.0.0-rc
+    peerDependenciesMeta:
+      '@types/react':
+        optional: true
+      '@types/react-dom':
+        optional: true
+
+  '@everest-ui/geist-colors@1.1.0':
+    resolution: {integrity: sha512-p3VEaIOHSeUn+BSB1rFc0HD3pmABbdkuVp1lKEnGjKHJ98TKlCPnVS+fx5bHfMikS2i+Rlt+RzvH8+15KqGHGA==}
+
+  '@everest-ui/geist-dropdown-menu@1.1.1':
+    resolution: {integrity: sha512-mD77N4BLqDcjiYRrjloq6TGbKpQfqeT+g59TzTC6eO74nW8RJAc0SGERVFlWZQhfR2gIArVEJV8AKnjHlfmZnw==}
+    peerDependencies:
+      '@everest-ui/geist-colors': ^1.1.0
+      '@types/react': '*'
+      '@types/react-dom': '*'
+      react: ^18.0 || ^19.0 || ^19.0.0-rc
+      react-dom: ^18.0 || ^19.0 || ^19.0.0-rc
+    peerDependenciesMeta:
+      '@types/react':
+        optional: true
+      '@types/react-dom':
+        optional: true
 
   '@everest-ui/react-button@1.2.1':
     resolution: {integrity: sha512-9/+FmGZA/YtsPdqn/JsLhhvIYf2471oIBhkvbjVkMj4zO5PoitlBErebannGqdkFq++9SFELwwCr1c55GIDgLw==}
@@ -3282,6 +3319,28 @@ snapshots:
   '@everest-ui/chain@1.0.1': {}
 
   '@everest-ui/chain@1.0.2': {}
+
+  '@everest-ui/geist-button@1.0.0(@everest-ui/geist-colors@1.1.0)(@types/react-dom@18.3.5(@types/react@18.3.18))(@types/react@18.3.18)(react-dom@19.0.0-rc-66855b96-20241106(react@19.0.0-rc-66855b96-20241106))(react@19.0.0-rc-66855b96-20241106)':
+    dependencies:
+      '@everest-ui/geist-colors': 1.1.0
+      clsx: 2.1.1
+      react: 19.0.0-rc-66855b96-20241106
+      react-dom: 19.0.0-rc-66855b96-20241106(react@19.0.0-rc-66855b96-20241106)
+    optionalDependencies:
+      '@types/react': 18.3.18
+      '@types/react-dom': 18.3.5(@types/react@18.3.18)
+
+  '@everest-ui/geist-colors@1.1.0': {}
+
+  '@everest-ui/geist-dropdown-menu@1.1.1(@everest-ui/geist-colors@1.1.0)(@types/react-dom@18.3.5(@types/react@18.3.18))(@types/react@18.3.18)(react-dom@19.0.0-rc-66855b96-20241106(react@19.0.0-rc-66855b96-20241106))(react@19.0.0-rc-66855b96-20241106)':
+    dependencies:
+      '@everest-ui/geist-colors': 1.1.0
+      clsx: 2.1.1
+      react: 19.0.0-rc-66855b96-20241106
+      react-dom: 19.0.0-rc-66855b96-20241106(react@19.0.0-rc-66855b96-20241106)
+    optionalDependencies:
+      '@types/react': 18.3.18
+      '@types/react-dom': 18.3.5(@types/react@18.3.18)
 
   '@everest-ui/react-button@1.2.1(@types/react-dom@18.3.5(@types/react@18.3.18))(@types/react@18.3.18)(react-dom@19.0.0-rc-66855b96-20241106(react@19.0.0-rc-66855b96-20241106))(react@19.0.0-rc-66855b96-20241106)':
     dependencies:

@@ -11,6 +11,8 @@
     "push": "git push origin main --follow-tags"
   },
   "dependencies": {
+    "@everest-ui/geist-button": "^1.0.0",
+    "@everest-ui/geist-dropdown-menu": "^1.1.1",
     "@everest-ui/react-button": "^1.2.1",
     "@everest-ui/react-collapse": "^0.0.8",
     "@everest-ui/react-copy": "^1.0.3",
