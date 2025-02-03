@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.3.16](https://github.com/ZeynalliZeynal/todoist/compare/v0.3.15...v0.3.16) (2025-02-03)
+
+
+### Bug Fixes
+
+* add fixed version of dropdown-menu library ([5758d92](https://github.com/ZeynalliZeynal/todoist/commit/5758d9273afa96526f2f5e441d5185d83de4d618))
+
 ### [0.3.15](https://github.com/ZeynalliZeynal/todoist/compare/v0.3.14...v0.3.15) (2025-02-02)
 
 ### [0.3.14](https://github.com/ZeynalliZeynal/todoist/compare/v0.3.13...v0.3.14) (2025-01-29)
