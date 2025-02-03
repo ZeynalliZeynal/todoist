@@ -9,10 +9,6 @@ import {
   PopperItemProps,
   PopperLabel,
   PopperSeparator,
-  PopperSub,
-  PopperSubContent,
-  PopperSubContentProps,
-  PopperSubTrigger,
   PopperTrigger,
   PopperTriggerProps,
 } from '@everest-ui/react-popper';
@@ -55,22 +51,4 @@ export function DropdownMenuLabel(
   props: ComponentProps<'div'>
 ): React.ReactElement {
   return <PopperLabel {...props} />;
-}
-
-export function DropdownMenuSub(props: {
-  children: React.ReactNode;
-}): React.ReactElement {
-  return <PopperSub {...props} />;
-}
-
-export function DropdownMenuSubTrigger(
-  props: PopperItemProps
-): React.ReactElement {
-  return <PopperSubTrigger {...props} />;
-}
-
-export function DropdownMenuSubContent(
-  props: PopperSubContentProps
-): React.ReactElement {
-  return <PopperSubContent {...props} />;
 }
