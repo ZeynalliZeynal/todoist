@@ -1,12 +1,10 @@
-'use client';
-
 import { usePopper } from '@/components/ui/primitives/popper/popper-context';
-import { chain } from '@/utils/chain';
-import { cn } from '@/utils/lib';
-import React, { HTMLAttributes } from 'react';
-import { mergeRefs } from '@/utils/ui/merge-refs';
 import { PopperItemProps } from '@/components/ui/primitives/popper/popper.types';
 import { POPPER_ITEM_SELECTOR } from '@/components/ui/primitives/selectors';
+import { mergeRefs } from '@/utils/ui/merge-refs';
+import { chain } from '@/utils/chain';
+import React, { HTMLAttributes } from 'react';
+import { clsx } from 'clsx';
 
 export const PopperItem = React.forwardRef<HTMLDivElement, PopperItemProps>(
   (props, forwardRef) => {
@@ -22,7 +20,6 @@ export const PopperItem = React.forwardRef<HTMLDivElement, PopperItemProps>(
       disabled,
       suffix,
       prefix,
-      inset,
       ...etc
     } = props;
     const { closePopper, highlightedItem, highlight } = usePopper();
@@ -42,14 +39,16 @@ export const PopperItem = React.forwardRef<HTMLDivElement, PopperItemProps>(
 
     function handleKeyDown(event: React.KeyboardEvent) {
       if (event.key === 'Enter' || event.key === ' ') {
+        event.preventDefault();
         ref.current?.click();
       }
     }
 
-    function handleClick(event: React.MouseEvent<HTMLElement>) {
+    function handleClick(event: React.MouseEvent<HTMLDivElement>) {
       const target = event.target as HTMLElement;
       if (target.closest(POPPER_ITEM_SELECTOR)?.hasAttribute('aria-controls'))
         return;
+      event.preventDefault();
       closePopper();
     }
 
@@ -71,19 +70,14 @@ export const PopperItem = React.forwardRef<HTMLDivElement, PopperItemProps>(
     return asChild && React.isValidElement(children) ? (
       React.cloneElement(children, {
         ...attrs,
-        className: cn(className, children.props.className),
+        className: clsx(
+          className,
+          (children.props as React.ComponentProps<'div'>).className,
+        ),
       } as HTMLAttributes<HTMLElement>)
     ) : (
-      <div
-        {...attrs}
-        className={cn(
-          'flex items-center justify-between px-2 rounded-md cursor-pointer h-10 align-middle transition focus:bg-gray-alpha-100 outline-none data-[disabled]:text-gray-500 data-[disabled]:pointer-events-none data-[disabled]:focus:bg-transparent',
-          attrs.className,
-        )}
-      >
-        <span
-          className={cn('flex items-center gap-2', inset && !prefix && 'pl-3')}
-        >
+      <div {...attrs}>
+        <span>
           {prefix}
           {children}
         </span>

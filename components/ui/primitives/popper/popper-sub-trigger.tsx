@@ -1,16 +1,12 @@
-'use client';
-
-import { useResize } from '@/hooks/useResize';
-import { cn } from '@/utils/lib';
 import React, { useCallback } from 'react';
-import { FaAngleRight } from 'react-icons/fa6';
 import { usePopper } from './popper-context';
 import { PopperItem } from './popper-item';
 import { usePopperSub } from './popper-sub-context';
-import { PopperItemProps } from '@/components/ui/primitives/popper/popper.types';
+import { PopperItemProps } from './popper.types';
+import { useResize } from '@/hooks/useResize';
 
 export function PopperSubTrigger(props: PopperItemProps) {
-  const { children, className, ...etc } = props;
+  const { children, ...etc } = props;
   const { highlight } = usePopper();
   const { openPopper, id, setTriggerPosition, isOpen, closePopper } =
     usePopperSub();
@@ -37,7 +33,7 @@ export function PopperSubTrigger(props: PopperItemProps) {
   }
 
   function handleKeyDown(
-    event: React.KeyboardEvent<HTMLElement> | React.MouseEvent<HTMLElement>
+    event: React.KeyboardEvent<HTMLElement> | React.MouseEvent<HTMLElement>,
   ) {
     if ((event as React.KeyboardEvent).key === 'ArrowRight') {
       openPopper(event as React.MouseEvent<HTMLElement>);
@@ -64,15 +60,10 @@ export function PopperSubTrigger(props: PopperItemProps) {
       aria-controls={id}
       aria-expanded={isOpen}
       data-state={isOpen ? 'open' : 'closed'}
-      className={cn(
-        'justify-between data-[state=open]:bg-gray-alpha-100',
-        className
-      )}
       onClick={handleClick}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
       onKeyDown={handleKeyDown}
-      suffix={<FaAngleRight />}
     >
       {children}
     </PopperItem>

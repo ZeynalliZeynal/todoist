@@ -8,15 +8,6 @@ importers:
 
   .:
     dependencies:
-      '@everest-ui/geist-button':
-        specifier: ^1.0.0
-        version: 1.0.0(@everest-ui/geist-colors@1.1.0)(@types/react-dom@18.3.5(@types/react@18.3.18))(@types/react@18.3.18)(react-dom@19.0.0-rc-66855b96-20241106(react@19.0.0-rc-66855b96-20241106))(react@19.0.0-rc-66855b96-20241106)
-      '@everest-ui/geist-dropdown-menu':
-        specifier: ^1.1.1
-        version: 1.1.1(@everest-ui/geist-colors@1.1.0)(@types/react-dom@18.3.5(@types/react@18.3.18))(@types/react@18.3.18)(react-dom@19.0.0-rc-66855b96-20241106(react@19.0.0-rc-66855b96-20241106))(react@19.0.0-rc-66855b96-20241106)
-      '@everest-ui/react-button':
-        specifier: ^1.2.1
-        version: 1.2.1(@types/react-dom@18.3.5(@types/react@18.3.18))(@types/react@18.3.18)(react-dom@19.0.0-rc-66855b96-20241106(react@19.0.0-rc-66855b96-20241106))(react@19.0.0-rc-66855b96-20241106)
       '@everest-ui/react-collapse':
         specifier: ^0.0.8
         version: 0.0.8(@types/react-dom@18.3.5(@types/react@18.3.18))(@types/react@18.3.18)(framer-motion@11.18.2(react-dom@19.0.0-rc-66855b96-20241106(react@19.0.0-rc-66855b96-20241106))(react@19.0.0-rc-66855b96-20241106))(react-dom@19.0.0-rc-66855b96-20241106(react@19.0.0-rc-66855b96-20241106))(react@19.0.0-rc-66855b96-20241106)
@@ -24,11 +15,8 @@ importers:
         specifier: ^1.0.3
         version: 1.0.3(@types/react-dom@18.3.5(@types/react@18.3.18))(@types/react@18.3.18)(react-dom@19.0.0-rc-66855b96-20241106(react@19.0.0-rc-66855b96-20241106))(react@19.0.0-rc-66855b96-20241106)
       '@everest-ui/react-dropdown-menu':
-        specifier: ^1.0.1
-        version: 1.0.1(@types/react-dom@18.3.5(@types/react@18.3.18))(@types/react@18.3.18)(react-dom@19.0.0-rc-66855b96-20241106(react@19.0.0-rc-66855b96-20241106))(react@19.0.0-rc-66855b96-20241106)
-      '@everest-ui/react-popper':
-        specifier: ^1.5.0
-        version: 1.5.0(@types/react-dom@18.3.5(@types/react@18.3.18))(@types/react@18.3.18)(framer-motion@11.18.2(react-dom@19.0.0-rc-66855b96-20241106(react@19.0.0-rc-66855b96-20241106))(react@19.0.0-rc-66855b96-20241106))(react-dom@19.0.0-rc-66855b96-20241106(react@19.0.0-rc-66855b96-20241106))(react@19.0.0-rc-66855b96-20241106)
+        specifier: ^1.2.1
+        version: 1.2.1(@types/react-dom@18.3.5(@types/react@18.3.18))(@types/react@18.3.18)(react-dom@19.0.0-rc-66855b96-20241106(react@19.0.0-rc-66855b96-20241106))(react@19.0.0-rc-66855b96-20241106)
       '@hookform/resolvers':
         specifier: ^3.10.0
         version: 3.10.0(react-hook-form@7.54.2(react@19.0.0-rc-66855b96-20241106))
@@ -172,50 +160,6 @@ packages:
   '@everest-ui/chain@1.0.2':
     resolution: {integrity: sha512-8cBuARjTMFll+RBMan0Y+R2Z3Mcni2ZFQioWp0N1zOV4TC7cVjyKYRpBtpRYam5+t7kvImOWtkg5l6o0hrjb8Q==}
 
-  '@everest-ui/geist-button@1.0.0':
-    resolution: {integrity: sha512-+c4gm8mvHKwyh23QdLVLfAtTnpUbe/wen/nJSYeAKON91hpVW97Imh0Ayi2azbx60RiXwCX4W9l9/ga0/l2bmQ==}
-    peerDependencies:
-      '@everest-ui/geist-colors': 1.1.0
-      '@types/react': '*'
-      '@types/react-dom': '*'
-      react: ^18.0 || ^19.0 || ^19.0.0-rc
-      react-dom: ^18.0 || ^19.0 || ^19.0.0-rc
-    peerDependenciesMeta:
-      '@types/react':
-        optional: true
-      '@types/react-dom':
-        optional: true
-
-  '@everest-ui/geist-colors@1.1.0':
-    resolution: {integrity: sha512-p3VEaIOHSeUn+BSB1rFc0HD3pmABbdkuVp1lKEnGjKHJ98TKlCPnVS+fx5bHfMikS2i+Rlt+RzvH8+15KqGHGA==}
-
-  '@everest-ui/geist-dropdown-menu@1.1.1':
-    resolution: {integrity: sha512-mD77N4BLqDcjiYRrjloq6TGbKpQfqeT+g59TzTC6eO74nW8RJAc0SGERVFlWZQhfR2gIArVEJV8AKnjHlfmZnw==}
-    peerDependencies:
-      '@everest-ui/geist-colors': ^1.1.0
-      '@types/react': '*'
-      '@types/react-dom': '*'
-      react: ^18.0 || ^19.0 || ^19.0.0-rc
-      react-dom: ^18.0 || ^19.0 || ^19.0.0-rc
-    peerDependenciesMeta:
-      '@types/react':
-        optional: true
-      '@types/react-dom':
-        optional: true
-
-  '@everest-ui/react-button@1.2.1':
-    resolution: {integrity: sha512-9/+FmGZA/YtsPdqn/JsLhhvIYf2471oIBhkvbjVkMj4zO5PoitlBErebannGqdkFq++9SFELwwCr1c55GIDgLw==}
-    peerDependencies:
-      '@types/react': '*'
-      '@types/react-dom': '*'
-      react: ^16.8 || ^17.0 || ^18.0 || ^19.0 || ^19.0.0-rc
-      react-dom: ^16.8 || ^17.0 || ^18.0 || ^19.0 || ^19.0.0-rc
-    peerDependenciesMeta:
-      '@types/react':
-        optional: true
-      '@types/react-dom':
-        optional: true
-
   '@everest-ui/react-collapse@0.0.8':
     resolution: {integrity: sha512-wMXFMEwZdhkN7f9GhGx+zywNQ7i/1NvHfl/mwZmt1exPB4gx9wrA1IDl9YgjBDTxinMPvdQWf21cUf7fVqloww==}
     peerDependencies:
@@ -243,8 +187,8 @@ packages:
       '@types/react-dom':
         optional: true
 
-  '@everest-ui/react-dropdown-menu@1.0.1':
-    resolution: {integrity: sha512-uE3W09nz844nJ7SuYcEzKbvn4fntmEBUnrZ7aheF/FH9RPLh9UKv6pZ7ElkXHFtrfvDqdFapzTTCNFfS/uxXzA==}
+  '@everest-ui/react-dropdown-menu@1.2.1':
+    resolution: {integrity: sha512-fe5RepponmD55eTilplVH9hzBIbGlntP7Iykt6OB7JrI0te3vCm+xmf/x5PVvwZD4C729apVIOE7mNmy6/9ANw==}
     peerDependencies:
       '@types/react': '*'
       '@types/react-dom': '*'
@@ -269,20 +213,6 @@ packages:
       '@types/react-dom':
         optional: true
 
-  '@everest-ui/react-popper@1.5.0':
-    resolution: {integrity: sha512-vUc61oVwbQ+MpWub8+Urfcy1jpLtGrJvsrjg0O38bGRV3GPYyWd4K+Vd6JFfDNJjRb2MqS3HK+Pv93Bh/gM4Pg==}
-    peerDependencies:
-      '@types/react': '*'
-      '@types/react-dom': '*'
-      framer-motion: ^11.0.0 || ^12.0.0 || ^12.0.6
-      react: ^18.0 || ^19.0 || ^19.0.0-rc
-      react-dom: ^18.0 || ^19.0 || ^19.0.0-rc
-    peerDependenciesMeta:
-      '@types/react':
-        optional: true
-      '@types/react-dom':
-        optional: true
-
   '@everest-ui/react-utils@1.0.6':
     resolution: {integrity: sha512-8vYbgl1ctBHCXl1JsvQWxUM7t3za7NTuI2dAGTzpqrKFGYct2yaEIxCu6zJFhzBwbBAiIvbRUktYvthMyEXd+Q==}
     peerDependencies:
@@ -295,9 +225,6 @@ packages:
         optional: true
       '@types/react-dom':
         optional: true
-
-  '@everest-ui/utils@1.0.0':
-    resolution: {integrity: sha512-N9FA/8p4eu/GQ1dlLxXdQfnfgnAMxiDjW0NxQJ5++AwZ5vsifNpcKdd30wTXeYxrtfxJKdSJaWRmDjO3ehva9A==}
 
   '@everest-ui/utils@1.0.2':
     resolution: {integrity: sha512-32KzY6trGd6mXaXtAwHm9X3qIKAkW+0oq8tsIcoXbpQ7IrLTLD3rVoZhYoqHYQjC8s22Ckk86RmdpLMYYLWaeA==}
@@ -3283,37 +3210,6 @@ snapshots:
 
   '@everest-ui/chain@1.0.2': {}
 
-  '@everest-ui/geist-button@1.0.0(@everest-ui/geist-colors@1.1.0)(@types/react-dom@18.3.5(@types/react@18.3.18))(@types/react@18.3.18)(react-dom@19.0.0-rc-66855b96-20241106(react@19.0.0-rc-66855b96-20241106))(react@19.0.0-rc-66855b96-20241106)':
-    dependencies:
-      '@everest-ui/geist-colors': 1.1.0
-      clsx: 2.1.1
-      react: 19.0.0-rc-66855b96-20241106
-      react-dom: 19.0.0-rc-66855b96-20241106(react@19.0.0-rc-66855b96-20241106)
-    optionalDependencies:
-      '@types/react': 18.3.18
-      '@types/react-dom': 18.3.5(@types/react@18.3.18)
-
-  '@everest-ui/geist-colors@1.1.0': {}
-
-  '@everest-ui/geist-dropdown-menu@1.1.1(@everest-ui/geist-colors@1.1.0)(@types/react-dom@18.3.5(@types/react@18.3.18))(@types/react@18.3.18)(react-dom@19.0.0-rc-66855b96-20241106(react@19.0.0-rc-66855b96-20241106))(react@19.0.0-rc-66855b96-20241106)':
-    dependencies:
-      '@everest-ui/geist-colors': 1.1.0
-      clsx: 2.1.1
-      react: 19.0.0-rc-66855b96-20241106
-      react-dom: 19.0.0-rc-66855b96-20241106(react@19.0.0-rc-66855b96-20241106)
-    optionalDependencies:
-      '@types/react': 18.3.18
-      '@types/react-dom': 18.3.5(@types/react@18.3.18)
-
-  '@everest-ui/react-button@1.2.1(@types/react-dom@18.3.5(@types/react@18.3.18))(@types/react@18.3.18)(react-dom@19.0.0-rc-66855b96-20241106(react@19.0.0-rc-66855b96-20241106))(react@19.0.0-rc-66855b96-20241106)':
-    dependencies:
-      '@everest-ui/utils': 1.0.0
-      react: 19.0.0-rc-66855b96-20241106
-      react-dom: 19.0.0-rc-66855b96-20241106(react@19.0.0-rc-66855b96-20241106)
-    optionalDependencies:
-      '@types/react': 18.3.18
-      '@types/react-dom': 18.3.5(@types/react@18.3.18)
-
   '@everest-ui/react-collapse@0.0.8(@types/react-dom@18.3.5(@types/react@18.3.18))(@types/react@18.3.18)(framer-motion@11.18.2(react-dom@19.0.0-rc-66855b96-20241106(react@19.0.0-rc-66855b96-20241106))(react@19.0.0-rc-66855b96-20241106))(react-dom@19.0.0-rc-66855b96-20241106(react@19.0.0-rc-66855b96-20241106))(react@19.0.0-rc-66855b96-20241106)':
     dependencies:
       framer-motion: 11.18.2(react-dom@19.0.0-rc-66855b96-20241106(react@19.0.0-rc-66855b96-20241106))(react@19.0.0-rc-66855b96-20241106)
@@ -3335,7 +3231,7 @@ snapshots:
       '@types/react': 18.3.18
       '@types/react-dom': 18.3.5(@types/react@18.3.18)
 
-  '@everest-ui/react-dropdown-menu@1.0.1(@types/react-dom@18.3.5(@types/react@18.3.18))(@types/react@18.3.18)(react-dom@19.0.0-rc-66855b96-20241106(react@19.0.0-rc-66855b96-20241106))(react@19.0.0-rc-66855b96-20241106)':
+  '@everest-ui/react-dropdown-menu@1.2.1(@types/react-dom@18.3.5(@types/react@18.3.18))(@types/react@18.3.18)(react-dom@19.0.0-rc-66855b96-20241106(react@19.0.0-rc-66855b96-20241106))(react@19.0.0-rc-66855b96-20241106)':
     dependencies:
       react: 19.0.0-rc-66855b96-20241106
       react-dom: 19.0.0-rc-66855b96-20241106(react@19.0.0-rc-66855b96-20241106)
@@ -3351,16 +3247,6 @@ snapshots:
       '@types/react': 18.3.18
       '@types/react-dom': 18.3.5(@types/react@18.3.18)
 
-  '@everest-ui/react-popper@1.5.0(@types/react-dom@18.3.5(@types/react@18.3.18))(@types/react@18.3.18)(framer-motion@11.18.2(react-dom@19.0.0-rc-66855b96-20241106(react@19.0.0-rc-66855b96-20241106))(react@19.0.0-rc-66855b96-20241106))(react-dom@19.0.0-rc-66855b96-20241106(react@19.0.0-rc-66855b96-20241106))(react@19.0.0-rc-66855b96-20241106)':
-    dependencies:
-      clsx: 2.1.1
-      framer-motion: 11.18.2(react-dom@19.0.0-rc-66855b96-20241106(react@19.0.0-rc-66855b96-20241106))(react@19.0.0-rc-66855b96-20241106)
-      react: 19.0.0-rc-66855b96-20241106
-      react-dom: 19.0.0-rc-66855b96-20241106(react@19.0.0-rc-66855b96-20241106)
-    optionalDependencies:
-      '@types/react': 18.3.18
-      '@types/react-dom': 18.3.5(@types/react@18.3.18)
-
   '@everest-ui/react-utils@1.0.6(@types/react-dom@18.3.5(@types/react@18.3.18))(@types/react@18.3.18)(react-dom@19.0.0-rc-66855b96-20241106(react@19.0.0-rc-66855b96-20241106))(react@19.0.0-rc-66855b96-20241106)':
     dependencies:
       react: 19.0.0-rc-66855b96-20241106
@@ -3368,8 +3254,6 @@ snapshots:
     optionalDependencies:
       '@types/react': 18.3.18
       '@types/react-dom': 18.3.5(@types/react@18.3.18)
-
-  '@everest-ui/utils@1.0.0': {}
 
   '@everest-ui/utils@1.0.2': {}
 

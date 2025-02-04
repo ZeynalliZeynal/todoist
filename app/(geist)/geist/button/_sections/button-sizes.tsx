@@ -4,10 +4,10 @@ import {
   CollapseContent,
   CollapseTrigger,
 } from '@/components/ui/collapse';
-import { Button } from '@everest-ui/geist-button';
 import CodeBlock from '@/components/ui/code-block';
 import { BUTTON_SIZES_CODE } from '@/app/(geist)/geist/button/_snippets/snippets';
 import GeistContentWrapper from '@/app/(geist)/geist/_components/geist-content-wrapper';
+import { Button } from '@/components/ui/button';
 
 export default function ButtonSizes() {
   return (

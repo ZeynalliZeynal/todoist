@@ -3,17 +3,16 @@ import { createPortal } from 'react-dom';
 import ReactFocusLock from 'react-focus-lock';
 import { usePopper } from './popper-context';
 import { PopperContentProps } from './popper.types';
+import { keyboardArrowNavigation } from '@/utils/ui/keyboard-navigation';
 import { useOutsideClick } from '@/hooks/use-ui';
 import {
   POPPER_ITEM_SELECTOR,
   POPPER_SUB_CONTENT_SELECTOR,
-} from '../selectors';
-import { keyboardArrowNavigation } from '@/utils/ui/keyboard-navigation';
+} from '@/components/ui/primitives/selectors';
 import { popperPosition } from '@/utils/ui/popper-position';
 import { useResize } from '@/hooks/useResize';
 import { mergeRefs } from '@/utils/ui/merge-refs';
 import { chain } from '@/utils/chain';
-import { cn } from '@/lib/utils';
 
 export const PopperContent = React.forwardRef<
   HTMLDivElement,
@@ -93,10 +92,6 @@ export const PopperContent = React.forwardRef<
           data-popper-content=""
           aria-orientation="vertical"
           {...etc}
-          className={cn(
-            'bg-background-100 p-2 rounded-xl border w-48 m-2 focus:outline-0',
-            etc.className
-          )}
           onKeyDown={chain(handleKeyDown, onKeyDown)}
           data-popper-wrapper=""
           style={{
@@ -109,7 +104,7 @@ export const PopperContent = React.forwardRef<
           {children}
         </div>
       </ReactFocusLock>,
-      document.body
+      document.body,
     );
 });
 PopperContent.displayName = 'PopperContent';

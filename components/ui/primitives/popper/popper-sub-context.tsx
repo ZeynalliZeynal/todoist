@@ -3,9 +3,10 @@ import { PopperProviderProps } from './popper.types';
 import {
   POPPER_ITEM_SELECTOR,
   POPPER_SUB_CONTENT_SELECTOR,
-} from '../selectors';
+} from '@/components/ui/primitives/selectors';
+
 export const PopperSubContext = React.createContext<PopperProviderProps | null>(
-  null
+  null,
 );
 
 export function usePopperSub() {
@@ -41,13 +42,13 @@ export function PopperSub({ children }: { children: React.ReactNode }) {
 
       activeTrigger.current = event.currentTarget || event.target;
     },
-    []
+    [],
   );
   function closePopper() {
     setIsMounted(true);
 
     const popperContent = document.querySelector(
-      POPPER_SUB_CONTENT_SELECTOR
+      POPPER_SUB_CONTENT_SELECTOR,
     ) as HTMLElement;
 
     if (!popperContent) {
@@ -62,7 +63,7 @@ export function PopperSub({ children }: { children: React.ReactNode }) {
 
     const duration = Number(
       window.getComputedStyle(popperContent).animationDuration.split('s')[0] ||
-        window.getComputedStyle(popperContent).transitionDuration.split('s')[0]
+        window.getComputedStyle(popperContent).transitionDuration.split('s')[0],
     );
 
     if (hasAnimation) {
@@ -81,7 +82,7 @@ export function PopperSub({ children }: { children: React.ReactNode }) {
       (
         document
           .querySelector(
-            `${POPPER_SUB_CONTENT_SELECTOR}[aria-labelledby='${id}']`
+            `${POPPER_SUB_CONTENT_SELECTOR}[aria-labelledby='${id}']`,
           )
           ?.querySelector(POPPER_ITEM_SELECTOR) as HTMLElement
       )?.focus();

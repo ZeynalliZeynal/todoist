@@ -1,18 +1,11 @@
-import React from 'react';
-import { cn } from '@/utils/lib';
+import React from "react";
 
 export const PopperGroup = React.forwardRef<
   HTMLDivElement,
-  React.ComponentProps<'div'>
+  React.ComponentProps<"div">
 >((props, ref) => {
   return (
-    <div
-      ref={ref}
-      role="group"
-      aria-orientation="horizontal"
-      className={cn(props.className)}
-      {...props}
-    />
+    <div ref={ref} role='group' aria-orientation='horizontal' {...props} />
   );
 });
-PopperGroup.displayName = 'PopperGroup';
+PopperGroup.displayName = "PopperGroup";

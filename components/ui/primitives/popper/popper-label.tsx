@@ -1,16 +1,9 @@
-import React from 'react';
-import { cn } from '@/utils/lib';
+import React from "react";
 
 export const PopperLabel = React.forwardRef<
   HTMLDivElement,
-  React.ComponentProps<'div'>
+  React.ComponentProps<"div">
 >((props, ref) => {
-  return (
-    <div
-      ref={ref}
-      className={cn('h-10 px-2 flex items-center gap-2', props.className)}
-      {...props}
-    />
-  );
+  return <div ref={ref} {...props} />;
 });
-PopperLabel.displayName = 'PopperLabel';
+PopperLabel.displayName = "PopperLabel";

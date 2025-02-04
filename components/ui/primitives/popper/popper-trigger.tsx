@@ -1,19 +1,14 @@
-'use client';
-
-import { PopperTriggerProps } from '@/components/ui/primitives/popper/popper.types';
-import { usePopper } from '@/components/ui/primitives/popper/popper-context';
-import { Button } from '@/components/ui/button';
+import React from 'react';
+import { usePopper } from './popper-context';
+import { PopperTriggerProps } from './popper.types';
 import { chain } from '@/utils/chain';
-import React, { HTMLAttributes, useCallback } from 'react';
 import { useResize } from '@/hooks/useResize';
-import { cn } from '@/utils/lib';
+import { cn } from '@/lib/utils';
 
 export function PopperTrigger(props: PopperTriggerProps) {
   const {
     children,
     asChild,
-    suffix,
-    prefix,
     disabled,
     onMouseDown,
     className,
@@ -28,7 +23,7 @@ export function PopperTrigger(props: PopperTriggerProps) {
     openPopper(event);
   }
 
-  const handleResize = useCallback(() => {
+  const handleResize = React.useCallback(() => {
     const rect = ref.current?.getBoundingClientRect();
     if (!rect) return;
     setTriggerPosition(rect);
@@ -47,16 +42,17 @@ export function PopperTrigger(props: PopperTriggerProps) {
     onClick: chain(handleMouseDown, onClick),
     className,
     ...etc,
-  };
+  } as React.HTMLAttributes<HTMLButtonElement>;
 
   return asChild && React.isValidElement(children) ? (
     React.cloneElement(children, {
       ...attrs,
-      className: cn(className, children.props.className),
-    } as HTMLAttributes<HTMLElement>)
+      className: cn(
+        className,
+        (children.props as React.ComponentProps<'button'>).className,
+      ),
+    } as React.HTMLAttributes<HTMLElement>)
   ) : (
-    <Button size="md" suffix={suffix} prefix={prefix} {...attrs}>
-      {children}
-    </Button>
+    <button {...attrs}>{children}</button>
   );
 }

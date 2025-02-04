@@ -1,20 +1,11 @@
-'use client';
-
-import React from 'react';
-import { cn } from '@/utils/lib';
+import React from "react";
 
 export const PopperSeparator = React.forwardRef<
   HTMLDivElement,
-  React.ComponentProps<'div'>
+  React.ComponentProps<"div">
 >((props, ref) => {
   return (
-    <div
-      ref={ref}
-      role="separator"
-      aria-orientation="horizontal"
-      className={cn('-mx-2 my-2 h-px bg-gray-alpha-400', props.className)}
-      {...props}
-    />
+    <div ref={ref} role='separator' aria-orientation='horizontal' {...props} />
   );
 });
-PopperSeparator.displayName = 'PopperSeparator';
+PopperSeparator.displayName = "PopperSeparator";

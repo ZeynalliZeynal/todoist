@@ -1,5 +1,4 @@
-export type SideProps = 'top' | 'right' | 'bottom' | 'left';
-export type AlignProps = 'start' | 'center' | 'end';
+import { AlignProps, SideProps } from "@everest-ui/react-utils";
 
 export interface PopperProviderProps {
   isOpen: boolean;
@@ -24,25 +23,25 @@ export interface PopperProps {
 }
 
 export interface PopperTriggerProps
-  extends Omit<React.ComponentProps<'button'>, 'prefix'> {
+  extends Omit<React.ComponentProps<"button">, "prefix"> {
   asChild?: boolean;
   disabled?: boolean;
   prefix?: React.ReactNode;
   suffix?: React.ReactNode;
 }
 
-export interface PopperContentProps extends React.ComponentProps<'div'> {
+export interface PopperContentProps extends React.ComponentProps<"div"> {
   align?: AlignProps;
   side?: SideProps;
   asChild?: boolean;
 }
 
-export interface PopperSubContentProps extends React.ComponentProps<'div'> {
+export interface PopperSubContentProps extends React.ComponentProps<"div"> {
   asChild?: boolean;
 }
 
 export interface PopperItemProps
-  extends Omit<React.ComponentProps<'div'>, 'prefix'> {
+  extends Omit<React.ComponentProps<"div">, "prefix"> {
   disabled?: boolean;
   asChild?: boolean;
   prefix?: React.ReactNode;
@@ -73,25 +72,25 @@ export interface PopperProps {
 }
 
 export interface PopperTriggerProps
-  extends Omit<React.ComponentProps<'button'>, 'prefix'> {
+  extends Omit<React.ComponentProps<"button">, "prefix"> {
   asChild?: boolean;
   disabled?: boolean;
   prefix?: React.ReactNode;
   suffix?: React.ReactNode;
 }
 
-export interface PopperContentProps extends React.ComponentProps<'div'> {
+export interface PopperContentProps extends React.ComponentProps<"div"> {
   align?: AlignProps;
   side?: SideProps;
   asChild?: boolean;
 }
 
-export interface PopperSubContentProps extends React.ComponentProps<'div'> {
+export interface PopperSubContentProps extends React.ComponentProps<"div"> {
   asChild?: boolean;
 }
 
 export interface PopperItemProps
-  extends Omit<React.ComponentProps<'div'>, 'prefix'> {
+  extends Omit<React.ComponentProps<"div">, "prefix"> {
   disabled?: boolean;
   asChild?: boolean;
   prefix?: React.ReactNode;

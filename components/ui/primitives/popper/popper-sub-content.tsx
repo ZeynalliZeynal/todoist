@@ -1,15 +1,14 @@
-import React, { HTMLAttributes, useCallback } from 'react';
-import { createPortal } from 'react-dom';
-import { usePopper } from './popper-context';
-import { usePopperSub } from './popper-sub-context';
-import { PopperSubContentProps } from './popper.types';
+import { PopperSubContentProps } from '@/components/ui/primitives/popper/popper.types';
+import { usePopper } from '@/components/ui/primitives/popper/popper-context';
+import { usePopperSub } from '@/components/ui/primitives/popper/popper-sub-context';
 import { useOutsideClick } from '@/hooks/use-ui';
 import { keyboardArrowNavigation } from '@/utils/ui/keyboard-navigation';
-import { POPPER_ITEM_SELECTOR } from '../selectors';
+import { POPPER_ITEM_SELECTOR } from '@/components/ui/primitives/selectors';
+import React, { HTMLAttributes, useCallback } from 'react';
 import { useResize } from '@/hooks/useResize';
-import { chain } from '@/utils/chain';
 import { mergeRefs } from '@/utils/ui/merge-refs';
-import { cn } from '@/lib/utils';
+import { chain } from '@/utils/chain';
+import { createPortal } from 'react-dom';
 
 export const PopperSubContent = React.forwardRef<
   HTMLDivElement,
@@ -47,7 +46,7 @@ export const PopperSubContent = React.forwardRef<
   function handleMouseLeave(event: React.MouseEvent) {
     const relatedTarget = document.elementFromPoint(
       event.clientX,
-      event.clientY
+      event.clientY,
     );
     if (relatedTarget && relatedTarget !== activeTrigger) {
       closePopper();
@@ -105,10 +104,6 @@ export const PopperSubContent = React.forwardRef<
     return createPortal(
       <div
         {...attrs}
-        className={cn(
-          'bg-background-100 p-2 rounded-xl border w-48 focus:outline-0',
-          attrs.className
-        )}
         style={{
           position: 'fixed',
           pointerEvents: 'auto',
@@ -120,7 +115,7 @@ export const PopperSubContent = React.forwardRef<
         {children}
       </div>,
       document.body.querySelector('[data-popper-wrapper]')?.parentElement ||
-        document.body
+        document.body,
     );
 });
 PopperSubContent.displayName = 'PopperSubContent';
