@@ -1,14 +1,11 @@
-'use client';
-
+import React, { useState } from 'react';
+import { PopperProviderProps } from './popper.types';
 import {
   POPPER_ITEM_SELECTOR,
   POPPER_SUB_CONTENT_SELECTOR,
-} from '@/components/ui/primitives/selectors';
-import React, { useState } from 'react';
-import { PopperProviderProps } from './popper.types';
-
+} from '../selectors';
 export const PopperSubContext = React.createContext<PopperProviderProps | null>(
-  null,
+  null
 );
 
 export function usePopperSub() {
@@ -20,6 +17,7 @@ export function usePopperSub() {
 
 export function PopperSub({ children }: { children: React.ReactNode }) {
   const [isOpen, setIsOpen] = React.useState<boolean>(false);
+  const [isMounted, setIsMounted] = React.useState(false);
   const [triggerPosition, setTriggerPosition] = useState<DOMRect | null>(null);
   const [highlightedIndex, setHighlightedIndex] = React.useState<
     number | undefined
@@ -38,16 +36,44 @@ export function PopperSub({ children }: { children: React.ReactNode }) {
       ).getBoundingClientRect();
 
       setTriggerPosition(rect);
-
-      setIsOpen((prevState) => !prevState);
+      setIsMounted(false);
+      setIsOpen(true);
 
       activeTrigger.current = event.currentTarget || event.target;
     },
-    [],
+    []
   );
-
   function closePopper() {
-    setIsOpen(false);
+    setIsMounted(true);
+
+    const popperContent = document.querySelector(
+      POPPER_SUB_CONTENT_SELECTOR
+    ) as HTMLElement;
+
+    if (!popperContent) {
+      setIsMounted(false);
+      setIsOpen(false);
+      return;
+    }
+
+    const hasAnimation =
+      window.getComputedStyle(popperContent).animationDuration !== '0s' ||
+      window.getComputedStyle(popperContent).transitionDuration !== '0s';
+
+    const duration = Number(
+      window.getComputedStyle(popperContent).animationDuration.split('s')[0] ||
+        window.getComputedStyle(popperContent).transitionDuration.split('s')[0]
+    );
+
+    if (hasAnimation) {
+      setTimeout(() => {
+        setIsMounted(false);
+        setIsOpen(false);
+      }, duration * 1000);
+    } else {
+      setIsMounted(true);
+      setIsOpen(false);
+    }
   }
 
   React.useEffect(() => {
@@ -55,7 +81,7 @@ export function PopperSub({ children }: { children: React.ReactNode }) {
       (
         document
           .querySelector(
-            `${POPPER_SUB_CONTENT_SELECTOR}[aria-labelledby='${id}']`,
+            `${POPPER_SUB_CONTENT_SELECTOR}[aria-labelledby='${id}']`
           )
           ?.querySelector(POPPER_ITEM_SELECTOR) as HTMLElement
       )?.focus();
@@ -67,6 +93,7 @@ export function PopperSub({ children }: { children: React.ReactNode }) {
     <PopperSubContext.Provider
       value={{
         isOpen,
+        isMounted,
         openPopper,
         closePopper,
         triggerPosition,

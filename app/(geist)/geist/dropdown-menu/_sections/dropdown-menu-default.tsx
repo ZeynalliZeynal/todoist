@@ -10,10 +10,8 @@ import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from '@everest-ui/geist-dropdown-menu';
+} from '@/components/ui/dropdown-menu';
 
 const code = `<DropdownMenu>
   <DropdownMenuTrigger>Open</DropdownMenuTrigger>
@@ -41,8 +39,8 @@ export default function DropdownMenuDefault() {
           <DropdownMenu>
             <DropdownMenuTrigger>Open</DropdownMenuTrigger>
             <DropdownMenuContent>
-              <DropdownMenuLabel>My Account</DropdownMenuLabel>
-              <DropdownMenuSeparator />
+              {/* <DropdownMenuLabel>My Account</DropdownMenuLabel> */}
+              {/* <DropdownMenuSeparator /> */}
               <DropdownMenuItem>Profile</DropdownMenuItem>
               <DropdownMenuItem>Billing</DropdownMenuItem>
               <DropdownMenuItem>Team</DropdownMenuItem>

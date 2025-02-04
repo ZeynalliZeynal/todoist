@@ -23,18 +23,21 @@ export function PopperSubTrigger(props: PopperItemProps) {
   }
 
   function handleMouseLeave(event: React.MouseEvent<HTMLElement>) {
-    const relatedTarget = document.elementFromPoint(
-      event.clientX,
-      event.clientY,
-    );
-    if (relatedTarget && !relatedTarget.closest(`[aria-labelledby='${id}']`)) {
+    // const relatedTarget = document.elementFromPoint(
+    //   event.clientX,
+    //   event.clientY
+    // );
+    const popperSubContent =
+      event.relatedTarget &&
+      (event.relatedTarget as HTMLElement).closest(`[aria-labelledby='${id}']`);
+    if (!popperSubContent) {
       closePopper();
       highlight(null);
     }
   }
 
   function handleKeyDown(
-    event: React.KeyboardEvent<HTMLElement> | React.MouseEvent<HTMLElement>,
+    event: React.KeyboardEvent<HTMLElement> | React.MouseEvent<HTMLElement>
   ) {
     if ((event as React.KeyboardEvent).key === 'ArrowRight') {
       openPopper(event as React.MouseEvent<HTMLElement>);
@@ -63,7 +66,7 @@ export function PopperSubTrigger(props: PopperItemProps) {
       data-state={isOpen ? 'open' : 'closed'}
       className={cn(
         'justify-between data-[state=open]:bg-gray-alpha-100',
-        className,
+        className
       )}
       onClick={handleClick}
       onMouseEnter={handleMouseEnter}

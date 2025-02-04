@@ -1,22 +1,19 @@
-'use client';
-
-import { usePopper } from '@/components/ui/primitives/popper/popper-context';
+import React, { useCallback } from 'react';
 import { createPortal } from 'react-dom';
-import { AnimatePresence, motion } from 'framer-motion';
-import { useOutsideClick } from '@/hooks/use-ui';
-import { cn } from '@/utils/lib';
-import React, { HTMLAttributes, useCallback } from 'react';
 import ReactFocusLock from 'react-focus-lock';
+import { usePopper } from './popper-context';
+import { PopperContentProps } from './popper.types';
+import { useOutsideClick } from '@/hooks/use-ui';
 import {
   POPPER_ITEM_SELECTOR,
   POPPER_SUB_CONTENT_SELECTOR,
 } from '../selectors';
-import { useResize } from '@/hooks/useResize';
-import { chain } from '@/utils/chain';
-import { PopperContentProps } from '@/components/ui/primitives/popper/popper.types';
-import { mergeRefs } from '@/utils/ui/merge-refs';
-import { popperPosition } from '@/utils/ui/popper-position';
 import { keyboardArrowNavigation } from '@/utils/ui/keyboard-navigation';
+import { popperPosition } from '@/utils/ui/popper-position';
+import { useResize } from '@/hooks/useResize';
+import { mergeRefs } from '@/utils/ui/merge-refs';
+import { chain } from '@/utils/chain';
+import { cn } from '@/lib/utils';
 
 export const PopperContent = React.forwardRef<
   HTMLDivElement,
@@ -24,10 +21,8 @@ export const PopperContent = React.forwardRef<
 >((props, forwardRef) => {
   const {
     children,
-    className,
     align = 'center',
     side = 'bottom',
-    asChild,
     onKeyDown,
     ...etc
   } = props;
@@ -40,6 +35,7 @@ export const PopperContent = React.forwardRef<
     setHighlightedIndex,
     highlight,
     id,
+    isMounted,
   } = usePopper();
   const [style, setStyle] = React.useState<React.CSSProperties>({});
 
@@ -81,69 +77,39 @@ export const PopperContent = React.forwardRef<
 
   useResize(isOpen, handleResize);
 
-  const attrs = {
-    'data-align': align,
-    'data-side': side,
-    tabIndex: -1,
-    'data-state': isOpen ? 'open' : 'closed',
-    'data-popper-content': '',
-    'aria-orientation': 'vertical',
-    ref: mergeRefs(ref, forwardRef),
-    id,
-    className,
-    onKeyDown: chain(handleKeyDown, onKeyDown),
-    ...etc,
-  } as HTMLAttributes<HTMLDivElement>;
-
-  return createPortal(
-    <AnimatePresence onExitComplete={() => activeTrigger?.focus()}>
-      {isOpen && triggerPosition && (
-        <ReactFocusLock
-          disabled={!isOpen}
-          onDeactivation={() => activeTrigger?.focus()}
+  if (isOpen && triggerPosition)
+    return createPortal(
+      <ReactFocusLock
+        disabled={!isOpen}
+        onDeactivation={() => activeTrigger?.focus()}
+      >
+        <div
+          ref={mergeRefs(ref, forwardRef)}
+          id={id}
+          tabIndex={-1}
+          data-align={align}
+          data-side={side}
+          data-state={!isMounted ? 'open' : 'closed'}
+          data-popper-content=""
+          aria-orientation="vertical"
+          {...etc}
+          className={cn(
+            'bg-background-100 p-2 rounded-xl border w-48 m-2 focus:outline-0',
+            etc.className
+          )}
+          onKeyDown={chain(handleKeyDown, onKeyDown)}
+          data-popper-wrapper=""
+          style={{
+            position: 'fixed',
+            pointerEvents: 'auto',
+            zIndex: 100,
+            ...style,
+          }}
         >
-          <motion.div
-            animate={{
-              opacity: 1,
-              scale: 1,
-            }}
-            initial={{
-              opacity: 0,
-              scale: 0.8,
-            }}
-            exit={{
-              opacity: 0,
-              scale: 0.8,
-            }}
-            data-popper-wrapper=""
-            style={{
-              position: 'fixed',
-              pointerEvents: 'auto',
-              left: triggerPosition.left,
-              ...style,
-            }}
-          >
-            {asChild && React.isValidElement(children) ? (
-              React.cloneElement(children, {
-                ...attrs,
-                className: cn(className, children.props.className),
-              } as HTMLAttributes<HTMLElement>)
-            ) : (
-              <div
-                {...attrs}
-                className={cn(
-                  'bg-background-100 p-2 rounded-xl border w-48 m-2 focus:outline-0',
-                  attrs.className,
-                )}
-              >
-                {children}
-              </div>
-            )}
-          </motion.div>
-        </ReactFocusLock>
-      )}
-    </AnimatePresence>,
-    document.body,
-  );
+          {children}
+        </div>
+      </ReactFocusLock>,
+      document.body
+    );
 });
 PopperContent.displayName = 'PopperContent';

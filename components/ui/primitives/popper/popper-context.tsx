@@ -1,13 +1,11 @@
-'use client';
-
 import React, { useState } from 'react';
 import { PopperContextProps } from './popper.types';
-import { useRestrict } from '@/hooks/use-ui';
 import {
   POPPER_CONTENT_SELECTOR,
   POPPER_ITEM_SELECTOR,
   POPPER_SUB_CONTENT_SELECTOR,
-} from '@/components/ui/primitives/selectors';
+} from '../selectors';
+import { useRestrict } from '@/hooks/use-ui';
 
 const PopperContext = React.createContext<PopperContextProps | null>(null);
 
@@ -18,8 +16,9 @@ export function usePopper() {
   return context;
 }
 
-export function PopperProvider({ children }: { children: React.ReactNode }) {
+export function Popper({ children }: { children: React.ReactNode }) {
   const [isOpen, setIsOpen] = React.useState<boolean>(false);
+  const [isMounted, setIsMounted] = React.useState(false);
   const [triggerPosition, setTriggerPosition] = useState<DOMRect | null>(null);
   const [highlightedIndex, setHighlightedIndex] = React.useState<
     number | undefined
@@ -58,19 +57,63 @@ export function PopperProvider({ children }: { children: React.ReactNode }) {
     setTriggerPosition(rect);
 
     setIsOpen((prevState) => !prevState);
+    setIsMounted(false);
 
     activeTrigger.current = event.currentTarget;
     (document.querySelector(POPPER_CONTENT_SELECTOR) as HTMLElement)?.focus();
   }
 
   function closePopper() {
+    setIsMounted(true);
+
+    const popperContent = document.querySelector(
+      POPPER_CONTENT_SELECTOR
+    ) as HTMLElement;
+
+    if (!popperContent) {
+      setIsMounted(false);
+      setIsOpen(false);
+      return;
+    }
+
+    const hasAnimation =
+      window.getComputedStyle(popperContent).animationDuration !== '0s' ||
+      window.getComputedStyle(popperContent).transitionDuration !== '0s';
+
+    const duration = Number(
+      window.getComputedStyle(popperContent).animationDuration.split('s')[0] ||
+        window.getComputedStyle(popperContent).transitionDuration.split('s')[0]
+    );
+
+    if (hasAnimation) {
+      setTimeout(() => {
+        setIsMounted(false);
+        setIsOpen(false);
+      }, duration * 1000); // convert to ms
+
+      /* This approach has a limitation. it doesn't apply the delay on click of the popper item and i couldn't figure it out yet.
+      function handleAnimateEnd() {
+        setIsMounted(false);
+        setIsOpen(false);
+        
+        popperContent.removeEventListener("animationend", handleAnimateEnd);
+        popperContent.removeEventListener("transitionend", handleAnimateEnd);
+      }
+      popperContent.addEventListener("animationend", handleAnimateEnd);
+      popperContent.addEventListener("transitionend", handleAnimateEnd);
+      */
+    } else {
+      setIsMounted(true);
+      setIsOpen(false);
+    }
+
     activeTrigger.current?.focus();
-    setIsOpen(false);
     setHighlightedItem(null);
     setHighlightedIndex(undefined);
   }
 
   useRestrict({ condition: isOpen });
+
   return (
     <PopperContext.Provider
       value={{
@@ -84,6 +127,7 @@ export function PopperProvider({ children }: { children: React.ReactNode }) {
         highlight,
         setHighlightedIndex,
         activeTrigger: activeTrigger.current,
+        isMounted,
         setTriggerPosition,
       }}
     >
