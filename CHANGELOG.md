@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.3.18](https://github.com/ZeynalliZeynal/todoist/compare/v0.3.17...v0.3.18) (2025-02-05)
+
+
+### Bug Fixes
+
+* remove popper files ([4be79a9](https://github.com/ZeynalliZeynal/todoist/commit/4be79a906897f05d43a461f0e015fd12573a5a28))
+
 ### [0.3.17](https://github.com/ZeynalliZeynal/todoist/compare/v0.3.16...v0.3.17) (2025-02-04)
 
 ### [0.3.16](https://github.com/ZeynalliZeynal/todoist/compare/v0.3.15...v0.3.16) (2025-02-03)
