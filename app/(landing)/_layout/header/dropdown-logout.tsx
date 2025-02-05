@@ -1,25 +1,25 @@
 'use client';
 
-import { DropdownMenuItem } from '@/components/ui/dropdown-menu/dropdown-menu';
+import { DropdownMenuItem } from '@/components/ui/dropdown-menu';
 import { LuLogOut } from 'react-icons/lu';
-import { useTransition } from 'react';
+import { useState } from 'react';
 import Spinner from '@/components/ui/spinner';
 import { logout } from '@/actions/auth.actions';
 
 export default function DropdownLogout() {
-  const [isPending, startTransition] = useTransition();
+  const [isPending, setIsPending] = useState(false);
 
   return (
     <DropdownMenuItem
       disabled={isPending}
-      onClick={() =>
-        startTransition(async () => {
-          await logout();
-        })
-      }
+      onClick={async () => {
+        setIsPending(true);
+        await logout();
+        setIsPending(false);
+      }}
+      suffix={isPending ? <Spinner /> : <LuLogOut />}
     >
       Log out
-      <span className="ml-auto">{isPending ? <Spinner /> : <LuLogOut />}</span>
     </DropdownMenuItem>
   );
 }

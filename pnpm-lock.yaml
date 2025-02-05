@@ -15,8 +15,8 @@ importers:
         specifier: ^1.0.3
         version: 1.0.3(@types/react-dom@18.3.5(@types/react@18.3.18))(@types/react@18.3.18)(react-dom@19.0.0-rc-66855b96-20241106(react@19.0.0-rc-66855b96-20241106))(react@19.0.0-rc-66855b96-20241106)
       '@everest-ui/react-dropdown-menu':
-        specifier: ^1.2.10
-        version: 1.2.10(@types/react-dom@18.3.5(@types/react@18.3.18))(@types/react@18.3.18)(react-dom@19.0.0-rc-66855b96-20241106(react@19.0.0-rc-66855b96-20241106))(react@19.0.0-rc-66855b96-20241106)
+        specifier: ^1.2.12
+        version: 1.2.12(@types/react-dom@18.3.5(@types/react@18.3.18))(@types/react@18.3.18)(react-dom@19.0.0-rc-66855b96-20241106(react@19.0.0-rc-66855b96-20241106))(react@19.0.0-rc-66855b96-20241106)
       '@hookform/resolvers':
         specifier: ^3.10.0
         version: 3.10.0(react-hook-form@7.54.2(react@19.0.0-rc-66855b96-20241106))
@@ -80,6 +80,9 @@ importers:
       tailwind-merge:
         specifier: ^2.6.0
         version: 2.6.0
+      vercel-geist-icons:
+        specifier: ^1.1.0
+        version: 1.1.0(react@19.0.0-rc-66855b96-20241106)
       zod:
         specifier: ^3.24.1
         version: 3.24.1
@@ -187,8 +190,8 @@ packages:
       '@types/react-dom':
         optional: true
 
-  '@everest-ui/react-dropdown-menu@1.2.10':
-    resolution: {integrity: sha512-yedg6/YhNYMU0Zh8DdodkwBraYMjPzmewM6isIQSmywUhLSPZvDEHrNY1cJA89o9CdDReX7xBmifGl/poyWI5A==}
+  '@everest-ui/react-dropdown-menu@1.2.12':
+    resolution: {integrity: sha512-tIo+8PU+8pGneYIU0GvpUojE0fhDP8Hok66WodvP2vqG7RDdrvRrGdg4iBVTpTpFxmY15/P7WO35f7qc9dWMTA==}
     peerDependencies:
       '@types/react': '*'
       '@types/react-dom': '*'
@@ -226,8 +229,8 @@ packages:
       '@types/react-dom':
         optional: true
 
-  '@everest-ui/react-popper@1.11.4':
-    resolution: {integrity: sha512-pXITCKKnKN/ZzH1TubknHqdeNtABOjjFCRXvAmPYuX5YFdy+qRCUbumUYXXSery/lqiWC9CvRd26EYBjk6XwUQ==}
+  '@everest-ui/react-popper@1.12.0':
+    resolution: {integrity: sha512-pC32ItTGjSVgyBbWqDpWWhiT3+BCLzDZYvZYpBwz0bhb5F44oEtOq3NJFn/5lcQ8nihXY1hqaGePCgA/2F5pFg==}
     peerDependencies:
       '@types/react': '*'
       '@types/react-dom': '*'
@@ -3130,6 +3133,11 @@ packages:
   validate-npm-package-license@3.0.4:
     resolution: {integrity: sha512-DpKm2Ui/xN7/HQKCtpZxoRWBhZ9Z0kqtygG8XCgNQ8ZlDnxuQmWhj566j8fN4Cu3/JmbhsDo7fcAJq4s9h27Ew==}
 
+  vercel-geist-icons@1.1.0:
+    resolution: {integrity: sha512-S6MvZ5GaU+3LlbKvH3MsaQvpnsDMXUHYGMAezQeTloTuvwIneoO2S0ajU3SmIrEnpc/K+CL4kWXOMkSMQpZH8Q==}
+    peerDependencies:
+      react: ^16.x || ^17.x || ^18.x || ^19.0.0 || ^19.0.0-rc
+
   vfile-matter@5.0.0:
     resolution: {integrity: sha512-jhPSqlj8hTSkTXOqyxbUeZAFFVq/iwu/jukcApEqc/7DOidaAth6rDc0Zgg0vWpzUnWkwFP7aK28l6nBmxMqdQ==}
 
@@ -3279,9 +3287,9 @@ snapshots:
       '@types/react': 18.3.18
       '@types/react-dom': 18.3.5(@types/react@18.3.18)
 
-  '@everest-ui/react-dropdown-menu@1.2.10(@types/react-dom@18.3.5(@types/react@18.3.18))(@types/react@18.3.18)(react-dom@19.0.0-rc-66855b96-20241106(react@19.0.0-rc-66855b96-20241106))(react@19.0.0-rc-66855b96-20241106)':
+  '@everest-ui/react-dropdown-menu@1.2.12(@types/react-dom@18.3.5(@types/react@18.3.18))(@types/react@18.3.18)(react-dom@19.0.0-rc-66855b96-20241106(react@19.0.0-rc-66855b96-20241106))(react@19.0.0-rc-66855b96-20241106)':
     dependencies:
-      '@everest-ui/react-popper': 1.11.4(@types/react-dom@18.3.5(@types/react@18.3.18))(@types/react@18.3.18)(react-dom@19.0.0-rc-66855b96-20241106(react@19.0.0-rc-66855b96-20241106))(react@19.0.0-rc-66855b96-20241106)
+      '@everest-ui/react-popper': 1.12.0(@types/react-dom@18.3.5(@types/react@18.3.18))(@types/react@18.3.18)(react-dom@19.0.0-rc-66855b96-20241106(react@19.0.0-rc-66855b96-20241106))(react@19.0.0-rc-66855b96-20241106)
       react: 19.0.0-rc-66855b96-20241106
       react-dom: 19.0.0-rc-66855b96-20241106(react@19.0.0-rc-66855b96-20241106)
     optionalDependencies:
@@ -3305,7 +3313,7 @@ snapshots:
       '@types/react': 18.3.18
       '@types/react-dom': 18.3.5(@types/react@18.3.18)
 
-  '@everest-ui/react-popper@1.11.4(@types/react-dom@18.3.5(@types/react@18.3.18))(@types/react@18.3.18)(react-dom@19.0.0-rc-66855b96-20241106(react@19.0.0-rc-66855b96-20241106))(react@19.0.0-rc-66855b96-20241106)':
+  '@everest-ui/react-popper@1.12.0(@types/react-dom@18.3.5(@types/react@18.3.18))(@types/react@18.3.18)(react-dom@19.0.0-rc-66855b96-20241106(react@19.0.0-rc-66855b96-20241106))(react@19.0.0-rc-66855b96-20241106)':
     dependencies:
       '@everest-ui/react-hooks': 1.1.0(@types/react-dom@18.3.5(@types/react@18.3.18))(@types/react@18.3.18)(react-dom@19.0.0-rc-66855b96-20241106(react@19.0.0-rc-66855b96-20241106))(react@19.0.0-rc-66855b96-20241106)
       '@everest-ui/react-selectors': 1.0.1
@@ -6777,6 +6785,10 @@ snapshots:
     dependencies:
       spdx-correct: 3.2.0
       spdx-expression-parse: 3.0.1
+
+  vercel-geist-icons@1.1.0(react@19.0.0-rc-66855b96-20241106):
+    dependencies:
+      react: 19.0.0-rc-66855b96-20241106
 
   vfile-matter@5.0.0:
     dependencies:

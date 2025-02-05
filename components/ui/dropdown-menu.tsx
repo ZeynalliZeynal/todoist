@@ -11,19 +11,10 @@ import {
 
 export const DropdownMenu = DropdownMenuPrimitive;
 
-export function DropdownMenuTrigger({
-  className,
-  ...props
-}: React.ComponentProps<typeof DropdownMenuTriggerPrimitive>) {
-  return (
-    <DropdownMenuTriggerPrimitive
-      className={cn(
-        'rounded-md bg-background-200 border px-3 h-8 text-foreground hover:bg-gray-200 transition',
-        className,
-      )}
-      {...props}
-    />
-  );
+export function DropdownMenuTrigger(
+  props: React.ComponentProps<typeof DropdownMenuTriggerPrimitive>,
+) {
+  return <DropdownMenuTriggerPrimitive {...props} />;
 }
 
 export function DropdownMenuContent({
@@ -51,7 +42,8 @@ export function DropdownMenuItem({
   return (
     <DropdownMenuItemPrimitive
       className={cn(
-        'flex items-center justify-between px-2 rounded-md cursor-default h-10 align-middle transition focus:bg-gray-alpha-100 outline-none data-[disabled]:text-gray-500 data-[disabled]:pointer-events-none data-[disabled]:focus:bg-transparent',
+        'flex items-center justify-between px-2 rounded-md h-10 align-middle transition focus:bg-gray-alpha-100 !outline-none focus:ring-0 focus:ring-offset-0 data-[disabled]:text-gray-500 data-[disabled]:pointer-events-none data-[disabled]:focus:bg-transparent',
+        !props.asChild && 'cursor-default',
         className,
       )}
       {...props}

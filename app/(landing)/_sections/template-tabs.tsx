@@ -2,68 +2,53 @@
 
 import CardSheet from '@/components/ui/card-sheet';
 
-import { motion } from 'framer-motion';
+import { Tab, Tabs } from '@/components/ui/primitives/tabs';
 import { cn } from '@/utils/lib';
-import { useTabs } from '@/hooks/useTabs';
+import React from 'react';
 
 export default function TemplateTabs({
   categories,
 }: {
   categories: TemplateCategory[];
 }) {
-  const { container, activeValue, activeTab, handleClick, pillStyles } =
-    useTabs({ defaultValue: categories[0].name });
+  const [activeValue, setActiveValue] = React.useState(categories[0].name);
 
   return (
-    <div className="space-y-8 p-12">
-      <div
-        ref={container}
-        className="flex items-center border rounded-full justify-between"
-      >
-        <motion.div
-          className="absolute border rounded-full z-[1] bg-background-100 pointer-events-none"
-          animate={{
-            width: pillStyles.width,
-            x: pillStyles.left,
-            height: pillStyles.height,
-            opacity: activeTab ? 1 : 0,
-          }}
-          transition={{
-            type: 'spring',
-            duration: 0.5,
-          }}
-        />
+    <div className="space-y-8 lg:p-12 p-8">
+      <Tabs className="border rounded-full overflow-x-auto">
         {categories.map((category, index) => (
-          <button
-            ref={category.name === activeValue ? activeTab : undefined}
+          <Tab
             key={index}
-            onClick={() => handleClick(category.name)}
+            isPillActive={activeValue === category.name}
+            onClick={() => setActiveValue(category.name)}
             className={cn(
-              'font-semibold h-10 px-4 rounded-full text-gray-900 transition text-balance',
+              'font-semibold h-10 px-4 rounded-full flex-grow text-gray-900 transition text-balance [&_[data-active-pill]]:border [&_[data-active-pill]]:rounded-full',
               category.name === activeValue && 'text-foreground'
             )}
           >
-            <span className="relative z-[2]">{category.name}</span>
-          </button>
+            {category.name}
+          </Tab>
         ))}
+      </Tabs>
+      <div className="max-h-[396px] overflow-y-auto">
+        {categories.map(
+          (category, index) =>
+            category.name === activeValue && (
+              <div key={index} className="grid grid-cols-2 gap-8">
+                {category.templates.map((template, index) => (
+                  <CardSheet
+                    key={index}
+                    href="/"
+                    img={template.imageUrl}
+                    alt={template.name}
+                  >
+                    <div className="p-4 bg-background-200">{template.name}</div>
+                  </CardSheet>
+                ))}
+              </div>
+            )
+        )}
       </div>
-      {categories.map(
-        (category, index) =>
-          category.name === activeValue && (
-            <div key={index} className="grid grid-cols-2 gap-8">
-              {category.templates.map((template, index) => (
-                <CardSheet
-                  key={index}
-                  href="/"
-                  img={template.imageUrl}
-                  alt={template.name}
-                >
-                  <div className="p-4 bg-background-200">{template.name}</div>
-                </CardSheet>
-              ))}
-            </div>
-          )
-      )}
     </div>
   );
 }

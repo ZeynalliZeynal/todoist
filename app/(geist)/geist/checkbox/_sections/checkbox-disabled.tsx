@@ -4,7 +4,7 @@ import {
   CollapseContent,
   CollapseTrigger,
 } from '@/components/ui/collapse';
-import { Checkbox } from '@/components/ui/primitives/checkbox';
+import { Checkbox } from '@/components/ui/checkbox';
 import CodeBlock from '@/components/ui/code-block';
 import React from 'react';
 import { checkbox_disabled } from '@/app/(geist)/geist/checkbox/_snippets/snippets';

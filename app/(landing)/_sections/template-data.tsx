@@ -1,5 +1,7 @@
 import apiClient from '@/lib/api-client';
 import TemplateTabs from '@/app/(landing)/_sections/template-tabs';
+import { ZeroConfig } from 'vercel-geist-icons';
+import EmptyState from '@/components/ui/empty-state';
 
 export default async function TemplateData() {
   try {
@@ -8,11 +10,17 @@ export default async function TemplateData() {
         data: { categories },
       },
     } = await apiClient(
-      'template-categories?templates=enable&fields=name&size=5',
+      'template-categories?templates=enable&fields=name&size=6'
     );
 
     return <TemplateTabs categories={categories} />;
   } catch {
-    return 'No template found.';
+    return (
+      <EmptyState
+        title="No templates found."
+        description="  There might be some issues on the server side. This might be solved soon."
+        icon={<ZeroConfig />}
+      />
+    );
   }
 }

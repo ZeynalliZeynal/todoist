@@ -6,9 +6,9 @@ import TemplateData from '@/app/(landing)/_sections/template-data';
 export default function Templates() {
   return (
     <section className="mt-4 border-t">
-      <div className="flex">
-        <div className="border-r w-1/3 flex flex-col justify-center">
-          <div className="p-12 space-y-6">
+      <div className="flex lg:flex-row flex-col">
+        <div className="lg:border-r border-b lg:w-1/3 flex flex-col">
+          <div className="lg:p-12 p-8 flex flex-col lg:text-start lg:items-start text-center items-center gap-6">
             <h2 className="text-4xl leading-[120%]">
               Kickstart your next project with Todoist Templates
             </h2>
@@ -19,7 +19,7 @@ export default function Templates() {
             <Button
               suffix={<LuMoveRight />}
               size="lg"
-              className="rounded-full mx-auto"
+              className="rounded-full w-fit"
             >
               See all
             </Button>

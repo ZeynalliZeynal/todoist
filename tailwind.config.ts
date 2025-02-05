@@ -8,12 +8,12 @@ export default {
     './app/**/*.{js,ts,jsx,tsx,mdx}',
   ],
   theme: {
-    screens: {
-      xl: '1150px',
-      geist: '1220px',
-      full: '1448px',
-    },
     extend: {
+      screens: {
+        xl: '1150px',
+        geist: '1220px',
+        full: '1448px',
+      },
       maxWidth: {
         '5xl': '67.5rem',
         '6xl': '75rem',

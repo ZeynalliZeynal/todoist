@@ -6,7 +6,7 @@ import {
   CollapseContent,
   CollapseTrigger,
 } from '@/components/ui/collapse';
-import { Tab, Tabs } from '@/components/ui/primitives/tabs/tabs';
+import { Tab, Tabs } from '@/components/ui/primitives/tabs';
 import { cn } from '@/utils/lib';
 import React from 'react';
 import ScrollToLink from '../../_components/scroll-to-link';
@@ -61,7 +61,7 @@ export default function TabCustom() {
                 onMouseEnter={() => setHovered(tab.id)}
                 onMouseLeave={() => setHovered('')}
                 className={cn(
-                  'capitalize h-7 rounded-md px-3 text-gray-900 hover:text-foreground [&_[data-active-pill]]:bg-gray-200 [&_[data-active-pill]]:rounded-full',
+                  'capitalize h-7 rounded-md px-3 text-gray-900 hover:text-foreground [&_[data-active-pill]]:bg-gray-200 [&_[data-active-pill]]:rounded-full'
                 )}
               >
                 {tab.label}

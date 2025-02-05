@@ -8,7 +8,7 @@ import {
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from '@/components/ui/dropdown-menu/dropdown-menu';
+} from '@/components/ui/dropdown-menu';
 import Image from 'next/image';
 import ThemeSwitch from '@/components/ui/theme';
 import Link from 'next/link';
@@ -49,14 +49,11 @@ export default async function NavRight() {
                 />
               </button>
             </DropdownMenuTrigger>
-            <DropdownMenuContent
-              align="horizontal-right-bottom"
-              className="w-64"
-            >
+            <DropdownMenuContent align="end" className="w-64">
               <DropdownMenuGroup className="pb-2 pt-3 space-y-1">
-                <DropdownMenuLabel>{user.name}</DropdownMenuLabel>
-                <DropdownMenuLabel className="text-gray-800">
-                  {user.email}
+                <DropdownMenuLabel className="flex-col items-start">
+                  <span>{user.name}</span>
+                  <span className="text-gray-800">{user.email}</span>
                 </DropdownMenuLabel>
               </DropdownMenuGroup>
               <DropdownMenuGroup>
@@ -67,7 +64,7 @@ export default async function NavRight() {
                   <Link href="/account/settings">Account Settings</Link>
                 </DropdownMenuItem>
                 <DropdownMenuSeparator />
-                <DropdownMenuLabel className="h-10 flex items-center justify-between">
+                <DropdownMenuLabel className="h-10 justify-between">
                   <span className="text-gray-900">Theme:</span>
                   <ThemeSwitch />
                 </DropdownMenuLabel>

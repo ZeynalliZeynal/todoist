@@ -1,11 +1,5 @@
 import { Nextjs } from '@/components/ui/icons/geist';
 import { Logo } from '@/components/ui/icons/logo';
-import { FaQuestion } from 'react-icons/fa6';
-import { HiOutlineDownload } from 'react-icons/hi';
-import { HiOutlineLightBulb } from 'react-icons/hi2';
-import { IoExtensionPuzzleOutline, IoHelpBuoyOutline } from 'react-icons/io5';
-import { RxLightningBolt } from 'react-icons/rx';
-import { TbCards } from 'react-icons/tb';
 
 export const navItems = [
   {
@@ -16,6 +10,7 @@ export const navItems = [
     name: 'for teams',
     href: '/for-teams',
   },
+  /*
   {
     name: 'resources',
     children: [
@@ -56,6 +51,7 @@ export const navItems = [
       },
     ],
   },
+  */
   {
     name: 'pricing',
     href: '/pricing',

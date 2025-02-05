@@ -3,7 +3,7 @@ import {
   Tab as PrimitiveTab,
   Tabs as PrimitiveTabs,
   TabProps,
-} from './primitives/tabs/tabs';
+} from './primitives/tabs';
 
 export function Tab(props: TabProps) {
   return (
