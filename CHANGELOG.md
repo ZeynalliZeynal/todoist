@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.3.19](https://github.com/ZeynalliZeynal/todoist/compare/v0.3.18...v0.3.19) (2025-02-05)
+
+
+### Features
+
+* add empty state component ([0765076](https://github.com/ZeynalliZeynal/todoist/commit/0765076a86ef741313ca6bf70790c13416f96877))
+
 ### [0.3.18](https://github.com/ZeynalliZeynal/todoist/compare/v0.3.17...v0.3.18) (2025-02-05)
 
 
