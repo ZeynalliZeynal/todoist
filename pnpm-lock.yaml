@@ -15,8 +15,8 @@ importers:
         specifier: ^1.0.3
         version: 1.0.3(@types/react-dom@18.3.5(@types/react@18.3.18))(@types/react@18.3.18)(react-dom@19.0.0-rc-66855b96-20241106(react@19.0.0-rc-66855b96-20241106))(react@19.0.0-rc-66855b96-20241106)
       '@everest-ui/react-dropdown-menu':
-        specifier: ^1.2.1
-        version: 1.2.1(@types/react-dom@18.3.5(@types/react@18.3.18))(@types/react@18.3.18)(react-dom@19.0.0-rc-66855b96-20241106(react@19.0.0-rc-66855b96-20241106))(react@19.0.0-rc-66855b96-20241106)
+        specifier: ^1.2.10
+        version: 1.2.10(@types/react-dom@18.3.5(@types/react@18.3.18))(@types/react@18.3.18)(react-dom@19.0.0-rc-66855b96-20241106(react@19.0.0-rc-66855b96-20241106))(react@19.0.0-rc-66855b96-20241106)
       '@hookform/resolvers':
         specifier: ^3.10.0
         version: 3.10.0(react-hook-form@7.54.2(react@19.0.0-rc-66855b96-20241106))
@@ -187,8 +187,8 @@ packages:
       '@types/react-dom':
         optional: true
 
-  '@everest-ui/react-dropdown-menu@1.2.1':
-    resolution: {integrity: sha512-fe5RepponmD55eTilplVH9hzBIbGlntP7Iykt6OB7JrI0te3vCm+xmf/x5PVvwZD4C729apVIOE7mNmy6/9ANw==}
+  '@everest-ui/react-dropdown-menu@1.2.10':
+    resolution: {integrity: sha512-yedg6/YhNYMU0Zh8DdodkwBraYMjPzmewM6isIQSmywUhLSPZvDEHrNY1cJA89o9CdDReX7xBmifGl/poyWI5A==}
     peerDependencies:
       '@types/react': '*'
       '@types/react-dom': '*'
@@ -213,6 +213,35 @@ packages:
       '@types/react-dom':
         optional: true
 
+  '@everest-ui/react-hooks@1.1.0':
+    resolution: {integrity: sha512-JxnwTvLBEGa4Y5cfm5/r1TXD9Eg4utaS2coWy8+R/uS4IVhTJiAm0NuL4hS/ZKLyht4YKOehkLuJW7aO0Tg4/w==}
+    peerDependencies:
+      '@types/react': '*'
+      '@types/react-dom': '*'
+      react: ^18.0 || ^19.0 || ^19.0.0-rc
+      react-dom: ^18.0 || ^19.0 || ^19.0.0-rc
+    peerDependenciesMeta:
+      '@types/react':
+        optional: true
+      '@types/react-dom':
+        optional: true
+
+  '@everest-ui/react-popper@1.11.4':
+    resolution: {integrity: sha512-pXITCKKnKN/ZzH1TubknHqdeNtABOjjFCRXvAmPYuX5YFdy+qRCUbumUYXXSery/lqiWC9CvRd26EYBjk6XwUQ==}
+    peerDependencies:
+      '@types/react': '*'
+      '@types/react-dom': '*'
+      react: ^18.0 || ^19.0 || ^19.0.0-rc
+      react-dom: ^18.0 || ^19.0 || ^19.0.0-rc
+    peerDependenciesMeta:
+      '@types/react':
+        optional: true
+      '@types/react-dom':
+        optional: true
+
+  '@everest-ui/react-selectors@1.0.1':
+    resolution: {integrity: sha512-FGUP02q93nCcW0nlNM0p3kul1yN3tNaVBnBGgV3d9ODfL8nX7vANsZCcQtXuaL+VpLdosXpmC2a0G4QxAexXEg==}
+
   '@everest-ui/react-utils@1.0.6':
     resolution: {integrity: sha512-8vYbgl1ctBHCXl1JsvQWxUM7t3za7NTuI2dAGTzpqrKFGYct2yaEIxCu6zJFhzBwbBAiIvbRUktYvthMyEXd+Q==}
     peerDependencies:
@@ -226,8 +255,24 @@ packages:
       '@types/react-dom':
         optional: true
 
+  '@everest-ui/react-utils@1.1.0':
+    resolution: {integrity: sha512-7+P5hX+eQxUiZOH5PybxEB0gcU5KlOaNxUi+HQ6lMaWBtudDv2xjvmKdtpHZrOu3MZz4HufB30Tv9AXHTqLcrw==}
+    peerDependencies:
+      '@types/react': '*'
+      '@types/react-dom': '*'
+      react: ^18.0 || ^19.0 || ^19.0.0-rc
+      react-dom: ^18.0 || ^19.0 || ^19.0.0-rc
+    peerDependenciesMeta:
+      '@types/react':
+        optional: true
+      '@types/react-dom':
+        optional: true
+
   '@everest-ui/utils@1.0.2':
     resolution: {integrity: sha512-32KzY6trGd6mXaXtAwHm9X3qIKAkW+0oq8tsIcoXbpQ7IrLTLD3rVoZhYoqHYQjC8s22Ckk86RmdpLMYYLWaeA==}
+
+  '@everest-ui/utils@1.1.0':
+    resolution: {integrity: sha512-U0nwuG1cEjTGNa7UhVi0MAHdypnI4RIjpTaK8zu6XwOPZ5/8o5MmXMk2k4Pqph+FdhEdxBpas/QkW9ClUPNKoA==}
 
   '@hookform/resolvers@3.10.0':
     resolution: {integrity: sha512-79Dv+3mDF7i+2ajj7SkypSKHhl1cbln1OGavqrsF7p6mbUv11xpqpacPsGDCTRvCSjEEIez2ef1NveSVL3b0Ag==}
@@ -2901,6 +2946,9 @@ packages:
   tailwind-merge@2.6.0:
     resolution: {integrity: sha512-P+Vu1qXfzediirmHOC3xKGAYeZtPcV9g76X+xg2FD4tYgR71ewMA35Y3sCz3zhiN/dwefRpJX0yBcgwi1fXNQA==}
 
+  tailwind-merge@3.0.1:
+    resolution: {integrity: sha512-AvzE8FmSoXC7nC+oU5GlQJbip2UO7tmOhOfQyOmPhrStOGXHU08j8mZEHZ4BmCqY5dWTCo4ClWkNyRNx1wpT0g==}
+
   tailwindcss-animate@1.0.7:
     resolution: {integrity: sha512-bl6mpH3T7I3UFxuvDEXLxy/VuFxBk5bbzplh7tXI68mwMokNYd1t9qPBHlnyTwfa4JGC4zP516I1hYYtQ/vspA==}
     peerDependencies:
@@ -3231,8 +3279,9 @@ snapshots:
       '@types/react': 18.3.18
       '@types/react-dom': 18.3.5(@types/react@18.3.18)
 
-  '@everest-ui/react-dropdown-menu@1.2.1(@types/react-dom@18.3.5(@types/react@18.3.18))(@types/react@18.3.18)(react-dom@19.0.0-rc-66855b96-20241106(react@19.0.0-rc-66855b96-20241106))(react@19.0.0-rc-66855b96-20241106)':
+  '@everest-ui/react-dropdown-menu@1.2.10(@types/react-dom@18.3.5(@types/react@18.3.18))(@types/react@18.3.18)(react-dom@19.0.0-rc-66855b96-20241106(react@19.0.0-rc-66855b96-20241106))(react@19.0.0-rc-66855b96-20241106)':
     dependencies:
+      '@everest-ui/react-popper': 1.11.4(@types/react-dom@18.3.5(@types/react@18.3.18))(@types/react@18.3.18)(react-dom@19.0.0-rc-66855b96-20241106(react@19.0.0-rc-66855b96-20241106))(react@19.0.0-rc-66855b96-20241106)
       react: 19.0.0-rc-66855b96-20241106
       react-dom: 19.0.0-rc-66855b96-20241106(react@19.0.0-rc-66855b96-20241106)
     optionalDependencies:
@@ -3247,6 +3296,32 @@ snapshots:
       '@types/react': 18.3.18
       '@types/react-dom': 18.3.5(@types/react@18.3.18)
 
+  '@everest-ui/react-hooks@1.1.0(@types/react-dom@18.3.5(@types/react@18.3.18))(@types/react@18.3.18)(react-dom@19.0.0-rc-66855b96-20241106(react@19.0.0-rc-66855b96-20241106))(react@19.0.0-rc-66855b96-20241106)':
+    dependencies:
+      clsx: 2.1.1
+      react: 19.0.0-rc-66855b96-20241106
+      react-dom: 19.0.0-rc-66855b96-20241106(react@19.0.0-rc-66855b96-20241106)
+    optionalDependencies:
+      '@types/react': 18.3.18
+      '@types/react-dom': 18.3.5(@types/react@18.3.18)
+
+  '@everest-ui/react-popper@1.11.4(@types/react-dom@18.3.5(@types/react@18.3.18))(@types/react@18.3.18)(react-dom@19.0.0-rc-66855b96-20241106(react@19.0.0-rc-66855b96-20241106))(react@19.0.0-rc-66855b96-20241106)':
+    dependencies:
+      '@everest-ui/react-hooks': 1.1.0(@types/react-dom@18.3.5(@types/react@18.3.18))(@types/react@18.3.18)(react-dom@19.0.0-rc-66855b96-20241106(react@19.0.0-rc-66855b96-20241106))(react@19.0.0-rc-66855b96-20241106)
+      '@everest-ui/react-selectors': 1.0.1
+      '@everest-ui/react-utils': 1.1.0(@types/react-dom@18.3.5(@types/react@18.3.18))(@types/react@18.3.18)(react-dom@19.0.0-rc-66855b96-20241106(react@19.0.0-rc-66855b96-20241106))(react@19.0.0-rc-66855b96-20241106)
+      '@everest-ui/utils': 1.1.0
+      clsx: 2.1.1
+      react: 19.0.0-rc-66855b96-20241106
+      react-dom: 19.0.0-rc-66855b96-20241106(react@19.0.0-rc-66855b96-20241106)
+    optionalDependencies:
+      '@types/react': 18.3.18
+      '@types/react-dom': 18.3.5(@types/react@18.3.18)
+
+  '@everest-ui/react-selectors@1.0.1':
+    dependencies:
+      clsx: 2.1.1
+
   '@everest-ui/react-utils@1.0.6(@types/react-dom@18.3.5(@types/react@18.3.18))(@types/react@18.3.18)(react-dom@19.0.0-rc-66855b96-20241106(react@19.0.0-rc-66855b96-20241106))(react@19.0.0-rc-66855b96-20241106)':
     dependencies:
       react: 19.0.0-rc-66855b96-20241106
@@ -3255,7 +3330,21 @@ snapshots:
       '@types/react': 18.3.18
       '@types/react-dom': 18.3.5(@types/react@18.3.18)
 
+  '@everest-ui/react-utils@1.1.0(@types/react-dom@18.3.5(@types/react@18.3.18))(@types/react@18.3.18)(react-dom@19.0.0-rc-66855b96-20241106(react@19.0.0-rc-66855b96-20241106))(react@19.0.0-rc-66855b96-20241106)':
+    dependencies:
+      clsx: 2.1.1
+      react: 19.0.0-rc-66855b96-20241106
+      react-dom: 19.0.0-rc-66855b96-20241106(react@19.0.0-rc-66855b96-20241106)
+    optionalDependencies:
+      '@types/react': 18.3.18
+      '@types/react-dom': 18.3.5(@types/react@18.3.18)
+
   '@everest-ui/utils@1.0.2': {}
+
+  '@everest-ui/utils@1.1.0':
+    dependencies:
+      clsx: 2.1.1
+      tailwind-merge: 3.0.1
 
   '@hookform/resolvers@3.10.0(react-hook-form@7.54.2(react@19.0.0-rc-66855b96-20241106))':
     dependencies:
@@ -6466,6 +6555,8 @@ snapshots:
   supports-preserve-symlinks-flag@1.0.0: {}
 
   tailwind-merge@2.6.0: {}
+
+  tailwind-merge@3.0.1: {}
 
   tailwindcss-animate@1.0.7(tailwindcss@3.4.17):
     dependencies:

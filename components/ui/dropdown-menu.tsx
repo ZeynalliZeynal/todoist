@@ -2,7 +2,10 @@ import { cn } from '@/lib/utils';
 import {
   DropdownMenu as DropdownMenuPrimitive,
   DropdownMenuContent as DropdownMenuContentPrimitive,
+  DropdownMenuGroup as DropdownMenuGroupPrimitive,
   DropdownMenuItem as DropdownMenuItemPrimitive,
+  DropdownMenuLabel as DropdownMenuLabelPrimitive,
+  DropdownMenuSeparator as DropdownMenuSeparatorPrimitive,
   DropdownMenuTrigger as DropdownMenuTriggerPrimitive,
 } from '@everest-ui/react-dropdown-menu';
 
@@ -15,7 +18,7 @@ export function DropdownMenuTrigger({
   return (
     <DropdownMenuTriggerPrimitive
       className={cn(
-        'rounded-md bg-background-200 border px-3 h-10 text-foreground',
+        'rounded-md bg-background-200 border px-3 h-8 text-foreground hover:bg-gray-200 transition',
         className,
       )}
       {...props}
@@ -48,10 +51,34 @@ export function DropdownMenuItem({
   return (
     <DropdownMenuItemPrimitive
       className={cn(
-        'justify-between px-2 rounded-md cursor-default h-10 align-middle transition focus:bg-gray-alpha-100 outline-none data-[disabled]:text-gray-500 data-[disabled]:pointer-events-none data-[disabled]:focus:bg-transparent',
+        'flex items-center justify-between px-2 rounded-md cursor-default h-10 align-middle transition focus:bg-gray-alpha-100 outline-none data-[disabled]:text-gray-500 data-[disabled]:pointer-events-none data-[disabled]:focus:bg-transparent',
         className,
       )}
       {...props}
     />
   );
 }
+
+export function DropdownMenuSeparator({
+  className,
+  ...props
+}: React.ComponentProps<typeof DropdownMenuSeparatorPrimitive>) {
+  return (
+    <DropdownMenuSeparatorPrimitive
+      className={cn('-mx-2 my-2 h-px bg-gray-alpha-400', className)}
+      {...props}
+    />
+  );
+}
+export function DropdownMenuLabel({
+  className,
+  ...props
+}: React.ComponentProps<typeof DropdownMenuLabelPrimitive>) {
+  return (
+    <DropdownMenuLabelPrimitive
+      className={cn('bg-background-100 px-2 h-10 flex items-center', className)}
+      {...props}
+    />
+  );
+}
+export const DropdownMenuGroup = DropdownMenuGroupPrimitive;

@@ -18,32 +18,32 @@ import {
 const code = `<DropdownMenu>
   <DropdownMenuTrigger>Open</DropdownMenuTrigger>
   <DropdownMenuContent>
-    <DropdownMenuLabel>My Account</DropdownMenuLabel>
+  <DropdownMenuLabel>My Account</DropdownMenuLabel>
     <DropdownMenuSeparator />
-    <DropdownMenuItem>Profile</DropdownMenuItem>
+    <DropdownMenuItem disabled>Profile</DropdownMenuItem>
     <DropdownMenuItem>Billing</DropdownMenuItem>
     <DropdownMenuItem>Team</DropdownMenuItem>
     <DropdownMenuItem>Subscription</DropdownMenuItem>
   </DropdownMenuContent>
 </DropdownMenu>`;
 
-export default function DropdownMenuDefault() {
+export default function DropdownMenuDisabledItem() {
   return (
     <section className="p-12">
-      <ScrollToLink id="default" href="#default">
-        <h2>Default</h2>
+      <ScrollToLink id="disabled-item" href="#disabled-item">
+        <h2>Disabled item</h2>
       </ScrollToLink>
       <Collapse className="mt-7">
         <GeistContentWrapper>
           <DropdownMenu>
             <DropdownMenuTrigger>Open</DropdownMenuTrigger>
-            <DropdownMenuContent className="!duration-0">
+            <DropdownMenuContent>
               <DropdownMenuLabel>My Account</DropdownMenuLabel>
               <DropdownMenuSeparator />
               <DropdownMenuItem>Profile</DropdownMenuItem>
               <DropdownMenuItem>Billing</DropdownMenuItem>
               <DropdownMenuItem>Team</DropdownMenuItem>
-              <DropdownMenuItem>Subscription</DropdownMenuItem>
+              <DropdownMenuItem disabled>Subscription</DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>
         </GeistContentWrapper>

@@ -5,27 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f03893d1-9795-491e-a4ee-0e50bf35b7b9" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/docs/geist/button.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/(geist)/geist/button/_sections/button-disabled.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(geist)/geist/button/_sections/button-disabled.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/(geist)/geist/button/_sections/button-icon-only.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(geist)/geist/button/_sections/button-icon-only.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/(geist)/geist/button/_sections/button-sizes.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(geist)/geist/button/_sections/button-sizes.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/(geist)/geist/button/_sections/button-suffix-prefix.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(geist)/geist/button/_sections/button-suffix-prefix.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/(geist)/geist/button/_sections/button-variants.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(geist)/geist/button/_sections/button-variants.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/(geist)/geist/dropdown-menu/_sections/dropdown-menu-default.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(geist)/geist/dropdown-menu/_sections/dropdown-menu-default.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/(geist)/geist/dropdown-menu/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(geist)/geist/dropdown-menu/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/ui/alert-dialog.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/alert-dialog.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/ui/copy.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/copy.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/ui/dropdown-menu.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/dropdown-menu.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/ui/primitives/popper/index.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/ui/primitives/popper/popper-content.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/ui/primitives/popper/popper-context.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/ui/primitives/popper/popper-group.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/ui/primitives/popper/popper-item.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/ui/primitives/popper/popper-label.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/ui/primitives/popper/popper-separator.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/ui/primitives/popper/popper-sub-content.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/ui/primitives/popper/popper-sub-context.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/ui/primitives/popper/popper-sub-trigger.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/ui/primitives/popper/popper-trigger.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/ui/primitives/popper/popper.types.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/geist/index.tsx" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pnpm-lock.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pnpm-lock.yaml" afterDir="false" />
     </list>
@@ -52,42 +37,43 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Notification.DisplayName-DoNotAsk-WindowsDefender": "Microsoft Defender may affect IDE",
-    "Notification.DoNotAsk-WindowsDefender": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "code.cleanup.on.save": "true",
-    "git-widget-placeholder": "main",
-    "last_opened_file_path": "C:/Users/asus/Desktop/education/projects/todoist/client/components/ui/primitives/popper",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.standard": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.standard": "",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "pnpm",
-    "npm.dev.executor": "Run",
-    "prettierjs.PrettierConfiguration.Package": "C:\\Users\\asus\\AppData\\Roaming\\npm\\node_modules\\prettier",
-    "rearrange.code.on.save": "true",
-    "settings.editor.selected.configurable": "actions.on.save",
-    "ts.external.directory.path": "C:\\Users\\asus\\Desktop\\education\\projects\\todoist\\client\\node_modules\\typescript\\lib",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Notification.DisplayName-DoNotAsk-WindowsDefender&quot;: &quot;Microsoft Defender may affect IDE&quot;,
+    &quot;Notification.DoNotAsk-WindowsDefender&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;code.cleanup.on.save&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/asus/Desktop/education/projects/todoist/client/app/(geist)/geist/dropdown-menu/_sections&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.standard&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.standard&quot;: &quot;&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;pnpm&quot;,
+    &quot;npm.dev.executor&quot;: &quot;Run&quot;,
+    &quot;prettierjs.PrettierConfiguration.Package&quot;: &quot;C:\\Users\\asus\\AppData\\Roaming\\npm\\node_modules\\prettier&quot;,
+    &quot;rearrange.code.on.save&quot;: &quot;true&quot;,
+    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;actions.on.save&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;C:\\Users\\asus\\Desktop\\education\\projects\\todoist\\client\\node_modules\\typescript\\lib&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "DatabaseDriversLRU": [
-      "mongo"
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;mongo&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\asus\Desktop\education\projects\todoist\client\app\(geist)\geist\dropdown-menu\_sections" />
       <recent name="C:\Users\asus\Desktop\education\projects\todoist\client\components\ui\primitives\popper" />
       <recent name="C:\Users\asus\Desktop\education\projects\todoist\client\app\(geist)\geist" />
       <recent name="C:\Users\asus\Desktop\education\projects\todoist\client\app\(geist)\geist\code-block\_sections" />
       <recent name="C:\Users\asus\Desktop\education\projects\todoist\client\app\(geist)\geist\checkbox" />
-      <recent name="C:\Users\asus\Desktop\education\projects\todoist\client\app\(geist)\geist\button\_sections" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\asus\Desktop\education\projects\todoist\client\app\(geist)\geist\checkbox\_sections" />
@@ -193,6 +179,9 @@
       <workItem from="1737648524209" duration="23000" />
       <workItem from="1737706248290" duration="9743000" />
       <workItem from="1737799081061" duration="3072000" />
+      <workItem from="1738731015591" duration="959000" />
+      <workItem from="1738731997989" duration="6257000" />
+      <workItem from="1738744335421" duration="2694000" />
     </task>
     <servers />
   </component>

@@ -1,4 +1,7 @@
 import DropdownMenuDefault from './_sections/dropdown-menu-default';
+import DropdownMenuAnimated from '@/app/(geist)/geist/dropdown-menu/_sections/dropdown-menu-animated';
+import DropdownMenuDisabledItem from '@/app/(geist)/geist/dropdown-menu/_sections/dropdown-menu-disabled-item';
+import DropdownMenuPositions from '@/app/(geist)/geist/dropdown-menu/_sections/dropdown-menu-positions';
 
 export default function BadgePage() {
   return (
@@ -11,6 +14,9 @@ export default function BadgePage() {
         </p>
       </section>
       <DropdownMenuDefault />
+      <DropdownMenuAnimated />
+      <DropdownMenuDisabledItem />
+      <DropdownMenuPositions />
     </div>
   );
 }

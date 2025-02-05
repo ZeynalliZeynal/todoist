@@ -14,10 +14,11 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
+import GeistSectionDescription from '@/app/(geist)/geist/_components/geist-section-description';
 
 const code = `<DropdownMenu>
   <DropdownMenuTrigger>Open</DropdownMenuTrigger>
-  <DropdownMenuContent>
+  <DropdownMenuContent className="data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2">
     <DropdownMenuLabel>My Account</DropdownMenuLabel>
     <DropdownMenuSeparator />
     <DropdownMenuItem>Profile</DropdownMenuItem>
@@ -27,17 +28,21 @@ const code = `<DropdownMenu>
   </DropdownMenuContent>
 </DropdownMenu>`;
 
-export default function DropdownMenuDefault() {
+export default function DropdownMenuAnimated() {
   return (
     <section className="p-12">
-      <ScrollToLink id="default" href="#default">
-        <h2>Default</h2>
+      <ScrollToLink id="animated" href="#animated">
+        <h2>Apply animations</h2>
       </ScrollToLink>
+      <GeistSectionDescription>
+        Apply animations using <code>data-[state=[open|closed]]</code> attribute
+        to control the opening and closing states.
+      </GeistSectionDescription>
       <Collapse className="mt-7">
         <GeistContentWrapper>
           <DropdownMenu>
             <DropdownMenuTrigger>Open</DropdownMenuTrigger>
-            <DropdownMenuContent className="!duration-0">
+            <DropdownMenuContent>
               <DropdownMenuLabel>My Account</DropdownMenuLabel>
               <DropdownMenuSeparator />
               <DropdownMenuItem>Profile</DropdownMenuItem>
