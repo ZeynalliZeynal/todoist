@@ -6,17 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="f03893d1-9795-491e-a4ee-0e50bf35b7b9" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/(landing)/_layout/header/dropdown-logout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(landing)/_layout/header/dropdown-logout.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/(landing)/_layout/header/header.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(landing)/_layout/header/header.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/(landing)/_layout/header/nav-right.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(landing)/_layout/header/nav-right.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/(landing)/_layout/header/navbar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(landing)/_layout/header/navbar.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/(landing)/_sections/templates.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(landing)/_sections/templates.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/(landing)/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(landing)/layout.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/ui/dropdown-menu.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/dropdown-menu.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/db.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hooks/use-ui.ts" beforeDir="false" afterPath="$PROJECT_DIR$/hooks/use-ui.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pnpm-lock.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pnpm-lock.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes.ts" beforeDir="false" afterPath="$PROJECT_DIR$/routes.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/(landing)/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(landing)/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tailwind.config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/tailwind.config.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -80,11 +73,11 @@
       <recent name="C:\Users\asus\Desktop\education\projects\todoist\client\app\(geist)\geist\checkbox" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\asus\Desktop\education\projects\todoist\client\components\ui\grid" />
       <recent name="C:\Users\asus\Desktop\education\projects\todoist\client\components\ui" />
       <recent name="C:\Users\asus\Desktop\education\projects\todoist\client\app\(geist)\geist\checkbox\_sections" />
       <recent name="C:\Users\asus\Desktop\education\projects\todoist\client\components\ui\stack" />
       <recent name="C:\Users\asus\Desktop\education\projects\todoist\client\components\ui\primitives\avatar" />
-      <recent name="C:\Users\asus\Desktop\education\projects\todoist\client\components\ui\primitives\collapse" />
     </key>
   </component>
   <component name="RunAnythingCache">
@@ -192,7 +185,7 @@
       <workItem from="1738766710117" duration="4262000" />
       <workItem from="1738825485522" duration="889000" />
       <workItem from="1738826396548" duration="1886000" />
-      <workItem from="1738828855113" duration="4236000" />
+      <workItem from="1738828855113" duration="13556000" />
     </task>
     <servers />
   </component>

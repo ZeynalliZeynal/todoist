@@ -1,0 +1,57 @@
+.grid {
+    display: grid;
+    grid-template-columns: repeat(var(--columns), 1fr);
+    grid-template-rows: repeat(var(--rows), 1fr);
+    border: 1px solid var(--ds-gray-alpha-400);
+    border-right: none;
+    border-bottom: none;
+    position: relative;
+}
+
+.gridGuides {
+    display: contents;
+}
+
+.gridGuide {
+    inset: 0;
+    position: absolute;
+    grid-column-start: var(--x);
+    grid-column-end: span 1;
+    grid-row-start: var(--y);
+    grid-row-end: span 1;
+    border: 1px solid var(--ds-gray-alpha-400);
+    border-left: none;
+    border-top: none;
+    aspect-ratio: 1 / 1;
+}
+
+.gridCell {
+    position: relative;
+    z-index: 10;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    grid-row: var(--row);
+    grid-column: var(--column);
+}
+
+.gridCross {
+    --guide-width: 1.5px;
+    --cross-size: 16px;
+    --cross-color: var(--ds-gray-900);
+    --cross-half-size: calc((var(--cross-size) / 2) + var(--guide-width) - 0.5px);
+    width: fit-content;
+    height: fit-content;
+    position: absolute;
+    pointer-events: none;
+    grid-column-start: var(--cross-column);
+    grid-row-start: var(--cross-row);
+    z-index: 2;
+    inset: calc(var(--cross-half-size) * -1);
+}
+
+.gridCrossLine {
+    position: absolute;
+    border: var(--guide-width) solid var(--cross-color);
+    border-width: 0px;
+}

@@ -186,7 +186,7 @@ export default {
         'header-border': 'hsl(var(--header-border))',
         input:
           '0 0 0 1px hsl(var(--ds-gray-alpha-600-value)),0 0 0 4px hsl(0,0%,100%,.24)!important',
-        border: '0 0 0 1px hsl(var(--ds-gray-alpha-400-value))',
+        border: '0 0 0 1px var(--ds-gray-400)',
         menu: 'var(--ds-shadow-menu-value)',
         brands: '0 0 8px 8px var(--shadow-color) inset',
         book: '0 1.8px 3.6px rgba(0,0,0,.05),0 10.8px 21.6px rgba(0,0,0,.08),inset 0 -.9px 0 rgba(0,0,0,.1),inset 0 1.8px 1.8px hsla(0,0%,100%,.1),inset 3.6px 0 3.6px rgba(0,0,0,.1)',

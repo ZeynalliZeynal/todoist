@@ -8,7 +8,7 @@ export default function Home() {
   return (
     <>
       <section className="border-b">
-        <div className="flex items-center flex-col justify-center gap-3 p-12">
+        <div className="flex items-center flex-col justify-center gap-3 lg:p-12 md:p-8 p-6">
           <div className="text-center space-y-6">
             <h1 className="text-[clamp(24px,3.75vw,48px)] leading-[100%]">
               Organize your work and life, finally.
