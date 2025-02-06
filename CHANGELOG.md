@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.3.22](https://github.com/ZeynalliZeynal/todoist/compare/v0.3.21...v0.3.22) (2025-02-06)
+
+
+### Features
+
+* add PixelatedCanvas component. add contact sections ([114f4ed](https://github.com/ZeynalliZeynal/todoist/commit/114f4edc5adfb9fd21f0ce638b2f8dfe2d83075a))
+
 ### [0.3.21](https://github.com/ZeynalliZeynal/todoist/compare/v0.3.20...v0.3.21) (2025-02-06)
 
 
