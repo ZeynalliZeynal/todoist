@@ -10,17 +10,23 @@ interface Restrict {
   tab?: 'loop' | 'disable';
   disableScroll?: boolean;
   condition?: boolean;
+  disablePointerEvents?: boolean;
 }
 
 export function useRestrict(options: Restrict) {
-  const { condition, disableScroll = true, tab } = options;
+  const {
+    condition,
+    disableScroll = true,
+    disablePointerEvents = false,
+    tab,
+  } = options;
 
   useLayoutEffect(() => {
     if (condition) {
       if (disableScroll) {
         const scrollbarWidth =
           window.innerWidth - document.documentElement.clientWidth;
-        document.body.style.pointerEvents = 'none';
+        if (disablePointerEvents) document.body.style.pointerEvents = 'none';
         document.body.style.overflow = 'hidden';
         document.body.style.paddingRight = `${scrollbarWidth}px`; // Compensate for scrollbar width
       }
@@ -49,7 +55,7 @@ export function useRestrict(options: Restrict) {
       document.body.style.overflow = '';
       document.body.style.paddingRight = '';
     };
-  }, [condition]);
+  }, [condition, disableScroll, tab]);
 }
 
 export function useOutsideClick(options: OutsideClick) {

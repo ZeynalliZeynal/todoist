@@ -12,7 +12,7 @@ export default function NavLinks() {
   const pathname = usePathname();
 
   return (
-    <ul role="list" className="flex items-center">
+    <ul role="list" className="lg:flex items-center hidden">
       {navItems.map(({ name, href }, index) => (
         <li key={index}>
           <Link

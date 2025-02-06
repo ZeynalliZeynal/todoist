@@ -1,28 +1,22 @@
+'use client';
+
 import { cn } from '@/lib/utils';
-import {
-  DropdownMenu as DropdownMenuPrimitive,
-  DropdownMenuContent as DropdownMenuContentPrimitive,
-  DropdownMenuGroup as DropdownMenuGroupPrimitive,
-  DropdownMenuItem as DropdownMenuItemPrimitive,
-  DropdownMenuLabel as DropdownMenuLabelPrimitive,
-  DropdownMenuSeparator as DropdownMenuSeparatorPrimitive,
-  DropdownMenuTrigger as DropdownMenuTriggerPrimitive,
-} from '@everest-ui/react-dropdown-menu';
+import { DropdownMenu as DropdownMenuPrimitive } from '@everest-ui/react-dropdown-menu';
 
 export const DropdownMenu = DropdownMenuPrimitive;
 
 export function DropdownMenuTrigger(
-  props: React.ComponentProps<typeof DropdownMenuTriggerPrimitive>,
+  props: React.ComponentProps<typeof DropdownMenuPrimitive.Trigger>,
 ) {
-  return <DropdownMenuTriggerPrimitive {...props} />;
+  return <DropdownMenuPrimitive.Trigger {...props} />;
 }
 
 export function DropdownMenuContent({
   className,
   ...props
-}: React.ComponentProps<typeof DropdownMenuContentPrimitive>) {
+}: React.ComponentProps<typeof DropdownMenu.Content>) {
   return (
-    <DropdownMenuContentPrimitive
+    <DropdownMenu.Content
       className={cn(
         'bg-background-100 rounded-xl border p-2 w-48 my-3 outline-none data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2',
         className,
@@ -36,27 +30,30 @@ export function DropdownMenuContent({
 }
 
 export function DropdownMenuItem({
+  children,
   className,
   ...props
-}: React.ComponentProps<typeof DropdownMenuItemPrimitive>) {
+}: React.ComponentProps<typeof DropdownMenu.Item>) {
   return (
-    <DropdownMenuItemPrimitive
+    <DropdownMenu.Item
       className={cn(
-        'flex items-center justify-between px-2 rounded-md h-10 align-middle transition focus:bg-gray-alpha-100 !outline-none focus:ring-0 focus:ring-offset-0 data-[disabled]:text-gray-500 data-[disabled]:pointer-events-none data-[disabled]:focus:bg-transparent',
+        'flex items-center px-2 justify-between rounded-md h-10 align-middle transition focus:bg-gray-alpha-100 !outline-none focus:ring-0 focus:ring-offset-0 data-[disabled]:text-gray-500 data-[disabled]:pointer-events-none data-[disabled]:focus:bg-transparent',
         !props.asChild && 'cursor-default',
         className,
       )}
       {...props}
-    />
+    >
+      {children}
+    </DropdownMenu.Item>
   );
 }
 
 export function DropdownMenuSeparator({
   className,
   ...props
-}: React.ComponentProps<typeof DropdownMenuSeparatorPrimitive>) {
+}: React.ComponentProps<typeof DropdownMenu.Separator>) {
   return (
-    <DropdownMenuSeparatorPrimitive
+    <DropdownMenu.Separator
       className={cn('-mx-2 my-2 h-px bg-gray-alpha-400', className)}
       {...props}
     />
@@ -65,12 +62,12 @@ export function DropdownMenuSeparator({
 export function DropdownMenuLabel({
   className,
   ...props
-}: React.ComponentProps<typeof DropdownMenuLabelPrimitive>) {
+}: React.ComponentProps<typeof DropdownMenu.Separator>) {
   return (
-    <DropdownMenuLabelPrimitive
+    <DropdownMenu.Separator
       className={cn('bg-background-100 px-2 h-10 flex items-center', className)}
       {...props}
     />
   );
 }
-export const DropdownMenuGroup = DropdownMenuGroupPrimitive;
+export const DropdownMenuGroup = DropdownMenu.Group;

@@ -16,6 +16,22 @@ declare global {
     id: string;
   }
 
+  interface User {
+    _id: string;
+    verified: boolean;
+    createdAt: Date;
+    email: string;
+    location: {
+      city: string;
+      country: string;
+      continent: string;
+    };
+    name: string;
+    planId: string;
+    updatedAt: Date;
+    verifiedAt: Date;
+  }
+
   interface Template {
     name: string;
     description: string;

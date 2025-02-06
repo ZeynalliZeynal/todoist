@@ -6,24 +6,17 @@
   <component name="ChangeListManager">
     <list default="true" id="f03893d1-9795-491e-a4ee-0e50bf35b7b9" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/actions/profile.action.ts" beforeDir="false" afterPath="$PROJECT_DIR$/actions/profile.action.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/(geist)/geist/checkbox/_sections/checkbox-default.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(geist)/geist/checkbox/_sections/checkbox-default.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/(geist)/geist/checkbox/_sections/checkbox-disabled.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(geist)/geist/checkbox/_sections/checkbox-disabled.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/(landing)/_layout/header/dropdown-logout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(landing)/_layout/header/dropdown-logout.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/(landing)/_layout/header/nav-links.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(landing)/_layout/header/nav-links.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/(landing)/_layout/header/header.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(landing)/_layout/header/header.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/(landing)/_layout/header/nav-right.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(landing)/_layout/header/nav-right.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/(landing)/_sections/template-data.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(landing)/_sections/template-data.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/(landing)/_layout/header/navbar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(landing)/_layout/header/navbar.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/(landing)/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(landing)/layout.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/ui/dropdown-menu.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/dropdown-menu.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/ui/dropdown-menu/dropdown-menu-sub.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/ui/dropdown-menu/dropdown-menu.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/ui/poppers/popper-sub.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/ui/poppers/popper.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/ui/primitives/checkbox.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/checkbox.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/ui/primitives/selectors.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/constants/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/constants/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/db.d.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hooks/use-ui.ts" beforeDir="false" afterPath="$PROJECT_DIR$/hooks/use-ui.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pnpm-lock.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pnpm-lock.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/utils/cookies.ts" beforeDir="false" afterPath="$PROJECT_DIR$/utils/cookies.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes.ts" beforeDir="false" afterPath="$PROJECT_DIR$/routes.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -197,6 +190,9 @@
       <workItem from="1738756345418" duration="1111000" />
       <workItem from="1738759220552" duration="1357000" />
       <workItem from="1738766710117" duration="4262000" />
+      <workItem from="1738825485522" duration="889000" />
+      <workItem from="1738826396548" duration="1886000" />
+      <workItem from="1738828855113" duration="4236000" />
     </task>
     <servers />
   </component>
