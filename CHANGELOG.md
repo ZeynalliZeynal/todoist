@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.3.21](https://github.com/ZeynalliZeynal/todoist/compare/v0.3.20...v0.3.21) (2025-02-06)
+
+
+### Features
+
+* add grid component. ([49d3dc2](https://github.com/ZeynalliZeynal/todoist/commit/49d3dc2bce229c3672ae91aa1eedeca65433070f))
+
 ### [0.3.20](https://github.com/ZeynalliZeynal/todoist/compare/v0.3.19...v0.3.20) (2025-02-06)
 
 
