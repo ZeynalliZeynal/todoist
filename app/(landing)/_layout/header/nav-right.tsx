@@ -4,13 +4,19 @@ import { useRestrict } from '@/hooks/use-ui';
 import React from 'react';
 import { Cross, Menu } from 'vercel-geist-icons';
 import NavRightDropdown from '@/app/(landing)/_layout/header/nav-right-dropdown';
+import { useRouter } from 'next/navigation';
 
 export default function NavRight({ user }: { user: User }) {
   const [isNavMenuOpen, setIsNavMenuOpen] = React.useState(false);
+  const router = useRouter();
 
   useRestrict({
     condition: isNavMenuOpen,
   });
+
+  React.useEffect(() => {
+    setIsNavMenuOpen(false);
+  }, [router]);
 
   return (
     <div>
@@ -28,7 +34,12 @@ export default function NavRight({ user }: { user: User }) {
             <Menu className="animate-in fade-in-0 zoom-in-0" />
           )}
         </button>
-        {isNavMenuOpen && <ResponsiveNavMenu user={user} />}
+        {isNavMenuOpen && (
+          <ResponsiveNavMenu
+            user={user}
+            closeMenu={() => setIsNavMenuOpen(false)}
+          />
+        )}
       </div>
     </div>
   );

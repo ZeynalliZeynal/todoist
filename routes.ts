@@ -6,7 +6,10 @@ export const apiAuthPrefix = '/api/auth';
 
 export const adminPrefix = '/admin';
 
-export const redirectUnauthorizedUser = '/auth/login';
+export const loginRoute = '/auth/login';
+export const signupRoute = '/auth/signup';
+
+export const redirectUnauthorizedUser = loginRoute;
 
 // dashboard routes
 export const dashboardRoute = '/account/today';

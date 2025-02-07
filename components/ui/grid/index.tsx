@@ -2,9 +2,9 @@ import { cn } from '@/lib/utils';
 import React from 'react';
 import styles from './grid.module.css';
 
-interface GridProps extends React.ComponentProps<'div'> {
-  rows: number;
-  columns: number;
+interface GridProps extends React.HTMLAttributes<HTMLElement> {
+  rows?: number;
+  columns?: number;
   smColumns?: number;
   smRows?: number;
   mdColumns?: number;
@@ -17,13 +17,14 @@ interface GridProps extends React.ComponentProps<'div'> {
   children?:
     | React.ReactElement<GridCellProps>
     | React.ReactElement<GridCellProps>[];
+  as?: React.ElementType;
 }
 
 export function Grid({
   children,
-  columns,
+  columns = 1,
   smColumns,
-  rows,
+  rows = 1,
   smRows,
   mdColumns,
   mdRows,
@@ -33,12 +34,13 @@ export function Grid({
   xlRows,
   aspectRatio,
   className,
+  as: Component = 'div',
   ...props
 }: GridProps) {
   return (
-    <div
+    <Component
       data-grid-container=""
-      data-grid-aspect-ratio={aspectRatio ? '' : null}
+      data-grid-aspect-ratio={aspectRatio ? '' : undefined}
       className={cn(styles.container, className)}
       {...props}
       style={
@@ -53,129 +55,46 @@ export function Grid({
           '--lg-rows': lgRows,
           '--xl-columns': xlColumns,
           '--xl-rows': xlRows,
+          ...props.style,
         } as React.CSSProperties
       }
     >
-      <div aria-hidden="true" data-grid-guides="" className={styles.guides}>
-        {Array.from({ length: rows * columns }, (_, index) => {
-          // Calculate the x and y position of the cell
-          const x = (index % columns) + 1;
-          const y = Math.floor(index / columns) + 1;
-          return (
-            <div
-              key={index}
-              data-grid-guide=""
-              className={styles.guide}
-              style={{ '--x': x, '--y': y } as React.CSSProperties}
-            />
-          );
-        })}
-      </div>
+      {['', 'sm', 'md', 'lg', 'xl'].map((size, index) => {
+        const gridRows = [rows, smRows, mdRows, lgRows, xlRows][index] || rows;
+        const gridColumns =
+          [columns, smColumns, mdColumns, lgColumns, xlColumns][index] ||
+          columns;
 
-      <div aria-hidden="true" data-grid-guides="" className={styles.guides}>
-        {Array.from(
-          { length: (smRows || rows) * (smColumns || columns) },
-          (_, index) => {
-            // Calculate the x and y position of the cell
-            const x = (index % (smColumns || columns)) + 1;
-            const y = Math.floor(index / (smColumns || columns)) + 1;
-            return (
-              <div
-                key={index}
-                data-grid-guide="sm"
-                className={styles.guide}
-                style={{ '--x': x, '--y': y } as React.CSSProperties}
-              />
-            );
-          },
-        )}
-      </div>
-
-      <div aria-hidden="true" data-grid-guides="" className={styles.guides}>
-        {Array.from(
-          {
-            length:
-              (mdRows || smRows || rows) * (mdColumns || smColumns || columns),
-          },
-          (_, index) => {
-            // Calculate the x and y position of the cell
-            const x = (index % (mdColumns || smColumns || columns)) + 1;
-            const y =
-              Math.floor(index / (mdColumns || smColumns || columns)) + 1;
-            return (
-              <div
-                key={index}
-                data-grid-guide="md"
-                className={styles.guide}
-                style={{ '--x': x, '--y': y } as React.CSSProperties}
-              />
-            );
-          },
-        )}
-      </div>
-      <div aria-hidden="true" data-grid-guides="" className={styles.guides}>
-        {Array.from(
-          {
-            length:
-              (lgRows || mdRows || smRows || rows) *
-              (lgColumns || mdColumns || smColumns || columns),
-          },
-          (_, index) => {
-            // Calculate the x and y position of the cell
-            const x =
-              (index % (lgColumns || mdColumns || smColumns || columns)) + 1;
-            const y =
-              Math.floor(
-                index / (lgColumns || mdColumns || smColumns || columns),
-              ) + 1;
-            return (
-              <div
-                key={index}
-                data-grid-guide="lg"
-                className={styles.guide}
-                style={{ '--x': x, '--y': y } as React.CSSProperties}
-              />
-            );
-          },
-        )}
-      </div>
-      <div aria-hidden="true" data-grid-guides="" className={styles.guides}>
-        {Array.from(
-          {
-            length:
-              (xlRows || lgRows || mdRows || smRows || rows) *
-              (xlColumns || lgColumns || mdColumns || smColumns || columns),
-          },
-          (_, index) => {
-            // Calculate the x and y position of the cell
-            const x =
-              (index %
-                (xlColumns || lgColumns || mdColumns || smColumns || columns)) +
-              1;
-            const y =
-              Math.floor(
-                index /
-                  (xlColumns || lgColumns || mdColumns || smColumns || columns),
-              ) + 1;
-            return (
-              <div
-                key={index}
-                data-grid-guide="xl"
-                className={styles.guide}
-                style={{ '--x': x, '--y': y } as React.CSSProperties}
-              />
-            );
-          },
-        )}
-      </div>
+        return (
+          <div
+            key={size}
+            aria-hidden="true"
+            data-grid-guides=""
+            className={styles.guides}
+          >
+            {Array.from({ length: gridRows * gridColumns }, (_, i) => {
+              const x = (i % gridColumns) + 1;
+              const y = Math.floor(i / gridColumns) + 1;
+              return (
+                <div
+                  key={i}
+                  data-grid-guide={size}
+                  className={styles.guide}
+                  style={{ '--x': x, '--y': y } as React.CSSProperties}
+                />
+              );
+            })}
+          </div>
+        );
+      })}
       {children}
-    </div>
+    </Component>
   );
 }
 
 interface GridCellProps {
-  row: number | string;
-  column: number | string;
+  row?: number | string;
+  column?: number | string;
   smColumn?: number | string;
   smRow?: number | string;
   mdColumn?: number | string;
@@ -184,14 +103,14 @@ interface GridCellProps {
   lgRow?: number | string;
   xlColumn?: number | string;
   xlRow?: number | string;
-  children: React.ReactNode;
+  children?: React.ReactNode;
   className?: string;
 }
 
 export function GridCell({
   children,
-  row,
-  column,
+  row = 1,
+  column = 1,
   smColumn,
   smRow,
   lgRow,

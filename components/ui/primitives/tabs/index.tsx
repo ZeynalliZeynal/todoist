@@ -4,7 +4,7 @@ import React, { ComponentProps, useId } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { cn } from '@/utils/lib';
 
-export interface TabProps extends React.ComponentProps<'button'> {
+export interface TabProps extends React.ComponentProps<'div'> {
   children?: React.ReactNode;
   isPillActive?: boolean;
   isIndicatorActive?: boolean;
@@ -60,7 +60,7 @@ export function Tab(props: TabProps) {
   const active = isPillActive ? 'pill' : isIndicatorActive ? 'indicator' : null;
 
   return (
-    <button
+    <div
       role="tab"
       data-active={active}
       className={cn(
@@ -92,7 +92,7 @@ export function Tab(props: TabProps) {
           />
         )}
       </AnimatePresence>
-      <span className="relative z-[1]">{children}</span>
+      <div className="relative z-[1]">{children}</div>
       <AnimatePresence>
         {isIndicatorActive && (
           <motion.div
@@ -116,6 +116,6 @@ export function Tab(props: TabProps) {
           />
         )}
       </AnimatePresence>
-    </button>
+    </div>
   );
 }

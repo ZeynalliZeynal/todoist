@@ -9,14 +9,12 @@ export const metadata = {
 
 export default async function ContactPage() {
   const githubData = await axios.get(
-    'https://api.github.com/users/ZeynalliZeynal',
+    'https://api.github.com/users/ZeynalliZeynal'
   );
-
-  console.log(githubData);
 
   return (
     <>
-      <section className="pt-[90px]">
+      <section className="lg:pt-[90px] pt-8">
         <Grid rows={4} columns={8} smColumns={12} aspectRatio>
           <GridCross column={1} row={1} />
           <GridCross column={-1} row={-1} />
