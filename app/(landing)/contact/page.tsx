@@ -1,13 +1,19 @@
 import { ButtonLink } from '@/components/ui/button';
 import { Grid, GridCell, GridCross } from '@/components/ui/grid';
-import PixelatedCanvas from '@/components/ui/pixelated-canvas';
 import { Linkedin, LogoGithub } from 'vercel-geist-icons';
+import axios from 'axios';
 
 export const metadata = {
   title: 'Contact me',
 };
 
-export default function ContactPage() {
+export default async function ContactPage() {
+  const githubData = await axios.get(
+    'https://api.github.com/users/ZeynalliZeynal',
+  );
+
+  console.log(githubData);
+
   return (
     <>
       <section className="pt-[90px]">
@@ -35,67 +41,51 @@ export default function ContactPage() {
               <div className="absolute inset-0 rounded-full bg-background-100" />
             </div>
             <div className="size-full center rounded-full absolute inset-0">
-              <h1 className="text-[clamp(24px,5vw,72px)]">Contact me.</h1>
+              <h1 className="lg:text-7xl md:text-5xl text-4xl">Contact me.</h1>
             </div>
           </GridCell>
         </Grid>
       </section>
       <Grid rows={1} columns={1} className="h-4" />
       <section>
-        <Grid rows={1} columns={2}>
+        <Grid rows={2} smRows={1} columns={1} smColumns={2}>
           <GridCell row={1} column={1}>
-            <PixelatedCanvas
-              speed={100}
-              gap={2}
-              colors={['#1f1f1f']}
-              className="size-full"
-              animationSpeed={3}
-            >
-              <div className="relative z-[1] size-full p-12 flex flex-col sm:gap-8 justify-center gap-6">
-                <Linkedin className="text-5xl" />
-                <div className="flex flex-col sm:gap-4 gap-2">
-                  <h2 className="text-[2rem]">Let&apos;s Connect!</h2>
-                  <p className="text-lg text-gray-900">
-                    I am posting some of my works time to time.
-                  </p>
-                </div>
-                <ButtonLink
-                  href="https://www.linkedin.com/in/zeynal-zeynalli-7a0047294"
-                  size="md"
-                  className="rounded-full bg-background-100"
-                >
-                  Send a Connection request
-                </ButtonLink>
+            <div className="relative z-[5] size-full lg:p-12 md:p-8 p-6 flex flex-col sm:gap-8 justify-center gap-6 hover:bg-gray-200 transition">
+              <Linkedin className="text-5xl" />
+              <div className="flex flex-col sm:gap-4 gap-2">
+                <h2 className="text-[2rem]">Let&apos;s Connect!</h2>
+                <p className="text-lg text-gray-900">
+                  I am posting some of my works time to time.
+                </p>
               </div>
-            </PixelatedCanvas>
+              <ButtonLink
+                href="https://www.linkedin.com/in/zeynal-zeynalli-7a0047294"
+                size="md"
+                className="rounded-full bg-background-100"
+              >
+                Send a Connection request
+              </ButtonLink>
+            </div>
           </GridCell>
-          <GridCell row={1} column={2}>
-            <PixelatedCanvas
-              speed={100}
-              gap={2}
-              colors={['#1f1f1f']}
-              animationSpeed={3}
-              className="size-full"
-            >
-              <div className="relative z-[1] size-full p-12 flex flex-col sm:gap-8 justify-center gap-6">
-                <LogoGithub className="text-5xl" />
-                <div className="flex flex-col sm:gap-4 gap-2">
-                  <h2 className="text-[2rem]">See my works!</h2>
-                  <p className="text-lg text-gray-900">
-                    Of course, all I&apos;m doing is on github and most of them
-                    are public to everyone. Please take your time and send a
-                    feedback or open an issue to help me improve.
-                  </p>
-                </div>
-                <ButtonLink
-                  href="https://github.com/ZeynalliZeynal"
-                  size="md"
-                  className="rounded-full bg-background-100"
-                >
-                  Go to my Github profile
-                </ButtonLink>
+          <GridCell row={2} column={1} smRow={1} smColumn={2}>
+            <div className="relative z-[1] size-full lg:p-12 md:p-8 p-6 flex flex-col sm:gap-8 justify-center gap-6 hover:bg-gray-200 transition">
+              <LogoGithub className="text-5xl" />
+              <div className="flex flex-col sm:gap-4 gap-2">
+                <h2 className="text-[2rem]">See my works!</h2>
+                <p className="text-lg text-gray-900">
+                  Of course, all I&apos;m doing is on github and most of them
+                  are public to everyone. Please take your time and send a
+                  feedback or open an issue to help me improve.
+                </p>
               </div>
-            </PixelatedCanvas>
+              <ButtonLink
+                href="https://github.com/ZeynalliZeynal"
+                size="md"
+                className="rounded-full bg-background-100"
+              >
+                {githubData.data.public_repos} repositories
+              </ButtonLink>
+            </div>
           </GridCell>
         </Grid>
       </section>

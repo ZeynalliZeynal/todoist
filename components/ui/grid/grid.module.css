@@ -6,7 +6,6 @@
     border-bottom: none;
     border-right: none;
     display: grid;
-    pointer-events: none;
     grid-template-columns: repeat(var(--columns), 1fr);
     grid-template-rows: repeat(var(--rows), 1fr);
 
@@ -135,7 +134,7 @@
 
 .cell {
     position: relative;
-    z-index: 5;
+    z-index: 10;
     display: flex;
     align-items: center;
     justify-content: center;
