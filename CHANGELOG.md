@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.3.24](https://github.com/ZeynalliZeynal/todoist/compare/v0.3.23...v0.3.24) (2025-02-07)
+
+
+### Features
+
+* setup pricing page ([f09b92e](https://github.com/ZeynalliZeynal/todoist/commit/f09b92ea73ef147d052eadc73eddcf254ca0e895))
+
 ### [0.3.23](https://github.com/ZeynalliZeynal/todoist/compare/v0.3.22...v0.3.23) (2025-02-07)
 
 
