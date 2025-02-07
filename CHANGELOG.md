@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.3.23](https://github.com/ZeynalliZeynal/todoist/compare/v0.3.22...v0.3.23) (2025-02-07)
+
+
+### Features
+
+* update Grid component for responsive breakpoints. ([9d2ee2a](https://github.com/ZeynalliZeynal/todoist/commit/9d2ee2aebd9917444f8591400c7df79ece677ad7))
+
 ### [0.3.22](https://github.com/ZeynalliZeynal/todoist/compare/v0.3.21...v0.3.22) (2025-02-06)
 
 
