@@ -11,10 +11,10 @@ export default function ContactPage() {
   return (
     <>
       <section className="pt-[90px]">
-        <Grid rows={4} columns={12} aspectRatio>
+        <Grid rows={4} columns={8} smColumns={12} aspectRatio>
           <GridCross column={1} row={1} />
           <GridCross column={-1} row={-1} />
-          <GridCell row="2 / span 2" column="4 / span 6">
+          <GridCell row="2 / span 2" column="2 / span 6" smColumn="4 / span 6">
             <div className="h-full relative rounded-full shadow-border z-[-1] bg-background-100 w-full">
               <svg
                 fill="none"

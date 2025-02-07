@@ -11,7 +11,7 @@ export default function ResponsiveNavMenu({ user }: { user: User }) {
   const [isPending, setIsPending] = React.useState(false);
 
   return (
-    <div className="fixed inset-0 top-16 h-screen bg-background-200 size-full">
+    <div className="fixed inset-0 top-16 max-h-screen bg-background-200 size-full">
       <div className="px-3 overflow-y-auto">
         <section className="mx-3 flex flex-col gap-4 py-3">
           {user ? (
@@ -37,7 +37,7 @@ export default function ResponsiveNavMenu({ user }: { user: User }) {
             </>
           )}
         </section>
-        <ul className="py-3 text-base">
+        <ul className="py-3 text-base overflow-y-auto">
           <li className="p-3 flex items-center justify-between">
             <div className="flex flex-col gap-1 items-start">
               <span className="text-base">{user.name}</span>

@@ -1,0 +1,164 @@
+.container {
+    --guide-color: var(--ds-gray-200);
+    --guide-width: 1px;
+    position: relative;
+    border: var(--guide-width) solid var(--guide-color);
+    border-bottom: none;
+    border-right: none;
+    display: grid;
+    pointer-events: none;
+    grid-template-columns: repeat(var(--columns), 1fr);
+    grid-template-rows: repeat(var(--rows), 1fr);
+
+    &[data-grid-aspect-ratio] {
+        aspect-ratio: var(--columns) / var(--rows);
+    }
+
+    @media screen and (width >= 640px) {
+        grid-template-columns: repeat(var(--sm-columns, var(--columns)), 1fr);
+        grid-template-rows: repeat(var(--sm-rows, var(--rows)), 1fr);
+
+        &[data-grid-aspect-ratio] {
+            aspect-ratio: var(--sm-columns, var(--columns)) / var(--sm-rows, var(--rows));
+        }
+    }
+
+    @media screen and (width >= 768px) {
+        grid-template-columns: repeat(var(--md-columns, var(--sm-columns, var(--columns))), 1fr);
+        grid-template-rows: repeat(var(--md-rows, var(--sm-rows, var(--rows))), 1fr);
+
+        &[data-grid-aspect-ratio] {
+            aspect-ratio: var(--md-columns, var(--sm-columns, var(--columns))) / var(--md-rows, var(--sm-rows, var(--rows)));
+        }
+    }
+
+    @media screen and (width >= 1024px) {
+        grid-template-columns: repeat(var(--lg-columns, var(--md-columns, var(--sm-columns, var(--columns)))), 1fr);
+        grid-template-rows: repeat(var(--lg-rows, var(--md-rows, var(--sm-rows, var(--rows)))), 1fr);
+
+        &[data-grid-aspect-ratio] {
+            aspect-ratio: var(--lg-columns, var(--md-columns, var(--sm-columns, var(--columns)))) / var(--lg-rows, var(--md-rows, var(--sm-rows, var(--rows))));
+        }
+    }
+
+    @media screen and (width >= 1150px) {
+        grid-template-columns: repeat(var(--xl-columns, var(--lg-columns, var(--md-columns, var(--sm-columns, var(--columns))))), 1fr);
+        grid-template-rows: repeat(var(--xl-rows, var(--lg-rows, var(--md-rows, var(--sm-rows, var(--rows))))), 1fr);
+
+        &[data-grid-aspect-ratio] {
+            aspect-ratio: var(--xl-columns, var(--lg-columns, var(--md-columns, var(--sm-columns, var(--columns))))) / var(--xl-rows, var(--lg-rows, var(--md-rows, var(--sm-rows, var(--rows)))));
+        }
+    }
+}
+
+.guides {
+    display: contents;
+}
+
+.guide {
+    display: block;
+    position: absolute;
+    inset: 0;
+    border: var(--guide-width) solid var(--guide-color);
+    border-top: none;
+    border-left: none;
+    grid-column: var(--x) / span 1;
+    grid-row: var(--y) / span 1;
+
+    @media screen and (width >= 640px) {
+        display: none;
+        &[data-grid-guide=sm] {
+            display: block;
+        }
+    }
+
+    @media screen and (width >= 768px) {
+        display: none;
+        &[data-grid-guide=md] {
+            display: block;
+        }
+    }
+
+    @media screen and (width >= 1024px) {
+        display: none;
+        &[data-grid-guide=lg] {
+            display: block;
+        }
+    }
+
+    @media screen and (width >= 1150px) {
+        display: none;
+        &[data-grid-guide=xl] {
+            display: block;
+        }
+    }
+}
+
+.cross {
+    --cross-size: 1rem;
+    --cross-color: var(--ds-gray-800);
+    --cross-half-size: calc((var(--cross-size) / 2) + var(--guide-width) - 0.5px);
+
+    position: absolute;
+    pointer-events: none;
+    grid-column-start: var(--cross-column);
+    grid-row-start: var(--cross-row);
+    z-index: 2;
+    inset: calc(var(--cross-half-size) * -1);
+
+    @media screen and (width >= 640px) {
+        grid-column-start: var(--sm-cross-column, var(--cross-column));
+        grid-row-start: var(--sm-cross-row, var(--cross-row));
+    }
+
+    @media screen and (width >= 768px) {
+        grid-column-start: var(--md-cross-column, var(--sm-cross-column, var(--cross-column)));
+        grid-row-start: var(--md-cross-row, var(--sm-cross-row, var(--cross-row)));
+    }
+
+    @media screen and (width >= 1024px) {
+        grid-column-start: var(--lg-cross-column, var(--md-cross-column, var(--sm-cross-column, var(--cross-column))));
+        grid-row-start: var(--lg-cross-row, var(--md-cross-row, var(--sm-cross-row, var(--cross-row))));
+    }
+
+    @media screen and (width >= 1150px) {
+        grid-column-start: var(--xl-cross-column, var(--lg-cross-column, var(--md-cross-column, var(--sm-cross-column, var(--cross-column)))));
+        grid-row-start: var(--xl-cross-row, var(--lg-cross-row, var(--md-cross-row, var(--sm-cross-row, var(--cross-row)))));
+    }
+}
+
+.crossLine {
+    position: absolute;
+    border: var(--guide-width) solid var(--cross-color);
+    border-width: 0;
+}
+
+.cell {
+    position: relative;
+    z-index: 5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    grid-column: var(--column);
+    grid-row: var(--row);
+
+    @media screen and (width >= 640px) {
+        grid-column: var(--sm-column, var(--column));
+        grid-row: var(--sm-row, var(--row));
+    }
+
+    @media screen and (width >= 768px) {
+        grid-column: var(--md-column, var(--sm-column, var(--column)));
+        grid-row: var(--md-row, var(--sm-row, var(--row)));
+    }
+
+    @media screen and (width >= 1024px) {
+        grid-column: var(--lg-column, var(--md-column, var(--sm-column, var(--column))));
+        grid-row: var(--lg-row, var(--md-row, var(--sm-row, var(--row))));
+    }
+
+    @media screen and (width >= 1150px) {
+        grid-column: var(--xl-column, var(--lg-column, var(--md-column, var(--sm-column, var(--column)))));
+        grid-row: var(--xl-row, var(--lg-row, var(--md-row, var(--sm-row, var(--row)))));
+    }
+}

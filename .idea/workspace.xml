@@ -5,11 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f03893d1-9795-491e-a4ee-0e50bf35b7b9" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/components/ui/grid/index.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/(landing)/_sections/templates.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(landing)/_sections/templates.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/(landing)/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(landing)/layout.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/(landing)/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(landing)/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tailwind.config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/tailwind.config.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/(landing)/_layout/header/nav-right.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(landing)/_layout/header/nav-right.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/(landing)/_layout/header/responsive-nav-menu.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(landing)/_layout/header/responsive-nav-menu.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/(landing)/contact/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(landing)/contact/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/ui/grid.tsx" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -185,7 +186,9 @@
       <workItem from="1738766710117" duration="4262000" />
       <workItem from="1738825485522" duration="889000" />
       <workItem from="1738826396548" duration="1886000" />
-      <workItem from="1738828855113" duration="13556000" />
+      <workItem from="1738828855113" duration="13618000" />
+      <workItem from="1738860051119" duration="76000" />
+      <workItem from="1738911124474" duration="12473000" />
     </task>
     <servers />
   </component>
