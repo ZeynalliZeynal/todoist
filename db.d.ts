@@ -4,14 +4,24 @@ declare global {
 
   type PlanStatusProps = ReadonlyArray<PlanStatus>;
 
+  interface PlanFeature {
+    id: string;
+    createdAt: Date;
+    updatedAt: Date;
+    title: string;
+    description: string;
+    name: string;
+    plans: ({ value: number | string | boolean } & Plan)[];
+  }
+
   interface Plan {
-    _id: string;
     name: string;
     description: string;
     price: number;
     createdAt: Date;
     updatedAt: Date;
     featureIds: string[];
+    allFeatures: PlanFeature[];
     status: PlanStatus;
     id: string;
   }

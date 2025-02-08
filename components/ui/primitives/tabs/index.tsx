@@ -24,7 +24,7 @@ export function useTabsContext() {
   const context = React.useContext(TabsContext);
   if (!context)
     throw new Error(
-      'useTabsContext cannot be used outside of the TabsProvider'
+      'useTabsContext cannot be used outside of the TabsProvider',
     );
   return context;
 }
@@ -42,7 +42,7 @@ export function Tabs({ children, className, ...etc }: TabsProviderProps) {
         className={cn(
           'flex',
           etc['aria-orientation'] === 'vertical' ? 'flex-col' : 'items-center',
-          className
+          className,
         )}
         {...etc}
       >
@@ -65,7 +65,7 @@ export function Tab(props: TabProps) {
       data-active={active}
       className={cn(
         'relative flex items-center justify-center transition',
-        className
+        className,
       )}
       {...etc}
     >
@@ -87,7 +87,7 @@ export function Tab(props: TabProps) {
             transition={{
               type: 'spring',
               bounce: 0.2,
-              duration: 0.5,
+              duration: 0.3,
             }}
           />
         )}
@@ -111,7 +111,7 @@ export function Tab(props: TabProps) {
             transition={{
               type: 'spring',
               bounce: 0.2,
-              duration: 0.5,
+              duration: 0.3,
             }}
           />
         )}

@@ -1,6 +1,13 @@
 import { Grid, GridCell, GridCross } from '@/components/ui/grid';
+import { getPlans } from '@/actions/plan.action';
+import { formatCurrency } from '@/utils/currrency';
+import { CheckCircleFill } from 'vercel-geist-icons';
+import Badge from '@/components/ui/badge';
 
-export default function PricingPage() {
+export default async function PricingPage() {
+  const data = await getPlans(true);
+  const plans: Plan[] = data.plans;
+  console.log(plans);
   return (
     <div className="py-8">
       <Grid as="section" rows={4} columns={8} smColumns={12} className="h-auto">
@@ -33,12 +40,53 @@ export default function PricingPage() {
           className="bg-background-200 mb-px mr-px sm:block hidden"
         />
       </Grid>
-      <Grid as="section" columns={3} className="border-y-transparent">
-        <GridCell>
-          <div className="py-12 px-8 flex flex-col gap-2">asa</div>
-        </GridCell>
+      <Grid
+        as="section"
+        columns={1}
+        mdColumns={3}
+        className="border-y-transparent"
+      >
+        {plans.map((plan, index) => (
+          <GridCell row="auto" key={index} column="auto">
+            {plan.status === 'coming soon' && (
+              <div className="absolute !hidden md:!flex -top-8 -left-px px-3 h-8 center rounded-tr-xl bg-foreground text-background-200 font-medium capitalize">
+                {plan.status}
+              </div>
+            )}
+            <div className="border-r border-b py-12 px-8 size-full flex flex-col gap-8">
+              <div className="flex flex-col gap-2">
+                <div className="text-2xl font-semibold flex items-center gap-3">
+                  {plan.name}{' '}
+                  {plan.status === 'coming soon' && (
+                    <Badge variant="inverted" className="capitalize">
+                      {plan.status}
+                    </Badge>
+                  )}
+                </div>
+                <p className="text-gray-900 font-medium text-base">
+                  {plan.description}.{' '}
+                  <b className="text-foreground">
+                    {plan.price === 0
+                      ? 'Free forever.'
+                      : `${formatCurrency(plan.price)}/month`}
+                  </b>
+                </p>
+              </div>
+              <ul className="flex flex-col gap-3 max-h-[450px] overflow-y-auto">
+                {plan.allFeatures.map((f) => (
+                  <li
+                    key={f.id}
+                    className="text-gray-900 flex items-center gap-2"
+                  >
+                    <CheckCircleFill className="text-foreground shrink-0" />
+                    {f.name}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </GridCell>
+        ))}
       </Grid>
-      <Grid className="h-4" />
     </div>
   );
 }
