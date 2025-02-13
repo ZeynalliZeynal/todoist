@@ -1,5 +1,5 @@
 'use client';
-import ResponsiveNavMenu from '@/app/(landing)/_layout/header/responsive-nav-menu';
+import ResponsiveNavMenu from '@/components/layout/responsive-nav-menu';
 import { useRestrict } from '@/hooks/use-ui';
 import React from 'react';
 import { Cross, Menu } from 'vercel-geist-icons';

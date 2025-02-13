@@ -3,6 +3,7 @@ import { ComponentProps } from 'react';
 export function LogoInvert(props: ComponentProps<'svg'>) {
   return (
     <svg
+      aria-label="TodoistNEXT logo"
       height={24}
       viewBox="0 0 32 32"
       fill="none"
@@ -32,6 +33,7 @@ export function LogoInvert(props: ComponentProps<'svg'>) {
 export function Logo(props: ComponentProps<'svg'>) {
   return (
     <svg
+      aria-label="TodoistNEXT logo"
       height={24}
       viewBox="0 0 32 32"
       fill="none"
@@ -61,6 +63,7 @@ export function Logo(props: ComponentProps<'svg'>) {
 export function LogoFull(props: ComponentProps<'svg'>) {
   return (
     <svg
+      aria-label="TodoistNEXT logo"
       height={24}
       viewBox="0 0 128 32"
       fill="none"
@@ -101,6 +104,7 @@ export function LogoFull(props: ComponentProps<'svg'>) {
 export function LogoFullInvert(props: ComponentProps<'svg'>) {
   return (
     <svg
+      aria-label="TodoistNEXT logo"
       height={24}
       viewBox="0 0 128 32"
       fill="none"
