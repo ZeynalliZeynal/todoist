@@ -17,11 +17,24 @@ export default async function DashboardHeader() {
     <header className="px-6 max-w-full border-b bg-background-100">
       <div className="flex items-center h-16">
         <div className="flex justify-between w-full">
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-2">
             <Link href="/app/(dashboard)/dashboard">
               <Logo />
             </Link>
-            <div className="w-0.5 h-5 rounded bg-gray-alpha-400 rotate-[15deg]" />
+            <svg
+              className="text-gray-alpha-400"
+              strokeLinejoin="round"
+              viewBox="0 0 16 16"
+              width={22}
+              height={22}
+            >
+              <path
+                fillRule="evenodd"
+                clipRule="evenodd"
+                d="M4.01526 15.3939L4.3107 14.7046L10.3107 0.704556L10.6061 0.0151978L11.9849 0.606077L11.6894 1.29544L5.68942 15.2954L5.39398 15.9848L4.01526 15.3939Z"
+                fill="currentColor"
+              />
+            </svg>
             <div className="h-10 flex items-center gap-2">
               <Link
                 href="/app/(dashboard)/dashboard"

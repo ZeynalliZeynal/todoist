@@ -88,6 +88,8 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         {...etc}
         onMouseEnter={() => !disabled && setHovering(true)}
         onMouseLeave={() => !disabled && setHovering(false)}
+        onTouchStart={() => !disabled && setHovering(true)}
+        onTouchEnd={() => !disabled && setHovering(false)}
       >
         {prefix}
         {children && (

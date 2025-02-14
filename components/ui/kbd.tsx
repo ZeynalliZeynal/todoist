@@ -9,7 +9,7 @@ export default function Kbd({
   return (
     <kbd
       className={cn(
-        'text-gray-900 text-xs flex items-center h-5 rounded shadow-border px-1 gap-0.5 font-geist-mono',
+        'text-gray-900 text-xs center h-5 rounded shadow-border px-1 gap-0.5 font-geist-mono',
         className,
       )}
       {...props}

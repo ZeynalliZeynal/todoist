@@ -8,7 +8,7 @@ export default function DashboardLayout({
   return (
     <div className="w-full">
       <DashboardHeader />
-      {children}
+      <main className="max-w-screen-dashboard mx-auto px-6">{children}</main>
     </div>
   );
 }

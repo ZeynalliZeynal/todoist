@@ -21,6 +21,7 @@
     scrollbar-width: thin;
     scrollbar-color: var(--ds-gray-300);
   }
+
   :root {
     &[data-theme='light'] {
       --ds-background-100-value: 0, 0%, 98%;
@@ -140,8 +141,8 @@
       --header-border: 0 1px 0 0 0, 0%, 0, 0.102;
       --ds-shadow-border-value: 0 0 0 1px rgba(0, 0, 0, 0.08);
       --ds-shadow-menu-value: var(--ds-shadow-border-value),
-        0px 1px 1px rgba(0, 0, 0, 0.02), 0px 4px 8px -4px rgba(0, 0, 0, 0.04),
-        0px 16px 24px -8px rgba(0, 0, 0, 0.06);
+      0px 1px 1px rgba(0, 0, 0, 0.02), 0px 4px 8px -4px rgba(0, 0, 0, 0.04),
+      0px 16px 24px -8px rgba(0, 0, 0, 0.06);
     }
 
     &,
@@ -428,16 +429,20 @@
 
   .book-bg {
     background: linear-gradient(
-        180deg,
-        hsla(0, 0%, 100%, 0.1),
-        hsla(0, 0%, 100%, 0) 50%,
-        hsla(0, 0%, 100%, 0)
-      ),
-      #1f1f1f;
+            180deg,
+            hsla(0, 0%, 100%, 0.1),
+            hsla(0, 0%, 100%, 0) 50%,
+            hsla(0, 0%, 100%, 0)
+    ),
+    #1f1f1f;
   }
 
   .center {
     @apply flex items-center justify-center;
+  }
+
+  .pos-center {
+    @apply absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2;
   }
 }
 
@@ -446,6 +451,7 @@
     & span.token.keyword {
       @apply !text-pink-900;
     }
+
     & span.token.punctuation,
     & span.token.tag.punctuation,
     & span.token.plain-text,
@@ -453,13 +459,16 @@
     & span.token.property-access {
       @apply !text-foreground;
     }
+
     & span.token.function,
     & span.token.tag.attr-name {
       @apply !text-purple-900;
     }
+
     & span.token.tag.attr-value {
       @apply !text-blue-900;
     }
+
     & span.token.tag.class-name,
     & span.token.tag,
     & span.token.template-string.template-punctuation.string,

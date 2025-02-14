@@ -12,6 +12,7 @@ export default {
       screens: {
         xl: '1150px',
         geist: '1220px',
+        dashboard: '1408px',
         full: '1448px',
       },
       maxWidth: {
