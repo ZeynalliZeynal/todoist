@@ -2,21 +2,8 @@ import SpecialButton from '@/components/ui/special-button';
 import { Geist } from '@/components/ui/icons/geist';
 import { ButtonLink } from '@/components/ui/button';
 import { dashboardRoute } from '@/routes';
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuGroup,
-  DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger,
-} from '@/components/ui/dropdown-menu';
-import Image from 'next/image';
-import Link from 'next/link';
-import { Layout, SettingsGear } from 'vercel-geist-icons';
-import ThemeSwitch from '@/components/ui/theme';
-import DropdownLogout from '@/app/(landing)/_layout/header/dropdown-logout';
 import React from 'react';
+import UserDropdownMenu from '@/components/layout/user-dropdown-menu';
 
 export default function NavRightDropdown({ user }: { user: User }) {
   if (user)
@@ -35,45 +22,7 @@ export default function NavRightDropdown({ user }: { user: User }) {
         <ButtonLink size="sm" href={dashboardRoute}>
           Dashboard
         </ButtonLink>
-        <DropdownMenu>
-          <DropdownMenuTrigger asChild>
-            <button className="rounded-full overflow-hidden">
-              <Image
-                src={`https://avatar.vercel.sh/${user.name}`}
-                alt={user.name}
-                width={30}
-                height={30}
-              />
-            </button>
-          </DropdownMenuTrigger>
-          <DropdownMenuContent align="end" className="w-64">
-            <DropdownMenuGroup className="pb-2 pt-3 space-y-1">
-              <DropdownMenuLabel className="flex-col items-start">
-                <span>{user.name}</span>
-                <span className="text-gray-800">{user.email}</span>
-              </DropdownMenuLabel>
-            </DropdownMenuGroup>
-            <DropdownMenuGroup>
-              <DropdownMenuItem asChild>
-                <Link href={dashboardRoute}>
-                  Dashboard <Layout />
-                </Link>
-              </DropdownMenuItem>
-              <DropdownMenuItem asChild>
-                <Link href="/account/settings">
-                  Account Settings <SettingsGear />
-                </Link>
-              </DropdownMenuItem>
-              <DropdownMenuSeparator />
-              <DropdownMenuLabel className="h-10 justify-between">
-                <span className="text-gray-900">Theme:</span>
-                <ThemeSwitch />
-              </DropdownMenuLabel>
-              <DropdownMenuSeparator />
-              <DropdownLogout />
-            </DropdownMenuGroup>
-          </DropdownMenuContent>
-        </DropdownMenu>
+        <UserDropdownMenu user={user} />
       </div>
     );
   return (

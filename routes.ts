@@ -12,8 +12,8 @@ export const signupRoute = '/auth/signup';
 export const redirectUnauthorizedUser = loginRoute;
 
 // dashboard routes
-export const dashboardRoute = '/account/today';
-export const accountSettingsRoute = '/account/settings';
+export const dashboardRoute = '/dashboard';
+export const accountSettingsRoute = '/dashboard/account/settings';
 export const geistRoute = '/geist/introduction';
 
 export const DEFAULT_LOGIN_REDIRECT = dashboardRoute;

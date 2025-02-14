@@ -5,18 +5,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f03893d1-9795-491e-a4ee-0e50bf35b7b9" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/jsLinters/eslint.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/prettier.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/actions/plan.action.ts" beforeDir="false" afterPath="$PROJECT_DIR$/actions/plan.action.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/(landing)/pricing/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(landing)/pricing/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/auth/signup-select-plans.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/auth/signup-select-plans.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/(dashboard)/dashboard/_layout/header/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/(landing)/_layout/header/nav-right-dropdown.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(landing)/_layout/header/nav-right-dropdown.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/(landing)/_layout/header/nav-right.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(landing)/_layout/header/nav-right.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/dashboard/_layout/header/index.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/dashboard/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(dashboard)/dashboard/layout.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/dashboard/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(dashboard)/dashboard/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/layout/responsive-nav-menu.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/layout/responsive-nav-menu.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/responsive-nav-menu.tsx" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/components/ui/primitives/tabs/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/primitives/tabs/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/db.d.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/ui/tabs.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/tabs.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes.ts" beforeDir="false" afterPath="$PROJECT_DIR$/routes.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -81,11 +81,11 @@
       <recent name="C:\Users\asus\Desktop\education\projects\todoist\client\app\(geist)\geist\checkbox" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\asus\Desktop\education\projects\todoist\client\components\ui\grid" />
-      <recent name="C:\Users\asus\Desktop\education\projects\todoist\client\components\ui" />
-      <recent name="C:\Users\asus\Desktop\education\projects\todoist\client\app\(geist)\geist\checkbox\_sections" />
-      <recent name="C:\Users\asus\Desktop\education\projects\todoist\client\components\ui\stack" />
-      <recent name="C:\Users\asus\Desktop\education\projects\todoist\client\components\ui\primitives\avatar" />
+      <recent name="C:\Users\asus\Desktop\education\projects\todoist\client\app\(dashboard)\dashboard\_layout" />
+      <recent name="C:\Users\asus\Desktop\education\projects\todoist\client\app\(dashboard)\dashboard" />
+      <recent name="C:\Users\asus\Desktop\education\projects\todoist\client\app\(dashboard)\_layout" />
+      <recent name="C:\Users\asus\Desktop\education\projects\todoist\client\app\(dashboard)" />
+      <recent name="C:\Users\asus\Desktop\education\projects\todoist\client\components\layout" />
     </key>
   </component>
   <component name="RunAnythingCache">

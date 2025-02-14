@@ -4,11 +4,16 @@ import React, { ComponentProps, useId } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { cn } from '@/utils/lib';
 
-export interface TabProps extends React.ComponentProps<'div'> {
+interface TabProps<T extends React.ElementType = 'div'>
+  extends React.HTMLAttributes<HTMLElement> {
   children?: React.ReactNode;
   isPillActive?: boolean;
   isIndicatorActive?: boolean;
+  as?: T;
 }
+
+export type TabPropsWithAs<T extends React.ElementType> = TabProps<T> &
+  Omit<React.ComponentPropsWithoutRef<T>, keyof TabProps<T>>;
 
 interface TabsContextProps {
   activeIndicatorId: string;
@@ -51,25 +56,30 @@ export function Tabs({ children, className, ...etc }: TabsProviderProps) {
     </TabsContext.Provider>
   );
 }
-
-export function Tab(props: TabProps) {
+export function Tab<T extends React.ElementType = 'div'>({
+  children,
+  isPillActive,
+  className,
+  isIndicatorActive,
+  as,
+  ...props
+}: TabPropsWithAs<T>) {
+  const Component = as || 'div';
   const { activePillId, activeIndicatorId } = useTabsContext();
-  const { children, isPillActive, className, isIndicatorActive, ...etc } =
-    props;
 
   const active = isPillActive ? 'pill' : isIndicatorActive ? 'indicator' : null;
 
   return (
-    <div
+    <Component
       role="tab"
       data-active={active}
       className={cn(
-        'relative flex items-center justify-center transition',
+        'relative flex items-center justify-center transition cursor-pointer',
         className,
       )}
-      {...etc}
+      {...props}
     >
-      <AnimatePresence>
+      <AnimatePresence presenceAffectsLayout={true}>
         {isPillActive && (
           <motion.div
             initial={{
@@ -85,9 +95,7 @@ export function Tab(props: TabProps) {
             data-active-pill=""
             className="absolute inset-0"
             transition={{
-              type: 'spring',
-              bounce: 0.2,
-              duration: 0.3,
+              duration: 0.15,
             }}
           />
         )}
@@ -109,13 +117,11 @@ export function Tab(props: TabProps) {
             data-active-indicator=""
             className="absolute"
             transition={{
-              type: 'spring',
-              bounce: 0.2,
-              duration: 0.3,
+              duration: 0.15,
             }}
           />
         )}
       </AnimatePresence>
-    </div>
+    </Component>
   );
 }
