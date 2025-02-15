@@ -11,6 +11,7 @@
     "push": "git push origin main --follow-tags"
   },
   "dependencies": {
+    "@everest-ui/react-accordion": "^1.2.0",
     "@everest-ui/react-collapse": "^0.0.8",
     "@everest-ui/react-copy": "^1.0.3",
     "@everest-ui/react-dropdown-menu": "^1.4.0",

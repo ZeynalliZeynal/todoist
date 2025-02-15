@@ -8,6 +8,9 @@ importers:
 
   .:
     dependencies:
+      '@everest-ui/react-accordion':
+        specifier: ^1.2.0
+        version: 1.2.0(@types/react-dom@18.3.5(@types/react@18.3.18))(@types/react@18.3.18)(react-dom@19.0.0-rc-66855b96-20241106(react@19.0.0-rc-66855b96-20241106))(react@19.0.0-rc-66855b96-20241106)
       '@everest-ui/react-collapse':
         specifier: ^0.0.8
         version: 0.0.8(@types/react-dom@18.3.5(@types/react@18.3.18))(@types/react@18.3.18)(framer-motion@11.18.2(react-dom@19.0.0-rc-66855b96-20241106(react@19.0.0-rc-66855b96-20241106))(react@19.0.0-rc-66855b96-20241106))(react-dom@19.0.0-rc-66855b96-20241106(react@19.0.0-rc-66855b96-20241106))(react@19.0.0-rc-66855b96-20241106)
@@ -165,6 +168,19 @@ packages:
 
   '@everest-ui/chain@1.0.2':
     resolution: {integrity: sha512-8cBuARjTMFll+RBMan0Y+R2Z3Mcni2ZFQioWp0N1zOV4TC7cVjyKYRpBtpRYam5+t7kvImOWtkg5l6o0hrjb8Q==}
+
+  '@everest-ui/react-accordion@1.2.0':
+    resolution: {integrity: sha512-hx0nZbK+9OE4PrUoztdbAIbuTgiyX0Ku2Cprok2lP5nx5SfbbcRzJWjuK9HCbR3bqlhEVrb4gUXU4Vt48lFtpg==}
+    peerDependencies:
+      '@types/react': '*'
+      '@types/react-dom': '*'
+      react: ^18.0 || ^19.0 || ^19.0.0-rc
+      react-dom: ^18.0 || ^19.0 || ^19.0.0-rc
+    peerDependenciesMeta:
+      '@types/react':
+        optional: true
+      '@types/react-dom':
+        optional: true
 
   '@everest-ui/react-collapse@0.0.8':
     resolution: {integrity: sha512-wMXFMEwZdhkN7f9GhGx+zywNQ7i/1NvHfl/mwZmt1exPB4gx9wrA1IDl9YgjBDTxinMPvdQWf21cUf7fVqloww==}
@@ -3286,6 +3302,15 @@ snapshots:
   '@eslint/js@8.57.1': {}
 
   '@everest-ui/chain@1.0.2': {}
+
+  '@everest-ui/react-accordion@1.2.0(@types/react-dom@18.3.5(@types/react@18.3.18))(@types/react@18.3.18)(react-dom@19.0.0-rc-66855b96-20241106(react@19.0.0-rc-66855b96-20241106))(react@19.0.0-rc-66855b96-20241106)':
+    dependencies:
+      clsx: 2.1.1
+      react: 19.0.0-rc-66855b96-20241106
+      react-dom: 19.0.0-rc-66855b96-20241106(react@19.0.0-rc-66855b96-20241106)
+    optionalDependencies:
+      '@types/react': 18.3.18
+      '@types/react-dom': 18.3.5(@types/react@18.3.18)
 
   '@everest-ui/react-collapse@0.0.8(@types/react-dom@18.3.5(@types/react@18.3.18))(@types/react@18.3.18)(framer-motion@11.18.2(react-dom@19.0.0-rc-66855b96-20241106(react@19.0.0-rc-66855b96-20241106))(react@19.0.0-rc-66855b96-20241106))(react-dom@19.0.0-rc-66855b96-20241106(react@19.0.0-rc-66855b96-20241106))(react@19.0.0-rc-66855b96-20241106)':
     dependencies:

@@ -8,6 +8,8 @@ import {
 } from 'vercel-geist-icons';
 import Kbd from '@/components/ui/kbd';
 import { Button } from '@/components/ui/button';
+import RecentChangesSection from '@/app/(dashboard)/dashboard/_sections/recent-changes-section';
+import ProjectsSection from '@/app/(dashboard)/dashboard/_sections/projects-section';
 
 export default function DashboardPage() {
   return (
@@ -51,7 +53,10 @@ export default function DashboardPage() {
           Add new...
         </Button>
       </section>
-      <section></section>
+      <section className="sm:mt-6 mt-4 grid grid-cols-[400px_1fr] lg:gap-8 sm:gap-6 gap-4">
+        <RecentChangesSection />
+        <ProjectsSection />
+      </section>
     </div>
   );
 }

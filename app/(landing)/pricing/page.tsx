@@ -7,7 +7,6 @@ import Badge from '@/components/ui/badge';
 export default async function PricingPage() {
   const data = await getPlans(true);
   const plans: Plan[] = data.plans;
-  console.log(plans);
   return (
     <div className="py-8">
       <Grid as="section" rows={4} columns={8} smColumns={12} className="h-auto">

@@ -40,7 +40,7 @@ export function Input({
       {label && <label htmlFor={`input${id}`}>{label}</label>}
       <div
         className={cn(
-          'flex items-center w-full bg-background-100 rounded-md focus-within:shadow-input transition text-foreground duration-200 overflow-hidden shadow-border font-medium',
+          'flex items-center w-full bg-background-100 rounded-md focus-within:shadow-input transition text-foreground duration-200 overflow-hidden shadow-border hover:shadow-gray-500 font-medium',
           {
             '[--size:2rem]': size === 'small',
             '[--size:2.5rem]': size === 'medium',
