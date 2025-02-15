@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.5.0
+
+### Minor Changes
+
+- Add projects section in dashboard
+
 ## 0.4.1
 
 ### Patch Changes

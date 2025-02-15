@@ -4,7 +4,7 @@ import { MoreHorizontal, User } from 'vercel-geist-icons';
 export default function RecentChangesSection() {
   return (
     <div className="flex flex-col">
-      <div className="sticky top-16 space-y-3">
+      <div className="sticky sm:top-6 top-4 space-y-4">
         <div className="h-8 px-1.5 center w-fit font-medium">
           Recent Changes
         </div>

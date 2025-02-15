@@ -47,7 +47,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       iconOnly,
       ...etc
     },
-    ref,
+    ref
   ) => {
     const [hovering, setHovering] = useState(false);
 
@@ -59,7 +59,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         data-hover={hovering ? '' : null}
         // data-variant={variant}
         className={cn(
-          `flex items-center justify-center transition duration-200 font-medium border select-none rounded-lg`,
+          `flex items-center justify-center transition duration-200 font-medium border select-none rounded-md`,
           {
             'text-foreground border bg-background-200': variant === 'primary',
             'text-background-200 border-gray-200 bg-gray-1000':
@@ -83,7 +83,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
             'text-gray-900 data-[hover]:text-foreground border-none':
               variant === 'ghost',
           },
-          className,
+          className
         )}
         {...etc}
         onMouseEnter={() => !disabled && setHovering(true)}
@@ -95,7 +95,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         {children && (
           <span
             className={cn(
-              iconOnly ? 'inline-flex items-center justify-center' : 'px-1.5',
+              iconOnly ? 'inline-flex items-center justify-center' : 'px-1.5'
             )}
           >
             {children}
@@ -104,7 +104,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         {suffix}
       </button>
     );
-  },
+  }
 );
 
 export const ButtonLink = forwardRef<HTMLAnchorElement, ButtonLinkProps>(
@@ -119,7 +119,7 @@ export const ButtonLink = forwardRef<HTMLAnchorElement, ButtonLinkProps>(
       iconOnly,
       ...etc
     },
-    ref,
+    ref
   ) => {
     const [hovering, setHovering] = useState(false);
 
@@ -151,7 +151,7 @@ export const ButtonLink = forwardRef<HTMLAnchorElement, ButtonLinkProps>(
             'text-gray-900 data-[hover]:text-foreground border-none':
               variant === 'ghost',
           },
-          className,
+          className
         )}
         {...etc}
         onMouseEnter={() => setHovering(true)}
@@ -161,7 +161,7 @@ export const ButtonLink = forwardRef<HTMLAnchorElement, ButtonLinkProps>(
         {children && (
           <span
             className={cn(
-              iconOnly ? 'inline-flex items-center justify-center' : 'px-1.5',
+              iconOnly ? 'inline-flex items-center justify-center' : 'px-1.5'
             )}
           >
             {children}
@@ -170,7 +170,7 @@ export const ButtonLink = forwardRef<HTMLAnchorElement, ButtonLinkProps>(
         {suffix}
       </Link>
     );
-  },
+  }
 );
 
 Button.displayName = 'Button';

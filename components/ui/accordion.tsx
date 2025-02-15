@@ -36,8 +36,9 @@ export function AccordionTrigger({
       className={cn(
         !asChild &&
           'flex flex-1 items-center justify-between py-4 text-sm font-medium transition-all hover:underline text-left [&[data-state=open]>svg]:rotate-180',
-        className,
+        className
       )}
+      asChild={asChild}
       {...props}
     />
   );
@@ -52,11 +53,11 @@ export function AccordionContent({
     <AccordionPrimitive.Content
       className={cn(
         'overflow-hidden text-sm data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down',
-        className,
+        className
       )}
       {...props}
     >
-      <div className={cn('pb-4 pt-0', className)}>{children}</div>
+      {children}
     </AccordionPrimitive.Content>
   );
 }
