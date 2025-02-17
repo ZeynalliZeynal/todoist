@@ -12,6 +12,7 @@ export default async function DashboardHeader() {
   });
 
   const user: User = profile.user;
+  console.log(user);
 
   if (!user) return null;
 
@@ -48,7 +49,7 @@ export default async function DashboardHeader() {
                 />
                 {`${user.name.split(' ')[0]}'s projects`}
                 <Badge size="sm" variant="gray-subtle">
-                  {user.plan[0].name}
+                  {user.plan.name}
                 </Badge>
               </Link>
             </div>

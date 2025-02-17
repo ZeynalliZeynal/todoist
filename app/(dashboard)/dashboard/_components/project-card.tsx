@@ -2,13 +2,12 @@ import { Button } from '@/components/ui/button';
 import {
   DropdownMenu,
   DropdownMenuContent,
-  DropdownMenuGroup,
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
 import { Gauge } from '@/components/ui/gauge';
 import Link from 'next/link';
-import { Layout, Percentage, MoreHorizontal } from 'vercel-geist-icons';
+import { Layout, MoreHorizontal, Percentage } from 'vercel-geist-icons';
 
 export default function ProjectCard() {
   return (
@@ -41,9 +40,7 @@ export default function ProjectCard() {
                 </Button>
               </DropdownMenuTrigger>
               <DropdownMenuContent align="start">
-                <DropdownMenuGroup>
-                  <DropdownMenuItem>Toggle Favorite</DropdownMenuItem>
-                </DropdownMenuGroup>
+                <DropdownMenuItem>Toggle Favorite</DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>
           </div>

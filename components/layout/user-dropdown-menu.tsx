@@ -31,7 +31,7 @@ export default function UserDropdownMenu({ user }: { user: User }) {
         />
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end" className="w-64">
-        <DropdownMenuGroup className="pb-2 pt-3 space-y-1">
+        <DropdownMenuGroup>
           <DropdownMenuLabel className="flex-col items-start">
             <span>{user.name}</span>
             <span className="text-gray-800">{user.email}</span>
@@ -49,7 +49,7 @@ export default function UserDropdownMenu({ user }: { user: User }) {
             </Link>
           </DropdownMenuItem>
           <DropdownMenuSeparator />
-          <DropdownMenuLabel className="h-10 justify-between">
+          <DropdownMenuLabel className="h-10 items-center justify-between">
             <span className="text-gray-900">Theme:</span>
             <ThemeSwitch />
           </DropdownMenuLabel>

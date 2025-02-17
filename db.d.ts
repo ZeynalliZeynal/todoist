@@ -36,7 +36,7 @@ declare global {
       country: string;
       continent: string;
     };
-    plan: Plan[];
+    plan: Plan;
     name: string;
     planId: string;
     updatedAt: Date;
