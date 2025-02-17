@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.5.2](https://github.com/ZeynalliZeynal/todoist/compare/v0.5.1...v0.5.2) (2025-02-17)
+
+
+### Features
+
+* add sort by select and add new dropdown ([8c9a2b4](https://github.com/ZeynalliZeynal/todoist/commit/8c9a2b4aaf65a573b635590fd87bf8ba1bfe7665))
+
 ### [0.5.1](https://github.com/ZeynalliZeynal/todoist/compare/v0.3.25...v0.5.1) (2025-02-17)
 
 ## 0.5.0
