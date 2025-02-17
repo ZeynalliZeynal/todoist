@@ -33,11 +33,9 @@ export default {
         padding: '1.5rem',
       },
       colors: {
-        border: 'hsl(var(--ds-gray-alpha-400-value))',
-        'ui-background': 'hsl(var(--ds-background-100-value))',
+        'ui-background': 'var(--ds-background-100)',
         'ui-disabled-foreground': 'hsl(var(--ds-gray-800-value))',
-        'ui-item-foreground-hover': 'hsl(var(--ds-gray-1000-value))',
-        'ui-item-background-hover': 'hsl(var(--ds-gray-100-value))',
+        'ui-item-background-hover': 'var(--ds-gray-200)',
         'button-invert-hover': 'hsl(var(--button-invert-hover-dark))',
         'button-invert-disabled': 'hsl(var(--button-invert-disabled-dark))',
         foreground: {
