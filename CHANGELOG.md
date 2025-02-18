@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.5.3](https://github.com/ZeynalliZeynal/todoist/compare/v0.5.2...v0.5.3) (2025-02-18)
+
+
+### Features
+
+* add new project dialog ([4df0ef4](https://github.com/ZeynalliZeynal/todoist/commit/4df0ef4d99e814f8d8576936857a028c1b50bd75))
+
 ### [0.5.2](https://github.com/ZeynalliZeynal/todoist/compare/v0.5.1...v0.5.2) (2025-02-17)
 
 
