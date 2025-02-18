@@ -1,6 +1,17 @@
 'use client';
 
+import { createProject } from '@/actions/project.action';
 import { Button } from '@/components/ui/button';
+import {
+  Dialog,
+  DialogBody,
+  DialogClose,
+  DialogContent,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from '@/components/ui/dialog';
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -39,6 +50,7 @@ const sort_projects_by = [
 ];
 
 export default function ProjectsFormSection() {
+  const [open, setOpen] = React.useState(false);
   const [sortBy, setSortBy] = React.useState(sort_projects_by[0].value);
 
   return (
@@ -98,7 +110,7 @@ export default function ProjectsFormSection() {
         </DropdownMenuTrigger>
         <DropdownMenuContent align="end">
           <DropdownMenuGroup>
-            <DropdownMenuItem>
+            <DropdownMenuItem onClick={() => setOpen(true)}>
               Project <GoProject />
             </DropdownMenuItem>
             <DropdownMenuItem>
@@ -107,6 +119,27 @@ export default function ProjectsFormSection() {
           </DropdownMenuGroup>
         </DropdownMenuContent>
       </DropdownMenu>
+      <Dialog open={open} onOpenChange={setOpen}>
+        <DialogContent>
+          <form action={async (data) => await createProject(data)}>
+            <DialogBody>
+              <DialogTitle>Create a new project</DialogTitle>
+              <div className="flex flex-col gap-3">
+                <Input size="medium" label="Name (required)" name="name" />
+                <Input size="medium" label="Description" name="description" />
+              </div>
+            </DialogBody>
+            <DialogFooter>
+              <DialogClose asChild>
+                <Button size="md">Cancel</Button>
+              </DialogClose>
+              <Button type="submit" variant="secondary" size="md">
+                Create
+              </Button>
+            </DialogFooter>
+          </form>
+        </DialogContent>
+      </Dialog>
     </section>
   );
 }

@@ -25,6 +25,15 @@ declare global {
     status: PlanStatus;
     id: string;
   }
+  interface Project {
+    name: string;
+    description?: string;
+    createdAt: Date;
+    updatedAt?: Date;
+    logo?: string;
+    user: User;
+    id: string;
+  }
 
   interface User {
     _id: string;

@@ -45,7 +45,7 @@ export function Input({
             '[--size:2rem]': size === 'small',
             '[--size:2.5rem]': size === 'medium',
             '[--size:3rem] rounded-lg': size === 'large',
-          },
+          }
         )}
       >
         {prefix && (
@@ -69,7 +69,7 @@ export function Input({
           className={cn(
             'w-full placeholder-gray-800 outline-none h-[var(--size)]',
             !prefix && 'pl-3',
-            !suffix && 'pr-3',
+            !suffix && 'pr-3'
           )}
           {...etc}
         />
@@ -136,7 +136,7 @@ export function OtpInput({
               'border-r size-12 md:size-16 first:rounded-l-md [&:nth-child(6)]:rounded-r-md [&:nth-child(6)]:border-r-0 ring-blue-700':
                 variant === 'bar',
               'border rounded-md size-10 ring-foreground': variant === 'cubes',
-            },
+            }
           )}
         >
           {isFocused && index === valueArr.length ? (
