@@ -6,6 +6,7 @@ import {
   CollapseContent,
   CollapseTrigger,
 } from '@/components/ui/collapse';
+import { createPopperScope } from '@/components/ui/primitives/popper';
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -28,6 +29,7 @@ const code = `<DropdownMenu>
 </DropdownMenu>`;
 
 export default function DropdownMenuDefault() {
+  const popperScope = createPopperScope();
   return (
     <section className="p-12">
       <ScrollToLink id="default" href="#default">
