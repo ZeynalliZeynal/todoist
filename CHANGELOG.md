@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.5.4](https://github.com/ZeynalliZeynal/todoist/compare/v0.5.3...v0.5.4) (2025-03-02)
+
+
+### Features
+
+* add actions to add a project to favorite or remove ([6da3aa0](https://github.com/ZeynalliZeynal/todoist/commit/6da3aa0ad58c8511d026cc618d6bee470273a024))
+
 ### [0.5.3](https://github.com/ZeynalliZeynal/todoist/compare/v0.5.2...v0.5.3) (2025-02-18)
 
 
