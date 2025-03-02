@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.5.6](https://github.com/ZeynalliZeynal/todoist/compare/v0.5.5...v0.5.6) (2025-03-02)
+
+
+### Features
+
+* add actions to create a new task ([b7a6f88](https://github.com/ZeynalliZeynal/todoist/commit/b7a6f88ead08b85bb87ebceffc49d73ff5c4cf68))
+
 ### [0.5.5](https://github.com/ZeynalliZeynal/todoist/compare/v0.5.4...v0.5.5) (2025-03-02)
 
 
