@@ -1,15 +1,6 @@
 'use client';
 
-import { createProject } from '@/actions/project.action';
 import { Button } from '@/components/ui/button';
-import {
-  Dialog,
-  DialogBody,
-  DialogClose,
-  DialogContent,
-  DialogFooter,
-  DialogTitle,
-} from '@/components/ui/dialog';
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -35,7 +26,8 @@ import {
   ListUnordered,
   MagnifyingGlass,
 } from 'vercel-geist-icons';
-import SubmitButton from '@/components/submit-button';
+import CreateProjectDialog from '@/app/(dashboard)/dashboard/_components/create-project-dialog';
+import CreateTaskDialog from '@/app/(dashboard)/dashboard/_components/create-task-dialog';
 
 const sort_projects_by = [
   {
@@ -49,7 +41,8 @@ const sort_projects_by = [
 ];
 
 export default function ProjectsFormSection() {
-  const [open, setOpen] = React.useState(false);
+  const [createProjectOpen, setCreateProjectOpen] = React.useState(false);
+  const [createTaskOpen, setCreateTaskOpen] = React.useState(false);
   const [sortBy, setSortBy] = React.useState(sort_projects_by[0].value);
 
   return (
@@ -109,39 +102,20 @@ export default function ProjectsFormSection() {
         </DropdownMenuTrigger>
         <DropdownMenuContent align="end">
           <DropdownMenuGroup>
-            <DropdownMenuItem onClick={() => setOpen(true)}>
+            <DropdownMenuItem onClick={() => setCreateProjectOpen(true)}>
               Project <GoProject />
             </DropdownMenuItem>
-            <DropdownMenuItem>
+            <DropdownMenuItem onClick={() => setCreateTaskOpen(true)}>
               Task <GoTasklist />
             </DropdownMenuItem>
           </DropdownMenuGroup>
         </DropdownMenuContent>
       </DropdownMenu>
-      <Dialog open={open} onOpenChange={setOpen}>
-        <DialogContent>
-          <form
-            action={async (formData) => {
-              await createProject(formData);
-              setOpen(false);
-            }}
-          >
-            <DialogBody>
-              <DialogTitle>Create a new project</DialogTitle>
-              <div className="flex flex-col gap-3">
-                <Input size="medium" label="Name" name="name" required />
-                <Input size="medium" label="Description" name="description" />
-              </div>
-            </DialogBody>
-            <DialogFooter>
-              <DialogClose asChild>
-                <Button size="md">Cancel</Button>
-              </DialogClose>
-              <SubmitButton>Create</SubmitButton>
-            </DialogFooter>
-          </form>
-        </DialogContent>
-      </Dialog>
+      <CreateProjectDialog
+        open={createProjectOpen}
+        setOpen={setCreateProjectOpen}
+      />
+      <CreateTaskDialog open={createTaskOpen} setOpen={setCreateTaskOpen} />
     </section>
   );
 }

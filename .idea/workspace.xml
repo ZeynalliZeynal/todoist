@@ -5,17 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f03893d1-9795-491e-a4ee-0e50bf35b7b9" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/prettier.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/prettier.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/actions/auth.actions.ts" beforeDir="false" afterPath="$PROJECT_DIR$/actions/auth.actions.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/actions/project.action.ts" beforeDir="false" afterPath="$PROJECT_DIR$/actions/project.action.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/(dashboard)/dashboard/_components/project-card.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(dashboard)/dashboard/_components/project-card.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/(dashboard)/dashboard/_layout/header/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(dashboard)/dashboard/_layout/header/index.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/(dashboard)/dashboard/_sections/projects-form-section.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(dashboard)/dashboard/_sections/projects-form-section.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/(dashboard)/dashboard/_sections/projects-section.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(dashboard)/dashboard/_sections/projects-section.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/(geist)/geist/dropdown-menu/_sections/dropdown-menu-default.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(geist)/geist/dropdown-menu/_sections/dropdown-menu-default.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/db.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/api-client.ts" beforeDir="false" afterPath="$PROJECT_DIR$/lib/api-client.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -49,7 +40,7 @@
     "RunOnceActivity.git.unshallow": "true",
     "code.cleanup.on.save": "true",
     "git-widget-placeholder": "main",
-    "last_opened_file_path": "C:/Users/asus/Desktop/education/projects/bartaz",
+    "last_opened_file_path": "C:/Users/asus/Desktop/education/projects/todoist/client/app/(dashboard)/dashboard/_components",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.standard": "true",
     "node.js.detected.package.tslint": "true",
@@ -73,11 +64,11 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\asus\Desktop\education\projects\todoist\client\app\(dashboard)\dashboard\_components" />
       <recent name="C:\Users\asus\Desktop\education\projects\todoist\client\app\(geist)\geist\dropdown-menu\_sections" />
       <recent name="C:\Users\asus\Desktop\education\projects\todoist\client\components\ui\primitives\popper" />
       <recent name="C:\Users\asus\Desktop\education\projects\todoist\client\app\(geist)\geist" />
       <recent name="C:\Users\asus\Desktop\education\projects\todoist\client\app\(geist)\geist\code-block\_sections" />
-      <recent name="C:\Users\asus\Desktop\education\projects\todoist\client\app\(geist)\geist\checkbox" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\asus\Desktop\education\projects\todoist\client\components" />
@@ -206,7 +197,7 @@
       <workItem from="1739779426971" duration="5421000" />
       <workItem from="1739871245194" duration="33000" />
       <workItem from="1740829216313" duration="16787000" />
-      <workItem from="1740916268638" duration="5981000" />
+      <workItem from="1740916268638" duration="7173000" />
     </task>
     <servers />
   </component>
