@@ -7,13 +7,13 @@ import {
 import { Button } from '@/components/ui/button';
 import ProjectCard from '../_components/project-card';
 import { ChevronDown, ZeroConfig } from 'vercel-geist-icons';
-import { getProjects } from '@/actions/project.action';
 import EmptyState from '@/components/ui/empty-state';
 
-export default async function ProjectsSection() {
-  const data = await getProjects();
-  const projects: Project[] = data.projects;
-
+export default async function ProjectsSection({
+  projects,
+}: {
+  projects: Project[];
+}) {
   const favoriteProjects = projects?.length
     ? projects.filter((project) => project.favorite)
     : [];

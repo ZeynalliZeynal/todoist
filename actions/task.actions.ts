@@ -2,14 +2,17 @@
 
 import apiClient from '@/lib/api-client';
 import { revalidatePath } from 'next/cache';
+import { FieldValues } from 'react-hook-form';
 
-export async function createTask(formData: FormData) {
+export async function createTask(data: FieldValues) {
   try {
-    const data = Object.fromEntries(formData);
-
     const response = await apiClient.post('/tasks', {
       name: data.name,
       description: data.description,
+      priority: data.priority,
+      dueDate: data.dueDate,
+      tags: data.tags,
+      project: data.project,
     });
     revalidatePath('/dashboard');
 

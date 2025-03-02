@@ -20,6 +20,7 @@ type InputProps = {
   size?: 'small' | 'medium' | 'large';
   label?: string;
   variant?: 'primary' | 'secondary';
+  error?: string;
 } & Omit<ComponentProps<'input'>, 'size' | 'prefix' | 'suffix'>;
 
 export function Input({
@@ -31,13 +32,22 @@ export function Input({
   size = 'small',
   label,
   className,
+  error,
   ...etc
 }: InputProps) {
   const id = useId();
 
   return (
     <div className={cn('text-gray-900 flex flex-col gap-2', className)}>
-      {label && <label htmlFor={`input${id}`}>{label}</label>}
+      {label && (
+        <label
+          htmlFor={`input${id}`}
+          className="flex items-center gap-2 justify-between"
+        >
+          {label}
+          {error && <span className="text-red-800">{error}</span>}
+        </label>
+      )}
       <div
         className={cn(
           'flex items-center w-full bg-background-100 rounded-md focus-within:shadow-input transition text-foreground duration-200 overflow-hidden shadow-border hover:shadow-gray-500 font-medium',
@@ -45,7 +55,7 @@ export function Input({
             '[--size:2rem]': size === 'small',
             '[--size:2.5rem]': size === 'medium',
             '[--size:3rem] rounded-lg': size === 'large',
-          }
+          },
         )}
       >
         {prefix && (
@@ -69,7 +79,7 @@ export function Input({
           className={cn(
             'w-full placeholder-gray-800 outline-none h-[var(--size)]',
             !prefix && 'pl-3',
-            !suffix && 'pr-3'
+            !suffix && 'pr-3',
           )}
           {...etc}
         />
@@ -136,7 +146,7 @@ export function OtpInput({
               'border-r size-12 md:size-16 first:rounded-l-md [&:nth-child(6)]:rounded-r-md [&:nth-child(6)]:border-r-0 ring-blue-700':
                 variant === 'bar',
               'border rounded-md size-10 ring-foreground': variant === 'cubes',
-            }
+            },
           )}
         >
           {isFocused && index === valueArr.length ? (

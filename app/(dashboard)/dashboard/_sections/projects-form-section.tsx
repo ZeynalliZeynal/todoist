@@ -40,7 +40,11 @@ const sort_projects_by = [
   },
 ];
 
-export default function ProjectsFormSection() {
+export default function ProjectsFormSection({
+  projects,
+}: {
+  projects: Project[];
+}) {
   const [createProjectOpen, setCreateProjectOpen] = React.useState(false);
   const [createTaskOpen, setCreateTaskOpen] = React.useState(false);
   const [sortBy, setSortBy] = React.useState(sort_projects_by[0].value);
@@ -115,7 +119,11 @@ export default function ProjectsFormSection() {
         open={createProjectOpen}
         setOpen={setCreateProjectOpen}
       />
-      <CreateTaskDialog open={createTaskOpen} setOpen={setCreateTaskOpen} />
+      <CreateTaskDialog
+        projects={projects}
+        open={createTaskOpen}
+        setOpen={setCreateTaskOpen}
+      />
     </section>
   );
 }

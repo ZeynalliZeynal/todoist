@@ -4,6 +4,15 @@ declare global {
 
   type PlanStatusProps = ReadonlyArray<PlanStatus>;
 
+  const PRIORITIES = [
+    'priority 1',
+    'priority 2',
+    'priority 3',
+    'priority 4',
+  ] as const;
+
+  type TaskPriority = (typeof PRIORITIES)[number];
+
   interface PlanFeature {
     id: string;
     createdAt: Date;
@@ -25,6 +34,7 @@ declare global {
     status: PlanStatus;
     id: string;
   }
+
   interface Project {
     name: string;
     description?: string;
@@ -34,6 +44,22 @@ declare global {
     user: User;
     id: string;
     favorite: boolean;
+  }
+
+  interface Task {
+    id: string;
+    name: string;
+    description?: string;
+    createdAt: Date;
+    updatedAt?: Date;
+    priority: TaskPriority;
+    dueDate: Date | null;
+    completed: boolean;
+    slug: string;
+    tags: string[];
+
+    project: Project;
+    user: User;
   }
 
   interface User {
