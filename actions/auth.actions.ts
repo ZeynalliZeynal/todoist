@@ -1,15 +1,14 @@
-"use server";
+'use server';
 
 import {
   clearAuthCookies,
-  getAuthCookies,
   getTokenFromCookieHeader,
   getVerifyCookie,
   setAuthCookies,
   setVerifyCookies,
-} from "@/utils/cookies";
-import { revalidatePath } from "next/cache";
-import apiClient from "@/lib/api-client";
+} from '@/utils/cookies';
+import { revalidatePath } from 'next/cache';
+import apiClient from '@/lib/api-client';
 
 export async function login({ otp }: { otp: string }) {
   try {
@@ -18,15 +17,15 @@ export async function login({ otp }: { otp: string }) {
       otp,
     });
 
-    const accessToken = getTokenFromCookieHeader(res, "accessToken");
-    const refreshToken = getTokenFromCookieHeader(res, "refreshToken");
+    const accessToken = getTokenFromCookieHeader(res, 'accessToken');
+    const refreshToken = getTokenFromCookieHeader(res, 'refreshToken');
 
     await setAuthCookies({
       accessToken,
       refreshToken,
     });
 
-    revalidatePath("/");
+    revalidatePath('/');
 
     return res.data;
   } catch (err) {
@@ -42,15 +41,15 @@ export async function signup({ plan, otp }: { plan: string; otp: string }) {
       otp,
     });
 
-    const accessToken = getTokenFromCookieHeader(res, "accessToken");
-    const refreshToken = getTokenFromCookieHeader(res, "refreshToken");
+    const accessToken = getTokenFromCookieHeader(res, 'accessToken');
+    const refreshToken = getTokenFromCookieHeader(res, 'refreshToken');
 
     await setAuthCookies({
       accessToken,
       refreshToken,
     });
 
-    revalidatePath("/");
+    revalidatePath('/');
 
     return res.data;
   } catch (err) {
@@ -60,21 +59,10 @@ export async function signup({ plan, otp }: { plan: string; otp: string }) {
 
 export async function logout() {
   try {
-    const { accessToken } = await getAuthCookies();
-
-    const res = await apiClient.post(
-      "/auth/logout",
-      {},
-      {
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${accessToken}`,
-        },
-      },
-    );
+    const res = await apiClient.post('/auth/logout', {});
 
     await clearAuthCookies();
-    revalidatePath("/");
+    revalidatePath('/');
     return res;
   } catch (err) {
     return err;
@@ -87,7 +75,7 @@ export async function sendLoginEmail({ email }: { email: string }) {
       email,
     });
 
-    const token = getTokenFromCookieHeader(res, "verifyToken");
+    const token = getTokenFromCookieHeader(res, 'verifyToken');
     await setVerifyCookies(token);
 
     return res.data;
@@ -109,7 +97,7 @@ export async function sendSignupEmail({
       email,
     });
 
-    const token = getTokenFromCookieHeader(res, "verifyToken");
+    const token = getTokenFromCookieHeader(res, 'verifyToken');
     await setVerifyCookies(token);
 
     return res.data;

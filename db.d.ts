@@ -33,6 +33,7 @@ declare global {
     logo?: string;
     user: User;
     id: string;
+    favorite: boolean;
   }
 
   interface User {

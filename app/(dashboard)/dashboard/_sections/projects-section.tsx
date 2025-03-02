@@ -14,6 +14,10 @@ export default async function ProjectsSection() {
   const data = await getProjects();
   const projects: Project[] = data.projects;
 
+  const favoriteProjects = projects?.length
+    ? projects.filter((project) => project.favorite)
+    : [];
+
   return (
     <div className="flex flex-col">
       <Accordion>
@@ -23,16 +27,20 @@ export default async function ProjectsSection() {
               variant="tertiary"
               className="group"
               prefix={
-                <ChevronDown className="group-data-[state=open]:-rotate-90 transform transition" />
+                <ChevronDown className="group-data-[state=closed]:-rotate-90 transform transition" />
               }
             >
               Your favorites
             </Button>
           </AccordionTrigger>
           <AccordionContent className="w-full">
-            <div className="py-4 border-b grid grid-cols-2 gap-6">
-              {projects.length ? (
-                projects.map((p, i) => <ProjectCard key={i} project={p} />)
+            <div>
+              {favoriteProjects.length ? (
+                <div className="py-4 border-b grid grid-cols-2 gap-6">
+                  {favoriteProjects.map((p, i) => (
+                    <ProjectCard key={i} project={p} />
+                  ))}
+                </div>
               ) : (
                 <EmptyState
                   icon={<ZeroConfig />}
@@ -44,7 +52,7 @@ export default async function ProjectsSection() {
         </AccordionItem>
       </Accordion>
       <div className="grid grid-cols-2 gap-6 mt-4">
-        {projects.length ? (
+        {projects?.length ? (
           projects.map((p, i) => <ProjectCard key={i} project={p} />)
         ) : (
           <EmptyState

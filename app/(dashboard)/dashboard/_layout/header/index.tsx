@@ -12,7 +12,6 @@ export default async function DashboardHeader() {
   });
 
   const user: User = profile.user;
-  console.log(user);
 
   if (!user) return null;
 

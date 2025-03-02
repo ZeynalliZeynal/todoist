@@ -8,9 +8,7 @@ import {
   DialogClose,
   DialogContent,
   DialogFooter,
-  DialogHeader,
   DialogTitle,
-  DialogTrigger,
 } from '@/components/ui/dialog';
 import {
   DropdownMenu,
@@ -37,6 +35,7 @@ import {
   ListUnordered,
   MagnifyingGlass,
 } from 'vercel-geist-icons';
+import SubmitButton from '@/components/submit-button';
 
 const sort_projects_by = [
   {
@@ -121,11 +120,16 @@ export default function ProjectsFormSection() {
       </DropdownMenu>
       <Dialog open={open} onOpenChange={setOpen}>
         <DialogContent>
-          <form action={async (data) => await createProject(data)}>
+          <form
+            action={async (formData) => {
+              await createProject(formData);
+              setOpen(false);
+            }}
+          >
             <DialogBody>
               <DialogTitle>Create a new project</DialogTitle>
               <div className="flex flex-col gap-3">
-                <Input size="medium" label="Name (required)" name="name" />
+                <Input size="medium" label="Name" name="name" required />
                 <Input size="medium" label="Description" name="description" />
               </div>
             </DialogBody>
@@ -133,9 +137,7 @@ export default function ProjectsFormSection() {
               <DialogClose asChild>
                 <Button size="md">Cancel</Button>
               </DialogClose>
-              <Button type="submit" variant="secondary" size="md">
-                Create
-              </Button>
+              <SubmitButton>Create</SubmitButton>
             </DialogFooter>
           </form>
         </DialogContent>
