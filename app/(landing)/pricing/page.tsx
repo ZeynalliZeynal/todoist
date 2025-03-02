@@ -5,7 +5,7 @@ import { CheckCircleFill } from 'vercel-geist-icons';
 import Badge from '@/components/ui/badge';
 
 export default async function PricingPage() {
-  const data = await getPlans(true);
+  const data = await getPlans();
   const plans: Plan[] = data.plans;
   return (
     <div className="py-8">
@@ -45,7 +45,7 @@ export default async function PricingPage() {
         mdColumns={3}
         className="border-y-transparent"
       >
-        {plans.map((plan, index) => (
+        {plans?.map((plan, index) => (
           <GridCell row="auto" key={index} column="auto">
             {plan.status === 'coming soon' && (
               <div className="absolute !hidden md:!flex -top-8 -left-px px-3 h-8 center rounded-tr-xl bg-foreground text-background-200 font-medium capitalize">
@@ -72,7 +72,7 @@ export default async function PricingPage() {
                 </p>
               </div>
               <ul className="flex flex-col gap-3 max-h-[450px] overflow-y-auto">
-                {plan.allFeatures.map((f) => (
+                {plan?.allFeatures?.map((f) => (
                   <li
                     key={f.id}
                     className="text-gray-900 flex items-center gap-2"

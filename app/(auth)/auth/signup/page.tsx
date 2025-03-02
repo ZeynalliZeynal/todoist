@@ -1,7 +1,7 @@
-import Footer from "@/app/(auth)/_layout/footer/footer";
-import { HeaderSignup } from "@/app/(auth)/_layout/header/header";
-import { getPlans } from "@/actions/plan.action";
-import SignupForm from "@/components/auth/signup-form";
+import Footer from '@/app/(auth)/_layout/footer/footer';
+import { HeaderSignup } from '@/app/(auth)/_layout/header/header';
+import { getPlans } from '@/actions/plan.action';
+import SignupForm from '@/components/auth/signup-form';
 
 export default async function Page() {
   const data = await getPlans();

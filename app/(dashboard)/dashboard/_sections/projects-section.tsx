@@ -37,7 +37,7 @@ export default async function ProjectsSection({
             <div>
               {favoriteProjects.length ? (
                 <div className="py-4 border-b grid grid-cols-2 gap-6">
-                  {favoriteProjects.map((p, i) => (
+                  {favoriteProjects?.map((p, i) => (
                     <ProjectCard key={i} project={p} />
                   ))}
                 </div>
@@ -53,7 +53,7 @@ export default async function ProjectsSection({
       </Accordion>
       <div className="grid grid-cols-2 gap-6 mt-4">
         {projects?.length ? (
-          projects.map((p, i) => <ProjectCard key={i} project={p} />)
+          projects?.map((p, i) => <ProjectCard key={i} project={p} />)
         ) : (
           <EmptyState
             icon={<ZeroConfig />}

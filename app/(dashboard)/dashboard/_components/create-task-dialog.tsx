@@ -60,7 +60,7 @@ export default function CreateTaskDialog({
     reset,
     handleSubmit,
     watch,
-    formState: { errors, isSubmitting, isSubmitSuccessful },
+    formState: { errors, isSubmitting },
     getValues,
     setValue,
   } = useForm({
@@ -149,7 +149,7 @@ export default function CreateTaskDialog({
                         <CommandList>
                           <CommandEmpty>No project found.</CommandEmpty>
                           <CommandGroup>
-                            {projects.map((project) => (
+                            {projects?.map((project) => (
                               <CommandItem
                                 key={project.id}
                                 value={project.name}

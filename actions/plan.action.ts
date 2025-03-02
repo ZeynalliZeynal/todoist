@@ -2,11 +2,9 @@
 
 import apiClient from '@/lib/api-client';
 
-export async function getPlans(enableFeatures: boolean = false) {
+export async function getPlans() {
   try {
-    const res = await apiClient.get(
-      `/plans${enableFeatures && '?features=enable'}`,
-    );
+    const res = await apiClient.get(`/plans`);
 
     return res.data.data;
   } catch (err) {

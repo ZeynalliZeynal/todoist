@@ -6,17 +6,11 @@
   <component name="ChangeListManager">
     <list default="true" id="f03893d1-9795-491e-a4ee-0e50bf35b7b9" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/actions/task.actions.ts" beforeDir="false" afterPath="$PROJECT_DIR$/actions/task.actions.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/(dashboard)/dashboard/_components/create-task-dialog.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(dashboard)/dashboard/_components/create-task-dialog.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/(dashboard)/dashboard/_sections/projects-form-section.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(dashboard)/dashboard/_sections/projects-form-section.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/(dashboard)/dashboard/_sections/projects-section.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(dashboard)/dashboard/_sections/projects-section.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/(dashboard)/dashboard/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(dashboard)/dashboard/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/layout.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/ui/input.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/input.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/ui/select.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/select.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/db.d.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pnpm-lock.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pnpm-lock.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pnpm-lock.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/tsconfig.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -207,7 +201,7 @@
       <workItem from="1739779426971" duration="5421000" />
       <workItem from="1739871245194" duration="33000" />
       <workItem from="1740829216313" duration="16787000" />
-      <workItem from="1740916268638" duration="19686000" />
+      <workItem from="1740916268638" duration="20806000" />
     </task>
     <servers />
   </component>
