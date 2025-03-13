@@ -33,8 +33,12 @@ export default function CreateProjectDialog({
           <DialogBody>
             <DialogTitle>Create a new project</DialogTitle>
             <div className="flex flex-col gap-3">
-              <Input size="medium" label="Name" name="name" required />
-              <Input size="medium" label="Description" name="description" />
+              <Input size="medium" placeholder="Name" name="name" required />
+              <Input
+                size="medium"
+                placeholder="Description"
+                name="description"
+              />
             </div>
           </DialogBody>
           <DialogFooter>

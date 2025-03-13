@@ -1,34 +1,34 @@
 'use server';
 
-import { getAuthCookies } from '@/utils/cookies';
+import { cache } from 'react';
 import apiClient from '@/lib/api-client';
+import { getAuthCookies } from '@/utils/cookies';
 
-interface GetProfileProps {
-  plan?: boolean;
-  tasks?: boolean;
-}
-
-export async function getProfile(options?: Partial<GetProfileProps>) {
+export const getProfile = cache(async () => {
   try {
-    const { accessToken } = await getAuthCookies();
-
-    // Construct query parameters dynamically
-    const queryParams = new URLSearchParams();
-    if (options?.plan) queryParams.append('plan', 'enable');
-    if (options?.tasks) queryParams.append('tasks', 'enable');
-
-    const res = await apiClient.get(
-      `/profile${queryParams.toString() ? `?${queryParams.toString()}` : ''}`,
-      {
-        headers: {
-          'Content-Type': 'application/json',
-          Authorization: `Bearer ${accessToken}`,
-        },
-      }
-    );
+    const res = await apiClient.get(`/profile`);
 
     return res.data.data;
   } catch (err) {
-    return err;
+    throw err;
   }
-}
+});
+
+export const getCachedProfile = async () => {
+  try {
+    const { accessToken } = await getAuthCookies();
+
+    const response = await fetch('/profile', {
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${accessToken}`,
+      },
+      next: { revalidate: 300 },
+    });
+
+    const data = await response.json();
+    return data.data;
+  } catch (error) {
+    throw error;
+  }
+};

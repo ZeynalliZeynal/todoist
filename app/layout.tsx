@@ -4,6 +4,9 @@ import './globals.css';
 import { Poppins } from 'next/font/google';
 import { ThemeProvider } from '@/components/ui/theme';
 import { Toaster } from '@/components/ui/sonner';
+import { UserProvider } from '@/lib/providers/user-provider';
+import { getProfile } from '@/actions/profile.action';
+import { getAuthCookies } from '@/utils/cookies';
 
 const geistSans = localFont({
   src: './fonts/GeistVF.woff',
@@ -27,17 +30,27 @@ export const metadata: Metadata = {
   description: 'TodoistNext | Organize your work and life',
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const initialProfile = await getProfile().catch(() => null);
+  const { accessToken } = await getAuthCookies();
+
   return (
     <html lang="en">
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${poppins.variable} font-geist-sans antialiased`}
       >
-        <ThemeProvider defaultTheme="device">{children}</ThemeProvider>
+        <ThemeProvider defaultTheme="device">
+          <UserProvider
+            initialProfile={{ ...initialProfile.user }}
+            token={accessToken}
+          >
+            {children}
+          </UserProvider>
+        </ThemeProvider>
         <Toaster />
       </body>
     </html>

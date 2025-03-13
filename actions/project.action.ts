@@ -1,19 +1,18 @@
 'use server';
 
-import { getAuthCookies } from '@/utils/cookies';
 import apiClient from '@/lib/api-client';
 import { revalidatePath } from 'next/cache';
 
-export async function getProjects() {
+export async function getProjects({ search }: { search?: string } = {}) {
   try {
-    const { accessToken } = await getAuthCookies();
+    const queryParams = new URLSearchParams();
 
-    const res = await apiClient.get('/projects?sort=-favorite', {
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${accessToken}`,
-      },
-    });
+    if (search && search.trim()) {
+      queryParams.append('search', search.trim());
+    }
+    const res = await apiClient(
+      `/projects?sort=-favorite${queryParams.toString()}`,
+    );
 
     return res.data.data;
   } catch (err) {

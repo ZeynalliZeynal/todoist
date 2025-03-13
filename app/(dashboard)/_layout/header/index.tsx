@@ -1,15 +1,13 @@
 import { getProfile } from '@/actions/profile.action';
 import { Logo } from '@/components/ui/icons/logo';
 import Link from 'next/link';
-import HeaderBottomLinks from '@/app/(dashboard)/dashboard/_layout/header/header-bottom-links';
+import HeaderBottomLinks from '@/app/(dashboard)/_layout/header/header-bottom-links';
 import Image from 'next/image';
 import Badge from '@/components/ui/badge';
 import UserDropdownMenu from '@/components/layout/user-dropdown-menu';
 
 export default async function DashboardHeader() {
-  const profile = await getProfile({
-    plan: true,
-  });
+  const profile = await getProfile();
 
   const user: User = profile.user;
 

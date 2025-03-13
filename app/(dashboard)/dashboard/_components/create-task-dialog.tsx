@@ -43,6 +43,7 @@ import { TASK_PRIORITIES } from '@/lib/db-data';
 import { createTask } from '@/actions/task.actions';
 import Spinner from '@/components/ui/spinner';
 import { toast } from 'sonner';
+import { useProfile } from '@/lib/providers/user-provider';
 
 export default function CreateTaskDialog({
   open,
@@ -54,6 +55,7 @@ export default function CreateTaskDialog({
   projects: Project[];
 }) {
   const [projectSelectOpen, setProjectSelectOpen] = useState(false);
+  const { profile } = useProfile();
 
   const {
     register,
@@ -113,12 +115,16 @@ export default function CreateTaskDialog({
             </VisuallyHidden>
             <div className="flex flex-col gap-3">
               <Input
+                size="medium"
                 label="Name"
+                placeholder={profile?.name + "'s task"}
                 {...register('name')}
                 error={errors.name && errors.name?.message}
               />
               <Input
+                size="medium"
                 label="Description"
+                placeholder="Learn Next.js"
                 {...register('description')}
                 error={errors.description && errors.description?.message}
               />
@@ -133,7 +139,8 @@ export default function CreateTaskDialog({
                   >
                     <PopoverTrigger asChild>
                       <Button
-                        className="justify-start bg-background-100"
+                        size="md"
+                        className="justify-start bg-background-100 [&>span]:line-clamp-1"
                         suffix={<ChevronDown className="opacity-50 ml-auto" />}
                       >
                         {watch('project')
@@ -199,6 +206,7 @@ export default function CreateTaskDialog({
                   >
                     <SelectTrigger asChild>
                       <Button
+                        size="md"
                         className="justify-start bg-background-100 capitalize"
                         suffix={<ChevronDown className="opacity-50 ml-auto" />}
                       >
@@ -228,9 +236,10 @@ export default function CreateTaskDialog({
           </DialogBody>
           <DialogFooter>
             <DialogClose asChild>
-              <Button>Cancel</Button>
+              <Button size="md">Cancel</Button>
             </DialogClose>
             <Button
+              size="md"
               type="submit"
               variant="secondary"
               disabled={isSubmitting}
