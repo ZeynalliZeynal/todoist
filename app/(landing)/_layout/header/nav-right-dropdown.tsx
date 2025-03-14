@@ -4,9 +4,11 @@ import { ButtonLink } from '@/components/ui/button';
 import { dashboardRoute } from '@/routes';
 import React from 'react';
 import UserDropdownMenu from '@/components/layout/user-dropdown-menu';
+import { useProfile } from '@/lib/providers/user-provider';
 
-export default function NavRightDropdown({ user }: { user: User }) {
-  if (user)
+export default function NavRightDropdown() {
+  const { profile } = useProfile();
+  if (profile?.name)
     return (
       <div className="lg:flex items-center gap-3 hidden">
         <SpecialButton
@@ -22,7 +24,7 @@ export default function NavRightDropdown({ user }: { user: User }) {
         <ButtonLink size="sm" href={dashboardRoute}>
           Dashboard
         </ButtonLink>
-        <UserDropdownMenu user={user} />
+        <UserDropdownMenu user={profile} />
       </div>
     );
   return (

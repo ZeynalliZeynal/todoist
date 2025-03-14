@@ -1,8 +1,3 @@
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipTrigger,
-} from '@/components/ui/tooltip';
 import { GoCheckCircleFill, GoCircle } from 'react-icons/go';
 import Badge from '@/components/ui/badge';
 import { Input } from '@/components/ui/input';
@@ -11,6 +6,12 @@ import Link from 'next/link';
 import { FiArrowRightCircle } from 'react-icons/fi';
 import { Dispatch, SetStateAction } from 'react';
 import { Pages } from '@/components/auth/signup-form';
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from '@/components/ui/tooltip';
 
 export default function SignupSelectPlans({
   plans = [],
@@ -46,64 +47,68 @@ export default function SignupSelectPlans({
           <div className="text-gray-900 flex flex-col gap-2">
             <p className="text-paragraph">Plan type</p>
             <ul className="flex-col border rounded-md overflow-hidden divide-y">
-              {plans.map((plan) => (
-                <Tooltip key={plan.id}>
-                  <TooltipTrigger disabled={plan.status === 'active'}>
-                    <li>
-                      <button
-                        type="button"
-                        aria-label={plan.name}
-                        aria-disabled={plan.status !== 'active'}
-                        disabled={plan.status !== 'active'}
-                        data-selected={plan.name === selected ? '' : null}
-                        className="p-2 w-full flex items-center gap-1.5 hover:bg-background-200 transition-colors data-[selected]:text-foreground disabled:cursor-not-allowed disabled:text-gray-400 disabled:bg-transparent"
-                        onClick={() =>
-                          selected === plan.name && plan.status === 'active'
-                            ? onPlanSelect('')
-                            : onPlanSelect(plan.name)
-                        }
-                      >
-                        {selected === plan.name ? (
-                          <GoCheckCircleFill
-                            size={16}
-                            className="text-blue-900"
-                          />
-                        ) : (
-                          <GoCircle size={16} />
-                        )}
-                        {plan.name === 'Beginner'
-                          ? 'I need to organize my life'
-                          : plan.name === 'Pro'
-                            ? 'I need to organize my work and life'
-                            : 'I need to manage my teamwork as well'}
-
-                        <Badge
-                          variant={
-                            plan.name === 'Beginner'
-                              ? 'gray'
-                              : plan.name === 'Pro'
-                                ? 'blue'
-                                : 'amber'
+              <TooltipProvider>
+                {plans.map((plan) => (
+                  <Tooltip key={plan.id}>
+                    <TooltipTrigger disabled={plan.status === 'active'} asChild>
+                      <li>
+                        <button
+                          type="button"
+                          aria-label={plan.name}
+                          aria-disabled={plan.status !== 'active'}
+                          disabled={plan.status !== 'active'}
+                          data-selected={plan.name === selected ? '' : null}
+                          className="p-2 w-full flex items-center gap-1.5 hover:bg-background-200 transition-colors data-[selected]:text-foreground disabled:cursor-not-allowed disabled:text-gray-400 disabled:bg-transparent"
+                          onClick={() =>
+                            selected === plan.name && plan.status === 'active'
+                              ? onPlanSelect('')
+                              : onPlanSelect(plan.name)
                           }
-                          className="ml-auto"
                         >
-                          {plan.name}
-                        </Badge>
-                      </button>
-                    </li>
-                  </TooltipTrigger>
-                  <TooltipContent
-                    align="vertical-right-center"
-                    variant={
-                      plan.status === 'disabled'
-                        ? 'gray-subtle'
-                        : 'amber-subtle'
-                    }
-                  >
-                    {plan.status}
-                  </TooltipContent>
-                </Tooltip>
-              ))}
+                          {selected === plan.name ? (
+                            <GoCheckCircleFill
+                              size={16}
+                              className="text-blue-900"
+                            />
+                          ) : (
+                            <GoCircle size={16} />
+                          )}
+                          {plan.name === 'Beginner'
+                            ? 'I need to organize my life'
+                            : plan.name === 'Pro'
+                              ? 'I need to organize my work and life'
+                              : 'I need to manage my teamwork as well'}
+
+                          <Badge
+                            variant={
+                              plan.name === 'Beginner'
+                                ? 'gray'
+                                : plan.name === 'Pro'
+                                  ? 'blue'
+                                  : 'amber'
+                            }
+                            className="ml-auto"
+                          >
+                            {plan.name}
+                          </Badge>
+                        </button>
+                      </li>
+                    </TooltipTrigger>
+                    {plan.status !== 'active' && (
+                      <TooltipContent
+                        side="right"
+                        // variant={
+                        //   plan.status === 'disabled'
+                        //     ? 'gray-subtle'
+                        //     : 'amber-subtle'
+                        // }
+                      >
+                        {plan.status}
+                      </TooltipContent>
+                    )}
+                  </Tooltip>
+                ))}
+              </TooltipProvider>
             </ul>
             <div className="pt-8 flex flex-col gap-4">
               {selected && (

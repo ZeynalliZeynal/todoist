@@ -28,6 +28,8 @@ import {
 } from 'vercel-geist-icons';
 import CreateProjectDialog from '@/app/(dashboard)/dashboard/_components/create-project-dialog';
 import CreateTaskDialog from '@/app/(dashboard)/dashboard/_components/create-task-dialog';
+import { useDebouncedCallback } from '@everest-ui/react-hooks';
+import { useRouter, useSearchParams } from 'next/navigation';
 
 const sort_projects_by = [
   {
@@ -45,22 +47,77 @@ export default function ProjectsFormSection({
 }: {
   projects: Project[];
 }) {
+  // const setSearch = useProjectsSearchStore((state) => state.setSearch);
+  // const setDebouncedSearch = useProjectsSearchStore(
+  //   (state) => state.setDebouncedSearch,
+  // );
+  const router = useRouter();
+  const searchParams = useSearchParams();
+
+  const [search, setSearch] = React.useState('');
+  const [sortBy, setSortBy] = React.useState(sort_projects_by[0].value);
   const [createProjectOpen, setCreateProjectOpen] = React.useState(false);
   const [createTaskOpen, setCreateTaskOpen] = React.useState(false);
-  const [sortBy, setSortBy] = React.useState(sort_projects_by[0].value);
+
+  const inputRef = React.useRef<HTMLInputElement | null>(null);
+
+  const { callback: updateSearch } = useDebouncedCallback((value: string) => {
+    const params = new URLSearchParams(searchParams.toString());
+    if (value) {
+      params.set('search', value);
+    } else {
+      params.delete('search');
+    }
+    router.push(`?${params.toString()}`, { scroll: false });
+  });
+
+  const updateSort = (value: string) => {
+    const params = new URLSearchParams(searchParams.toString());
+    if (value) {
+      params.set('sortBy', value);
+    } else {
+      params.delete('sortBy');
+    }
+    router.push(`?${params.toString()}`, { scroll: false });
+  };
+
+  React.useEffect(() => {
+    const handleFocusOnKeyDown = (event: KeyboardEvent) => {
+      if (event.ctrlKey && event.key.toLowerCase() === 'k') {
+        event.preventDefault();
+        inputRef.current?.focus();
+      }
+    };
+
+    document.addEventListener('keydown', handleFocusOnKeyDown);
+    return () => {
+      document.removeEventListener('keydown', handleFocusOnKeyDown);
+    };
+  }, []);
+
+  React.useEffect(() => {
+    setSearch(searchParams.get('search') || '');
+    setSortBy(searchParams.get('sortBy') || sort_projects_by[0].value);
+  }, [searchParams]);
 
   return (
     <section className="flex items-center gap-3">
-      <form method="GET" className="grow">
+      <form className="grow">
         <Input
+          ref={inputRef}
           type="text"
           name="projectName"
           placeholder="Search projects..."
           size="medium"
           prefixStyling={false}
           suffixStyling={false}
+          value={search}
           prefix={<MagnifyingGlass />}
           className="relative"
+          onChange={({ target: { value } }) => {
+            setSearch(value);
+            updateSearch(value);
+          }}
         >
           <div className="absolute top-1/2 -translate-y-1/2 right-3 flex items-center gap-2">
             <Kbd>
@@ -70,16 +127,20 @@ export default function ProjectsFormSection({
           </div>
         </Input>
       </form>
-      <Select defaultValue={sortBy} value={sortBy} onValueChange={setSortBy}>
+      <Select
+        value={sortBy}
+        onValueChange={(value) => {
+          setSortBy(value);
+          updateSort(value);
+        }}
+      >
         <SelectTrigger asChild>
           <Button
             suffix={<ChevronDown />}
             size="md"
             className="bg-background-100 gap-5"
           >
-            <SelectValue>
-              {sort_projects_by.find((value) => value.value === sortBy)?.label}
-            </SelectValue>
+            <SelectValue />
           </Button>
         </SelectTrigger>
         <SelectContent>

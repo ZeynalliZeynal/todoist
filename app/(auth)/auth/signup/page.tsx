@@ -11,7 +11,7 @@ export default async function Page() {
       <div className="flex min-h-screen flex-col">
         <HeaderSignup />
         <div className="flex flex-col justify-center flex-1">
-          <SignupForm plans={data.plans} />
+          <SignupForm plans={data?.plans} />
         </div>
       </div>
       <Footer />

@@ -11,23 +11,8 @@ import {
 } from '@/components/ui/dialog';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
-import React, { useState } from 'react';
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from '@/components/ui/popover';
+import React from 'react';
 import { ChevronDown } from 'vercel-geist-icons';
-import {
-  Command,
-  CommandEmpty,
-  CommandGroup,
-  CommandInput,
-  CommandItem,
-  CommandList,
-} from '@/components/ui/command';
-import { Check } from 'lucide-react';
-import { cn } from '@/lib/utils';
 import { FieldValues, useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
@@ -43,7 +28,7 @@ import { TASK_PRIORITIES } from '@/lib/db-data';
 import { createTask } from '@/actions/task.actions';
 import Spinner from '@/components/ui/spinner';
 import { toast } from 'sonner';
-import { useProfile } from '@/lib/providers/user-provider';
+import Combobox from '@/components/ui/combobox';
 
 export default function CreateTaskDialog({
   open,
@@ -54,16 +39,12 @@ export default function CreateTaskDialog({
   setOpen: (open: boolean) => void;
   projects: Project[];
 }) {
-  const [projectSelectOpen, setProjectSelectOpen] = useState(false);
-  const { profile } = useProfile();
-
   const {
     register,
     reset,
     handleSubmit,
     watch,
     formState: { errors, isSubmitting },
-    getValues,
     setValue,
   } = useForm({
     defaultValues: {
@@ -116,84 +97,36 @@ export default function CreateTaskDialog({
             <div className="flex flex-col gap-3">
               <Input
                 size="medium"
-                label="Name"
-                placeholder={profile?.name + "'s task"}
+                placeholder="Name"
                 {...register('name')}
                 error={errors.name && errors.name?.message}
               />
               <Input
                 size="medium"
-                label="Description"
-                placeholder="Learn Next.js"
+                placeholder="Description"
                 {...register('description')}
                 error={errors.description && errors.description?.message}
               />
               <div className="flex items-start gap-3">
-                <div className="flex flex-col gap-2 flex-1">
-                  <div className="text-gray-900 flex items-center justify-between gap-2 flex-wrap">
-                    Project
-                  </div>
-                  <Popover
-                    open={projectSelectOpen}
-                    onOpenChange={setProjectSelectOpen}
-                  >
-                    <PopoverTrigger asChild>
-                      <Button
-                        size="md"
-                        className="justify-start bg-background-100 [&>span]:line-clamp-1"
-                        suffix={<ChevronDown className="opacity-50 ml-auto" />}
-                      >
-                        {watch('project')
-                          ? projects.find(
-                              (project) => project.id === getValues().project,
-                            )?.name
-                          : 'Select project'}
-                      </Button>
-                    </PopoverTrigger>
-                    <PopoverContent className="!p-0 overflow-hidden">
-                      <Command>
-                        <CommandInput placeholder="Search project" />
-                        <CommandList>
-                          <CommandEmpty>No project found.</CommandEmpty>
-                          <CommandGroup>
-                            {projects?.map((project) => (
-                              <CommandItem
-                                key={project.id}
-                                value={project.name}
-                                onSelect={(currentValue) => {
-                                  setValue(
-                                    'project',
-                                    projects.find(
-                                      (project) =>
-                                        project.name === currentValue,
-                                    )?.id || '',
-                                    { shouldValidate: true },
-                                  );
-                                  setProjectSelectOpen(false);
-                                }}
-                              >
-                                {project.name}
-                                <Check
-                                  className={cn(
-                                    'ml-auto',
-                                    getValues().project === project.id
-                                      ? 'opacity-100'
-                                      : 'opacity-0',
-                                  )}
-                                />
-                              </CommandItem>
-                            ))}
-                          </CommandGroup>
-                        </CommandList>
-                      </Command>
-                    </PopoverContent>
-                  </Popover>
-                  {errors.project && (
-                    <span className="text-red-800">
-                      {errors.project?.message}
-                    </span>
-                  )}
-                </div>
+                <Combobox
+                  label="Project"
+                  triggerValue={
+                    watch('project')
+                      ? projects.find(
+                          (project) => project.id === watch('project'),
+                        )?.name
+                      : 'Select project'
+                  }
+                  options={projects?.map((p) => ({
+                    value: p.id,
+                    label: p.name,
+                  }))}
+                  selected={watch('project')}
+                  onSelect={(value) => {
+                    setValue('project', value || '', { shouldValidate: true });
+                  }}
+                  error={errors?.project?.message}
+                />
                 <div className="flex flex-col gap-2 flex-1">
                   <div className="text-gray-900 flex items-center justify-between gap-2 flex-wrap">
                     Priority

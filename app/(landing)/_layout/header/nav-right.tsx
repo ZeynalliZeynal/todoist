@@ -5,7 +5,7 @@ import React from 'react';
 import NavRightDropdown from '@/app/(landing)/_layout/header/nav-right-dropdown';
 import { useRouter } from 'next/navigation';
 
-export default function NavRight({ user }: { user: User }) {
+export default function NavRight() {
   const [isNavMenuOpen, setIsNavMenuOpen] = React.useState(false);
   const router = useRouter();
 
@@ -19,8 +19,8 @@ export default function NavRight({ user }: { user: User }) {
 
   return (
     <div>
-      <NavRightDropdown user={user} />
-      <ResponsiveNavMenu user={user} />
+      <NavRightDropdown />
+      <ResponsiveNavMenu />
     </div>
   );
 }

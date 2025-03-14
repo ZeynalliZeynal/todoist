@@ -24,14 +24,14 @@ import Image from 'next/image';
 import ThemeSwitch from '@/components/ui/theme';
 import Spinner from '@/components/ui/spinner';
 import { logout } from '@/actions/auth.actions';
+import { useProfile } from '@/lib/providers/user-provider';
 
 export default function ResponsiveNavMenu({
   children,
-  user,
 }: {
   children?: React.ReactNode;
-  user: User;
 }) {
+  const { profile } = useProfile();
   const [isNavMenuOpen, setIsNavMenuOpen] = React.useState(false);
   const [isPending, setIsPending] = React.useState(false);
   const router = useRouter();
@@ -72,7 +72,7 @@ export default function ResponsiveNavMenu({
         <div className="fixed inset-0 top-16 max-h-screen bg-background-200 size-full">
           <div className="px-3 overflow-y-auto">
             <section className="mx-3 flex flex-col gap-4 py-3 [&>a]:w-full">
-              {user ? (
+              {profile?.name ? (
                 <>
                   <Button size="md" variant="secondary">
                     Upgrade to Pro
@@ -116,15 +116,15 @@ export default function ResponsiveNavMenu({
               )}
             </section>
             <ul className="py-3 text-base overflow-y-auto">
-              {user && (
+              {profile?.name && (
                 <>
                   <li className="p-3 flex items-center justify-between">
                     <div className="flex flex-col gap-1 items-start">
-                      <span className="text-base">{user.name}</span>
-                      <span className="text-gray-900">{user.email}</span>
+                      <span className="text-base">{profile.name}</span>
+                      <span className="text-gray-900">{profile.email}</span>
                     </div>
                     <Image
-                      src={`https://avatar.vercel.sh/${user.name}`}
+                      src={`https://avatar.vercel.sh/${profile.name}`}
                       alt="Profile photo"
                       width={18}
                       height={18}
@@ -161,7 +161,7 @@ export default function ResponsiveNavMenu({
                 Theme
                 <ThemeSwitch size={32} />
               </li>
-              {user && (
+              {profile?.name && (
                 <li>
                   <Button
                     variant="tertiary"

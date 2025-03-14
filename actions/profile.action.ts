@@ -10,7 +10,7 @@ export const getProfile = cache(async () => {
 
     return res.data.data;
   } catch (err) {
-    throw err;
+    return err;
   }
 });
 

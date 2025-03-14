@@ -45,7 +45,7 @@ export default async function RootLayout({
       >
         <ThemeProvider defaultTheme="device">
           <UserProvider
-            initialProfile={{ ...initialProfile.user }}
+            initialProfile={{ ...initialProfile?.user }}
             token={accessToken}
           >
             {children}

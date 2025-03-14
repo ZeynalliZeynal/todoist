@@ -3,8 +3,14 @@ import RecentChangesSection from '@/app/(dashboard)/dashboard/_sections/recent-c
 import ProjectsFormSection from './_sections/projects-form-section';
 import { getProjects } from '@/actions/project.action';
 
-export default async function DashboardPage() {
-  const data = await getProjects();
+export default async function DashboardPage(props: {
+  searchParams?: Promise<{ [key: string]: string | string[] | undefined }>;
+}) {
+  const searchParams = await props.searchParams;
+  const data = await getProjects({
+    search: searchParams?.search as string | undefined,
+    sortBy: searchParams?.sortBy as string | undefined,
+  });
 
   return (
     <div className="pt-6">

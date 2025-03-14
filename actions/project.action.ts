@@ -3,15 +3,23 @@
 import apiClient from '@/lib/api-client';
 import { revalidatePath } from 'next/cache';
 
-export async function getProjects({ search }: { search?: string } = {}) {
+export async function getProjects({
+  search,
+  sortBy,
+}: { search?: string; sortBy?: string } = {}) {
   try {
     const queryParams = new URLSearchParams();
 
     if (search && search.trim()) {
-      queryParams.append('search', search.trim());
+      queryParams.append('content', search.trim());
     }
+    // if (sortBy && sortBy.trim()) {
+    //   if (sortBy === 'activity') queryParams.append('sort', '-createdAt');
+    //   else queryParams.append('sort', `-${sortBy}`);
+    // }
+
     const res = await apiClient(
-      `/projects?sort=-favorite${queryParams.toString()}`,
+      `/projects?sort=-favorite${sortBy !== 'activity' && sortBy !== undefined ? `,-${sortBy}` : ''}&${queryParams.toString()}`,
     );
 
     return res.data.data;
