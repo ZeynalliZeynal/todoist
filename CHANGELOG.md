@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.5.7](https://github.com/ZeynalliZeynal/todoist/compare/v0.5.6...v0.5.7) (2025-03-14)
+
+
+### Features
+
+* add filtering and sorting feature in dashboard ([45a7f83](https://github.com/ZeynalliZeynal/todoist/commit/45a7f8311fc82bde6aa4cd04ab92654cbb2c7404))
+* get user from a global state to prevent unnecessary requests. use zustand ([ba45f0a](https://github.com/ZeynalliZeynal/todoist/commit/ba45f0a1adb0f100d3a2203cff649ebd68e44d68))
+
 ### [0.5.6](https://github.com/ZeynalliZeynal/todoist/compare/v0.5.5...v0.5.6) (2025-03-02)
 
 
