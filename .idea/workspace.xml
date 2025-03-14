@@ -4,13 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f03893d1-9795-491e-a4ee-0e50bf35b7b9" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/(dashboard)/dashboard/_components/create-task-dialog.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(dashboard)/dashboard/_components/create-task-dialog.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/(dashboard)/dashboard/_sections/projects-form-section.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(dashboard)/dashboard/_sections/projects-form-section.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pnpm-lock.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pnpm-lock.yaml" afterDir="false" />
-    </list>
+    <list default="true" id="f03893d1-9795-491e-a4ee-0e50bf35b7b9" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -75,11 +69,11 @@
       <recent name="C:\Users\asus\Desktop\education\projects\todoist\client\app\(geist)\geist\code-block\_sections" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\education\projects\todoist\client\components" />
       <recent name="D:\education\projects\todoist\client\app\(dashboard)\_layout" />
       <recent name="D:\education\projects\todoist\client\app\(dashboard)" />
       <recent name="C:\Users\asus\Desktop\education\projects\todoist\client\components" />
       <recent name="C:\Users\asus\Desktop\education\projects\todoist\client\app\(dashboard)\dashboard\_layout" />
-      <recent name="C:\Users\asus\Desktop\education\projects\todoist\client\app\(dashboard)\dashboard" />
     </key>
   </component>
   <component name="RunAnythingCache">
@@ -205,7 +199,7 @@
       <workItem from="1741457762433" duration="172000" />
       <workItem from="1741519103808" duration="21000" />
       <workItem from="1741883145280" duration="7905000" />
-      <workItem from="1741929736915" duration="3107000" />
+      <workItem from="1741929736915" duration="16246000" />
     </task>
     <servers />
   </component>

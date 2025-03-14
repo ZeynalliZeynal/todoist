@@ -67,6 +67,7 @@ declare global {
     verified: boolean;
     createdAt: Date;
     email: string;
+    avatar?: string;
     location: {
       city: string;
       country: string;

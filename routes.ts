@@ -11,9 +11,11 @@ export const signupRoute = '/auth/signup';
 
 export const redirectUnauthorizedUser = loginRoute;
 
+export const geistRoute = '/geist/introduction';
+
 // dashboard routes
 export const dashboardRoute = '/dashboard';
+export const accountRoute = '/dashboard/account';
 export const accountSettingsRoute = '/dashboard/account/settings';
-export const geistRoute = '/geist/introduction';
 
 export const DEFAULT_LOGIN_REDIRECT = dashboardRoute;

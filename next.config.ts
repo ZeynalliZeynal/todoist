@@ -19,6 +19,10 @@ const nextConfig: NextConfig = {
         protocol: 'https',
         hostname: 'vercel.com',
       },
+      {
+        protocol: 'https',
+        hostname: 'todoist-bucket.s3.eu-north-1.amazonaws.com',
+      },
     ],
   },
 };

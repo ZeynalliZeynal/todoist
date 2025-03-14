@@ -13,6 +13,7 @@ export default {
         xl: '1150px',
         geist: '1220px',
         dashboard: '1408px',
+        'dashboard-sub': '1248px',
         full: '1448px',
       },
       maxWidth: {
@@ -26,6 +27,7 @@ export default {
       },
       fontSize: {
         h1: ['2.5rem', '3rem'],
+        '3xl': '2rem',
         paragraph: '0.8125rem',
       },
       container: {

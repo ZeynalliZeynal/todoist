@@ -1,4 +1,5 @@
 import DashboardHeader from './_layout/header';
+import DashboardFooter from '@/app/(dashboard)/_layout/footer';
 
 export default function DashboardLayout({
   children,
@@ -6,9 +7,10 @@ export default function DashboardLayout({
   children: React.ReactNode;
 }) {
   return (
-    <div className="w-full">
+    <div className="w-full min-h-screen flex-col flex justify-between">
       <DashboardHeader />
-      <main className="max-w-screen-dashboard mx-auto px-6">{children}</main>
+      <main className="flex-1">{children}</main>
+      <DashboardFooter />
     </div>
   );
 }
