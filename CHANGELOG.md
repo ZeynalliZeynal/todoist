@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.5.8](https://github.com/ZeynalliZeynal/todoist/compare/v0.5.7...v0.5.8) (2025-03-14)
+
+
+### Features
+
+* add features to update name and uploading an avatar ([de7caae](https://github.com/ZeynalliZeynal/todoist/commit/de7caaefd9a003d7ca14678e61d35950b60c814f))
+
 ### [0.5.7](https://github.com/ZeynalliZeynal/todoist/compare/v0.5.6...v0.5.7) (2025-03-14)
 
 
