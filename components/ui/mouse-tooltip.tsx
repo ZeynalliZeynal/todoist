@@ -96,7 +96,7 @@ export default function MouseTooltip({
               x: '-50%',
             }}
             className={cn(
-              'fixed z-50 px-3 py-1 rounded-md bg-background-100 pointer-events-none',
+              'fixed z-50 px-3 py-1 rounded-md text-background-200 bg-gray-1000 font-medium text-xs pointer-events-none',
               tooltipClassName,
             )}
           >

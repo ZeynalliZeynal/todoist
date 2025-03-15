@@ -48,6 +48,7 @@ export default function UpdateAvatarSection({ user }: { user: User }) {
             >
               {({ getRootProps, getInputProps }) => (
                 <button
+                  type="button"
                   {...getRootProps()}
                   className="size-20 focus:ring-offset-8 rounded-full overflow-hidden relative before:absolute before:z-[1] before:inset-0 before:transition hover:before:bg-background-100/25"
                 >
