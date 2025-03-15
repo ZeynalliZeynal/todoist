@@ -25,7 +25,7 @@ import {
   SelectValue,
 } from '@/components/ui/select';
 import { TASK_PRIORITIES } from '@/lib/db-data';
-import { createTask } from '@/actions/task.actions';
+import { createTask } from '@/actions/task.action';
 import Spinner from '@/components/ui/spinner';
 import { toast } from 'sonner';
 import Combobox from '@/components/ui/combobox';

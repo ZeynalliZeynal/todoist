@@ -23,7 +23,7 @@ import {
 import Image from 'next/image';
 import ThemeSwitch from '@/components/ui/theme';
 import Spinner from '@/components/ui/spinner';
-import { logout } from '@/actions/auth.actions';
+import { logout } from '@/actions/auth.action';
 import { useProfile } from '@/lib/providers/user-provider';
 
 export default function ResponsiveNavMenu({

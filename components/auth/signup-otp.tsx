@@ -1,12 +1,12 @@
-import { Dispatch, SetStateAction, useState, useTransition } from "react";
-import { Pages } from "@/components/auth/signup-form";
-import { cn } from "@/utils/lib";
-import Link from "next/link";
-import { OtpInput } from "@/components/ui/input";
-import { signup } from "@/actions/auth.actions";
-import { MdOutlineReportGmailerrorred } from "react-icons/md";
-import Spinner from "@/components/ui/spinner";
-import { useRouter } from "next/navigation";
+import { Dispatch, SetStateAction, useState, useTransition } from 'react';
+import { Pages } from '@/components/auth/signup-form';
+import { cn } from '@/utils/lib';
+import Link from 'next/link';
+import { OtpInput } from '@/components/ui/input';
+import { signup } from '@/actions/auth.action';
+import { MdOutlineReportGmailerrorred } from 'react-icons/md';
+import Spinner from '@/components/ui/spinner';
+import { useRouter } from 'next/navigation';
 
 export default function SignupOtp({
   plan,
@@ -22,7 +22,7 @@ export default function SignupOtp({
   onPageChange: Dispatch<SetStateAction<Pages>>;
 }) {
   const [isPending, startTransition] = useTransition();
-  const [error, setError] = useState("");
+  const [error, setError] = useState('');
   const router = useRouter();
 
   return (
@@ -37,7 +37,7 @@ export default function SignupOtp({
           <h1 className="text-3xl">Sign up for Todoist</h1>
         </div>
         <p className="text-gray-900 text-base text-center">
-          If you don&#39;t have an account yet, we have sent a code to{" "}
+          If you don&#39;t have an account yet, we have sent a code to{' '}
           <span className="font-medium">{email}</span>. Enter it below.
         </p>
         <div className="text-gray-900 flex flex-col gap-2">
@@ -49,11 +49,11 @@ export default function SignupOtp({
               onComplete={() =>
                 startTransition(async () => {
                   const res = await signup({ plan, otp });
-                  if (res.status === "fail")
+                  if (res.status === 'fail')
                     setError(
-                      "The entered code is incorrect. Please try again and check for typos.",
+                      'The entered code is incorrect. Please try again and check for typos.',
                     );
-                  else if (res.status === "success") router.push("/");
+                  else if (res.status === 'success') router.push('/');
                 })
               }
             />
@@ -71,10 +71,10 @@ export default function SignupOtp({
             <Link
               href="/auth/signup"
               className={cn(
-                "text-base text-blue-900 font-medium mx-auto relative w-fit mt-4",
-                "after:absolute after:w-full after:h-px after:bg-blue-900 after:-bottom-px after:left-0 after:opacity-0 hover:after:opacity-100 after:transition",
+                'text-base text-blue-900 font-medium mx-auto relative w-fit mt-4',
+                'after:absolute after:w-full after:h-px after:bg-blue-900 after:-bottom-px after:left-0 after:opacity-0 hover:after:opacity-100 after:transition',
               )}
-              onClick={() => onPageChange("form")}
+              onClick={() => onPageChange('form')}
             >
               ← Back
             </Link>

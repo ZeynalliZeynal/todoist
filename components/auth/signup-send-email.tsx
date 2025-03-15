@@ -4,7 +4,7 @@ import { Dispatch, SetStateAction, useState, useTransition } from 'react';
 import { Pages } from '@/components/auth/signup-form';
 import Link from 'next/link';
 import { cn } from '@/utils/lib';
-import { sendSignupEmail } from '@/actions/auth.actions';
+import { sendSignupEmail } from '@/actions/auth.action';
 import Spinner from '@/components/ui/spinner';
 import ErrorCodes from '@/utils/error-codes';
 

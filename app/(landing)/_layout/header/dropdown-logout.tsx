@@ -3,7 +3,7 @@
 import { DropdownMenuItem } from '@/components/ui/dropdown-menu';
 import { useState } from 'react';
 import Spinner from '@/components/ui/spinner';
-import { logout } from '@/actions/auth.actions';
+import { logout } from '@/actions/auth.action';
 import { Logout } from 'vercel-geist-icons';
 
 export default function DropdownLogout() {

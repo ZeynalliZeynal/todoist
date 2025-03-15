@@ -4,7 +4,23 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f03893d1-9795-491e-a4ee-0e50bf35b7b9" name="Changes" comment="" />
+    <list default="true" id="f03893d1-9795-491e-a4ee-0e50bf35b7b9" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/actions/auth.actions.ts" beforeDir="false" afterPath="$PROJECT_DIR$/actions/auth.action.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/actions/files.actions.ts" beforeDir="false" afterPath="$PROJECT_DIR$/actions/files.action.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/actions/task.actions.ts" beforeDir="false" afterPath="$PROJECT_DIR$/actions/task.action.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/(dashboard)/dashboard/_components/create-task-dialog.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(dashboard)/dashboard/_components/create-task-dialog.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/(dashboard)/dashboard/account/_layout/account-aside-links.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(dashboard)/dashboard/account/_layout/account-aside-links.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/(dashboard)/dashboard/account/_sections/update-avatar-section.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(dashboard)/dashboard/account/_sections/update-avatar-section.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/(landing)/_layout/header/dropdown-logout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(landing)/_layout/header/dropdown-logout.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/auth/login-otp-form.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/auth/login-otp-form.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/auth/login-send-email.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/auth/login-send-email.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/auth/signup-otp.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/auth/signup-otp.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/auth/signup-send-email.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/auth/signup-send-email.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/layout/responsive-nav-menu.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/layout/responsive-nav-menu.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/db.d.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes.ts" beforeDir="false" afterPath="$PROJECT_DIR$/routes.ts" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -38,7 +54,7 @@
     "code.cleanup.on.save": "true",
     "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "D:/education/projects/todoist/client",
+    "last_opened_file_path": "D:/education/packages/geist-icons",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.standard": "true",
     "node.js.detected.package.tslint": "true",
@@ -200,6 +216,8 @@
       <workItem from="1741519103808" duration="21000" />
       <workItem from="1741883145280" duration="7905000" />
       <workItem from="1741929736915" duration="16246000" />
+      <workItem from="1741960993170" duration="15445000" />
+      <workItem from="1742054648203" duration="4013000" />
     </task>
     <servers />
   </component>

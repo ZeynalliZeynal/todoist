@@ -1,4 +1,4 @@
-import { sendLoginEmail } from '@/actions/auth.actions';
+import { sendLoginEmail } from '@/actions/auth.action';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { LuMail } from 'react-icons/lu';

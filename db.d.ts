@@ -62,6 +62,17 @@ declare global {
     user: User;
   }
 
+  interface Session {
+    _id: string;
+    createdAt: Date;
+    current: boolean;
+    userAgent: {
+      browser: string;
+      os: string;
+      device: string;
+    };
+  }
+
   interface User {
     _id: string;
     verified: boolean;

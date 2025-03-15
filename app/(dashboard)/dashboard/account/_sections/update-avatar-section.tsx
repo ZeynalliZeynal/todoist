@@ -2,7 +2,7 @@
 
 import { updateProfile } from '@/actions/profile.action';
 import Dropzone from 'react-dropzone';
-import { uploadFile } from '@/actions/files.actions';
+import { uploadFile } from '@/actions/files.action';
 import { useState } from 'react';
 import { OptimizedImage } from '@/components/optimized-image';
 
@@ -51,11 +51,7 @@ export default function UpdateAvatarSection({ user }: { user: User }) {
                   {...getRootProps()}
                   className="size-20 focus:ring-offset-8 rounded-full overflow-hidden relative before:absolute before:z-[1] before:inset-0 before:transition hover:before:bg-background-100/25"
                 >
-                  <input
-                    name="avatar"
-                    {...getInputProps()}
-                    disabled={isUploading}
-                  />
+                  <input {...getInputProps()} disabled={isUploading} />
                   <OptimizedImage
                     src={user.avatar || ''}
                     alt={user.name + "'s avatar"}
