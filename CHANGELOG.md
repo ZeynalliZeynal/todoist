@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.5.10](https://github.com/ZeynalliZeynal/todoist/compare/v0.5.9...v0.5.10) (2025-03-15)
+
+
+### Features
+
+* sessions page ([0ed6264](https://github.com/ZeynalliZeynal/todoist/commit/0ed6264482e4ad6fbd18dbe38aeac10e31b3d806))
+
 ### [0.5.9](https://github.com/ZeynalliZeynal/todoist/compare/v0.5.8...v0.5.9) (2025-03-15)
 
 
