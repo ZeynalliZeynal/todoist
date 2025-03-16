@@ -23,6 +23,7 @@ export default function Combobox({
   options,
   selected,
   onSelect,
+  placeholder,
   error,
 }: {
   label?: string;
@@ -30,6 +31,7 @@ export default function Combobox({
   options: { value: string; label: string }[];
   error?: string;
   selected: string;
+  placeholder?: string;
   onSelect: (value: string) => void;
 }) {
   const [open, setOpen] = useState(false);
@@ -44,7 +46,7 @@ export default function Combobox({
         <PopoverTrigger asChild>
           <Button
             size="md"
-            className="justify-start bg-background-100 [&>span]:line-clamp-1"
+            className="justify-start bg-background-100 [&>span]:line-clamp-1 text-gray-900"
             suffix={<ChevronDown className="opacity-50 ml-auto" />}
           >
             {triggerValue}
@@ -52,7 +54,7 @@ export default function Combobox({
         </PopoverTrigger>
         <PopoverContent className="!p-0 overflow-hidden">
           <Command>
-            <CommandInput placeholder="Search project" />
+            <CommandInput placeholder={placeholder} />
             <CommandList>
               <CommandEmpty>No project found.</CommandEmpty>
               <CommandGroup>

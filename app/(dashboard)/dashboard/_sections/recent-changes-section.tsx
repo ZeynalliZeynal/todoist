@@ -6,7 +6,7 @@ export default function RecentChangesSection() {
     <div className="flex flex-col">
       <div className="sticky sm:top-6 top-4 space-y-4">
         <div className="h-8 px-1.5 center w-fit font-medium">
-          Recent Changes
+          Recent Changes (coming soon)
         </div>
         <div className="w-full p-4 border rounded-lg flex items-center gap-2 bg-background-100">
           <div className="flex flex-col gap-2 grow">

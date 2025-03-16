@@ -59,7 +59,7 @@ export async function signup({ plan, otp }: { plan: string; otp: string }) {
 
 export async function logout() {
   try {
-    const res = await apiClient.post('/auth/logout', {});
+    const res = await apiClient.post('/auth/logout');
 
     await clearAuthCookies();
     revalidatePath('/');

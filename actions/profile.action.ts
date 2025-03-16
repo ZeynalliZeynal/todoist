@@ -12,25 +12,14 @@ export const getProfile = cache(async () => {
 
     return res.data.data;
   } catch (err) {
+    if ((err as ServerResponse).status === 'fail') {
+      await fetch('/api/clear-cookies', {
+        method: 'DELETE',
+      });
+    }
     return err;
   }
 });
-
-export async function updateProfile(data: { name?: string; avatar?: string }) {
-  try {
-    const res = await apiClient.patch('/profile/update', {
-      name: data.name,
-      avatar: data.avatar,
-    });
-
-    revalidatePath('/');
-    revalidateTag('profile');
-    return res.data;
-  } catch (err) {
-    console.error(err);
-    return err;
-  }
-}
 
 export const getCachedProfile = async () => {
   try {
@@ -50,3 +39,18 @@ export const getCachedProfile = async () => {
     throw error;
   }
 };
+
+export async function updateProfile(data: { name?: string; avatar?: string }) {
+  try {
+    const res = await apiClient.patch('/profile/update', {
+      name: data.name,
+      avatar: data.avatar,
+    });
+
+    revalidatePath('/');
+    revalidateTag('profile');
+    return res.data;
+  } catch (err) {
+    return err;
+  }
+}

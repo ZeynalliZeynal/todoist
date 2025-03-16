@@ -97,6 +97,7 @@ export function Input({
           </label>
         )}
       </div>
+      {!label && error && <span className="text-red-800">{error}</span>}
     </div>
   );
 }

@@ -18,7 +18,6 @@ export async function createTask(data: FieldValues) {
 
     return response.data;
   } catch (error) {
-    console.log(error);
     return error;
   }
 }

@@ -56,7 +56,7 @@ declare global {
     dueDate: Date | null;
     completed: boolean;
     slug: string;
-    tags: string[];
+    tags: TaskTag[];
 
     project: Project;
     user: User;
@@ -71,6 +71,15 @@ declare global {
       os: string;
       device: string;
     };
+  }
+
+  interface TaskTag {
+    _id: string;
+    createdAt: Date;
+    updatedAt: Date;
+    name: string;
+    description?: string;
+    id: string;
   }
 
   interface User {

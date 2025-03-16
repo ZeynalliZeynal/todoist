@@ -44,8 +44,10 @@ const sort_projects_by = [
 
 export default function ProjectsFormSection({
   projects,
+  tags,
 }: {
   projects: Project[];
+  tags: TaskTag[];
 }) {
   // const setSearch = useProjectsSearchStore((state) => state.setSearch);
   // const setDebouncedSearch = useProjectsSearchStore(
@@ -181,6 +183,7 @@ export default function ProjectsFormSection({
         setOpen={setCreateProjectOpen}
       />
       <CreateTaskDialog
+        tags={tags}
         projects={projects}
         open={createTaskOpen}
         setOpen={setCreateTaskOpen}

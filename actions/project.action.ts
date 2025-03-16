@@ -42,7 +42,7 @@ export async function createProject(formData: FormData) {
 
     return response.data;
   } catch (error) {
-    console.log(error);
+    return error;
   }
 }
 
