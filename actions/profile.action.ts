@@ -13,9 +13,8 @@ export const getProfile = cache(async () => {
     return res.data.data;
   } catch (err) {
     if ((err as ServerResponse).status === 'fail') {
-      await fetch('/api/clear-cookies', {
-        method: 'DELETE',
-      });
+      const res = await fetch('/api/clear-cookies', { method: 'POST' });
+      console.log(await res.json());
     }
     return err;
   }

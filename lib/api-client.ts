@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { api_url } from '@/utils/env';
-import { clearAuthCookies, getAuthCookies } from '@/utils/cookies';
+import { getAuthCookies } from '@/utils/cookies';
 
 const apiClient = axios.create({
   baseURL: api_url,
@@ -28,9 +28,6 @@ apiClient.interceptors.request.use(
 apiClient.interceptors.response.use(
   (response) => response,
   async (error) => {
-    if (error.response.data.status === 'fail') {
-      await clearAuthCookies();
-    }
     return Promise.reject(error.response?.data);
   },
 );

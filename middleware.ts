@@ -4,6 +4,7 @@ import { authRoutes, DEFAULT_LOGIN_REDIRECT } from '@/routes';
 
 export default async function middleware(request: NextRequest) {
   const { accessToken } = await getAuthCookies();
+
   const isProtectedRoute = request.nextUrl.pathname.startsWith(
     DEFAULT_LOGIN_REDIRECT,
   );
