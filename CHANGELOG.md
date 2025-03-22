@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.5.13](https://github.com/ZeynalliZeynal/todoist/compare/v0.5.12...v0.5.13) (2025-03-22)
+
+
+### Bug Fixes
+
+* make varian property optional in DropdownMenuItem ([c269227](https://github.com/ZeynalliZeynal/todoist/commit/c2692272b9add216fe4006c9930fcc5dbd50387b))
+
 ### [0.5.12](https://github.com/ZeynalliZeynal/todoist/compare/v0.5.11...v0.5.12) (2025-03-22)
 
 
