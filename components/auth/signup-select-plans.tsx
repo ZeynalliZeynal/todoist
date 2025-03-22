@@ -1,17 +1,18 @@
-import { GoCheckCircleFill, GoCircle } from 'react-icons/go';
-import Badge from '@/components/ui/badge';
-import { Input } from '@/components/ui/input';
-import { Button } from '@/components/ui/button';
-import Link from 'next/link';
-import { FiArrowRightCircle } from 'react-icons/fi';
-import { Dispatch, SetStateAction } from 'react';
 import { Pages } from '@/components/auth/signup-form';
+import Badge from '@/components/ui/badge';
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
 import {
   Tooltip,
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
 } from '@/components/ui/tooltip';
+import Link from 'next/link';
+import { Dispatch, SetStateAction } from 'react';
+import { FiArrowRightCircle } from 'react-icons/fi';
+import { GoCheckCircleFill, GoCircle } from 'react-icons/go';
+import { toast } from 'sonner';
 
 export default function SignupSelectPlans({
   plans = [],
@@ -35,6 +36,7 @@ export default function SignupSelectPlans({
         onSubmit={(event) => {
           event.preventDefault();
           if (!name || !selected) return;
+
           onPageChange('form');
         }}
       >
@@ -76,16 +78,16 @@ export default function SignupSelectPlans({
                           {plan.name === 'Beginner'
                             ? 'I need to organize my life'
                             : plan.name === 'Pro'
-                              ? 'I need to organize my work and life'
-                              : 'I need to manage my teamwork as well'}
+                            ? 'I need to organize my work and life'
+                            : 'I need to manage my teamwork as well'}
 
                           <Badge
                             variant={
                               plan.name === 'Beginner'
                                 ? 'gray'
                                 : plan.name === 'Pro'
-                                  ? 'blue'
-                                  : 'amber'
+                                ? 'blue'
+                                : 'amber'
                             }
                             className="ml-auto"
                           >
@@ -119,8 +121,20 @@ export default function SignupSelectPlans({
                   size="medium"
                   autoFocus
                   required
+                  pattern="^[A-Za-z]+$"
                   value={name}
-                  onChange={({ target }) => onNameChange(target.value)}
+                  onChange={({ target }) => {
+                    if (
+                      target.value.match(/^[A-Za-z]+$/) ||
+                      target.value === ''
+                    ) {
+                      onNameChange(target.value);
+                    } else {
+                      toast.error('Name must contain only letters');
+                      return;
+                    }
+                    onNameChange(target.value);
+                  }}
                 />
               )}
               <Button

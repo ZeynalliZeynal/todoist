@@ -6,6 +6,17 @@ import { usePathname } from 'next/navigation';
 import Link from 'next/link';
 import { cn } from '@/lib/utils';
 
+const project_header_links = (slug: string) => [
+  {
+    link: `/dashboard/projects/${slug}`,
+    label: 'Project',
+  },
+  {
+    link: '/dashboard/projects/${slug}/settings',
+    label: 'Settings',
+  },
+];
+
 const header_links = [
   {
     link: '/dashboard',
@@ -29,10 +40,18 @@ export default function HeaderBottomLinks() {
   const [activePill, setActivePill] = useState(-1);
   const pathname = usePathname();
 
+  const projectSlug =
+    pathname.includes('/projects') && pathname.split('/')?.at(3);
+
+  const links =
+    pathname.includes('/projects') && projectSlug
+      ? project_header_links(projectSlug)
+      : header_links;
+
   return (
     <div className="h-11">
       <Tabs className="h-10">
-        {header_links.map((link, index) => (
+        {links.map((link, index) => (
           <Tab
             as={Link}
             href={link.link}

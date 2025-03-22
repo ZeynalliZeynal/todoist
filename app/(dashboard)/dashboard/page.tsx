@@ -16,14 +16,16 @@ export default async function DashboardPage(props: {
   const taskTags = await getTaskTags();
 
   return (
-    <div className="max-w-screen-dashboard mx-auto px-6">
-      <div className="pt-6">
-        <ProjectsFormSection projects={data.projects} tags={taskTags.tags} />
-        <section className="sm:mt-6 mt-4 grid grid-cols-[400px_1fr] lg:gap-8 sm:gap-6 gap-4">
-          <RecentChangesSection />
-          <ProjectsSection projects={data.projects} />
-        </section>
+    <>
+      <div className="max-w-screen-dashboard mx-auto px-6">
+        <div className="pt-6">
+          <ProjectsFormSection projects={data.projects} tags={taskTags.tags} />
+          <section className="sm:mt-6 mt-4 grid grid-cols-[400px_1fr] lg:gap-8 sm:gap-6 gap-4">
+            <RecentChangesSection />
+            <ProjectsSection projects={data.projects} />
+          </section>
+        </div>
       </div>
-    </div>
+    </>
   );
 }

@@ -1,85 +1,187 @@
-import { Check } from 'lucide-react';
+import { addTaskToCompleted, deleteTask } from '@/actions/task.action';
 import Badge from '@/components/ui/badge';
-import { formatDistance } from 'date-fns';
-import { useRef, useState, useTransition } from 'react';
-import { addTaskToCompleted } from '@/actions/task.action';
+import { Button } from '@/components/ui/button';
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuGroup,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from '@/components/ui/dropdown-menu';
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from '@/components/ui/tooltip';
+import { usePlayAudio } from '@/hooks/usePlayAudio';
+import { cn } from '@/lib/utils';
+import { format, formatDistance } from 'date-fns';
+import { useTransition } from 'react';
+import { Clock, Check, Flag, MoreHorizontal, Trash } from 'vercel-geist-icons';
 
 export default function TaskCard({
   task,
   onComplete,
+  onDelete,
 }: {
   task: Task;
   onComplete: (id: string) => void;
+  onDelete: (id: string) => void;
 }) {
-  const [isPlayingSound, setIsPlayingSound] = useState(false);
-
-  const audioRef = useRef<HTMLAudioElement | null>(null);
-
   const [isPending, startTransition] = useTransition();
 
-  function initializeAudio() {
-    if (!audioRef.current) {
-      audioRef.current = new Audio('/assets/sounds/complete-task-sound.mp3');
-      audioRef.current.onended = () => setIsPlayingSound(false);
-    }
-  }
-
-  function playAudio() {
-    initializeAudio();
-
-    if (audioRef.current) {
-      audioRef.current.currentTime = 0;
-      audioRef.current.play();
-      setIsPlayingSound(true);
-    }
-  }
+  const { isPlayingAudio, playAudio } = usePlayAudio({
+    src: '/assets/sounds/complete-task-sound.mp3',
+  });
 
   return (
-    <div className="rounded-lg relative border p-3 bg-background-100 hover:border-gray-500 transition-colors">
-      <div className="space-y-2">
-        <div className="flex items-center gap-3 divide-x">
-          <button
-            disabled={isPending || isPlayingSound}
-            onClick={() =>
-              startTransition(async () => {
-                onComplete(task.id);
-                playAudio();
-                await addTaskToCompleted(task.id);
-              })
-            }
-            className="hover:border-gray-500 group center size-6 rounded-full shrink-0 border text-gray-alpha-600"
-          >
-            <Check
-              size={14}
-              className="group-hover:opacity-100 opacity-0 transition-opacity"
-            />
-          </button>
-          <div className="space-y-1 pl-3">
-            <h4 className="text-sm font-medium">{task.name}</h4>
-            <p className="text-gray-900">{task.description}</p>
+    <TooltipProvider>
+      <div
+        className={cn(
+          'rounded-lg relative border p-3 bg-background-100 transition-colors',
+          {
+            'border-red-500 hover:border-red-700':
+              task.priority === 'priority 1',
+            'border-amber-500 hover:border-amber-700':
+              task.priority === 'priority 2',
+            'border-blue-500 hover:border-blue-700':
+              task.priority === 'priority 3',
+            'border-gray-500 hover:border-gray-700':
+              task.priority === 'priority 4',
+          }
+        )}
+      >
+        <div className="space-y-3">
+          <div className={cn('flex items-center gap-3')}>
+            <Tooltip>
+              <TooltipTrigger
+                disabled={isPending || isPlayingAudio}
+                onClick={() =>
+                  startTransition(async () => {
+                    onComplete(task.id);
+                    playAudio();
+                    await addTaskToCompleted(task.id);
+                  })
+                }
+                className={cn(
+                  'group center size-6 complete-task-button rounded-full transition shrink-0 border',
+                  {
+                    'border-red-500 text-red-900 hover:border-red-700':
+                      task.priority === 'priority 1',
+                    'border-amber-500 text-amber-900 hover:border-amber-700':
+                      task.priority === 'priority 2',
+                    'border-blue-500 text-blue-900 hover:border-blue-700':
+                      task.priority === 'priority 3',
+                    'border-gray-500 text-gray-900 hover:border-gray-700':
+                      task.priority === 'priority 4',
+                  }
+                )}
+              >
+                <Check className="group-hover:opacity-100 opacity-0 transition-opacity" />
+              </TooltipTrigger>
+              <TooltipContent side="top" className="flex items-center gap-1">
+                Complete this task <Check />
+              </TooltipContent>
+            </Tooltip>
+            <div
+              className={cn('space-y-1 pl-3 border-l transition', {
+                'border-red-500': task.priority === 'priority 1',
+                'border-amber-500': task.priority === 'priority 2',
+                'border-blue-500': task.priority === 'priority 3',
+                'border-gray-500': task.priority === 'priority 4',
+              })}
+            >
+              <h4 className="text-sm font-medium">{task.name}</h4>
+              <p className="text-gray-900">{task.description}</p>
+            </div>
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <Button
+                  iconOnly
+                  size="xs"
+                  className="ml-auto"
+                  variant="tertiary"
+                >
+                  <MoreHorizontal />
+                </Button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent>
+                <DropdownMenuGroup>
+                  <DropdownMenuItem
+                    disabled={isPending}
+                    variant="destructive"
+                    onClick={() =>
+                      startTransition(async () => {
+                        onDelete(task.id);
+                        await deleteTask(task.id);
+                      })
+                    }
+                  >
+                    <Trash /> Delete
+                  </DropdownMenuItem>
+                </DropdownMenuGroup>
+              </DropdownMenuContent>
+            </DropdownMenu>
           </div>
-        </div>
-        <div className="flex flex-col gap-1 border-t pt-3">
-          {task.dueDate && (
+          <div
+            className={cn('flex flex-col gap-1 border-t pt-3 transition', {
+              'border-red-500': task.priority === 'priority 1',
+              'border-amber-500': task.priority === 'priority 2',
+              'border-blue-500': task.priority === 'priority 3',
+              'border-gray-500': task.priority === 'priority 4',
+            })}
+          >
+            {task.dueDate && (
+              <div className="flex items-center gap-1">
+                <div className="text-xs text-gray-900">Due date:</div>
+                <Tooltip>
+                  <TooltipTrigger asChild>
+                    <Badge variant="pink-subtle">
+                      {formatDistance(task.dueDate || '', new Date(), {
+                        addSuffix: true,
+                        includeSeconds: true,
+                      })}
+                    </Badge>
+                  </TooltipTrigger>
+                  <TooltipContent className="flex items-center gap-1">
+                    <Clock />
+                    {format(task.dueDate, 'MMMM dd, yyyy hh a')}
+                  </TooltipContent>
+                </Tooltip>
+              </div>
+            )}
+            {task.tags.length > 0 && (
+              <div className="flex items-center gap-1">
+                <div className="text-xs text-gray-900">Tags:</div>
+                {task.tags.map((tag) => (
+                  <Badge variant="purple-subtle" key={tag.id}>
+                    {tag.name}
+                  </Badge>
+                ))}
+              </div>
+            )}
             <div className="flex items-center gap-1">
-              <div className="text-xs text-gray-900">Due date:</div>
-              <Badge variant="pink-subtle">
-                {formatDistance(task.dueDate || '', new Date())} left
+              <div className="text-xs text-gray-900">Priority:</div>
+              <Badge
+                className="capitalize"
+                variant={
+                  task.priority === 'priority 1'
+                    ? 'red-subtle'
+                    : task.priority === 'priority 2'
+                    ? 'amber-subtle'
+                    : task.priority === 'priority 3'
+                    ? 'blue-subtle'
+                    : 'gray-subtle'
+                }
+              >
+                <Flag />
+                {task.priority}
               </Badge>
             </div>
-          )}
-          {task.tags.length > 0 && (
-            <div className="flex items-center gap-1">
-              <div className="text-xs text-gray-900">Tags:</div>
-              {task.tags.map((tag) => (
-                <Badge variant="purple-subtle" key={tag.id}>
-                  {tag.name}
-                </Badge>
-              ))}
-            </div>
-          )}
+          </div>
         </div>
       </div>
-    </div>
+    </TooltipProvider>
   );
 }

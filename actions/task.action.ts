@@ -53,3 +53,14 @@ export async function removeTaskFromCompleted(id: string) {
     return error;
   }
 }
+
+export async function deleteTask(id: string) {
+  try {
+    const response = await apiClient.delete(`/tasks/${id}`);
+
+    revalidatePath('/dashboard/projects');
+    return response.data.data;
+  } catch (error) {
+    return error;
+  }
+}

@@ -21,7 +21,7 @@ export default function Badge({
   return (
     <span
       className={cn(
-        'rounded-md inline-flex items-center w-max justify-center gap-1.5 font-medium',
+        'rounded-md inline-flex cursor-default items-center w-max justify-center gap-1.5 font-medium',
         {
           'h-5 px-1.5 text-[10px]': size === 'sm',
           'h-6 px-2.5 text-xs': size === 'md',
@@ -45,7 +45,7 @@ export default function Badge({
           'bg-trial text-foreground': variant === 'trial',
           'text-gray-100 bg-foreground': variant === 'inverted',
         },
-        className,
+        className
       )}
       {...etc}
     >

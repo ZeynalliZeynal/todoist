@@ -74,7 +74,7 @@ declare global {
     createdAt: Date;
     updatedAt?: Date;
     priority: TaskPriority;
-    dueDate: Date | null;
+    dueDate: Date;
     completed: boolean;
     slug: string;
     tags: TaskTag[];

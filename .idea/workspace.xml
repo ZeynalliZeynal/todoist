@@ -6,21 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="f03893d1-9795-491e-a4ee-0e50bf35b7b9" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/actions/profile.action.ts" beforeDir="false" afterPath="$PROJECT_DIR$/actions/profile.action.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/actions/project.action.ts" beforeDir="false" afterPath="$PROJECT_DIR$/actions/project.action.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/actions/task.action.ts" beforeDir="false" afterPath="$PROJECT_DIR$/actions/task.action.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/(dashboard)/_layout/header/header-bottom-links.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(dashboard)/_layout/header/header-bottom-links.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/(dashboard)/dashboard/_components/create-task-dialog.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(dashboard)/dashboard/_components/create-task-dialog.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/(dashboard)/dashboard/_components/project-card-menu.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(dashboard)/dashboard/_components/project-card-menu.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/(dashboard)/dashboard/_components/project-card.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(dashboard)/dashboard/_components/project-card.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/(dashboard)/dashboard/_sections/projects-section.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(dashboard)/dashboard/_sections/projects-section.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/(dashboard)/dashboard/account/sessions/_components/session-table-row.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(dashboard)/dashboard/account/sessions/_components/session-table-row.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/(dashboard)/dashboard/account/sessions/_sectins/sessions-section.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(dashboard)/dashboard/account/sessions/_sectins/sessions-section.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/ui/badge.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/badge.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/db.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/middleware.ts" beforeDir="false" afterPath="$PROJECT_DIR$/middleware.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pnpm-lock.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pnpm-lock.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/(dashboard)/dashboard/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(dashboard)/dashboard/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/(dashboard)/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(dashboard)/layout.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -221,7 +209,10 @@
       <workItem from="1742054648203" duration="10820000" />
       <workItem from="1742130686490" duration="7843000" />
       <workItem from="1742151550936" duration="3244000" />
-      <workItem from="1742636061918" duration="18667000" />
+      <workItem from="1742636061918" duration="19001000" />
+      <workItem from="1742673188611" duration="204000" />
+      <workItem from="1742673399368" duration="445000" />
+      <workItem from="1742673855471" duration="125000" />
     </task>
     <servers />
   </component>

@@ -1,5 +1,7 @@
 'use server';
 
+import apiClient from '@/lib/api-client';
+import { loginRoute } from '@/routes';
 import {
   clearAuthCookies,
   getTokenFromCookieHeader,
@@ -8,7 +10,7 @@ import {
   setVerifyCookies,
 } from '@/utils/cookies';
 import { revalidatePath } from 'next/cache';
-import apiClient from '@/lib/api-client';
+import { redirect } from 'next/navigation';
 
 export async function login({ otp }: { otp: string }) {
   try {
@@ -63,6 +65,7 @@ export async function logout() {
 
     await clearAuthCookies();
     revalidatePath('/');
+    redirect(loginRoute);
     return res;
   } catch (err) {
     return err;
