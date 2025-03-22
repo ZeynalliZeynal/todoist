@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.5.12](https://github.com/ZeynalliZeynal/todoist/compare/v0.5.11...v0.5.12) (2025-03-22)
+
+
+### Features
+
+* add overdue tasks section, priority styling ([b3285d6](https://github.com/ZeynalliZeynal/todoist/commit/b3285d611260452d141b07f479808de1a018a64d))
+
 ### [0.5.11](https://github.com/ZeynalliZeynal/todoist/compare/v0.5.10...v0.5.11) (2025-03-22)
 
 
