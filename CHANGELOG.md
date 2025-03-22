@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.5.11](https://github.com/ZeynalliZeynal/todoist/compare/v0.5.10...v0.5.11) (2025-03-22)
+
+
+### Features
+
+* add project page with slug. ([4686826](https://github.com/ZeynalliZeynal/todoist/commit/46868263cd421e5b15e9e8355b55b32a0c5db4b6))
+
 ### [0.5.10](https://github.com/ZeynalliZeynal/todoist/compare/v0.5.9...v0.5.10) (2025-03-15)
 
 
