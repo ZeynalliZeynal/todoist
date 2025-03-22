@@ -7,7 +7,7 @@ import {
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
 import { Button } from '@/components/ui/button';
-import { MoreHorizontal } from 'vercel-geist-icons';
+import { MoreHorizontal, Star, StarFill } from 'vercel-geist-icons';
 import { useState } from 'react';
 import {
   addFavoriteProject,
@@ -46,8 +46,25 @@ export default function ProjectCardMenu({ project }: { project: Project }) {
           disabled={isPending}
         >
           <span className="flex items-center gap-2">
-            {isPending && <Spinner />}
-            {isFavorite ? 'Remove favorite' : 'Add favorite'}
+            {isFavorite ? (
+              <>
+                {isPending ? (
+                  <Spinner />
+                ) : (
+                  <StarFill className="text-amber-900 text-base" />
+                )}
+                Remove favorite
+              </>
+            ) : (
+              <>
+                {isPending ? (
+                  <Spinner />
+                ) : (
+                  <Star className="text-amber-900 text-base" />
+                )}
+                Add favorite
+              </>
+            )}
           </span>
         </DropdownMenuItem>
       </DropdownMenuContent>

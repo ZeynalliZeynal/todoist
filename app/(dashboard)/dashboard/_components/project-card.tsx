@@ -21,11 +21,11 @@ export default function ProjectCard({ project }: { project: Project }) {
               <Layout className="size-8" />
             )}
             <div className="flex flex-col">
-              <Link href="/dashboard" className="font-semibold hover:underline">
-                {project.name}
-              </Link>
+              <h4 className="font-semibold hover:underline">{project.name}</h4>
               {project.description && (
-                <p className="text-gray-900">{project.description}</p>
+                <p className="text-gray-900 line-clamp-1">
+                  {project.description}
+                </p>
               )}
             </div>
           </div>
@@ -38,7 +38,10 @@ export default function ProjectCard({ project }: { project: Project }) {
           </div>
         </div>
       </div>
-      <Link href="/dashboard" className="absolute inset-0 z-[1]" />
+      <Link
+        href={'/dashboard/projects/' + project.slug}
+        className="absolute inset-0 z-[1]"
+      />
     </div>
   );
 }

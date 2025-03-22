@@ -19,7 +19,7 @@ export default async function SessionsSection() {
           <div className="grid grid-cols-4 flex-1 text-gray-900 text-center divide-x">
             <div className="px-4 py-2 flex items-center justify-center gap-2">
               <Clock />
-              Created at
+              Date
             </div>
             <div className="px-4 py-2 flex items-center justify-center gap-2">
               <BrowserSafari />

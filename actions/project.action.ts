@@ -6,12 +6,17 @@ import { revalidatePath } from 'next/cache';
 export async function getProjects({
   search,
   sortBy,
-}: { search?: string; sortBy?: string } = {}) {
+  slug,
+}: { search?: string; sortBy?: string; slug?: string } = {}) {
   try {
     const queryParams = new URLSearchParams();
 
     if (search && search.trim()) {
       queryParams.append('content', search.trim());
+    }
+
+    if (slug && slug.trim()) {
+      queryParams.append('slug', slug.trim());
     }
     // if (sortBy && sortBy.trim()) {
     //   if (sortBy === 'activity') queryParams.append('sort', '-createdAt');

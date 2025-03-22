@@ -8,6 +8,7 @@ import {
   DialogDescription,
   DialogFooter,
   DialogTitle,
+  DialogTrigger,
 } from '@/components/ui/dialog';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
@@ -27,7 +28,6 @@ import {
 import { TASK_PRIORITIES } from '@/lib/db-data';
 import { createTask } from '@/actions/task.action';
 import Spinner from '@/components/ui/spinner';
-import { toast } from 'sonner';
 import Combobox from '@/components/ui/combobox';
 import {
   Popover,
@@ -46,20 +46,26 @@ import { Check } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { createTaskTag } from '@/actions/task-tag.action';
 import Badge from '@/components/ui/badge';
+import { Calendar } from '@/components/ui/calendar';
+import { format } from 'date-fns';
+import { toast } from 'sonner';
 
 export default function CreateTaskDialog({
   open,
+  trigger,
   setOpen,
   projects,
   tags,
 }: {
+  trigger?: React.ReactNode;
   open: boolean;
   setOpen: (open: boolean) => void;
-  projects: Project[];
+  projects: Project | Project[];
   tags: TaskTag[];
 }) {
   const [tagInputValue, setTagInputValue] = useState('');
   const [tagPopoverOpen, setTagPopoverOpen] = useState(false);
+  const [datePopoverOpen, setDatePopoverOpen] = useState(false);
   const [isCreatingTag, setIsCreatingTag] = useState(false);
 
   const {
@@ -74,15 +80,15 @@ export default function CreateTaskDialog({
     description: string;
     project: string;
     priority: string;
-    dueDate: string;
+    dueDate?: Date;
     tags: Set<string | undefined>;
   }>({
     defaultValues: {
       name: '',
       description: '',
-      project: '',
+      project: Array.isArray(projects) ? '' : projects.id,
       priority: 'priority 1',
-      dueDate: '',
+      dueDate: undefined,
       tags: new Set(),
     },
     resolver: zodResolver(
@@ -91,11 +97,14 @@ export default function CreateTaskDialog({
         description: z.string(),
         project: z.string().min(1, 'A task must belong to a project'),
         priority: z.enum(TASK_PRIORITIES),
-        dueDate: z.string(),
+        dueDate: z.date().optional(),
         tags: z.set(z.string()),
       }),
     ),
   });
+
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
 
   return (
     <Dialog
@@ -105,6 +114,7 @@ export default function CreateTaskDialog({
         reset();
       }}
     >
+      {trigger && <DialogTrigger asChild>{trigger}</DialogTrigger>}
       <DialogContent>
         <form
           onSubmit={handleSubmit(async (data: FieldValues) => {
@@ -117,7 +127,15 @@ export default function CreateTaskDialog({
               setOpen(false);
               toast.success(response.message);
             } else if (response.status === 'fail')
-              toast.error(response.message);
+              toast.error(
+                Array.isArray(response.message)
+                  ? response.message
+                      .map(
+                        (err: { message: string; path: string }) => err.message,
+                      )
+                      .join(', ')
+                  : response.message,
+              );
           })}
         >
           <DialogBody>
@@ -141,26 +159,42 @@ export default function CreateTaskDialog({
                 error={errors.description && errors.description?.message}
               />
               <div className="flex items-start gap-3">
-                <Combobox
-                  placeholder="Search project"
-                  label="Project"
-                  triggerValue={
-                    watch('project')
-                      ? projects.find(
-                          (project) => project.id === watch('project'),
-                        )?.name
-                      : 'Select project'
-                  }
-                  options={projects?.map((p) => ({
-                    value: p.id,
-                    label: p.name,
-                  }))}
-                  selected={watch('project')}
-                  onSelect={(value) => {
-                    setValue('project', value || '', { shouldValidate: true });
-                  }}
-                  error={errors?.project?.message}
-                />
+                {Array.isArray(projects) ? (
+                  <Combobox
+                    placeholder="Search project"
+                    label="Project"
+                    triggerValue={
+                      watch('project')
+                        ? projects.find(
+                            (project) => project.id === watch('project'),
+                          )?.name
+                        : 'Select project'
+                    }
+                    options={projects?.map((p) => ({
+                      value: p.id,
+                      label: p.name,
+                    }))}
+                    selected={watch('project')}
+                    onSelect={(value) => {
+                      setValue('project', value || '', {
+                        shouldValidate: true,
+                      });
+                    }}
+                    error={errors?.project?.message}
+                  />
+                ) : (
+                  <div className="flex text-gray-900 flex-col gap-2 flex-1">
+                    <div className="">Project</div>
+                    <Button
+                      disabled
+                      size="md"
+                      suffix={<ChevronDown />}
+                      className="justify-between"
+                    >
+                      {projects.name}
+                    </Button>
+                  </div>
+                )}
                 <div className="flex flex-col gap-2 flex-1">
                   <div className="text-gray-900 flex items-center justify-between gap-2 flex-wrap">
                     Priority
@@ -199,134 +233,175 @@ export default function CreateTaskDialog({
                   )}
                 </div>
               </div>
-              <div className="flex flex-col gap-2 flex-1">
-                <div className="text-gray-900 flex items-center justify-between gap-2 flex-wrap">
-                  Tags
-                </div>
-                {watch('tags').size > 0 && (
-                  <div className="flex items-center gap-2">
-                    {Array.from(watch('tags')).map((t) => (
-                      <Badge
-                        key={t}
-                        variant="pink-subtle"
-                        className="rounded-md cursor-pointer"
-                        onClick={() => {
-                          const tagId = tags.find((tag) => tag.id === t)?.id;
-
-                          if (watch('tags').has(tagId)) {
-                            const updatedTags = new Set(watch('tags'));
-                            updatedTags.delete(tagId);
-                            setValue('tags', updatedTags, {
-                              shouldValidate: true,
-                            });
-                          } else {
-                            setValue('tags', watch('tags').add(tagId), {
-                              shouldValidate: true,
-                            });
-                          }
-                        }}
-                      >
-                        {tags.find((tag) => tag.id === t)?.name}
-                      </Badge>
-                    ))}
+              <div className="flex items-start gap-3">
+                <div className="flex flex-col gap-2 flex-1">
+                  <div className="text-gray-900 flex items-center justify-between gap-2 flex-wrap">
+                    Tags
                   </div>
-                )}
-                <Popover open={tagPopoverOpen} onOpenChange={setTagPopoverOpen}>
-                  <PopoverTrigger asChild>
-                    <Button
-                      size="md"
-                      className="justify-start bg-background-100 [&>span]:line-clamp-1 [&>span]:flex [&>span]:gap-2 text-gray-900"
-                      suffix={<ChevronDown className="opacity-50 ml-auto" />}
-                    >
-                      {watch('tags').size > 0
-                        ? Array.from(watch('tags')).map((t) => (
-                            <span key={t}>
-                              {tags.find((tag) => tag.id === t)?.name}
-                            </span>
-                          ))
-                        : 'Select tag'}
-                    </Button>
-                  </PopoverTrigger>
-                  <PopoverContent className="!p-0 overflow-hidden min-w-[462px]">
-                    <Command>
-                      <CommandInput
-                        placeholder="Search project"
-                        value={tagInputValue}
-                        onValueChange={(search) => setTagInputValue(search)}
-                      />
-                      <CommandList>
-                        <CommandEmpty>No tag found.</CommandEmpty>
-                        <CommandGroup>
-                          {tags?.map((tag) => (
-                            <CommandItem
-                              key={tag.id}
-                              value={tag.name}
-                              onSelect={(currentValue) => {
-                                const tagId = tags.find(
-                                  (tag) => tag.name === currentValue,
-                                )?.id;
-
-                                if (watch('tags').has(tagId)) {
-                                  const updatedTags = new Set(watch('tags'));
-                                  updatedTags.delete(tagId);
-                                  setValue('tags', updatedTags, {
-                                    shouldValidate: true,
-                                  });
-                                } else {
-                                  setValue('tags', watch('tags').add(tagId), {
-                                    shouldValidate: true,
-                                  });
-                                }
-
-                                setTagPopoverOpen(false);
-                              }}
-                            >
-                              {tag.name}
-                              <Check
-                                className={cn(
-                                  'ml-auto',
-                                  watch('tags').has(tag.id)
-                                    ? 'opacity-100'
-                                    : 'opacity-0',
-                                )}
-                              />
-                            </CommandItem>
-                          ))}
-                          {!tags?.find((tag) =>
-                            tag.name.includes(tagInputValue),
-                          ) &&
-                            tagInputValue.trim() !== '' && (
+                  <Popover
+                    open={tagPopoverOpen}
+                    onOpenChange={setTagPopoverOpen}
+                  >
+                    <PopoverTrigger asChild>
+                      <Button
+                        size="md"
+                        className="justify-start bg-background-100 [&>span]:line-clamp-1 [&>span]:flex [&>span]:gap-2 text-gray-900"
+                        suffix={<ChevronDown className="opacity-50 ml-auto" />}
+                      >
+                        {watch('tags').size > 0
+                          ? Array.from(watch('tags')).map((t) => (
+                              <span key={t}>
+                                {tags.find((tag) => tag.id === t)?.name}
+                              </span>
+                            ))
+                          : 'Select tag'}
+                      </Button>
+                    </PopoverTrigger>
+                    <PopoverContent className="!p-0 overflow-hidden min-w-56">
+                      <Command>
+                        <CommandInput
+                          placeholder="Search project"
+                          value={tagInputValue}
+                          onValueChange={(search) => setTagInputValue(search)}
+                        />
+                        <CommandList>
+                          <CommandEmpty>No tag found.</CommandEmpty>
+                          <CommandGroup>
+                            {tags?.map((tag) => (
                               <CommandItem
-                                onSelect={async () => {
-                                  setIsCreatingTag(true);
-                                  const res = await createTaskTag({
-                                    name: tagInputValue,
-                                  });
-                                  setValue(
-                                    'tags',
-                                    watch('tags').add(res.data.tag._id),
-                                  );
+                                key={tag.id}
+                                value={tag.name}
+                                onSelect={(currentValue) => {
+                                  const tagId = tags.find(
+                                    (tag) => tag.name === currentValue,
+                                  )?.id;
+
+                                  if (watch('tags').has(tagId)) {
+                                    const updatedTags = new Set(watch('tags'));
+                                    updatedTags.delete(tagId);
+                                    setValue('tags', updatedTags, {
+                                      shouldValidate: true,
+                                    });
+                                  } else {
+                                    setValue('tags', watch('tags').add(tagId), {
+                                      shouldValidate: true,
+                                    });
+                                  }
+
                                   setTagPopoverOpen(false);
-                                  setIsCreatingTag(false);
                                 }}
-                                disabled={isCreatingTag}
-                                className="justify-start"
                               >
-                                {isCreatingTag ? (
-                                  <>
-                                    <Spinner /> Creating &#34;{tagInputValue}
-                                    &#34; tag
-                                  </>
-                                ) : (
-                                  `Create "${tagInputValue}" tag`
-                                )}
+                                {tag.name}
+                                <Check
+                                  className={cn(
+                                    'ml-auto',
+                                    watch('tags').has(tag.id)
+                                      ? 'opacity-100'
+                                      : 'opacity-0',
+                                  )}
+                                />
                               </CommandItem>
-                            )}
-                        </CommandGroup>
-                      </CommandList>
-                    </Command>
-                  </PopoverContent>
-                </Popover>
+                            ))}
+                            {!tags?.find((tag) =>
+                              tag.name.includes(tagInputValue),
+                            ) &&
+                              tagInputValue.trim() !== '' && (
+                                <CommandItem
+                                  onSelect={async () => {
+                                    setIsCreatingTag(true);
+                                    const res = await createTaskTag({
+                                      name: tagInputValue,
+                                    });
+                                    setValue(
+                                      'tags',
+                                      watch('tags').add(res.data.tag._id),
+                                    );
+                                    setTagPopoverOpen(false);
+                                    setIsCreatingTag(false);
+                                  }}
+                                  disabled={isCreatingTag}
+                                  className="justify-start"
+                                >
+                                  {isCreatingTag ? (
+                                    <>
+                                      <Spinner /> Creating &#34;{tagInputValue}
+                                      &#34; tag
+                                    </>
+                                  ) : (
+                                    `Create "${tagInputValue}" tag`
+                                  )}
+                                </CommandItem>
+                              )}
+                          </CommandGroup>
+                        </CommandList>
+                      </Command>
+                    </PopoverContent>
+                  </Popover>
+                  <div className="flex flex-wrap gap-2 items-center">
+                    {watch('tags').size > 0 && (
+                      <div className="flex items-center gap-2">
+                        {Array.from(watch('tags')).map((t) => (
+                          <Badge
+                            key={t}
+                            variant="pink-subtle"
+                            className="rounded-md cursor-pointer"
+                            onClick={() => {
+                              const tagId = tags.find(
+                                (tag) => tag.id === t,
+                              )?.id;
+
+                              if (watch('tags').has(tagId)) {
+                                const updatedTags = new Set(watch('tags'));
+                                updatedTags.delete(tagId);
+                                setValue('tags', updatedTags, {
+                                  shouldValidate: true,
+                                });
+                              } else {
+                                setValue('tags', watch('tags').add(tagId), {
+                                  shouldValidate: true,
+                                });
+                              }
+                            }}
+                          >
+                            {tags.find((tag) => tag.id === t)?.name}
+                          </Badge>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+                </div>
+                <div className="flex flex-col gap-2 flex-1">
+                  <div className="text-gray-900 flex items-center justify-between gap-2">
+                    Due date
+                  </div>
+                  <Popover
+                    open={datePopoverOpen}
+                    onOpenChange={setDatePopoverOpen}
+                  >
+                    <PopoverTrigger asChild>
+                      <Button
+                        size="md"
+                        className="justify-start bg-background-100 [&>span]:line-clamp-1 [&>span]:flex [&>span]:gap-2 text-gray-900"
+                        suffix={<ChevronDown className="opacity-50 ml-auto" />}
+                      >
+                        {watch('dueDate')
+                          ? format(watch('dueDate') || '', 'dd/MM/yyyy')
+                          : 'Select date'}
+                      </Button>
+                    </PopoverTrigger>
+                    <PopoverContent className="!p-0 overflow-hidden min-w-56">
+                      <Calendar
+                        mode="single"
+                        disabled={(date) => date < today}
+                        selected={watch('dueDate') || undefined}
+                        onSelect={(date) => {
+                          setValue('dueDate', date || undefined);
+                          setDatePopoverOpen(false);
+                        }}
+                      />
+                    </PopoverContent>
+                  </Popover>
+                </div>
               </div>
             </div>
           </DialogBody>

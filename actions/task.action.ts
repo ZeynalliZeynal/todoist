@@ -21,3 +21,35 @@ export async function createTask(data: FieldValues) {
     return error;
   }
 }
+
+export async function getTasks(data?: { project?: string }) {
+  try {
+    const response = await apiClient(`/tasks?project=${data?.project || ''}`);
+
+    return response.data.data;
+  } catch (error) {
+    return error;
+  }
+}
+
+export async function addTaskToCompleted(id: string) {
+  try {
+    const response = await apiClient.post(`/tasks/${id}/completed`);
+
+    revalidatePath('/dashboard/projects');
+    return response.data.data;
+  } catch (error) {
+    return error;
+  }
+}
+
+export async function removeTaskFromCompleted(id: string) {
+  try {
+    const response = await apiClient.delete(`/tasks/${id}/completed`);
+
+    revalidatePath('/dashboard/projects');
+    return response.data.data;
+  } catch (error) {
+    return error;
+  }
+}

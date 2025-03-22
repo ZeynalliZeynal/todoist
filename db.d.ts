@@ -13,6 +13,26 @@ declare global {
 
   type TaskPriority = (typeof PRIORITIES)[number];
 
+  interface UserAgent {
+    client: {
+      engine: string;
+      engineVersion: string;
+      name: string;
+      type: string;
+      version: string;
+    } | null;
+    device: {
+      brand: string;
+      model: string;
+      type: string;
+    } | null;
+    os: {
+      name: string;
+      platform: string;
+      version: string;
+    } | null;
+  }
+
   interface PlanFeature {
     id: string;
     createdAt: Date;
@@ -44,6 +64,7 @@ declare global {
     user: User;
     id: string;
     favorite: boolean;
+    slug: string;
   }
 
   interface Task {
@@ -66,11 +87,7 @@ declare global {
     _id: string;
     createdAt: Date;
     current: boolean;
-    userAgent: {
-      browser: string;
-      os: string;
-      device: string;
-    };
+    userAgent: UserAgent;
   }
 
   interface TaskTag {
@@ -90,8 +107,8 @@ declare global {
     avatar?: string;
     location: {
       city: string;
-      country: string;
-      continent: string;
+      countryName: string;
+      continentName: string;
     };
     plan: Plan;
     name: string;

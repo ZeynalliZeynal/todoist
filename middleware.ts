@@ -1,9 +1,15 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { getAuthCookies } from '@/utils/cookies';
+import { clearAuthCookies, getAuthCookies } from '@/utils/cookies';
 import { authRoutes, DEFAULT_LOGIN_REDIRECT } from '@/routes';
+import { getProfile } from '@/actions/profile.action';
 
 export default async function middleware(request: NextRequest) {
   const { accessToken } = await getAuthCookies();
+
+  const profile = await getProfile();
+  if (profile.status === 'fail') {
+    await clearAuthCookies();
+  }
 
   const isProtectedRoute = request.nextUrl.pathname.startsWith(
     DEFAULT_LOGIN_REDIRECT,

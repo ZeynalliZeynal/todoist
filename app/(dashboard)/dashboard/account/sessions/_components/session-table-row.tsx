@@ -4,6 +4,7 @@ import React from 'react';
 import MouseTooltip from '@/components/ui/mouse-tooltip';
 
 export default function SessionTableRow({ session }: { session: Session }) {
+  console.log(session);
   return (
     <MouseTooltip
       tooltipContent="Current session"
@@ -15,13 +16,17 @@ export default function SessionTableRow({ session }: { session: Session }) {
           {format(session.createdAt, 'dd, MMMM yyyy')}
         </div>
         <div className="p-4 flex items-center justify-center">
-          {session.userAgent.browser}
+          {session.userAgent.client?.name || 'unknown'}
         </div>
         <div className="p-4 flex items-center justify-center">
-          {session.userAgent.os}
+          {session.userAgent.os
+            ? `${session.userAgent.os.name + ' | ' + session.userAgent.os.platform}`
+            : 'unknown'}
         </div>
         <div className="p-4 flex items-center justify-center">
-          {session.userAgent.device}
+          {session.userAgent.device
+            ? `${session.userAgent.device?.type} | ${session.userAgent.device?.brand}`
+            : 'unknown'}
         </div>
       </div>
       <div className="p-4 flex items-center justify-center">
