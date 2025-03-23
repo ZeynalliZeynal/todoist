@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.5.17](https://github.com/ZeynalliZeynal/todoist/compare/v0.5.16...v0.5.17) (2025-03-23)
+
+
+### Bug Fixes
+
+* remove verifyToken from clearing auth cookies ([34de337](https://github.com/ZeynalliZeynal/todoist/commit/34de337c2aeb13398e585b6bcc69a5318fca29c2))
+
 ### [0.5.16](https://github.com/ZeynalliZeynal/todoist/compare/v0.5.15...v0.5.16) (2025-03-23)
 
 
