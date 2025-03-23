@@ -84,10 +84,7 @@ async function getVerifyCookie() {
 
 async function clearAuthCookies() {
   const cookieStore = await cookies();
-  cookieStore
-    .delete('accessToken')
-    .delete('refreshToken')
-    .delete('verifyToken');
+  cookieStore.delete('accessToken').delete('refreshToken');
 }
 
 export {
