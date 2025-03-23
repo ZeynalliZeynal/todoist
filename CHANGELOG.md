@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.5.16](https://github.com/ZeynalliZeynal/todoist/compare/v0.5.15...v0.5.16) (2025-03-23)
+
+
+### Features
+
+* add feature to delete project under condition. show an alert before deleting a project ([7b01c76](https://github.com/ZeynalliZeynal/todoist/commit/7b01c76fbc65fa9484d58656293bed55597dd1d2))
+
 ### [0.5.15](https://github.com/ZeynalliZeynal/todoist/compare/v0.5.14...v0.5.15) (2025-03-23)
 
 
