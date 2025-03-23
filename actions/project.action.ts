@@ -51,6 +51,25 @@ export async function createProject(formData: FormData) {
   }
 }
 
+export async function updateProject(formData: FormData) {
+  try {
+    const name = formData.get('name');
+    const description = formData.get('description');
+    const id = formData.get('id');
+
+    const response = await apiClient.patch('/projects/' + id, {
+      name,
+      description,
+    });
+
+    revalidatePath('/dashboard');
+
+    return response.data;
+  } catch (error) {
+    return error;
+  }
+}
+
 export async function addFavoriteProject(projectId: string) {
   try {
     const response = await apiClient.post(`/projects/${projectId}/favorites`);

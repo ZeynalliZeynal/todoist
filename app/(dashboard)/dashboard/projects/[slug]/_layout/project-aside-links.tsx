@@ -5,7 +5,7 @@ import { MagnifyingGlass } from 'vercel-geist-icons';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { cn } from '@/lib/utils';
-import { projectSettingsRoute, sessionsRoute } from '@/routes';
+import { projectSettingsRoute } from '@/routes';
 import { projectSlug } from '@/app/(dashboard)/dashboard/_utils/slugs';
 
 export default function ProjectAsideLinks() {
@@ -30,15 +30,6 @@ export default function ProjectAsideLinks() {
           )}
         >
           General
-        </Link>
-        <Link
-          href={sessionsRoute}
-          className={cn(
-            'flex items-center rounded-md hover:bg-gray-alpha-100 text-gray-900 py-2.5 px-3 transition',
-            pathname === sessionsRoute && 'text-foreground font-medium',
-          )}
-        >
-          Sessions
         </Link>
       </div>
     </aside>

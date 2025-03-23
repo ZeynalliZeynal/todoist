@@ -6,17 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="f03893d1-9795-491e-a4ee-0e50bf35b7b9" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/actions/files.action.ts" beforeDir="false" afterPath="$PROJECT_DIR$/actions/storage.action.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/(dashboard)/_layout/header/header-bottom-links.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(dashboard)/_layout/header/header-bottom-links.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/(dashboard)/_layout/header/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(dashboard)/_layout/header/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/(dashboard)/dashboard/account/_sections/update-avatar-section.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(dashboard)/dashboard/account/_sections/update-avatar-section.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/layout/responsive-nav-menu.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/layout/responsive-nav-menu.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/layout/user-dropdown-menu.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/layout/user-dropdown-menu.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/optimized-image.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/optimized-image.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/ui/button.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/button.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/db.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes.ts" beforeDir="false" afterPath="$PROJECT_DIR$/routes.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tailwind.config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/tailwind.config.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/actions/project.action.ts" beforeDir="false" afterPath="$PROJECT_DIR$/actions/project.action.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/(dashboard)/dashboard/projects/[slug]/_layout/project-aside-links.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(dashboard)/dashboard/projects/[slug]/_layout/project-aside-links.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/(dashboard)/dashboard/projects/[slug]/settings/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(dashboard)/dashboard/projects/[slug]/settings/page.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -224,7 +216,7 @@
       <workItem from="1742673188611" duration="204000" />
       <workItem from="1742673399368" duration="445000" />
       <workItem from="1742673855471" duration="125000" />
-      <workItem from="1742730494345" duration="7601000" />
+      <workItem from="1742730494345" duration="10239000" />
     </task>
     <servers />
   </component>
