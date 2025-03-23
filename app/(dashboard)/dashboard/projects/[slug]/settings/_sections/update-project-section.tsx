@@ -18,12 +18,14 @@ export default function UpdateProjectSection({
         }}
       >
         <div className="p-6 border-b">
-          <h4 className="text-xl font-semibold capitalize">Your name</h4>
+          <h4 className="text-xl font-semibold capitalize">
+            Project name & description
+          </h4>
           <p className="my-3">
-            This name is the your name visible to the others within the app. You
-            can change it whenever you want.
+            Name and description of your project. After saving, you are going to
+            be redirected to the dashboard.
           </p>
-          <div className="flex flex-col gap-2">
+          <div className="flex flex-col gap-3">
             <input type="hidden" name="id" hidden defaultValue={project.id} />
             <Input
               name="name"

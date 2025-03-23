@@ -186,7 +186,9 @@ export default {
       boxShadow: {
         'header-border': 'hsl(var(--header-border))',
         input:
-          '0 0 0 1px hsl(var(--ds-gray-alpha-600-value)),0 0 0 4px hsl(0,0%,100%,.24)!important',
+          '0 0 0 1px hsl(var(--ds-gray-alpha-600-value)),0 0 0 4px hsl(0,0%,100%,.24)',
+        'input-error':
+          '0 0 0 1px var(--ds-red-900),0 0 0 4px var(--ds-red-300)',
         border: '0 0 0 1px var(--ds-gray-400)',
         menu: 'var(--ds-shadow-menu-value)',
         brands: '0 0 8px 8px var(--shadow-color) inset',
@@ -195,9 +197,6 @@ export default {
       borderRadius: {
         'ui-content': '.75rem',
         'ui-item': '6px',
-        lg: 'var(--radius)',
-        md: 'calc(var(--radius) - 2px)',
-        sm: 'calc(var(--radius) - 4px)',
       },
       padding: {
         'ui-content': '.5rem',

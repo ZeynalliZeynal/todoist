@@ -1,5 +1,6 @@
 import UpdateProjectSection from '@/app/(dashboard)/dashboard/projects/[slug]/settings/_sections/update-project-section';
 import { getProjects } from '@/actions/project.action';
+import DeleteProjectSection from '@/app/(dashboard)/dashboard/projects/[slug]/settings/_sections/delete-project-section';
 
 export default async function SettingsPage({
   params,
@@ -13,6 +14,7 @@ export default async function SettingsPage({
   return (
     <>
       <UpdateProjectSection project={project.projects?.at(0)} />
+      <DeleteProjectSection project={project.projects?.at(0)} />
     </>
   );
 }

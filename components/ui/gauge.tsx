@@ -82,14 +82,14 @@ export function Gauge({
 
       return `${Math.max(
         strokePercent * percentToPx - subtract * percentToPx,
-        0
+        0,
       )} ${circumference}`;
     } else {
       const subtract = gapPercent * 2 * offsetFactor;
 
       return `${Math.max(
         strokePercent * percentToPx - subtract * percentToPx,
-        0
+        0,
       )} ${circumference}`;
     }
   };
@@ -103,14 +103,14 @@ export function Gauge({
 
       return `${Math.max(
         (100 - strokePercent) * percentToPx - subtract * percentToPx,
-        0
+        0,
       )} ${circumference}`;
     } else {
       const subtract = gapPercent * 2 * offsetFactorSecondary;
 
       return `${Math.max(
         (100 - strokePercent) * percentToPx - subtract * percentToPx,
-        0
+        0,
       )} ${circumference}`;
     }
   };
@@ -150,23 +150,23 @@ export function Gauge({
       return strokePercent <= 25
         ? 'var(--ds-red-700)'
         : strokePercent <= 50
-        ? 'var(--ds-amber-700)'
-        : strokePercent <= 75
-        ? 'var(--ds-blue-700)'
-        : 'var(--ds-green-700)';
+          ? 'var(--ds-amber-700)'
+          : strokePercent <= 75
+            ? 'var(--ds-blue-700)'
+            : 'var(--ds-green-700)';
     } else if (typeof primary === 'string') {
       return primary === 'danger'
         ? 'var(--ds-red-700)'
         : primary === 'warning'
-        ? 'var(--ds-amber-700)'
-        : primary === 'info'
-        ? 'var(--ds-blue-700)'
-        : primary === 'success'
-        ? 'var(--ds-green-700)'
-        : primary;
+          ? 'var(--ds-amber-700)'
+          : primary === 'info'
+            ? 'var(--ds-blue-700)'
+            : primary === 'success'
+              ? 'var(--ds-green-700)'
+              : primary;
     } else if (typeof primary === 'object') {
       const primaryKeys = Object.keys(primary).sort(
-        (a, b) => Number(a) - Number(b)
+        (a, b) => Number(a) - Number(b),
       );
       let primaryStroke = '';
       for (let i = 0; i < primaryKeys.length; i++) {
@@ -211,19 +211,19 @@ export function Gauge({
       return secondary === 'danger'
         ? 'var(--ds-red-100)'
         : secondary === 'warning'
-        ? 'var(--ds-amber-100)'
-        : secondary === 'info'
-        ? 'var(--ds-blue-100)'
-        : secondary === 'success'
-        ? 'var(--ds-green-100)'
-        : secondary;
+          ? 'var(--ds-amber-100)'
+          : secondary === 'info'
+            ? 'var(--ds-blue-100)'
+            : secondary === 'success'
+              ? 'var(--ds-green-100)'
+              : secondary;
     }
 
     // Custom color range
     else if (typeof secondary === 'object') {
       const stroke_percent_secondary = 100 - strokePercent;
       const secondaryKeys = Object.keys(secondary).sort(
-        (a, b) => Number(a) - Number(b)
+        (a, b) => Number(a) - Number(b),
       );
       let secondaryStroke = '';
 
@@ -301,7 +301,7 @@ export function Gauge({
       fill="none"
       className={cn(
         '',
-        typeof className === 'string' ? className : className?.svgClassName
+        typeof className === 'string' ? className : className?.svgClassName,
       )}
       {...props}
     >
@@ -319,7 +319,7 @@ export function Gauge({
         }}
         className={cn(
           '',
-          typeof className === 'object' && className?.secondaryClassName
+          typeof className === 'object' && className?.secondaryClassName,
         )}
       />
 
@@ -337,7 +337,7 @@ export function Gauge({
         }}
         className={cn(
           '',
-          typeof className === 'object' && className?.primaryClassName
+          typeof className === 'object' && className?.primaryClassName,
         )}
       />
 
@@ -352,7 +352,7 @@ export function Gauge({
           fontSize={36}
           className={cn(
             '',
-            typeof className === 'object' && className?.textClassName
+            typeof className === 'object' && className?.textClassName,
           )}
         >
           {Math.round(strokePercent)}

@@ -59,12 +59,14 @@ declare global {
     name: string;
     description?: string;
     createdAt: Date;
-    updatedAt?: Date;
+    updatedAt: Date;
     logo?: string;
-    user: User;
     id: string;
     favorite: boolean;
     slug: string;
+
+    user: User;
+    tasks: Task[];
   }
 
   interface Task {

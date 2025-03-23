@@ -93,3 +93,16 @@ export async function removeFavoriteProject(projectId: string) {
     return error;
   }
 }
+
+export async function deleteProject(id: string) {
+  try {
+    // const id = formData.get('id');
+
+    const response = await apiClient.delete(`/projects/${id}`);
+
+    revalidatePath('/dashboard');
+    return response.data;
+  } catch (error) {
+    return error;
+  }
+}

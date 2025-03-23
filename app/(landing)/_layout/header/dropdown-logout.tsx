@@ -17,6 +17,7 @@ export default function DropdownLogout() {
         await logout();
         setIsPending(false);
       }}
+      className="justify-between"
     >
       Log out {isPending ? <Spinner /> : <Logout />}
     </DropdownMenuItem>

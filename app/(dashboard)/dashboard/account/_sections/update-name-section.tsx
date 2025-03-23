@@ -21,8 +21,8 @@ export default function UpdateNameSection({ user }: { user: User }) {
         <div className="p-6 border-b">
           <h4 className="text-xl font-semibold capitalize">Your name</h4>
           <p className="my-3">
-            This name is the your name visible to the others within the app. You
-            can change it whenever you want.
+            This name is your name visible to the others within the app. You can
+            change it whenever you want.
           </p>
           <Input
             name="name"

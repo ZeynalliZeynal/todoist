@@ -11,6 +11,7 @@ import {
   useState,
 } from 'react';
 import { cn } from '@/utils/lib';
+import { Stop } from 'vercel-geist-icons';
 
 type InputProps = {
   prefix?: ReactNode;
@@ -18,7 +19,7 @@ type InputProps = {
   prefixStyling?: boolean;
   suffixStyling?: boolean;
   size?: 'small' | 'medium' | 'large';
-  label?: string;
+  label?: string | ReactNode;
   variant?: 'primary' | 'secondary';
   error?: string;
 } & Omit<ComponentProps<'input'>, 'size' | 'prefix' | 'suffix'>;
@@ -40,12 +41,9 @@ export function Input({
   return (
     <div className={cn('text-gray-900 flex flex-col gap-2', className)}>
       {label && (
-        <label
-          htmlFor={`input${id}`}
-          className="flex items-center gap-2 justify-between"
-        >
+        <label htmlFor={`input${id}`} className="flex items-center">
           {label}
-          {error && <span className="text-red-800">{error}</span>}
+          {/*{error && <span className="text-red-800">{error}</span>}*/}
         </label>
       )}
       <div
@@ -55,6 +53,8 @@ export function Input({
             '[--size:2rem]': size === 'small',
             '[--size:2.5rem]': size === 'medium',
             '[--size:3rem] rounded-lg': size === 'large',
+
+            '!shadow-input-error': !!error,
           },
         )}
       >
@@ -97,7 +97,12 @@ export function Input({
           </label>
         )}
       </div>
-      {!label && error && <span className="text-red-800">{error}</span>}
+      {error && (
+        <span className="text-red-900 flex items-center gap-2">
+          <Stop />
+          {error}
+        </span>
+      )}
     </div>
   );
 }

@@ -38,12 +38,12 @@ export default function UserDropdownMenu({ user }: { user: User }) {
           </DropdownMenuLabel>
         </DropdownMenuGroup>
         <DropdownMenuGroup>
-          <DropdownMenuItem asChild>
+          <DropdownMenuItem asChild className="justify-between">
             <Link href={dashboardRoute}>
               Dashboard <Layout />
             </Link>
           </DropdownMenuItem>
-          <DropdownMenuItem asChild>
+          <DropdownMenuItem asChild className="justify-between">
             <Link href="/account/settings">
               Account Settings <SettingsGear />
             </Link>

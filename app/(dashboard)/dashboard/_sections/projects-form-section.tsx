@@ -169,10 +169,16 @@ export default function ProjectsFormSection({
         </DropdownMenuTrigger>
         <DropdownMenuContent align="end">
           <DropdownMenuGroup>
-            <DropdownMenuItem onClick={() => setCreateProjectOpen(true)}>
+            <DropdownMenuItem
+              onClick={() => setCreateProjectOpen(true)}
+              className="justify-between"
+            >
               Project <GoProject />
             </DropdownMenuItem>
-            <DropdownMenuItem onClick={() => setCreateTaskOpen(true)}>
+            <DropdownMenuItem
+              onClick={() => setCreateTaskOpen(true)}
+              className="justify-between"
+            >
               Task <GoTasklist />
             </DropdownMenuItem>
           </DropdownMenuGroup>

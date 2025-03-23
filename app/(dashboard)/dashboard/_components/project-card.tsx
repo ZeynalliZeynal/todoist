@@ -1,10 +1,19 @@
 import { Gauge } from '@/components/ui/gauge';
 import Image from 'next/image';
 import Link from 'next/link';
-import { Layout, Percentage } from 'vercel-geist-icons';
+import { Layout } from 'vercel-geist-icons';
 import ProjectCardMenu from '@/app/(dashboard)/dashboard/_components/project-card-menu';
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from '@/components/ui/tooltip';
 
 export default function ProjectCard({ project }: { project: Project }) {
+  const completedTasksLength =
+    project.tasks?.filter((task) => task.completed)?.length || 0;
+
   return (
     <div className="rounded-lg relative border py-5 pl-6 pr-4 bg-background-100 hover:border-gray-500 transition-colors">
       <div className="flex flex-col">
@@ -31,8 +40,27 @@ export default function ProjectCard({ project }: { project: Project }) {
           </div>
           <div className="flex gap-2 items-center">
             <div className="relative size-8">
-              <Gauge value={0} equal />
-              <Percentage className="pos-center" />
+              <TooltipProvider>
+                <Tooltip>
+                  <TooltipTrigger className="relative z-[2] rounded-full">
+                    <Gauge
+                      showValue
+                      value={
+                        (completedTasksLength / project.tasks.length) * 100
+                      }
+                      max={project.tasks?.length}
+                      equal
+                    />
+                  </TooltipTrigger>
+                  <TooltipContent>
+                    Completed tasks:{' '}
+                    <b>
+                      {completedTasksLength} / {project.tasks?.length || 0}
+                    </b>
+                  </TooltipContent>
+                </Tooltip>
+              </TooltipProvider>
+              {/*<CheckCircleFill className="pos-center" />*/}
             </div>
             <ProjectCardMenu project={project} />
           </div>
