@@ -27,7 +27,7 @@ export function OptimizedImage({
 
   return (
     <Image
-      className={cn('w-full h-auto object-cover', className)}
+      className={cn('w-full h-auto object-cover z-0', className)}
       fill
       sizes={sizes}
       {...props}

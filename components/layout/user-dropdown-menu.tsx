@@ -23,7 +23,7 @@ export default function UserDropdownMenu({ user }: { user: User }) {
         title={user.name}
       >
         <Image
-          src={`https://avatar.vercel.sh/${user.name}`}
+          src={user.avatar}
           alt={user.name}
           width={24}
           height={24}

@@ -14,7 +14,7 @@ interface ButtonProps extends Omit<ComponentProps<'button'>, 'prefix'> {
   children?: ReactNode;
   href?: string;
   size?: 'lg' | 'md' | 'sm' | 'xs';
-  variant?: 'primary' | 'secondary' | 'tertiary' | 'ghost';
+  variant?: 'primary' | 'secondary' | 'tertiary' | 'ghost' | 'destructive';
   disabled?: boolean;
   type?: 'button' | 'submit' | 'reset';
   className?: string;
@@ -26,7 +26,7 @@ interface ButtonProps extends Omit<ComponentProps<'button'>, 'prefix'> {
 interface ButtonLinkProps extends Omit<ComponentProps<typeof Link>, 'prefix'> {
   children?: ReactNode;
   size?: 'lg' | 'md' | 'sm' | 'xs';
-  variant?: 'primary' | 'secondary' | 'tertiary' | 'ghost';
+  variant?: 'primary' | 'secondary' | 'tertiary' | 'ghost' | 'destructive';
   className?: string;
   suffix?: ReactNode;
   prefix?: ReactNode;
@@ -47,7 +47,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       iconOnly,
       ...etc
     },
-    ref
+    ref,
   ) => {
     const [hovering, setHovering] = useState(false);
 
@@ -66,6 +66,8 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
               variant === 'secondary',
             'text-foreground border-transparent data-[hover]:bg-gray-alpha-200':
               variant === 'tertiary',
+            'text-foreground border-transparent data-[hover]:bg-red-900 bg-red-800 ring-[#ffaba3]':
+              variant === 'destructive',
             'px-2.5 h-10 text-sm': size === 'md' && !iconOnly,
             'px-3.5 h-12 text-base': size === 'lg' && !iconOnly,
             'text-sm h-8 px-1.5': size === 'sm' && !iconOnly,
@@ -83,7 +85,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
             'text-gray-900 data-[hover]:text-foreground border-none':
               variant === 'ghost',
           },
-          className
+          className,
         )}
         {...etc}
         onMouseEnter={() => !disabled && setHovering(true)}
@@ -95,7 +97,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         {children && (
           <span
             className={cn(
-              iconOnly ? 'inline-flex items-center justify-center' : 'px-1.5'
+              iconOnly ? 'inline-flex items-center justify-center' : 'px-1.5',
             )}
           >
             {children}
@@ -104,7 +106,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         {suffix}
       </button>
     );
-  }
+  },
 );
 
 export const ButtonLink = forwardRef<HTMLAnchorElement, ButtonLinkProps>(
@@ -119,7 +121,7 @@ export const ButtonLink = forwardRef<HTMLAnchorElement, ButtonLinkProps>(
       iconOnly,
       ...etc
     },
-    ref
+    ref,
   ) => {
     const [hovering, setHovering] = useState(false);
 
@@ -135,6 +137,8 @@ export const ButtonLink = forwardRef<HTMLAnchorElement, ButtonLinkProps>(
               variant === 'secondary',
             'text-foreground border-transparent data-[hover]:bg-gray-alpha-200':
               variant === 'tertiary',
+            'text-foreground border-transparent data-[hover]:bg-red-900 bg-red-800 ring-[#ffaba3]':
+              variant === 'destructive',
             'px-2.5 h-10 text-sm': size === 'md' && !iconOnly,
             'px-3.5 h-12 text-base': size === 'lg' && !iconOnly,
             'text-sm h-8 px-1.5': size === 'sm' && !iconOnly,
@@ -151,7 +155,7 @@ export const ButtonLink = forwardRef<HTMLAnchorElement, ButtonLinkProps>(
             'text-gray-900 data-[hover]:text-foreground border-none':
               variant === 'ghost',
           },
-          className
+          className,
         )}
         {...etc}
         onMouseEnter={() => setHovering(true)}
@@ -161,7 +165,7 @@ export const ButtonLink = forwardRef<HTMLAnchorElement, ButtonLinkProps>(
         {children && (
           <span
             className={cn(
-              iconOnly ? 'inline-flex items-center justify-center' : 'px-1.5'
+              iconOnly ? 'inline-flex items-center justify-center' : 'px-1.5',
             )}
           >
             {children}
@@ -170,7 +174,7 @@ export const ButtonLink = forwardRef<HTMLAnchorElement, ButtonLinkProps>(
         {suffix}
       </Link>
     );
-  }
+  },
 );
 
 Button.displayName = 'Button';

@@ -124,7 +124,7 @@ export default function ResponsiveNavMenu({
                       <span className="text-gray-900">{profile.email}</span>
                     </div>
                     <Image
-                      src={`https://avatar.vercel.sh/${profile.name}`}
+                      src={profile.avatar}
                       alt="Profile photo"
                       width={18}
                       height={18}

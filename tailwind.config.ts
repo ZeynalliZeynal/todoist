@@ -204,15 +204,6 @@ export default {
         'ui-item-inset': '0 .5rem 0 2rem',
         'ui-item': '0 0.5rem',
       },
-      animation: {
-        spinner: 'spinner 1.1s linear infinite',
-        'accordion-up': 'accordion-up 0.25s ease-out both',
-        'accordion-down': 'accordion-down 0.25s ease-in both',
-        'fade-in': 'fade-in 0.5s ease-in forwards',
-        caret: 'caret 0.5s ease both alternate infinite',
-        'special-button': 'special-button 8s ease-in-out infinite',
-        skeleton: 'skeleton 8s ease-in-out infinite',
-      },
       keyframes: {
         skeleton: {
           '0%': {
@@ -270,6 +261,27 @@ export default {
             opacity: '0.15',
           },
         },
+        'loading-dot': {
+          '0%': {
+            opacity: '0.2',
+          },
+          '20%': {
+            opacity: '1',
+          },
+          '100%': {
+            opacity: '0.2',
+          },
+        },
+      },
+      animation: {
+        spinner: 'spinner 1.1s linear infinite',
+        'accordion-up': 'accordion-up 0.25s ease-out both',
+        'accordion-down': 'accordion-down 0.25s ease-in both',
+        'fade-in': 'fade-in 0.5s ease-in forwards',
+        caret: 'caret 0.5s ease both alternate infinite',
+        'special-button': 'special-button 8s ease-in-out infinite',
+        skeleton: 'skeleton 8s ease-in-out infinite',
+        'loading-dot': 'loading-dot 1.4s infinite ease-in-out',
       },
     },
   },

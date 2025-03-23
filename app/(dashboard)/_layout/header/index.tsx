@@ -38,7 +38,7 @@ export default async function DashboardHeader() {
             <div className="h-10 flex items-center gap-2">
               <Link href="/dashboard" className="flex gap-2 items-center">
                 <Image
-                  src={`https://avatar.vercel.sh/${user.name}`}
+                  src={user.avatar}
                   alt="Profile photo"
                   width={20}
                   height={20}

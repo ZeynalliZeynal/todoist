@@ -5,6 +5,7 @@ import { useState } from 'react';
 import { usePathname } from 'next/navigation';
 import Link from 'next/link';
 import { cn } from '@/lib/utils';
+import { projectSlug } from '@/app/(dashboard)/dashboard/_utils/slugs';
 
 const project_header_links = (slug: string) => [
   {
@@ -12,7 +13,7 @@ const project_header_links = (slug: string) => [
     label: 'Project',
   },
   {
-    link: '/dashboard/projects/${slug}/settings',
+    link: `/dashboard/projects/${slug}/settings`,
     label: 'Settings',
   },
 ];
@@ -40,12 +41,9 @@ export default function HeaderBottomLinks() {
   const [activePill, setActivePill] = useState(-1);
   const pathname = usePathname();
 
-  const projectSlug =
-    pathname.includes('/projects') && pathname.split('/')?.at(3);
-
   const links =
-    pathname.includes('/projects') && projectSlug
-      ? project_header_links(projectSlug)
+    pathname.includes('/projects') && projectSlug(pathname)
+      ? project_header_links(projectSlug(pathname))
       : header_links;
 
   return (
