@@ -2,9 +2,16 @@ import { getCachedProfile } from '@/actions/profile.action';
 import HeaderBottomLinks from '@/app/(dashboard)/_layout/header/header-bottom-links';
 import UserDropdownMenu from '@/components/layout/user-dropdown-menu';
 import Badge from '@/components/ui/badge';
+import { Button } from '@/components/ui/button';
 import { Logo } from '@/components/ui/icons/logo';
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from '@/components/ui/popover';
 import Image from 'next/image';
 import Link from 'next/link';
+import { Bell } from 'vercel-geist-icons';
 
 export default async function DashboardHeader() {
   const profile = await getCachedProfile();
@@ -52,6 +59,19 @@ export default async function DashboardHeader() {
             </div>
           </div>
           <div className="flex items-center gap-4">
+            <Popover>
+              <PopoverTrigger asChild>
+                <Button iconOnly className="rounded-full">
+                  <Bell />
+                </Button>
+              </PopoverTrigger>
+              <PopoverContent
+                align="end"
+                className="!rounded-lg bg-background-200"
+              >
+                test
+              </PopoverContent>
+            </Popover>
             <UserDropdownMenu user={user} />
           </div>
         </div>

@@ -6,8 +6,6 @@ import {
   DropdownMenuContent,
   DropdownMenuGroup,
   DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
 import {
@@ -20,8 +18,8 @@ import { usePlayAudio } from '@/hooks/usePlayAudio';
 import { cn } from '@/lib/utils';
 import { format, formatDistance } from 'date-fns';
 import { useTransition } from 'react';
-import { Check, Clock, Flag, MoreHorizontal, Trash } from 'vercel-geist-icons';
-import { TASK_PRIORITIES } from '@/lib/db-data';
+import { Check, Clock, MoreHorizontal, Trash } from 'vercel-geist-icons';
+import TaskUpdatePriority from './task-update-priority';
 
 export default function TaskCard({
   task,
@@ -52,7 +50,7 @@ export default function TaskCard({
               task.priority === 'priority 3',
             'border-gray-500 hover:border-gray-700':
               task.priority === 'priority 4',
-          },
+          }
         )}
       >
         <div className="space-y-3">
@@ -78,7 +76,7 @@ export default function TaskCard({
                       task.priority === 'priority 3',
                     'border-gray-500 text-gray-900 hover:border-gray-700':
                       task.priority === 'priority 4',
-                  },
+                  }
                 )}
               >
                 <Check className="group-hover:opacity-100 opacity-0 transition-opacity" />
@@ -164,54 +162,7 @@ export default function TaskCard({
                 ))}
               </div>
             )}
-            <div className="flex items-center gap-1">
-              <div className="text-xs text-gray-900">Priority:</div>
-              <DropdownMenu>
-                <DropdownMenuTrigger>
-                  <Badge
-                    className="capitalize cursor-pointer"
-                    variant={
-                      task.priority === 'priority 1'
-                        ? 'red-subtle'
-                        : task.priority === 'priority 2'
-                          ? 'amber-subtle'
-                          : task.priority === 'priority 3'
-                            ? 'blue-subtle'
-                            : 'gray-subtle'
-                    }
-                  >
-                    <Flag />
-                    {task.priority}
-                  </Badge>
-                </DropdownMenuTrigger>
-                <DropdownMenuContent className="!p-1.5 bg-background-200">
-                  <DropdownMenuLabel className="h-8">
-                    Priorities
-                  </DropdownMenuLabel>
-                  <DropdownMenuSeparator className="my-1.5 -mx-1.5" />
-                  <DropdownMenuGroup className="">
-                    {TASK_PRIORITIES.map((priority) => (
-                      <DropdownMenuItem
-                        className={cn('capitalize h-8 rounded-md', {
-                          '!text-red-900 focus:bg-red-200':
-                            priority === 'priority 1',
-                          '!text-amber-900 focus:bg-amber-200':
-                            priority === 'priority 2',
-                          '!text-blue-900 focus:bg-blue-200':
-                            priority === 'priority 3',
-                          '!text-gray-900 focus:bg-gray-200':
-                            priority === 'priority 4',
-                        })}
-                        key={priority}
-                      >
-                        <Flag />
-                        {priority}
-                      </DropdownMenuItem>
-                    ))}
-                  </DropdownMenuGroup>
-                </DropdownMenuContent>
-              </DropdownMenu>
-            </div>
+            <TaskUpdatePriority task={task} />
           </div>
         </div>
       </div>

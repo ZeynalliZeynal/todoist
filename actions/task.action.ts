@@ -1,6 +1,7 @@
 'use server';
 
 import apiClient from '@/lib/api-client';
+import { errorHandler } from '@/utils/error.handler';
 import { revalidatePath } from 'next/cache';
 import { FieldValues } from 'react-hook-form';
 
@@ -31,6 +32,22 @@ export async function getTasks(data?: { project?: string }) {
     return error;
   }
 }
+
+export const updateTask = errorHandler(
+  async (data: { id: string } & Partial<Task>) => {
+    const response = await apiClient.patch('/tasks/' + data.id, {
+      name: data?.name,
+      description: data?.description,
+      priority: data?.priority,
+      dueDate: data?.dueDate,
+      tags: data?.tags,
+    });
+
+    revalidatePath('/dashboard/projects');
+
+    return response.data;
+  }
+);
 
 export async function addTaskToCompleted(id: string) {
   try {

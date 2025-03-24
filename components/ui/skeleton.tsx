@@ -6,7 +6,7 @@ export default function Skeleton(props: ComponentProps<'div'>) {
     <div
       {...props}
       className={cn(
-        '[background-size:400%_100%] w-full bg-skeleton animate-skeleton',
+        '[background-size:400%_100%] rounded-md w-full bg-skeleton animate-skeleton',
         props.className
       )}
     />

@@ -28,7 +28,7 @@ export default async function ProjectPage({
           </h1>
           <Link
             href={dashboardRoute}
-            className="flex items-center gap-2 text-gray-900 hover:text-foreground transition"
+            className="flex w-fit items-center gap-2 text-gray-900 hover:text-foreground transition"
           >
             <CornerDownLeft /> Go to Projects
           </Link>

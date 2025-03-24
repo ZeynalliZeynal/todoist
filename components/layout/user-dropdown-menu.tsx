@@ -32,7 +32,7 @@ export default function UserDropdownMenu({ user }: { user: User }) {
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end" className="w-64">
         <DropdownMenuGroup>
-          <DropdownMenuLabel className="flex-col items-start">
+          <DropdownMenuLabel className="flex-col items-start py-2 h-auto">
             <span>{user.name}</span>
             <span className="text-gray-800">{user.email}</span>
           </DropdownMenuLabel>

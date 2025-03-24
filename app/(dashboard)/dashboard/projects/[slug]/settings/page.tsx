@@ -9,7 +9,6 @@ export default async function SettingsPage({
 }) {
   const { slug } = await params;
   const project = await getProjects({ slug });
-  console.log(project);
 
   return (
     <>

@@ -37,15 +37,9 @@ export default function TasksSection({
       <div className="grid grid-cols-4 gap-4 mt-6">
         {overdueTasks.length > 0 && (
           <div className="flex flex-col gap-4">
-            <div className="flex items-center justify-between">
+            <div className="flex items-center justify-between pr-3">
               <h3 className="text-sm font-medium flex items-center gap-2 leading-8">
-                {/* <span className="relative inline-block rounded border border-gray-500 font-geist-mono size-6">
-                <span className="absolute text-[10px] inset-0 center flex-col">
-                  <span className="inline-block w-3/4 h-px bg-gray-500 absolute top-1 mx-auto" />
-                  <span className="absolute top-1">{new Date().getDate()}</span>
-                </span>
-              </span> */}
-                Overdue{' '}
+                Overdue
                 <span className="text-gray-900 text-xs">
                   {optimisticOverdueTasks.length}
                 </span>
@@ -74,7 +68,7 @@ export default function TasksSection({
           </div>
         )}
         <div className="flex flex-col gap-4">
-          <div className="flex items-center justify-between">
+          <div className="flex items-center justify-between pr-3">
             <h3 className="text-sm font-medium flex items-center gap-2">
               <span className="relative inline-block rounded border border-gray-500 font-geist-mono size-6">
                 <span className="absolute text-[10px] inset-0 center flex-col">
