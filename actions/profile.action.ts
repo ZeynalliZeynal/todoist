@@ -1,10 +1,11 @@
 'use server';
 
-import { cache } from 'react';
 import apiClient from '@/lib/api-client';
 import { getAuthCookies } from '@/utils/cookies';
 import { api_url } from '@/utils/env';
 import { revalidatePath, revalidateTag } from 'next/cache';
+import { headers } from 'next/headers';
+import { cache } from 'react';
 
 export const getProfile = cache(async () => {
   try {
@@ -18,12 +19,15 @@ export const getProfile = cache(async () => {
 
 export const getCachedProfile = async () => {
   try {
+    const userAgent = (await headers()).get('user-agent');
+
     const { accessToken } = await getAuthCookies();
 
     const response = await fetch(api_url + '/profile', {
       headers: {
         'Content-Type': 'application/json',
         Authorization: `Bearer ${accessToken}`,
+        'User-Agent': userAgent || '',
       },
       next: { revalidate: 300, tags: ['profile'] },
     });
