@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.5.18](https://github.com/ZeynalliZeynal/todoist/compare/v0.5.17...v0.5.18) (2025-03-24)
+
+
+### Features
+
+* use Promise.all for optimized performance ([bae3cd6](https://github.com/ZeynalliZeynal/todoist/commit/bae3cd67814e73dde8d161266e8d89c7dd0ccc41))
+
 ### [0.5.17](https://github.com/ZeynalliZeynal/todoist/compare/v0.5.16...v0.5.17) (2025-03-23)
 
 
