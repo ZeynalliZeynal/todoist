@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.5.19](https://github.com/ZeynalliZeynal/todoist/compare/v0.5.18...v0.5.19) (2025-03-24)
+
+
+### Features
+
+* add loading states for pages settings and account under the route dashboard ([61ff139](https://github.com/ZeynalliZeynal/todoist/commit/61ff13909c11f98ce2ff5a673f209e4ea7c027a4))
+
 ### [0.5.18](https://github.com/ZeynalliZeynal/todoist/compare/v0.5.17...v0.5.18) (2025-03-24)
 
 
