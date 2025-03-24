@@ -6,8 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="f03893d1-9795-491e-a4ee-0e50bf35b7b9" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/(landing)/_layout/header/dropdown-logout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(landing)/_layout/header/dropdown-logout.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/utils/cookies.ts" beforeDir="false" afterPath="$PROJECT_DIR$/utils/cookies.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/layout.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -216,7 +215,9 @@
       <workItem from="1742673399368" duration="445000" />
       <workItem from="1742673855471" duration="125000" />
       <workItem from="1742730494345" duration="22423000" />
-      <workItem from="1742761430127" duration="713000" />
+      <workItem from="1742761430127" duration="1050000" />
+      <workItem from="1742837147955" duration="587000" />
+      <workItem from="1742838467420" duration="68000" />
     </task>
     <servers />
   </component>

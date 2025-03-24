@@ -1,13 +1,13 @@
-import { getProfile } from '@/actions/profile.action';
-import { Logo } from '@/components/ui/icons/logo';
-import Link from 'next/link';
+import { getCachedProfile } from '@/actions/profile.action';
 import HeaderBottomLinks from '@/app/(dashboard)/_layout/header/header-bottom-links';
-import Image from 'next/image';
-import Badge from '@/components/ui/badge';
 import UserDropdownMenu from '@/components/layout/user-dropdown-menu';
+import Badge from '@/components/ui/badge';
+import { Logo } from '@/components/ui/icons/logo';
+import Image from 'next/image';
+import Link from 'next/link';
 
 export default async function DashboardHeader() {
-  const profile = await getProfile();
+  const profile = await getCachedProfile();
 
   const user: User = profile.user;
 

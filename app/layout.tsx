@@ -5,7 +5,7 @@ import { Poppins } from 'next/font/google';
 import { ThemeProvider } from '@/components/ui/theme';
 import { Toaster } from '@/components/ui/sonner';
 import { UserProvider } from '@/lib/providers/user-provider';
-import { getProfile } from '@/actions/profile.action';
+import { getCachedProfile } from '@/actions/profile.action';
 import { getAuthCookies } from '@/utils/cookies';
 
 const geistSans = localFont({
@@ -35,7 +35,7 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const initialProfile = await getProfile().catch(() => null);
+  const initialProfile = await getCachedProfile().catch(() => null);
   const { accessToken } = await getAuthCookies();
 
   return (

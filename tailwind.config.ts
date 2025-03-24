@@ -181,7 +181,7 @@ export default {
         'book-pages':
           'repeating-linear-gradient(90deg,#fff,#efefef 1px,#fff 3px,#9a9a9a 0)',
         skeleton:
-          'linear-gradient(270deg,hsl(var(--ds-accent-100-value)),hsl(var(--ds-accent-200-value)),hsl(var(--ds-accent-200-value)),hsl(var(--ds-accent-100-value)))',
+          'linear-gradient(270deg,var(--ds-accent-100),var(--ds-accent-200),var(--ds-accent-200),var(--ds-accent-100))',
       },
       boxShadow: {
         'header-border': 'hsl(var(--header-border))',
