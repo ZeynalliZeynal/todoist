@@ -5,18 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f03893d1-9795-491e-a4ee-0e50bf35b7b9" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.changeset/stupid-games-worry.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/(dashboard)/_layout/header/notification/notification-list.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/(dashboard)/_layout/header/notification/notification-popover-header.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/(dashboard)/_layout/header/notification/notification.util.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/(dashboard)/_layout/header/notification/notifications-popover.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/constants/notification.enum.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/actions/notification.action.ts" beforeDir="false" afterPath="$PROJECT_DIR$/actions/notification.action.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/(dashboard)/_layout/header/dashboard-notifications-popover.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/(dashboard)/_layout/header/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(dashboard)/_layout/header/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/(dashboard)/_layout/header/notification/notification-popover-header.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(dashboard)/_layout/header/notification/notification-popover-header.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/(dashboard)/dashboard/loading.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(dashboard)/dashboard/loading.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/ui/button.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/button.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/db.d.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -85,11 +77,11 @@
       <recent name="C:\Users\asus\Desktop\education\projects\todoist\client\app\(geist)\geist" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\education\projects\todoist\client\app" />
+      <recent name="D:\education\projects\todoist\client\app\(landing)" />
       <recent name="D:\education\projects\todoist\client\app\(dashboard)" />
+      <recent name="D:\education\projects\todoist\client\app\(dashboard)\dashboard" />
       <recent name="D:\education\projects\todoist\client\app\(dashboard)\_layout\header\notification" />
-      <recent name="D:\education\projects\todoist\client\app\(dashboard)\dashboard\projects\[slug]" />
-      <recent name="D:\education\projects\todoist\client\app\(dashboard)\dashboard\projects\[slug]\_components" />
-      <recent name="D:\education\projects\todoist\client\components" />
     </key>
   </component>
   <component name="RunAnythingCache">
@@ -229,7 +221,7 @@
       <workItem from="1742837147955" duration="587000" />
       <workItem from="1742838467420" duration="68000" />
       <workItem from="1742923694353" duration="1347000" />
-      <workItem from="1743096684496" duration="7816000" />
+      <workItem from="1743096684496" duration="10419000" />
     </task>
     <servers />
   </component>

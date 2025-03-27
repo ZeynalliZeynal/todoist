@@ -59,7 +59,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         data-hover={hovering ? '' : null}
         // data-variant={variant}
         className={cn(
-          `flex items-center justify-center transition shrink-0 duration-200 font-medium border select-none rounded-md`,
+          `flex items-center justify-center transition shrink-0 duration-200 font-medium border rounded-md`,
           {
             'text-foreground border bg-background-200': variant === 'primary',
             'text-background-200 border-gray-200 bg-gray-1000':
@@ -130,7 +130,7 @@ export const ButtonLink = forwardRef<HTMLAnchorElement, ButtonLinkProps>(
         ref={ref}
         data-hover={hovering ? '' : null}
         className={cn(
-          `flex items-center justify-center transition duration-200 font-medium border select-none w-fit rounded-lg`,
+          `flex items-center justify-center transition duration-200 font-medium border w-fit rounded-lg`,
           {
             'text-foreground border bg-background-200': variant === 'primary',
             'text-background-200 border-gray-200 bg-gray-1000':

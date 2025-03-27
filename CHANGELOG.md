@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.6.1
+
+### Patch Changes
+
+- Add custom not-found page to the app
+
 ## 0.6.0
 
 ### Minor Changes
