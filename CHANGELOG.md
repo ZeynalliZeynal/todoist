@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.6.2
+
+### Patch Changes
+
+- Show Archive all button if there is any notification
+
 ## 0.6.1
 
 ### Patch Changes

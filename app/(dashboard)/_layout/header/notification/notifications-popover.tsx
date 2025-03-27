@@ -96,7 +96,7 @@ export default function NotificationsPopover({
             )
           ) : null}
         </div>
-        {activeTab === 'inbox' && (
+        {activeTab === 'inbox' && optimisticInboxNotifications.length > 0 && (
           <div className="overflow-hidden w-full rounded-b-lg shrink-0 border-t">
             <Button
               disabled={isArchiving}

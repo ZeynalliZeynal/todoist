@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f03893d1-9795-491e-a4ee-0e50bf35b7b9" name="Changes" comment="" />
+    <list default="true" id="f03893d1-9795-491e-a4ee-0e50bf35b7b9" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/app/(dashboard)/_layout/header/notification/notifications-popover.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(dashboard)/_layout/header/notification/notifications-popover.tsx" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -216,7 +218,7 @@
       <workItem from="1742837147955" duration="587000" />
       <workItem from="1742838467420" duration="68000" />
       <workItem from="1742923694353" duration="1347000" />
-      <workItem from="1743096684496" duration="11082000" />
+      <workItem from="1743096684496" duration="11760000" />
     </task>
     <servers />
   </component>
