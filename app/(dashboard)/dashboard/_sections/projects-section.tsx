@@ -22,7 +22,7 @@ export default async function ProjectsSection({
     <div className="flex flex-col">
       <h2 className="text-sm font-medium leading-8 flex items-center justify-between">
         Projects{' '}
-        <span className="text-xs text-gray-900">{projects.length}</span>
+        <span className="text-xs text-gray-900">{projects?.length}</span>
       </h2>
       {favoriteProjects.length > 0 && (
         <Accordion>
@@ -50,7 +50,9 @@ export default async function ProjectsSection({
       )}
       {projects?.length ? (
         <div className="grid grid-cols-2 gap-6 mt-4">
-          {projects?.map((p, i) => <ProjectCard key={i} project={p} />)}
+          {projects?.map((p, i) => (
+            <ProjectCard key={i} project={p} />
+          ))}
         </div>
       ) : (
         <EmptyState

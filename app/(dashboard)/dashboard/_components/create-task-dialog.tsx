@@ -86,7 +86,7 @@ export default function CreateTaskDialog({
     defaultValues: {
       name: '',
       description: '',
-      project: Array.isArray(projects) ? '' : projects.id,
+      project: Array.isArray(projects) ? '' : projects?.id,
       priority: 'priority 4',
       dueDate: undefined,
       tags: new Set(),
@@ -191,7 +191,7 @@ export default function CreateTaskDialog({
                       suffix={<ChevronDown />}
                       className="justify-between"
                     >
-                      {projects.name}
+                      {projects?.name}
                     </Button>
                   </div>
                 )}

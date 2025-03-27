@@ -1,4 +1,17 @@
 declare global {
+  enum NotificationTypeEnum {
+    TASK_DUE_SOON = 'task/due-soon',
+    TASK_ASSIGNED = 'task/assigned',
+    TASK_OVERDUE = 'task/overdue',
+    TASK_COMPLETED = 'task/completed',
+    TASK_UPDATED = 'task/updated',
+    TASK_DELETED = 'task/deleted',
+    TASK_CLEARED = 'task/cleared',
+
+    PROJECT_DELETED = 'project/deleted',
+    PROJECT_UPDATED = 'project/updated',
+  }
+
   const STATUSES = ['active', 'disabled', 'coming soon'] as const;
   type PlanStatus = (typeof STATUSES)[number];
 
@@ -12,6 +25,19 @@ declare global {
   ] as const;
 
   type TaskPriority = (typeof PRIORITIES)[number];
+
+  interface Notification {
+    id: string;
+    name: string;
+    description?: string;
+    data: Task | Project;
+    type: NotificationTypeEnum;
+    archived: boolean;
+    read: boolean;
+    value: string;
+    createdAt: Date;
+    updatedAt: Date;
+  }
 
   interface UserAgent {
     client: {
@@ -117,6 +143,7 @@ declare global {
     planId: string;
     updatedAt: Date;
     verifiedAt: Date;
+    notifications: Notification[];
   }
 
   interface Template {
