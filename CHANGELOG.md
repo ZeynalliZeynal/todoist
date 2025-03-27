@@ -1,133 +1,122 @@
 # Changelog
 
+## 0.6.0
+
+### Minor Changes
+
+- Add archive all feature for unarchived notifications
+- Notification popover. Show unarchived and archived notifications. archive notifications
+
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
 ### [0.5.19](https://github.com/ZeynalliZeynal/todoist/compare/v0.5.18...v0.5.19) (2025-03-24)
 
-
 ### Features
 
-* add loading states for pages settings and account under the route dashboard ([61ff139](https://github.com/ZeynalliZeynal/todoist/commit/61ff13909c11f98ce2ff5a673f209e4ea7c027a4))
+- add loading states for pages settings and account under the route dashboard ([61ff139](https://github.com/ZeynalliZeynal/todoist/commit/61ff13909c11f98ce2ff5a673f209e4ea7c027a4))
 
 ### [0.5.18](https://github.com/ZeynalliZeynal/todoist/compare/v0.5.17...v0.5.18) (2025-03-24)
 
-
 ### Features
 
-* use Promise.all for optimized performance ([bae3cd6](https://github.com/ZeynalliZeynal/todoist/commit/bae3cd67814e73dde8d161266e8d89c7dd0ccc41))
+- use Promise.all for optimized performance ([bae3cd6](https://github.com/ZeynalliZeynal/todoist/commit/bae3cd67814e73dde8d161266e8d89c7dd0ccc41))
 
 ### [0.5.17](https://github.com/ZeynalliZeynal/todoist/compare/v0.5.16...v0.5.17) (2025-03-23)
 
-
 ### Bug Fixes
 
-* remove verifyToken from clearing auth cookies ([34de337](https://github.com/ZeynalliZeynal/todoist/commit/34de337c2aeb13398e585b6bcc69a5318fca29c2))
+- remove verifyToken from clearing auth cookies ([34de337](https://github.com/ZeynalliZeynal/todoist/commit/34de337c2aeb13398e585b6bcc69a5318fca29c2))
 
 ### [0.5.16](https://github.com/ZeynalliZeynal/todoist/compare/v0.5.15...v0.5.16) (2025-03-23)
 
-
 ### Features
 
-* add feature to delete project under condition. show an alert before deleting a project ([7b01c76](https://github.com/ZeynalliZeynal/todoist/commit/7b01c76fbc65fa9484d58656293bed55597dd1d2))
+- add feature to delete project under condition. show an alert before deleting a project ([7b01c76](https://github.com/ZeynalliZeynal/todoist/commit/7b01c76fbc65fa9484d58656293bed55597dd1d2))
 
 ### [0.5.15](https://github.com/ZeynalliZeynal/todoist/compare/v0.5.14...v0.5.15) (2025-03-23)
 
-
 ### Features
 
-* redirect user after updating the project to update the slug ([d29a156](https://github.com/ZeynalliZeynal/todoist/commit/d29a1568f9a9d5c3cbadfefb985f34cf735ecda0))
+- redirect user after updating the project to update the slug ([d29a156](https://github.com/ZeynalliZeynal/todoist/commit/d29a1568f9a9d5c3cbadfefb985f34cf735ecda0))
 
 ### [0.5.14](https://github.com/ZeynalliZeynal/todoist/compare/v0.5.13...v0.5.14) (2025-03-23)
 
-
 ### Features
 
-* update uploading avatar, and add a feature to delete existing avatar ([93841a3](https://github.com/ZeynalliZeynal/todoist/commit/93841a3a508c85df4017fddfd36d4f71ad6dea2a))
+- update uploading avatar, and add a feature to delete existing avatar ([93841a3](https://github.com/ZeynalliZeynal/todoist/commit/93841a3a508c85df4017fddfd36d4f71ad6dea2a))
 
 ### [0.5.13](https://github.com/ZeynalliZeynal/todoist/compare/v0.5.12...v0.5.13) (2025-03-22)
 
-
 ### Bug Fixes
 
-* make varian property optional in DropdownMenuItem ([c269227](https://github.com/ZeynalliZeynal/todoist/commit/c2692272b9add216fe4006c9930fcc5dbd50387b))
+- make varian property optional in DropdownMenuItem ([c269227](https://github.com/ZeynalliZeynal/todoist/commit/c2692272b9add216fe4006c9930fcc5dbd50387b))
 
 ### [0.5.12](https://github.com/ZeynalliZeynal/todoist/compare/v0.5.11...v0.5.12) (2025-03-22)
 
-
 ### Features
 
-* add overdue tasks section, priority styling ([b3285d6](https://github.com/ZeynalliZeynal/todoist/commit/b3285d611260452d141b07f479808de1a018a64d))
+- add overdue tasks section, priority styling ([b3285d6](https://github.com/ZeynalliZeynal/todoist/commit/b3285d611260452d141b07f479808de1a018a64d))
 
 ### [0.5.11](https://github.com/ZeynalliZeynal/todoist/compare/v0.5.10...v0.5.11) (2025-03-22)
 
-
 ### Features
 
-* add project page with slug. ([4686826](https://github.com/ZeynalliZeynal/todoist/commit/46868263cd421e5b15e9e8355b55b32a0c5db4b6))
+- add project page with slug. ([4686826](https://github.com/ZeynalliZeynal/todoist/commit/46868263cd421e5b15e9e8355b55b32a0c5db4b6))
 
 ### [0.5.10](https://github.com/ZeynalliZeynal/todoist/compare/v0.5.9...v0.5.10) (2025-03-15)
 
-
 ### Features
 
-* sessions page ([0ed6264](https://github.com/ZeynalliZeynal/todoist/commit/0ed6264482e4ad6fbd18dbe38aeac10e31b3d806))
+- sessions page ([0ed6264](https://github.com/ZeynalliZeynal/todoist/commit/0ed6264482e4ad6fbd18dbe38aeac10e31b3d806))
 
 ### [0.5.9](https://github.com/ZeynalliZeynal/todoist/compare/v0.5.8...v0.5.9) (2025-03-15)
 
-
 ### Features
 
-* add sessions management page ([3f95e12](https://github.com/ZeynalliZeynal/todoist/commit/3f95e127b5d9b0da98974f4ab0c58bd800c3427d))
+- add sessions management page ([3f95e12](https://github.com/ZeynalliZeynal/todoist/commit/3f95e127b5d9b0da98974f4ab0c58bd800c3427d))
 
 ### [0.5.8](https://github.com/ZeynalliZeynal/todoist/compare/v0.5.7...v0.5.8) (2025-03-14)
 
-
 ### Features
 
-* add features to update name and uploading an avatar ([de7caae](https://github.com/ZeynalliZeynal/todoist/commit/de7caaefd9a003d7ca14678e61d35950b60c814f))
+- add features to update name and uploading an avatar ([de7caae](https://github.com/ZeynalliZeynal/todoist/commit/de7caaefd9a003d7ca14678e61d35950b60c814f))
 
 ### [0.5.7](https://github.com/ZeynalliZeynal/todoist/compare/v0.5.6...v0.5.7) (2025-03-14)
 
-
 ### Features
 
-* add filtering and sorting feature in dashboard ([45a7f83](https://github.com/ZeynalliZeynal/todoist/commit/45a7f8311fc82bde6aa4cd04ab92654cbb2c7404))
-* get user from a global state to prevent unnecessary requests. use zustand ([ba45f0a](https://github.com/ZeynalliZeynal/todoist/commit/ba45f0a1adb0f100d3a2203cff649ebd68e44d68))
+- add filtering and sorting feature in dashboard ([45a7f83](https://github.com/ZeynalliZeynal/todoist/commit/45a7f8311fc82bde6aa4cd04ab92654cbb2c7404))
+- get user from a global state to prevent unnecessary requests. use zustand ([ba45f0a](https://github.com/ZeynalliZeynal/todoist/commit/ba45f0a1adb0f100d3a2203cff649ebd68e44d68))
 
 ### [0.5.6](https://github.com/ZeynalliZeynal/todoist/compare/v0.5.5...v0.5.6) (2025-03-02)
 
-
 ### Features
 
-* add actions to create a new task ([b7a6f88](https://github.com/ZeynalliZeynal/todoist/commit/b7a6f88ead08b85bb87ebceffc49d73ff5c4cf68))
+- add actions to create a new task ([b7a6f88](https://github.com/ZeynalliZeynal/todoist/commit/b7a6f88ead08b85bb87ebceffc49d73ff5c4cf68))
 
 ### [0.5.5](https://github.com/ZeynalliZeynal/todoist/compare/v0.5.4...v0.5.5) (2025-03-02)
 
-
 ### Features
 
-* add a dialog to create new task ([d55028c](https://github.com/ZeynalliZeynal/todoist/commit/d55028c409dd28d985a632f61e266e4f67b2aa38))
+- add a dialog to create new task ([d55028c](https://github.com/ZeynalliZeynal/todoist/commit/d55028c409dd28d985a632f61e266e4f67b2aa38))
 
 ### [0.5.4](https://github.com/ZeynalliZeynal/todoist/compare/v0.5.3...v0.5.4) (2025-03-02)
 
-
 ### Features
 
-* add actions to add a project to favorite or remove ([6da3aa0](https://github.com/ZeynalliZeynal/todoist/commit/6da3aa0ad58c8511d026cc618d6bee470273a024))
+- add actions to add a project to favorite or remove ([6da3aa0](https://github.com/ZeynalliZeynal/todoist/commit/6da3aa0ad58c8511d026cc618d6bee470273a024))
 
 ### [0.5.3](https://github.com/ZeynalliZeynal/todoist/compare/v0.5.2...v0.5.3) (2025-02-18)
 
-
 ### Features
 
-* add new project dialog ([4df0ef4](https://github.com/ZeynalliZeynal/todoist/commit/4df0ef4d99e814f8d8576936857a028c1b50bd75))
+- add new project dialog ([4df0ef4](https://github.com/ZeynalliZeynal/todoist/commit/4df0ef4d99e814f8d8576936857a028c1b50bd75))
 
 ### [0.5.2](https://github.com/ZeynalliZeynal/todoist/compare/v0.5.1...v0.5.2) (2025-02-17)
 
-
 ### Features
 
-* add sort by select and add new dropdown ([8c9a2b4](https://github.com/ZeynalliZeynal/todoist/commit/8c9a2b4aaf65a573b635590fd87bf8ba1bfe7665))
+- add sort by select and add new dropdown ([8c9a2b4](https://github.com/ZeynalliZeynal/todoist/commit/8c9a2b4aaf65a573b635590fd87bf8ba1bfe7665))
 
 ### [0.5.1](https://github.com/ZeynalliZeynal/todoist/compare/v0.3.25...v0.5.1) (2025-02-17)
 

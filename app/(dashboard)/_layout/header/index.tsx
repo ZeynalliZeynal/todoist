@@ -5,10 +5,14 @@ import Badge from '@/components/ui/badge';
 import { Logo } from '@/components/ui/icons/logo';
 import Image from 'next/image';
 import Link from 'next/link';
-import DashboardNotificationsPopover from './dashboard-notifications-popover';
+import NotificationsPopover from './notification/notifications-popover';
+import { getNotifications } from '@/actions/notification.action';
 
 export default async function DashboardHeader() {
-  const profile = await getCachedProfile();
+  const [profile, notifications] = await Promise.all([
+    getCachedProfile(),
+    getNotifications(),
+  ]);
 
   const user: User = profile.user;
 
@@ -53,7 +57,7 @@ export default async function DashboardHeader() {
             </div>
           </div>
           <div className="flex items-center gap-4">
-            <DashboardNotificationsPopover notifications={user.notifications} />
+            <NotificationsPopover notifications={notifications.notifications} />
             <UserDropdownMenu user={user} />
           </div>
         </div>

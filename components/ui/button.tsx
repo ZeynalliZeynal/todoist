@@ -71,10 +71,10 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
             'px-2.5 h-10 text-sm': size === 'md' && !iconOnly,
             'px-3.5 h-12 text-base': size === 'lg' && !iconOnly,
             'text-sm h-8 px-1.5': size === 'sm' && !iconOnly,
-            'size-12 text-lg': size === 'lg' && iconOnly,
-            'size-10 text-sm': size === 'md' && iconOnly,
-            'size-8 text-sm': size === 'sm' && iconOnly,
-            'size-6 text-xs rounded': size === 'xs' && iconOnly,
+            '!size-12 text-lg': size === 'lg' && iconOnly,
+            '!size-10 text-sm': size === 'md' && iconOnly,
+            '!size-8 text-sm': size === 'sm' && iconOnly,
+            '!size-6 text-xs rounded': size === 'xs' && iconOnly,
             'data-[hover]:text-foreground data-[hover]:bg-gray-alpha-200 data-[hover]:border-gray-alpha-200':
               variant === 'primary' && hovering,
             'disabled:text-gray-700 disabled:bg-gray-100 disabled:border-gray-400':
@@ -142,10 +142,10 @@ export const ButtonLink = forwardRef<HTMLAnchorElement, ButtonLinkProps>(
             'px-2.5 h-10 text-sm': size === 'md' && !iconOnly,
             'px-3.5 h-12 text-base': size === 'lg' && !iconOnly,
             'text-sm h-8 px-1.5': size === 'sm' && !iconOnly,
-            'size-12 text-lg': size === 'lg' && iconOnly,
-            'size-10 text-sm': size === 'md' && iconOnly,
-            'size-8 text-sm': size === 'sm' && iconOnly,
-            'size-6 text-xs rounded': size === 'xs' && iconOnly,
+            '!size-12 text-lg': size === 'lg' && iconOnly,
+            '!size-10 text-sm': size === 'md' && iconOnly,
+            '!size-8 text-sm': size === 'sm' && iconOnly,
+            '!size-6 text-xs rounded': size === 'xs' && iconOnly,
             'data-[hover]:text-foreground data-[hover]:bg-gray-200 data-[hover]:border-gray-alpha-200':
               variant === 'primary' && hovering,
             'disabled:text-gray-700 disabled:bg-gray-100 disabled:border-gray-400':
