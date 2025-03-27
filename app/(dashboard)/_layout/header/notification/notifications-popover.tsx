@@ -19,7 +19,7 @@ export default function NotificationsPopover({
   notifications: Notification[];
 }) {
   const [activeTab, setActiveTab] = useState<'inbox' | 'archive'>('inbox');
-  const [_, startArchiveAllTransition] = useTransition();
+  const [isArchiving, startArchiveAllTransition] = useTransition();
 
   const inboxNotifications = notifications.filter(
     (notification) => !notification.archived,
@@ -99,6 +99,7 @@ export default function NotificationsPopover({
         {activeTab === 'inbox' && (
           <div className="overflow-hidden w-full rounded-b-lg shrink-0 border-t">
             <Button
+              disabled={isArchiving}
               aria-description="Archive all notifications"
               className="w-full rounded-none text-sm data-[hover]:bg-accent-100"
               size="lg"

@@ -16,7 +16,7 @@ export default function NotificationList({
   notifications: Notification[];
   handleArchive?: (id: string) => void;
 }) {
-  const [_, startArchiveTransition] = useTransition();
+  const [isArchiving, startArchiveTransition] = useTransition();
 
   return (
     <div role="list" className="divide-y">
@@ -52,6 +52,7 @@ export default function NotificationList({
               variant="tertiary"
               className="rounded-full ml-auto group-hover:opacity-100 opacity-0 relative z-[1]"
               title="Archive"
+              disabled={isArchiving}
               aria-label="Archive"
               onClick={() =>
                 startArchiveTransition(async () => {
