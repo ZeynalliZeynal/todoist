@@ -46,17 +46,25 @@ export default function ProjectCard({ project }: { project: Project }) {
                     <Gauge
                       showValue
                       value={
-                        (completedTasksLength / project.tasks.length) * 100
+                        completedTasksLength !== 0
+                          ? (completedTasksLength / project.tasks.length) * 100
+                          : 0
                       }
                       max={project.tasks?.length}
                       equal
                     />
                   </TooltipTrigger>
                   <TooltipContent>
-                    Completed tasks:{' '}
-                    <b>
-                      {completedTasksLength} / {project.tasks?.length || 0}
-                    </b>
+                    {completedTasksLength !== 0 ? (
+                      <>
+                        Completed tasks:{' '}
+                        <b>
+                          {completedTasksLength} / {project.tasks?.length || 0}
+                        </b>
+                      </>
+                    ) : (
+                      'No completed task yet'
+                    )}
                   </TooltipContent>
                 </Tooltip>
               </TooltipProvider>

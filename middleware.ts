@@ -1,12 +1,17 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { clearAuthCookies, getAuthCookies } from '@/utils/cookies';
 import { authRoutes, DEFAULT_LOGIN_REDIRECT } from '@/routes';
-import { getProfile } from '@/actions/profile.action';
+import { getCachedProfile } from '@/actions/profile.action';
 
 export default async function middleware(request: NextRequest) {
   const { accessToken } = await getAuthCookies();
 
-  const profile = await getProfile();
+  const profile = await getCachedProfile().catch(async (error) => {
+    if (error.status === 'fail') {
+      await clearAuthCookies();
+    }
+  });
+
   if (profile.status === 'fail') {
     await clearAuthCookies();
   }

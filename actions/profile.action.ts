@@ -27,12 +27,20 @@ export const getCachedProfile = async () => {
       headers: {
         'Content-Type': 'application/json',
         Authorization: `Bearer ${accessToken}`,
+        'ngrok-skip-browser-warning': 'ngrok',
         'User-Agent': userAgent || '',
       },
       next: { revalidate: 300, tags: ['profile'] },
     });
 
     const data = await response.json();
+
+    if (!response.ok) {
+      if (data.status === 'fail') {
+        return data;
+      }
+    }
+
     return data.data;
   } catch (error) {
     throw error;

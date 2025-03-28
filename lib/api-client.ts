@@ -8,6 +8,7 @@ const apiClient = axios.create({
   withCredentials: true,
   headers: {
     'Content-Type': 'application/json',
+    'ngrok-skip-browser-warning': 'ngrok',
   },
 });
 
@@ -26,14 +27,14 @@ apiClient.interceptors.request.use(
   },
   (error) => {
     return Promise.reject(error);
-  }
+  },
 );
 
 apiClient.interceptors.response.use(
   (response) => response,
   async (error) => {
     return Promise.reject(error.response?.data);
-  }
+  },
 );
 
 export default apiClient;
