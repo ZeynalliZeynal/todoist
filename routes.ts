@@ -20,6 +20,7 @@ export const DEFAULT_LOGIN_REDIRECT = dashboardRoute;
 
 export const accountRoute = '/dashboard/account';
 export const sessionsRoute = '/dashboard/account/sessions';
+export const notificationsRoute = '/dashboard/account/notifications';
 export const accountSettingsRoute = '/dashboard/account/settings';
 export const projectSettingsRoute = (slug: string) =>
   `/dashboard/projects/${slug}/settings`;

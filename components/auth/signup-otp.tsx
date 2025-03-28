@@ -6,7 +6,8 @@ import { OtpInput } from '@/components/ui/input';
 import { signup } from '@/actions/auth.action';
 import { MdOutlineReportGmailerrorred } from 'react-icons/md';
 import Spinner from '@/components/ui/spinner';
-import { useRouter } from 'next/navigation';
+import { redirect } from 'next/navigation';
+import { dashboardRoute } from '@/routes';
 
 export default function SignupOtp({
   plan,
@@ -23,7 +24,6 @@ export default function SignupOtp({
 }) {
   const [isPending, startTransition] = useTransition();
   const [error, setError] = useState('');
-  const router = useRouter();
 
   return (
     <form
@@ -53,7 +53,7 @@ export default function SignupOtp({
                     setError(
                       'The entered code is incorrect. Please try again and check for typos.',
                     );
-                  else if (res.status === 'success') router.push('/');
+                  else if (res.status === 'success') redirect(dashboardRoute);
                 })
               }
             />

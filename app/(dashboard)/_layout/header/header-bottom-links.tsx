@@ -6,34 +6,18 @@ import { usePathname } from 'next/navigation';
 import Link from 'next/link';
 import { cn } from '@/lib/utils';
 import { projectSlug } from '@/app/(dashboard)/dashboard/_utils/slugs';
+import { dashboardLinks } from '@/app/(dashboard)/_constants/links';
 
 const project_header_links = (slug: string) => [
   {
-    link: `/dashboard/projects/${slug}`,
+    href: `/dashboard/projects/${slug}`,
     label: 'Project',
+    children: [],
   },
   {
-    link: `/dashboard/projects/${slug}/settings`,
+    href: `/dashboard/projects/${slug}/settings`,
     label: 'Settings',
-  },
-];
-
-const header_links = [
-  {
-    link: '/dashboard',
-    label: 'Overview',
-  },
-  {
-    link: '/dashboard/settings',
-    label: 'Settings',
-  },
-  {
-    link: '/dashboard/account',
-    label: 'Account',
-  },
-  {
-    link: '/dashboard/activity',
-    label: 'Activity',
+    children: [],
   },
 ];
 
@@ -44,7 +28,7 @@ export default function HeaderBottomLinks() {
   const links =
     pathname.includes('/projects') && projectSlug(pathname)
       ? project_header_links(projectSlug(pathname))
-      : header_links;
+      : dashboardLinks;
 
   return (
     <div className="h-11">
@@ -52,13 +36,21 @@ export default function HeaderBottomLinks() {
         {links.map((link, index) => (
           <Tab
             as={Link}
-            href={link.link}
+            href={link.href}
             onMouseEnter={() => setActivePill(index)}
             onMouseLeave={() => setActivePill(-1)}
             isPillActive={activePill === index}
-            isIndicatorActive={pathname === link.link}
+            isIndicatorActive={
+              pathname === link.href ||
+              link?.children?.some((item) => pathname === item.href)
+            }
             key={index}
-            className={cn('h-8', pathname === link.link && 'text-foreground')}
+            className={cn(
+              'h-8',
+              pathname === link.href ||
+                (link?.children?.some((item) => pathname === item.href) &&
+                  'text-foreground'),
+            )}
           >
             {link.label}
           </Tab>

@@ -5,7 +5,7 @@ import { MagnifyingGlass } from 'vercel-geist-icons';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { cn } from '@/lib/utils';
-import { accountRoute, sessionsRoute } from '@/routes';
+import { accountRoute, notificationsRoute, sessionsRoute } from '@/routes';
 
 export default function AccountAsideLinks() {
   const pathname = usePathname();
@@ -37,6 +37,15 @@ export default function AccountAsideLinks() {
           )}
         >
           Sessions
+        </Link>
+        <Link
+          href={notificationsRoute}
+          className={cn(
+            'flex items-center rounded-md hover:bg-gray-alpha-100 text-gray-900 py-2.5 px-3 transition',
+            pathname === notificationsRoute && 'text-foreground font-medium',
+          )}
+        >
+          Notifications
         </Link>
       </div>
     </aside>
