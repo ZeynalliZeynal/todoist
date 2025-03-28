@@ -1,5 +1,14 @@
 # Changelog
 
+All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
+
+### [0.6.3](https://github.com/ZeynalliZeynal/todoist/compare/v0.5.19...v0.6.3) (2025-03-28)
+
+
+### Bug Fixes
+
+* handle fail status from profile ([a11bcf9](https://github.com/ZeynalliZeynal/todoist/commit/a11bcf91b40c8c498eb9ef3fe772846086954c54))
+
 ## 0.6.2
 
 ### Patch Changes
