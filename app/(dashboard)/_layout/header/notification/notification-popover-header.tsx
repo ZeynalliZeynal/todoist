@@ -3,12 +3,8 @@ import Badge from '@/components/ui/badge';
 import { SettingsGear } from 'vercel-geist-icons';
 import { ButtonLink } from '@/components/ui/button';
 import { PopoverClose } from '@radix-ui/react-popover';
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipProvider,
-  TooltipTrigger,
-} from '@/components/ui/tooltip';
+import { TooltipProvider } from '@/components/ui/tooltip';
+import { notificationsRoute } from '@/routes';
 
 export default function NotificationPopoverHeader({
   activeTab,
@@ -68,22 +64,17 @@ export default function NotificationPopoverHeader({
             </button>
           </div>
           <PopoverClose asChild>
-            <Tooltip>
-              <TooltipTrigger asChild>
-                <ButtonLink
-                  aria-disabled={true}
-                  aria-label="Notification settings"
-                  title="Notification settings"
-                  href="#"
-                  iconOnly
-                  variant="tertiary"
-                  className="rounded-full place-self-center data-[hover]:bg-accent-100"
-                >
-                  <SettingsGear />
-                </ButtonLink>
-              </TooltipTrigger>
-              <TooltipContent>Not available yet</TooltipContent>
-            </Tooltip>
+            <ButtonLink
+              aria-disabled={true}
+              aria-label="Notification settings"
+              title="Notification settings"
+              href={notificationsRoute}
+              iconOnly
+              variant="tertiary"
+              className="rounded-full place-self-center data-[hover]:bg-accent-100"
+            >
+              <SettingsGear />
+            </ButtonLink>
           </PopoverClose>
         </div>
       </div>

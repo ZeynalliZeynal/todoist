@@ -1,6 +1,7 @@
 'use client';
 
 import NotificationCheckbox from '../_components/notification-checkbox';
+import MouseTooltip from '@/components/ui/mouse-tooltip';
 
 export default function UpdateNotificationsSection({
   settings,
@@ -20,9 +21,18 @@ export default function UpdateNotificationsSection({
                 </p>
               </header>
               <div className="p-4 bg-background-100 border divide-y border-t-0 rounded-b-md">
-                {settings[kind].map((setting) => (
-                  <NotificationCheckbox setting={setting} key={setting._id} />
-                ))}
+                {settings[kind].map((setting) =>
+                  setting.type.description ? (
+                    <MouseTooltip
+                      tooltipContent={setting.type.description}
+                      key={setting._id}
+                    >
+                      <NotificationCheckbox setting={setting} />
+                    </MouseTooltip>
+                  ) : (
+                    <NotificationCheckbox key={setting._id} setting={setting} />
+                  ),
+                )}
               </div>
             </section>
           ))

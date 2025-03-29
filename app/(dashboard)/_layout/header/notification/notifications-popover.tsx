@@ -56,7 +56,7 @@ export default function NotificationsPopover({
       </PopoverTrigger>
       <PopoverContent
         align="end"
-        className="!rounded-lg bg-background-200 flex flex-col min-w-[400px] !p-0 max-h-[80vh] min-h-[500px]"
+        className="!rounded-lg bg-background-200 flex flex-col max-w-[400px] !p-0 max-h-[80vh] min-h-[500px]"
       >
         <NotificationPopoverHeader
           activeTab={activeTab}

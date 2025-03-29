@@ -6,12 +6,13 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { cn } from '@/lib/utils';
 import { accountRoute, notificationsRoute, sessionsRoute } from '@/routes';
+import DashboardAsideContainer from '@/app/(dashboard)/_layout/dashboard-aside-container';
 
 export default function AccountAsideLinks() {
   const pathname = usePathname();
 
   return (
-    <aside className="flex flex-col gap-10 shrink-0">
+    <DashboardAsideContainer>
       <Input
         prefix={<MagnifyingGlass className="size-5" />}
         prefixStyling={false}
@@ -48,6 +49,6 @@ export default function AccountAsideLinks() {
           Notifications
         </Link>
       </div>
-    </aside>
+    </DashboardAsideContainer>
   );
 }

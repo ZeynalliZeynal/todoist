@@ -18,7 +18,7 @@ declare global {
     name: string;
     description?: string;
     data: Task | Project;
-    type: NotificationTypeEnum;
+    type: NotificationType;
     archived: boolean;
     read: boolean;
     value: string;

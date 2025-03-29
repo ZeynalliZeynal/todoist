@@ -7,12 +7,13 @@ import { usePathname } from 'next/navigation';
 import { cn } from '@/lib/utils';
 import { projectSettingsRoute } from '@/routes';
 import { projectSlug } from '@/app/(dashboard)/dashboard/_utils/slugs';
+import DashboardAsideContainer from '@/app/(dashboard)/_layout/dashboard-aside-container';
 
 export default function ProjectAsideLinks() {
   const pathname = usePathname();
 
   return (
-    <aside className="flex flex-col gap-10 shrink-0">
+    <DashboardAsideContainer>
       <Input
         prefix={<MagnifyingGlass className="size-5" />}
         prefixStyling={false}
@@ -32,6 +33,6 @@ export default function ProjectAsideLinks() {
           General
         </Link>
       </div>
-    </aside>
+    </DashboardAsideContainer>
   );
 }

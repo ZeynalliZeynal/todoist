@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import { createPortal } from 'react-dom';
 import {
   AnimatePresence,
   motion,
@@ -83,27 +84,31 @@ export default function MouseTooltip({
       // onMouseMove={handleMouseMove}
       {...props}
     >
-      <AnimatePresence>
-        {condition && hovering && (
-          <motion.div
-            variants={tooltipVariants}
-            initial="hidden"
-            animate="visible"
-            exit="exit"
-            style={{
-              left: springX,
-              top: tooltipY,
-              x: '-50%',
-            }}
-            className={cn(
-              'fixed z-50 px-3 py-1 rounded-md text-background-200 bg-gray-1000 font-medium text-xs pointer-events-none',
-              tooltipClassName,
-            )}
-          >
-            {tooltipContent}
-          </motion.div>
-        )}
-      </AnimatePresence>
+      {createPortal(
+        <AnimatePresence>
+          {condition && hovering && (
+            <motion.div
+              variants={tooltipVariants}
+              initial="hidden"
+              animate="visible"
+              exit="exit"
+              style={{
+                left: springX,
+                top: tooltipY,
+                x: '-50%',
+              }}
+              layout
+              className={cn(
+                'fixed z-50 px-3 py-1 rounded-md text-background-200 bg-gray-1000 font-medium text-xs pointer-events-none',
+                tooltipClassName,
+              )}
+            >
+              {tooltipContent}
+            </motion.div>
+          )}
+        </AnimatePresence>,
+        document.body,
+      )}
       {children}
     </div>
   );

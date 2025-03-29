@@ -29,7 +29,7 @@ export default function NotificationList({
           <Link
             href={generateNotificationLink({
               value: notification.data.slug,
-              type: notification.type,
+              type: notification.type.name,
             })}
             className="absolute inset-0"
           />
@@ -39,7 +39,7 @@ export default function NotificationList({
           <div>
             {generateNotificationName({
               value: notification.data.name,
-              type: notification.type,
+              type: notification.type.name,
             })}
             <p className="text-gray-900">
               {format(notification.createdAt, 'MMM dd, hh:mm:ss a')}
