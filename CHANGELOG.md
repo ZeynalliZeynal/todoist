@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.6.4](https://github.com/ZeynalliZeynal/todoist/compare/v0.6.3...v0.6.4) (2025-03-29)
+
+
+### Features
+
+* add notification settings page under /account/notifications ([1bf3342](https://github.com/ZeynalliZeynal/todoist/commit/1bf33426e9f56b31f7f175198a8b4b191e643ef9))
+
 ### [0.6.3](https://github.com/ZeynalliZeynal/todoist/compare/v0.5.19...v0.6.3) (2025-03-28)
 
 
