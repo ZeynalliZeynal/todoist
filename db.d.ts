@@ -146,11 +146,28 @@ declare global {
     user: string;
   }
 
+  interface NotificationType {
+    id: string;
+    name: string;
+    label: string;
+    description?: string;
+  }
+
   interface TemplateCategory {
     _id: string;
     name: string;
     description: string;
     templates: Template[];
+  }
+
+  interface NotificationSettingPreference {
+    type: NotificationType;
+    enabled: boolean;
+    _id: string;
+  }
+
+  interface NotificationSetting {
+    [key: string]: NotificationSettingPreference[];
   }
 }
 

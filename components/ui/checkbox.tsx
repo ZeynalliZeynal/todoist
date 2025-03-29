@@ -8,7 +8,7 @@ import { FaCheck } from 'react-icons/fa6';
 interface CheckboxProps extends React.ComponentProps<'input'> {
   children?: React.ReactNode;
   checked: boolean;
-  onChange?: React.ChangeEventHandler;
+  onChange?: React.ChangeEventHandler<HTMLInputElement>;
 }
 
 export function Checkbox(props: CheckboxProps) {
@@ -22,20 +22,21 @@ export function Checkbox(props: CheckboxProps) {
     <label
       htmlFor={checkboxId}
       className={cn(
-        'inline-flex gap-2 items-center cursor-pointer',
-        props.disabled && 'text-gray-500 cursor-not-allowed',
+        'inline-flex gap-2 items-center',
+        props.disabled && 'text-gray-500 cursor-not-allowed'
       )}
     >
       <span
         className={cn(
-          'inline-flex items-center justify-center shrink-0 size-4 rounded border border-foreground transition focus-within:ring-2 focus-within:ring-offset-2 ring-blue-900 ring-offset-background-100',
+          'inline-flex items-center cursor-pointer justify-center shrink-0 size-4 rounded border border-foreground transition focus-within:ring-2 focus-within:ring-offset-2 ring-blue-900 ring-offset-background-100',
+          props.disabled && 'cursor-not-allowed',
           {
             'bg-foreground text-background-200': checked,
             'bg-background-100': !checked,
             'bg-gray-600': checked && props.disabled,
             'bg-gray-100': !checked && props.disabled,
             'border-gray-600': props.disabled,
-          },
+          }
         )}
       >
         <input

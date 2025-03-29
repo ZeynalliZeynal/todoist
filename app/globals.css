@@ -141,8 +141,8 @@
       --header-border: 0 1px 0 0 0, 0%, 0, 0.102;
       --ds-shadow-border-value: 0 0 0 1px rgba(0, 0, 0, 0.08);
       --ds-shadow-menu-value: var(--ds-shadow-border-value),
-      0px 1px 1px rgba(0, 0, 0, 0.02), 0px 4px 8px -4px rgba(0, 0, 0, 0.04),
-      0px 16px 24px -8px rgba(0, 0, 0, 0.06);
+        0px 1px 1px rgba(0, 0, 0, 0.02), 0px 4px 8px -4px rgba(0, 0, 0, 0.04),
+        0px 16px 24px -8px rgba(0, 0, 0, 0.06);
     }
 
     &,
@@ -429,12 +429,12 @@
 
   .book-bg {
     background: linear-gradient(
-            180deg,
-            hsla(0, 0%, 100%, 0.1),
-            hsla(0, 0%, 100%, 0) 50%,
-            hsla(0, 0%, 100%, 0)
-    ),
-    #1f1f1f;
+        180deg,
+        hsla(0, 0%, 100%, 0.1),
+        hsla(0, 0%, 100%, 0) 50%,
+        hsla(0, 0%, 100%, 0)
+      ),
+      #1f1f1f;
   }
 
   .center {

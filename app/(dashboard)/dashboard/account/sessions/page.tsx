@@ -1,4 +1,4 @@
-import SessionsSection from '@/app/(dashboard)/dashboard/account/sessions/_sectins/sessions-section';
+import SessionsSection from '@/app/(dashboard)/dashboard/account/sessions/_sections/sessions-section';
 import Skeleton from '@/components/ui/skeleton';
 import { Suspense } from 'react';
 

@@ -46,7 +46,7 @@ export default function ProjectCard({ project }: { project: Project }) {
                     <Gauge
                       showValue
                       value={
-                        completedTasksLength !== 0
+                        project.tasks.length !== 0
                           ? (completedTasksLength / project.tasks.length) * 100
                           : 0
                       }
@@ -55,7 +55,7 @@ export default function ProjectCard({ project }: { project: Project }) {
                     />
                   </TooltipTrigger>
                   <TooltipContent>
-                    {completedTasksLength !== 0 ? (
+                    {project.tasks.length !== 0 ? (
                       <>
                         Completed tasks:{' '}
                         <b>
