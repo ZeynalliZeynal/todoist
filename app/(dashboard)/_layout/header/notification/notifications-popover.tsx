@@ -48,7 +48,6 @@ export default function NotificationsPopover({
             <span
               className={cn(
                 'absolute size-2.5 rounded-full -top-0.5 -right-0.5 bg-blue-600',
-                // 'before:absolute before:inset-0 before:rounded-full before:bg-blue-600 before:animate-ping',
               )}
             />
           )}
@@ -56,7 +55,7 @@ export default function NotificationsPopover({
       </PopoverTrigger>
       <PopoverContent
         align="end"
-        className="!rounded-lg bg-background-200 flex flex-col max-w-[400px] !p-0 max-h-[80vh] min-h-[500px]"
+        className="!rounded-lg bg-background-200 flex flex-col w-[400px] !p-0 max-h-[80vh] min-h-[500px]"
       >
         <NotificationPopoverHeader
           activeTab={activeTab}

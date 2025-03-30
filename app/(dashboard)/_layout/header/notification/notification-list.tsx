@@ -3,7 +3,7 @@ import {
   generateNotificationLink,
   generateNotificationName,
 } from '@/app/(dashboard)/_layout/header/notification/notification.util';
-import { format } from 'date-fns';
+import { format, formatDistanceToNow } from 'date-fns';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import { useTransition } from 'react';
@@ -19,10 +19,9 @@ export default function NotificationList({
   const [isArchiving, startArchiveTransition] = useTransition();
 
   return (
-    <div role="list" className="divide-y">
+    <ul className="divide-y">
       {notifications.map((notification) => (
-        <div
-          role="listitem"
+        <li
           key={notification.id}
           className="flex items-stretch hover:bg-accent-100 transition gap-4 p-4 pr-2 group relative"
         >
@@ -42,7 +41,11 @@ export default function NotificationList({
               type: notification.type.name,
             })}
             <p className="text-gray-900">
-              {format(notification.createdAt, 'MMM dd, hh:mm:ss a')}
+              {formatDistanceToNow(notification.createdAt, {
+                addSuffix: true,
+              })}
+              {', '}
+              {format(notification.createdAt, 'MMM dd, yyyy')}
             </p>
           </div>
           {!notification.archived && handleArchive && (
@@ -64,8 +67,8 @@ export default function NotificationList({
               <Archive />
             </Button>
           )}
-        </div>
+        </li>
       ))}
-    </div>
+    </ul>
   );
 }

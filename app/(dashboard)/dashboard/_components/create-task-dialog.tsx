@@ -394,7 +394,7 @@ export default function CreateTaskDialog({
                     <PopoverContent className="!p-0 overflow-hidden min-w-56">
                       <Calendar
                         mode="single"
-                        disabled={(date) => date < today}
+                        disabled={(date) => date <= today}
                         selected={watch('dueDate') || undefined}
                         onSelect={(date) => {
                           setValue('dueDate', date || undefined);

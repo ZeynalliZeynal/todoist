@@ -96,7 +96,7 @@ export default function TaskCard({
               })}
             >
               <UpdateTaskName task={task} />
-              {task.description && <UpdateTaskDescription task={task} />}
+              <UpdateTaskDescription task={task} />
             </div>
             <DropdownMenu>
               <DropdownMenuTrigger asChild>

@@ -17,6 +17,7 @@ import {
   TooltipContent,
   TooltipTrigger,
 } from '@/components/ui/tooltip';
+import { AlignmentLeft } from 'vercel-geist-icons';
 
 export default function UpdateTaskDescription({ task }: { task: Task }) {
   const [isPending, startTransition] = useTransition();
@@ -49,10 +50,19 @@ export default function UpdateTaskDescription({ task }: { task: Task }) {
             }}
             className="rounded-md"
           >
-            <p className="text-gray-900 line-clamp-2">{task.description}</p>
+            <p className="text-gray-900 line-clamp-2">
+              {task.description || (
+                <span className="flex text-gray-900 items-center gap-2 hover:text-foreground transition">
+                  <AlignmentLeft />
+                  Description
+                </span>
+              )}
+            </p>
           </AnimatedPopperTrigger>
         </TooltipTrigger>
-        <TooltipContent>Click to update</TooltipContent>
+        <TooltipContent>
+          {task.description ? 'Click to update' : 'Click to add'}
+        </TooltipContent>
       </Tooltip>
       <AnimatedPopperContent
         initial={{

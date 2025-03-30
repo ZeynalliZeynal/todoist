@@ -1,5 +1,17 @@
 # Changelog
 
+## 0.9.0
+
+### Minor Changes
+
+- Add scroll to top button in dashboard
+- Convert dashboard header to animated header like in Vercel
+
+### Patch Changes
+
+- Add placeholder for description to add if there is no description for a task
+- Export AnimatedPopperContent as not ssr to remove bugs
+
 ## 0.8.0
 
 ### Minor Changes
