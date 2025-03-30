@@ -9,7 +9,7 @@ export default function NotFoundPage() {
   const pathname = usePathname();
 
   return (
-    <div className="center w-screen h-screen bg-background-100">
+    <div className="center w-screen h-screen bg-background-100 px-6">
       <div className="flex flex-col xl:gap-12 py-24 lg:gap-12 md:gap-10 sm:gap-6 max-w-5xl mx-auto rounded-md items-center border-dashed border w-full border-gray-400">
         <LogoFull className="h-16" />
         <h1 className="lg:text-7xl lg:font-semibold md:text-7xl md:font-semibold text-5xl font-semibold">

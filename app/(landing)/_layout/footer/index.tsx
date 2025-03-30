@@ -1,38 +1,46 @@
-import { footerLinks } from "@/constants";
-import Link from "next/link";
-import { LogoFull } from "@/components/ui/icons/logo";
-import ThemeSwitch from "@/components/ui/theme";
+import Link from 'next/link';
+import { Logo } from '@/components/ui/icons/logo';
+import ThemeSwitch from '@/components/ui/theme';
+import { contactRoute, dashboardRoute, featuresRoute } from '@/routes';
 
 export default function Footer() {
   return (
-    <footer className="max-w-full border-t py-12">
-      <div className="max-w-5xl mx-auto flex">
-        <div className="grid grid-cols-3 flex-1">
-          {footerLinks.map(({ title, children }, index) => (
-            <div key={index} className="">
-              <h2 className="text-sm my-3 text-foreground font-semibold">
-                {title}
-              </h2>
-              <ul>
-                {children.map(({ name, href }, index) => (
-                  <li className="py-1.5 h-8" key={index}>
-                    <Link
-                      href={href}
-                      className="text-gray-900 hover:text-foreground transition"
-                    >
-                      {name}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
+    <footer className="border-t bg-background-200 mt-12">
+      <div className="max-w-screen-dashboard-sub mx-auto p-6 pt-5">
+        <div className="space-y-4">
+          <div className="flex justify-between">
+            <div className="flex gap-4 items-center">
+              <Link href="/dashboard">
+                <Logo className="size-4" />
+              </Link>
+              <Link
+                href="/"
+                className="text-accent-500 hover:text-foreground transition"
+              >
+                Home
+              </Link>
+              <Link
+                href={contactRoute}
+                className="text-accent-500 hover:text-foreground transition"
+              >
+                Contact
+              </Link>
+              <Link
+                href={dashboardRoute}
+                className="text-accent-500 hover:text-foreground transition"
+              >
+                Dashboard
+              </Link>
+              <Link
+                href={featuresRoute}
+                className="text-accent-500 hover:text-foreground transition"
+              >
+                Features
+              </Link>
             </div>
-          ))}
-        </div>
-        <div className="flex flex-col justify-between items-end">
-          <Link href="/">
-            <LogoFull className="h-8" />
-          </Link>
-          <ThemeSwitch />
+            <ThemeSwitch />
+          </div>
+          <p className="text-xs text-accent-500">© 2025, Zeynalli Zeynal.</p>
         </div>
       </div>
     </footer>

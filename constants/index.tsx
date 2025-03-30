@@ -6,10 +6,6 @@ export const navItems = [
     name: 'features',
     href: '/features',
   },
-  {
-    name: 'for teams',
-    href: '/for-teams',
-  },
   /*
   {
     name: 'resources',
@@ -90,7 +86,6 @@ export const footerLinks = [
     title: 'Features',
     children: [
       { name: 'How It Works', href: '/features' },
-      { name: 'For Teams', href: '/for-teams' },
       { name: 'Pricing', href: '/pricing' },
       { name: 'Templates', href: '/templates' },
     ],

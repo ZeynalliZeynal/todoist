@@ -24,7 +24,7 @@ export async function getProjects({
     // }
 
     const res = await apiClient(
-      `/projects?sort=-favorite${sortBy !== 'activity' && sortBy !== undefined ? `,-${sortBy}` : ''}&${queryParams.toString()}`,
+      `/projects?${queryParams.toString()}&sort=${sortBy !== 'activity' && sortBy !== undefined ? `-${sortBy},-favorite` : ''}`,
     );
 
     return res.data.data;

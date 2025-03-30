@@ -35,7 +35,7 @@ export default function NotificationPopoverHeader({
               {inboxLength > 0 && (
                 <Badge
                   size="sm"
-                  className="rounded-full cursor-pointer"
+                  className="cursor-pointer"
                   variant="gray-subtle"
                 >
                   {inboxLength}
@@ -55,7 +55,7 @@ export default function NotificationPopoverHeader({
               {archiveLength > 0 && (
                 <Badge
                   size="sm"
-                  className="rounded-full cursor-pointer"
+                  className="cursor-pointer"
                   variant="gray-subtle"
                 >
                   {archiveLength}

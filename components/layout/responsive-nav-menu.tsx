@@ -29,7 +29,7 @@ import { useProfile } from '@/lib/providers/user-provider';
 export default function ResponsiveNavMenu({
   children,
 }: {
-  children?: React.ReactNode;
+  children?: ((closeMenu: () => void) => React.ReactNode) | React.ReactNode;
 }) {
   const { profile } = useProfile();
   const [isNavMenuOpen, setIsNavMenuOpen] = React.useState(false);
@@ -126,9 +126,9 @@ export default function ResponsiveNavMenu({
                     <Image
                       src={profile.avatar}
                       alt="Profile photo"
-                      width={18}
-                      height={18}
-                      className="rounded-full"
+                      width={28}
+                      height={28}
+                      className="rounded-full size-7"
                     />
                   </li>
                   <li>
@@ -183,6 +183,7 @@ export default function ResponsiveNavMenu({
               )}
             </ul>
             <div className="w-full h-px bg-gray-alpha-400" />
+            {typeof children === 'function' ? children(closeMenu) : children}
             <ul className="py-3">
               <li>
                 <ButtonLink
@@ -197,7 +198,6 @@ export default function ResponsiveNavMenu({
                 </ButtonLink>
               </li>
             </ul>
-            {children}
           </div>
         </div>
       )}

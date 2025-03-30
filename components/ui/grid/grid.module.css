@@ -1,13 +1,18 @@
 .container {
-    --guide-color: var(--ds-gray-200);
-    --guide-width: 1px;
-    position: relative;
     border: var(--guide-width) solid var(--guide-color);
     border-bottom: none;
     border-right: none;
+    --guide-color: var(--ds-gray-200);
     display: grid;
     grid-template-columns: repeat(var(--columns), 1fr);
     grid-template-rows: repeat(var(--rows), 1fr);
+    position: relative;
+    --guide-width: 1px;
+    z-index: 1;
+
+    &>*:not([data-grid-guides]) {
+       z-index: 1;
+    }
 
     &[data-grid-aspect-ratio] {
         aspect-ratio: var(--columns) / var(--rows);
@@ -55,14 +60,14 @@
 }
 
 .guide {
-    display: block;
-    position: absolute;
-    inset: 0;
     border: var(--guide-width) solid var(--guide-color);
-    border-top: none;
     border-left: none;
+    border-top: none;
+    display: block;
     grid-column: var(--x) / span 1;
     grid-row: var(--y) / span 1;
+    inset: 0;
+    position: absolute;
 
     @media screen and (width >= 640px) {
         display: none;
@@ -94,16 +99,16 @@
 }
 
 .cross {
-    --cross-size: 1rem;
     --cross-color: var(--ds-gray-800);
-    --cross-half-size: calc((var(--cross-size) / 2) + var(--guide-width) - 0.5px);
-
-    position: absolute;
-    pointer-events: none;
     grid-column-start: var(--cross-column);
     grid-row-start: var(--cross-row);
-    z-index: 2;
+
+    --cross-half-size: calc((var(--cross-size) / 2) + var(--guide-width) - 0.5px);
     inset: calc(var(--cross-half-size) * -1);
+    pointer-events: none;
+    position: absolute;
+    --cross-size: 1rem;
+    z-index: 2 !important;
 
     @media screen and (width >= 640px) {
         grid-column-start: var(--sm-cross-column, var(--cross-column));
@@ -127,19 +132,19 @@
 }
 
 .crossLine {
-    position: absolute;
     border: var(--guide-width) solid var(--cross-color);
     border-width: 0;
+    position: absolute;
 }
 
 .cell {
-    position: relative;
-    z-index: 10;
-    display: flex;
     align-items: center;
-    justify-content: center;
+    display: flex;
     grid-column: var(--column);
     grid-row: var(--row);
+    justify-content: center;
+    position: relative;
+    z-index: 10;
 
     @media screen and (width >= 640px) {
         grid-column: var(--sm-column, var(--column));

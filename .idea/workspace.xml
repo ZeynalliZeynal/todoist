@@ -6,12 +6,21 @@
   <component name="ChangeListManager">
     <list default="true" id="f03893d1-9795-491e-a4ee-0e50bf35b7b9" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/(dashboard)/_layout/header/header-bottom-links.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(dashboard)/_layout/header/header-bottom-links.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/(dashboard)/dashboard/account/_sections/update-avatar-section.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(dashboard)/dashboard/account/_sections/update-avatar-section.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/globals.css" beforeDir="false" afterPath="$PROJECT_DIR$/app/globals.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/actions/project.action.ts" beforeDir="false" afterPath="$PROJECT_DIR$/actions/project.action.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/(dashboard)/_layout/header/notification/notification-popover-header.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(dashboard)/_layout/header/notification/notification-popover-header.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/(dashboard)/dashboard/account/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(dashboard)/dashboard/account/layout.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/(dashboard)/dashboard/projects/[slug]/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(dashboard)/dashboard/projects/[slug]/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/(dashboard)/dashboard/projects/[slug]/settings/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(dashboard)/dashboard/projects/[slug]/settings/layout.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/(landing)/_layout/footer/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(landing)/_layout/footer/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/(landing)/_layout/header/nav-right.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(landing)/_layout/header/nav-right.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/(landing)/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(landing)/layout.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/not-found.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/not-found.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/layout/responsive-nav-menu.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/layout/responsive-nav-menu.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/layout/user-dropdown-menu.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/layout/user-dropdown-menu.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/ui/animated-popper/animated-popper-content.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/animated-popper/animated-popper-content.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/ui/animated-popper/animated-popper.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/animated-popper/animated-popper.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/ui/grid/grid.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/grid/grid.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/ui/grid/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/grid/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/constants/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/constants/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes.ts" beforeDir="false" afterPath="$PROJECT_DIR$/routes.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -80,11 +89,11 @@
       <recent name="C:\Users\asus\Desktop\education\projects\todoist\client\components\ui\primitives\popper" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\asus\Desktop\zeynal\web\projects\todoist\client\app\(dashboard)\_layout\header" />
       <recent name="C:\Users\asus\Desktop\zeynal\web\projects\todoist\client\components\ui\animated-popper" />
       <recent name="D:\education\projects\todoist\client\app" />
       <recent name="D:\education\projects\todoist\client\app\(dashboard)\dashboard" />
       <recent name="D:\education\projects\todoist\client\app\(landing)" />
-      <recent name="D:\education\projects\todoist\client\app\(dashboard)" />
     </key>
   </component>
   <component name="RunAnythingCache">
@@ -229,7 +238,7 @@
       <workItem from="1743182644683" duration="7687000" />
       <workItem from="1743275080825" duration="17000" />
       <workItem from="1743275206250" duration="17788000" />
-      <workItem from="1743318569719" duration="12270000" />
+      <workItem from="1743318569719" duration="19408000" />
     </task>
     <servers />
   </component>

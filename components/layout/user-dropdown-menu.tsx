@@ -9,7 +9,7 @@ import {
 } from '@/components/ui/dropdown-menu';
 import Image from 'next/image';
 import Link from 'next/link';
-import { dashboardRoute } from '@/routes';
+import { accountSettingsRoute, dashboardRoute } from '@/routes';
 import { Layout, SettingsGear } from 'vercel-geist-icons';
 import ThemeSwitch from '@/components/ui/theme';
 import DropdownLogout from '@/app/(landing)/_layout/header/dropdown-logout';
@@ -44,7 +44,7 @@ export default function UserDropdownMenu({ user }: { user: User }) {
             </Link>
           </DropdownMenuItem>
           <DropdownMenuItem asChild className="justify-between">
-            <Link href="/account/settings">
+            <Link href={accountSettingsRoute}>
               Account Settings <SettingsGear />
             </Link>
           </DropdownMenuItem>
