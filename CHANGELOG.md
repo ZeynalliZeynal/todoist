@@ -1,5 +1,14 @@
 # Changelog
 
+All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
+
+### [0.9.1](https://github.com/ZeynalliZeynal/todoist/compare/v0.6.4...v0.9.1) (2025-03-30)
+
+
+### Features
+
+* add features page ([1738821](https://github.com/ZeynalliZeynal/todoist/commit/17388217bec8cba341fc421079af5a0f38f7aa0f))
+
 ## 0.9.0
 
 ### Minor Changes
