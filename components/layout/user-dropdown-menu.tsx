@@ -27,7 +27,7 @@ export default function UserDropdownMenu({ user }: { user: User }) {
           alt={user.name}
           width={24}
           height={24}
-          className="rounded-full"
+          className="rounded-full size-full"
         />
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end" className="w-64">

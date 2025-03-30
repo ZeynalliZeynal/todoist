@@ -1,6 +1,6 @@
 'use client';
 
-import React, { MutableRefObject } from 'react';
+import React, { HTMLAttributes, MutableRefObject } from 'react';
 import { createContext } from '@everest-ui/react-context';
 import {
   HTMLMotionProps,
@@ -95,35 +95,63 @@ export const AnimatedPopperTrigger = React.forwardRef<
   const { open, exiting, id, handleOpen } = useAnimatedPopper();
 
   return (
-    <div className="overflow-hidden">
-      <motion.div
-        layoutId={id}
-        ref={ref}
-        tabIndex={0}
-        onClick={(event) => {
+    <motion.div
+      layoutId={id}
+      ref={ref}
+      tabIndex={0}
+      onClick={(event) => {
+        handleOpen(event.currentTarget);
+        onClick?.(event);
+      }}
+      role="button"
+      data-exiting={exiting ? '' : null}
+      aria-expanded={open}
+      aria-haspopup={true}
+      data-state={open ? 'open' : 'closed'}
+      className={cn(
+        '*:size-full focus-within:ring-2 focus-within:ring-offset-2 ring-offset-background-200 ring-blue-900 outline-none',
+        className,
+      )}
+      onKeyDown={(event) => {
+        if (event.key === 'Enter' || event.key === ' ') {
+          event.preventDefault();
           handleOpen(event.currentTarget);
-          onClick?.(event);
-        }}
-        role="button"
-        data-exiting={exiting ? '' : null}
-        aria-expanded={open}
-        aria-haspopup={true}
-        data-state={open ? 'open' : 'closed'}
-        className={cn('*:size-full', className)}
-        onKeyDown={(event) => {
-          if (event.key === 'Enter' || event.key === ' ') {
-            event.preventDefault();
-            handleOpen(event.currentTarget);
-          }
-        }}
-        {...props}
-      >
-        {children}
-      </motion.div>
-    </div>
+        }
+      }}
+      {...props}
+    >
+      {children}
+    </motion.div>
   );
 });
 AnimatedPopperTrigger.displayName = 'AnimatedPopperTrigger';
+
+// close
+export const AnimatedPopperClose = React.forwardRef<
+  HTMLButtonElement,
+  { asChild?: boolean } & HTMLAttributes<HTMLElement>
+>(({ children, asChild, onClick, ...props }, ref) => {
+  const { handleClose } = useAnimatedPopper();
+
+  const attributes = {
+    role: 'button',
+    ref: ref,
+    onClick: (event) => {
+      handleClose();
+      onClick?.(event);
+    },
+    ...props,
+  } satisfies React.ComponentProps<'button'>;
+
+  return asChild && React.isValidElement(children) ? (
+    React.cloneElement(children, { ...attributes })
+  ) : (
+    <button type="button" {...attributes}>
+      {children}
+    </button>
+  );
+});
+AnimatedPopperClose.displayName = 'AnimatedPopperClose';
 
 // overlay
 export const AnimatedPopperOverlay = React.forwardRef<

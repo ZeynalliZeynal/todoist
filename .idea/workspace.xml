@@ -7,15 +7,11 @@
     <list default="true" id="f03893d1-9795-491e-a4ee-0e50bf35b7b9" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/(dashboard)/_layout/header/header-bottom-links.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(dashboard)/_layout/header/header-bottom-links.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/(dashboard)/_layout/header/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(dashboard)/_layout/header/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/(dashboard)/_layout/header/notification/notification-list.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(dashboard)/_layout/header/notification/notification-list.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/(dashboard)/_layout/header/notification/notifications-popover.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(dashboard)/_layout/header/notification/notifications-popover.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/(dashboard)/dashboard/_components/create-task-dialog.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(dashboard)/dashboard/_components/create-task-dialog.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/(dashboard)/dashboard/projects/[slug]/_components/task-card.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(dashboard)/dashboard/projects/[slug]/_components/task-card.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/(dashboard)/dashboard/projects/[slug]/_components/update-task-description.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(dashboard)/dashboard/projects/[slug]/_components/update-task-description.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/(dashboard)/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(dashboard)/layout.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/layout/responsive-nav-menu.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/layout/responsive-nav-menu.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/ui/animated-popper.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/animated-popper/animated-popper.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/(dashboard)/dashboard/account/_sections/update-avatar-section.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(dashboard)/dashboard/account/_sections/update-avatar-section.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/globals.css" beforeDir="false" afterPath="$PROJECT_DIR$/app/globals.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/layout/user-dropdown-menu.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/layout/user-dropdown-menu.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/ui/animated-popper/animated-popper-content.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/animated-popper/animated-popper-content.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/ui/animated-popper/animated-popper.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/animated-popper/animated-popper.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -233,7 +229,7 @@
       <workItem from="1743182644683" duration="7687000" />
       <workItem from="1743275080825" duration="17000" />
       <workItem from="1743275206250" duration="17788000" />
-      <workItem from="1743318569719" duration="8339000" />
+      <workItem from="1743318569719" duration="12270000" />
     </task>
     <servers />
   </component>

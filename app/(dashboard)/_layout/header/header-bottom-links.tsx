@@ -46,7 +46,7 @@ export default function HeaderBottomLinks() {
   const logoY = useTransform(scrollY, [0, 64], [-54, 0]);
   const logoScale = useTransform(scrollY, [0, 64], [1, 16 / 24]);
 
-  const bottomHeaderX = useTransform(scrollY, [0, 64], [-48, 0]);
+  const bottomHeaderX = useTransform(scrollY, [0, 64], [-32, 0]);
 
   useMotionValueEvent(scrollY, 'change', (latest) => {
     setShowScrollTop(latest > 224);
@@ -66,7 +66,6 @@ export default function HeaderBottomLinks() {
             scale: logoScale,
           }}
           href="/dashboard"
-          className=""
         >
           <Logo />
         </AnimatedLink>

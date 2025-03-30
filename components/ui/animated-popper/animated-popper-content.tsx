@@ -9,8 +9,8 @@ import { useAnimatedPopper } from '@/components/ui/animated-popper/animated-popp
 
 const AnimatedPopperContent = React.forwardRef<
   HTMLDivElement,
-  HTMLMotionProps<'div'>
->(({ children, className, ...props }, ref) => {
+  { position?: 'center' } & HTMLMotionProps<'div'>
+>(({ children, className, position = 'center', ...props }, ref) => {
   const {
     open,
     id,
@@ -70,7 +70,7 @@ const AnimatedPopperContent = React.forwardRef<
               data-state={open ? 'open' : 'closed'}
               id={id}
               layoutId={id}
-              className={cn('fixed z-50', className)}
+              className={cn(className)}
               {...props}
               style={
                 {
@@ -89,6 +89,16 @@ const AnimatedPopperContent = React.forwardRef<
                   '--content-left': contentPosition?.left + 'px',
                   '--content-top': contentPosition?.top + 'px',
                   '--content-bottom': contentPosition?.bottom + 'px',
+                  position: 'fixed',
+                  zIndex: 50,
+                  left:
+                    position === 'center'
+                      ? 'calc(50% - (var(--content-width)/2))'
+                      : undefined,
+                  top:
+                    position === 'center'
+                      ? 'calc(50% - (var(--content-height)/2))'
+                      : undefined,
                   ...props.style,
                 } as React.CSSProperties
               }
