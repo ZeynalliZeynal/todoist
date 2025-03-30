@@ -28,7 +28,7 @@ export default function LoadingDots({
   return (
     <span
       className={cn(
-        'inline-flex items-center *:shrink-0',
+        'flex items-center h-full *:shrink-0',
         gapClasses[size],
         className,
       )}

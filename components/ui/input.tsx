@@ -43,7 +43,6 @@ export function Input({
       {label && (
         <label htmlFor={`input${id}`} className="flex items-center">
           {label}
-          {/*{error && <span className="text-red-800">{error}</span>}*/}
         </label>
       )}
       <div
@@ -97,6 +96,55 @@ export function Input({
           </label>
         )}
       </div>
+      {error && (
+        <span className="text-red-900 flex items-center gap-2">
+          <Stop />
+          {error}
+        </span>
+      )}
+    </div>
+  );
+}
+
+type TextareaProps = {
+  label?: string | ReactNode;
+  variant?: 'primary' | 'secondary';
+  size?: 'small' | 'medium' | 'large';
+  error?: string;
+} & Omit<ComponentProps<'textarea'>, 'size' | 'prefix' | 'suffix'>;
+
+export function Textarea({
+  label,
+  size = 'small',
+  className,
+  error,
+  ...etc
+}: TextareaProps) {
+  const id = useId();
+
+  return (
+    <div className={cn('text-gray-900 flex flex-col gap-2', className)}>
+      {label && (
+        <label htmlFor={`textarea${id}`} className="flex items-center">
+          {label}
+        </label>
+      )}
+      <textarea
+        id={`textarea${id}`}
+        autoCapitalize="off"
+        autoComplete="off"
+        autoCorrect="off"
+        className={cn(
+          'flex items-center w-full bg-background-100 rounded-md focus-within:shadow-input transition text-foreground duration-200 overflow-hidden shadow-border hover:shadow-gray-500 font-medium',
+          'placeholder-gray-800 resize-y outline-none',
+          {
+            'p-3 min-h-28': size === 'small',
+            '!shadow-input-error': !!error,
+          },
+          className,
+        )}
+        {...etc}
+      />
       {error && (
         <span className="text-red-900 flex items-center gap-2">
           <Stop />

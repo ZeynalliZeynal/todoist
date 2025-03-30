@@ -99,7 +99,7 @@ export default function CreateTaskDialog({
         priority: z.enum(TASK_PRIORITIES),
         dueDate: z.date().optional(),
         tags: z.set(z.string()),
-      })
+      }),
     ),
   });
 
@@ -131,10 +131,10 @@ export default function CreateTaskDialog({
                 Array.isArray(response.message)
                   ? response.message
                       .map(
-                        (err: { message: string; path: string }) => err.message
+                        (err: { message: string; path: string }) => err.message,
                       )
                       .join(', ')
-                  : response.message
+                  : response.message,
               );
           })}
         >
@@ -166,7 +166,7 @@ export default function CreateTaskDialog({
                     triggerValue={
                       watch('project')
                         ? projects.find(
-                            (project) => project.id === watch('project')
+                            (project) => project.id === watch('project'),
                           )?.name
                         : 'Select project'
                     }
@@ -275,7 +275,7 @@ export default function CreateTaskDialog({
                                 value={tag.name}
                                 onSelect={(currentValue) => {
                                   const tagId = tags.find(
-                                    (tag) => tag.name === currentValue
+                                    (tag) => tag.name === currentValue,
                                   )?.id;
 
                                   if (watch('tags').has(tagId)) {
@@ -299,13 +299,13 @@ export default function CreateTaskDialog({
                                     'ml-auto',
                                     watch('tags').has(tag.id)
                                       ? 'opacity-100'
-                                      : 'opacity-0'
+                                      : 'opacity-0',
                                   )}
                                 />
                               </CommandItem>
                             ))}
                             {!tags?.find((tag) =>
-                              tag.name.includes(tagInputValue)
+                              tag.name.includes(tagInputValue),
                             ) &&
                               tagInputValue.trim() !== '' && (
                                 <CommandItem
@@ -316,7 +316,7 @@ export default function CreateTaskDialog({
                                     });
                                     setValue(
                                       'tags',
-                                      watch('tags').add(res.data.tag._id)
+                                      watch('tags').add(res.data.tag._id),
                                     );
                                     setTagPopoverOpen(false);
                                     setIsCreatingTag(false);
@@ -349,7 +349,7 @@ export default function CreateTaskDialog({
                             className="rounded-md cursor-pointer"
                             onClick={() => {
                               const tagId = tags.find(
-                                (tag) => tag.id === t
+                                (tag) => tag.id === t,
                               )?.id;
 
                               if (watch('tags').has(tagId)) {
@@ -394,7 +394,7 @@ export default function CreateTaskDialog({
                     <PopoverContent className="!p-0 overflow-hidden min-w-56">
                       <Calendar
                         mode="single"
-                        disabled={(date) => date <= today}
+                        disabled={(date) => date < today}
                         selected={watch('dueDate') || undefined}
                         onSelect={(date) => {
                           setValue('dueDate', date || undefined);

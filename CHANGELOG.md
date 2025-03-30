@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.8.0
+
+### Minor Changes
+
+- Add updating name and description features in tasks
+
 ## 0.7.0
 
 ### Minor Changes

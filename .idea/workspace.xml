@@ -6,15 +6,13 @@
   <component name="ChangeListManager">
     <list default="true" id="f03893d1-9795-491e-a4ee-0e50bf35b7b9" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/(dashboard)/_layout/header/notification/notification-list.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(dashboard)/_layout/header/notification/notification-list.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/(dashboard)/_layout/header/notification/notification-popover-header.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(dashboard)/_layout/header/notification/notification-popover-header.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/(dashboard)/_layout/header/notification/notification.util.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(dashboard)/_layout/header/notification/notification.util.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/(dashboard)/_layout/header/notification/notifications-popover.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(dashboard)/_layout/header/notification/notifications-popover.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/(dashboard)/dashboard/account/_layout/account-aside-links.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(dashboard)/dashboard/account/_layout/account-aside-links.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/(dashboard)/dashboard/account/notifications/_sections/update-notifications-section.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(dashboard)/dashboard/account/notifications/_sections/update-notifications-section.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/(dashboard)/dashboard/projects/[slug]/_layout/project-aside-links.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(dashboard)/dashboard/projects/[slug]/_layout/project-aside-links.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/ui/mouse-tooltip.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/mouse-tooltip.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/db.d.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/(dashboard)/dashboard/_components/create-task-dialog.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(dashboard)/dashboard/_components/create-task-dialog.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/(dashboard)/dashboard/projects/[slug]/_components/task-card.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(dashboard)/dashboard/projects/[slug]/_components/task-card.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/globals.css" beforeDir="false" afterPath="$PROJECT_DIR$/app/globals.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/ui/input.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/input.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/ui/loading-dots.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/loading-dots.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pnpm-lock.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pnpm-lock.yaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,7 +50,7 @@
     "code.cleanup.on.save": "true",
     "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "C:/Users/asus/Desktop/zeynal/web/projects/todoist/server",
+    "last_opened_file_path": "C:/Users/asus/Desktop/zeynal/web/projects/todoist/client/app/(dashboard)/dashboard/projects/[slug]/_components",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.standard": "true",
     "node.js.detected.package.tslint": "true",
@@ -76,11 +74,11 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\asus\Desktop\zeynal\web\projects\todoist\client\app\(dashboard)\dashboard\projects\[slug]\_components" />
       <recent name="D:\education\projects\todoist\client\app\(dashboard)\dashboard\projects\[slug]\settings" />
       <recent name="C:\Users\asus\Desktop\education\projects\todoist\client\app\(dashboard)\dashboard\_components" />
       <recent name="C:\Users\asus\Desktop\education\projects\todoist\client\app\(geist)\geist\dropdown-menu\_sections" />
       <recent name="C:\Users\asus\Desktop\education\projects\todoist\client\components\ui\primitives\popper" />
-      <recent name="C:\Users\asus\Desktop\education\projects\todoist\client\app\(geist)\geist" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\education\projects\todoist\client\app" />
@@ -231,7 +229,7 @@
       <workItem from="1743182345900" duration="251000" />
       <workItem from="1743182644683" duration="7687000" />
       <workItem from="1743275080825" duration="17000" />
-      <workItem from="1743275206250" duration="2488000" />
+      <workItem from="1743275206250" duration="17651000" />
     </task>
     <servers />
   </component>

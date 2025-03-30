@@ -20,6 +20,8 @@ import { format, formatDistance } from 'date-fns';
 import { useTransition } from 'react';
 import { Check, Clock, MoreHorizontal, Trash } from 'vercel-geist-icons';
 import TaskUpdatePriority from './task-update-priority';
+import UpdateTaskName from '@/app/(dashboard)/dashboard/projects/[slug]/_components/update-task-name';
+import UpdateTaskDescription from '@/app/(dashboard)/dashboard/projects/[slug]/_components/update-task-description';
 
 export default function TaskCard({
   task,
@@ -50,7 +52,7 @@ export default function TaskCard({
               task.priority === 'priority 3',
             'border-gray-500 hover:border-gray-700':
               task.priority === 'priority 4',
-          }
+          },
         )}
       >
         <div className="space-y-3">
@@ -76,7 +78,7 @@ export default function TaskCard({
                       task.priority === 'priority 3',
                     'border-gray-500 text-gray-900 hover:border-gray-700':
                       task.priority === 'priority 4',
-                  }
+                  },
                 )}
               >
                 <Check className="group-hover:opacity-100 opacity-0 transition-opacity" />
@@ -86,15 +88,15 @@ export default function TaskCard({
               </TooltipContent>
             </Tooltip>
             <div
-              className={cn('space-y-1 pl-3 border-l transition', {
+              className={cn('space-y-1 pl-3 border-l transition grow', {
                 'border-red-500': task.priority === 'priority 1',
                 'border-amber-500': task.priority === 'priority 2',
                 'border-blue-500': task.priority === 'priority 3',
                 'border-gray-500': task.priority === 'priority 4',
               })}
             >
-              <h4 className="text-sm font-medium">{task.name}</h4>
-              <p className="text-gray-900 line-clamp-2">{task.description}</p>
+              <UpdateTaskName task={task} />
+              {task.description && <UpdateTaskDescription task={task} />}
             </div>
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
