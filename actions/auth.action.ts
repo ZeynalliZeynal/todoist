@@ -103,8 +103,11 @@ export async function sendSignupEmail({
     const token = getTokenFromCookieHeader(res, 'verifyToken');
     await setVerifyCookies(token);
 
+    console.log(res.data, token);
+
     return res.data;
   } catch (err) {
+    console.log(err);
     return err as ServerResponse;
   }
 }

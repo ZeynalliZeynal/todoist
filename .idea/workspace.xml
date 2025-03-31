@@ -6,21 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="f03893d1-9795-491e-a4ee-0e50bf35b7b9" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/actions/project.action.ts" beforeDir="false" afterPath="$PROJECT_DIR$/actions/project.action.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/(dashboard)/_layout/header/notification/notification-popover-header.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(dashboard)/_layout/header/notification/notification-popover-header.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/(dashboard)/dashboard/account/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(dashboard)/dashboard/account/layout.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/(dashboard)/dashboard/projects/[slug]/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(dashboard)/dashboard/projects/[slug]/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/(dashboard)/dashboard/projects/[slug]/settings/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(dashboard)/dashboard/projects/[slug]/settings/layout.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/(landing)/_layout/footer/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(landing)/_layout/footer/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/(landing)/_layout/header/nav-right.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(landing)/_layout/header/nav-right.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/(landing)/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(landing)/layout.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/not-found.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/not-found.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/layout/responsive-nav-menu.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/layout/responsive-nav-menu.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/layout/user-dropdown-menu.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/layout/user-dropdown-menu.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/ui/grid/grid.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/grid/grid.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/ui/grid/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/grid/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/constants/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/constants/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes.ts" beforeDir="false" afterPath="$PROJECT_DIR$/routes.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -58,7 +43,7 @@
     &quot;code.cleanup.on.save&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
     &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/asus/Desktop/zeynal/web/projects/todoist/client/app/(dashboard)/dashboard/projects/[slug]/_components&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/asus/Desktop/zeynal/web/packages/everest-ui&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.standard&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
@@ -238,7 +223,8 @@
       <workItem from="1743182644683" duration="7687000" />
       <workItem from="1743275080825" duration="17000" />
       <workItem from="1743275206250" duration="17788000" />
-      <workItem from="1743318569719" duration="19408000" />
+      <workItem from="1743318569719" duration="22540000" />
+      <workItem from="1743423419589" duration="775000" />
     </task>
     <servers />
   </component>
