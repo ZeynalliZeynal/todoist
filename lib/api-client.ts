@@ -10,15 +10,14 @@ const apiClient = axios.create({
     'Content-Type': 'application/json',
     'ngrok-skip-browser-warning': 'ngrok',
   },
+  timeout: 10000,
 });
 
 apiClient.interceptors.request.use(
   async (config) => {
     const { accessToken } = await getAuthCookies();
 
-    const userAgent = (await headers()).get('user-agent');
-
-    config.headers['User-Agent'] = userAgent;
+    config.headers['User-Agent'] = (await headers()).get('user-agent');
     if (accessToken) {
       config.headers.Authorization = `Bearer ${accessToken}`;
     }
