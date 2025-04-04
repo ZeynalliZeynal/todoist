@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.9.2](https://github.com/ZeynalliZeynal/todoist/compare/v0.9.1...v0.9.2) (2025-04-04)
+
+
+### Features
+
+* show online statuses of members in real time ([9387476](https://github.com/ZeynalliZeynal/todoist/commit/9387476f19ef321e2bd683a354645a22482029d3))
+
 ### [0.9.1](https://github.com/ZeynalliZeynal/todoist/compare/v0.6.4...v0.9.1) (2025-03-30)
 
 
