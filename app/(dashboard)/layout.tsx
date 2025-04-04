@@ -1,6 +1,6 @@
 import DashboardFooter from '@/app/(dashboard)/_layout/footer';
 import DashboardHeader from '@/app/(dashboard)/_layout/header';
-import HeaderBottomLinks from '@/app/(dashboard)/_layout/header/header-bottom-links';
+import DashboardHeaderBottom from '@/app/(dashboard)/_layout/header/dashboard-header-bottom';
 
 export default async function DashboardLayout({
   children,
@@ -11,7 +11,7 @@ export default async function DashboardLayout({
     <div className="w-full min-h-screen flex-col flex justify-between">
       <DashboardHeader />
       <main className="flex-1">
-        <HeaderBottomLinks />
+        <DashboardHeaderBottom />
         {children}
       </main>
       <DashboardFooter />

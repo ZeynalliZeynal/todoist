@@ -9,7 +9,7 @@ import { motion, useScroll, useTransform } from 'framer-motion';
 
 const DEFAULT_HEADER_SIZE = 64;
 
-export const AnimatedLink = motion(Link);
+export const AnimatedLink = motion.create(Link);
 
 export default function DashboardAnimatedHeader({
   user,

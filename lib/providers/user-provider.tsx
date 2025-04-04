@@ -2,8 +2,9 @@
 
 import { createContext } from '@/utils/context';
 import { useUserStore } from '@/lib/stores/user-store';
-import React from 'react';
+import React, { useMemo } from 'react';
 import axios from 'axios';
+import { SocketClient } from '@/components/socket-client';
 
 const USER_PROVIDER_NAME = 'ProfileProvider';
 
@@ -33,6 +34,7 @@ export function UserProvider({
     const fetchProfile = async () => {
       if (initialProfile) {
         setProfile(initialProfile);
+
         return;
       }
 
@@ -43,12 +45,15 @@ export function UserProvider({
 
       try {
         setIsLoading(true);
-        const response = await axios('/profile', {
-          headers: {
-            'Content-Type': 'application/json',
-            Authorization: `Bearer ${token}`,
+        const response = await axios(
+          process.env.NEXT_PUBLIC_API_URL + '/profile',
+          {
+            headers: {
+              'Content-Type': 'application/json',
+              Authorization: `Bearer ${token}`,
+            },
           },
-        });
+        );
         setProfile(response.data?.user);
       } catch (error) {
         console.error('Failed to fetch profile:', error);
@@ -60,8 +65,14 @@ export function UserProvider({
     fetchProfile();
   }, [initialProfile, profile, lastFetched, setProfile, token]);
 
+  const memoizedProfile = useMemo(
+    () => profile || initialProfile,
+    [initialProfile, profile],
+  );
+
   return (
-    <ProfileProvider profile={profile || initialProfile} isLoading={isLoading}>
+    <ProfileProvider profile={memoizedProfile} isLoading={isLoading}>
+      {memoizedProfile?._id && <SocketClient userId={memoizedProfile._id} />}
       {children}
     </ProfileProvider>
   );

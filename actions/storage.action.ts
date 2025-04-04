@@ -20,6 +20,7 @@ export async function uploadFile({
         'Content-Type': 'multipart/form-data',
       },
     });
+
     return res.data;
   } catch (err) {
     return err;

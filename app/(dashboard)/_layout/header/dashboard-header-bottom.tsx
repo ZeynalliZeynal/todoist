@@ -21,7 +21,7 @@ import { ArrowUp } from 'vercel-geist-icons';
 
 const DEFAULT_HEADER_SIZE = 44;
 
-const AnimatedButton = motion(Button);
+const AnimatedButton = motion.create(Button);
 
 const project_header_links = (slug: string) => [
   {
@@ -34,9 +34,14 @@ const project_header_links = (slug: string) => [
     label: 'Settings',
     children: [],
   },
+  {
+    href: `/dashboard/projects/${slug}/invite`,
+    label: 'Invite',
+    children: [],
+  },
 ];
 
-export default function HeaderBottomLinks() {
+export default function DashboardHeaderBottom() {
   const [activePill, setActivePill] = useState(-1);
   const pathname = usePathname();
   const [showScrollTop, setShowScrollTop] = useState(false);

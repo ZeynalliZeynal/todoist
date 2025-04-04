@@ -13,6 +13,16 @@ declare global {
 
   type TaskPriority = (typeof PRIORITIES)[number];
 
+  interface Member {
+    id: string;
+    user: User;
+    memberships: {
+      entity: Project[];
+      entityType: string;
+    }[];
+    activated: boolean;
+  }
+
   interface Notification {
     id: string;
     name: string;
@@ -130,6 +140,8 @@ declare global {
     planId: string;
     updatedAt: Date;
     verifiedAt: Date;
+    online: boolean;
+    lastOnline?: Date;
     notifications: Notification[];
   }
 
