@@ -54,11 +54,11 @@ export default async function RootLayout({
             token={accessToken}
           >
             {children}
+            <FeedbackPopper />
           </UserProvider>
         </ThemeProvider>
         <Toaster />
         <CheckInternetConnection />
-        <FeedbackPopper />
       </body>
     </html>
   );

@@ -1,10 +1,9 @@
 'use client';
 
-import { createContext } from '@/utils/context';
-import { useUserStore } from '@/lib/stores/user-store';
-import React, { useMemo } from 'react';
-import axios from 'axios';
 import { SocketClient } from '@/components/socket-client';
+import { useUserStore } from '@/lib/stores/user-store';
+import { createContext } from '@/utils/context';
+import React, { useMemo } from 'react';
 
 const USER_PROVIDER_NAME = 'ProfileProvider';
 
@@ -21,53 +20,23 @@ export const useProfile = () => useProfileContext('useProfile');
 export function UserProvider({
   children,
   initialProfile,
-  token,
 }: {
   children: React.ReactNode;
   initialProfile?: User;
   token?: string;
 }) {
-  const { profile, lastFetched, setProfile } = useUserStore();
-  const [isLoading, setIsLoading] = React.useState(false);
+  const { profile, setProfile } = useUserStore();
+  const [isLoading] = React.useState(false);
 
   React.useEffect(() => {
-    const fetchProfile = async () => {
-      if (initialProfile) {
-        setProfile(initialProfile);
-
-        return;
-      }
-
-      const isFresh = lastFetched && Date.now() - lastFetched < 5 * 60 * 1000;
-      if (profile && isFresh) {
-        return;
-      }
-
-      try {
-        setIsLoading(true);
-        const response = await axios(
-          process.env.NEXT_PUBLIC_API_URL! + '/profile',
-          {
-            headers: {
-              'Content-Type': 'application/json',
-              Authorization: `Bearer ${token}`,
-            },
-          },
-        );
-        setProfile(response.data?.user);
-      } catch (error) {
-        console.error('Failed to fetch profile:', error);
-      } finally {
-        setIsLoading(false);
-      }
-    };
-
-    fetchProfile();
-  }, [initialProfile, profile, lastFetched, setProfile, token]);
+    if (initialProfile) {
+      setProfile(initialProfile);
+    }
+  }, [initialProfile, setProfile]);
 
   const memoizedProfile = useMemo(
     () => profile || initialProfile,
-    [initialProfile, profile],
+    [initialProfile, profile]
   );
 
   return (
