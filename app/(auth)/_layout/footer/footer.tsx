@@ -1,35 +1,43 @@
-import { Logo } from "@/components/ui/icons/logo";
-import Link from "next/link";
-import ThemeSwitch from "@/components/ui/theme";
-import { IoLogoGithub, IoLogoTwitter } from "react-icons/io5";
-import { authFooterLinks } from "@/constants";
+import { Logo } from '@/components/ui/icons/logo';
+import Link from 'next/link';
+import ThemeSwitch from '@/components/ui/theme';
+import { IoLogoGithub } from 'react-icons/io5';
+import { footerLinks } from '@/constants';
+import { appConfig } from '@/config/app.config';
 
 export default function Footer() {
   return (
     <footer className="px-6 pt-7 pb-8">
       <div className="max-w-6xl mx-auto">
         <div className="flex items-center justify-between">
-          <div className="flex items-center gap-5">
-            <Link href="/">
-              <Logo />
+          <div className="flex items-center gap-4">
+            <Link
+              href="/"
+              className="hover:!text-foreground text-gray-900 transition"
+              title="Home"
+              aria-label="Home"
+            >
+              <Logo className="size-5 text-inherit" />
             </Link>
             <nav className="flex items-center justify-between text-gray-900">
-              <ul className="flex items-center justify-between flex-1">
-                <li className="flex items-center gap-5">
-                  <Link href="#" className="hover:text-foreground transition">
+              <ul className="flex items-center justify-between flex-1 gap-2">
+                <li className="flex items-center">
+                  <Link
+                    href={appConfig.links.github}
+                    className="hover:text-foreground transition"
+                    aria-label="Github repo"
+                    title="Github repo"
+                  >
                     <IoLogoGithub size={20} />
                   </Link>
-                  <Link href="#" className="hover:text-foreground transition">
-                    <IoLogoTwitter size={20} />
-                  </Link>
                 </li>
-                {authFooterLinks.map((item, index) => (
+                {footerLinks.map((item, index) => (
                   <li key={index} className="px-2 leading-5 capitalize">
                     <Link
                       href={item.href}
                       className="hover:text-foreground transition-colors"
                     >
-                      {item.name}
+                      {item.label}
                     </Link>
                   </li>
                 ))}
@@ -49,7 +57,7 @@ export default function Footer() {
         </div>
         <div className="mt-8">
           <span className="text-gray-900 text-xs">
-            @ {new Date().getFullYear()}, Todoist NEXT Inc.
+            @ {new Date().getFullYear()}, {appConfig.author}.
           </span>
         </div>
       </div>

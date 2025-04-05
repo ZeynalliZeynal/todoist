@@ -2,10 +2,15 @@ import Link from 'next/link';
 import LoginForm from '@/components/auth/login-form';
 import { HeaderLogin } from '@/app/(auth)/_layout/header/header';
 import Footer from '@/app/(auth)/_layout/footer/footer';
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Login to Todoist Next',
+};
 
 export default function Page() {
   return (
-    <div className="bg-background-100">
+    <div className="bg-background-200">
       <div className="flex min-h-screen flex-col">
         <HeaderLogin />
         <main className="flex-1 max-w-full flex">

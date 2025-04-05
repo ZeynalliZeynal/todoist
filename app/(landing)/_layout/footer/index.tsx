@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { Logo } from '@/components/ui/icons/logo';
 import ThemeSwitch from '@/components/ui/theme';
-import { contactRoute, dashboardRoute, featuresRoute } from '@/routes';
+import { footerLinks } from '@/constants';
 
 export default function Footer() {
   return (
@@ -10,33 +10,18 @@ export default function Footer() {
         <div className="space-y-4">
           <div className="flex justify-between">
             <div className="flex gap-4 items-center">
-              <Link href="/dashboard">
+              <Link href="/">
                 <Logo className="size-4" />
               </Link>
-              <Link
-                href="/"
-                className="text-accent-500 hover:text-foreground transition"
-              >
-                Home
-              </Link>
-              <Link
-                href={contactRoute}
-                className="text-accent-500 hover:text-foreground transition"
-              >
-                Contact
-              </Link>
-              <Link
-                href={dashboardRoute}
-                className="text-accent-500 hover:text-foreground transition"
-              >
-                Dashboard
-              </Link>
-              <Link
-                href={featuresRoute}
-                className="text-accent-500 hover:text-foreground transition"
-              >
-                Features
-              </Link>
+              {footerLinks.map((link) => (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className="text-accent-500 hover:text-foreground transition"
+                >
+                  {link.label}
+                </Link>
+              ))}
             </div>
             <ThemeSwitch />
           </div>

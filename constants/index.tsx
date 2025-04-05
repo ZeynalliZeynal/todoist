@@ -1,5 +1,6 @@
 import { Nextjs } from '@/components/ui/icons/geist';
 import { Logo } from '@/components/ui/icons/logo';
+import { contactRoute, dashboardRoute, featuresRoute } from '@/routes';
 
 export const navItems = [
   {
@@ -54,74 +55,11 @@ export const navItems = [
   },
 ];
 
-export const authFooterLinks = [
-  {
-    name: 'home',
-    href: '/',
-  },
-  {
-    name: 'pricing',
-    href: '/pricing',
-  },
-  {
-    name: 'templates',
-    href: '/templates',
-  },
-  {
-    name: 'getting started',
-    href: '/getting-started',
-  },
-  {
-    name: 'help center',
-    href: '/help',
-  },
-  {
-    name: 'downloads',
-    href: '/downloads',
-  },
-];
-
 export const footerLinks = [
-  {
-    title: 'Features',
-    children: [
-      { name: 'How It Works', href: '/features' },
-      { name: 'Pricing', href: '/pricing' },
-      { name: 'Templates', href: '/templates' },
-    ],
-  },
-  {
-    title: 'Resources',
-    children: [
-      { name: 'Download Apps', href: '/downloads' },
-      { name: 'Help Center', href: '/help' },
-      { name: 'Productivity Methods', href: '/productivity-methods' },
-      { name: 'Integrations', href: '/integrations' },
-      { name: 'Channel Partners', href: '/channel-partners' },
-    ],
-  },
-  {
-    title: 'Company',
-    children: [
-      {
-        name: 'About Us',
-        href: 'https://doist.com/?utm_source=todoist&utm_medium=landing_page&utm_campaign=home',
-      },
-      {
-        name: 'Careers',
-        href: 'https://doist.com/jobs?utm_source=todoist&utm_medium=landing_page&utm_campaign=home',
-      },
-      { name: 'Inspiration Hub', href: '/inspiration' },
-      {
-        name: 'Press',
-        href: 'https://doist.com/press/?utm_source=todoist&utm_medium=landing_page&utm_campaign=home',
-      },
-      {
-        name: 'Twist',
-        href: 'https://twist.com/?utm_source=todoist&utm_medium=landing_page&utm_campaign=home',
-      },
-    ],
-  },
+  { href: '/', label: 'Home' },
+  { href: contactRoute, label: 'Contact' },
+  { href: dashboardRoute, label: 'Dashboard' },
+  { href: featuresRoute, label: 'Features' },
 ];
 
 type LinkProps = {

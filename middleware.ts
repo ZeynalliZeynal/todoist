@@ -7,12 +7,12 @@ export default async function middleware(request: NextRequest) {
   const { accessToken } = await getAuthCookies();
 
   const profile = await getCachedProfile().catch(async (error) => {
-    if (error.status === 'fail') {
+    if (error?.status === 'fail') {
       await clearAuthCookies();
     }
   });
 
-  if (profile.status === 'fail') {
+  if (profile?.status === 'fail') {
     await clearAuthCookies();
   }
 

@@ -28,7 +28,7 @@ export default function LoginOtpForm({
       <div className="flex flex-col justify-center">
         <h1 className="text-3xl mb-4">Verification</h1>
         <div className="flex flex-col gap-5">
-          <p className="text-sm">
+          <p className="text-sm text-gray-900">
             If you have an account, we have sent a code to <b>{email}</b>. Enter
             it below.
           </p>
@@ -46,7 +46,7 @@ export default function LoginOtpForm({
                   const res = await login({ otp });
                   if (res.status === 'fail')
                     setError(
-                      'The entered code is incorrect. Please try again and check for typos.'
+                      'The entered code is incorrect. Please try again and check for typos.',
                     );
                   else if (res.status === 'success') redirect(dashboardRoute);
                 })
@@ -63,7 +63,7 @@ export default function LoginOtpForm({
             href="/auth/login"
             className={cn(
               'text-base text-blue-900 font-medium mx-auto relative w-fit',
-              'after:absolute after:w-full after:h-px after:bg-blue-900 after:-bottom-px after:left-0 after:opacity-0 hover:after:opacity-100 after:transition'
+              'after:absolute after:w-full after:h-px after:bg-blue-900 after:-bottom-px after:left-0 after:opacity-0 hover:after:opacity-100 after:transition',
             )}
             onClick={goBack}
           >

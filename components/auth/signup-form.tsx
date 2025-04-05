@@ -1,9 +1,10 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import SignupSelectPlans from '@/components/auth/signup-select-plans';
 import SignupSendEmail from '@/components/auth/signup-send-email';
 import SignupOtp from '@/components/auth/signup-otp';
+import { useSearchParams } from 'next/navigation';
 
 export type Pages = 'plans' | 'form' | 'otp';
 
@@ -13,6 +14,12 @@ export default function SignupForm({ plans }: { plans: Plan[] }) {
   const [email, setEmail] = useState('');
   const [page, setPage] = useState<Pages>('plans');
   const [otp, setOtp] = useState('');
+
+  const searchParams = useSearchParams();
+
+  useEffect(() => {
+    if (searchParams.get('token')) setPage('otp');
+  }, [searchParams]);
 
   return (
     <main className="max-w-[550px] w-full mx-auto flex rounded-xl flex-col justify-center border bg-background-100">

@@ -12,7 +12,7 @@ export default function Error({
   console.error(error);
   return (
     <div className="center fixed inset-0 z-50 bg-background-200 font-geist-mono rounded-xl p-6">
-      <div className="space-y-4">
+      <div className="space-y-6">
         <PiWarningOctagonFill className="mx-auto" size={64} />
         <div className="flex flex-col gap-10 items-center">
           <div className="text-3xl font-semibold">Something went wrong!</div>
@@ -20,7 +20,7 @@ export default function Error({
         </div>
         <div className="flex items-center gap-3">
           <ButtonLink
-            href="/dashboard"
+            href="/"
             className="flex-1"
             size="lg"
             prefix={<CornerDownLeft />}

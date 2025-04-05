@@ -15,7 +15,7 @@ export default function NavRightDropdown() {
           href="/geist/introduction"
           className="h-8 rounded-md w-32 [&_span]:rounded-md font-geist-mono"
         >
-          <Geist className="mr-2 group-hover:rotate-180 origin-center transition duration-300" />
+          <Geist className="mr-2 group-hover:scale-125 origin-center transition duration-300" />
           Geist UI
         </SpecialButton>
         <ButtonLink size="sm" href="/contact">
@@ -33,7 +33,7 @@ export default function NavRightDropdown() {
         href="/geist/introduction"
         className="h-8 rounded-md w-32 [&_span]:rounded-md font-geist-mono"
       >
-        <Geist className="mr-2 group-hover:rotate-180 origin-center transition duration-300" />
+        <Geist className="mr-2 group-hover:scale-125 origin-center transition duration-300" />
         Geist UI
       </SpecialButton>
       <ButtonLink size="sm" href="/auth/login">

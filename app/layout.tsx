@@ -7,6 +7,8 @@ import { Toaster } from '@/components/ui/sonner';
 import { UserProvider } from '@/lib/providers/user-provider';
 import { getCachedProfile } from '@/actions/profile.action';
 import { getAuthCookies } from '@/utils/cookies';
+import CheckInternetConnection from '@/components/check-internet-connection';
+import FeedbackPopper from '@/components/feedback-popper';
 
 const geistSans = localFont({
   src: './fonts/GeistVF.woff',
@@ -55,6 +57,8 @@ export default async function RootLayout({
           </UserProvider>
         </ThemeProvider>
         <Toaster />
+        <CheckInternetConnection />
+        <FeedbackPopper />
       </body>
     </html>
   );

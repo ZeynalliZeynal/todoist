@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.10.1
+
+### Patch Changes
+
+- add toast to show if user is offline
+
 ## 0.10.0
 
 ### Minor Changes
