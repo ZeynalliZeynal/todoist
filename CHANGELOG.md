@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.10.3](https://github.com/ZeynalliZeynal/todoist/compare/v0.10.2...v0.10.3) (2025-04-05)
+
+
+### Features
+
+* validate fields in feedback popper and send feedback ([e6a2c69](https://github.com/ZeynalliZeynal/todoist/commit/e6a2c69aaa9243a037cac6024f9c3abd520e19bd))
+
 ### [0.10.2](https://github.com/ZeynalliZeynal/todoist/compare/v0.9.2...v0.10.2) (2025-04-05)
 
 
