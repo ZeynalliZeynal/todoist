@@ -1,5 +1,14 @@
 # Changelog
 
+All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
+
+### [0.10.2](https://github.com/ZeynalliZeynal/todoist/compare/v0.9.2...v0.10.2) (2025-04-05)
+
+
+### Features
+
+* add feedback popper ([e3062e9](https://github.com/ZeynalliZeynal/todoist/commit/e3062e928bd0dfd06d58f1d036ea662a47ca5c2e))
+
 ## 0.10.1
 
 ### Patch Changes
