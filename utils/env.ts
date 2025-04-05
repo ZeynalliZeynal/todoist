@@ -7,5 +7,4 @@ export function getEnv(key: string, defaultValue?: string | number): string {
 }
 
 export const api_url = getEnv('NEXT_PUBLIC_API_URL');
-export const socket_url = getEnv('NEXT_PUBLIC_SOCKET_URL');
 export const node_env = getEnv('NODE_ENV');

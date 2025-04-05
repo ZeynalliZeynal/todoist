@@ -4,7 +4,7 @@ import { getAuthCookies } from '@/utils/cookies';
 import { headers } from 'next/headers';
 
 const apiClient = axios.create({
-  baseURL: api_url,
+  baseURL: api_url + '/api/v1',
   withCredentials: true,
   headers: {
     'Content-Type': 'application/json',

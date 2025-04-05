@@ -1,6 +1,12 @@
 import SessionsSection from '@/app/(dashboard)/dashboard/account/sessions/_sections/sessions-section';
 import Skeleton from '@/components/ui/skeleton';
 import { Suspense } from 'react';
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Sessions',
+  description: 'Update your sessions here.',
+};
 
 export default async function SessionsPage() {
   return (

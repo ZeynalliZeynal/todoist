@@ -16,6 +16,7 @@ declare global {
   interface Member {
     id: string;
     user: User;
+    description?: string;
     memberships: {
       entity: Project[];
       entityType: string;

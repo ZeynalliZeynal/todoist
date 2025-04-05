@@ -26,7 +26,10 @@ const poppins = Poppins({
 });
 
 export const metadata: Metadata = {
-  title: 'TodoistNext',
+  title: {
+    template: '%s / Todoist Next',
+    default: 'Welcome to Todoist Next',
+  },
   description: 'TodoistNext | Organize your work and life',
 };
 

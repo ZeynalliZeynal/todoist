@@ -75,7 +75,6 @@ export default async function FeaturesSection() {
             </ul>
           </div>
         </section>
-
         <Banner variant="blue" fill className="col-span-3" icon={<StarFill />}>
           More features are on the way
         </Banner>

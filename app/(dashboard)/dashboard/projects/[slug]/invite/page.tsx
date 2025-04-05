@@ -3,10 +3,14 @@ import EmptyState from '@/components/ui/empty-state';
 import { User } from 'vercel-geist-icons';
 import MemberCard from '@/app/(dashboard)/dashboard/projects/[slug]/invite/_components/member-card';
 
+export const metadata = {
+  title: 'Invite members',
+  description: 'Add one or multiple members to your project.',
+};
+
 export default async function ProjectMembersPage() {
   const members = await getMembers();
 
-  console.log(members);
   return (
     <section>
       <div className="space-y-3">

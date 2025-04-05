@@ -2,6 +2,11 @@ import UpdateProjectSection from '@/app/(dashboard)/dashboard/projects/[slug]/se
 import { getProjects } from '@/actions/project.action';
 import DeleteProjectSection from '@/app/(dashboard)/dashboard/projects/[slug]/settings/_sections/delete-project-section';
 
+export const metadata = {
+  title: 'Settings',
+  description: `Manage your project settings`,
+};
+
 export default async function SettingsPage({
   params,
 }: {

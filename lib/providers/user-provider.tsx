@@ -46,7 +46,7 @@ export function UserProvider({
       try {
         setIsLoading(true);
         const response = await axios(
-          process.env.NEXT_PUBLIC_API_URL + '/profile',
+          process.env.NEXT_PUBLIC_API_URL! + '/profile',
           {
             headers: {
               'Content-Type': 'application/json',
@@ -72,7 +72,7 @@ export function UserProvider({
 
   return (
     <ProfileProvider profile={memoizedProfile} isLoading={isLoading}>
-      {memoizedProfile?._id && <SocketClient userId={memoizedProfile._id} />}
+      <SocketClient userId={memoizedProfile?._id} />
       {children}
     </ProfileProvider>
   );

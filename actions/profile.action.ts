@@ -23,7 +23,7 @@ export const getCachedProfile = async () => {
 
     const { accessToken } = await getAuthCookies();
 
-    const response = await fetch(api_url + '/profile', {
+    const response = await fetch(api_url + '/api/v1' + '/profile', {
       headers: {
         'Content-Type': 'application/json',
         Authorization: `Bearer ${accessToken}`,

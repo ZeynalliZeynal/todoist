@@ -2,11 +2,12 @@
 
 import { Input } from '@/components/ui/input';
 import { MagnifyingGlass } from 'vercel-geist-icons';
-import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { cn } from '@/lib/utils';
-import { accountRoute, notificationsRoute, sessionsRoute } from '@/routes';
+import { accountSettingsRoute } from '@/routes';
 import DashboardAsideContainer from '@/app/(dashboard)/_layout/dashboard-aside-container';
+import { dashboardLinks } from '@/app/(dashboard)/_constants/links';
+import Link from 'next/link';
+import { cn } from '@/lib/utils';
 
 export default function AccountAsideLinks() {
   const pathname = usePathname();
@@ -21,33 +22,20 @@ export default function AccountAsideLinks() {
         size="medium"
       />
       <div className="flex flex-col">
-        <Link
-          href={accountRoute}
-          className={cn(
-            'flex items-center rounded-md hover:bg-gray-alpha-100 text-gray-900 py-2.5 px-3 transition',
-            pathname === accountRoute && 'text-foreground font-medium',
-          )}
-        >
-          General
-        </Link>
-        <Link
-          href={sessionsRoute}
-          className={cn(
-            'flex items-center rounded-md hover:bg-gray-alpha-100 text-gray-900 py-2.5 px-3 transition',
-            pathname === sessionsRoute && 'text-foreground font-medium',
-          )}
-        >
-          Sessions
-        </Link>
-        <Link
-          href={notificationsRoute}
-          className={cn(
-            'flex items-center rounded-md hover:bg-gray-alpha-100 text-gray-900 py-2.5 px-3 transition',
-            pathname === notificationsRoute && 'text-foreground font-medium',
-          )}
-        >
-          Notifications
-        </Link>
+        {dashboardLinks
+          .find((l) => l.href === accountSettingsRoute)
+          ?.children?.map((link) => (
+            <Link
+              key={link.href}
+              href={link.href}
+              className={cn(
+                'flex items-center rounded-md hover:bg-gray-alpha-100 text-gray-900 py-2.5 px-3 transition',
+                pathname === link.href && 'text-foreground font-medium',
+              )}
+            >
+              {link.label}
+            </Link>
+          ))}
       </div>
     </DashboardAsideContainer>
   );

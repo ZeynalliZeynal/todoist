@@ -1,5 +1,12 @@
 import AccountAsideLinks from '@/app/(dashboard)/dashboard/account/_layout/account-aside-links';
 import PageHeader from '@/app/(dashboard)/_layout/header/page-header';
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: { template: '%s / Account', default: 'Account' },
+  description:
+    'Update your notifications, memberships, sessions, and your profile here.',
+};
 
 export default function AccountLayout({
   children,

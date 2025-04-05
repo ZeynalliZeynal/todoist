@@ -1,20 +1,25 @@
 # Changelog
 
+## 0.10.0
+
+### Minor Changes
+
+- Fix socket issue: socket was being called for each member card which is not good. instead, user store is used to store the online users to track the statuses
+- Add /dashboard/account/membership page to create and manage membership profile
+
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
 ### [0.9.2](https://github.com/ZeynalliZeynal/todoist/compare/v0.9.1...v0.9.2) (2025-04-04)
 
-
 ### Features
 
-* show online statuses of members in real time ([9387476](https://github.com/ZeynalliZeynal/todoist/commit/9387476f19ef321e2bd683a354645a22482029d3))
+- show online statuses of members in real time ([9387476](https://github.com/ZeynalliZeynal/todoist/commit/9387476f19ef321e2bd683a354645a22482029d3))
 
 ### [0.9.1](https://github.com/ZeynalliZeynal/todoist/compare/v0.6.4...v0.9.1) (2025-03-30)
 
-
 ### Features
 
-* add features page ([1738821](https://github.com/ZeynalliZeynal/todoist/commit/17388217bec8cba341fc421079af5a0f38f7aa0f))
+- add features page ([1738821](https://github.com/ZeynalliZeynal/todoist/commit/17388217bec8cba341fc421079af5a0f38f7aa0f))
 
 ## 0.9.0
 

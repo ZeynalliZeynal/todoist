@@ -2,7 +2,7 @@ import { cn } from '@/lib/utils';
 import React from 'react';
 import styles from './grid.module.css';
 
-interface GridProps extends React.HTMLAttributes<HTMLElement> {
+interface GridOwnProps {
   rows?: number;
   columns?: number;
   smColumns?: number;
@@ -14,13 +14,14 @@ interface GridProps extends React.HTMLAttributes<HTMLElement> {
   xlColumns?: number;
   xlRows?: number;
   aspectRatio?: boolean;
-  children?:
-    | React.ReactElement<GridCellProps>
-    | React.ReactElement<GridCellProps>[];
-  as?: React.ElementType;
+  children?: React.ReactNode;
 }
 
-export function Grid({
+type GridProps<C extends React.ElementType> = GridOwnProps & {
+  as?: C;
+} & Omit<React.ComponentPropsWithRef<C>, keyof GridOwnProps | 'as'>;
+
+export function Grid<C extends React.ElementType = 'div'>({
   children,
   columns = 1,
   smColumns,
@@ -34,15 +35,18 @@ export function Grid({
   xlRows,
   aspectRatio,
   className,
-  as: Component = 'div',
+  as,
   ...props
-}: GridProps) {
+}: GridProps<C>): React.ReactElement {
+  const Component = as || 'div';
+
   return (
+    // @ts-expect-error could not solve as prop issue
     <Component
       data-grid-container=""
       data-grid-aspect-ratio={aspectRatio ? '' : undefined}
       className={cn(styles.container, className)}
-      {...props}
+      {...(props as React.ComponentPropsWithoutRef<C>)}
       style={
         {
           '--rows': rows,

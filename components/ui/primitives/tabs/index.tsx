@@ -70,6 +70,7 @@ export function Tab<T extends React.ElementType = 'div'>({
   const active = isPillActive ? 'pill' : isIndicatorActive ? 'indicator' : null;
 
   return (
+    // @ts-expect-error could not solve as prop issue
     <Component
       role="tab"
       data-active={active}

@@ -6,6 +6,12 @@ interface UserStore {
   isPending: boolean;
   error: string | null;
   lastFetched: number | null;
+
+  isOnline: (userId: string) => boolean;
+  onlineUsers: Set<string>;
+  setOnline: (userId: string) => void;
+  setOffline: (userId: string) => void;
+
   setProfile: (user: User | null) => void;
   setPending: (isPending: boolean) => void;
   setError: (error: string | null) => void;
@@ -14,15 +20,32 @@ interface UserStore {
 
 export const useUserStore = create<UserStore>()(
   persist(
-    (setState) => ({
+    (set, get) => ({
       profile: null,
       isPending: false,
       error: null,
       lastFetched: null,
-      setProfile: (profile) => setState({ profile, lastFetched: Date.now() }),
-      setPending: (isPending) => setState({ isPending }),
-      setError: (error) => setState({ error }),
-      clearUser: () => setState({ profile: null, lastFetched: null }),
+
+      isOnline: (userId: string) =>
+        Array.from(get().onlineUsers).includes(userId),
+      onlineUsers: new Set<string>([]),
+      setOnline: (userId: string) =>
+        set((state) => {
+          const updated = new Set(Array.from(state.onlineUsers));
+          updated.add(userId);
+          return { onlineUsers: updated };
+        }),
+      setOffline: (userId: string) =>
+        set((state) => {
+          const updated = new Set(Array.from(state.onlineUsers));
+          updated.delete(userId);
+          return { onlineUsers: updated };
+        }),
+
+      setProfile: (profile) => set({ profile, lastFetched: Date.now() }),
+      setPending: (isPending) => set({ isPending }),
+      setError: (error) => set({ error }),
+      clearUser: () => set({ profile: null, lastFetched: null }),
     }),
     {
       name: 'user-storage',

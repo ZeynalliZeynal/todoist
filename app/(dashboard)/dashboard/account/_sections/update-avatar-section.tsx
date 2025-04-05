@@ -78,7 +78,7 @@ export default function UpdateAvatarSection({ user }: { user: User }) {
                 </AnimatedPopperContent>
               </AnimatedPopper>
               <TooltipProvider>
-                <div className="flex gap-2 items-center">
+                <div className="flex gap-2 justify-center items-center">
                   <Tooltip>
                     <Dropzone
                       accept={{
@@ -100,7 +100,10 @@ export default function UpdateAvatarSection({ user }: { user: User }) {
                               });
                               if (res?.status === 'success') {
                                 await updateProfile({
-                                  avatar: res?.data?.fileUrl,
+                                  avatar: res?.data?.fileUrl.substring(
+                                    0,
+                                    res?.data?.fileUrl.indexOf('?'),
+                                  ),
                                 });
                               }
                             } catch (error) {
