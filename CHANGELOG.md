@@ -1,5 +1,14 @@
 # Changelog
 
+All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
+
+### [0.11.1](https://github.com/ZeynalliZeynal/todoist/compare/v0.10.3...v0.11.1) (2025-04-06)
+
+
+### Features
+
+* fullscreen mode in feedback popper ([94e3019](https://github.com/ZeynalliZeynal/todoist/commit/94e30195a5a14d3aae2b847993a82fa0e80210e8))
+
 ## 0.11.0
 
 ### Minor Changes
