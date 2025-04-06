@@ -1,8 +1,7 @@
-import Image from 'next/image';
-import { FaAndroid, FaApple } from 'react-icons/fa6';
 import { Button } from '@/components/ui/button';
 import { LogoInvert } from '@/components/ui/icons/logo';
-import Templates from '@/app/(landing)/_sections/templates';
+import Image from 'next/image';
+import { FaAndroid, FaApple } from 'react-icons/fa6';
 
 export default function Home() {
   return (
@@ -48,7 +47,7 @@ export default function Home() {
           </div>
         </div>
       </section>
-      <Templates />
+      {/* <Templates /> */}
     </>
   );
 }

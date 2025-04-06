@@ -127,7 +127,7 @@ export function Editor({
               formData.append('file', file);
 
               try {
-                const res = await uploadFile({ file, prefix: 'avatars' });
+                const res = await uploadFile({ file, prefix: 'feedbacks' });
                 if (res?.status === 'success') {
                   view.dispatch(
                     view.state.tr.replaceSelectionWith(
@@ -253,7 +253,7 @@ export function Editor({
                 const file = input.files?.[0];
                 if (!file) return;
 
-                const res = await uploadFile({ file, prefix: 'avatars' });
+                const res = await uploadFile({ file, prefix: 'feedbacks' });
 
                 if (res?.status === 'success') {
                   editor

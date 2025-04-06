@@ -11,10 +11,15 @@ import {
 import { useOutsideClick } from '@/hooks/use-ui';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { AnimatePresence, motion } from 'framer-motion';
-import { useState } from 'react';
+import { Dispatch, SetStateAction, useState } from 'react';
 import ReactFocusLock from 'react-focus-lock';
 import { FormProvider, useForm, useFormContext } from 'react-hook-form';
-import { Message, PaperAirplane } from 'vercel-geist-icons';
+import {
+  Fullscreen,
+  FullscreenClose,
+  Message,
+  PaperAirplane,
+} from 'vercel-geist-icons';
 import { z } from 'zod';
 import StarRating from './ui/star-rating';
 import { sendFeedback } from '@/actions/feedback.action';
@@ -25,6 +30,8 @@ import LoadingDots from './ui/loading-dots';
 export default function FeedbackPopper() {
   const { profile } = useProfile();
   const [open, setOpen] = useState(false);
+  const [fullscreen, setFullscreen] = useState(false);
+
   const form = useForm({
     defaultValues: {
       content: '',
@@ -40,11 +47,14 @@ export default function FeedbackPopper() {
     ),
   });
 
+  function closePopper() {
+    setOpen(false);
+    form.reset();
+    setFullscreen(false);
+  }
+
   const ref = useOutsideClick({
-    action: () => {
-      setOpen(false);
-      form.reset();
-    },
+    action: closePopper,
   });
 
   if (!profile) return null;
@@ -56,8 +66,12 @@ export default function FeedbackPopper() {
           ref={ref}
           className="fixed bg-background-100 z-50 bottom-4 right-4 *:size-full overflow-hidden border rounded-lg"
           variants={{
+            fullscreen: {
+              width: 'calc(100vw - 2rem)',
+              height: 'calc(100vh - 2rem)',
+            },
             expand: {
-              width: '40vw',
+              width: '50vw',
               height: '50vh',
             },
             initial: {
@@ -65,24 +79,31 @@ export default function FeedbackPopper() {
               height: 34,
             },
           }}
-          animate={open ? 'expand' : 'initial'}
+          animate={open ? (fullscreen ? 'fullscreen' : 'expand') : 'initial'}
         >
-          <FormProvider {...form}>
-            <form
-              onSubmit={form.handleSubmit(async (fieldValues) => {
-                const response = await sendFeedback(fieldValues);
-                if (response.status === 'fail') {
-                  toast.error(response.message);
-                } else {
-                  toast.success(response.message);
-                  form.reset();
-                  setOpen(false);
-                }
-              })}
-            >
-              <AnimatePresence>{open && <FeedbackEditor />}</AnimatePresence>
-            </form>
-          </FormProvider>
+          <AnimatePresence>
+            {open && (
+              <FormProvider {...form}>
+                <form
+                  onSubmit={form.handleSubmit(async (fieldValues) => {
+                    const response = await sendFeedback(fieldValues);
+                    if (response.status === 'fail') {
+                      toast.error(response.message);
+                    } else {
+                      toast.success(response.message);
+                      form.reset();
+                      setOpen(false);
+                    }
+                  })}
+                >
+                  <FeedbackEditor
+                    fullscreen={fullscreen}
+                    setFullscreen={setFullscreen}
+                  />
+                </form>
+              </FormProvider>
+            )}
+          </AnimatePresence>
           <AnimatePresence>
             {!open && (
               <Tooltip>
@@ -113,7 +134,13 @@ export default function FeedbackPopper() {
   );
 }
 
-function FeedbackEditor() {
+function FeedbackEditor({
+  fullscreen,
+  setFullscreen,
+}: {
+  fullscreen: boolean;
+  setFullscreen: Dispatch<SetStateAction<boolean>>;
+}) {
   const form = useFormContext<{
     content: string;
     rating: number;
@@ -133,12 +160,23 @@ function FeedbackEditor() {
       }}
       className="flex flex-col h-full"
     >
-      <div className="border-b p-3 shrink-0">
-        <p>Give a feedback!</p>
-        <p className="text-gray-900 text-xs">
-          Maybe you got some interesting ideas on your mind or you just want to
-          say &quot;Hello&quot;? 🤔
-        </p>
+      <div className="flex items-center justify-between border-b p-3 shrink-0">
+        <div>
+          <p>Give a feedback!</p>
+          <p className="text-gray-900 text-xs">
+            Maybe you got some interesting ideas on your mind or you just want
+            to say &quot;Hello&quot;? 🤔
+          </p>
+        </div>
+        <Button
+          onClick={() => setFullscreen((prevState) => !prevState)}
+          iconOnly
+          variant="tertiary"
+          title={!fullscreen ? 'Expand' : 'Collapse'}
+          aria-label={!fullscreen ? 'Expand' : 'Collapse'}
+        >
+          {fullscreen ? <FullscreenClose /> : <Fullscreen />}
+        </Button>
       </div>
       <div className="overflow-auto flex-grow">
         <Editor
