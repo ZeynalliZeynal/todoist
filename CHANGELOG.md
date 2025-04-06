@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.11.2](https://github.com/ZeynalliZeynal/todoist/compare/v0.11.1...v0.11.2) (2025-04-06)
+
+
+### Features
+
+* add alert dialog to confirm the exit action of feedback popper if user entered some content. ([6c798ab](https://github.com/ZeynalliZeynal/todoist/commit/6c798abc18ec3f7b9846cf396a2a8298f3636a87))
+
 ### [0.11.1](https://github.com/ZeynalliZeynal/todoist/compare/v0.10.3...v0.11.1) (2025-04-06)
 
 
