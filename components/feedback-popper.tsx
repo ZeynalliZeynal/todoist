@@ -42,8 +42,7 @@ export default function FeedbackPopper() {
   const [open, setOpen] = useState(false);
   const [fullscreen, setFullscreen] = useState(false);
   const [confirmOpen, setConfirmOpen] = useState(false);
-  const [confirmExit, setConfirmExit] = useState(true);
-
+  
   const form = useForm({
     defaultValues: {
       content: '',
