@@ -10,6 +10,7 @@ import {
 import { cn } from '@/lib/utils';
 import { EditorContent, useEditor } from '@tiptap/react';
 import React, { ReactNode } from 'react';
+import { LuUnderline } from 'react-icons/lu';
 import {
   Code,
   CodeBlock,
@@ -18,16 +19,26 @@ import {
   TextBold,
   TextItalic,
   TextStrikethrough,
+  Image,
 } from 'vercel-geist-icons';
+import Kbd from './kbd';
 
 // extensions
-import { Image } from '@tiptap/extension-image';
-import { Link as LinkExtension } from '@tiptap/extension-link';
-import Placeholder from '@tiptap/extension-placeholder';
-import { Underline } from '@tiptap/extension-underline';
-import StarterKit from '@tiptap/starter-kit';
-import { LuUnderline } from 'react-icons/lu';
-import Kbd from './kbd';
+import { TiptapExtensions } from '@/lib/tiptap';
+import { uploadFile } from '@/actions/storage.action';
+import { toast } from 'sonner';
+
+const allowedImageTypes = [
+  'image/bmp',
+  'image/gif',
+  'image/jpeg',
+  'image/jpg',
+  'image/png',
+  'image/tiff',
+  'image/webp',
+  'image/x-icon',
+  'text/html',
+];
 
 export function EditorToggleButton({
   className,
@@ -71,13 +82,13 @@ export function Editor({
 }) {
   const editor = useEditor({
     extensions: [
-      StarterKit,
-      Image,
-      LinkExtension,
-      Underline,
-      Placeholder.configure({
+      TiptapExtensions.StarterKit,
+      TiptapExtensions.Link,
+      TiptapExtensions.Underline,
+      TiptapExtensions.Placeholder.configure({
         placeholder: 'Write down here...',
       }),
+      TiptapExtensions.Image,
     ],
     content,
     immediatelyRender: false,
@@ -87,6 +98,63 @@ export function Editor({
       else onChange(value);
     },
     enableInputRules: true,
+    editorProps: {
+      handlePaste(view, event) {
+        const clipboardItems = event.clipboardData
+          ? Array.from(event.clipboardData.items)
+          : [];
+
+        // Look for an image file in the pasted items
+        const imageItem = clipboardItems.find(
+          (item) =>
+            item.kind === 'file' && allowedImageTypes.includes(item.type)
+        );
+
+        if (imageItem) {
+          // We have an image file, so handle it asynchronously
+          void (async () => {
+            try {
+              const blob = imageItem.getAsFile();
+              if (!blob) return;
+
+              const extension = imageItem.type.split('/')[1];
+              const file = new File([blob], `image.${extension}`, {
+                type: imageItem.type,
+              });
+
+              // Optionally, you can append to a FormData if needed by your uploadFile function
+              const formData = new FormData();
+              formData.append('file', file);
+
+              try {
+                const res = await uploadFile({ file, prefix: 'avatars' });
+                if (res?.status === 'success') {
+                  view.dispatch(
+                    view.state.tr.replaceSelectionWith(
+                      view.state.schema.nodes.image.create({
+                        src: res.data.fileUrl,
+                      })
+                    )
+                  );
+                } else {
+                  toast.error(res.message);
+                  console.error(res);
+                }
+              } catch (uploadError) {
+                console.error(uploadError);
+              }
+            } catch (e) {
+              console.error('Error reading clipboard:', e);
+            }
+          })();
+          // Return true to block default paste behavior when pasting an image
+          return true;
+        }
+
+        // For non-image content (e.g. text), allow the default paste behavior
+        return false;
+      },
+    },
   });
 
   if (!editor) {
@@ -171,6 +239,43 @@ export function Editor({
             onClick={() => editor?.chain().toggleCodeBlock().focus().run()}
           >
             <CodeBlock />
+          </EditorToggleButton>
+          <div className="mx-1 w-px h-6 bg-gray-400" />
+          <EditorToggleButton
+            tooltip="Insert image"
+            toggled={editor?.isActive('image')}
+            onClick={() => {
+              const input = document.createElement('input');
+              input.type = 'file';
+              input.accept = 'image/*';
+
+              input.onchange = async () => {
+                const file = input.files?.[0];
+                if (!file) return;
+
+                const res = await uploadFile({ file, prefix: 'avatars' });
+
+                if (res?.status === 'success') {
+                  editor
+                    .chain()
+                    .focus()
+                    .setImage({
+                      src: res?.data?.fileUrl.substring(
+                        0,
+                        res?.data?.fileUrl.indexOf('?')
+                      ),
+                    })
+                    .run();
+                } else {
+                  toast.error(res.message);
+                  console.error('Upload failed:', res);
+                }
+              };
+
+              input.click();
+            }}
+          >
+            <Image />
           </EditorToggleButton>
           <div className="mx-1 w-px h-6 bg-gray-400" />
           {children}
