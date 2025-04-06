@@ -23,6 +23,8 @@ export const getCachedProfile = async () => {
 
     const { accessToken } = await getAuthCookies();
 
+    if (!accessToken) throw { status: 'fail', message: 'Unauthorized' };
+
     const response = await fetch(api_url + '/api/v1' + '/profile', {
       headers: {
         'Content-Type': 'application/json',
