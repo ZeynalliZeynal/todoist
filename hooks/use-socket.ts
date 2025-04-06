@@ -8,7 +8,7 @@ export function useSocket({ userId }: { userId?: string }): Socket | null {
 
   useEffect(() => {
     if (userId && !socketRef.current) {
-      const socketInstance = io(process.env.NEXT_PUBLIC_API_URL!, {
+      const socketInstance = io(process.env.NEXT_SERVER_API_URL!, {
         transports: ['websocket'],
         query: {
           userId,

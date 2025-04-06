@@ -26,11 +26,23 @@ import { sendFeedback } from '@/actions/feedback.action';
 import { toast } from 'sonner';
 import { useProfile } from '@/lib/providers/user-provider';
 import LoadingDots from './ui/loading-dots';
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+} from '@/components/ui/alert-dialog';
 
 export default function FeedbackPopper() {
   const { profile } = useProfile();
   const [open, setOpen] = useState(false);
   const [fullscreen, setFullscreen] = useState(false);
+  const [confirmOpen, setConfirmOpen] = useState(false);
+  const [confirmExit, setConfirmExit] = useState(true);
 
   const form = useForm({
     defaultValues: {
@@ -43,14 +55,19 @@ export default function FeedbackPopper() {
         content: z.string().min(1, 'Content is required'),
         rating: z.number().min(1, 'Rating is required'),
         page: z.string().optional(),
-      })
+      }),
     ),
   });
 
-  function closePopper() {
-    setOpen(false);
-    form.reset();
-    setFullscreen(false);
+  function closePopper(force?: boolean): void {
+    if (!force && extractTextFromHtml(form.watch('content')).length > 0) {
+      setConfirmOpen(true);
+      return;
+    } else {
+      form.reset();
+      setFullscreen(false);
+      setOpen(false);
+    }
   }
 
   const ref = useOutsideClick({
@@ -61,6 +78,33 @@ export default function FeedbackPopper() {
 
   return (
     <ReactFocusLock disabled={!open}>
+      <AlertDialog open={confirmOpen} onOpenChange={setConfirmOpen}>
+        <AlertDialogContent>
+          <AlertDialogHeader className="p-6">
+            <AlertDialogTitle className="text-xl">
+              Are you sure?
+            </AlertDialogTitle>
+            <AlertDialogDescription className="text-gray-900">
+              You are going to lose your content. Do you want to discard your
+              changes?
+            </AlertDialogDescription>
+          </AlertDialogHeader>
+          <AlertDialogFooter>
+            <AlertDialogCancel asChild>
+              <Button size="md">Cancel</Button>
+            </AlertDialogCancel>
+            <AlertDialogAction asChild>
+              <Button
+                size="md"
+                variant="secondary"
+                onClick={() => closePopper(true)}
+              >
+                Discard
+              </Button>
+            </AlertDialogAction>
+          </AlertDialogFooter>
+        </AlertDialogContent>
+      </AlertDialog>
       <TooltipProvider delayDuration={0}>
         <motion.div
           ref={ref}

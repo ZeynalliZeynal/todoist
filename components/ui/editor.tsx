@@ -15,11 +15,11 @@ import {
   Code,
   CodeBlock,
   Command,
+  Image,
   Shift,
   TextBold,
   TextItalic,
   TextStrikethrough,
-  Image,
 } from 'vercel-geist-icons';
 import Kbd from './kbd';
 
@@ -57,7 +57,7 @@ export function EditorToggleButton({
           className={cn(
             'text-gray-800 data-[hover]:text-foreground rounded',
             toggled && 'bg-gray-200',
-            className
+            className,
           )}
           {...props}
         />
@@ -107,7 +107,7 @@ export function Editor({
         // Look for an image file in the pasted items
         const imageItem = clipboardItems.find(
           (item) =>
-            item.kind === 'file' && allowedImageTypes.includes(item.type)
+            item.kind === 'file' && allowedImageTypes.includes(item.type),
         );
 
         if (imageItem) {
@@ -133,8 +133,8 @@ export function Editor({
                     view.state.tr.replaceSelectionWith(
                       view.state.schema.nodes.image.create({
                         src: res.data.fileUrl,
-                      })
-                    )
+                      }),
+                    ),
                   );
                 } else {
                   toast.error(res.message);
@@ -262,7 +262,7 @@ export function Editor({
                     .setImage({
                       src: res?.data?.fileUrl.substring(
                         0,
-                        res?.data?.fileUrl.indexOf('?')
+                        res?.data?.fileUrl.indexOf('?'),
                       ),
                     })
                     .run();
@@ -279,21 +279,12 @@ export function Editor({
           </EditorToggleButton>
           <div className="mx-1 w-px h-6 bg-gray-400" />
           {children}
-          {/*<EditorToggleButton*/}
-          {/*  tooltip="Insert link"*/}
-          {/*  toggled={editor.isActive('link')}*/}
-          {/*  onClick={() =>*/}
-          {/*    editor.chain().toggleLink({ href: '' }).focus().run()*/}
-          {/*  }*/}
-          {/*>*/}
-          {/*  <Link />*/}
-          {/*</EditorToggleButton>*/}
         </div>
         <EditorContent
           editor={editor}
           className={cn(
             'size-full p-3',
-            '[&_.tiptap]:size-full [&_.tiptap]:outline-none'
+            '[&_.tiptap]:size-full [&_.tiptap]:outline-none',
           )}
         />
       </div>

@@ -6,5 +6,5 @@ export function getEnv(key: string, defaultValue?: string | number): string {
   return value;
 }
 
-export const api_url = getEnv('NEXT_PUBLIC_API_URL');
+export const api_url = getEnv('NEXT_SERVER_API_URL');
 export const node_env = getEnv('NODE_ENV');

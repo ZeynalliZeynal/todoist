@@ -6,24 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="f03893d1-9795-491e-a4ee-0e50bf35b7b9" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CHANGELOG.md" beforeDir="false" afterPath="$PROJECT_DIR$/CHANGELOG.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/(auth)/_layout/footer/footer.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(auth)/_layout/footer/footer.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/(auth)/auth/login/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(auth)/auth/login/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/(auth)/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(auth)/layout.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/(landing)/_layout/footer/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(landing)/_layout/footer/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/(landing)/_layout/header/nav-right-dropdown.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(landing)/_layout/header/nav-right-dropdown.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/error.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/error.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/layout.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/auth/login-form.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/auth/login-form.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/auth/login-otp-form.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/auth/login-otp-form.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/auth/signup-form.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/auth/signup-form.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/auth/signup-send-email.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/auth/signup-send-email.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/ui/icons/logo.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/icons/logo.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/constants/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/constants/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/middleware.ts" beforeDir="false" afterPath="$PROJECT_DIR$/middleware.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pnpm-lock.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pnpm-lock.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/utils/cookies.ts" beforeDir="false" afterPath="$PROJECT_DIR$/utils/cookies.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/feedback-popper.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/feedback-popper.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/ui/editor.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/editor.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hooks/use-socket.ts" beforeDir="false" afterPath="$PROJECT_DIR$/hooks/use-socket.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/env.ts" beforeDir="false" afterPath="$PROJECT_DIR$/utils/env.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -246,7 +232,8 @@
       <workItem from="1743710026333" duration="3075000" />
       <workItem from="1743793649796" duration="14051000" />
       <workItem from="1743833740115" duration="20307000" />
-      <workItem from="1743858703365" duration="10266000" />
+      <workItem from="1743858703365" duration="17959000" />
+      <workItem from="1743967401455" duration="1468000" />
     </task>
     <servers />
   </component>
