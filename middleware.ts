@@ -17,7 +17,7 @@ export default async function middleware(request: NextRequest) {
   }
 
   const isProtectedRoute = request.nextUrl.pathname.startsWith(
-    DEFAULT_LOGIN_REDIRECT,
+    DEFAULT_LOGIN_REDIRECT
   );
   const isAuthRoute = authRoutes.includes(request.nextUrl.pathname);
 
@@ -26,7 +26,7 @@ export default async function middleware(request: NextRequest) {
 
   if (isAuthRoute && accessToken)
     return NextResponse.redirect(
-      new URL(DEFAULT_LOGIN_REDIRECT, request.nextUrl),
+      new URL(DEFAULT_LOGIN_REDIRECT, request.nextUrl)
     );
   return NextResponse.next();
 }
