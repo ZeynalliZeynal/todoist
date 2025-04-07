@@ -15,7 +15,7 @@ export default function NavLinks() {
   const pathname = usePathname();
 
   return (
-    <Tabs className="lg:flex hidden [&_[data-active-pill]]:rounded-full">
+    <Tabs className="flex md:hidden [&_[data-active-pill]]:rounded-full">
       {navItems.map(({ name, href }, index) => (
         <Tab
           key={index}
@@ -29,7 +29,7 @@ export default function NavLinks() {
             data-value={name}
             className={cn(
               'relative z-[1] capitalize leading-[1] gap-1 px-3 py-2 text-gray-900 hover:text-foreground transition flex items-center rounded-full',
-              pathname === href && 'text-foreground'
+              pathname === href && 'text-foreground',
             )}
           >
             {name}

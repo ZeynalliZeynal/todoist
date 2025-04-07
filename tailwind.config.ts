@@ -10,7 +10,12 @@ export default {
   theme: {
     extend: {
       screens: {
-        xl: '1150px',
+        '2xl': { max: '1535px' },
+        xl: { max: '1279px' },
+        lg: { max: '1023px' },
+        md: { max: '767px' },
+        sm: { max: '639px' },
+        xs: { max: '479px' },
         geist: '1220px',
         dashboard: '1408px',
         'dashboard-sub': '1248px',

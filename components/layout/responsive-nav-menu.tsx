@@ -53,12 +53,12 @@ export default function ResponsiveNavMenu({
   }, [router]);
 
   return (
-    <div className="lg:hidden">
+    <div className="hidden md:block">
       <button
         aria-label={isNavMenuOpen ? 'Close menu' : 'Open menu'}
         data-expanded={isNavMenuOpen}
         className={cn(
-          'size-8 border bg-background-200 center lg:hidden rounded-full hover:bg-gray-100 transition',
+          'size-8 border bg-background-200 hidden md:center rounded-full hover:bg-gray-100 transition',
         )}
         onClick={toggleMenu}
       >
@@ -69,8 +69,8 @@ export default function ResponsiveNavMenu({
         )}
       </button>
       {isNavMenuOpen && (
-        <div className="fixed inset-0 top-16 max-h-screen bg-background-200 size-full">
-          <div className="px-3 overflow-y-auto">
+        <div className="fixed inset-0 z-50 top-16 max-h-screen bg-background-200 size-full">
+          <div className="px-3 overflow-y-auto size-full">
             <section className="mx-3 flex flex-col gap-4 py-3 [&>a]:w-full">
               {profile?.name ? (
                 <>

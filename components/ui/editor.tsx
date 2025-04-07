@@ -8,15 +8,11 @@ import {
   TooltipTrigger,
 } from '@/components/ui/tooltip';
 import { cn } from '@/lib/utils';
-import { EditorContent, useEditor } from '@tiptap/react';
+import { Editor, EditorContent, useEditor } from '@tiptap/react';
 import React, { ReactNode } from 'react';
 import { LuUnderline } from 'react-icons/lu';
 import {
-  Code,
-  CodeBlock,
-  Command,
   Image,
-  Shift,
   TextBold,
   TextItalic,
   TextStrikethrough,
@@ -27,6 +23,7 @@ import Kbd from './kbd';
 import { TiptapExtensions } from '@/lib/tiptap';
 import { uploadFile } from '@/actions/storage.action';
 import { toast } from 'sonner';
+import { Level } from '@tiptap/extension-heading';
 
 const allowedImageTypes = [
   'image/bmp',
@@ -71,14 +68,196 @@ export function EditorToggleButton({
   );
 }
 
-export function Editor({
+export function EditorToolbarSeparator({
+  ...props
+}: React.ComponentProps<'div'>) {
+  return (
+    <div
+      className={cn('mx-1 w-px h-6 bg-gray-400 shrink-0', props.className)}
+      {...props}
+    />
+  );
+}
+
+type MarkType = 'bold' | 'italic' | 'underline' | 'strike';
+interface EditorToolbarProps extends React.ComponentProps<'div'> {
+  editor: Editor;
+  features?: {
+    heading?: Level;
+    mark?: MarkType[];
+    insert?: {
+      image?: boolean;
+      link?: boolean;
+    };
+    counter?: {
+      character?: boolean;
+      word?: boolean;
+    };
+  };
+}
+export function EditorToolbar({
+  children,
+  editor,
+  className,
+  features,
+  ...props
+}: EditorToolbarProps) {
+  if (!editor) {
+    return null;
+  }
+  if (!editor) return null;
+
+  const markButtons: Record<MarkType, { icon: ReactNode; shortcut: string }> = {
+    bold: { icon: <TextBold />, shortcut: '⌘ + B' },
+    italic: { icon: <TextItalic />, shortcut: '⌘ + I' },
+    underline: { icon: <LuUnderline />, shortcut: '⌘ + U' },
+    strike: { icon: <TextStrikethrough />, shortcut: '⌘ + ⇧ + S' },
+  };
+
+  const renderMarkButtons = () => (
+    <>
+      {features?.mark?.map((mark) => {
+        const { icon, shortcut } = markButtons[mark];
+        return (
+          <EditorToggleButton
+            key={mark}
+            tooltip={
+              <>
+                Toggle {mark} <Kbd>{shortcut}</Kbd>
+              </>
+            }
+            toggled={editor.isActive(mark)}
+            onClick={() => editor.chain().toggleMark(mark).focus().run()}
+          >
+            {icon}
+          </EditorToggleButton>
+        );
+      })}
+      <EditorToolbarSeparator />
+    </>
+  );
+
+  const renderHeadingButtons = () =>
+    features?.heading ? (
+      <>
+        {Array.from({ length: features.heading }, () => {
+          const level = features.heading as Level;
+          return (
+            <EditorToggleButton
+              key={`heading-${level}`}
+              tooltip={
+                <>
+                  Heading {level} <Kbd>{'#'.repeat(level)}</Kbd>
+                </>
+              }
+              toggled={editor.isActive('heading', { level })}
+              onClick={() =>
+                editor.chain().toggleHeading({ level }).focus().run()
+              }
+            >
+              H{level}
+            </EditorToggleButton>
+          );
+        })}
+        <EditorToolbarSeparator />
+      </>
+    ) : null;
+
+  return (
+    <div
+      className={cn(
+        'overflow-x-auto gap-1 flex items-center bg-background-200',
+        className,
+      )}
+      style={{
+        scrollbarWidth: 'none',
+        ...props.style,
+      }}
+      {...props}
+    >
+      {renderHeadingButtons()}
+      {renderMarkButtons()}
+      {features?.insert && (
+        <div className="flex items-center gap-1">
+          {features?.insert?.image && (
+            <EditorToggleButton
+              tooltip="Insert image"
+              toggled={editor?.isActive('image')}
+              onClick={() => {
+                const input = document.createElement('input');
+                input.type = 'file';
+                input.accept = 'image/*';
+
+                input.onchange = async () => {
+                  const file = input.files?.[0];
+                  if (!file) return;
+
+                  const res = await uploadFile({ file, prefix: 'feedbacks' });
+
+                  if (res?.status === 'success') {
+                    editor
+                      .chain()
+                      .focus()
+                      .setImage({
+                        src: res?.data?.fileUrl.substring(
+                          0,
+                          res?.data?.fileUrl.indexOf('?'),
+                        ),
+                      })
+                      .run();
+                  } else {
+                    toast.error(res.message);
+                    console.error('Upload failed:', res);
+                  }
+                };
+
+                input.click();
+              }}
+            >
+              <Image />
+            </EditorToggleButton>
+          )}
+          <EditorToolbarSeparator />
+        </div>
+      )}
+      {children}
+      <div className="flex items-center gap-1 ml-auto">
+        {features?.counter && features.counter.character && (
+          <Tooltip>
+            <TooltipTrigger className="center text-gray-900 size-10 cursor-default">
+              {editor.storage.characterCount.characters()}
+            </TooltipTrigger>
+            <TooltipContent>Character count</TooltipContent>
+          </Tooltip>
+        )}
+        {features?.counter && features.counter.word && (
+          <Tooltip>
+            <TooltipTrigger className="center text-gray-900 size-10 cursor-default">
+              {editor.storage.characterCount.words()}
+            </TooltipTrigger>
+            <TooltipContent>Word count</TooltipContent>
+          </Tooltip>
+        )}
+      </div>
+    </div>
+  );
+}
+
+export function EditorContainer({
   children,
   content,
   onChange,
+  features,
+  toolbar,
 }: {
   children: ReactNode;
   content: string;
   onChange: (content: string) => void;
+  features?: {
+    heading?: Level;
+    mark?: MarkType[];
+  };
+  toolbar?: typeof EditorToolbar;
 }) {
   const editor = useEditor({
     extensions: [
@@ -89,6 +268,7 @@ export function Editor({
         placeholder: 'Write down here...',
       }),
       TiptapExtensions.Image,
+      TiptapExtensions.CharacterCount,
     ],
     content,
     immediatelyRender: false,
@@ -104,14 +284,12 @@ export function Editor({
           ? Array.from(event.clipboardData.items)
           : [];
 
-        // Look for an image file in the pasted items
         const imageItem = clipboardItems.find(
           (item) =>
             item.kind === 'file' && allowedImageTypes.includes(item.type),
         );
 
         if (imageItem) {
-          // We have an image file, so handle it asynchronously
           void (async () => {
             try {
               const blob = imageItem.getAsFile();
@@ -122,7 +300,6 @@ export function Editor({
                 type: imageItem.type,
               });
 
-              // Optionally, you can append to a FormData if needed by your uploadFile function
               const formData = new FormData();
               formData.append('file', file);
 
@@ -147,11 +324,9 @@ export function Editor({
               console.error('Error reading clipboard:', e);
             }
           })();
-          // Return true to block default paste behavior when pasting an image
           return true;
         }
 
-        // For non-image content (e.g. text), allow the default paste behavior
         return false;
       },
     },
@@ -164,122 +339,27 @@ export function Editor({
   return (
     <TooltipProvider disableHoverableContent>
       <div className="tiptap-container size-full">
-        <div className="p-1 border-b text-xs flex items-center gap-1">
-          <EditorToggleButton
-            tooltip={
-              <>
-                Toggle bold{' '}
-                <Kbd>
-                  <Command />
-                  +B
-                </Kbd>
-              </>
+        {React.isValidElement(toolbar) ? (
+          React.cloneElement(toolbar, {
+            editor,
+          } as React.ComponentProps<typeof EditorToolbar>)
+        ) : (
+          <EditorToolbar
+            editor={editor}
+            features={
+              features || {
+                mark: ['bold', 'italic', 'underline', 'strike'],
+                counter: { character: true },
+                insert: {
+                  image: true,
+                },
+              }
             }
-            toggled={editor.isActive('bold')}
-            onClick={() => editor.chain().toggleBold().focus().run()}
+            className="border-b sticky top-0 z-50"
           >
-            <TextBold />
-          </EditorToggleButton>
-          <EditorToggleButton
-            tooltip={
-              <>
-                Toggle italic{' '}
-                <Kbd>
-                  <Command />
-                  +I
-                </Kbd>
-              </>
-            }
-            toggled={editor.isActive('italic')}
-            onClick={() => editor.chain().toggleItalic().focus().run()}
-          >
-            <TextItalic />
-          </EditorToggleButton>
-          <EditorToggleButton
-            tooltip={
-              <>
-                Toggle underline{' '}
-                <Kbd>
-                  <Command />
-                  +U
-                </Kbd>
-              </>
-            }
-            toggled={editor.isActive('underline')}
-            onClick={() => editor.chain().toggleUnderline().focus().run()}
-          >
-            <LuUnderline />
-          </EditorToggleButton>
-          <EditorToggleButton
-            tooltip={
-              <>
-                Toggle strike through{' '}
-                <Kbd>
-                  <Command />+<Shift />
-                  +S
-                </Kbd>
-              </>
-            }
-            toggled={editor.isActive('strike')}
-            onClick={() => editor.chain().toggleStrike().focus().run()}
-          >
-            <TextStrikethrough />
-          </EditorToggleButton>
-          <div className="mx-1 w-px h-6 bg-gray-400" />
-          <EditorToggleButton
-            tooltip="Toggle inline code"
-            toggled={editor.isActive('code')}
-            onClick={() => editor.chain().toggleCode().focus().run()}
-          >
-            <Code />
-          </EditorToggleButton>
-          <EditorToggleButton
-            tooltip="Toggle code block"
-            toggled={editor?.isActive('codeBlock')}
-            onClick={() => editor?.chain().toggleCodeBlock().focus().run()}
-          >
-            <CodeBlock />
-          </EditorToggleButton>
-          <div className="mx-1 w-px h-6 bg-gray-400" />
-          <EditorToggleButton
-            tooltip="Insert image"
-            toggled={editor?.isActive('image')}
-            onClick={() => {
-              const input = document.createElement('input');
-              input.type = 'file';
-              input.accept = 'image/*';
-
-              input.onchange = async () => {
-                const file = input.files?.[0];
-                if (!file) return;
-
-                const res = await uploadFile({ file, prefix: 'feedbacks' });
-
-                if (res?.status === 'success') {
-                  editor
-                    .chain()
-                    .focus()
-                    .setImage({
-                      src: res?.data?.fileUrl.substring(
-                        0,
-                        res?.data?.fileUrl.indexOf('?'),
-                      ),
-                    })
-                    .run();
-                } else {
-                  toast.error(res.message);
-                  console.error('Upload failed:', res);
-                }
-              };
-
-              input.click();
-            }}
-          >
-            <Image />
-          </EditorToggleButton>
-          <div className="mx-1 w-px h-6 bg-gray-400" />
-          {children}
-        </div>
+            {children}
+          </EditorToolbar>
+        )}
         <EditorContent
           editor={editor}
           className={cn(

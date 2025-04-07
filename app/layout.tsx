@@ -54,7 +54,7 @@ export default async function RootLayout({
             token={accessToken}
           >
             {children}
-            <FeedbackPopper />
+            {accessToken && <FeedbackPopper />}
           </UserProvider>
         </ThemeProvider>
         <Toaster />

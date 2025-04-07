@@ -1,7 +1,11 @@
 'use client';
 
 import { Button } from '@/components/ui/button';
-import { Editor, extractTextFromHtml } from '@/components/ui/editor';
+import {
+  EditorContainer,
+  EditorToolbarSeparator,
+  extractTextFromHtml,
+} from '@/components/ui/editor';
 import {
   Tooltip,
   TooltipContent,
@@ -11,7 +15,7 @@ import {
 import { useOutsideClick } from '@/hooks/use-ui';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { AnimatePresence, motion } from 'framer-motion';
-import { Dispatch, SetStateAction, useState } from 'react';
+import React, { Dispatch, SetStateAction, useEffect, useState } from 'react';
 import ReactFocusLock from 'react-focus-lock';
 import { FormProvider, useForm, useFormContext } from 'react-hook-form';
 import {
@@ -24,7 +28,6 @@ import { z } from 'zod';
 import StarRating from './ui/star-rating';
 import { sendFeedback } from '@/actions/feedback.action';
 import { toast } from 'sonner';
-import { useProfile } from '@/lib/providers/user-provider';
 import LoadingDots from './ui/loading-dots';
 import {
   AlertDialog,
@@ -36,18 +39,24 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
 } from '@/components/ui/alert-dialog';
+import { usePathname } from 'next/navigation';
+import { cn } from '@/lib/utils';
+import { useMediaQuery } from '@/hooks/user-media-query';
 
 export default function FeedbackPopper() {
-  const { profile } = useProfile();
+  const pathname = usePathname();
+
+  const isTablet = useMediaQuery('(max-width: 767px)');
+
   const [open, setOpen] = useState(false);
   const [fullscreen, setFullscreen] = useState(false);
   const [confirmOpen, setConfirmOpen] = useState(false);
-  
+
   const form = useForm({
     defaultValues: {
       content: '',
       rating: 0,
-      page: undefined,
+      page: pathname,
     },
     resolver: zodResolver(
       z.object({
@@ -73,7 +82,9 @@ export default function FeedbackPopper() {
     action: closePopper,
   });
 
-  if (!profile) return null;
+  useEffect(() => {
+    form.setValue('page', pathname);
+  }, [form, pathname, open]);
 
   return (
     <ReactFocusLock disabled={!open}>
@@ -107,22 +118,31 @@ export default function FeedbackPopper() {
       <TooltipProvider delayDuration={0}>
         <motion.div
           ref={ref}
-          className="fixed bg-background-100 z-50 bottom-4 right-4 *:size-full overflow-hidden border rounded-lg"
+          className={cn(
+            'fixed bg-background-100 z-50 bottom-4 right-4 *:size-full overflow-hidden border rounded-lg',
+          )}
           variants={{
             fullscreen: {
               width: 'calc(100vw - 2rem)',
               height: 'calc(100vh - 2rem)',
+              maxWidth: 'calc(100vw - 2rem)',
+              maxHeight: 'calc(100vh - 2rem)',
             },
             expand: {
-              width: '50vw',
-              height: '50vh',
+              width: isTablet ? 'calc(100vw - 2rem)' : '648px',
+              height: isTablet ? '300px' : '400px',
+              maxWidth: isTablet ? 'calc(100vw - 2rem)' : '648px',
+              maxHeight: isTablet ? '300px' : '400px',
             },
             initial: {
               width: 34,
               height: 34,
+              maxWidth: '34px',
+              maxHeight: '34px',
             },
           }}
           animate={open ? (fullscreen ? 'fullscreen' : 'expand') : 'initial'}
+          transition={{ type: 'spring', stiffness: 300, damping: 30 }}
         >
           <AnimatePresence>
             {open && (
@@ -222,7 +242,7 @@ function FeedbackEditor({
         </Button>
       </div>
       <div className="overflow-auto flex-grow">
-        <Editor
+        <EditorContainer
           content={form.watch('content')}
           onChange={(value) => form.setValue('content', value)}
         >
@@ -238,10 +258,18 @@ function FeedbackEditor({
             </TooltipTrigger>
             <TooltipContent>Rate your experience</TooltipContent>
           </Tooltip>
-          <span className="inline-block text-gray-900 ml-auto">
-            {extractTextFromHtml(form.watch('content')).length}
-          </span>
-        </Editor>
+          <EditorToolbarSeparator />
+          <Tooltip>
+            <TooltipTrigger>
+              <input
+                type="text"
+                className="px-2 h-6 rounded border outline-none"
+                {...form.register('page')}
+              />
+            </TooltipTrigger>
+            <TooltipContent>Page you&#39;re having issue at</TooltipContent>
+          </Tooltip>
+        </EditorContainer>
       </div>
       <div className="border-t bg-background-200 p-3 shrink-0">
         <Button

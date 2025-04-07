@@ -6,10 +6,22 @@
   <component name="ChangeListManager">
     <list default="true" id="f03893d1-9795-491e-a4ee-0e50bf35b7b9" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/(landing)/_layout/footer/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(landing)/_layout/footer/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/(landing)/_layout/header/header.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(landing)/_layout/header/header.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/(landing)/_layout/header/nav-links.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(landing)/_layout/header/nav-links.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/(landing)/_layout/header/nav-right-dropdown.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(landing)/_layout/header/nav-right-dropdown.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/(landing)/contact/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(landing)/contact/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/(landing)/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(landing)/layout.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/(landing)/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(landing)/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/(landing)/pricing/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/(landing)/pricing/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/layout.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/feedback-popper.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/feedback-popper.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/layout/responsive-nav-menu.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/layout/responsive-nav-menu.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/ui/editor.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ui/editor.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hooks/use-socket.ts" beforeDir="false" afterPath="$PROJECT_DIR$/hooks/use-socket.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/utils/env.ts" beforeDir="false" afterPath="$PROJECT_DIR$/utils/env.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/tiptap/extensions.ts" beforeDir="false" afterPath="$PROJECT_DIR$/lib/tiptap/extensions.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pnpm-lock.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pnpm-lock.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tailwind.config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/tailwind.config.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -233,7 +245,8 @@
       <workItem from="1743793649796" duration="14051000" />
       <workItem from="1743833740115" duration="20307000" />
       <workItem from="1743858703365" duration="17959000" />
-      <workItem from="1743967401455" duration="1468000" />
+      <workItem from="1743967401455" duration="1566000" />
+      <workItem from="1744043720684" duration="9167000" />
     </task>
     <servers />
   </component>
