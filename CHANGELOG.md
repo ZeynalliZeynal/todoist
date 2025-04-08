@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.11.3](https://github.com/ZeynalliZeynal/todoist/compare/v0.11.2...v0.11.3) (2025-04-08)
+
+
+### Features
+
+* responsive feedback popper ([0ed3338](https://github.com/ZeynalliZeynal/todoist/commit/0ed33383240fcb3c06b32bcc3e8bbf7db80ad023))
+
+
+### Bug Fixes
+
+* increase body size limit for server actions ([102f02a](https://github.com/ZeynalliZeynal/todoist/commit/102f02a649cda3efa348a8ec5a444d43a0cb2f3f))
+
 ### [0.11.2](https://github.com/ZeynalliZeynal/todoist/compare/v0.11.1...v0.11.2) (2025-04-06)
 
 
