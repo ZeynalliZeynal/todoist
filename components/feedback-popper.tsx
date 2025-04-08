@@ -41,12 +41,9 @@ import {
 } from '@/components/ui/alert-dialog';
 import { usePathname } from 'next/navigation';
 import { cn } from '@/lib/utils';
-import { useMediaQuery } from '@/hooks/user-media-query';
 
 export default function FeedbackPopper() {
   const pathname = usePathname();
-
-  const isTablet = useMediaQuery('(max-width: 767px)');
 
   const [open, setOpen] = useState(false);
   const [fullscreen, setFullscreen] = useState(false);

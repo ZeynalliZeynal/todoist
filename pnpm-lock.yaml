@@ -116,6 +116,9 @@ importers:
       lucide-react:
         specifier: ^0.473.0
         version: 0.473.0(react@19.0.0-rc-66855b96-20241106)
+      marked:
+        specifier: ^15.0.8
+        version: 15.0.8
       next:
         specifier: 15.1.2
         version: 15.1.2(react-dom@19.0.0-rc-66855b96-20241106(react@19.0.0-rc-66855b96-20241106))(react@19.0.0-rc-66855b96-20241106)
@@ -2892,6 +2895,11 @@ packages:
 
   markdown-it@14.1.0:
     resolution: {integrity: sha512-a54IwgWPaeBCAAsv13YgmALOF1elABB08FxO9i+r4VFk5Vl4pKokRPeX8u5TCgSsPi6ec1otfLjdOpVcgbpshg==}
+    hasBin: true
+
+  marked@15.0.8:
+    resolution: {integrity: sha512-rli4l2LyZqpQuRve5C0rkn6pj3hT8EWPC+zkAxFTAJLxRbENfTAhEQq9itrmf1Y81QtAX5D/MYlGlIomNgj9lA==}
+    engines: {node: '>= 18'}
     hasBin: true
 
   matchmediaquery@0.4.2:
@@ -7134,6 +7142,8 @@ snapshots:
       mdurl: 2.0.0
       punycode.js: 2.3.1
       uc.micro: 2.1.0
+
+  marked@15.0.8: {}
 
   matchmediaquery@0.4.2:
     dependencies:

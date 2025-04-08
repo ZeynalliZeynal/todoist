@@ -1,8 +1,9 @@
 import TasksSection from '@/app/(dashboard)/dashboard/projects/[slug]/_sections/tasks-section';
 import { getTasks } from '@/actions/task.action';
 import { getTaskTags } from '@/actions/task-tag.action';
-import { getProjects } from '@/actions/project.action';
+import { getCachedProjects } from '@/actions/project.action';
 import PageHeader from '@/app/(dashboard)/_layout/header/page-header';
+import ProjectMemberList from '@/app/(dashboard)/dashboard/projects/[slug]/_sections/project-member-list';
 
 export default async function ProjectPage({
   params,
@@ -14,7 +15,7 @@ export default async function ProjectPage({
   const [tasks, taskTags, project] = await Promise.all([
     getTasks({ project: slug }),
     getTaskTags(),
-    getProjects({ slug }),
+    getCachedProjects({ slug }),
   ]);
 
   return (
@@ -24,7 +25,9 @@ export default async function ProjectPage({
         tasks={tasks.tasks?.filter((task: Task) => !task.completed)}
         tags={taskTags.tags}
         project={project.projects?.at(0)}
-      />
+      >
+        <ProjectMemberList project={project.projects?.at(0)} />
+      </TasksSection>
     </div>
   );
 }

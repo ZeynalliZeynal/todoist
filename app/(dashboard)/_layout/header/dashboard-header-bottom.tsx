@@ -96,9 +96,9 @@ export default function DashboardHeaderBottom() {
                 key={index}
                 className={cn(
                   'h-8',
-                  pathname === link.href ||
-                    (link?.children?.some((item) => pathname === item.href) &&
-                      'text-foreground'),
+                  (pathname === link.href ||
+                    link?.children?.some((item) => pathname === item.href)) &&
+                    'text-foreground',
                 )}
               >
                 {link.label}

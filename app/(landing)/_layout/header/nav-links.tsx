@@ -7,15 +7,13 @@ import { cn } from '@/utils/lib';
 import React from 'react';
 import { Tab, Tabs } from '@/components/ui/tabs';
 
-export type Direction = 'ltr' | 'rtl' | null;
-
 export default function NavLinks() {
   const [activeTab, setActiveTab] = React.useState(-1);
 
   const pathname = usePathname();
 
   return (
-    <Tabs className="flex md:hidden [&_[data-active-pill]]:rounded-full">
+    <Tabs className="flex lg:hidden [&_[data-active-pill]]:rounded-full">
       {navItems.map(({ name, href }, index) => (
         <Tab
           key={index}

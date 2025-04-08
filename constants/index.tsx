@@ -4,7 +4,7 @@ import { contactRoute, dashboardRoute, featuresRoute } from '@/routes';
 
 export const navItems = [
   {
-    name: 'features',
+    name: 'Features',
     href: '/features',
   },
   /*
@@ -50,8 +50,12 @@ export const navItems = [
   },
   */
   {
-    name: 'pricing',
+    name: 'Pricing',
     href: '/pricing',
+  },
+  {
+    name: 'Changelogs',
+    href: '/changelogs',
   },
 ];
 

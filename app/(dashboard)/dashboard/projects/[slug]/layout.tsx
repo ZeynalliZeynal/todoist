@@ -1,5 +1,6 @@
 import { Metadata } from 'next';
-import { getProjects } from '@/actions/project.action';
+import { getCachedProjects, getProjects } from '@/actions/project.action';
+import StoreProject from '@/app/(dashboard)/dashboard/projects/[slug]/_components/store-project';
 
 export async function generateMetadata({
   params,
@@ -18,10 +19,20 @@ export async function generateMetadata({
   };
 }
 
-export default function ProjectLayout({
+export default async function ProjectLayout({
   children,
+  params,
 }: {
   children: React.ReactNode;
+  params: Promise<{ slug: string }>;
 }) {
-  return children;
+  const { slug } = await params;
+  const data = await getCachedProjects({ slug });
+
+  return (
+    <>
+      <StoreProject project={data.projects?.at(0)} />
+      {children}
+    </>
+  );
 }

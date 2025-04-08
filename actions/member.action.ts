@@ -23,9 +23,20 @@ export async function getMembershipProfile() {
   }
 }
 
-export async function inviteMember(id: string) {
+export async function inviteMember({
+  id,
+  entity,
+  entityType,
+}: {
+  id: string;
+  entity: object;
+  entityType: string;
+}) {
   try {
-    const response = await apiClient(`/members/${id}/invite`);
+    const response = await apiClient.post(`/members/${id}/invite`, {
+      entity,
+      entityType,
+    });
 
     revalidatePath('/dashboard/projects');
 

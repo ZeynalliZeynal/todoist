@@ -3,40 +3,42 @@
 import AddTaskButton from '@/app/(dashboard)/dashboard/projects/[slug]/_components/add-task-button';
 import TaskCard from '@/app/(dashboard)/dashboard/projects/[slug]/_components/task-card';
 import { isToday } from 'date-fns';
-import { useOptimistic } from 'react';
+import React, { useOptimistic } from 'react';
 
 export default function TasksSection({
+  children,
   tasks,
   tags,
   project,
 }: {
+  children: React.ReactNode;
   tasks: Task[];
   tags: TaskTag[];
   project: Project;
 }) {
   const overdueTasks = tasks.filter(
-    (task) => new Date(task.dueDate) < new Date()
+    (task) => new Date(task.dueDate) < new Date(),
   );
 
   const todayTasks = tasks.filter(
-    (task) => isToday(task.createdAt) && new Date(task.dueDate) > new Date()
+    (task) => isToday(task.createdAt) && new Date(task.dueDate) > new Date(),
   );
 
   const [optimisticTodayTasks, optimisticTodayTaskRemove] = useOptimistic(
     todayTasks,
-    (state, taskId) => state.filter((task) => task.id !== taskId)
+    (state, taskId) => state.filter((task) => task.id !== taskId),
   );
 
   const [optimisticOverdueTasks, optimisticOverdueTaskRemove] = useOptimistic(
     overdueTasks,
-    (state, taskId) => state.filter((task) => task.id !== taskId)
+    (state, taskId) => state.filter((task) => task.id !== taskId),
   );
 
   return (
-    <section className="max-w-screen-dashboard mx-auto px-6">
+    <div className="max-w-screen-dashboard mx-auto px-6">
       <div className="grid grid-cols-4 gap-4 mt-6">
         {overdueTasks.length > 0 && (
-          <div className="flex flex-col gap-4">
+          <section className="flex flex-col gap-4">
             <div className="flex items-center justify-between pr-3">
               <h3 className="text-sm font-medium flex items-center gap-2 leading-8">
                 Overdue
@@ -65,9 +67,9 @@ export default function TasksSection({
                 )}
               </div>
             </div>
-          </div>
+          </section>
         )}
-        <div className="flex flex-col gap-4">
+        <section className="flex flex-col gap-4">
           <div className="flex items-center justify-between pr-3">
             <h3 className="text-sm font-medium flex items-center gap-2">
               <span className="relative inline-block rounded border border-gray-500 font-geist-mono size-6">
@@ -102,8 +104,9 @@ export default function TasksSection({
               )}
             </div>
           </div>
-        </div>
+        </section>
+        {children}
       </div>
-    </section>
+    </div>
   );
 }

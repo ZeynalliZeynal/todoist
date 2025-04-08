@@ -10,7 +10,7 @@ export default function NavRightDropdown() {
   const { profile } = useProfile();
   if (profile?.name)
     return (
-      <div className="flex items-center gap-3 md:hidden">
+      <div className="flex items-center gap-3 lg:hidden">
         <SpecialButton
           href="/geist/introduction"
           className="h-8 rounded-md w-32 [&_span]:rounded-md font-geist-mono"
@@ -28,7 +28,7 @@ export default function NavRightDropdown() {
       </div>
     );
   return (
-    <div className="flex md:hidden items-center gap-3">
+    <div className="flex lg:hidden items-center gap-3">
       <SpecialButton
         href="/geist/introduction"
         className="h-8 rounded-md w-32 [&_span]:rounded-md font-geist-mono"

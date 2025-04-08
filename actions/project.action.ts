@@ -1,7 +1,9 @@
 'use server';
 
 import apiClient from '@/lib/api-client';
-import { revalidatePath } from 'next/cache';
+import { revalidatePath, revalidateTag } from 'next/cache';
+import { getAuthCookies } from '@/utils/cookies';
+import { api_url } from '@/utils/env';
 
 export async function getProjects({
   search,
@@ -33,6 +35,45 @@ export async function getProjects({
   }
 }
 
+export async function getCachedProjects({
+  search,
+  sortBy,
+  slug,
+}: { search?: string; sortBy?: string; slug?: string } = {}) {
+  try {
+    const { accessToken } = await getAuthCookies();
+    const queryParams = new URLSearchParams();
+
+    if (search && search.trim()) {
+      queryParams.append('content', search.trim());
+    }
+
+    if (slug && slug.trim()) {
+      queryParams.append('slug', slug.trim());
+    }
+
+    const res = await fetch(
+      api_url +
+        '/api/v1' +
+        `/projects?${queryParams.toString()}&sort=${sortBy !== 'activity' && sortBy !== undefined ? `-${sortBy},-favorite` : ''}`,
+      {
+        headers: {
+          'content-type': 'application/json',
+          Authorization: `Bearer ${accessToken}`,
+          'ngrok-skip-browser-warning': 'ngrok',
+        },
+        next: { tags: ['projects'], revalidate: 300 },
+      },
+    );
+
+    const data = await res.json();
+
+    return data.data;
+  } catch (err) {
+    return err;
+  }
+}
+
 export async function createProject(formData: FormData) {
   try {
     const name = formData.get('name');
@@ -44,6 +85,8 @@ export async function createProject(formData: FormData) {
     });
 
     revalidatePath('/dashboard');
+
+    revalidateTag('projects');
 
     return response.data;
   } catch (error) {
@@ -64,6 +107,8 @@ export async function updateProject(formData: FormData) {
 
     revalidatePath('/dashboard');
 
+    revalidateTag('projects');
+
     return response.data;
   } catch (error) {
     return error;
@@ -76,6 +121,8 @@ export async function addFavoriteProject(projectId: string) {
 
     revalidatePath('/dashboard');
 
+    revalidateTag('projects');
+
     return response.data;
   } catch (error) {
     return error;
@@ -87,6 +134,8 @@ export async function removeFavoriteProject(projectId: string) {
     const response = await apiClient.delete(`/projects/${projectId}/favorites`);
 
     revalidatePath('/dashboard');
+
+    revalidateTag('projects');
 
     return response.data;
   } catch (error) {
@@ -101,6 +150,8 @@ export async function deleteProject(id: string) {
     const response = await apiClient.delete(`/projects/${id}`);
 
     revalidatePath('/dashboard');
+
+    revalidateTag('projects');
     return response.data;
   } catch (error) {
     return error;
