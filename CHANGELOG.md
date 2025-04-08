@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.11.4](https://github.com/ZeynalliZeynal/todoist/compare/v0.11.3...v0.11.4) (2025-04-08)
+
+
+### Features
+
+* make features page responsive ([e8febed](https://github.com/ZeynalliZeynal/todoist/commit/e8febedf708b774f882d3927b82bf62ca200338d))
+
 ### [0.11.3](https://github.com/ZeynalliZeynal/todoist/compare/v0.11.2...v0.11.3) (2025-04-08)
 
 
