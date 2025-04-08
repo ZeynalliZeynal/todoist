@@ -1,10 +1,17 @@
 import { Grid, GridCell, GridCross } from '@/components/ui/grid';
-import ChangelogsSection from '@/app/(landing)/features/_sections/features-section';
+import FeaturesSection from '@/app/(landing)/features/_sections/features-section';
 
 export default function FeaturesPage() {
   return (
     <div className="py-8">
-      <Grid as="section" rows={4} columns={8} smColumns={12} className="h-auto">
+      <Grid
+        as="section"
+        rows={4}
+        smColumns={8}
+        columns={4}
+        mdColumns={12}
+        className="h-auto"
+      >
         <GridCross column={1} row={1} />
         <GridCross column={-1} row={-1} />
         <GridCell
@@ -28,7 +35,7 @@ export default function FeaturesPage() {
           className="bg-background-200 mb-px mr-px sm:block hidden"
         />
       </Grid>
-      <ChangelogsSection />
+      <FeaturesSection />
     </div>
   );
 }
