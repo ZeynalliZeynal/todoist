@@ -58,6 +58,7 @@ export default function FeedbackPopper() {
       rating: 0,
       page: pathname,
     },
+
     resolver: zodResolver(
       z.object({
         content: z.string().min(1, 'Content is required'),
@@ -119,29 +120,24 @@ export default function FeedbackPopper() {
         <motion.div
           ref={ref}
           className={cn(
-            'fixed bg-background-100 z-50 bottom-4 right-4 *:size-full overflow-hidden border rounded-lg',
+            'fixed bg-background-100 z-50 bottom-4 max-w-[calc(100%-2rem)] max-h-[calc(100%-2rem)] right-4 *:size-full overflow-hidden border rounded-lg',
           )}
-          variants={{
-            fullscreen: {
-              width: 'calc(100vw - 2rem)',
-              height: 'calc(100vh - 2rem)',
-              maxWidth: 'calc(100vw - 2rem)',
-              maxHeight: 'calc(100vh - 2rem)',
-            },
-            expand: {
-              width: isTablet ? 'calc(100vw - 2rem)' : '648px',
-              height: isTablet ? '300px' : '400px',
-              maxWidth: isTablet ? 'calc(100vw - 2rem)' : '648px',
-              maxHeight: isTablet ? '300px' : '400px',
-            },
-            initial: {
-              width: 34,
-              height: 34,
-              maxWidth: '34px',
-              maxHeight: '34px',
-            },
-          }}
-          animate={open ? (fullscreen ? 'fullscreen' : 'expand') : 'initial'}
+          animate={
+            open
+              ? fullscreen
+                ? {
+                    width: '100%',
+                    height: '100%',
+                  }
+                : {
+                    width: 648,
+                    height: 480,
+                  }
+              : {
+                  width: 34,
+                  height: 34,
+                }
+          }
           transition={{ type: 'spring', stiffness: 300, damping: 30 }}
         >
           <AnimatePresence>
