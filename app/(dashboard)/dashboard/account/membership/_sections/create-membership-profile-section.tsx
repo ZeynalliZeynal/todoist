@@ -8,6 +8,7 @@ import { AnimatePresence, motion } from 'framer-motion';
 import { useTransition } from 'react';
 import LoadingDots from '@/components/ui/loading-dots';
 import { createMembershipProfile } from '@/actions/member.action';
+import MemberProfileDetail from './member-profile-detail';
 
 export default function CreateMembershipProfileSection({
   profile,
@@ -15,31 +16,12 @@ export default function CreateMembershipProfileSection({
   profile?: Member;
 }) {
   const [isPending, startTransition] = useTransition();
+  console.log(profile);
 
   return (
-    <section className="h-[90vh] relative p-4 rounded-xl border">
+    <section className="h-[90vh] relative p-4 rounded-xl border bg-background-100">
       <AnimatePresence>
-        {profile && (
-          <motion.div
-            initial={{
-              opacity: 0,
-              position: 'absolute',
-            }}
-            exit={{
-              opacity: 0,
-              position: 'absolute',
-            }}
-            animate={{
-              opacity: 1,
-            }}
-            transition={{
-              duration: 0.5,
-            }}
-            className="relative z-[1] w-full"
-          >
-            Your membership profile, {profile.user.name}.
-          </motion.div>
-        )}
+        {profile && <MemberProfileDetail profile={profile} />}
       </AnimatePresence>
       <AnimatePresence>
         {!profile && (

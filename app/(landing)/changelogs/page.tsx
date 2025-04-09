@@ -1,16 +1,12 @@
-import { getClientChangelog } from '@/actions/repo.action';
-import { marked } from 'marked';
 import { Sparkles } from 'vercel-geist-icons';
-import axios from 'axios';
 
 export default async function ClientChangelogsPage() {
-  const [changelog, tags] = await Promise.all([
-    getClientChangelog(),
-    axios('https://api.github.com/repos/ZeynalliZeynal/todoist/tags'),
-  ]);
-  const markdown = marked.parse(changelog);
+  // const [changelog, tags] = await Promise.all([
+  //   getClientChangelog(),
+  //   axios('https://api.github.com/repos/ZeynalliZeynal/todoist/tags'),
+  // ]);
 
-  const latestVersion = tags.data.at(0)?.name;
+  // const latestVersion = tags.data.at(0)?.name;
 
   return (
     <>
@@ -46,7 +42,7 @@ export default async function ClientChangelogsPage() {
 
           <div className="absolute top-8 right-8">
             <div className="px-3 py-1 text-xs font-medium bg-gray-100/25 rounded-full text-foreground backdrop-blur-sm">
-              Latest: {latestVersion}
+              Latest: 1.0.0
             </div>
           </div>
         </div>

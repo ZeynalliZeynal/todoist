@@ -1,6 +1,7 @@
 'use server';
 
 import apiClient from '@/lib/api-client';
+import { membershipRoute } from '@/routes';
 import { revalidatePath } from 'next/cache';
 
 export async function getMembers() {
@@ -51,6 +52,30 @@ export async function createMembershipProfile() {
     const response = await apiClient.post(`/members/create`);
 
     revalidatePath('/dashboard');
+
+    return response.data.data;
+  } catch (error) {
+    return error;
+  }
+}
+
+export async function activateMembershipProfile() {
+  try {
+    const response = await apiClient.post(`/members/profile/activate`);
+
+    revalidatePath(membershipRoute);
+
+    return response.data.data;
+  } catch (error) {
+    return error;
+  }
+}
+
+export async function deactivateMembershipProfile() {
+  try {
+    const response = await apiClient.post(`/members/profile/deactivate`);
+
+    revalidatePath(membershipRoute);
 
     return response.data.data;
   } catch (error) {
