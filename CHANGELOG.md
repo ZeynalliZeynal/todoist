@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.11.6](https://github.com/ZeynalliZeynal/todoist/compare/v0.11.5...v0.11.6) (2025-04-09)
+
+
+### Features
+
+* add activating and deactivating membership profile in /membership ([1d5e8ef](https://github.com/ZeynalliZeynal/todoist/commit/1d5e8efca26c968dde6c8790bf8d4fddd21bc4b0))
+
 ### [0.11.5](https://github.com/ZeynalliZeynal/todoist/compare/v0.11.4...v0.11.5) (2025-04-08)
 
 ### [0.11.4](https://github.com/ZeynalliZeynal/todoist/compare/v0.11.3...v0.11.4) (2025-04-08)
