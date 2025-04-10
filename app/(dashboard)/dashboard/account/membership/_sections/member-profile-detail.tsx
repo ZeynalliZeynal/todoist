@@ -31,14 +31,13 @@ export default function MemberProfileDetail({ profile }: { profile: Member }) {
       transition={{
         duration: 0.5,
       }}
-      className="relative divide-y z-[1] w-full space-y-2"
+      className="relative divide-y z-[1] w-full space-y-3"
     >
       <div className="flex items-center justify-between gap-3">
         <div>
           <h2 className="text-xl leading-10">Status</h2>
           <p className="text-gray-900">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur,
-            similique.
+            Activate or deactivate your membership status. When deactivated, you no longer get invitations from others or join as a member. 
           </p>
         </div>
         <Switch
@@ -59,6 +58,10 @@ export default function MemberProfileDetail({ profile }: { profile: Member }) {
             })
           }
         />
+      </div>
+      <div className="space-y-2 py-3">
+        <h3 className="text-lg">Memberships</h3>
+        <p className="text-gray-900 leaidng-6">Manage your memberships here.</p>
       </div>
     </motion.div>
   );

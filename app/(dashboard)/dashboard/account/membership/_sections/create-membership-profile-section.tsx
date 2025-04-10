@@ -16,7 +16,6 @@ export default function CreateMembershipProfileSection({
   profile?: Member;
 }) {
   const [isPending, startTransition] = useTransition();
-  console.log(profile);
 
   return (
     <section className="h-[90vh] relative p-4 rounded-xl border bg-background-100">

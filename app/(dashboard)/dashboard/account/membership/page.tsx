@@ -9,6 +9,7 @@ export const metadata: Metadata = {
 
 export default async function MembershipPage() {
   const data = await getMembershipProfile();
+  
   return (
     <>
       <CreateMembershipProfileSection profile={data?.profile} />
