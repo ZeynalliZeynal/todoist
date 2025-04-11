@@ -18,7 +18,7 @@ export default function SubmitButton({
       {...props}
       disabled={pending}
       type="submit"
-      prefix={pending && <Spinner size={16} />}
+      prefix={pending ? <Spinner size={16} /> : props.prefix}
     >
       {children}
     </Button>

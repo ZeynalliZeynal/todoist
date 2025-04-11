@@ -15,6 +15,7 @@ import Spinner from '@/components/ui/spinner';
 import { toast } from 'sonner';
 import { useUserStore } from '@/lib/stores/user-store';
 import { useProjectStore } from '@/lib/stores/project-store';
+import Badge from '@/components/ui/badge';
 
 export default function MemberCard({ member }: { member: Member }) {
   const [isPending, startTransition] = useTransition();
@@ -23,6 +24,10 @@ export default function MemberCard({ member }: { member: Member }) {
 
   const { project } = useProjectStore();
   if (!project) return null;
+
+  const membershipStatus = member.memberships
+    .filter((membership) => membership.entityType === 'project')
+    ?.find((membership) => membership.entity.id === project.id);
 
   return (
     <TooltipProvider delayDuration={0}>
@@ -54,23 +59,45 @@ export default function MemberCard({ member }: { member: Member }) {
             {member.user.name}
             <p className="text-gray-900">{member.user.email}</p>
           </div>
-          <Button
-            variant="secondary"
-            className="ml-auto self-center"
-            onClick={() =>
-              startTransition(async () => {
-                const res = await inviteMember({
-                  id: member.id,
-                  entity: project,
-                  entityType: 'project',
-                });
-                if (res.status === 'fail') toast.error(res.message);
-              })
-            }
-            disabled={isPending}
-          >
-            {isPending ? <Spinner /> : 'Invite'}
-          </Button>
+          {membershipStatus ? (
+            <Badge
+              className="ml-auto self-center"
+              size="lg"
+              variant={
+                membershipStatus.status === 'approved'
+                  ? 'green-subtle'
+                  : membershipStatus.status === 'rejected'
+                    ? 'red-subtle'
+                    : 'gray'
+              }
+            >
+              {membershipStatus.status !== 'pending'
+                ? membershipStatus.status === 'approved'
+                  ? `${member.user.name.split(' ')[0]} approved your invitation!`
+                  : `${member.user.name.split(' ')[0]} rejected your invitation!`
+                : membershipStatus.status}
+            </Badge>
+          ) : (
+            <Button
+              variant="secondary"
+              className="ml-auto self-center"
+              onClick={() =>
+                startTransition(async () => {
+                  const res = await inviteMember({
+                    id: member.id,
+                    entity: project,
+                    entityType: 'project',
+                  });
+                  if (res?.status === 'fail') toast.error(res.message);
+                  else if (res?.status === 'success')
+                    toast.success(res.message);
+                })
+              }
+              disabled={isPending}
+            >
+              {isPending ? <Spinner /> : 'Invite'}
+            </Button>
+          )}
         </div>
         {member.description && (
           <p className="text-foreground">{member.description}</p>

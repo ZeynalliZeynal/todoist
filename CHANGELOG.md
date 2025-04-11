@@ -1,48 +1,50 @@
 # Changelog
 
+## 0.12.0
+
+### Minor Changes
+
+- 494b022: Changelog page setup
+- Add table feature to show memberships and approve or reject invitation
+- Project member cards
+
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
 ### [0.11.6](https://github.com/ZeynalliZeynal/todoist/compare/v0.11.5...v0.11.6) (2025-04-09)
 
-
 ### Features
 
-* add activating and deactivating membership profile in /membership ([1d5e8ef](https://github.com/ZeynalliZeynal/todoist/commit/1d5e8efca26c968dde6c8790bf8d4fddd21bc4b0))
+- add activating and deactivating membership profile in /membership ([1d5e8ef](https://github.com/ZeynalliZeynal/todoist/commit/1d5e8efca26c968dde6c8790bf8d4fddd21bc4b0))
 
 ### [0.11.5](https://github.com/ZeynalliZeynal/todoist/compare/v0.11.4...v0.11.5) (2025-04-08)
 
 ### [0.11.4](https://github.com/ZeynalliZeynal/todoist/compare/v0.11.3...v0.11.4) (2025-04-08)
 
-
 ### Features
 
-* make features page responsive ([e8febed](https://github.com/ZeynalliZeynal/todoist/commit/e8febedf708b774f882d3927b82bf62ca200338d))
+- make features page responsive ([e8febed](https://github.com/ZeynalliZeynal/todoist/commit/e8febedf708b774f882d3927b82bf62ca200338d))
 
 ### [0.11.3](https://github.com/ZeynalliZeynal/todoist/compare/v0.11.2...v0.11.3) (2025-04-08)
 
-
 ### Features
 
-* responsive feedback popper ([0ed3338](https://github.com/ZeynalliZeynal/todoist/commit/0ed33383240fcb3c06b32bcc3e8bbf7db80ad023))
-
+- responsive feedback popper ([0ed3338](https://github.com/ZeynalliZeynal/todoist/commit/0ed33383240fcb3c06b32bcc3e8bbf7db80ad023))
 
 ### Bug Fixes
 
-* increase body size limit for server actions ([102f02a](https://github.com/ZeynalliZeynal/todoist/commit/102f02a649cda3efa348a8ec5a444d43a0cb2f3f))
+- increase body size limit for server actions ([102f02a](https://github.com/ZeynalliZeynal/todoist/commit/102f02a649cda3efa348a8ec5a444d43a0cb2f3f))
 
 ### [0.11.2](https://github.com/ZeynalliZeynal/todoist/compare/v0.11.1...v0.11.2) (2025-04-06)
 
-
 ### Features
 
-* add alert dialog to confirm the exit action of feedback popper if user entered some content. ([6c798ab](https://github.com/ZeynalliZeynal/todoist/commit/6c798abc18ec3f7b9846cf396a2a8298f3636a87))
+- add alert dialog to confirm the exit action of feedback popper if user entered some content. ([6c798ab](https://github.com/ZeynalliZeynal/todoist/commit/6c798abc18ec3f7b9846cf396a2a8298f3636a87))
 
 ### [0.11.1](https://github.com/ZeynalliZeynal/todoist/compare/v0.10.3...v0.11.1) (2025-04-06)
 
-
 ### Features
 
-* fullscreen mode in feedback popper ([94e3019](https://github.com/ZeynalliZeynal/todoist/commit/94e30195a5a14d3aae2b847993a82fa0e80210e8))
+- fullscreen mode in feedback popper ([94e3019](https://github.com/ZeynalliZeynal/todoist/commit/94e30195a5a14d3aae2b847993a82fa0e80210e8))
 
 ## 0.11.0
 

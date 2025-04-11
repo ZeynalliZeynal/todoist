@@ -13,14 +13,29 @@ declare global {
 
   type TaskPriority = (typeof PRIORITIES)[number];
 
+  const MEMBERSHIP_STATUS = ['approved', 'rejected', 'pending'] as const;
+  type MembershipStatus = (typeof MEMBERSHIP_STATUS)[number];
+
+  interface Membership {
+    id: string;
+    entity: Project;
+    entityType: string;
+    invited: boolean;
+    status: MembershipStatus;
+    role: string;
+    invitedBy?: {
+      name: string;
+      email: string;
+      online: boolean;
+      lastOnline: Date;
+    };
+  }
+
   interface Member {
     id: string;
     user: User;
     description?: string;
-    memberships: {
-      entity: Project[];
-      entityType: string;
-    }[];
+    memberships: Membership[];
     activated: boolean;
   }
 

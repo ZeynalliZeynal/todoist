@@ -6,7 +6,7 @@ export async function getProjectMembers(id: string) {
   try {
     const response = await apiClient('/project-members/' + id);
 
-    return response.data;
+    return response.data.data;
   } catch (error) {
     return error;
   }

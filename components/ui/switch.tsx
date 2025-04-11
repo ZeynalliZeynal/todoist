@@ -12,16 +12,14 @@ interface SwitchProps extends React.ComponentProps<'input'> {
   onChange?: React.ChangeEventHandler<HTMLInputElement>;
 }
 
-export function Switch(props: SwitchProps) {
-  const {
-    children,
-    checked,
-    size = 24,
-    checkedColor = 'var(--ds-blue-600)',
-    onChange,
-    ...etc
-  } = props;
-
+export function Switch({
+  children,
+  checked,
+  size = 24,
+  checkedColor = 'var(--ds-blue-600)',
+  onChange,
+  ...props
+}: SwitchProps) {
   const id = React.useId();
 
   const switchId = `switch${id}`;
@@ -31,7 +29,7 @@ export function Switch(props: SwitchProps) {
       htmlFor={switchId}
       className={cn(
         'inline-flex gap-2 items-center',
-        props.disabled && 'text-gray-500 cursor-not-allowed'
+        props.disabled && 'text-gray-500 cursor-not-allowed',
       )}
     >
       <span
@@ -40,7 +38,7 @@ export function Switch(props: SwitchProps) {
           props.disabled && 'cursor-not-allowed',
           {
             'border-gray-600 !bg-gray-100 opacity-50': props.disabled,
-          }
+          },
         )}
         style={
           {
@@ -55,7 +53,7 @@ export function Switch(props: SwitchProps) {
           className="sr-only"
           checked={checked}
           onChange={onChange}
-          {...etc}
+          {...props}
         />
         <motion.span
           aria-hidden={true}

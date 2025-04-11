@@ -14,13 +14,20 @@ interface ButtonProps extends Omit<ComponentProps<'button'>, 'prefix'> {
   children?: ReactNode;
   href?: string;
   size?: 'lg' | 'md' | 'sm' | 'xs';
-  variant?: 'primary' | 'secondary' | 'tertiary' | 'ghost' | 'destructive';
+  variant?:
+    | 'primary'
+    | 'secondary'
+    | 'tertiary'
+    | 'ghost'
+    | 'destructive'
+    | 'success';
   disabled?: boolean;
   type?: 'button' | 'submit' | 'reset';
   className?: string;
   suffix?: ReactNode;
   prefix?: ReactNode;
   iconOnly?: boolean;
+  outline?: boolean;
 }
 
 interface ButtonLinkProps extends Omit<ComponentProps<typeof Link>, 'prefix'> {
@@ -45,6 +52,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       suffix,
       prefix,
       iconOnly,
+      outline,
       ...etc
     },
     ref,
@@ -57,7 +65,6 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         type={type}
         disabled={disabled}
         data-hover={hovering ? '' : null}
-        // data-variant={variant}
         className={cn(
           `flex items-center justify-center transition shrink-0 duration-200 font-medium border rounded-md`,
           {
@@ -68,6 +75,12 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
               variant === 'tertiary',
             'text-foreground border-transparent data-[hover]:bg-red-900 bg-red-800 ring-[#ffaba3]':
               variant === 'destructive',
+            'text-foreground border-transparent data-[hover]:bg-green-900 bg-green-800 ring-green-100':
+              variant === 'success',
+            'text-red-800 data-[hover]:bg-red-200 bg-transparent border-red-400 ring-[#ffaba3]':
+              variant === 'destructive' && outline,
+            'text-green-800 data-[hover]:bg-green-200 bg-transparent border-green-400 ring-green-100':
+              variant === 'success' && outline,
             'px-2.5 h-10 text-sm': size === 'md' && !iconOnly,
             'px-3.5 h-12 text-base': size === 'lg' && !iconOnly,
             'text-sm h-8 px-1.5': size === 'sm' && !iconOnly,

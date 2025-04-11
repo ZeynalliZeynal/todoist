@@ -3,6 +3,7 @@ import React from 'react';
 import { Users } from 'vercel-geist-icons';
 import Link from 'next/link';
 import { inviteMembersRoute } from '@/routes';
+import ProjectMemberCard from '@/app/(dashboard)/dashboard/projects/[slug]/_components/project-member-card';
 
 export default async function ProjectMemberList({
   project,
@@ -22,8 +23,8 @@ export default async function ProjectMemberList({
       </div>
       <ul className="flex flex-col gap-3">
         {data?.members?.length > 0 ? (
-          data?.members?.map((member: Member) => (
-            <li key={member.id}>{member.user.email}</li>
+          data?.members?.map((member: Member, index: number) => (
+            <ProjectMemberCard key={index} member={member} />
           ))
         ) : (
           <p className="text-gray-900">

@@ -18,7 +18,7 @@ export default function CreateMembershipProfileSection({
   const [isPending, startTransition] = useTransition();
 
   return (
-    <section className="h-[90vh] relative p-4 rounded-xl border bg-background-100">
+    <section className="h-[90vh] relative p-4 rounded-xl border bg-background-100 overflow-auto">
       <AnimatePresence>
         {profile && <MemberProfileDetail profile={profile} />}
       </AnimatePresence>

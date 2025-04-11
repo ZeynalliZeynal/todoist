@@ -41,7 +41,7 @@ export async function inviteMember({
 
     revalidatePath('/dashboard/projects');
 
-    return response.data.data;
+    return response.data;
   } catch (error) {
     return error;
   }
@@ -74,6 +74,30 @@ export async function activateMembershipProfile() {
 export async function deactivateMembershipProfile() {
   try {
     const response = await apiClient.post(`/members/profile/deactivate`);
+
+    revalidatePath(membershipRoute);
+
+    return response.data.data;
+  } catch (error) {
+    return error;
+  }
+}
+
+export async function approveMembershipInvitation(id: string) {
+  try {
+    const response = await apiClient.post(`/members/${id}/approve`);
+
+    revalidatePath(membershipRoute);
+
+    return response.data.data;
+  } catch (error) {
+    return error;
+  }
+}
+
+export async function rejectMembershipInvitation(id: string) {
+  try {
+    const response = await apiClient.post(`/members/${id}/reject`);
 
     revalidatePath(membershipRoute);
 
